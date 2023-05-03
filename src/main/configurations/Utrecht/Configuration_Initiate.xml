@@ -1,0 +1,70 @@
+<Module>
+    <Adapter name="Initiate"
+             description="">
+
+        <Receiver name="Initiate">
+            <EsbJmsListener name="Initiate"
+                            destinationName=""
+                            lookupDestination="false"
+                            messageProtocol="RR"/>
+        </Receiver>
+
+        <Pipeline>
+            <EsbSoapInputValidator
+                    schemaLocation="xsd/Initiate.xsd"
+                    soapBody="initiateRequestMessage"
+                    soapVersion="auto"
+                    ignoreUnknownNamespaces="true"
+                    cmhVersion="2">
+                <Forward name="failure" path="EXIT"/>
+                <Forward name="parserError" path="EXIT"/>
+            </EsbSoapInputValidator>
+
+            <EsbSoapOutputValidator
+                    schemaLocation="xsd/Initiate.xsd"
+                    soapBody="initiateResponseMessage"
+                    soapVersion="auto"
+                    ignoreUnknownNamespaces="true"
+                    cmhVersion="2">
+                <Forward name="failure" path="EXIT"/>
+                <Forward name="parserError" path="EXIT"/>
+            </EsbSoapOutputValidator>
+
+<!--            Xslt -->
+
+            <SenderPipe name="">
+                <EsbJmsSender name="SendInitiateProcess">
+                    <Param name="soapAction" value=""/>
+
+                    <EsbSoapInputWrapper cmhVersion="2"
+                                         direction="unwrap"
+                                         removeOutputNamespaces="true"
+                                         storeResultInSessionKey="originalMessage" />
+
+                    <EsbSoapOutputWrapper cmhVersion="2">
+                        <param name="errorCode" sessionKey="errorCode"/>
+                        <param name="errorReason" sessionKey="errorReason"/>
+                        <Param name="destination" value=""/>
+                    </EsbSoapOutputWrapper>
+
+
+                    <Forward name="success" path="SendBackInitiateResponse" />
+                </EsbJmsSender>
+            </SenderPipe>
+
+            <SenderPipe
+                    name="SendBackInitiateResponse">
+                <IbisLocalSender
+                        name="InitiateSender"
+                        javaListener="StartRegisterProcess">
+                    <Param name="InitiateResponseValue" sessionKey="originalMessage" />
+                </IbisLocalSender>
+                <Forward name="success" path="EXIT"/>
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <Exit name="EXIT" state="success"/>
+
+        </Pipeline>
+    </Adapter>
+</Module>

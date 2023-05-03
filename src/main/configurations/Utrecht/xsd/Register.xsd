@@ -1,0 +1,464 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="registerRequestMessage">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="requestProperties"/>
+                <xs:element name="body">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:choice>
+                                <xs:element name="initiatingSubject" type="tSubjectExt" minOccurs="0"/>
+                                <xs:element name="initiatingActor" type="tActor" minOccurs="0"/>
+                            </xs:choice>
+                            <xs:element name="parties" type="tParties" minOccurs="0"/>
+                            <xs:element name="xml" type="tXML"/>
+                            <xs:element ref="emailParameters"/>
+                            <xs:element ref="processParameters"/>
+                            <xs:element ref="caseParameters"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="registerResponseMessage">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="responseProperties"/>
+                <xs:element name="body">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="referenceNumber" type="xs:string"/>
+                            <xs:element minOccurs="0" name="redirectUrl" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="tSubjectExt">
+        <xs:sequence>
+            <xs:choice>
+                <xs:element name="person">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="bsn" type="tBsn"/>
+                            <xs:element minOccurs="0" name="nonAuthentic" type="tPersonExt"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="organization">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="commercialRegistryNumber" type="tCommercialRegistryNumber"/>
+                            <xs:element minOccurs="0" name="nonAuthentic" type="tOrganizationExt"/>
+                            <xs:element minOccurs="0" name="contactPerson" type="tPersonExtWithBsn"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tParties">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="1" name="party" type="tParty"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tParty">
+        <xs:sequence>
+            <xs:element name="roleCode" type="xs:string"/>
+            <xs:element name="subject" type="tSubjectParty"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tPersonExtWithBsn">
+        <xs:sequence>
+            <xs:element name="bsn" type="xs:string"/>
+            <xs:element name="genderIndication" nillable="true" type="tGender"/>
+            <xs:element name="initials" type="tString20"/>
+            <xs:element name="firstNames" type="tFirstNames"/>
+            <xs:element name="lastNamePrefix" type="tLastNamePrefix"/>
+            <xs:element name="lastName" type="tLastName"/>
+            <xs:element name="nameOfAddress" type="tString200"/>
+            <xs:element name="dateOfBirth" nillable="true" type="tPartialDate"/>
+            <xs:element name="emailAddress" type="tEmail"/>
+            <xs:element name="telephoneNumber" type="tTelephoneNumber"/>
+            <xs:element name="faxNumber" type="tTelephoneNumber"/>
+            <xs:element name="iban" type="tIBAN"/>
+            <xs:element name="bic" type="tBIC"/>
+            <xs:element minOccurs="0" name="residenceAddress" type="tResidenceAddress"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tPersonExt">
+        <xs:sequence>
+            <xs:element name="genderIndication" nillable="true" type="tGender"/>
+            <xs:element name="initials" type="tString20"/>
+            <xs:element name="firstNames" type="tFirstNames"/>
+            <xs:element name="lastNamePrefix" type="tLastNamePrefix"/>
+            <xs:element name="lastName" type="tLastName"/>
+            <xs:element name="nameOfAddress" type="tString200"/>
+            <xs:element name="dateOfBirth" nillable="true" type="tPartialDate"/>
+            <xs:element name="emailAddress" type="tEmail"/>
+            <xs:element name="telephoneNumber" type="tTelephoneNumber"/>
+            <xs:element name="faxNumber" type="tTelephoneNumber"/>
+            <xs:element name="iban" type="tIBAN"/>
+            <xs:element name="bic" type="tBIC"/>
+            <xs:element minOccurs="0" name="residenceAddress" type="tResidenceAddress"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tActor">
+        <xs:sequence>
+            <xs:element name="employee">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="username" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tApplicant">
+        <xs:sequence>
+            <xs:choice>
+                <xs:element name="person">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="bsn" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="organization">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="commercialRegistryNumber" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="employee">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="username" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tSubjectParty">
+        <xs:sequence>
+            <xs:element name="person">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="bsn" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tOrganizationExt">
+        <xs:sequence>
+            <xs:element name="statutoryName" type="tStatutoryName"/>
+            <xs:element name="foundingDate" nillable="true" type="xs:date"/>
+            <xs:element name="emailAddress" type="tEmail"/>
+            <xs:element name="telephoneNumber" type="tTelephoneNumber"/>
+            <xs:element name="faxNumber" type="tTelephoneNumber"/>
+            <xs:element name="iban" type="tIBAN"/>
+            <xs:element name="bic" type="tBIC"/>
+            <xs:element minOccurs="0" name="locationAddress" type="tResidenceAddress"/>
+            <xs:element minOccurs="0" name="correspondenceAddress" type="tCorrespondenceAddress"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tXML">
+        <xs:sequence>
+            <xs:any minOccurs="0" processContents="skip"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tName">
+        <xs:sequence>
+            <xs:element name="initials" nillable="true" type="xs:string"/>
+            <xs:element name="firstNames" nillable="true" type="xs:string"/>
+            <xs:element name="middleName" nillable="true" type="xs:string"/>
+            <xs:element name="lastName" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="nameOfAddress" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="tGender">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="V"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="O"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="tPartialDate">
+        <xs:simpleContent>
+            <xs:extension base="xs:date">
+                <xs:attribute default="false" name="ignoreDay" type="xs:boolean" use="optional"/>
+                <xs:attribute default="false" name="ignoreMonth" type="xs:boolean" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="tResidenceAddress">
+        <xs:sequence>
+            <xs:element name="houseNumber" nillable="true" type="tNumber5"/>
+            <xs:element name="houseLetter" type="tHouseLetter"/>
+            <xs:element name="houseRemark" type="tHouseRemark"/>
+            <xs:element name="streetname" type="tString80"/>
+            <xs:element name="zipCode" type="tZipCode"/>
+            <xs:element name="city" type="tString80"/>
+            <xs:element name="locationDescription" type="tString35"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tCorrespondenceAddress">
+        <xs:sequence>
+            <xs:element name="houseNumber" nillable="true" type="tNumber5"/>
+            <xs:element name="houseLetter" type="tHouseLetter"/>
+            <xs:element name="houseRemark" type="tHouseRemark"/>
+            <xs:element name="freePost" type="tNumber9" minOccurs="0"/>
+            <xs:element name="POBox" type="tNumber9" minOccurs="0"/>
+            <xs:element name="streetname" type="tString80"/>
+            <xs:element name="zipCode" type="tZipCode"/>
+            <xs:element name="city" type="tString80"/>
+            <xs:element name="locationDescription" type="tString35"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tBsn">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="authentic" type="xs:boolean" default="true" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="tCommercialRegistryNumber">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="authentic" type="xs:boolean" default="true" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:simpleType name="tStatutoryName">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="500"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tBIC">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="11"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tHouseLetter">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tHouseRemark">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tZipCode">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tFirstNames">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tLastName">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tLastNamePrefix">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tNumber5">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+            <xs:pattern value="[0-9]{0,5}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tNumber9">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="9"/>
+            <xs:pattern value="[0-9]{0,9}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tEmail">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="254"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tString20">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tString35">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="35"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tString50">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tString80">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tString200">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tTelephoneNumber">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tIBAN">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="34"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tIncompleteDate">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="8"/>
+            <xs:maxLength value="8"/>
+            <xs:pattern value="[0-9]{8}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="emailParameters">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="emailAddress" type="xs:string"/>
+                <xs:element name="gender" nillable="true" type="tGender"/>
+                <xs:element name="name" type="tName"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="tPayment">
+        <xs:sequence>
+            <xs:element name="initiatePayment" type="xs:boolean"/>
+            <xs:element name="subscriptionDuration" nillable="true" type="xs:int"/>
+            <xs:element name="paymentInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="price" type="xs:string"/>
+                        <xs:element name="description" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="redirection" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="acceptUrl" type="xs:string"/>
+                        <xs:element name="declineUrl" type="xs:string"/>
+                        <xs:element name="exceptionUrl" type="xs:string"/>
+                        <xs:element name="cancelUrl" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="processParameters">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="process" type="xs:string"/>
+                <xs:element minOccurs="0" name="payment" type="tPayment"/>
+                <xs:element minOccurs="0" name="sendFormByMail" type="xs:boolean"/>
+                <xs:element minOccurs="0" name="documents" type="xs:boolean"/>
+                <xs:element minOccurs="0" name="numberOfDocuments" type="xs:int"/>
+                <xs:element minOccurs="0" name="closeCase" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="tReferenceNumber">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tMimeType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tFileName">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="150"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="tDocument">
+        <xs:sequence>
+            <xs:element name="fileName" type="tFileName"/>
+            <xs:element name="fileMimeType" type="tMimeType"/>
+            <xs:element name="fileData" type="xs:base64Binary"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="tClarification">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="992"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tDescription">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tUrgencyLevel">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+            <xs:pattern value="[0-9]{1,2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="tRegistrator">
+        <xs:sequence>
+            <xs:element name="employee" type="tId"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tId">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="caseParameters">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="referenceNumber" type="tReferenceNumber" minOccurs="0"/>
+                <xs:element name="description" type="tDescription" minOccurs="0"/>
+                <xs:element name="clarification" type="tClarification" minOccurs="0"/>
+                <xs:element name="channel" type="xs:string"/>
+                <xs:element name="urgencyLevel" type="tUrgencyLevel" minOccurs="0"/>
+                <xs:element name="registrator" type="tRegistrator" minOccurs="0"/>
+                <xs:element name="document" type="tDocument" minOccurs="0"/>
+                <xs:element name="addStatus" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="requestProperties">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" nillable="true" type="xs:string"/>
+                <xs:element name="password" nillable="true" type="xs:string"/>
+                <xs:element name="domain" nillable="true" type="xs:string"/>
+                <xs:element name="correlationId" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="responseProperties">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="correlationId" nillable="true" type="xs:string"/>
+                <xs:element name="processId" nillable="true" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

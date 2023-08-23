@@ -39,7 +39,6 @@ services:
 
   open-forms:
     image: openformulieren/open-forms:${TAG:-latest}
-    container_name: open-forms.dev
     environment: &open-forms-env
       - DJANGO_SETTINGS_MODULE=openforms.conf.docker
       - SECRET_KEY=${SECRET_KEY:-@r0w-0(&apjfde5fl6h23!vn)r1ldkp1c_d2#!$$did4z5hun4a}
@@ -80,7 +79,6 @@ services:
 
   open-forms-nginx:
     image: nginx
-    container_name: open-forms.nginx
     volumes:
       - ./docker/open-forms-nginx/default.conf:/etc/nginx/conf.d/default.conf
       - open-forms-private-media:/app/private_media

@@ -21,7 +21,7 @@ jobs:
       name: Checkout
       uses: actions/checkout@v3
       with: 
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GH_TOKEN }}
     - 
       name: "🔧 setup node"
       uses: actions/setup-node@v2.1.5
@@ -35,8 +35,8 @@ jobs:
       id: next-version
       run: semantic-release --dryRun
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
     outputs:
       release-tag: ${{ steps.next-version.outputs.release-tag }}
       release-version: ${{ steps.next-version.outputs.release-version }}
@@ -75,7 +75,7 @@ jobs:
       name: Checkout
       uses: actions/checkout@v3
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GH_TOKEN }}
     -
       name: Update BuildInfo.properties if there is a version
       run: /bin/bash .github/workflows/writeBuildInfo.sh ${{ needs.analyze-commits.outputs.release-version }}
@@ -91,8 +91,8 @@ jobs:
       name: Semantic Release
       run: "semantic-release"
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
   publish-docker:
     runs-on: ubuntu-latest
@@ -114,7 +114,7 @@ jobs:
       name: Checkout
       uses: actions/checkout@v3
       with: 
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GH_TOKEN }}
     -  
       name: "Download Docker artifact"
       uses: actions/download-artifact@v2

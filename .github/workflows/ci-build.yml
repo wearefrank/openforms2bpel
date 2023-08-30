@@ -22,7 +22,6 @@ jobs:
       uses: actions/checkout@v3
       with: 
         token: ${{ secrets.GH_TOKEN }}
-        fetch-tags: true
     - 
       name: "🔧 setup node"
       uses: actions/setup-node@v2.1.5
@@ -77,7 +76,6 @@ jobs:
       uses: actions/checkout@v3
       with:
         token: ${{ secrets.GH_TOKEN }}
-        fetch-tags: true
     -
       name: Update BuildInfo.properties if there is a version
       run: /bin/bash .github/workflows/writeBuildInfo.sh ${{ needs.analyze-commits.outputs.release-version }}
@@ -117,7 +115,6 @@ jobs:
       uses: actions/checkout@v3
       with: 
         token: ${{ secrets.GH_TOKEN }}
-        fetch-tags: true
     -  
       name: "Download Docker artifact"
       uses: actions/download-artifact@v2

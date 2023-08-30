@@ -34,6 +34,8 @@ jobs:
     - 
       name: Checkout
       uses: actions/checkout@v3
+      with:
+        fetch-tags: true
     - 
       name: Extract Docker metadata
       id: meta
@@ -84,6 +86,8 @@ jobs:
     - 
       name: Checkout
       uses: actions/checkout@v3
+      with:
+        fetch-tags: true
     - 
       name: Lint Dockerfile with Checkov
       id: checkov

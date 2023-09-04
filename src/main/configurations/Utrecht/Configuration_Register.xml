@@ -8,45 +8,41 @@
 
         <Pipeline>
 
-            <EsbSoapInputWrapper cmhVersion="2"
-                                 direction="unwrap"
+            <SoapInputWrapper direction="unwrap"
                                  removeOutputNamespaces="true"
                                  storeResultInSessionKey="originalMessage" />
 
 
 <!--            Xslt -->
 
-            <EsbSoapOutputWrapper cmhVersion="2">
+            <SoapOutputWrapper>
                 <param name="errorCode" sessionKey="errorCode"/>
                 <param name="errorReason" sessionKey="errorReason"/>
-                <Param name="destination" value=""/>
-            </EsbSoapOutputWrapper>
+            </SoapOutputWrapper>
 
-            <EsbJmsSender name="SendRegisterProcess" >
+            <WebServiceSender name="SendRegisterProcess" url="${openforms2bpel.registerEndpoint}">
                 <Param name="soapAction" value=""/>
 
-                <EsbSoapInputValidator
+                <WsdlXmlInputValidator
                         schemaLocation="xsd/Register.xsd"
                         soapBody="RegisterRequestMessage"
                         soapVersion="auto"
-                        ignoreUnknownNamespaces="true"
-                        cmhVersion="2">
+                        ignoreUnknownNamespaces="true">
                     <Forward name="failure" path="EXIT"/>
                     <Forward name="parserError" path="EXIT"/>
-                </EsbSoapInputValidator>
+                </WsdlXmlInputValidator>
 
-                <EsbSoapOutputValidator
+                <WsdlXmlOutputValidator
                         schemaLocation="xsd/Register.xsd"
                         soapBody="RegisterResponseMessage"
                         soapVersion="auto"
-                        ignoreUnknownNamespaces="true"
-                        cmhVersion="2">
+                        ignoreUnknownNamespaces="true">
                     <Forward name="failure" path="EXIT"/>
                     <Forward name="parserError" path="EXIT"/>
-                </EsbSoapOutputValidator>
+                </WsdlXmlOutputValidator>
 
                 <Forward name="success" path="EXIT" />
-            </EsbJmsSender>
+            </WebServiceSender>
 
 
 <!--            <SenderPipe-->

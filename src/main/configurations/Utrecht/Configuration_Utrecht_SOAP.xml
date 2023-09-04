@@ -40,7 +40,7 @@
                         soap="true"
                         verifyHostname="false"
                         allowSelfSignedCertificates="true"
-                />
+                        url="${openform2bpel.Endpoint}"/>
                 <Forward name="success" path="EXIT"/>
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>

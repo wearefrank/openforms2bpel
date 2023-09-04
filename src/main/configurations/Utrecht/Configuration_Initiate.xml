@@ -10,46 +10,42 @@
         </Receiver>
 
         <Pipeline>
-            <EsbSoapInputValidator
+            <SoapInputValidator
                     schemaLocation="xsd/Initiate.xsd"
                     soapBody="initiateRequestMessage"
                     soapVersion="auto"
-                    ignoreUnknownNamespaces="true"
-                    cmhVersion="2">
+                    ignoreUnknownNamespaces="true">
                 <Forward name="failure" path="EXIT"/>
                 <Forward name="parserError" path="EXIT"/>
-            </EsbSoapInputValidator>
+            </SoapInputValidator>
 
-            <EsbSoapOutputValidator
+            <SoapOutputValidator
                     schemaLocation="xsd/Initiate.xsd"
                     soapBody="initiateResponseMessage"
                     soapVersion="auto"
-                    ignoreUnknownNamespaces="true"
-                    cmhVersion="2">
+                    ignoreUnknownNamespaces="true">
                 <Forward name="failure" path="EXIT"/>
                 <Forward name="parserError" path="EXIT"/>
-            </EsbSoapOutputValidator>
+            </SoapOutputValidator>
 
 <!--            Xslt -->
 
             <SenderPipe name="">
-                <EsbJmsSender name="SendInitiateProcess">
+                <WebServiceSender name="SendInitiateProcess" url="${openforms2bpel.initiateEndpoint}">
                     <Param name="soapAction" value=""/>
 
-                    <EsbSoapInputWrapper cmhVersion="2"
-                                         direction="unwrap"
+                    <SoapInputWrapper direction="unwrap"
                                          removeOutputNamespaces="true"
                                          storeResultInSessionKey="originalMessage" />
 
-                    <EsbSoapOutputWrapper cmhVersion="2">
+                    <SoapOutputWrapper>
                         <param name="errorCode" sessionKey="errorCode"/>
                         <param name="errorReason" sessionKey="errorReason"/>
-                        <Param name="destination" value=""/>
-                    </EsbSoapOutputWrapper>
+                    </SoapOutputWrapper>
 
 
                     <Forward name="success" path="SendBackInitiateResponse" />
-                </EsbJmsSender>
+                </WebServiceSender>
             </SenderPipe>
 
             <SenderPipe

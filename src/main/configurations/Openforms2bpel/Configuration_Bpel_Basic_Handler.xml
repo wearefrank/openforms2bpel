@@ -1,0 +1,62 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter
+        name="Bpel_Basic_Handler"
+        active="${Bpel_Basic_Handler.Active}"
+        description=""
+        >
+
+        <Receiver name="Bpel_Basic_Handler">
+            <JavaListener name="Bpel_Basic_Handler" />
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <XsltPipe
+                name="CreateInitiateRequestMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Basic/Model/InitiateRequestMessage.xslt"
+                storeResultInSessionKey="InitiateRequestMessage"
+                >
+                <Param name="User" pattern="{username}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" />
+                <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
+                <Param name="Domain" sessionKey="Domain" />
+                <Param name="CorrelationId" sessionKey="cid" />
+                <Param name="Bsn" sessionKey="Bsn" />
+                <Param name="CommercialRegistryNumber" sessionKey="CommercialRegistryNumber" />
+                <Param name="Username" sessionKey="Username" />
+                <Param name="Process" sessionKey="Process" />
+                <Forward name="success" path="BpelBasicPostInitiateSender" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelBasicPostInitiateSender"
+                >
+                <IbisLocalSender
+                    name="BpelBasicPostInitiateLocalSender"
+                    javaListener="Bpel_Basic_PostInitiate"
+                    >
+                </IbisLocalSender>
+                <Forward name="success" path="WrapZakLa01Response" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <SenderPipe
+                name="BpelBasicPostRegisterSender"
+                >
+                <IbisLocalSender
+                    name="BpelBasicPostRegisterLocalSender"
+                    javaListener="Bpel_Basic_PostRegister"
+                    >
+                </IbisLocalSender>
+                <Forward name="success" path="EXIT" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+        </Pipeline>
+    </Adapter>
+</Module>

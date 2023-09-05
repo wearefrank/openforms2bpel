@@ -1,0 +1,41 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter
+        name="Bpel_Basic_PostRegister"
+        active="${Bpel_Basic_PostRegister.Active}"
+        description=""
+        >
+
+        <Receiver name="Bpel_Basic_PostRegister">
+            <JavaListener name="Bpel_Basic_PostRegister" />
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <SenderPipe
+                name="PostBpelBasicRegisterSender"
+                >
+                <WebServiceSender
+                    name="PostBpelBasicRegisterWebServiceSender"
+                    soap="true"
+                    methodType="POST"
+                    soapAction="http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic/register"
+                    verifyHostname="${openforms2bpel.bpel.basic-service.verify-hostname}"
+                    allowSelfSignedCertificates="${openforms2bpel.bpel.basic-service.allow-self-signed-certs}"
+                    ignoreCertificateExpiredException="${openforms2bpel.bpel.basic-service.ignore-expired-certs}"
+                    timeout="${openforms2bpel.bpel.basic-service.timeout}"
+                    >
+                    <Param name="url" value="${openforms2bpel.bpel.basic-service.endoint}" />  
+                </WebServiceSender>
+                <Forward name="success" path="EXIT" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <!-- TODO: Error handling based on http code -->
+
+        </Pipeline>
+    </Adapter>
+</Module>

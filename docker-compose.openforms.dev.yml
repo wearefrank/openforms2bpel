@@ -62,6 +62,9 @@ services:
       # settings used by workers and beat containers.
       - TZ=Europe/Amsterdam
       - CSP_REPORT_ONLY=yes
+      - DEBUG=1
+      - LOG_LEVEL=DEBUG
+      - LOG_QUERIES=true
     volumes: &open-forms-volumes
       - open-forms-media:/app/media
       - open-forms-private-media:/app/private_media

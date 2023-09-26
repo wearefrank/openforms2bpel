@@ -1,0 +1,57 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter name="zaken_sender_rol_list"
+        active="${zaken_sender_rol_list.Active}"
+        description="">
+
+        <Receiver name="zaken_sender_rol_list">
+            <JavaListener name="zaken_sender_rol_list"/>
+        </Receiver>
+
+        <Pipeline>  
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS"/>
+                <Exit name="EXCEPTION" state="ERROR"/>
+            </Exits>
+
+			<SenderPipe name="rol_listSender" 
+                getInputFromFixedValue="&lt;dummy/&gt;">
+				<HttpSender 
+					name="rol_listHttpSender" 
+					methodType="GET"
+					headersParams="Authorization,Accept-Crs"
+                    timeout="${zaakbrug.zgw.zaken-api.timeout}"
+				/>
+                <Param name="url" sessionKey="url" />
+                <Param name="zaak" sessionKey="zaak" />
+                <Param name="Accept-Crs" value="EPSG:4326"/>
+                <Param name="Authorization" value="Bearer @@zaken-api.jwt@@" />
+                <Forward name="success" path="JsonToXml" />
+                <Forward name="exception" path="ErrorJsonToXml" />
+			</SenderPipe>
+
+            <JsonPipe name="ErrorJsonToXml">
+                <Forward name="success" path="buildErrorMsg" />
+            </JsonPipe>
+
+            <XsltPipe name="buildErrorMsg"
+                styleSheetName="Common/xsl/ParseNegativeHttpResult.xsl">
+                <Param name="senderPipeName" value="GetZgwRolesByZaakUrl" />
+                <Forward name="success" path="EXCEPTION" />
+            </XsltPipe>
+
+            <JsonPipe name="JsonToXml">
+                <Forward name="success" path="EXIT"/>
+            </JsonPipe>
+
+            <XsltPipe
+                name="UnwrapOpenZaakApiEnvelopeToList"
+                styleSheetName="Zgw/UnwrapOpenZaakApiEnvelopeToList.xslt"
+                >
+                <Param name="Type" value="ZgwRol"/>
+                <Param name="List" value="ZgwRollen"/>
+                <Forward name="success" path="EXIT"/>
+                <Forward name="error" path="EXCEPTION"/>
+            </XsltPipe>
+        </Pipeline>
+    </Adapter>
+</Module>

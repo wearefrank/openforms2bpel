@@ -1,5 +1,5 @@
 {
-  "branches": ["main", "1.0.x"],
+  "branches": ["main", "master", "1.0.x"],
   "debug": "true",
   "plugins": [
     [
@@ -20,22 +20,26 @@
           {"type": "ci", "release": "patch"},
           {"type": "chore", "release": false}
         ],
-        "parserOpts": [
-          "BREAKING CHANGE",
-          "BREAKING CHANGES",
-          "BREAKING"
-        ]
+        "parserOpts": {
+          "noteKeywords": [
+            "BREAKING CHANGE",
+            "BREAKING CHANGES",
+            "BREAKING"
+          ]
+        }
       }
     ],
     [
       "@semantic-release/release-notes-generator",
       {
         "preset": "conventionalcommits",
-        "parserOpts": [
-          "BREAKING CHANGE",
-          "BREAKING CHANGES",
-          "BREAKING"
-        ],
+        "parserOpts": {
+          "noteKeywords": [
+            "BREAKING CHANGE",
+            "BREAKING CHANGES",
+            "BREAKING"
+          ]
+        },
         "writerOpts": {
           "commitsSort": ["subject", "scope"]
         },
@@ -72,7 +76,8 @@
       "@semantic-release/git",
       {
         "assets": [
-          "CHANGELOG.md"
+          "CHANGELOG.md",
+          "classes/BuildInfo.properties"
         ],
         "message": "chore(<%= nextRelease.type %>): release <%= nextRelease.version %> <%= nextRelease.channel !== null ? `on ${nextRelease.channel} channel ` : '' %>[skip ci]\n\n<%= nextRelease.notes %>"
       }

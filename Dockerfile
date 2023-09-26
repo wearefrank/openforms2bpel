@@ -1,8 +1,9 @@
-FROM docker.io/wearefrank/zaakbrug:1.12.4
+FROM docker.io/wearefrank/zaakbrug:1.13.4
 
 # TempFix TODO: Move this to the credentialprovider.properties
 ENV credentialFactory.class=nl.nn.credentialprovider.PropertyFileCredentialFactory
 ENV credentialFactory.map.properties=/opt/frank/resources/credentials.properties
+ENV zaakbrug.zds.timezone=UTC
 
 # Copy dependencies
 COPY --chown=tomcat lib/server/ /usr/local/tomcat/lib/
@@ -20,7 +21,6 @@ COPY --chown=tomcat src/test/testtool/ /opt/frank/testtool/
 # COPY --chown=tomcat src/main/java /tmp/java
 # RUN javac \
 #       /tmp/java/nl/nn/adapterframework/parameters/Parameter.java \
-#       /tmp/java/nl/nn/adapterframework/http/HttpSenderBase.java \
 #       -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
 #       -verbose -d /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
 # RUN rm -rf /tmp/java

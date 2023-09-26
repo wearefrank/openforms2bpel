@@ -1,0 +1,66 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter
+        name="Bpel_Basic_Aggregator"
+        active="${Bpel_Basic_Aggregator.Active}"
+        description=""
+        >
+
+        <Receiver name="Bpel_Basic_Aggregator">
+            <JavaListener name="Bpel_Basic_Aggregator" />
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <JsonPipe
+                name="JsonToXml"
+                >
+                <Forward name="success" path="UnwrapOpenZaakApiEnvelopeToSingle"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </JsonPipe>
+
+            <XsltPipe
+                name="UnwrapOpenZaakApiEnvelopeToSingle"
+                styleSheetName="Zgw/UnwrapOpenZaakApiEnvelopeToSingle.xslt"
+                storeResultInSessionKey="ZgwStatus"
+                >
+                <Param name="Type" value="ZgwStatus"/>
+                <Forward name="success" path="GetZgwZaakByUrlSender"/>
+                <Forward name="error" path="EXCEPTION"/>
+            </XsltPipe>
+
+            <SenderPipe
+                name="GetZgwZaakByUrlSender"
+                storeResultInSessionKey="ZgwZaak"
+                >
+                <IbisLocalSender
+                    name="GetZgwZaakByUrlLocalSender"
+                    javaListener="GetZgwZaakByUrl"
+                    >
+                </IbisLocalSender>
+                <Param name="Url" sessionKey="ZgwStatus" xpathExpression="/ZgwStatus/zaak" />
+                <Forward name="success" path="GetZgwRolesByZaakUrlSender" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <SenderPipe
+                name="GetZgwRolesByZaakUrlSender"
+                >
+                <IbisLocalSender
+                    name="GetZgwRolesByZaakUrlLocalSender"
+                    javaListener="GetZgwRolesByZaakUrl"
+                    >
+                </IbisLocalSender>
+                <Param name="Url" sessionKey="ZgwZaak" xpathExpression="/ZgwZaak/url" />
+                <Forward name="success" path="UnwrapZgwRollenOpenZaakApiEnvelopeToList" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            
+
+        </Pipeline>
+    </Adapter>
+</Module>

@@ -1,0 +1,48 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter
+        name="Bpel_Basic_PostRegister"
+        active="${Bpel_Basic_PostRegister.Active}"
+        description=""
+        >
+
+        <Receiver name="Bpel_Basic_PostRegister">
+            <JavaListener name="Bpel_Basic_PostRegister" />
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <SenderPipe
+                name="PostBpelBasicRegisterSender"
+                >
+                <SoapInputWrapper direction="WRAP" />
+                <WebServiceSender
+                    name="PostBpelBasicRegisterWebServiceSender"
+                    soap="false"
+                    throwApplicationFaults="true"
+                    methodType="POST"
+                    soapAction="register"
+                    verifyHostname="${openforms2bpel.bpel.basic-service.verify-hostname}"
+                    allowSelfSignedCertificates="${openforms2bpel.bpel.basic-service.allow-self-signed-certs}"
+                    ignoreCertificateExpiredException="${openforms2bpel.bpel.basic-service.ignore-expired-certs}"
+                    timeout="${openforms2bpel.bpel.basic-service.timeout}"
+                    >
+                    <Param name="url" value="${openforms2bpel.bpel.basic-service.endoint}" />  
+                </WebServiceSender>
+                <Forward name="success" path="UnwrapResponse" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <SoapWrapperPipe
+                name="UnwrapResponse"
+                direction="UNWRAP" 
+                />
+
+            <!-- TODO: Error handling based on http code -->
+
+        </Pipeline>
+    </Adapter>
+</Module>

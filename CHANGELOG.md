@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.0.3](https://github.com/wearefrank/openforms2bpel/compare/v1.0.2...v1.0.3) (2023-09-26)
+
+
+### 🧑‍💻 Code Refactoring
+
+* rewrite message handling ([#8](https://github.com/wearefrank/openforms2bpel/issues/8)) ([6cb5dcd](https://github.com/wearefrank/openforms2bpel/commit/6cb5dcd418a9f77e43946d2ce6172bbbdbb3b8e4))
+
 ## [1.0.2](https://github.com/wearefrank/openforms2bpel/compare/v1.0.1...v1.0.2) (2023-09-05)
 
 

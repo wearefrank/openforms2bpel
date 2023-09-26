@@ -65,8 +65,6 @@ services:
       - DEBUG=1
       - LOG_LEVEL=DEBUG
       - LOG_QUERIES=true
-      - SENTRY_DSN=http://4b8dc6f9654c4669bfaea6956e53cf21@host.docker.internal:9500/2
-      - SDK_SENTRY_DSN=http://4b8dc6f9654c4669bfaea6956e53cf21@host.docker.internal:9500/2
     volumes: &open-forms-volumes
       - open-forms-media:/app/media
       - open-forms-private-media:/app/private_media

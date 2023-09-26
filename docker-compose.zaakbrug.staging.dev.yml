@@ -48,8 +48,6 @@ services:
       - LOG_LEVEL=DEBUG
       - LOG_QUERIES=true
       - USE_X_FORWARDED_HOST=False
-      - SENTRY_DSN=http://fcc112ce84fe4238864e43ace0d52387@host.docker.internal:9500/3
-      - SDK_SENTRY_DSN=http://fcc112ce84fe4238864e43ace0d52387@host.docker.internal:9500/3
     networks:
       - zaakbrug-backend
     ports:

@@ -1,4 +1,4 @@
-FROM docker.io/wearefrank/zaakbrug:1.12.33
+FROM docker.io/wearefrank/zaakbrug:1.13.4
 
 # TempFix TODO: Move this to the credentialprovider.properties
 ENV credentialFactory.class=nl.nn.credentialprovider.PropertyFileCredentialFactory

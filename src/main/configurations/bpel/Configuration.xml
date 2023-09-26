@@ -1,0 +1,15 @@
+<!DOCTYPE configuration [
+        <!ENTITY Bpel_Basic_Aggregator                      SYSTEM "./Configuration_Bpel_Basic_Aggregator.xml">
+        <!ENTITY Bpel_Basic_Handler                         SYSTEM "./Configuration_Bpel_Basic_Handler.xml">
+        <!ENTITY Bpel_Basic_Mock                            SYSTEM "./Configuration_Bpel_Basic_Mock.xml">
+        <!ENTITY Bpel_Basic_PostInitiate                    SYSTEM "./Configuration_Bpel_Basic_PostInitiate.xml">
+        <!ENTITY Bpel_Basic_PostRegister                    SYSTEM "./Configuration_Bpel_Basic_PostRegister.xml">
+        ]>
+
+<configuration name="bpel">
+    &Bpel_Basic_Aggregator;
+    &Bpel_Basic_Handler;
+    &Bpel_Basic_Mock;
+    &Bpel_Basic_PostInitiate;
+    &Bpel_Basic_PostRegister;
+</configuration>

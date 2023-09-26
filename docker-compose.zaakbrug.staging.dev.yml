@@ -41,7 +41,7 @@ services:
       - CELERY_WORKER_CONCURRENCY=${CELERY_WORKER_CONCURRENCY:-4}
       # - SENDFILE_BACKEND=django_sendfile.backends.simple
       - SENDFILE_BACKEND=django_sendfile.backends.nginx
-      - SENDFILE_ROOT=/app/private_media
+      - SENDFILE_ROOT=/app/private-media
       - SENDFILE_URL=/private-media/
       - NOTIFICATIONS_DISABLED=yes
       - DEBUG=1
@@ -86,7 +86,7 @@ services:
     image: nginx
     volumes:
       - ./docker/zaakbrug-staging-nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - zaakbrug-staging-private-media:/private-media
+      - zaakbrug-staging-private-media:/app/private-media
     networks:
       - zaakbrug-backend
       - zaakbrug-stack

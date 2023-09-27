@@ -43,9 +43,18 @@
                 styleSheetName="Zgw/UnwrapOpenZaakApiEnvelopeToSingle.xslt"
                 >
                 <Param name="Type" value="ZgwZaakInformatieObject"/>
-                <Forward name="success" path="CreateZgwZaakInformatieObject"/>
+                <Forward name="success" path="GenerateUuid"/>
                 <Forward name="error" path="InternalServerError"/>
             </XsltPipe>
+
+			<UUIDGeneratorPipe
+				name="GenerateUuid"
+				preserveInput="true"
+				storeResultInSessionKey="uuid"
+				>
+				<Forward name="success" path="CreateZgwZaakInformatieObject"/>
+                <Forward name="error" path="InternalServerError"/>
+			</UUIDGeneratorPipe>
 
 			<XsltPipe
                 name="CreateZgwZaakInformatieObject"
@@ -61,14 +70,13 @@
 
 			<SenderPipe
 				name="InsertZgwZaakInformatieObjectSender"
-				storeResultInSessionKey="pk"
 				>
                 <FixedQuerySender
 					name="InsertZgwZaakInformatieObjectFixedQuerySender"
-                    query="INSERT INTO ZAAKINFORMATIEOBJECT (DATA) VALUES (?{data})"
-					scalar="true"
+                    query="INSERT INTO ZAAKINFORMATIEOBJECT (ID, DATA) VALUES (?{id}, ?{data})"
                     queryType="OTHER"
                     />
+					<Param name="id" sessionKey="uuid" />
                     <Param name="data" />
                 <Forward name="success" path="SelectZgwZaakInformatieObjectSender" />
                 <Forward name="exception" path="InternalServerError" />
@@ -79,10 +87,10 @@
 				>
                 <FixedQuerySender
 					name="SelectZgwZaakInformatieObjectFixedQuerySender"
-                    query="SELECT * FROM ZAAKINFORMATIEOBJECT WHERE PK = ?{pk}" 
+                    query="SELECT * FROM ZAAKINFORMATIEOBJECT WHERE ID = ?{id}" 
                     queryType="SELECT"
                     />
-                    <Param name="pk" sessionKey="pk" />
+                    <Param name="id" sessionKey="uuid" />
                 <Forward name="success" path="StoreSubstitutionVars" />
                 <Forward name="exception" path="InternalServerError" />
             </SenderPipe>
@@ -92,7 +100,6 @@
 				>
 				<Param name="scheme" sessionKey="headers" xpathExpression="/headers/header[@name = 'Scheme']/text()" defaultValue="http" />
 				<Param name="host" sessionKey="headers" xpathExpression="/headers/header[@name = 'Host']/text()" />
-				<Param name="uuid" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'ID']/text()" />
 				<Param name="ZgwZaakInformatieObject" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'DATA']/text()" />
 				<Forward name="success" path="EnrichZgwZaakInformatieObject" />
 				<Forward name="exception" path="InternalServerError" />

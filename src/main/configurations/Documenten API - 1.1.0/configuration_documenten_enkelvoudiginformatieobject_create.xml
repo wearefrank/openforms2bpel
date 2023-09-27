@@ -106,6 +106,7 @@
 				<Param name="scheme" sessionKey="headers" xpathExpression="/headers/header[@name = 'Scheme']/text()" defaultValue="http" />
 				<Param name="host" sessionKey="headers" xpathExpression="/headers/header[@name = 'Host']/text()" />
 				<Param name="ZgwEnkelvoudigInformatieObject" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'DATA']/text()" />
+				<Param name="pk" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'PK']/text()" />
 				<Forward name="success" path="EnrichZgwEnkelvoudigInformatieObject" />
 				<Forward name="exception" path="InternalServerError" />
 			</PutInSessionPipe>
@@ -116,7 +117,7 @@
                 getInputFromSessionKey="ZgwEnkelvoudigInformatieObject"
                 >
                 <Param name="Url" pattern="{scheme}://{host}/documenten/api/v1/enkelvoudiginformatieobjecten/{uuid}" />
-				<Param name="Identificatie" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'PK']/text()" />
+				<Param name="Identificatie" sessionKey="pk" />
 				<Param name="Inhoud" pattern="{scheme}://{host}/documenten/api/v1/enkelvoudiginformatieobjecten/{uuid}/download?versie=1" />
                 <Forward name="success" path="XmlToJson"/>
                 <Forward name="error" path="InternalServerError"/>

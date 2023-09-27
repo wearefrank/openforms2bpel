@@ -1,0 +1,33 @@
+version: '3.8'
+
+x-openforms2bpel-postgres-env:
+  environment: &openforms2bpel-postgres-env
+    POSTGRES_USER: openforms2bpel
+    POSTGRES_PASSWORD: openforms2bpel
+    POSTGRES_DB: openforms2bpel
+
+services:
+  openforms2bpel-postgres:
+    image: postgres:${POSTGRES_VERSION:-14}
+    environment: 
+      <<: *openforms2bpel-postgres-env
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - 5400:5432
+    networks:
+      - zaakbrug-backend
+    volumes:
+      - openforms2bpel-postgres-data:/var/lib/postgresql/data
+  
+  openforms2bpel:
+    environment: 
+      <<: *openforms2bpel-postgres-env
+      DB_HOSTNAME: openforms2bpel-postgres
+      DB_PORT: 5432
+    volumes:
+      - ./docker/openforms2bpel-postgres/context.xml:/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml:rw
+    depends_on:
+      - openforms2bpel-postgres
+
+volumes:
+  openforms2bpel-postgres-data:

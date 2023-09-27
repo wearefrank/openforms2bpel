@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="uuid_type" value="uuid" dbms="postgresql"/>
+    <property name="uuid_type" value="uniqueidentifier" dbms="mssql"/>
+    <property name="uuid_type" value="RAW(16)" dbms="oracle"/>
+    <property name="uuid_type" value="VARCHAR(36)" dbms="h2"/>
+    <property name="uuid_function" value="uid.uuid_generate_v4()" dbms="postgresql"/>
+    <property name="uuid_function" value="NEWID()" dbms="mssql"/>
+    <property name="uuid_function" value="sys_guid()" dbms="oracle"/>
+    <property name="uuid_function" value="RANDOM_UUID()" dbms="h2"/>
+    
+    <changeSet id="OpenZaak:1.1" author="Bibi">
+        <comment>Add IDENTIFICATIE Table</comment>
+        <createTable tableName="IDENTIFICATIE">
+            <column name="ID" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="PK_IDENTIFICATIE"/>
+            </column>
+            <column name="IDENTIFICATIE" type="INTEGER"/>
+            <column name="TYPE" type="java.sql.Types.VARCHAR(50)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Openforms2bpel:1.0" author="MLenterman">
+        <comment>Add enkelvoudiginformatieobject table</comment>
+        <createTable tableName="ENKELVOUDIGINFORMATIEOBJECT">
+            <column name="PK" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="PK_ENKELVOUDIGINFORMATIEOBJECT"/>
+            </column>
+            <column name="ID" type="${uuid_type}" defaultValueComputed="${uuid_function}" >
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="DATA" type="CLOB">
+                <constraints nullable="false" />
+            </column>
+            <column name="FILE" type="CLOB">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Openforms2bpel:1.1" author="MLenterman">
+        <comment>Add zaakinformatieobject table</comment>
+        <createTable tableName="ZAAKINFORMATIEOBJECT">
+            <column name="PK" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="PK_ZAAKINFORMATIEOBJECT"/>
+            </column>
+            <column name="ID" type="${uuid_type}" defaultValueComputed="${uuid_function}" >
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="DATA" type="CLOB">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

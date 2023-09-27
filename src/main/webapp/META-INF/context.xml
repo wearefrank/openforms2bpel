@@ -2,9 +2,16 @@
 <Context>
 	<JarScanner scanClassPath="false" scanAllFiles="false" scanAllDirectories="false"/>
 	<Resource
-			name="jdbc/openforms2bpel"
-			type="org.h2.jdbcx.JdbcDataSource"
-			factory="org.apache.naming.factory.BeanFactory"
-			URL="jdbc:h2:./data/openforms2bpel"
+		name="jdbc/openforms2bpel"
+		type="org.h2.jdbcx.JdbcDataSource"
+		factory="org.apache.naming.factory.BeanFactory"
+		URL="jdbc:h2:./data/openforms2bpel"
 	/>
+	<!-- <Resource name="jdbc/openforms2bpel" auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="org.postgresql.Driver"
+		url="jdbc:postgresql://${jdbc.hostname:-localhost}:5400/openforms2bpel"
+		username="${database/username:-openforms2bpel}"
+		password="${database/password:-openforms2bpel}"
+    /> -->
 </Context>

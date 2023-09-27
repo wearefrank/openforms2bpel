@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.1.2](https://github.com/wearefrank/openforms2bpel/compare/v1.1.1...v1.1.2) (2023-09-27)
+
+
+### 🐛 Bug Fixes
+
+* enkelvoudiginformatieobject returns empty identificatie field ([eea1d38](https://github.com/wearefrank/openforms2bpel/commit/eea1d3897cc5990b7b97ac5542a8d83906fd5a92))
+
 ## [1.1.1](https://github.com/wearefrank/openforms2bpel/compare/v1.1.0...v1.1.1) (2023-09-27)
 
 

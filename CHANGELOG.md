@@ -1,5 +1,13 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.1.1](https://github.com/wearefrank/openforms2bpel/compare/v1.1.0...v1.1.1) (2023-09-27)
+
+
+### 🧑‍💻 Code Refactoring
+
+* disable bpel aggregator trigger on status_create ([4f00440](https://github.com/wearefrank/openforms2bpel/commit/4f0044018c60e9bef4b3ba5d4fd36100f6b1c42f))
+* generate uuid outside db for backwards compatability with older postgres ([10165f1](https://github.com/wearefrank/openforms2bpel/commit/10165f12d21a0dc3aa1d2879e1e7bad2fc10e813))
+
 ## [1.1.0](https://github.com/wearefrank/openforms2bpel/compare/v1.0.3...v1.1.0) (2023-09-27)
 
 

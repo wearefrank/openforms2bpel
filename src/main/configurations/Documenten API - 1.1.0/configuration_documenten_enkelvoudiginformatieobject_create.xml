@@ -64,15 +64,31 @@
                 <Forward name="error" path="InternalServerError"/>
             </XsltPipe>
 
-			<SenderPipe name="InsertZgwEnkelvoudigInformatieObjectSender">
+			<SenderPipe
+				name="InsertZgwEnkelvoudigInformatieObjectSender"
+				storeResultInSessionKey="pk"
+				>
                 <FixedQuerySender
 					name="InsertZgwEnkelvoudigInformatieObjectFixedQuerySender"
                     query="INSERT INTO ENKELVOUDIGINFORMATIEOBJECT (DATA, FILE) VALUES (?{data}, ?{file})" 
                     queryType="OTHER"
-					columnsReturned="PK,ID,DATA,FILE"
+					scalar="true"
                     />
                     <Param name="data" />
 					<Param name="file" sessionKey="orginalMessageXml" xpathExpression="//inhoud" />
+                <Forward name="success" path="SelectZgwEnkelvoudigInformatieObjectSender" />
+                <Forward name="exception" path="InternalServerError" />
+            </SenderPipe>
+
+			<SenderPipe
+				name="SelectZgwEnkelvoudigInformatieObjectSender"
+				>
+                <FixedQuerySender
+					name="SelectZgwEnkelvoudigInformatieObjectFixedQuerySender"
+                    query="SELECT PK,ID,DATA FROM ENKELVOUDIGINFORMATIEOBJECT WHERE PK = ?{pk}" 
+                    queryType="SELECT"
+                    />
+                    <Param name="pk" sessionKey="pk"/>
                 <Forward name="success" path="StoreSubstitutionVars" />
                 <Forward name="exception" path="InternalServerError" />
             </SenderPipe>

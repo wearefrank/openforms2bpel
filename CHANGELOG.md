@@ -1,5 +1,29 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.1.0](https://github.com/wearefrank/openforms2bpel/compare/v1.0.3...v1.1.0) (2023-09-27)
+
+
+### 🍕 Features
+
+* create enkelvoudiginformatieobject & zaakinformatieobject db backend ([b7ed6cf](https://github.com/wearefrank/openforms2bpel/commit/b7ed6cfc5726e70a3974e1b249a342b31af5a9dc))
+
+
+### 🐛 Bug Fixes
+
+* auto-generate uuid function for postgres does not exist error ([a6402b5](https://github.com/wearefrank/openforms2bpel/commit/a6402b5b214ceb90a4aa79c80d89dd9b9363d850))
+
+
+### 🧑‍💻 Code Refactoring
+
+* refactor columnsReturned to seperate select for postgres compatability ([1f602f2](https://github.com/wearefrank/openforms2bpel/commit/1f602f288e4e3cc56cdc01b1bfbb9cacea7690d4))
+
+
+### ✅ Tests
+
+* add e2e testcasewith  openforms api call ffrom test form ([57c6533](https://github.com/wearefrank/openforms2bpel/commit/57c65334e16031e4154dcc932bb7e460e789491f))
+* **docker-compose:** add optional pgadmin behind profile for openforms2bpel postgres db ([585270f](https://github.com/wearefrank/openforms2bpel/commit/585270f14f667c37832899f14329328f1791deb6))
+* **docker-compose:** add optional postgres db for openforms2bpel ([d808b7d](https://github.com/wearefrank/openforms2bpel/commit/d808b7de396a8425a6bc3e2cb5ea8d3a45d29312))
+
 ## [1.0.3](https://github.com/wearefrank/openforms2bpel/compare/v1.0.2...v1.0.3) (2023-09-26)
 
 

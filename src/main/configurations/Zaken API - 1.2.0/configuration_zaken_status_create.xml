@@ -62,7 +62,7 @@
                     <Param name="Authorization" value="Bearer @@zaken-api.jwt@@"/>
                 </HttpSender>
 
-                <Forward name="201" path="BpelAggregatorSender" />
+                <Forward name="201" path="Created" />
                 <Forward name="400" path="BadRequest" />
                 <Forward name="401" path="Unauthorized" />
                 <Forward name="403" path="Forbidden" />
@@ -75,24 +75,25 @@
                 <Forward name="500" path="InternalServerError" />
 			</SenderPipe>
 
-			<SenderPipe
+			<!-- <SenderPipe
                 name="BpelAggregatorSender"
+				preserveInput="true"
                 >
                 <IbisLocalSender
                     name="BpelAggregatorSenderLocalSender"
                     javaListener="Bpel_Basic_Aggregator"
                     >
                 </IbisLocalSender>
-                <Forward name="success" path="Created" />
-                <Forward name="exception" path="Created" />
-            </SenderPipe>
+                <Forward name="success" path="RestoreProxyResult" />
+                <Forward name="exception" path="RestoreProxyResult" />
+            </SenderPipe> -->
 
-			<EchoPipe 
+			<!-- <EchoPipe 
 				name="RestoreProxyResult"
-				getInputFromSessionKey="ProxyResult"
 				>
 				<Forward name="success" path="Created" />
-			</EchoPipe>
+				<Forward name="exception" path="InternalServerError" />
+			</EchoPipe> -->
 		</Pipeline>
 	</Adapter>
 </Module>

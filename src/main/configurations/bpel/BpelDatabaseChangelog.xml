@@ -5,15 +5,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-
-    <property name="uuid_type" value="uuid" dbms="postgresql"/>
-    <property name="uuid_type" value="uniqueidentifier" dbms="mssql"/>
-    <property name="uuid_type" value="RAW(16)" dbms="oracle"/>
-    <property name="uuid_type" value="VARCHAR(36)" dbms="h2"/>
-    <property name="uuid_function" value="gen_random_uuid ()" dbms="postgresql"/>
-    <property name="uuid_function" value="NEWID()" dbms="mssql"/>
-    <property name="uuid_function" value="sys_guid()" dbms="oracle"/>
-    <property name="uuid_function" value="RANDOM_UUID()" dbms="h2"/>
     
     <changeSet id="OpenZaak:1.1" author="Bibi">
         <comment>Add IDENTIFICATIE Table</comment>
@@ -32,7 +23,7 @@
             <column name="PK" type="INTEGER" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="PK_ENKELVOUDIGINFORMATIEOBJECT"/>
             </column>
-            <column name="ID" type="${uuid_type}" defaultValueComputed="${uuid_function}" >
+            <column name="ID" type="VARCHAR(36)">
                 <constraints nullable="false" unique="true" />
             </column>
             <column name="DATA" type="CLOB">
@@ -50,7 +41,7 @@
             <column name="PK" type="INTEGER" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="PK_ZAAKINFORMATIEOBJECT"/>
             </column>
-            <column name="ID" type="${uuid_type}" defaultValueComputed="${uuid_function}" >
+            <column name="ID" type="VARCHAR(36)">
                 <constraints nullable="false" unique="true" />
             </column>
             <column name="DATA" type="CLOB">

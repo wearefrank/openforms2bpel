@@ -43,16 +43,24 @@
                 styleSheetName="Zgw/UnwrapOpenZaakApiEnvelopeToSingle.xslt"
                 >
                 <Param name="Type" value="ZgwEnkelvoudigInformatieObject"/>
-                <Forward name="success" path="CreateZgwEnkelvoudigInformatieObject"/>
+                <Forward name="success" path="GenerateUuid"/>
                 <Forward name="error" path="InternalServerError"/>
             </XsltPipe>
+
+			<UUIDGeneratorPipe
+				name="GenerateUuid"
+				preserveInput="true"
+				storeResultInSessionKey="uuid"
+				>
+				<Forward name="success" path="CreateZgwEnkelvoudigInformatieObject"/>
+                <Forward name="error" path="InternalServerError"/>
+			</UUIDGeneratorPipe>
 
 			<XsltPipe
                 name="CreateZgwEnkelvoudigInformatieObject"
                 styleSheetName="Zgw/Documenten/Model/ZgwEnkelvoudigInformatieObject.xslt"
                 storeResultInSessionKey="ZgwEnkelvoudigInformatieObject"
                 >
-				<Param name="Identificatie" value="${id}" />
 				<Param name="BeginRegistratie" xpathExpression="string($NowDateTime)" >
                 	<Param name="NowDateTime" pattern="{now}" type="DATETIME" />
 				</Param>
@@ -66,14 +74,13 @@
 
 			<SenderPipe
 				name="InsertZgwEnkelvoudigInformatieObjectSender"
-				storeResultInSessionKey="pk"
 				>
                 <FixedQuerySender
 					name="InsertZgwEnkelvoudigInformatieObjectFixedQuerySender"
-                    query="INSERT INTO ENKELVOUDIGINFORMATIEOBJECT (DATA, FILE) VALUES (?{data}, ?{file})" 
+                    query="INSERT INTO ENKELVOUDIGINFORMATIEOBJECT (ID, DATA, FILE) VALUES (?{id}, ?{data}, ?{file})" 
                     queryType="OTHER"
-					scalar="true"
                     />
+					<Param name="id" sessionKey="uuid" />
                     <Param name="data" />
 					<Param name="file" sessionKey="orginalMessageXml" xpathExpression="//inhoud" />
                 <Forward name="success" path="SelectZgwEnkelvoudigInformatieObjectSender" />
@@ -85,10 +92,10 @@
 				>
                 <FixedQuerySender
 					name="SelectZgwEnkelvoudigInformatieObjectFixedQuerySender"
-                    query="SELECT PK,ID,DATA FROM ENKELVOUDIGINFORMATIEOBJECT WHERE PK = ?{pk}" 
+                    query="SELECT PK,ID,DATA FROM ENKELVOUDIGINFORMATIEOBJECT WHERE ID = ?{id}" 
                     queryType="SELECT"
                     />
-                    <Param name="pk" sessionKey="pk"/>
+                    <Param name="id" sessionKey="uuid"/>
                 <Forward name="success" path="StoreSubstitutionVars" />
                 <Forward name="exception" path="InternalServerError" />
             </SenderPipe>
@@ -98,7 +105,6 @@
 				>
 				<Param name="scheme" sessionKey="headers" xpathExpression="/headers/header[@name = 'Scheme']/text()" defaultValue="http" />
 				<Param name="host" sessionKey="headers" xpathExpression="/headers/header[@name = 'Host']/text()" />
-				<Param name="uuid" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'ID']/text()" />
 				<Param name="ZgwEnkelvoudigInformatieObject" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'DATA']/text()" />
 				<Forward name="success" path="EnrichZgwEnkelvoudigInformatieObject" />
 				<Forward name="exception" path="InternalServerError" />

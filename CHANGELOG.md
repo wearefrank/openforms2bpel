@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.1.3](https://github.com/wearefrank/openforms2bpel/compare/v1.1.2...v1.1.3) (2023-09-28)
+
+
+### 🐛 Bug Fixes
+
+* http scheme not reflected in built urls ([aed9768](https://github.com/wearefrank/openforms2bpel/commit/aed97683ef941fe05a84b71c737268c3fbc142fd))
+
 ## [1.1.2](https://github.com/wearefrank/openforms2bpel/compare/v1.1.1...v1.1.2) (2023-09-27)
 
 

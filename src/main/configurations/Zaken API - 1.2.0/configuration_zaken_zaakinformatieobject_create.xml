@@ -11,7 +11,7 @@
 				name="zaakinformatieobject_create" 
 				method="POST"
 				uriPattern="/zaken/api/v1/zaakinformatieobjecten"
-				headerParams="Host,X-Scheme"
+				headerParams="Host,X-Forwarded-Proto"
 				produces="JSON"
 				consumes="JSON"
 				/>
@@ -98,7 +98,7 @@
 			<PutInSessionPipe
 				name="StoreSubstitutionVars"
 				>
-				<Param name="scheme" sessionKey="headers" xpathExpression="/headers/header[@name = 'X-Scheme']/text()" defaultValue="http" />
+				<Param name="scheme" sessionKey="headers" xpathExpression="/headers/header[@name = 'X-Forwarded-Proto']/text()" defaultValue="http" />
 				<Param name="host" sessionKey="headers" xpathExpression="/headers/header[@name = 'Host']/text()" />
 				<Param name="ZgwZaakInformatieObject" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'DATA']/text()" />
 				<Forward name="success" path="EnrichZgwZaakInformatieObject" />

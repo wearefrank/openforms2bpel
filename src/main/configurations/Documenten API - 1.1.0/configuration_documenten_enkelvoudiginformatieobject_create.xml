@@ -4,14 +4,13 @@
 	>
 	<Adapter 
 		name="enkelvoudiginformatieobject_create"
-		
 		>
 		<Receiver name="enkelvoudiginformatieobject_create">
 			<ApiListener 
 				name="enkelvoudiginformatieobject_create" 
 				method="POST"
 				uriPattern="/documenten/api/v1/enkelvoudiginformatieobjecten"
-				headerParams="Host"
+				headerParams="Host,X-Scheme"
 				produces="JSON"
 				consumes="JSON"
 				/>
@@ -103,7 +102,7 @@
 			<PutInSessionPipe
 				name="StoreSubstitutionVars"
 				>
-				<Param name="scheme" sessionKey="headers" xpathExpression="/headers/header[@name = 'Scheme']/text()" defaultValue="http" />
+				<Param name="scheme" sessionKey="headers" xpathExpression="/headers/header[@name = 'X-Scheme']/text()" defaultValue="http" />
 				<Param name="host" sessionKey="headers" xpathExpression="/headers/header[@name = 'Host']/text()" />
 				<Param name="ZgwEnkelvoudigInformatieObject" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'DATA']/text()" />
 				<Param name="pk" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'PK']/text()" />

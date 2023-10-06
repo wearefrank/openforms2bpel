@@ -36,6 +36,8 @@
 	<!ENTITY zaakverzoek_read SYSTEM "./configuration_zaken_zaakverzoek_read.xml">
 	<!ENTITY zaakverzoek_delete SYSTEM "./configuration_zaken_zaakverzoek_delete.xml">
 	<!ENTITY zaak_list SYSTEM "./configuration_zaken_zaak_list.xml">
+	<!ENTITY zaak_create_db SYSTEM "./configuration_zaken_zaak_create_db.xml">
+	<!ENTITY zaak_create_proxy SYSTEM "./configuration_zaken_zaak_create_proxy.xml">
 	<!ENTITY zaak_create SYSTEM "./configuration_zaken_zaak_create.xml">
 	<!ENTITY zaak__zoek SYSTEM "./configuration_zaken_zaak__zoek.xml">
 	<!ENTITY zaak_read SYSTEM "./configuration_zaken_zaak_read.xml">
@@ -94,6 +96,8 @@
 	&zaakverzoek_read;
 	&zaakverzoek_delete;
 	&zaak_list;
+	&zaak_create_db;
+	&zaak_create_proxy;
 	&zaak_create;
 	&zaak__zoek;
 	&zaak_read;

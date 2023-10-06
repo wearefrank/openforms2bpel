@@ -49,4 +49,19 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="Openforms2bpel:1.2" author="MLenterman">
+        <comment>Add zaak table</comment>
+        <createTable tableName="ZAAK">
+            <column name="PK" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="PK_ZAAK"/>
+            </column>
+            <column name="ID" type="VARCHAR(36)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="DATA" type="CLOB">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

@@ -25,10 +25,10 @@
                 <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
                 <Param name="Domain" sessionKey="Domain" />
                 <Param name="CorrelationId" sessionKey="cid" />
-                <Param name="Bsn" value="dummy" />
+                <Param name="Bsn" sessionKey="Bsn" defaultValue="dummy" />
                 <Param name="CommercialRegistryNumber" value="dummy" />
-                <Param name="Username" value="dummy" />
-                <Param name="Process" value="dummy" />
+                <Param name="Username" sessionKey="Username" defaultValue="dummy" />
+                <Param name="Process" sessionKey="Process" defaultValue="dummy" />
                 <Forward name="success" path="BpelBasicPostInitiateSender" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>

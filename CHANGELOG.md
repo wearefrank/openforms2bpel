@@ -1,5 +1,22 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.2.0](https://github.com/wearefrank/openforms2bpel/compare/v1.1.4...v1.2.0) (2023-10-06)
+
+
+### 🍕 Features
+
+* zaken_create database implementation ([a75797c](https://github.com/wearefrank/openforms2bpel/commit/a75797c3fc32f53b1bc9d764ecdde9c4584e1960))
+
+
+### 🐛 Bug Fixes
+
+* disable application faults on webservice senders to see errors ([5b995c6](https://github.com/wearefrank/openforms2bpel/commit/5b995c6292f8f5fdd37794bf09e94a078bdb35fd))
+
+
+### 🧑‍💻 Code Refactoring
+
+* bpel handler sessionkeys to override message properties ([a0cd8d7](https://github.com/wearefrank/openforms2bpel/commit/a0cd8d74e8a951519a21eac73ec6ccd5f86e3ad0))
+
 ## [1.1.4](https://github.com/wearefrank/openforms2bpel/compare/v1.1.3...v1.1.4) (2023-09-28)
 
 

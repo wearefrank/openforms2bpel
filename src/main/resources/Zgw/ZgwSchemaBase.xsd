@@ -13,6 +13,59 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <xs:simpleType name="AN_NonEmpty">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AN1_1">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AN1_4">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AN1_7">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="7"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AN1_9">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="9"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AN1_10">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AN1_18">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="18"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AN1_20">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AN1_24">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="24"/>
+        </xs:restriction>
+    </xs:simpleType>
     <xs:simpleType name="AN0_40">
         <xs:restriction base="xs:string">
             <xs:maxLength value="40" />
@@ -40,6 +93,12 @@
             <xs:maxLength value="80" />
         </xs:restriction>
     </xs:simpleType>
+    <xs:simpleType name="AN1_80">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="80" />
+        </xs:restriction>
+    </xs:simpleType>
     <xs:simpleType name="AN0_128">
         <xs:restriction base="xs:string">
             <xs:maxLength value="128" />
@@ -61,6 +120,17 @@
             <xs:minLength value="1" />
         </xs:restriction>
     </xs:simpleType>
+    <xs:simpleType name="AN0_100">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AN1_100">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+            <xs:maxLength value="100" />
+        </xs:restriction>
+    </xs:simpleType>
     <xs:simpleType name="AN0_200">
         <xs:restriction base="xs:string">
             <xs:maxLength value="200" />
@@ -74,6 +144,17 @@
     </xs:simpleType>
     <xs:simpleType name="AN1000">
         <xs:restriction base="xs:string">
+            <xs:maxLength value="1000" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AN0_1000">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1000" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AN1_1000">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
             <xs:maxLength value="1000" />
         </xs:restriction>
     </xs:simpleType>
@@ -186,4 +267,26 @@
             <xs:element name="bron" type="zgw:AN1_40"/>
         </xs:sequence>
     </xs:complexType>
+    <xs:simpleType name="BetrokkeneType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="natuurlijk_persoon"/>
+            <xs:enumeration value="niet_natuurlijk_persoon"/>
+            <xs:enumeration value="vestiging"/>
+            <xs:enumeration value="organisatorische_eenheid"/>
+            <xs:enumeration value="medewerker"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IndicatieMachtiging">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="gemachtigde"/>
+            <xs:enumeration value="machtinggever"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Geslachtsaanduiding">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="m"/>
+            <xs:enumeration value="v"/>
+            <xs:enumeration value="o"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema> 

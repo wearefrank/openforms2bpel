@@ -1,0 +1,139 @@
+<Module 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+	>
+	<Adapter 
+		name="rol_create_db"
+		active="${rol_create_db.active}"
+		>
+		<Receiver name="rol_create">
+			<ApiListener 
+				name="rol_create" 
+				method="POST"
+				uriPattern="/zaken/api/v1/rollen"
+				headerParams="Host,X-Forwarded-Proto"
+				produces="JSON"
+				consumes="JSON"
+				/>
+		</Receiver>
+		<Pipeline>
+			<Exits>
+				<Exit name="Created" state="SUCCESS" code="201" />
+				<Exit name="BadRequest" state="ERROR" code="400" />
+				<Exit name="Unauthorized" state="ERROR" code="401" />
+				<Exit name="Forbidden" state="ERROR" code="403" />
+				<Exit name="NotAcceptable" state="ERROR" code="406" />
+				<Exit name="Conflict" state="ERROR" code="409" />
+				<Exit name="Gone" state="ERROR" code="410" />
+				<Exit name="PreconditionFailed" state="ERROR" code="412" />
+				<Exit name="UnsupportedMediaType" state="ERROR" code="415" />
+				<Exit name="TooManyRequests" state="ERROR" code="429" />
+				<Exit name="InternalServerError" state="ERROR" code="500" />
+			</Exits>
+
+			<JsonPipe 
+				name="JsonToXml"
+				storeResultInSessionKey="orginalMessageXml"
+				>
+                <Forward name="success" path="UnwrapOpenZaakEnvelopeToSingle"/>
+            </JsonPipe>
+
+            <XsltPipe
+                name="UnwrapOpenZaakEnvelopeToSingle"
+                styleSheetName="Zgw/UnwrapOpenZaakApiEnvelopeToSingle.xslt"
+                >
+                <Param name="Type" value="ZgwRol"/>
+                <Forward name="success" path="GenerateUuid"/>
+                <Forward name="error" path="InternalServerError"/>
+            </XsltPipe>
+
+			<UUIDGeneratorPipe
+				name="GenerateUuid"
+				preserveInput="true"
+				storeResultInSessionKey="uuid"
+				>
+				<Forward name="success" path="CreateZgwRol"/>
+                <Forward name="error" path="InternalServerError"/>
+			</UUIDGeneratorPipe>
+
+			<!-- 
+				TODO: Add omschrijving and omschrijvingGeneriek fields with values from the provided roltype 
+				https://github.com/wearefrank/openforms2bpel/issues/15 
+			-->
+			<XsltPipe
+                name="CreateZgwRol"
+                styleSheetName="Zgw/Zaken/Model/ZgwRol.xslt"
+                storeResultInSessionKey="ZgwRol"
+                >
+				<Param name="Uuid" sessionKey="uuid"/>
+				<Param name="Registratiedatum" xpathExpression="string($NowDateTime)" >
+                	<Param name="NowDateTime" pattern="{now}" type="DATETIME" />
+				</Param>
+                <Forward name="success" path="InsertZgwRolSender"/>
+                <Forward name="error" path="InternalServerError"/>
+            </XsltPipe>
+
+			<SenderPipe
+				name="InsertZgwRolSender"
+				>
+                <FixedQuerySender
+					name="InsertZgwRolFixedQuerySender"
+                    query="INSERT INTO ROL (ID, DATA) VALUES (?{id}, ?{data})" 
+                    queryType="OTHER"
+                    />
+					<Param name="id" sessionKey="uuid" />
+                    <Param name="data" />
+                <Forward name="success" path="SelectZgwRolSender" />
+                <Forward name="exception" path="InternalServerError" />
+            </SenderPipe>
+
+			<SenderPipe
+				name="SelectZgwRolSender"
+				>
+                <FixedQuerySender
+					name="SelectZgwRolFixedQuerySender"
+                    query="SELECT PK,ID,DATA FROM ROL WHERE ID = ?{id}" 
+                    queryType="SELECT"
+                    />
+                    <Param name="id" sessionKey="uuid"/>
+                <Forward name="success" path="StoreSubstitutionVars" />
+                <Forward name="exception" path="InternalServerError" />
+            </SenderPipe>
+
+			<PutInSessionPipe
+				name="StoreSubstitutionVars"
+				>
+				<Param name="scheme" sessionKey="headers" xpathExpression="/headers/header[@name = 'X-Forwarded-Proto']/text()" defaultValue="http" />
+				<Param name="host" sessionKey="headers" xpathExpression="/headers/header[@name = 'Host']/text()" />
+				<Param name="ZgwRol" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'DATA']/text()" />
+				<Forward name="success" path="EnrichZgwRol" />
+				<Forward name="exception" path="InternalServerError" />
+			</PutInSessionPipe>
+
+			<XsltPipe
+                name="EnrichZgwRol"
+                styleSheetName="Zgw/Zaken/Model/ZgwRol.xslt"
+                getInputFromSessionKey="ZgwRol"
+                >
+                <Param name="Url" pattern="{scheme}://{host}/zaken/api/v1/zaken/{uuid}" />
+                <Forward name="success" path="XmlToJson"/>
+                <Forward name="error" path="InternalServerError"/>
+            </XsltPipe>
+
+			<!--
+				TODO: Refactor other betrokkeneType XSD's and implement switch based on betrokkeneType delimiter for those XSD's
+				https://github.com/wearefrank/openforms2bpel/issues/16
+			-->
+			<Json2XmlValidatorPipe
+				name="XmlToJson"
+				schema="Zgw/Zaken/Model/ZgwRolNatuurlijkPersoon.xsd"
+				outputFormat="JSON"
+				deepSearch="true"
+				throwException="true"
+                >
+				<Forward name="success" path="Created"/>
+                <Forward name="error" path="InternalServerError"/>
+			</Json2XmlValidatorPipe>
+		</Pipeline>
+	</Adapter>
+</Module>

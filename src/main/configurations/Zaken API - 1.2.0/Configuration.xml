@@ -10,6 +10,8 @@
 	<!ENTITY resultaat_partial_update SYSTEM "./configuration_zaken_resultaat_partial_update.xml">
 	<!ENTITY rol_list SYSTEM "./configuration_zaken_rol_list.xml">
 	<!ENTITY rol_create SYSTEM "./configuration_zaken_rol_create.xml">
+	<!ENTITY rol_create_db SYSTEM "./configuration_zaken_rol_create_db.xml">
+	<!ENTITY rol_create_proxy SYSTEM "./configuration_zaken_rol_create_proxy.xml">
 	<!ENTITY rol_read SYSTEM "./configuration_zaken_rol_read.xml">
 	<!ENTITY rol_delete SYSTEM "./configuration_zaken_rol_delete.xml">
 	<!ENTITY status_list SYSTEM "./configuration_zaken_status_list.xml">
@@ -70,6 +72,8 @@
 	&resultaat_partial_update;
 	&rol_list;
 	&rol_create;
+	&rol_create_db;
+	&rol_create_proxy;
 	&rol_read;
 	&rol_delete;
 	&status_list;

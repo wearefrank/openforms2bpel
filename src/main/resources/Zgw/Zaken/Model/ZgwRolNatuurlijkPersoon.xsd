@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:zgw="http://google.com/zgw">
+    <xs:import namespace="http://google.com/zgw" schemaLocation="../ZgwZakenApi.xsd" />
+    <xs:element name="ZgwRol">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="url" type="zgw:Uri1_1000" minOccurs="0" />
+                <xs:element name="uuid" type="xs:string" minOccurs="0" />
+                <xs:element name="zaak" type="zgw:Uri1_1000" />
+                <xs:element name="betrokkene" type="zgw:Uri0_1000" minOccurs="0" />
+                <xs:element name="betrokkeneType" type="zgw:BetrokkeneType" />
+                <xs:element name="roltype" type="zgw:Uri1_1000" />
+                <xs:element name="omschrijving" type="zgw:AN_NonEmpty" minOccurs="0" />
+                <xs:element name="omschrijvingGeneriek" type="zgw:AN_NonEmpty" minOccurs="0"/>
+                <xs:element name="roltoelichting" type="zgw:AN1_1000" />
+                <xs:element name="registratiedatum" type="xs:dateTime" />
+                <xs:element name="indicatieMachtiging" type="zgw:IndicatieMachtiging" minOccurs="0"/>
+                <xs:element name="betrokkeneIdentificatie" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="inpBsn" type="zgw:AN1_9" minOccurs="0"/>
+                            <xs:element name="geslachtsnaam" type="zgw:AN1_200" minOccurs="0"/>
+                            <xs:element name="voorvoegselGeslachtsnaam" type="zgw:AN1_80" minOccurs="0"/>
+                            <xs:element name="voorletters" type="zgw:AN1_20" minOccurs="0"/>
+                            <xs:element name="voornamen" type="zgw:AN1_200" minOccurs="0"/>
+                            <xs:element name="geslachtsaanduiding" type="zgw:Geslachtsaanduiding" minOccurs="0"/>
+                            <xs:element name="geboortedatum" type="xs:date" minOccurs="0"/>
+                            <xs:element name="verblijfsadres" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="aoaIdentificatie" type="zgw:AN0_100"/>
+                                        <xs:element name="wplWoonplaatsNaam" type="zgw:AN0_80"/>
+                                        <xs:element name="gorOpenbareRuimteNaam" type="zgw:AN0_80"/>
+                                        <xs:element name="aoaPostcode" type="zgw:AN1_7" minOccurs="0"/>
+                                        <xs:element name="aoaHuisnummer" type="xs:string"/>
+                                        <xs:element name="aoaHuisletter" type="zgw:AN1_1" minOccurs="0"/>
+                                        <xs:element name="aoaHuisnummertoevoeging" type="zgw:AN1_9" minOccurs="0"/>
+                                        <xs:element name="inpLocatiebeschrijving" type="zgw:AN1_1000" minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>                    
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema> 

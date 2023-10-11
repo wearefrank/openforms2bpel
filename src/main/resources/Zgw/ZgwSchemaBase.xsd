@@ -30,16 +30,19 @@
             <xs:maxLength value="4"/>
         </xs:restriction>
     </xs:simpleType>
-    <xs:simpleType name="AN1_7">
+    <xs:simpleType name="AN0_7">
         <xs:restriction base="xs:string">
-            <xs:minLength value="1"/>
             <xs:maxLength value="7"/>
         </xs:restriction>
     </xs:simpleType>
-    <xs:simpleType name="AN1_9">
+    <xs:simpleType name="AN0_9">
         <xs:restriction base="xs:string">
-            <xs:minLength value="1"/>
             <xs:maxLength value="9"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AN0_10">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="AN1_10">
@@ -48,15 +51,19 @@
             <xs:maxLength value="10"/>
         </xs:restriction>
     </xs:simpleType>
+    <xs:simpleType name="AN0_17">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="17"/>
+        </xs:restriction>
+    </xs:simpleType>
     <xs:simpleType name="AN1_18">
         <xs:restriction base="xs:string">
             <xs:minLength value="1"/>
             <xs:maxLength value="18"/>
         </xs:restriction>
     </xs:simpleType>
-    <xs:simpleType name="AN1_20">
+    <xs:simpleType name="AN0_20">
         <xs:restriction base="xs:string">
-            <xs:minLength value="1"/>
             <xs:maxLength value="20"/>
         </xs:restriction>
     </xs:simpleType>

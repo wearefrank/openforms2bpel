@@ -64,6 +64,7 @@
                 name="CreateZgwRol"
                 styleSheetName="Zgw/Zaken/Model/ZgwRol.xslt"
                 storeResultInSessionKey="ZgwRol"
+				skipEmptyTags="true"
                 >
 				<Param name="Uuid" sessionKey="uuid"/>
 				<Param name="Registratiedatum" xpathExpression="string($NowDateTime)" >

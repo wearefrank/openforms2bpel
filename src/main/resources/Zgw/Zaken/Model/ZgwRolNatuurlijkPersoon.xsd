@@ -18,27 +18,23 @@
                 <xs:element name="betrokkeneIdentificatie" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="inpBsn" type="zgw:AN1_9" minOccurs="0"/>
-                            <xs:element name="geslachtsnaam" type="zgw:AN1_200" minOccurs="0"/>
-                            <xs:element name="voorvoegselGeslachtsnaam" type="zgw:AN1_80" minOccurs="0"/>
-                            <xs:element name="voorletters" type="zgw:AN1_20" minOccurs="0"/>
-                            <xs:element name="voornamen" type="zgw:AN1_200" minOccurs="0"/>
+                            <xs:element name="inpBsn" type="zgw:AN0_9" minOccurs="0"/>
+                            <xs:element name="anpIdentificatie" type="zgw:AN0_17" minOccurs="0"/>
+                            <xs:element name="inpA_nummer" type="zgw:AN0_10" minOccurs="0"/>
+                            <xs:element name="voorletters" type="zgw:AN0_20" minOccurs="0"/>
+                            <xs:element name="voornamen" type="zgw:AN0_200" minOccurs="0"/>
+                            <xs:element name="geslachtsnaam" type="zgw:AN0_200" minOccurs="0"/>
+                            <xs:element name="voorvoegselGeslachtsnaam" type="zgw:AN0_80" minOccurs="0"/>
                             <xs:element name="geslachtsaanduiding" type="zgw:Geslachtsaanduiding" minOccurs="0"/>
                             <xs:element name="geboortedatum" type="xs:date" minOccurs="0"/>
-                            <xs:element name="verblijfsadres" minOccurs="0">
+                            <xs:element name="verblijfsadres" minOccurs="0" nillable="true">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="aoaIdentificatie" type="zgw:AN0_100"/>
-                                        <xs:element name="wplWoonplaatsNaam" type="zgw:AN0_80"/>
-                                        <xs:element name="gorOpenbareRuimteNaam" type="zgw:AN0_80"/>
-                                        <xs:element name="aoaPostcode" type="zgw:AN1_7" minOccurs="0"/>
-                                        <xs:element name="aoaHuisnummer" type="xs:string"/>
-                                        <xs:element name="aoaHuisletter" type="zgw:AN1_1" minOccurs="0"/>
-                                        <xs:element name="aoaHuisnummertoevoeging" type="zgw:AN1_9" minOccurs="0"/>
-                                        <xs:element name="inpLocatiebeschrijving" type="zgw:AN1_1000" minOccurs="0"/>
+                                        <xs:any processContents="skip" minOccurs="0" maxOccurs="unbounded" />
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
+                            <xs:any processContents="skip" minOccurs="0" maxOccurs="unbounded" />
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>                    

@@ -17,6 +17,72 @@
         </xsl:choose>
 	</xsl:function>
 
+    <xsl:function name="zgw:convertZdsRechtsvormToZgwRechtsvorm">
+    	<xsl:param name="zdsRechtsvorm" as="xs:string"/>
+        <xsl:choose>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'besloten vennootschap')">
+                <xsl:value-of select="'besloten_vennootschap'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'economische')">
+                <xsl:value-of select="'cooperatie_europees_economische_samenwerking'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'cooperatieve')">
+                <xsl:value-of select="'europese_cooperatieve_venootschap'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'europese')">
+                <xsl:value-of select="'europese_naamloze_vennootschap'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'kerkelijke')">
+                <xsl:value-of select="'kerkelijke_organisatie'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'naamloze vennootschap')">
+                <xsl:value-of select="'naamloze_vennootschap'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'waarborg')">
+                <xsl:value-of select="'onderlinge_waarborg_maatschappij'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'privaatrechtelijke')">
+                <xsl:value-of select="'overig_privaatrechtelijke_rechtspersoon'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'stichting')">
+                <xsl:value-of select="'stichting'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'vereniging')">
+                <xsl:value-of select="'vereniging'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'eigenaars')">
+                <xsl:value-of select="'vereniging_van_eigenaars'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'publiekrechtelijke')">
+                <xsl:value-of select="'publiekrechtelijke_rechtspersoon'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'firma')">
+                <xsl:value-of select="'vennootschap_onder_firma'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'maatschap')">
+                <xsl:value-of select="'maatschap'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'rederij')">
+                <xsl:value-of select="'rederij'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'commanditaire')">
+                <xsl:value-of select="'commanditaire_vennootschap'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'binnen')">
+                <xsl:value-of select="'kapitaalvennootschap_binnen_eer'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'buitenlandse')">
+                <xsl:value-of select="'overige_buitenlandse_rechtspersoon_vennootschap'"/>
+            </xsl:when>
+            <xsl:when test="contains(lower-case($zdsRechtsvorm), 'buiten')">
+                <xsl:value-of select="'kapitaalvennootschap_buiten_eer'"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="'overig_privaatrechtelijke_rechtspersoon'"/>
+            </xsl:otherwise>
+        </xsl:choose>
+	</xsl:function>
+
     <xsl:function name="zgw:createDefaultBetalingsindicatieWeergave">
     	<xsl:param name="zgwBetalingsindicatie" as="xs:string"/>
         <xsl:choose>

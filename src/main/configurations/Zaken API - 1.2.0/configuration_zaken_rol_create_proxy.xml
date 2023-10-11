@@ -3,8 +3,8 @@
 	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
 	>
 	<Adapter 
-		name="rol_create"
-		active="${rol_create.active}"
+		name="rol_create_proxy"
+		active="${rol_create_proxy.active}"
 		>
 		<Receiver name="rol_create">
 			<ApiListener 

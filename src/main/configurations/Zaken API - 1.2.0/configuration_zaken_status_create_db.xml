@@ -1,0 +1,133 @@
+<Module 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+	>
+	<Adapter 
+		name="status_create_db"
+		active="${status_create_db.active}"
+		>
+		<Receiver name="status_create">
+			<ApiListener 
+				name="status_create" 
+				method="POST"
+				uriPattern="/zaken/api/v1/statussen"
+				headerParams="Host,X-Forwarded-Proto"
+				produces="JSON"
+				consumes="JSON"
+				/>
+		</Receiver>
+		<Pipeline>
+			<Exits>
+				<Exit name="Created" state="SUCCESS" code="201" />
+				<Exit name="BadRequest" state="ERROR" code="400" />
+				<Exit name="Unauthorized" state="ERROR" code="401" />
+				<Exit name="Forbidden" state="ERROR" code="403" />
+				<Exit name="NotAcceptable" state="ERROR" code="406" />
+				<Exit name="Conflict" state="ERROR" code="409" />
+				<Exit name="Gone" state="ERROR" code="410" />
+				<Exit name="PreconditionFailed" state="ERROR" code="412" />
+				<Exit name="UnsupportedMediaType" state="ERROR" code="415" />
+				<Exit name="TooManyRequests" state="ERROR" code="429" />
+				<Exit name="InternalServerError" state="ERROR" code="500" />
+			</Exits>
+
+			<!-- <FixedResultPipe name="Helloworld" returnString="{&quot;count&quot;:123,&quot;next&quot;:&quot;http://api.example.org/accounts/?page=4&quot;,&quot;previous&quot;:&quot;http://api.example.org/accounts/?page=2&quot;,&quot;results&quot;:[{&quot;url&quot;:&quot;string&quot;,&quot;uuid&quot;:&quot;3fa85f64-5717-4562-b3fc-2c963f66afa6&quot;,&quot;zaak&quot;:&quot;string&quot;,&quot;Statustype&quot;:&quot;string&quot;,&quot;toelichting&quot;:&quot;string&quot;}]}" /> -->
+			
+			<JsonPipe 
+				name="JsonToXml"
+				storeResultInSessionKey="orginalMessageXml"
+				>
+                <Forward name="success" path="UnwrapOpenZaakEnvelopeToSingle"/>
+            </JsonPipe>
+
+            <XsltPipe
+                name="UnwrapOpenZaakEnvelopeToSingle"
+                styleSheetName="Zgw/UnwrapOpenZaakApiEnvelopeToSingle.xslt"
+                >
+                <Param name="Type" value="ZgwStatus"/>
+                <Forward name="success" path="GenerateUuid"/>
+                <Forward name="error" path="InternalServerError"/>
+            </XsltPipe>
+
+			<UUIDGeneratorPipe
+				name="GenerateUuid"
+				preserveInput="true"
+				storeResultInSessionKey="uuid"
+				>
+				<Forward name="success" path="CreateZgwStatus"/>
+                <Forward name="error" path="InternalServerError"/>
+			</UUIDGeneratorPipe>
+
+			<XsltPipe
+                name="CreateZgwStatus"
+                styleSheetName="Zgw/Zaken/Model/ZgwStatus.xslt"
+                storeResultInSessionKey="ZgwStatus"
+                >
+				<Param name="Uuid" sessionKey="uuid"/>
+				<Param name="Registratiedatum" xpathExpression="string($NowDateTime)" >
+                	<Param name="NowDateTime" pattern="{now}" type="DATETIME" />
+				</Param>
+                <Forward name="success" path="InsertZgwStatusSender"/>
+                <Forward name="error" path="InternalServerError"/>
+            </XsltPipe>
+
+			<SenderPipe
+				name="InsertZgwStatusSender"
+				>
+                <FixedQuerySender
+					name="InsertZgwStatusFixedQuerySender"
+                    query="INSERT INTO STATUS (ID, DATA) VALUES (?{id}, ?{data})" 
+                    queryType="OTHER"
+                    />
+					<Param name="id" sessionKey="uuid" />
+                    <Param name="data" />
+                <Forward name="success" path="SelectZgwStatusSender" />
+                <Forward name="exception" path="InternalServerError" />
+            </SenderPipe>
+
+			<SenderPipe
+				name="SelectZgwStatusSender"
+				>
+                <FixedQuerySender
+					name="SelectZgwStatusFixedQuerySender"
+                    query="SELECT PK,ID,DATA FROM STATUS WHERE ID = ?{id}" 
+                    queryType="SELECT"
+                    />
+                    <Param name="id" sessionKey="uuid"/>
+                <Forward name="success" path="StoreSubstitutionVars" />
+                <Forward name="exception" path="InternalServerError" />
+            </SenderPipe>
+
+			<PutInSessionPipe
+				name="StoreSubstitutionVars"
+				>
+				<Param name="scheme" sessionKey="headers" xpathExpression="/headers/header[@name = 'X-Forwarded-Proto']/text()" defaultValue="http" />
+				<Param name="host" sessionKey="headers" xpathExpression="/headers/header[@name = 'Host']/text()" />
+				<Param name="ZgwStatus" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'DATA']/text()" />
+				<Forward name="success" path="EnrichZgwStatus" />
+				<Forward name="exception" path="InternalServerError" />
+			</PutInSessionPipe>
+
+			<XsltPipe
+                name="EnrichZgwStatus"
+                styleSheetName="Zgw/Zaken/Model/ZgwStatus.xslt"
+                getInputFromSessionKey="ZgwStatus"
+                >
+                <Param name="Url" pattern="{scheme}://{host}/zaken/api/v1/zaken/{uuid}" />
+                <Forward name="success" path="XmlToJson"/>
+                <Forward name="error" path="InternalServerError"/>
+            </XsltPipe>
+
+			<Json2XmlValidatorPipe
+				name="XmlToJson"
+				schema="Zgw/Zaken/Model/ZgwStatus.xsd"
+				outputFormat="JSON"
+				deepSearch="true"
+				throwException="true"
+                >
+				<Forward name="success" path="Created"/>
+                <Forward name="error" path="InternalServerError"/>
+			</Json2XmlValidatorPipe>
+		</Pipeline>
+	</Adapter>
+</Module>

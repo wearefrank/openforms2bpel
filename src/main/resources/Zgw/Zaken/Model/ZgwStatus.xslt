@@ -33,35 +33,35 @@
     <xsl:template match="/">
         <ZgwStatus>
             <xsl:copy-of select="zgw:WrapNullOrSkip('url', 'skip', zgw:FromOrderedSource(
-                    $Url, 
-                    $ZgwStatus/ZgwStatus/url, 
-                    '', 
-                    ZgwStatus/url))"/>
+                $Url, 
+                $ZgwStatus/ZgwStatus/url, 
+                '', 
+                ZgwStatus/url))"/>
             <xsl:copy-of select="zgw:WrapNullOrSkip('uuid', 'skip', zgw:FromOrderedSource(
-                    $Uuid, 
-                    $ZgwStatus/ZgwStatus/uuid,
-                    '', 
-                    ZgwStatus/uuid))"/>
+                $Uuid, 
+                $ZgwStatus/ZgwStatus/uuid,
+                '', 
+                ZgwStatus/uuid))"/>
             <xsl:copy-of select="zgw:WrapNullOrSkip('zaak', 'skip', zgw:FromOrderedSource(
-                    $Zaak, 
-                    $ZgwStatus/ZgwStatus/zaak, 
-                    $ZgwZaak/ZgwZaak/url, 
-                    ZgwStatus/zaak))"/>
+                $Zaak, 
+                $ZgwStatus/ZgwStatus/zaak, 
+                $ZgwZaak/ZgwZaak/url, 
+                ZgwStatus/zaak))"/>
             <xsl:copy-of select="zgw:WrapNullOrSkip('statustype', 'skip', zgw:FromOrderedSource(
-                    $Statustype, 
-                    $ZgwStatus/ZgwStatus/statustype,
-                    $ZgwStatusType/ZgwStatusType/url, 
-                    ZgwStatus/statustype))"/>
+                $Statustype, 
+                $ZgwStatus/ZgwStatus/statustype,
+                $ZgwStatusType/ZgwStatusType/url, 
+                ZgwStatus/statustype))"/>
             <xsl:copy-of select="zgw:WrapNullOrSkip('datumStatusGezet', 'skip', zgw:FromOrderedSource(
-                    $DatumStatusGezet, 
-                    $ZgwStatus/ZgwStatus/datumStatusGezet,
-                    $DatumStatusGezetFromParams, 
-                    ZgwStatus/datumStatusGezet))"/>
+                $DatumStatusGezet, 
+                $ZgwStatus/ZgwStatus/datumStatusGezet,
+                '', 
+                ZgwStatus/datumStatusGezet))"/>
             <xsl:copy-of select="zgw:WrapNullOrSkip('statustoelichting', 'empty', zgw:FromOrderedSource(
-                    $Statustoelichting, 
-                    $ZgwStatus/ZgwStatus/statustoelichting,
-                    $ZgwStatusType/ZgwStatusType/omschrijving, 
-                    ZgwStatus/statustoelichting))"/>
+                $Statustoelichting, 
+                $ZgwStatus/ZgwStatus/statustoelichting,
+                $ZgwStatusType/ZgwStatusType/omschrijving, 
+                ZgwStatus/statustoelichting))"/>
         </ZgwStatus>
     </xsl:template>
 </xsl:stylesheet>

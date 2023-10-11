@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.3.0](https://github.com/wearefrank/openforms2bpel/compare/v1.2.0...v1.3.0) (2023-10-11)
+
+
+### 🍕 Features
+
+* rol_create database implementation ([8f9dd84](https://github.com/wearefrank/openforms2bpel/commit/8f9dd8457c66e731bb193fd4c00b930dcd050f57))
+
 ## [1.2.0](https://github.com/wearefrank/openforms2bpel/compare/v1.1.4...v1.2.0) (2023-10-06)
 
 

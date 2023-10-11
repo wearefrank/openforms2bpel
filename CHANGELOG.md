@@ -1,5 +1,22 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.4.0](https://github.com/wearefrank/openforms2bpel/compare/v1.3.0...v1.4.0) (2023-10-11)
+
+
+### 🍕 Features
+
+* status_create database implementation ([37a292b](https://github.com/wearefrank/openforms2bpel/commit/37a292b4739344f6c4000c94d5ece1d588dd1f31))
+
+
+### 🐛 Bug Fixes
+
+* correct validation constraint for non-bsn betrokkeneIdentificatie ([38e0703](https://github.com/wearefrank/openforms2bpel/commit/38e07031ad92f0df0c4cc33abb6486ed3e2fbb86))
+
+
+### ✅ Tests
+
+* add rol_create testcase with non-bsn betrokkeneIdentificatie ([85b1e16](https://github.com/wearefrank/openforms2bpel/commit/85b1e167141817d407e2a10fc9013b28bcf01a22))
+
 ## [1.3.0](https://github.com/wearefrank/openforms2bpel/compare/v1.2.0...v1.3.0) (2023-10-11)
 
 

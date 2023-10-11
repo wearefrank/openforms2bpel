@@ -79,4 +79,19 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="Openforms2bpel:1.4" author="MLenterman">
+        <comment>Add status table</comment>
+        <createTable tableName="STATUS">
+            <column name="PK" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="PK_STATUS"/>
+            </column>
+            <column name="ID" type="VARCHAR(36)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="DATA" type="CLOB">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

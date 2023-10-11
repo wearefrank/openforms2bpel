@@ -3,8 +3,8 @@
 	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
 	>
 	<Adapter 
-		name="status_create"
-		active="${status_create.active}"
+		name="status_create_proxy"
+		active="${status_create_proxy.active}"
 		>
 		<Receiver name="status_create">
 			<ApiListener 

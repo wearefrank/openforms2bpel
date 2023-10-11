@@ -4,6 +4,8 @@
     <xs:element name="ZgwStatus">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="url" type="zgw:Uri1_1000" minOccurs="0" />
+                <xs:element name="uuid" type="xs:string" minOccurs="0" />
                 <xs:element name="zaak" type="zgw:Uri1_1000" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="statustype" type="zgw:Uri1_1000" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="datumStatusGezet" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>

@@ -16,6 +16,8 @@
 	<!ENTITY rol_delete SYSTEM "./configuration_zaken_rol_delete.xml">
 	<!ENTITY status_list SYSTEM "./configuration_zaken_status_list.xml">
 	<!ENTITY status_create SYSTEM "./configuration_zaken_status_create.xml">
+	<!ENTITY status_create_db SYSTEM "./configuration_zaken_status_create_db.xml">
+	<!ENTITY status_create_proxy SYSTEM "./configuration_zaken_status_create_proxy.xml">
 	<!ENTITY status_read SYSTEM "./configuration_zaken_status_read.xml">
 	<!ENTITY zaakcontactmoment_list SYSTEM "./configuration_zaken_zaakcontactmoment_list.xml">
 	<!ENTITY zaakcontactmoment_create SYSTEM "./configuration_zaken_zaakcontactmoment_create.xml">
@@ -78,6 +80,8 @@
 	&rol_delete;
 	&status_list;
 	&status_create;
+	&status_create_db;
+	&status_create_proxy;
 	&status_read;
 	&zaakcontactmoment_list;
 	&zaakcontactmoment_create;

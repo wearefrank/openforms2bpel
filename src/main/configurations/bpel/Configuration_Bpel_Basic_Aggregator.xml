@@ -15,51 +15,93 @@
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
 
-            <JsonPipe
-                name="JsonToXml"
-                >
-                <Forward name="success" path="UnwrapOpenZaakApiEnvelopeToSingle"/>
-                <Forward name="exception" path="EXCEPTION"/>
-            </JsonPipe>
-
             <XsltPipe
-                name="UnwrapOpenZaakApiEnvelopeToSingle"
-                styleSheetName="Zgw/UnwrapOpenZaakApiEnvelopeToSingle.xslt"
-                storeResultInSessionKey="ZgwStatus"
+                name="CreateInitiateRequestMessage"
+                styleSheetName="Bpel/Basic/Model/InitiateRequestMessage.xslt"
+                storeResultInSessionKey="InitiateRequestMessage"
                 >
-                <Param name="Type" value="ZgwStatus"/>
-                <Forward name="success" path="GetZgwZaakByUrlSender"/>
-                <Forward name="error" path="EXCEPTION"/>
+                <Param name="User" pattern="{username}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" />
+                <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
+                <Param name="Domain" sessionKey="Domain" />
+                <Param name="CorrelationId" sessionKey="cid" />
+                <Param name="Bsn" xpathExpression="/ZgwObject/bsn/text()" />
+                <!-- <Param name="CommercialRegistryNumber" value="''" /> -->
+                <!-- <Param name="Username" sessionKey="Username" defaultValue="dummy" /> -->
+                <Param name="Process" sessionKey="Process" defaultValue="P4_3_VSDB" />
+                <Forward name="success" path="BpelBasicPostInitiateSender" />
+                <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
 
             <SenderPipe
-                name="GetZgwZaakByUrlSender"
-                storeResultInSessionKey="ZgwZaak"
+                name="BpelBasicPostInitiateSender"
+                storeResultInSessionKey="InitiateResponseMessage"
                 >
                 <IbisLocalSender
-                    name="GetZgwZaakByUrlLocalSender"
-                    javaListener="GetZgwZaakByUrl"
+                    name="BpelBasicPostInitiateLocalSender"
+                    javaListener="Bpel_Basic_PostInitiate"
                     >
                 </IbisLocalSender>
-                <Param name="Url" sessionKey="ZgwStatus" xpathExpression="/ZgwStatus/zaak" />
-                <Forward name="success" path="GetZgwRolesByZaakUrlSender" />
+                <Forward name="success" path="CreateEmailParameters" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
+
+            <XsltPipe
+                name="CreateEmailParameters"
+                getInputFromSessionKey="originalMessage"
+                styleSheetName="Bpel/Basic/Model/EmailParameters.xslt"
+                storeResultInSessionKey="EmailParameters"
+                >
+                <Param name="EmailAddress" xpathExpression="/ZgwObject/data/uw-gegevens/fieldSetMetDigiD/contactgegevensMD/eMailadresPMD" />
+                <Param name="LastName" xpathExpression="concat(/ZgwObject/data/uw-gegevens/fieldSetMetDigiD/contactgegevensMD/tussenvoegselSPMD, /ZgwObject/data/uw-gegevens/fieldSetMetDigiD/contactgegevensMD/achternaamPMD)" />
+                <Forward name="success" path="CreateCaseParameters" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <XsltPipe
+                name="CreateCaseParameters"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Basic/Model/CaseParameters.xslt"
+                storeResultInSessionKey="CaseParameters"
+                >
+                <Param name="ReferenceNumber" value="12345" />
+                <Param name="Description" value="dummy" />
+                <Param name="Clarification" value="marcel@wearefrank.nl" />
+                <Param name="Channel" value="WEBFORM" />
+                <Forward name="success" path="CreateRegisterRequestMessage" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <XsltPipe
+                name="CreateRegisterRequestMessage"
+                getInputFromSessionKey="originalMessage"
+                styleSheetName="Bpel/Basic/Model/RegisterRequestMessage.xslt"
+                storeResultInSessionKey="RegisterRequestMessage"
+                >
+                <Param name="InitiateResponseMessage" sessionKey="InitiateResponseMessage" type="DOMDOC" />
+                <Param name="User" pattern="{username}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" />
+                <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
+                <Param name="Domain" sessionKey="Domain" />
+                <Param name="CorrelationId" sessionKey="cid" />
+                <Param name="Bsn" xpathExpression="/ZgwObject/bsn/text()" />
+                <Param name="Summary" xpathExpression="/ZgwObject/data" type="NODE" />
+                <Param name="EmailParameters" sessionKey="EmailParameters" type="DOMDOC" />
+                <Param name="Process" sessionKey="Process" defaultValue="P4_3_VSDB" />
+                <Param name="CaseParameters" sessionKey="CaseParameters" type="DOMDOC" />
+                <Forward name="success" path="BpelBasicPostRegisterSender" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
 
             <SenderPipe
-                name="GetZgwRolesByZaakUrlSender"
+                name="BpelBasicPostRegisterSender"
                 >
                 <IbisLocalSender
-                    name="GetZgwRolesByZaakUrlLocalSender"
-                    javaListener="GetZgwRolesByZaakUrl"
+                    name="BpelBasicPostRegisterLocalSender"
+                    javaListener="Bpel_Basic_PostRegister"
                     >
                 </IbisLocalSender>
-                <Param name="Url" sessionKey="ZgwZaak" xpathExpression="/ZgwZaak/url" />
-                <Forward name="success" path="UnwrapZgwRollenOpenZaakApiEnvelopeToList" />
+                <Forward name="success" path="EXIT" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
-
-            
 
         </Pipeline>
     </Adapter>

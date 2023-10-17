@@ -17,6 +17,7 @@
                 name="ValidateInput"
 				wsdl="Bpel/Basic/Basic.wsdl"
                 soapBody="initiateRequestMessage,registerRequestMessage"
+                ignoreUnknownNamespaces="true"
                 >
 				<Forward name="success" path="UnwrapInput"/>
 				<Forward name="failure" path="CreateError"/>

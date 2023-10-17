@@ -1,0 +1,7 @@
+<!DOCTYPE Configuration [
+	<!ENTITY objects_object_create SYSTEM "./configuration_objects_object_create.xml">
+	]>
+
+<Configuration name="Objects API">
+	&objects_object_create;
+</Configuration>

@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.5.0](https://github.com/wearefrank/openforms2bpel/compare/v1.4.0...v1.5.0) (2023-10-17)
+
+
+### 🍕 Features
+
+* objects api object_create implementation ([57848bc](https://github.com/wearefrank/openforms2bpel/commit/57848bc955dd9ed3fd616db77425b19980a72ae2))
+
 ## [1.4.0](https://github.com/wearefrank/openforms2bpel/compare/v1.3.0...v1.4.0) (2023-10-11)
 
 

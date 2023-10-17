@@ -25,6 +25,7 @@
     <xsl:param name="Bsn" select="''" as="xs:string" />
     <xsl:param name="CommercialRegistryNumber" select="''" as="xs:string" />
     <xsl:param name="Username" select="''" as="xs:string" />
+    <xsl:param name="Summary" as="node()"><summary /></xsl:param>
     <xsl:param name="Parties" as="node()"><basic:parties /></xsl:param>
     <xsl:param name="EmailParameters" as="node()"><emailparameters:emailParameters /></xsl:param>
     <xsl:param name="Process" select="''" as="xs:string" />
@@ -86,71 +87,9 @@
                 <!-- optional -->
                 <basic:initiatingSubject>
                     <basic:person>
-                        <basic:bsn basic:authentic='true'>?XXX?</basic:bsn>
-                        <!-- optional -->
-                        <basic:nonAuthentic xsi:nil='true' />
+                        <xsl:copy-of select="$bsn"/>
                     </basic:person>
-                    <basic:organization>
-                        <basic:commercialRegistryNumber basic:authentic='true'>?XXX?</basic:commercialRegistryNumber>
-                        <!-- optional -->
-                        <basic:nonAuthentic xsi:nil='true' />
-                        <!-- optional -->
-                        <basic:contactPerson>
-                            <basic:bsn>?XXX?</basic:bsn>
-                            <!-- This element may be left empty if xsi:nil='true' is set. -->
-                            <!-- Max Length: 1, possible value: M, possible value: V, possible value: F,
-                                 possible value: O -->
-                            <basic:genderIndication>???</basic:genderIndication>
-                            <!-- Max Length: 20 -->
-                            <basic:initials>???</basic:initials>
-                            <!-- Max Length: 200 -->
-                            <basic:firstNames>???</basic:firstNames>
-                            <!-- Max Length: 10 -->
-                            <basic:lastNamePrefix>???</basic:lastNamePrefix>
-                            <!-- Max Length: 200 -->
-                            <basic:lastName>???</basic:lastName>
-                            <!-- Max Length: 200 -->
-                            <basic:nameOfAddress>???</basic:nameOfAddress>
-                            <!-- This element may be left empty if xsi:nil='true' is set. -->
-                            <basic:dateOfBirth xmlns:egov='http://www.emaxx.org/egov/common'
-                                               egov:ignoreDay='?true?' egov:ignoreMonth='?true?'>2008-12-31</basic:dateOfBirth>
-                            <!-- Max Length: 254 -->
-                            <basic:emailAddress>???</basic:emailAddress>
-                            <!-- Max Length: 20 -->
-                            <basic:telephoneNumber>???</basic:telephoneNumber>
-                            <!-- Max Length: 20 -->
-                            <basic:faxNumber>???</basic:faxNumber>
-                            <!-- Max Length: 34 -->
-                            <basic:iban>???</basic:iban>
-                            <!-- Max Length: 11 -->
-                            <basic:bic>???</basic:bic>
-                            <!-- optional -->
-                            <basic:residenceAddress>
-                                <!-- This element may be left empty if xsi:nil='true' is set. -->
-                                <!-- Max Length: 5, Pattern: [0-9]{0,5} -->
-                                <basic:houseNumber>???</basic:houseNumber>
-                                <!-- Max Length: 1 -->
-                                <basic:houseLetter>???</basic:houseLetter>
-                                <!-- Max Length: 4 -->
-                                <basic:houseRemark>???</basic:houseRemark>
-                                <!-- Max Length: 80 -->
-                                <basic:streetname>???</basic:streetname>
-                                <!-- Max Length: 6 -->
-                                <basic:zipCode>???</basic:zipCode>
-                                <!-- Max Length: 80 -->
-                                <basic:city>???</basic:city>
-                                <!-- Max Length: 35 -->
-                                <basic:locationDescription>???</basic:locationDescription>
-                            </basic:residenceAddress>
-                        </basic:contactPerson>
-                    </basic:organization>
                 </basic:initiatingSubject>
-                <!-- optional -->
-                <basic:initiatingActor>
-                    <basic:employee>
-                        <basic:username>?XXX?</basic:username>
-                    </basic:employee>
-                </basic:initiatingActor>
                 <!-- optional -->
                 <xsl:copy-of select="zgw:FromOrderedSource(
                     $Parties/basic:parties,
@@ -158,7 +97,11 @@
                     '',
                     //basic:parties)"/>
                 <basic:xml>
-                    <!-- This element can be extended by any element from any namespace -->
+                    <xsl:copy-of select="zgw:WrapNullOrSkip('summary', 'skip', zgw:FromOrderedSource(
+                        $Summary,
+                        $RegisterRequestMessage//summary,
+                        '',
+                        //summary))"/>
                 </basic:xml>
                 <xsl:copy-of select="zgw:FromOrderedSource(
                     $EmailParameters/emailparameters:emailParameters,

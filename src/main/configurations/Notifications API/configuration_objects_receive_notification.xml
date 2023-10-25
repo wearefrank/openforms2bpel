@@ -1,0 +1,149 @@
+<Module
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+>
+	<Adapter
+		name="objects_receive_notification"
+		active="${objects_receive_notification.active}"
+	>
+		<Receiver name="objects_receive_notification">
+			<ApiListener
+				name="objects_receive_notification"
+				method="POST"
+				uriPattern="/objects/api/v2/notifications"
+				headerParams="API-version"
+				produces="JSON"
+				consumes="JSON"
+			/>
+		</Receiver>
+		<Pipeline>
+			<Exits>
+				<Exit name="Created" state="SUCCESS" code="201" />
+				<Exit name="InternalServerError" state="ERROR" code="500" />
+			</Exits>
+
+			<JsonPipe
+				name="JsonToXml" prettyPrint="true">
+				<Forward name="success" path="StoreNotificationResourceURL" />
+			</JsonPipe>
+
+			<XsltPipe name="StoreNotificationResourceURL" xpathExpression="//resourceUrl"
+				storeResultInSessionKey="NotificationResourceURL">
+				<Forward name="success" path="CreateResourceObtainRequest" />
+			</XsltPipe>
+
+			<XsltPipe name="CreateResourceObtainRequest" styleSheetName="xsl/RequestResource.xsl">
+				<Forward name="success" path="ResourceRequestSender" />
+			</XsltPipe>
+
+			<SenderPipe name="ResourceRequestSender"
+				getInputFromSessionKey="FirstInput">
+				<HttpSender name="ResourceRequestSenderHttpSender"
+					headersParams="Accept-Crs,Authorization">
+					<Param name="Authorization" value="Bearer @@mijnzaaknotificaties.jwt@@" />
+					<!-- TODO D2: The url requires a UUID. Find where UUID must come from and add
+					it.
+					Example format: https://cors.redoc.ly/api/v2/objects/{uuid} -->
+					<Param name="url" sessionKey="NotificationResourceURL" />
+					<Param name="Accept-Crs" value="EPSG:4326" />
+				</HttpSender>
+				<Forward name="success" path="MakeMessageJson" />
+				<Forward name="Exception" path="InternalServerError" />
+			</SenderPipe>
+
+			<JsonPipe name="MakeMessageJson" direction="XML2JSON">
+				<Forward name="success" path="ObjectCreateSender" />
+				<Forward name="exception" path="InternalServerError" />
+			</JsonPipe>
+
+			<SenderPipe
+				name="ObjectCreateSender">
+				<IbisLocalSender
+					name="ObjectCreateSenderLocalSender"
+					javaListener="objects_object_create">
+				</IbisLocalSender>
+				<Forward name="success" path="Created" />
+				<Forward name="exception" path="InternalServerError" />
+			</SenderPipe>
+		</Pipeline>
+	</Adapter>
+
+	<Adapter name="objects_manage_subscription"
+		active="${objects_receive_notification.active}">
+
+		<Receiver name="objects_receive_notification">
+			<ApiListener
+				name="objects_receive_notification"
+				method="POST"
+				uriPattern="/objects/api/v2/subscriptions"
+				headerParams="Host,X-Forwarded-Proto"
+				produces="JSON"
+				consumes="JSON" />
+		</Receiver>
+
+		<Pipeline>
+			<Exits>
+				<Exit name="Created" state="SUCCESS" code="201" />
+				<Exit name="InternalServerError" state="ERROR" code="500" />
+			</Exits>
+
+			<PutInSessionPipe name="StoreURLInput" sessionKey="callbackURL">
+				<Forward name="success" path="SubscriptionListSender" />
+			</PutInSessionPipe>
+
+			<SenderPipe name="SubscriptionListSender">
+				<!-- TODO D3: Set up and store URL in sessionkey SubscriptionListURL. Must end with
+				/abonnement -->
+				<HttpSender name="SubscriptionListSenderHttpSender"
+					methodType="GET">
+				</HttpSender>
+				<Param name="url" sessionKey="SubscriptionListURL" />
+				<Forward name="success" path="JsonToXml" />
+			</SenderPipe>
+
+			<JsonPipe
+				name="JsonToXml" prettyPrint="true">
+				<Forward name="success" path="IfSubscriptionExists" />
+			</JsonPipe>
+
+			<XmlIfPipe name="IfSubscriptionExists"
+				xpathExpression="boolean(//callbackUrl[contains(text(), $callbackURL)])">
+				<Param name="callbackURL" sessionKey="callbackURL" />
+				<Forward name="then" path="SuccessMessage" />
+				<Forward name="else" path="CreateSubscriptionCreateRequest" />
+			</XmlIfPipe>
+
+			<XsltPipe name="CreateSubscriptionCreateRequest"
+				styleSheetName="xsl/CreateSubscription.xsl">
+				<Param name="callbackURL" sessionKey="callbackURL" />
+				<!-- TODO D5: Set up authorization. Likely JWT. -->
+				<Param name="authorization" sessionKey="authorization" />
+				<Param name="producttype" sessionKey="producttype" />
+				<Forward name="success" path="SubscriptionCreateSender" />
+			</XsltPipe>
+
+			<!-- TODO D6: Set up UrlParam -->
+			<SenderPipe name="SubscriptionCreateSender">
+				<HttpSender name="SubscriptionCreateSenderHttpSender"
+					methodType="POST">
+					<Param name="url" sessionKey="UrlParam" />
+				</HttpSender>
+				<Forward name="success" path="IfSubscriptionCreated" />
+			</SenderPipe>
+
+			<XmlIfPipe name="IfSubscriptionCreated" xpathExpression="">
+				<Forward name="then" path="SuccessMessage" />
+				<Forward name="else" path="ErrorMessage" />
+			</XmlIfPipe>
+
+			<EchoPipe name="SuccessMessage" getInputFromFixedValue="Subscription created.">
+				<Forward name="success" path="Created" />
+			</EchoPipe>
+
+			<EchoPipe name="ErrorMessage" getInputFromFixedValue="An error occurred.">
+				<Forward name="success" path="InternalServerError" />
+			</EchoPipe>
+
+		</Pipeline>
+	</Adapter>
+</Module>

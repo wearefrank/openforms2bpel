@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.6.0](https://github.com/wearefrank/openforms2bpel/compare/v1.5.0...v1.6.0) (2023-10-31)
+
+
+### 🍕 Features
+
+* notificaties API subscribe and notificatie callback ([#20](https://github.com/wearefrank/openforms2bpel/issues/20)) ([61e4e42](https://github.com/wearefrank/openforms2bpel/commit/61e4e4244056bd50350c5a158c1dcd79830b984e))
+
 ## [1.5.0](https://github.com/wearefrank/openforms2bpel/compare/v1.4.0...v1.5.0) (2023-10-17)
 
 

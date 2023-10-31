@@ -1,0 +1,87 @@
+<Module
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+>
+	<Adapter
+		name="notificaties_notificaties_create"
+		active="${notificaties_notificaties_create.active}"
+	>
+		<Receiver name="notificaties_notificaties_create">
+			<ApiListener
+				name="notificaties_notificaties_create"
+				method="POST"
+				uriPattern="/notificaties/api/v1/notificaties"
+				headerParams="API-version,Authorization"
+				produces="JSON"
+				consumes="JSON"
+			/>
+		</Receiver>
+		<Pipeline>
+			<Exits>
+				<Exit name="Created" state="SUCCESS" code="201" />
+				<Exit name="Forbidden" state="ERROR" code="403" />
+				<Exit name="InternalServerError" state="ERROR" code="500" />
+			</Exits>
+
+			<XmlIfPipe
+				name="CheckAuthorization"
+				getInputFromSessionKey="headers"
+				preserveInput="true"
+				xpathExpression="string-length(/headers/header[@name = 'Authorization']/text()) = 0"
+				>
+				<Forward name="then" path="Forbidden" />
+				<Forward name="else" path="JsonToXml" />
+				<Forward name="exception" path="InternalServerError" />
+			</XmlIfPipe>
+
+			<JsonPipe
+				name="JsonToXml"
+				>
+				<Forward name="success" path="HandleTestChannelMessage" />
+			</JsonPipe>
+
+			<XmlIfPipe
+				name="HandleTestChannelMessage"
+				preserveInput="true"
+				xpathExpression="//kanaal = 'test'"
+				>
+				<Forward name="then" path="Created" />
+				<Forward name="else" path="ResourceRequestSender" />
+				<Forward name="exception" path="InternalServerError" />
+			</XmlIfPipe>
+
+			<SenderPipe
+				name="ResourceRequestSender"
+				>
+				<HttpSender
+					name="ResourceRequestSenderHttpSender"
+					headersParams="Accept-Crs,Authorization"
+					>
+					<Param name="Authorization" value="@@objects-api.jwt@@" />
+					<Param name="url" xpathExpression="//resourceUrl" />
+					<Param name="Accept-Crs" value="EPSG:4326" />
+				</HttpSender>
+				<Forward name="success" path="ZgwObjectJsonToXml" />
+				<Forward name="Exception" path="InternalServerError" />
+			</SenderPipe>
+
+			<JsonPipe 
+				name="ZgwObjectJsonToXml"
+				>
+                <Forward name="success" path="ObjectCreateSender"/>
+            </JsonPipe>
+
+			<SenderPipe
+				name="ObjectCreateSender"
+				>
+				<IbisLocalSender
+					name="ObjectCreateSenderLocalSender"
+					javaListener="objects_object_create"
+					>
+				</IbisLocalSender>
+				<Forward name="success" path="Created" />
+				<Forward name="exception" path="InternalServerError" />
+			</SenderPipe>
+		</Pipeline>
+	</Adapter>
+</Module>

@@ -3,8 +3,8 @@
 	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
 	>
 	<Adapter 
-		name="zaak_read"
-		active="${zaak_read.active}"
+		name="zaak_read_proxy"
+		active="${zaak_read_proxy.active}"
 		>
 		<Receiver name="zaak_read">
 			<ApiListener 

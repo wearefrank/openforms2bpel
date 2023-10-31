@@ -115,11 +115,83 @@
                 name="EnrichZgwRol"
                 styleSheetName="Zgw/Zaken/Model/ZgwRol.xslt"
                 getInputFromSessionKey="ZgwRol"
+				storeResultInSessionKey="ZgwRol"
                 >
                 <Param name="Url" pattern="{scheme}://{host}/zaken/api/v1/zaken/{uuid}" />
-                <Forward name="success" path="XmlToJson"/>
+                <Forward name="success" path="SelectZgwZaakSender"/>
                 <Forward name="error" path="InternalServerError"/>
             </XsltPipe>
+
+			<SenderPipe
+				name="SelectZgwZaakSender"
+				>
+                <FixedQuerySender
+					name="SelectZgwZaakFixedQuerySender"
+                    query="SELECT PK,ID,DATA FROM ZAAK WHERE ID = ?{id}" 
+                    queryType="SELECT"
+                    />
+                    <Param name="id" xpathExpression="tokenize($ZgwZaakUrl, '/')[last()]">
+						<Param name="ZgwZaakUrl" sessionKey="ZgwRol" xpathExpression="/ZgwRol/zaak" />
+					</Param>
+                <Forward name="success" path="StoreZgwZaak" />
+                <Forward name="exception" path="InternalServerError" />
+            </SenderPipe>
+
+			<PutInSessionPipe
+				name="StoreZgwZaak"
+				>
+				<Param name="ZgwZaak" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'DATA']/text()" />
+				<Forward name="success" path="CreateRollenList" />
+				<Forward name="exception" path="InternalServerError" />
+			</PutInSessionPipe>
+
+			<XsltPipe
+                name="CreateRollenList"
+                getInputFromFixedValue="&lt;rollen /&gt;"
+                styleSheetName="Common/Datastructures/List/ListAdd.xslt"
+                >
+                <Param name="AddValue" sessionKey="ZgwZaak" xpathExpression="ZgwZaak/*[local-name() = 'rollen']/text()" type="DOMDOC" />
+				<Param name="Type" value="rollen" />
+                <Forward name="success" path="AddZgwRolToList" />
+                <Forward name="error" path="InternalServerError" />
+            </XsltPipe>
+
+			<XsltPipe
+                name="AddZgwRolToList"
+                styleSheetName="Common/Datastructures/List/ListAdd.xslt"
+				storeResultInSessionKey="Rollen"
+                >
+                <Param name="AddValue" sessionKey="ZgwRol" xpathExpression="/ZgwRol/url/text()" type="DOMDOC" />
+				<Param name="Type" value="rollen" />
+                <Forward name="success" path="EnrichZgwZaak" />
+                <Forward name="error" path="InternalServerError" />
+            </XsltPipe>
+
+			<XsltPipe
+                name="EnrichZgwZaak"
+                styleSheetName="Zgw/Zaken/Model/ZgwZaak.xslt"
+                getInputFromSessionKey="ZgwZaak"
+                >
+                <Param name="Rollen" sessionKey="Rollen" type="DOMDOC" />
+                <Forward name="success" path="UpdateZgwZaakSender"/>
+                <Forward name="error" path="InternalServerError"/>
+            </XsltPipe>
+
+			<SenderPipe
+				name="UpdateZgwZaakSender"
+				>
+                <FixedQuerySender
+					name="UpdateZgwZaakFixedQuerySender"
+                    query="UPDATE ZAAK SET DATA=?{data} WHERE ID = ?{id}" 
+                    queryType="OTHER"
+                    />
+					<Param name="id" xpathExpression="tokenize($ZgwZaakUrl, '/')[last()]">
+						<Param name="ZgwZaakUrl" sessionKey="ZgwRol" xpathExpression="/ZgwRol/zaak" />
+					</Param>
+                    <Param name="data" />
+                <Forward name="success" path="XmlToJson" />
+                <Forward name="exception" path="InternalServerError" />
+            </SenderPipe>
 
 			<!--
 				TODO: Refactor other betrokkeneType XSD's and implement switch based on betrokkeneType delimiter for those XSD's
@@ -127,6 +199,7 @@
 			-->
 			<Json2XmlValidatorPipe
 				name="XmlToJson"
+				inputFormatSessionKey="ZgwRol"
 				schema="Zgw/Zaken/Model/ZgwRolNatuurlijkPersoon.xsd"
 				outputFormat="JSON"
 				deepSearch="true"

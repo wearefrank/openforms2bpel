@@ -1,0 +1,78 @@
+<Module 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+	>
+	<Adapter 
+		name="zaak_read_db"
+		active="${zaak_read_db.active}"
+		>
+		<Receiver name="zaak_read">
+			<ApiListener 
+				name="zaak_read" 
+				method="GET"
+				uriPattern="/zaken/api/v1/zaken/{uuid}"
+				headerParams="Host"
+				produces="JSON"
+				consumes="ANY"
+				/>
+		</Receiver>
+		<Pipeline>
+			<Exits>
+				<Exit name="EXIT" state="SUCCESS" code="200"/>
+				<Exit name="NotModified" state="SUCCESS" code="304"/>
+				<Exit name="BadRequest" state="ERROR" code="400"/>
+				<Exit name="NotAuthorized" state="ERROR" code="401" empty="true"/>
+				<Exit name="NotAllowed" state="ERROR" code="403" empty="true"/>
+				<Exit name="PreconditionFailed" state="ERROR" code="412"/>
+				<Exit name="ServerError" state="ERROR" code="500"/>
+				<Exit name="Timeout" state="ERROR" code="504"/>
+			</Exits>
+
+			<SenderPipe
+				name="SelectZgwZaakSender"
+				>
+                <FixedQuerySender
+					name="SelectZgwZaakFixedQuerySender"
+                    query="SELECT PK,ID,DATA FROM ZAAK WHERE ID = ?{id}" 
+                    queryType="SELECT"
+                    />
+                    <Param name="id" sessionKey="uuid"/>
+                <Forward name="success" path="StoreSubstitutionVars" />
+                <Forward name="exception" path="InternalServerError" />
+            </SenderPipe>
+
+			<PutInSessionPipe
+				name="StoreSubstitutionVars"
+				>
+				<Param name="scheme" sessionKey="headers" xpathExpression="/headers/header[@name = 'X-Forwarded-Proto']/text()" defaultValue="http" />
+				<Param name="host" sessionKey="headers" xpathExpression="/headers/header[@name = 'Host']/text()" />
+				<Param name="ZgwZaak" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'DATA']/text()" />
+				<Param name="pk" xpathExpression="/result/rowset/row[@number = '0']/field[@name = 'PK']/text()" />
+				<Forward name="success" path="EnrichZgwZaak" />
+				<Forward name="exception" path="InternalServerError" />
+			</PutInSessionPipe>
+
+			<XsltPipe
+                name="EnrichZgwZaak"
+                styleSheetName="Zgw/Zaken/Model/ZgwZaak.xslt"
+                getInputFromSessionKey="ZgwZaak"
+                >
+                <Param name="Url" pattern="{scheme}://{host}/zaken/api/v1/zaken/{uuid}" />
+				<Param name="Identificatie" pattern="openforms2bpel-{pk}"/>
+                <Forward name="success" path="XmlToJson"/>
+                <Forward name="error" path="InternalServerError"/>
+            </XsltPipe>
+
+			<Json2XmlValidatorPipe
+				name="XmlToJson"
+				schema="Zgw/Zaken/Model/PostZgwZaak.xsd"
+				outputFormat="JSON"
+				deepSearch="true"
+				throwException="true"
+                >
+				<Forward name="success" path="Created"/>
+                <Forward name="error" path="InternalServerError"/>
+			</Json2XmlValidatorPipe>
+		</Pipeline>
+	</Adapter>
+</Module>

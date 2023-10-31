@@ -114,9 +114,22 @@
                 getInputFromSessionKey="ZgwStatus"
                 >
                 <Param name="Url" pattern="{scheme}://{host}/zaken/api/v1/zaken/{uuid}" />
-                <Forward name="success" path="XmlToJson"/>
+                <Forward name="success" path="BpelAggregatorSender"/>
                 <Forward name="error" path="InternalServerError"/>
             </XsltPipe>
+
+			<SenderPipe
+                name="BpelAggregatorSender"
+				preserveInput="true"
+                >
+                <IbisLocalSender
+                    name="BpelAggregatorSenderLocalSender"
+                    javaListener="Bpel_Basic_Aggregator"
+                    >
+                </IbisLocalSender>
+                <Forward name="success" path="XmlToJson" />
+                <Forward name="exception" path="XmlToJson" />
+            </SenderPipe>
 
 			<Json2XmlValidatorPipe
 				name="XmlToJson"

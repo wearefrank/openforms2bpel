@@ -19,30 +19,39 @@
 		<Pipeline>
 			<Exits>
 				<Exit name="Created" state="SUCCESS" code="201" />
-				<Exit name="Unauthorized" state="ERROR" code="401" />
+				<Exit name="Forbidden" state="ERROR" code="403" />
 				<Exit name="InternalServerError" state="ERROR" code="500" />
 			</Exits>
 
 			<XmlIfPipe
 				name="CheckAuthorization"
-				getInputFromFixedValue="headers"
+				getInputFromSessionKey="headers"
 				preserveInput="true"
-				xpathExpression="string-length(/headers/header[@name = 'Host']/text()) = 0"
+				xpathExpression="string-length(/headers/header[@name = 'Authorization']/text()) = 0"
 				>
-				<Forward name="then" path="Unauthorized" />
+				<Forward name="then" path="Forbidden" />
 				<Forward name="else" path="JsonToXml" />
-				<Forward name="exception" path="StoreNotificationResourceURL" />
+				<Forward name="exception" path="InternalServerError" />
 			</XmlIfPipe>
 
 			<JsonPipe
 				name="JsonToXml"
 				>
-				<Forward name="success" path="ResourceRequestSender" />
+				<Forward name="success" path="HandleTestChannelMessage" />
 			</JsonPipe>
+
+			<XmlIfPipe
+				name="HandleTestChannelMessage"
+				preserveInput="true"
+				xpathExpression="//kanaal = 'test'"
+				>
+				<Forward name="then" path="Created" />
+				<Forward name="else" path="ResourceRequestSender" />
+				<Forward name="exception" path="InternalServerError" />
+			</XmlIfPipe>
 
 			<SenderPipe
 				name="ResourceRequestSender"
-				getInputFromSessionKey="FirstInput"
 				>
 				<HttpSender
 					name="ResourceRequestSenderHttpSender"
@@ -52,14 +61,14 @@
 					<Param name="url" xpathExpression="//resourceUrl" />
 					<Param name="Accept-Crs" value="EPSG:4326" />
 				</HttpSender>
-				<Forward name="success" path="JsonToXml" />
+				<Forward name="success" path="ZgwObjectJsonToXml" />
 				<Forward name="Exception" path="InternalServerError" />
 			</SenderPipe>
 
 			<JsonPipe 
-				name="JsonToXml"
+				name="ZgwObjectJsonToXml"
 				>
-                <Forward name="success" path="UnwrapOpenZaakEnvelopeToSingle"/>
+                <Forward name="success" path="ObjectCreateSender"/>
             </JsonPipe>
 
 			<SenderPipe

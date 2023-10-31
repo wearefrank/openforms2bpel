@@ -43,7 +43,7 @@
 
 			<XsltPipe
 				name="CreateSubscriptionCreateRequest"
-				styleSheetName="xsl/CreateSubscription.xsl"
+				styleSheetName="Zgw/Notificaties/Model/CreateSubscription.xsl"
 				>
 				<Param name="callbackURL" value="${openforms2bpel.notificaties-api-server.root-url}notificaties" />
 				<Param name="authorization" value="dummy" />

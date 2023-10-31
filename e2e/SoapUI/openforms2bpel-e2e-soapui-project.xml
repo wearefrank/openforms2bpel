@@ -733,7 +733,100 @@ Andere API's, zoals de Zaken API en de Besluiten API, gebruiken dit
 endpoint bij het synchroniseren van relaties.&#13;
 Verwijder een OBJECT-INFORMATIEOBJECT relatie.</con:description><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>204</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>401</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>403</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>406</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>409</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>410</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>415</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>429</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>500</con:status><con:params/></con:representation><con:request name="Request 1" id="d238e33a-5bb5-47cc-83f7-31979b421cb3" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method><con:method name="objectinformatieobject_partial_update" id="b83fdeb7-8956-4197-85f1-af42c21f8540" method="PATCH"><con:description>Het betreft een relatie tussen een willekeurig OBJECT, bijvoorbeeld een
 ZAAK in de Zaken API, en een INFORMATIEOBJECT.&#13;
-Opvragen en verwijderen van OBJECT-INFORMATIEOBJECT relaties.</con:description><con:settings/><con:parameters><con:parameter required="true"><con:name>Content-Type</con:name><con:style>HEADER</con:style><con:description>Content type van de verzoekinhoud.</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>401</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>403</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>406</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>409</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>410</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>415</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>429</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>500</con:status><con:params/></con:representation><con:request name="Request 1" id="5b1ac0c8-47c6-480f-b349-9848000721bd" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method></con:resource></con:interface><con:testSuite id="51faa60a-6964-478d-8f14-899c806b2805" name="e2e"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="1c107c58-9f07-4699-bc68-f06a8d501b2f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Form - Marcel-test-WeAreFrank-ZGW" searchProperties="true"><con:settings/><con:testStep type="properties" name="Properties" id="cc5a0eab-72ca-43c0-a4e6-dd02efe6eb58"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>zaak</con:name><con:value>http://host.docker.internal:9000/zaken/api/v1/zaken/ac190002-24eb0e0c_18b1f5a37a4_-7fff</con:value></con:property><con:property><con:name>enkelvoudiginformatieobject</con:name><con:value>http://host.docker.internal:9000/documenten/api/v1/enkelvoudiginformatieobjecten/ac190002-24eb0e0c_18b1f5a37a4_-7ffd</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="restrequest" name="zaak_create" id="f01993cf-c967-4c2b-a7f4-3bfa5f5331e4"><con:settings/><con:config service="Zaken API" methodName="zaak_create" resourcePath="/zaken" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="zaak_create" id="fdcde0cb-3693-4116-a6b9-96d75ac640e2" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://host.docker.internal:9000/zaken/api/v1</con:endpoint><con:request>{\r
+Opvragen en verwijderen van OBJECT-INFORMATIEOBJECT relaties.</con:description><con:settings/><con:parameters><con:parameter required="true"><con:name>Content-Type</con:name><con:style>HEADER</con:style><con:description>Content type van de verzoekinhoud.</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>401</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>403</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>404</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>406</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>409</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>410</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>415</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>429</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>500</con:status><con:params/></con:representation><con:request name="Request 1" id="5b1ac0c8-47c6-480f-b349-9848000721bd" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method></con:resource></con:interface><con:interface xsi:type="con:RestService" id="3cdd2595-ced1-4c1a-ad1f-37279f6ab1f6" wadlVersion="http://wadl.dev.java.net/2009/02" name="Objects API" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:description>An API to manage Objects.
+
+# Introduction
+
+An OBJECT is of a certain OBJECTTYPE (defined in the Objecttypes API). An
+OBJECT has a few core attributes that every OBJECT (technically a RECORD,
+see below) has, although these attributes can sometimes be empty. They are
+attributes like `geometry` and some administrative attributes. The data that
+describes the actual object is stored in the `data` attribute and follows
+the JSON schema as given by the OBJECTTYPE.
+
+## Validation
+
+When an OBJECT is created or changed the `OBJECT.type` attribute refers to the
+matching OBJECTTYPE in the Objecttypes API. The RECORD always indicates which
+OBJECTTYPE-VERSION is used, shown in the `RECORD.typeVersion` attribute.
+
+Using these 2 attributes, the appropriate JSON schema is retrieved from the
+Objecttypes API and the OBJECT data is validated against this JSON schema.
+
+## History
+
+Each OBJECT has 1 or more RECORDs. A RECORD contains the data of an OBJECT
+at a certain time. An OBJECT can have multiple RECORDS that describe the
+history of that OBJECT. Changes to an OBJECT actually create a new RECORD
+under the OBJECT and leaves the old RECORD as is.
+
+### Material and formal history
+
+History can be seen from 2 perspectives: formal and material history. The
+formal history describes the history as it should be (stored in the
+`startAt` and `endAt` attributes). The material history describes the
+history as it was administratively processed (stored in the `registeredAt`
+attribute).
+
+The difference is that an object could be created or updated in the real
+world at a certain point in time but the administrative change (ie. save or
+update the object in the Objects API) can be done at a later time. The
+query parameters `?date=2021-01-01` (formal history) and
+`?registrationDate=2021-01-01` (material history) allow for querying the
+RECORDS as seen from both perspectives, and can yield different results.
+
+### Corrections
+
+RECORDs cannot be deleted or changed once saved. If an error was made to
+a RECORD, the RECORD can be "corrected" by saving a new RECORD and indicate
+that it corrects a previous RECORD. This is done via the attribute
+`correctionFor`.
+
+### Deletion
+
+Although OBJECTs can be deleted, it is sometimes better to set the
+`endDate` of an OBJECT. Deleting an OBJECT also deletes all RECORDs in
+accordance with privacy laws.
+
+# Authorizations
+
+The API uses API-tokens that grant certain permissions. The API-token is
+passed via a header, like this: `Authorization: Token &lt;token>`
+
+# Notifications
+
+When OBJECTs are created, updated or deleted via the API, notifications of
+these operations are published to the configured Notifications API in the
+`objecten` channel.
+</con:description><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint></con:endpoints><con:resource name="/objects" path="/objects" id="411de765-05a5-4934-a930-8d2e4bb5cafd"><con:settings/><con:parameters/><con:method name="object_list" id="46d090f4-369f-45d5-ab6a-d9e4af21d44d" method="GET"><con:description>Retrieve a list of OBJECTs and their actual RECORD. The actual record is defined as if the query parameter `date=&lt;today>` was given.&#13;
+</con:description><con:settings/><con:parameters><con:parameter><con:name>Accept-Crs</con:name><con:style>HEADER</con:style><con:description>The desired 'Coordinate Reference System' (CRS) of the response data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter><con:name>data_attrs</con:name><con:style>QUERY</con:style><con:description>Only include objects that have attributes with certain values.
+Data filtering expressions are comma-separated and are structured as follows:
+A valid parameter value has the form `key__operator__value`.
+`key` is the attribute name, `operator` is the comparison operator to be used and `value` is the attribute value.
+Note: Values can be string, numeric, or dates (ISO format; YYYY-MM-DD).
+
+Valid operator values are:
+* `exact` - equal to
+* `gt` - greater than
+* `gte` - greater than or equal to
+* `lt` - lower than
+* `lte` - lower than or equal to
+* `icontains` - case-insensitive partial match
+
+`value` may not contain double underscore or comma characters.
+`key` may not contain comma characters and includes double underscore only if it indicates nested attributes.
+
+Example: in order to display only objects with `height` equal to 100, query `data_attrs=height__exact__100`
+should be used. If `height` is nested inside `dimensions` attribute, query should look like
+`data_attrs=dimensions__height__exact__100`
+</con:description></con:parameter><con:parameter><con:name>date</con:name><con:style>QUERY</con:style><con:description>Display record data for the specified material date, i.e. the specified date would be between `startAt` and `endAt` attributes. The default value is today</con:description></con:parameter><con:parameter><con:name>fields</con:name><con:style>QUERY</con:style><con:description>Comma-separated fields, which should be displayed in the response. For example: 'url, uuid, record__geometry'.</con:description></con:parameter><con:parameter><con:name>registrationDate</con:name><con:style>QUERY</con:style><con:description>Display record data for the specified registration date, i.e. the specified date would be between `registrationAt` attributes of different records</con:description></con:parameter><con:parameter><con:name>type</con:name><con:style>QUERY</con:style><con:description>Url reference to OBJECTTYPE in Objecttypes API</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:request name="Request 1" id="231b3a65-649a-4923-a2c6-4fab9ca7a9f1" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method><con:method name="object_create" id="905dc1ed-8dc2-4366-95cc-e44a60776731" method="POST"><con:description>Create an OBJECT and its initial RECORD.&#13;
+</con:description><con:settings/><con:parameters><con:parameter><con:name>Accept-Crs</con:name><con:style>HEADER</con:style><con:description>The desired 'Coordinate Reference System' (CRS) of the response data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Crs</con:name><con:style>HEADER</con:style><con:description>The 'Coordinate Reference System' (CRS) of the request data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Type</con:name><con:style>HEADER</con:style><con:description>Content type of the request body.</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>201</con:status><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>500</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>500</con:status><con:params/></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>404</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>404</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>201</con:status><con:params/></con:representation><con:request name="Request 1" id="82aa8045-70bf-466b-926f-b8a9da1d6345" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method></con:resource><con:resource name="/objects/{uuid}" path="/objects/{uuid}" id="93f4f118-33db-47aa-8be0-7ba832e64862"><con:settings/><con:parameters><con:parameter required="true"><con:name>uuid</con:name><con:style>TEMPLATE</con:style><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="object_read" id="3e180cc1-80b6-442d-b75d-8897ea703441" method="GET"><con:description>Retrieve a single OBJECT and its actual RECORD. The actual record is defined as if the query parameter `date=&lt;today>` was given.&#13;
+</con:description><con:settings/><con:parameters><con:parameter><con:name>Accept-Crs</con:name><con:style>HEADER</con:style><con:description>The desired 'Coordinate Reference System' (CRS) of the response data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter><con:name>fields</con:name><con:style>QUERY</con:style><con:description>Comma-separated fields, which should be displayed in the response. For example: 'url, uuid, record__geometry'.</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:request name="Request 1" id="5219b4f4-71f0-4bbd-89f7-ffcf90a8e9b2" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method><con:method name="object_update" id="0a5f2337-689e-4416-8360-05b107ebfbdf" method="PUT"><con:description>Update the OBJECT by creating a new RECORD with the updates values.&#13;
+</con:description><con:settings/><con:parameters><con:parameter><con:name>Accept-Crs</con:name><con:style>HEADER</con:style><con:description>The desired 'Coordinate Reference System' (CRS) of the response data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Crs</con:name><con:style>HEADER</con:style><con:description>The 'Coordinate Reference System' (CRS) of the request data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Type</con:name><con:style>HEADER</con:style><con:description>Content type of the request body.</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:request name="Request 1" id="2540ab28-de40-450e-8bd1-57c9f602a590" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method><con:method name="object_delete" id="39eaa852-0b81-4dbc-bacf-8d4f598e61e0" method="DELETE"><con:description>Delete an OBJECT and all RECORDs belonging to it.&#13;
+</con:description><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>204</con:status><con:params/></con:representation><con:request name="Request 1" id="0d2b1f64-b4cd-4542-80df-f7da6b3c1836" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method><con:method name="object_partial_update" id="abc3b507-5f9e-4fc5-89f6-04f050964daa" method="PATCH"><con:description>Update the OBJECT by creating a new RECORD with the updates values.&#13;
+</con:description><con:settings/><con:parameters><con:parameter><con:name>Accept-Crs</con:name><con:style>HEADER</con:style><con:description>The desired 'Coordinate Reference System' (CRS) of the response data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Crs</con:name><con:style>HEADER</con:style><con:description>The 'Coordinate Reference System' (CRS) of the request data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Type</con:name><con:style>HEADER</con:style><con:description>Content type of the request body.</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:request name="Request 1" id="dab0bcc8-c313-43c9-bff2-813627848d2a" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method></con:resource><con:resource name="/objects/{uuid}/history" path="/objects/{uuid}/history" id="7c9ebeca-8c48-4021-8d31-9043709d0a44"><con:settings/><con:parameters><con:parameter required="true"><con:name>uuid</con:name><con:style>TEMPLATE</con:style><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="object_history" id="9aff48de-fbe3-4c30-b63d-16a1f3a0d822" method="GET"><con:description>Retrieve all RECORDs of an OBJECT.&#13;
+</con:description><con:settings/><con:parameters><con:parameter><con:name>Accept-Crs</con:name><con:style>HEADER</con:style><con:description>The desired 'Coordinate Reference System' (CRS) of the response data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:request name="Request 1" id="c499c4fd-4d5a-4b09-8047-6b00339c4260" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method></con:resource><con:resource name="/objects/search" path="/objects/search" id="ca808821-bc3b-4c4e-b055-1550b3b568dc"><con:settings/><con:parameters/><con:method name="object_search" id="a6c68e47-f1f7-4892-a687-7061bc069975" method="POST"><con:description>Perform a (geo) search on OBJECTs.&#13;
+</con:description><con:settings/><con:parameters><con:parameter><con:name>Accept-Crs</con:name><con:style>HEADER</con:style><con:description>The desired 'Coordinate Reference System' (CRS) of the response data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Crs</con:name><con:style>HEADER</con:style><con:description>The 'Coordinate Reference System' (CRS) of the request data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Type</con:name><con:style>HEADER</con:style><con:description>Content type of the request body.</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:request name="Request 1" id="a8db8a87-d8b9-48f5-a52d-f1250622bc24" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method></con:resource></con:interface><con:testSuite id="51faa60a-6964-478d-8f14-899c806b2805" name="e2e"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="1c107c58-9f07-4699-bc68-f06a8d501b2f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Form - Marcel-test-WeAreFrank-ZGW" searchProperties="true"><con:settings/><con:testStep type="properties" name="Properties" id="cc5a0eab-72ca-43c0-a4e6-dd02efe6eb58"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>zaak</con:name><con:value>http://host.docker.internal:9000/zaken/api/v1/zaken/ac1a0007-1716a5f_18b38370950_-7fff</con:value></con:property><con:property><con:name>enkelvoudiginformatieobject</con:name><con:value>http://host.docker.internal:9000/documenten/api/v1/enkelvoudiginformatieobjecten/ac1a0007-1716a5f_18b38370950_-7ffd</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="restrequest" name="zaak_create" id="f01993cf-c967-4c2b-a7f4-3bfa5f5331e4"><con:settings/><con:config service="Zaken API" methodName="zaak_create" resourcePath="/zaken" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="zaak_create" id="fdcde0cb-3693-4116-a6b9-96d75ac640e2" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://host.docker.internal:9000/zaken/api/v1</con:endpoint><con:request>{\r
    "zaaktype" : "${#TestCase#zaaktype}",\r
    "bronorganisatie" : "002220647",\r
    "verantwoordelijkeOrganisatie" : "002220647",\r
@@ -804,4 +897,53 @@ Opvragen en verwijderen van OBJECT-INFORMATIEOBJECT relaties.</con:description><
    "datumStatusGezet" : "2023-09-22T10:39:21.379129+00:00",\r
    "statustoelichting" : ""\r
 }</con:request><con:originalUri>http://host.docker.internal/zaken/api/v1/statussen</con:originalUri><con:assertion type="Invalid HTTP Status Codes" id="ecf7b049-e27a-496d-b8cc-6ab82adda33c" name="Invalid HTTP Status Codes"><con:configuration><codes>200
-201</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:properties><con:property><con:name>zaaktype</con:name><con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value></con:property><con:property><con:name>informatieobjecttype</con:name><con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+201</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="object_create" id="5a8a0d7c-4e69-4b37-978f-c6a5cc1ea46f"><con:settings/><con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint><con:request>{
+    "bsn": "123456789",
+    "data": {
+        "uw-gegevens": {
+            "fieldSetMetDigiD": {
+                "adresgegevensMD": {
+                    "postcodePMD": "3554 AS",
+                    "huisletterPMD": "",
+                    "huisnummerPMD": "91",
+                    "straatnaamPMD": "tRAlalalal",
+                    "woonplaatsPMD": "Utrecht",
+                    "huisnummertoevoegingPMD": ""
+                },
+                "contactgegevensMD": {
+                    "eMailadresPMD": "m.van.altena@utrecht.nl",
+                    "telefoonnummerPMD": "0612345678"
+                },
+                "persoonsgegevensMD": {
+                    "bsnPMD": "123456789",
+                    "achternaamPMD": "Driel",
+                    "voorletterSPMD": "",
+                    "tussenvoegselSPMD": "van"
+                }
+            }
+        },
+        "marcel-test-wearefrank-zgw-stap1": {
+            "tikMaarWat": "dvsdfdsdsfds",
+            "voegEenDocumentToe": [{
+                    "url": "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/0b607103-f40c-4ce0-8734-1a2f423755c6",
+                    "data": {
+                        "url": "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/0b607103-f40c-4ce0-8734-1a2f423755c6",
+                        "form": "",
+                        "name": "TEST_Marcel.pdf",
+                        "size": 7286,
+                        "baseUrl": "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",
+                        "project": ""
+                    },
+                    "name": "TEST_Marcel-ed9a1b99-00d3-4801-9925-08cffb33f32f.pdf",
+                    "size": 7286,
+                    "type": "application/pdf",
+                    "storage": "url",
+                    "originalName": "TEST_Marcel.pdf"
+                }
+            ]
+        }
+    },
+    "type": "wearefrank",
+    "language_code": "nl",
+    "submission_id": "02661083-dc8e-4fe1-ab1b-04725f121b1e"
+}</con:request><con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:properties><con:property><con:name>zaaktype</con:name><con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value></con:property><con:property><con:name>informatieobjecttype</con:name><con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

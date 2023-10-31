@@ -1,4 +1,4 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" version="2">
     <xsl:param name="callbackURL" select="''" as="xs:string" />
     <xsl:param name="authorization" select="''" as="xs:string" />
     <xsl:param name="producttype" select="''" as="xs:string" />

@@ -566,11 +566,11 @@ public class Parameter implements IConfigurable, IWithParameters {
 						authType = appConstants.getProperty("zaakbrug.zgw.besluiten-api.auth-type", ""); // "jwt", "basic", "value"
 						authAlias = appConstants.getProperty("zaakbrug.zgw.besluiten-api.auth-alias", "");
 					} else if(strResult.contains("@@notificaties-api.jwt@@")){
-						authType = appConstants.getProperty("zaakbrug.notificaties-api.auth-type", ""); // "jwt", "basic", "value"
-						authAlias = appConstants.getProperty("zaakbrug.notificaties-api.auth-alias", "");	
+						authType = appConstants.getProperty("openforms2bpel.notificaties-api.auth-type", ""); // "jwt", "basic", "value"
+						authAlias = appConstants.getProperty("openforms2bpel.notificaties-api.auth-alias", "");	
 					} else if(strResult.contains("@@objects-api.jwt@@")){
-						authType = appConstants.getProperty("zaakbrug.objects-api.auth-type", ""); // "jwt", "basic", "value"
-						authAlias = appConstants.getProperty("zaakbrug.objects-api.auth-alias", "");	
+						authType = appConstants.getProperty("openforms2bpel.objects-api.auth-type", ""); // "jwt", "basic", "value"
+						authAlias = appConstants.getProperty("openforms2bpel.objects-api.auth-alias", "");	
 					} else {
 						throw new ParameterException("Parameter ["+getName()+"] unable to resolve ["+strResult+"] to a known api type");
 					}

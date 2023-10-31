@@ -74,26 +74,6 @@
 				<Forward name="429" path="TooManyRequests" />
                 <Forward name="500" path="InternalServerError" />
 			</SenderPipe>
-
-			<!-- <SenderPipe
-                name="BpelAggregatorSender"
-				preserveInput="true"
-                >
-                <IbisLocalSender
-                    name="BpelAggregatorSenderLocalSender"
-                    javaListener="Bpel_Basic_Aggregator"
-                    >
-                </IbisLocalSender>
-                <Forward name="success" path="RestoreProxyResult" />
-                <Forward name="exception" path="RestoreProxyResult" />
-            </SenderPipe> -->
-
-			<!-- <EchoPipe 
-				name="RestoreProxyResult"
-				>
-				<Forward name="success" path="Created" />
-				<Forward name="exception" path="InternalServerError" />
-			</EchoPipe> -->
 		</Pipeline>
 	</Adapter>
 </Module>

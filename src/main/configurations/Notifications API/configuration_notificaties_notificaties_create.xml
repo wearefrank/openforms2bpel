@@ -1,0 +1,78 @@
+<Module
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+>
+	<Adapter
+		name="notificaties_notificaties_create"
+		active="${notificaties_notificaties_create.active}"
+	>
+		<Receiver name="notificaties_notificaties_create">
+			<ApiListener
+				name="notificaties_notificaties_create"
+				method="POST"
+				uriPattern="/notificaties/api/v1/notificaties"
+				headerParams="API-version,Authorization"
+				produces="JSON"
+				consumes="JSON"
+			/>
+		</Receiver>
+		<Pipeline>
+			<Exits>
+				<Exit name="Created" state="SUCCESS" code="201" />
+				<Exit name="Unauthorized" state="ERROR" code="401" />
+				<Exit name="InternalServerError" state="ERROR" code="500" />
+			</Exits>
+
+			<XmlIfPipe
+				name="CheckAuthorization"
+				getInputFromFixedValue="headers"
+				preserveInput="true"
+				xpathExpression="string-length(/headers/header[@name = 'Host']/text()) = 0"
+				>
+				<Forward name="then" path="Unauthorized" />
+				<Forward name="else" path="JsonToXml" />
+				<Forward name="exception" path="StoreNotificationResourceURL" />
+			</XmlIfPipe>
+
+			<JsonPipe
+				name="JsonToXml"
+				>
+				<Forward name="success" path="ResourceRequestSender" />
+			</JsonPipe>
+
+			<SenderPipe
+				name="ResourceRequestSender"
+				getInputFromSessionKey="FirstInput"
+				>
+				<HttpSender
+					name="ResourceRequestSenderHttpSender"
+					headersParams="Accept-Crs,Authorization"
+					>
+					<Param name="Authorization" value="@@objects-api.jwt@@" />
+					<Param name="url" xpathExpression="//resourceUrl" />
+					<Param name="Accept-Crs" value="EPSG:4326" />
+				</HttpSender>
+				<Forward name="success" path="JsonToXml" />
+				<Forward name="Exception" path="InternalServerError" />
+			</SenderPipe>
+
+			<JsonPipe 
+				name="JsonToXml"
+				>
+                <Forward name="success" path="UnwrapOpenZaakEnvelopeToSingle"/>
+            </JsonPipe>
+
+			<SenderPipe
+				name="ObjectCreateSender"
+				>
+				<IbisLocalSender
+					name="ObjectCreateSenderLocalSender"
+					javaListener="objects_object_create"
+					>
+				</IbisLocalSender>
+				<Forward name="success" path="Created" />
+				<Forward name="exception" path="InternalServerError" />
+			</SenderPipe>
+		</Pipeline>
+	</Adapter>
+</Module>

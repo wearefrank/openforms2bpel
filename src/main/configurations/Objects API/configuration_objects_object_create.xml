@@ -11,7 +11,7 @@
 			If there are other adapters using the ApiListener then it should likely be kept.
 			Otherwise, a simple JavaListener might be better in it's place. -->
 			
-		<!-- <Receiver name="objects_object_create">
+		<Receiver name="objects_object_create">
 			<ApiListener 
 				name="objects_object_create" 
 				method="POST"
@@ -20,7 +20,7 @@
 				produces="JSON"
 				consumes="JSON"
 				/>
-		</Receiver> -->
+		</Receiver>
 		<Receiver name="objects_object_create">
             <JavaListener name="objects_object_create" />
         </Receiver>

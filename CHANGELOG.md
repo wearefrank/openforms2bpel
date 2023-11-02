@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.6.2](https://github.com/wearefrank/openforms2bpel/compare/v1.6.1...v1.6.2) (2023-11-02)
+
+
+### 🧑‍💻 Code Refactoring
+
+* unwrapping of objects-api envelope ([08344ad](https://github.com/wearefrank/openforms2bpel/commit/08344ad0e1c4bf3857a30ab20b02c44406585a65))
+
+
+### ✅ Tests
+
+* lock openzaak to 1.9.0 in test docker-compose ([5b061ba](https://github.com/wearefrank/openforms2bpel/commit/5b061ba7b3794ef8ac9be9ce0d92ba881cf56317))
+
 ## [1.6.1](https://github.com/wearefrank/openforms2bpel/compare/v1.6.0...v1.6.1) (2023-11-02)
 
 

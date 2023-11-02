@@ -16,6 +16,16 @@
             </Exits>
 
             <XsltPipe
+                name="UnwrapObjectsApiDataToSingle"
+                styleSheetName="Zgw/UnwrapObjectsApiDataToSingle.xslt"
+                storeResultInSessionKey="UnwrappedMessage"
+                >
+                <Param name="Type" value="ZgwObject"/>
+                <Forward name="success" path="CreateInitiateRequestMessage"/>
+                <Forward name="error" path="InternalServerError"/>
+            </XsltPipe>
+
+            <XsltPipe
                 name="CreateInitiateRequestMessage"
                 styleSheetName="Bpel/Basic/Model/InitiateRequestMessage.xslt"
                 storeResultInSessionKey="InitiateRequestMessage"
@@ -27,7 +37,7 @@
                 <Param name="Bsn" xpathExpression="/ZgwObject/bsn/text()" />
                 <!-- <Param name="CommercialRegistryNumber" value="''" /> -->
                 <!-- <Param name="Username" sessionKey="Username" defaultValue="dummy" /> -->
-                <Param name="Process" sessionKey="Process" defaultValue="P4_3_VSDB" />
+                <Param name="Process" xpathExpression="/ZgwObject/type/text()" />
                 <Forward name="success" path="BpelBasicPostInitiateSender" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
@@ -47,23 +57,23 @@
 
             <XsltPipe
                 name="CreateEmailParameters"
-                getInputFromSessionKey="originalMessage"
+                getInputFromSessionKey="UnwrappedMessage"
                 styleSheetName="Bpel/Basic/Model/EmailParameters.xslt"
                 storeResultInSessionKey="EmailParameters"
                 >
-                <Param name="EmailAddress" xpathExpression="/ZgwObject/data/uw-gegevens/fieldSetMetDigiD/contactgegevensMD/eMailadresPMD" />
-                <Param name="LastName" xpathExpression="concat(/ZgwObject/data/uw-gegevens/fieldSetMetDigiD/contactgegevensMD/tussenvoegselSPMD, /ZgwObject/data/uw-gegevens/fieldSetMetDigiD/contactgegevensMD/achternaamPMD)" />
+                <Param name="EmailAddress" xpathExpression="//fieldSetMetDigiD/contactgegevensMD/eMailadresPMD" />
+                <Param name="LastName" xpathExpression="concat(//fieldSetMetDigiD/contactgegevensMD/tussenvoegselSPMD, //fieldSetMetDigiD/contactgegevensMD/achternaamPMD)" />
                 <Forward name="success" path="CreateCaseParameters" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
 
             <XsltPipe
                 name="CreateCaseParameters"
-                getInputFromFixedValue="&lt;dummy/&gt;"
+                getInputFromSessionKey="UnwrappedMessage"
                 styleSheetName="Bpel/Basic/Model/CaseParameters.xslt"
                 storeResultInSessionKey="CaseParameters"
                 >
-                <Param name="ReferenceNumber" value="12345" />
+                <Param name="ReferenceNumber" xpathExpression="/ZgwObject/public_reference/text()" />
                 <Param name="Description" value="dummy" />
                 <Param name="Clarification" value="marcel@wearefrank.nl" />
                 <Param name="Channel" value="WEBFORM" />
@@ -73,7 +83,7 @@
 
             <XsltPipe
                 name="CreateRegisterRequestMessage"
-                getInputFromSessionKey="originalMessage"
+                getInputFromSessionKey="UnwrappedMessage"
                 styleSheetName="Bpel/Basic/Model/RegisterRequestMessage.xslt"
                 storeResultInSessionKey="RegisterRequestMessage"
                 >
@@ -85,7 +95,7 @@
                 <Param name="Bsn" xpathExpression="/ZgwObject/bsn/text()" />
                 <Param name="Summary" xpathExpression="/ZgwObject/data" type="NODE" />
                 <Param name="EmailParameters" sessionKey="EmailParameters" type="DOMDOC" />
-                <Param name="Process" sessionKey="Process" defaultValue="P4_3_VSDB" />
+                <Param name="Process" xpathExpression="/ZgwObject/type/text()" />
                 <Param name="CaseParameters" sessionKey="CaseParameters" type="DOMDOC" />
                 <Forward name="success" path="BpelBasicPostRegisterSender" />
                 <Forward name="error" path="EXCEPTION" />

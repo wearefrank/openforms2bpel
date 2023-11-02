@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.6.1](https://github.com/wearefrank/openforms2bpel/compare/v1.6.0...v1.6.1) (2023-11-02)
+
+
+### 🐛 Bug Fixes
+
+* producttyp filter rename to object_type ([#21](https://github.com/wearefrank/openforms2bpel/issues/21)) ([9f8aacd](https://github.com/wearefrank/openforms2bpel/commit/9f8aacdb7e9a81d8ee459e526d2a2a06954dbd15))
+
 ## [1.6.0](https://github.com/wearefrank/openforms2bpel/compare/v1.5.0...v1.6.0) (2023-10-31)
 
 

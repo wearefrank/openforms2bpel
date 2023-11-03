@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.6.4](https://github.com/wearefrank/openforms2bpel/compare/v1.6.3...v1.6.4) (2023-11-03)
+
+
+### 🧑‍💻 Code Refactoring
+
+* digid as domain value when digid was used ([#24](https://github.com/wearefrank/openforms2bpel/issues/24)) ([a7977db](https://github.com/wearefrank/openforms2bpel/commit/a7977dbadea74be7148dea8ea5a0f69068274f6e))
+
 ## [1.6.3](https://github.com/wearefrank/openforms2bpel/compare/v1.6.2...v1.6.3) (2023-11-03)
 
 

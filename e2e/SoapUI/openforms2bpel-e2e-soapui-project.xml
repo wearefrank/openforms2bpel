@@ -897,53 +897,61 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
    "datumStatusGezet" : "2023-09-22T10:39:21.379129+00:00",\r
    "statustoelichting" : ""\r
 }</con:request><con:originalUri>http://host.docker.internal/zaken/api/v1/statussen</con:originalUri><con:assertion type="Invalid HTTP Status Codes" id="ecf7b049-e27a-496d-b8cc-6ab82adda33c" name="Invalid HTTP Status Codes"><con:configuration><codes>200
-201</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="object_create" id="5a8a0d7c-4e69-4b37-978f-c6a5cc1ea46f"><con:settings/><con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint><con:request>{
-    "bsn": "123456789",
-    "data": {
-        "uw-gegevens": {
-            "fieldSetMetDigiD": {
-                "adresgegevensMD": {
-                    "postcodePMD": "3554 AS",
-                    "huisletterPMD": "",
-                    "huisnummerPMD": "91",
-                    "straatnaamPMD": "tRAlalalal",
-                    "woonplaatsPMD": "Utrecht",
-                    "huisnummertoevoegingPMD": ""
-                },
-                "contactgegevensMD": {
-                    "eMailadresPMD": "m.van.altena@utrecht.nl",
-                    "telefoonnummerPMD": "0612345678"
-                },
-                "persoonsgegevensMD": {
-                    "bsnPMD": "123456789",
-                    "achternaamPMD": "Driel",
-                    "voorletterSPMD": "",
-                    "tussenvoegselSPMD": "van"
-                }
-            }
-        },
-        "marcel-test-wearefrank-zgw-stap1": {
-            "tikMaarWat": "dvsdfdsdsfds",
-            "voegEenDocumentToe": [{
-                    "url": "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/0b607103-f40c-4ce0-8734-1a2f423755c6",
-                    "data": {
-                        "url": "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/0b607103-f40c-4ce0-8734-1a2f423755c6",
-                        "form": "",
-                        "name": "TEST_Marcel.pdf",
-                        "size": 7286,
-                        "baseUrl": "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",
-                        "project": ""
-                    },
-                    "name": "TEST_Marcel-ed9a1b99-00d3-4801-9925-08cffb33f32f.pdf",
-                    "size": 7286,
-                    "type": "application/pdf",
-                    "storage": "url",
-                    "originalName": "TEST_Marcel.pdf"
-                }
-            ]
-        }
-    },
-    "type": "wearefrank",
-    "language_code": "nl",
-    "submission_id": "02661083-dc8e-4fe1-ab1b-04725f121b1e"
+201</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:properties><con:property><con:name>zaaktype</con:name><con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value></con:property><con:property><con:name>informatieobjecttype</con:name><con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value></con:property></con:properties></con:testCase><con:testCase id="ac50d935-951a-44d3-9125-926288cc58c7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Zaaktype P9_2_KLB - DigiD" searchProperties="true"><con:settings/><con:testStep type="properties" name="Properties" id="003781bf-43fb-455d-a8e5-4f4907cc5547"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties/></con:config></con:testStep><con:testStep type="restrequest" name="objects_object_create" id="ee0c122e-d7f4-42fd-a402-c08e7b784732"><con:settings/><con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint><con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "999994542",\r
+         "data" : {\r
+            "uw-klacht" : {\r
+               "hoeLaat" : "",\r
+               "watIsUwKlacht" : "Klacht",\r
+               "wanneerIsDitGebeurd" : "Tijdstip",\r
+               "welkOrganisatieOnderdeel" : "anders",\r
+               "tOverWieWiltUEenKlachtIndienen" : "Henk",\r
+               "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "Ontslag"\r
+            },\r
+            "uw-gegevenscompleet" : {\r
+               "fieldSetMetDigiD" : {\r
+                  "adresgegevensMD" : {\r
+                     "postcodePMD" : "1014 AW",\r
+                     "huisletterPMD" : "",\r
+                     "huisnummerPMD" : "14",\r
+                     "straatnaamPMD" : "Schakelstraat",\r
+                     "woonplaatsPMD" : "Amsterdam",\r
+                     "huisnummertoevoegingPMD" : "H"\r
+                  },\r
+                  "contactgegevensMD" : {\r
+                     "eMailadresPMD" : "m.van.altena@utrecht.nl",\r
+                     "telefoonnummerPMD" : "0169795135"\r
+                  },\r
+                  "persoonsgegevensMD" : {\r
+                     "achternaamPMD" : "Braber",\r
+                     "voorletterSPMD" : "",\r
+                     "tussenvoegselSPMD" : "den"\r
+                  }\r
+               }\r
+            },\r
+            "bijlagen-toevoegen-klacht" : {\r
+               "wiltUBijlagenMeesturen" : "nee",\r
+               "ikWilNaBehandelingTevredenheidsonderzoek" : "nee"\r
+            }\r
+         },\r
+         "type" : "P9_2_KLB",\r
+         "csv_url" : "",\r
+         "pdf_url" : "dummy",\r
+         "attachments" : [ ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "ec246c46-4578-4781-a400-f35daa82ecb2",\r
+         "public_reference" : "OF-V27G9D"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2023-11-03",\r
+      "endAt" : null,\r
+      "registrationAt" : "2023-11-03",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
 }</con:request><con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:properties><con:property><con:name>zaaktype</con:name><con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value></con:property><con:property><con:name>informatieobjecttype</con:name><con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

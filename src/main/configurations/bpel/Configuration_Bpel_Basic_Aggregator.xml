@@ -21,9 +21,26 @@
                 storeResultInSessionKey="UnwrappedMessage"
                 >
                 <Param name="Type" value="ZgwObject"/>
-                <Forward name="success" path="CreateInitiateRequestMessage"/>
+                <Forward name="success" path="DigiDAsDomainCondition"/>
                 <Forward name="error" path="InternalServerError"/>
             </XsltPipe>
+
+            <XmlIfPipe
+				name="DigiDAsDomainCondition"
+				preserveInput="true"
+				xpathExpression="string-length(//fieldSetMetDigiD) gt 0"
+				>
+				<Forward name="then" path="StoreDigiDAsDomain" />
+				<Forward name="else" path="CreateInitiateRequestMessage" />
+				<Forward name="exception" path="InternalServerError" />
+			</XmlIfPipe>
+
+            <PutInSessionPipe
+                name="StoreDigiDAsDomain"
+                >
+                <Param name="Domain" value="DigiD" />
+				<Forward name="success" path="CreateInitiateRequestMessage" />
+			</PutInSessionPipe>
 
             <XsltPipe
                 name="CreateInitiateRequestMessage"

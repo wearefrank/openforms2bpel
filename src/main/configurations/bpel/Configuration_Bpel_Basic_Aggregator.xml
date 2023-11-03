@@ -30,7 +30,7 @@
                 styleSheetName="Bpel/Basic/Model/InitiateRequestMessage.xslt"
                 storeResultInSessionKey="InitiateRequestMessage"
                 >
-                <Param name="User" pattern="{username}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" />
+                <Param name="User" xpathExpression="/ZgwObject/bsn/text()" />
                 <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
                 <Param name="Domain" sessionKey="Domain" />
                 <Param name="CorrelationId" sessionKey="cid" />
@@ -88,7 +88,7 @@
                 storeResultInSessionKey="RegisterRequestMessage"
                 >
                 <Param name="InitiateResponseMessage" sessionKey="InitiateResponseMessage" type="DOMDOC" />
-                <Param name="User" pattern="{username}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" />
+                <Param name="User" xpathExpression="/ZgwObject/bsn/text()" />
                 <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
                 <Param name="Domain" sessionKey="Domain" />
                 <Param name="CorrelationId" sessionKey="cid" />

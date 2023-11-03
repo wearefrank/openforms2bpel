@@ -91,19 +91,22 @@
                     </basic:person>
                 </basic:initiatingSubject>
                 <!-- optional -->
-                <xsl:copy-of select="zgw:FromOrderedSource(
+                <xsl:copy-of select="zgw:ObjectFromOrderedSource(
                     $Parties/basic:parties,
                     $RegisterRequestMessage//basic:parties,
                     '',
                     //basic:parties)"/>
                 <basic:xml>
-                    <xsl:copy-of select="zgw:WrapNullOrSkip('summary', 'skip', zgw:FromOrderedSource(
-                        $Summary,
-                        $RegisterRequestMessage//summary,
-                        '',
-                        //summary))"/>
+                    <xsl:variable name="summary">
+                        <xsl:apply-templates select="$Summary/data"/>
+                    </xsl:variable>
+                    <xsl:copy-of select="zgw:ObjectFromOrderedSource(
+                        $summary/summary, 
+                        $RegisterRequestMessage//summary, 
+                        '', 
+                        //summary)" />
                 </basic:xml>
-                <xsl:copy-of select="zgw:FromOrderedSource(
+                <xsl:copy-of select="zgw:ObjectFromOrderedSource(
                     $EmailParameters/emailparameters:emailParameters,
                     $RegisterRequestMessage//emailparameters:emailParameters,
                     '',
@@ -115,7 +118,7 @@
                         '',
                         //processparameters:process),
                         'http://www.emaxx.org/bpel/proces/xsd/processparameters')"/>
-                    <xsl:copy-of select="zgw:FromOrderedSource(
+                    <xsl:copy-of select="zgw:ObjectFromOrderedSource(
                         $Payment/processparameters:payment,
                         $RegisterRequestMessage//processparameters:payment,
                         '',
@@ -145,12 +148,26 @@
                         processparameters:processParameters/processparameters:closeCase),
                         'http://www.emaxx.org/bpel/proces/xsd/processparameters')"/>
                 </processparameters:processParameters>
-                <xsl:copy-of select="zgw:FromOrderedSource(
+                <xsl:copy-of select="zgw:ObjectFromOrderedSource(
                     $CaseParameters/caseparameters:caseParameters, 
                     $RegisterRequestMessage/caseparameters:caseParameters,
                     '',
                     //caseparameters:caseParameters)"/>
             </basic:body>
         </basic:registerRequestMessage>
+    </xsl:template>
+
+    <xsl:template match="/data">
+        <summary>
+            <xsl:for-each select="/data/*">
+                <xsl:element name="{name(current())}" namespace="{namespace-uri(current())}">
+                    <form>
+                        <xsl:for-each select="current()/*">
+                            <xsl:copy-of select="."/>
+                        </xsl:for-each>
+                    </form>
+                </xsl:element>
+            </xsl:for-each>
+        </summary>
     </xsl:template>
 </xsl:stylesheet>

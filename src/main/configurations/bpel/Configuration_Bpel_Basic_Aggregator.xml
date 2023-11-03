@@ -110,7 +110,7 @@
                 <Param name="Domain" sessionKey="Domain" />
                 <Param name="CorrelationId" sessionKey="cid" />
                 <Param name="Bsn" xpathExpression="/ZgwObject/bsn/text()" />
-                <Param name="Summary" xpathExpression="/ZgwObject/data" type="NODE" />
+                <Param name="Summary" xpathExpression="/ZgwObject/data" type="DOMDOC" />
                 <Param name="EmailParameters" sessionKey="EmailParameters" type="DOMDOC" />
                 <Param name="Process" xpathExpression="/ZgwObject/type/text()" />
                 <Param name="CaseParameters" sessionKey="CaseParameters" type="DOMDOC" />

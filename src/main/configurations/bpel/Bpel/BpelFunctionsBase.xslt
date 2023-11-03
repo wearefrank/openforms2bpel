@@ -34,16 +34,16 @@
         <xsl:param name="self"/>
         <xsl:choose>
             <xsl:when test="$param">
-                <xsl:copy-of select="$param"/>
+                <xsl:value-of select="$param"/>
             </xsl:when>
             <xsl:when test="$zgwObject">
-                <xsl:copy-of select="$zgwObject"/>
+                <xsl:value-of select="$zgwObject"/>
             </xsl:when>
             <xsl:when test="$zdsObject">
-                <xsl:copy-of select="$zdsObject"/>
+                <xsl:value-of select="$zdsObject"/>
             </xsl:when>
             <xsl:when test="$self">
-                <xsl:copy-of select="$self"/>
+                <xsl:value-of select="$self"/>
             </xsl:when>
             <xsl:otherwise/>
         </xsl:choose>
@@ -64,6 +64,55 @@
                 <xsl:element name="{$elementName}" />
             </xsl:when>
             <xsl:otherwise/>
+        </xsl:choose>
+    </xsl:function>
+
+    <xsl:function name="zgw:ObjectFromOrderedSource">
+        <xsl:param name="param"/>
+        <xsl:param name="zgwObject"/>
+        <xsl:param name="zdsObject"/>
+        <xsl:param name="self"/>
+        <xsl:choose>
+            <xsl:when test="$param">
+                <xsl:copy-of select="$param"/>
+            </xsl:when>
+            <xsl:when test="$zgwObject">
+                <xsl:copy-of select="$zgwObject"/>
+            </xsl:when>
+            <xsl:when test="$zdsObject">
+                <xsl:copy-of select="$zdsObject"/>
+            </xsl:when>
+            <xsl:when test="$self">
+                <xsl:copy-of select="$self"/>
+            </xsl:when>
+            <xsl:otherwise />
+        </xsl:choose>
+    </xsl:function>
+
+    <xsl:function name="zgw:ObjectFromOrderedSource">
+        <xsl:param name="param"/>
+        <xsl:param name="zgwObject"/>
+        <xsl:param name="zdsObject"/>
+        <xsl:param name="self"/>
+        <xsl:param name="default" />
+        <xsl:choose>
+            <xsl:when test="$param">
+                <xsl:copy-of select="$param"/>
+            </xsl:when>
+            <xsl:when test="$zgwObject">
+                <xsl:copy-of select="$zgwObject"/>
+            </xsl:when>
+            <xsl:when test="$zdsObject">
+                <xsl:copy-of select="$zdsObject"/>
+            </xsl:when>
+            <xsl:when test="$self">
+                <xsl:copy-of select="$self"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:if test="$default">
+                    <xsl:copy-of select="$default"/>
+                </xsl:if>
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
     

@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.6.3](https://github.com/wearefrank/openforms2bpel/compare/v1.6.2...v1.6.3) (2023-11-03)
+
+
+### 🧑‍💻 Code Refactoring
+
+* initiate and register bsn as user headerproperty ([616d280](https://github.com/wearefrank/openforms2bpel/commit/616d280620a45569c5e85053eb722af38fed2bf2))
+
+
+### ✅ Tests
+
+* zaaktype P9_2_KLB digid ([3d7b923](https://github.com/wearefrank/openforms2bpel/commit/3d7b923f55c81359afec34ba3cc91fc027765640))
+
 ## [1.6.2](https://github.com/wearefrank/openforms2bpel/compare/v1.6.1...v1.6.2) (2023-11-02)
 
 

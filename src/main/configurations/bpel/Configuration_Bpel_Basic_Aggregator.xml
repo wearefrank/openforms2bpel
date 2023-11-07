@@ -22,7 +22,7 @@
                 >
                 <Param name="Type" value="ZgwObject"/>
                 <Forward name="success" path="DigiDAsDomainCondition"/>
-                <Forward name="error" path="InternalServerError"/>
+                <Forward name="error" path="EXCEPTION"/>
             </XsltPipe>
 
             <XmlIfPipe
@@ -32,18 +32,75 @@
 				>
 				<Forward name="then" path="StoreDigiDAsDomain" />
 				<Forward name="else" path="CreateInitiateRequestMessage" />
-				<Forward name="exception" path="InternalServerError" />
+				<Forward name="exception" path="EXCEPTION" />
 			</XmlIfPipe>
 
             <PutInSessionPipe
                 name="StoreDigiDAsDomain"
                 >
                 <Param name="Domain" value="DigiD" />
-				<Forward name="success" path="CreateInitiateRequestMessage" />
+				<Forward name="success" path="GetEnkelvoudigInformatieObjectSender" />
 			</PutInSessionPipe>
+
+            <SenderPipe
+				name="GetEnkelvoudigInformatieObjectSender"
+				>
+				<HttpSender
+					name="GetEnkelvoudigInformatieObjectHttpSender"
+					headersParams="Accept-Crs,Authorization"
+					>
+					<Param name="Authorization" value="@@documenten-api.jwt@@" />
+					<Param name="url" xpathExpression="//pdf_url" />
+					<Param name="Accept-Crs" value="EPSG:4326" />
+				</HttpSender>
+				<Forward name="success" path="GetEnkelvoudigInformatieObjectSender_JsonToXml" />
+				<Forward name="Exception" path="EXCEPTION" />
+			</SenderPipe>
+
+            <JsonPipe 
+				name="GetEnkelvoudigInformatieObjectSender_JsonToXml"
+				>
+                <Forward name="success" path="GetEnkelvoudigInformatieObjectSender_UnwrapOpenZaakEnvelopeToSingle"/>
+            </JsonPipe>
+
+			<XsltPipe
+                name="GetEnkelvoudigInformatieObjectSender_UnwrapOpenZaakEnvelopeToSingle"
+                styleSheetName="Zgw/UnwrapOpenZaakApiEnvelopeToSingle.xslt"
+                storeResultInSessionKey="ZgwEnkelvoudigInformatieObject"
+                >
+                <Param name="Type" value="ZgwEnkelvoudigInformatieObject"/>
+                <Forward name="success" path="GetEnkelvoudigInformatieObjectInhoudSender"/>
+                <Forward name="error" path="InternalServerError"/>
+            </XsltPipe>
+
+            <SenderPipe
+				name="GetEnkelvoudigInformatieObjectInhoudSender"
+				>
+				<HttpSender
+					name="GetEnkelvoudigInformatieObjectInhoudHttpSender"
+					headersParams="Accept-Crs,Authorization"
+					>
+					<Param name="Authorization" value="@@documenten-api.jwt@@" />
+					<Param name="url" xpathExpression="//inhoud" />
+					<Param name="Accept-Crs" value="EPSG:4326" />
+				</HttpSender>
+				<Forward name="success" path="GetEnkelvoudigInformatieObjectInhoudSender_EncodeBase64" />
+				<Forward name="Exception" path="EXCEPTION" />
+			</SenderPipe>
+
+            <Base64Pipe 
+                name="GetEnkelvoudigInformatieObjectInhoudSender_EncodeBase64"
+                direction="ENCODE"
+                lineLength="0"
+                storeResultInSessionKey="ZgwEnkelvoudigInformatieObjectInhoud"
+                >
+                <Forward name="success" path="CreateInitiateRequestMessage" />
+				<Forward name="Exception" path="EXCEPTION" />
+            </Base64Pipe>
 
             <XsltPipe
                 name="CreateInitiateRequestMessage"
+                getInputFromSessionKey="UnwrappedMessage"
                 styleSheetName="Bpel/Basic/Model/InitiateRequestMessage.xslt"
                 storeResultInSessionKey="InitiateRequestMessage"
                 >
@@ -94,6 +151,9 @@
                 <Param name="Description" value="dummy" />
                 <Param name="Clarification" value="marcel@wearefrank.nl" />
                 <Param name="Channel" value="WEBFORM" />
+                <Param name="FileName" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//bestandsnaam" />
+                <Param name="FileMimeType" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//formaat" />
+                <Param name="FileData" sessionKey="ZgwEnkelvoudigInformatieObjectInhoud" />
                 <Forward name="success" path="CreateRegisterRequestMessage" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>

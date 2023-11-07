@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.7.0](https://github.com/wearefrank/openforms2bpel/compare/v1.6.5...v1.7.0) (2023-11-07)
+
+
+### 🍕 Features
+
+* retrieve openforms result pdf from openzaak and pass to bpel ([b10d642](https://github.com/wearefrank/openforms2bpel/commit/b10d6426cdc2033cd5d3a3042845f577b5371e8c))
+
 ## [1.6.5](https://github.com/wearefrank/openforms2bpel/compare/v1.6.4...v1.6.5) (2023-11-03)
 
 

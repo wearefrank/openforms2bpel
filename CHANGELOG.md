@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.8.0](https://github.com/wearefrank/openforms2bpel/compare/v1.7.0...v1.8.0) (2023-11-08)
+
+
+### 🍕 Features
+
+* errorstore on notification callback for assured delivery ([4b4938c](https://github.com/wearefrank/openforms2bpel/commit/4b4938cfc7daf0a69f6c2fbfcff376375aea6be5))
+
+
+### 🐛 Bug Fixes
+
+* auth-aliases for zgw-apis default to zaken-api.jwt ([a9be018](https://github.com/wearefrank/openforms2bpel/commit/a9be018d2c036a7c1f98795e28be0bc36e5ca9d8))
+
 ## [1.7.0](https://github.com/wearefrank/openforms2bpel/compare/v1.6.5...v1.7.0) (2023-11-07)
 
 

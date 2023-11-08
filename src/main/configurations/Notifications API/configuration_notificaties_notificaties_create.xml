@@ -15,6 +15,12 @@
 				produces="JSON"
 				consumes="JSON"
 			/>
+			<JdbcErrorStorage
+                name="JdbcErrorStorage"
+                datasourceName="jdbc/${database.instance.name}"
+                slotId="${instance.name}/notificaties_notificaties_create"
+				onlyStoreWhenMessageIdUnique="true"
+				/>
 		</Receiver>
 		<Pipeline>
 			<Exits>

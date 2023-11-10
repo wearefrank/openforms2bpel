@@ -174,6 +174,8 @@
                 <Param name="EmailParameters" sessionKey="EmailParameters" type="DOMDOC" />
                 <Param name="Process" xpathExpression="/ZgwObject/type/text()" />
                 <Param name="CaseParameters" sessionKey="CaseParameters" type="DOMDOC" />
+                <Param name="Documents" xpathExpression="count(//attachments) gt 0" />
+                <Param name="NumberOfDocuments" xpathExpression="count(//attachments)" />
                 <Forward name="success" path="BpelBasicPostRegisterSender" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>

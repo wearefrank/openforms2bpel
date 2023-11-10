@@ -94,6 +94,32 @@
                     javaListener="Bpel_Documents_PostAddDocument"
                     >
                 </IbisLocalSender>
+                <Forward name="success" path="CreateAddDocumentMtomRequestMessage" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <XsltPipe
+                name="CreateAddDocumentMtomRequestMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Mtom/Model/AddDocumentRequestMessage.xslt"
+                storeResultInSessionKey="AddDocumentMtomRequestMessage"
+                >
+                <Param name="SessionId" sessionKey="AddDocumentResponseMessage" xpathExpression="//*:sessionId" />
+                <Param name="ContentType" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="tokenize(//formaat, '/')[last()]" />
+                <Param name="Document" sessionKey="ZgwEnkelvoudigInformatieObjectInhoud" />
+                <Forward name="success" path="BpelMtomPostAddDocumentSender" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelMtomPostAddDocumentSender"
+                storeResultInSessionKey="AddDocumentMtomResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelMtomPostAddDocumentLocalSender"
+                    javaListener="Bpel_Mtom_PostAddDocument"
+                    >
+                </IbisLocalSender>
                 <Forward name="success" path="EXIT" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>

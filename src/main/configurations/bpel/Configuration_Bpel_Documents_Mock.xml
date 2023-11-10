@@ -75,7 +75,7 @@
                 xpathExpression="$SOAPAction = 'addDocument'"
                 >
                 <Param name="SOAPAction" sessionKey="SOAPAction" />
-                <Forward name="true" path="CreateEndBatchResponseMessage" />
+                <Forward name="true" path="CreateAddDocumentResponseMessage" />
                 <Forward name="false" path="CreateError" />
             </XmlSwitchPipe>
 
@@ -85,7 +85,7 @@
                 soapBodyStyleSheet="Bpel/Documents/Model/AddDocumentResponseMessage.xslt"
                 >
                 <Param name="SessionId" value="1234567890" />
-                <Param name="ReferenceNumber" value="12345" />
+                <Param name="ReferenceNumber" value="doc12345" />
                 <Param name="Initiated" xpathExpression="string($NowDateTime)" >
                 	<Param name="NowDateTime" pattern="{now}" type="DATETIME" />
 				</Param>

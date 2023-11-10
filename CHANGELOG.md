@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.10.0](https://github.com/wearefrank/openforms2bpel/compare/v1.9.1...v1.10.0) (2023-11-10)
+
+
+### 🍕 Features
+
+* upload document data to document vault via mtom service ([31991de](https://github.com/wearefrank/openforms2bpel/commit/31991deaff348484556c6ba7be5fb130f44a0021))
+
+
+### 🐛 Bug Fixes
+
+* errorstore not triggered when error in subadapter ([ef2b524](https://github.com/wearefrank/openforms2bpel/commit/ef2b524a8d739a26dde783d5ceeb0c58ef070d4c))
+
 ## [1.9.1](https://github.com/wearefrank/openforms2bpel/compare/v1.9.0...v1.9.1) (2023-11-10)
 
 

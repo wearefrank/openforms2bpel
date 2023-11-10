@@ -1,0 +1,92 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter name="Bpel_Mtom_Mock"
+        active="${Bpel_Mtom_Mock.Active}"
+        description="">
+
+        <Receiver name="Bpel_Mtom_Mock">
+            <WebServiceListener name="Bpel_Mtom_Mock" address="${openforms2bpel.bpel.mtom-service.mock-endpoint}" soap="false"/>
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS"/>
+                <Exit name="EXCEPTION" state="ERROR"/>
+            </Exits>
+
+            <WsdlXmlValidatorPipe 
+                name="ValidateInput"
+				wsdl="Bpel/Mtom/DocumentVaultMTOMConnector.wsdl"
+                soapBody="addDocument"
+                ignoreUnknownNamespaces="true"
+                >
+				<Forward name="success" path="UnwrapInput"/>
+				<Forward name="failure" path="CreateError"/>
+                <Forward name="exception" path="CreateError"/>
+			</WsdlXmlValidatorPipe>
+
+            <SoapWrapperPipe 
+                name="UnwrapInput"
+                direction="UNWRAP"
+                >
+                <Forward name="success" path="InitiateActionCondition"/>
+            </SoapWrapperPipe>
+
+            <XmlSwitchPipe 
+                name="InitiateActionCondition"
+                xpathExpression="$SOAPAction = 'initiate'"
+                >
+                <Param name="SOAPAction" sessionKey="SOAPAction" />
+                <Forward name="true" path="CreateInitiateResponseMessage" />
+                <Forward name="false" path="RegisterActionCondition" />
+            </XmlSwitchPipe>
+
+            <SoapWrapperPipe
+                name="CreateInitiateResponseMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                soapBodyStyleSheet="Bpel/Basic/Model/InitiateResponseMessage.xslt"
+                >
+                <Param name="CorrelationId" sessionKey="cid" />
+                <Param name="ProcessId" value="B1096" />
+                <Forward name="success" path="EXIT"/>
+                <Forward name="exception" path="CreateError"/>
+            </SoapWrapperPipe>
+
+            <XmlSwitchPipe 
+                name="RegisterActionCondition"
+                xpathExpression="$SOAPAction = 'register'"
+                >
+                <Param name="SOAPAction" sessionKey="SOAPAction" />
+                <Forward name="true" path="CreateRegisterResponseMessage" />
+                <Forward name="false" path="CreateError" />
+            </XmlSwitchPipe>
+
+            <SoapWrapperPipe
+                name="CreateRegisterResponseMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                soapBodyStyleSheet="Bpel/Basic/Model/RegisterResponseMessage.xslt"
+                >
+                <Param name="CorrelationId" sessionKey="cid" />
+                <Param name="ProcessId" value="B1096" />
+                <Param name="ReferenceNumber" value="dummy" />
+                <Forward name="success" path="EXIT"/>
+                <Forward name="exception" path="CreateError"/>
+            </SoapWrapperPipe>
+
+            <SoapWrapperPipe
+                name="CreateError"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                soapBodyStyleSheet="Bpel/Basic/Model/Error.xslt"
+                >
+                <Param name="CorrelationId" sessionKey="cid" />
+                <Param name="ProcessId" value="B1096" />
+                <Param name="Source" value="dummy" />
+                <Param name="Code" value="dummy" />
+                <Param name="Message" value="dummy" />
+                <Param name="Stacktrace" value="dummy" />
+                <Forward name="success" path="EXIT"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </SoapWrapperPipe>
+
+        </Pipeline>
+    </Adapter>
+</Module>

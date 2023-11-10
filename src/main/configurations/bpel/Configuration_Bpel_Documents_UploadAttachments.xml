@@ -1,0 +1,89 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter
+        name="Bpel_Documents_UploadAttachments"
+        active="${Bpel_Documents_UploadAttachments.Active}"
+        description=""
+        >
+
+        <Receiver name="Bpel_Documents_UploadAttachments">
+            <JavaListener name="Bpel_Documents_UploadAttachments" />
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <XsltPipe
+                name="CreateStartBatchMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Documents/Model/StartBatchRequestMessage.xslt"
+                storeResultInSessionKey="StartBatchRequestMessage"
+                >
+                <Param name="Case" sessionKey="Case" />
+                <Param name="Provider" sessionKey="Provider" />
+                <Forward name="success" path="BpelDocumentsPostStartBatchSender" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelDocumentsPostStartBatchSender"
+                storeResultInSessionKey="StartBatchResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelDocumentsPostStartBatchLocalSender"
+                    javaListener="Bpel_Documents_PostStartBatch"
+                    >
+                </IbisLocalSender>
+                <Forward name="success" path="UploadAttachmentIterator" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <ForEachChildElementPipe
+                name="UploadAttachmentIterator"
+                elementXPathExpression="//attachments"
+                getInputFromSessionKey="originalMessage"
+                storeResultInSessionKey="UploadAttachmentResults"
+                >
+                <IbisLocalSender
+                    javaListener="Bpel_Documents_UploadAttachment"
+                    >
+                    <Param name="Url" xpathExpression="/attachments" />
+                    <Param name="Case" sessionKey="Case" />
+                    <Param name="Provider" sessionKey="Provider" />
+                    <Param name="BatchNumber" sessionKey="StartBatchResponseMessage" xpathExpression="//batchNumber" />
+                </IbisLocalSender>
+                <Forward name="success" path="CreateEndBatchMessage" />
+                <Forward name="exception" path="EXCEPTION" />
+            </ForEachChildElementPipe>
+
+            <XsltPipe
+                name="CreateEndBatchMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Documents/Model/EndBatchRequestMessage.xslt"
+                storeResultInSessionKey="EndBatchRequestMessage"
+                >
+                <Param name="BatchNumber" sessionKey="StartBatchResponseMessage" xpathExpression="//*:batchNumber" />
+                <Param name="Case" sessionKey="Case" />
+                <Param name="Provider" sessionKey="Provider" />
+                <Forward name="success" path="BpelDocumentsPostEndBatchSender" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelDocumentsPostEndBatchSender"
+                storeResultInSessionKey="EndBatchResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelDocumentsPostEndBatchLocalSender"
+                    javaListener="Bpel_Documents_PostEndBatch"
+                    >
+                </IbisLocalSender>
+                <Forward name="success" path="EXIT" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+        </Pipeline>
+    </Adapter>
+</Module>

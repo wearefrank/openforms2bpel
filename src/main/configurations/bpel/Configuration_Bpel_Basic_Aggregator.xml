@@ -180,12 +180,28 @@
 
             <SenderPipe
                 name="BpelBasicPostRegisterSender"
+                storeResultInSessionKey="RegisterResponseMessage"
                 >
                 <IbisLocalSender
                     name="BpelBasicPostRegisterLocalSender"
                     javaListener="Bpel_Basic_PostRegister"
                     >
                 </IbisLocalSender>
+                <Forward name="success" path="BpelDocumentsUploadAttachmentsSender" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <SenderPipe
+                name="BpelDocumentsUploadAttachmentsSender"
+                getInputFromSessionKey="UnwrappedMessage"
+                >
+                <IbisLocalSender
+                    name="BpelDocumentsUploadAttachmentsLocalSender"
+                    javaListener="Bpel_Documents_UploadAttachments"
+                    >
+                </IbisLocalSender>
+                <Param name="Case" sessionKey="RegisterResponseMessage" xpathExpression="//referenceNumber" />
+                <Param name="Provider" xpathExpression="/ZgwObject/bsn/text()" />
                 <Forward name="success" path="EXIT" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>

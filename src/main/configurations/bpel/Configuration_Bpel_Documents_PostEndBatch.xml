@@ -1,0 +1,48 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter
+        name="Bpel_Documents_PostEndBatch"
+        active="${Bpel_Documents_PostEndBatch.Active}"
+        description=""
+        >
+
+        <Receiver name="Bpel_Documents_PostEndBatch">
+            <JavaListener name="Bpel_Documents_PostEndBatch" />
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <SenderPipe
+                name="PostBpelDocumentsEndBatchSender"
+                >
+                <SoapInputWrapper direction="WRAP" />
+                <WebServiceSender
+                    name="PostBpelDocumentsEndBatchWebServiceSender"
+                    soap="false"
+                    methodType="POST"
+                    soapAction="endBatch"
+                    verifyHostname="${openforms2bpel.bpel.documents-service.verify-hostname}"
+                    allowSelfSignedCertificates="${openforms2bpel.bpel.documents-service.allow-self-signed-certs}"
+                    ignoreCertificateExpiredException="${openforms2bpel.bpel.documents-service.ignore-expired-certs}"
+                    timeout="${openforms2bpel.bpel.documents-service.timeout}"
+                    throwApplicationFaults="false"
+                    >
+                    <Param name="url" value="${openforms2bpel.bpel.documents-service.endoint}" />  
+                </WebServiceSender>
+                <Forward name="success" path="UnwrapResponse" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <SoapWrapperPipe
+                name="UnwrapResponse"
+                direction="UNWRAP" 
+                />
+
+            <!-- TODO: Error handling based on http code -->
+
+        </Pipeline>
+    </Adapter>
+</Module>

@@ -1,0 +1,117 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter name="Bpel_Documents_Mock"
+        active="${Bpel_Documents_Mock.Active}"
+        description="">
+
+        <Receiver name="Bpel_Documents_Mock">
+            <WebServiceListener name="Bpel_Documents_Mock" address="${openforms2bpel.bpel.documents-service.mock-endpoint}" soap="false"/>
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS"/>
+                <Exit name="EXCEPTION" state="ERROR"/>
+            </Exits>
+
+            <WsdlXmlValidatorPipe 
+                name="ValidateInput"
+				wsdl="Bpel/Documents/DocumentsService.wsdl"
+                soapBody="startBatch,endBatch,addDocument"
+                ignoreUnknownNamespaces="true"
+                >
+				<Forward name="success" path="UnwrapInput"/>
+				<Forward name="failure" path="CreateError"/>
+                <Forward name="exception" path="CreateError"/>
+			</WsdlXmlValidatorPipe>
+
+            <SoapWrapperPipe 
+                name="UnwrapInput"
+                direction="UNWRAP"
+                >
+                <Forward name="success" path="StartBatchActionCondition"/>
+            </SoapWrapperPipe>
+
+            <XmlSwitchPipe 
+                name="StartBatchActionCondition"
+                xpathExpression="$SOAPAction = 'startBatch'"
+                >
+                <Param name="SOAPAction" sessionKey="SOAPAction" />
+                <Forward name="true" path="CreateStartBatchResponseMessage" />
+                <Forward name="false" path="EndBatchActionCondition" />
+            </XmlSwitchPipe>
+
+            <SoapWrapperPipe
+                name="CreateStartBatchResponseMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                soapBodyStyleSheet="Bpel/Documents/Model/StartBatchResponseMessage.xslt"
+                >
+                <Param name="BatchNumber" value="555" />
+                <Forward name="success" path="EXIT"/>
+                <Forward name="exception" path="CreateError"/>
+            </SoapWrapperPipe>
+
+            <XmlSwitchPipe 
+                name="EndBatchActionCondition"
+                xpathExpression="$SOAPAction = 'endBatch'"
+                >
+                <Param name="SOAPAction" sessionKey="SOAPAction" />
+                <Forward name="true" path="CreateEndBatchResponseMessage" />
+                <Forward name="false" path="AddDocumentActionCondition" />
+            </XmlSwitchPipe>
+
+            <SoapWrapperPipe
+                name="CreateEndBatchResponseMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                soapBodyStyleSheet="Bpel/Documents/Model/EndBatchResponseMessage.xslt"
+                >
+                <Param name="BatchNumber" value="555" />
+                <Param name="BatchSize" value="1" />
+                <Forward name="success" path="EXIT"/>
+                <Forward name="exception" path="CreateError"/>
+            </SoapWrapperPipe>
+
+            <XmlSwitchPipe 
+                name="AddDocumentActionCondition"
+                xpathExpression="$SOAPAction = 'addDocument'"
+                >
+                <Param name="SOAPAction" sessionKey="SOAPAction" />
+                <Forward name="true" path="CreateEndBatchResponseMessage" />
+                <Forward name="false" path="CreateError" />
+            </XmlSwitchPipe>
+
+            <SoapWrapperPipe
+                name="CreateAddDocumentResponseMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                soapBodyStyleSheet="Bpel/Documents/Model/AddDocumentResponseMessage.xslt"
+                >
+                <Param name="SessionId" value="1234567890" />
+                <Param name="ReferenceNumber" value="12345" />
+                <Param name="Initiated" xpathExpression="string($NowDateTime)" >
+                	<Param name="NowDateTime" pattern="{now}" type="DATETIME" />
+				</Param>
+                <Param name="TimeToLive" xpathExpression="string($NowDateTime)" >
+                	<Param name="NowDateTime" pattern="{now}" type="DATETIME" />
+				</Param>
+
+                <Param name="BatchNumber" value="555" />
+                <Param name="BatchSequenceNr" value="1" />
+                <Forward name="success" path="EXIT"/>
+                <Forward name="exception" path="CreateError"/>
+            </SoapWrapperPipe>
+
+            <SoapWrapperPipe
+                name="CreateError"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                soapBodyStyleSheet="Bpel/Documents/Model/DocumentFaultMessage.xslt"
+                >
+                <Param name="Source" value="dummy" />
+                <Param name="Code" value="dummy" />
+                <Param name="Message" value="dummy" />
+                <Param name="Stacktrace" value="dummy" />
+                <Forward name="success" path="EXIT"/>
+                <Forward name="exception" path="EXCEPTION"/>
+            </SoapWrapperPipe>
+
+        </Pipeline>
+    </Adapter>
+</Module>

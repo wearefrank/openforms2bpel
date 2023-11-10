@@ -1,0 +1,103 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter
+        name="Bpel_Documents_UploadAttachment"
+        active="${Bpel_Documents_UploadAttachment.Active}"
+        description=""
+        >
+
+        <Receiver name="Bpel_Documents_UploadAttachment">
+            <JavaListener name="Bpel_Documents_UploadAttachment" />
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <SenderPipe
+				name="GetEnkelvoudigInformatieObjectSender"
+				>
+				<HttpSender
+					name="GetEnkelvoudigInformatieObjectHttpSender"
+					headersParams="Accept-Crs,Authorization"
+					>
+					<Param name="Authorization" value="@@documenten-api.jwt@@" />
+					<Param name="url" sessionKey="Url" />
+					<Param name="Accept-Crs" value="EPSG:4326" />
+				</HttpSender>
+				<Forward name="success" path="GetEnkelvoudigInformatieObjectSender_JsonToXml" />
+				<Forward name="Exception" path="EXCEPTION" />
+			</SenderPipe>
+
+            <JsonPipe 
+				name="GetEnkelvoudigInformatieObjectSender_JsonToXml"
+				>
+                <Forward name="success" path="GetEnkelvoudigInformatieObjectSender_UnwrapOpenZaakEnvelopeToSingle"/>
+            </JsonPipe>
+
+			<XsltPipe
+                name="GetEnkelvoudigInformatieObjectSender_UnwrapOpenZaakEnvelopeToSingle"
+                styleSheetName="Zgw/UnwrapOpenZaakApiEnvelopeToSingle.xslt"
+                storeResultInSessionKey="ZgwEnkelvoudigInformatieObject"
+                >
+                <Param name="Type" value="ZgwEnkelvoudigInformatieObject"/>
+                <Forward name="success" path="GetEnkelvoudigInformatieObjectInhoudSender"/>
+                <Forward name="error" path="InternalServerError"/>
+            </XsltPipe>
+
+            <SenderPipe
+				name="GetEnkelvoudigInformatieObjectInhoudSender"
+				>
+				<HttpSender
+					name="GetEnkelvoudigInformatieObjectInhoudHttpSender"
+					headersParams="Accept-Crs,Authorization"
+					>
+					<Param name="Authorization" value="@@documenten-api.jwt@@" />
+					<Param name="url" xpathExpression="//inhoud" />
+					<Param name="Accept-Crs" value="EPSG:4326" />
+				</HttpSender>
+				<Forward name="success" path="GetEnkelvoudigInformatieObjectInhoudSender_EncodeBase64" />
+				<Forward name="Exception" path="EXCEPTION" />
+			</SenderPipe>
+
+            <Base64Pipe 
+                name="GetEnkelvoudigInformatieObjectInhoudSender_EncodeBase64"
+                direction="ENCODE"
+                lineLength="0"
+                storeResultInSessionKey="ZgwEnkelvoudigInformatieObjectInhoud"
+                >
+                <Forward name="success" path="CreateAddDocumentRequestMessage" />
+				<Forward name="Exception" path="EXCEPTION" />
+            </Base64Pipe>
+
+            <XsltPipe
+                name="CreateAddDocumentRequestMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Documents/Model/AddDocumentRequestMessage.xslt"
+                storeResultInSessionKey="AddDocumentRequestMessage"
+                >
+                <Param name="ZgwEnkelvoudigInformatieObject" sessionKey="ZgwEnkelvoudigInformatieObject" type="DOMDOC" />
+                <Param name="Case" sessionKey="Case"/>
+                <Param name="Provider" sessionKey="Provider" />
+                <Param name="BatchNumber" sessionKey="BatchNumber" />
+                <Forward name="success" path="BpelDocumentsPostAddDocumentSender" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelDocumentsPostAddDocumentSender"
+                storeResultInSessionKey="AddDocumentResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelDocumentsPostAddDocumentLocalSender"
+                    javaListener="Bpel_Documents_PostAddDocument"
+                    >
+                </IbisLocalSender>
+                <Forward name="success" path="EXIT" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+        </Pipeline>
+    </Adapter>
+</Module>

@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.9.0](https://github.com/wearefrank/openforms2bpel/compare/v1.8.0...v1.9.0) (2023-11-10)
+
+
+### 🍕 Features
+
+* add document metadata to case for all form attachments ([#27](https://github.com/wearefrank/openforms2bpel/issues/27)) ([5779a02](https://github.com/wearefrank/openforms2bpel/commit/5779a0295f8ea9f8faeb4928e5b08350a4226e09))
+
 ## [1.8.0](https://github.com/wearefrank/openforms2bpel/compare/v1.7.0...v1.8.0) (2023-11-08)
 
 

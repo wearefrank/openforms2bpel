@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.9.1](https://github.com/wearefrank/openforms2bpel/compare/v1.9.0...v1.9.1) (2023-11-10)
+
+
+### 🐛 Bug Fixes
+
+* bpel register documents true false and count missing ([d7afd26](https://github.com/wearefrank/openforms2bpel/commit/d7afd2649d945242c7e48a3efa97b19716c0c745))
+
 ## [1.9.0](https://github.com/wearefrank/openforms2bpel/compare/v1.8.0...v1.9.0) (2023-11-10)
 
 

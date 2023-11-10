@@ -37,7 +37,6 @@
 				>
 				<Forward name="then" path="Forbidden" />
 				<Forward name="else" path="JsonToXml" />
-				<Forward name="exception" path="InternalServerError" />
 			</XmlIfPipe>
 
 			<JsonPipe
@@ -53,7 +52,6 @@
 				>
 				<Forward name="then" path="Created" />
 				<Forward name="else" path="ResourceRequestSender" />
-				<Forward name="exception" path="InternalServerError" />
 			</XmlIfPipe>
 
 			<SenderPipe
@@ -68,7 +66,6 @@
 					<Param name="Accept-Crs" value="EPSG:4326" />
 				</HttpSender>
 				<Forward name="success" path="ObjectCreateSender" />
-				<Forward name="Exception" path="InternalServerError" />
 			</SenderPipe>
 
 			<SenderPipe
@@ -80,7 +77,6 @@
 					>
 				</IbisLocalSender>
 				<Forward name="success" path="Created" />
-				<Forward name="exception" path="InternalServerError" />
 			</SenderPipe>
 		</Pipeline>
 	</Adapter>

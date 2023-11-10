@@ -15,6 +15,13 @@
             <xsl:value-of select="concat(substring($dateStr,1,4), '-', substring($dateStr,5,2), '-', substring($dateStr,7,2))"/>
         </xsl:if>
     </xsl:function>
+
+    <xsl:function name="zgw:toZgwDateTime">
+        <xsl:param name="dateStr" />
+        <xsl:if test="string-length($dateStr) > 0">
+            <xsl:value-of select="xs:dateTime(xs:date($dateStr))"/>
+        </xsl:if>
+    </xsl:function>
     
     <xsl:function name="zgw:convertZgwBooleanToZdsBoolean">
         <xsl:param name="zgwBoolean"/>

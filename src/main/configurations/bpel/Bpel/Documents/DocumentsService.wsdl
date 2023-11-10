@@ -1,0 +1,6164 @@
+
+<definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mosoap="http://www.emaxx.org/core/soap" xmlns:document="http://www.emaxx.org/functional/cases/document" xmlns:core="http://www.emaxx.org/core" xmlns:common="http://www.emaxx.org/msg/common" xmlns:cases="http://www.emaxx.org/functional/cases" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.emaxx.org/functional/cases/document">
+  <types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mosoap="http://www.emaxx.org/core/soap" xmlns:document="http://www.emaxx.org/functional/cases/document" xmlns:core="http://www.emaxx.org/core" xmlns:common="http://www.emaxx.org/msg/common" xmlns:cases="http://www.emaxx.org/functional/cases" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/functional/cases/document">
+			
+  <xs:import namespace="http://www.emaxx.org/msg/common"/>
+			
+  <xs:import namespace="http://www.emaxx.org/functional/cases"/>
+			
+  <xs:complexType name="tCaseId">
+				
+    <xs:sequence>
+					
+      <xs:element name="referenceNumber" type="cases:tReferenceNumber"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tCaseTypeDMS">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tCaseTypeDMSId">
+						
+        <xs:sequence>
+							
+          <xs:element name="dmsCode" type="document:tCode"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tCaseTypeDMSId">
+				
+    <xs:sequence>
+					
+      <xs:element name="caseTypeCode" type="document:tCode"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tCaseTypeDMSes">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="caseTypeDMS" type="document:tCaseTypeDMS"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tCheckout">
+				
+    <xs:sequence>
+					
+      <xs:element name="date" nillable="true" type="xs:dateTime"/>
+					
+      <xs:element name="employeeId" nillable="true" type="xs:int"/>
+					
+      <xs:element name="employeeUsername" type="cases:tUsername"/>
+					
+      <xs:element name="type" nillable="true" type="document:tCheckoutType"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDMS">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tDMSId">
+						
+        <xs:sequence>
+							
+          <xs:element name="plugin" type="document:tPlugin"/>
+							
+          <xs:element name="configuration" type="document:tXML"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDMSId">
+				
+    <xs:sequence>
+					
+      <xs:element name="code" type="document:tCode"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDMSes">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dms" type="document:tDMS"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocument">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tDocumentId">
+						
+        <xs:sequence>
+							
+          <xs:element name="fileName" type="document:tFileName"/>
+							
+          <xs:element name="mimeType" nillable="true" type="document:tMimeType"/>
+							
+          <xs:element minOccurs="0" name="mimeTypeReason" type="document:tMimeTypeReason"/>
+							
+          <xs:element minOccurs="0" name="mimeTypeVersion" type="document:tMimeTypeVersion"/>
+							
+          <xs:element minOccurs="0" name="mimeTypeActive" nillable="true" type="document:tYesNo"/>
+							
+          <xs:element name="fileSize" type="cases:tNumber18"/>
+							
+          <xs:element name="forwardExtension" type="document:tForwardExtension"/>
+							
+          <xs:element name="expirationDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="batchNumber" type="document:tBatchNumber"/>
+							
+          <xs:element name="version" type="document:tVersion"/>
+							
+          <xs:element name="confidentialityLevel" nillable="true" type="document:tConfidentialityLevel"/>
+							
+          <xs:element minOccurs="0" name="hashValue" type="document:tHashValue"/>
+							
+          <xs:element minOccurs="0" name="registrationDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="creationDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="receiptDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="sendDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="title" type="document:tTitle"/>
+							
+          <xs:element name="description" type="document:tDocumentDescription"/>
+							
+          <xs:element name="author" type="document:tAuthor"/>
+							
+          <xs:element name="format" type="document:tFormat"/>
+							
+          <xs:element name="status" type="document:tStatus"/>
+							
+          <xs:element name="initialDocumentIndication" nillable="true" type="document:tYesNo"/>
+							
+          <xs:element minOccurs="0" name="characteristic" type="document:tCharacteristic"/>
+							
+          <xs:element minOccurs="0" name="receivedRegistered" nillable="true" type="document:tYesNo"/>
+							
+          <xs:element minOccurs="0" name="mailRegistrationNr" type="document:tMailRegistrationNr"/>
+							
+          <xs:element name="language" type="document:tLanguageId"/>
+							
+          <xs:element name="documentType" type="document:tDocumentTypeId"/>
+							
+          <xs:element name="case" type="document:tCaseId"/>
+							
+          <xs:element name="provider" type="document:tProvider"/>
+							
+          <xs:element name="targetSystems" type="document:tTargetSystems"/>
+							
+          <xs:element minOccurs="0" name="sourceSystem" type="document:tExtSystem"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentExtension">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tDocumentExtensionId">
+						
+        <xs:sequence>
+							
+          <xs:element name="description" type="document:tDescription"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentExtensionId">
+				
+    <xs:sequence>
+					
+      <xs:element name="extension" type="document:tExtension"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentExtensionIds">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="documentExtension" type="document:tDocumentExtensionId"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentExtensions">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="documentExtension" type="document:tDocumentExtension"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentId">
+				
+    <xs:sequence>
+					
+      <xs:element name="referenceNumber" type="document:tDocumentIdentification"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentInfo">
+				
+    <xs:sequence>
+					
+      <xs:element name="referenceNumber" type="document:tReferenceNumber"/>
+					
+      <xs:element default="N" name="initialDocumentIndication" type="document:tYesNo"/>
+					
+      <xs:element name="confidentialityLevel" nillable="true" type="document:tConfidentialityLevel"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentList">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="document" type="document:tDocumentListItem"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentListItem">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tDocumentId">
+						
+        <xs:sequence>
+							
+          <xs:element name="fileName" type="document:tFileName"/>
+							
+          <xs:element name="mimeType" nillable="true" type="document:tMimeType"/>
+							
+          <xs:element minOccurs="0" name="mimeTypeReason" type="document:tMimeTypeReason"/>
+							
+          <xs:element minOccurs="0" name="mimeTypeVersion" type="document:tMimeTypeVersion"/>
+							
+          <xs:element minOccurs="0" name="mimeTypeActive" nillable="true" type="document:tYesNo"/>
+							
+          <xs:element name="fileSize" type="cases:tNumber18"/>
+							
+          <xs:element name="forwardExtension" type="document:tForwardExtension"/>
+							
+          <xs:element name="expirationDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="batchNumber" type="document:tBatchNumber"/>
+							
+          <xs:element name="version" type="document:tVersion"/>
+							
+          <xs:element name="confidentialityLevel" nillable="true" type="document:tConfidentialityLevel"/>
+							
+          <xs:element name="confidentialityLevelName" type="document:tConfidentialityLevelName"/>
+							
+          <xs:element name="hashValue" type="document:tHashValue"/>
+							
+          <xs:element name="registrationDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="creationDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="receiptDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="sendDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="title" type="document:tTitle"/>
+							
+          <xs:element name="description" type="document:tDocumentDescription"/>
+							
+          <xs:element name="author" type="document:tAuthor"/>
+							
+          <xs:element name="format" type="document:tFormat"/>
+							
+          <xs:element name="status" type="document:tStatus"/>
+							
+          <xs:element name="initialDocumentIndication" nillable="true" type="document:tYesNo"/>
+							
+          <xs:element minOccurs="0" name="characteristic" type="document:tCharacteristic"/>
+							
+          <xs:element minOccurs="0" name="receivedRegistered" nillable="true" type="document:tYesNo"/>
+							
+          <xs:element minOccurs="0" name="mailRegistrationNr" type="document:tMailRegistrationNr"/>
+							
+          <xs:element name="language" type="document:tLanguage"/>
+							
+          <xs:element default="N" minOccurs="0" name="composite" type="document:tYesNo"/>
+							
+          <xs:element minOccurs="0" name="checkout" type="document:tCheckout"/>
+							
+          <xs:element minOccurs="0" name="url" type="xs:string"/>
+							
+          <xs:element default="N" minOccurs="0" name="directEditingEnabled" type="document:tYesNo"/>
+							
+          <xs:element minOccurs="0" name="documentSign" type="document:tDocumentSign"/>
+							
+          <xs:element minOccurs="0" name="documentUsageRights" type="document:tDocumentUsageRights"/>
+							
+          <xs:element minOccurs="0" name="integrity" type="document:tDocumentIntegrity"/>	
+							
+          <xs:element name="documentType" type="document:tDocumentType"/>
+							
+          <xs:element name="batchSequenceNr" type="cases:tNumber4"/>
+							
+          <xs:element name="case" type="document:tCaseId"/>
+							
+          <xs:element name="targetSystems" type="document:tTargetSystemsStatus"/>
+							
+          <xs:element minOccurs="0" name="sourceSystem" type="document:tExtSystemStatus"/>
+							
+          <xs:choice>
+								
+            <xs:element minOccurs="0" name="compositeDocumentIdentification" type="document:tDocumentIdentification"/>
+								
+            <xs:element minOccurs="0" name="singularDocumentIdentifications" type="document:tSingularDocumentIdentifications"/>
+							
+          </xs:choice>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentMetadata">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tDocumentId">
+						
+        <xs:sequence>
+							
+          <xs:element minOccurs="0" name="mimeTypeReason" type="document:tMimeTypeReason"/>
+							
+          <xs:element minOccurs="0" name="mimeTypeVersion" type="document:tMimeTypeVersion"/>
+							
+          <xs:element minOccurs="0" name="mimeTypeActive" nillable="true" type="document:tYesNo"/>
+							
+          <xs:element name="expirationDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="version" type="document:tVersion"/>
+							
+          <xs:element name="confidentialityLevel" nillable="true" type="document:tConfidentialityLevel"/>
+							
+          <xs:element minOccurs="0" name="registrationDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="creationDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="receiptDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="sendDate" nillable="true" type="xs:dateTime"/>
+							
+          <xs:element name="title" type="document:tTitle"/>
+							
+          <xs:element name="description" type="document:tDocumentDescription"/>
+							
+          <xs:element name="author" type="document:tAuthor"/>
+							
+          <xs:element name="format" type="document:tFormat"/>
+							
+          <xs:element name="status" type="document:tStatus"/>
+							
+          <xs:element name="initialDocumentIndication" nillable="true" type="document:tYesNo"/>
+							
+          <xs:element minOccurs="0" name="characteristic" type="document:tCharacteristic"/>
+							
+          <xs:element minOccurs="0" name="receivedRegistered" nillable="true" type="document:tYesNo"/>
+							
+          <xs:element minOccurs="0" name="mailRegistrationNr" type="document:tMailRegistrationNr"/>
+							
+          <xs:element name="language" type="document:tLanguageId"/>
+							
+          <xs:element minOccurs="0" name="documentSign" type="document:tDocumentSign"/>
+							
+          <xs:element minOccurs="0" name="documentUsageRights" type="document:tDocumentUsageRights"/>	
+							
+          <xs:element minOccurs="0" name="integrity" type="document:tDocumentIntegrity"/>	
+							
+          <xs:element name="documentType" type="document:tDocumentTypeId"/>
+							
+          <xs:element name="provider" type="document:tProvider"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentMimeType">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tDocumentMimeTypeId">
+						
+        <xs:sequence>
+							
+          <xs:element name="name" type="document:tMimeTypeName"/>
+							
+          <xs:element default="J" name="active" type="document:tYesNo"/>
+							
+          <xs:element name="reasonDeactivation" type="document:tReasonDeactivation"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentMimeTypeId">
+				
+    <xs:sequence>
+					
+      <xs:element name="mimeType" type="document:tMimeType"/>
+					
+      <xs:element default="*" name="version" type="document:tMimeTypeVersion"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentMimeTypeSearch">
+				
+    <xs:sequence>
+					
+      <xs:element minOccurs="0" name="mimeType" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="version" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="name" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="active" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="reasonDeactivation" type="cases:tLookUpClause"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentSearch">
+				
+    <xs:sequence>
+					
+      <xs:element minOccurs="0" name="referenceNumber" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="fileName" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="mimeType" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="mimeTypeReason" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="mimeTypeVersion" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="mimeTypeActive" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="fileSize" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="forwardExtension" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="expirationDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="batchNumber" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="version" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="confidentialityLevel" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="hashValue" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="registrationDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="creationDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="receiptDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="sendDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="title" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="description" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="author" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="format" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="status" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="initialDocumentIndication" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="characteristic" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="receivedRegistered" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="mailRegistrationNr" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="composite" type="cases:tLookUpClause"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentStatus">
+				
+    <xs:sequence>
+					
+      <xs:element name="code" type="document:tDocumentStatusCode"/>
+					
+      <xs:element name="clarification" nillable="true" type="xs:string"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentType">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tDocumentTypeId">
+						
+        <xs:sequence>
+							
+          <xs:element name="descriptionGeneric" type="document:tDocumentTypeDescription"/>
+							
+          <xs:element name="documentCategory" type="document:tDocumentCategory"/>
+							
+          <xs:element name="confidentialityLevel" nillable="true" type="document:tConfidentialityLevel"/>
+							
+          <xs:element name="direction" type="document:tDirection"/>
+							
+          <xs:element name="clarification" type="cases:tString1000"/>
+							
+          <xs:element name="validityStartDate" nillable="true" type="document:tIncompleteDate"/>
+							
+          <xs:element name="validityEndDate" nillable="true" type="document:tIncompleteDate"/>
+							
+          <xs:element minOccurs="0" name="headwords" type="document:tHeadwords"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentTypeDetailsExt">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tDocumentType">
+						
+        <xs:sequence>
+							
+          <xs:element minOccurs="0" name="templates">
+								
+            <xs:complexType>
+									
+              <xs:sequence>
+									
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="template" type="document:tTemplate"/>
+									
+              </xs:sequence>
+								
+            </xs:complexType>
+							
+          </xs:element>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentTypeId">
+				
+    <xs:sequence>
+					
+      <xs:element name="description" type="document:tDocumentTypeDescription"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentTypeSaveMessageExt">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tDocumentType">
+						
+        <xs:sequence>
+							
+          <xs:element minOccurs="0" name="templates">
+								
+            <xs:complexType>
+									
+              <xs:sequence>
+									
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="template" type="document:tTemplateId"/>
+									
+              </xs:sequence>
+								
+            </xs:complexType>
+							
+          </xs:element>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentTypeSearch">
+				
+    <xs:sequence>
+					
+      <xs:element minOccurs="0" name="description" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="descriptionGeneric" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="documentCategory" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="confidentialityLevel" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="direction" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="clarification" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="validityStartDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="validityEndDate" type="cases:tLookUpClause"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentTypeSearchExt">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tDocumentTypeSearch">
+						
+        <xs:sequence>
+							
+          <xs:element minOccurs="0" name="headwords" type="document:tHeadwordSearch"/>
+							
+          <xs:element minOccurs="0" name="templates" type="document:tTemplateSearch"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentURL">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tDocumentId">
+						
+        <xs:sequence>
+							
+          <xs:element name="url" type="xs:string"/>
+							
+          <xs:element minOccurs="0" name="error" type="xs:string"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentVersion">
+				
+    <xs:sequence>
+					
+      <xs:element name="hisStartDate" nillable="true" type="cases:tIncompleteDateTime"/>
+					
+      <xs:element name="hisEndDate" nillable="true" type="cases:tIncompleteDateTime"/>
+					
+      <xs:element default="J" name="isActual" type="document:tYesNo"/>
+					
+      <xs:element name="fileName" type="document:tFileName"/>
+					
+      <xs:element name="mimeType" nillable="true" type="document:tMimeType"/>
+					
+      <xs:element name="mimeTypeReason" type="document:tMimeTypeReason"/>
+					
+      <xs:element name="mimeTypeVersion" type="document:tMimeTypeVersion"/>
+					
+      <xs:element name="mimeTypeActive" nillable="true" type="document:tYesNo"/>
+					
+      <xs:element name="fileSize" type="cases:tNumber18"/>
+					
+      <xs:element name="forwardExtension" type="document:tForwardExtension"/>
+					
+      <xs:element name="expirationDate" nillable="true" type="xs:dateTime"/>
+					
+      <xs:element name="batchNumber" type="document:tBatchNumber"/>
+					
+      <xs:element name="batchSequenceNr" type="cases:tNumber4"/>
+					
+      <xs:element name="confidentialityLevel" nillable="true" type="document:tConfidentialityLevel"/>
+					
+      <xs:element name="confidentialityLevelName" type="document:tConfidentialityLevelName"/>
+					
+      <xs:element name="hashValue" type="document:tHashValue"/>
+					
+      <xs:element name="registrationDate" nillable="true" type="xs:dateTime"/>
+					
+      <xs:element name="creationDate" nillable="true" type="xs:dateTime"/>
+					
+      <xs:element name="receiptDate" nillable="true" type="xs:dateTime"/>
+					
+      <xs:element name="sendDate" nillable="true" type="xs:dateTime"/>
+					
+      <xs:element name="title" type="document:tTitle"/>
+					
+      <xs:element name="description" type="document:tDocumentDescription"/>
+					
+      <xs:element name="author" type="document:tAuthor"/>
+					
+      <xs:element name="format" type="document:tFormat"/>
+					
+      <xs:element name="status" type="document:tStatus"/>
+					
+      <xs:element name="initialDocumentIndication" nillable="true" type="document:tYesNo"/>
+					
+      <xs:element name="characteristic" type="document:tCharacteristic"/>
+					
+      <xs:element name="receivedRegistered" nillable="true" type="document:tYesNo"/>
+					
+      <xs:element name="mailRegistrationNr" type="document:tMailRegistrationNr"/>
+					
+      <xs:element name="language" type="document:tLanguage"/>
+					
+      <xs:element minOccurs="0" name="documentSign" type="document:tDocumentSign"/>
+					
+      <xs:element minOccurs="0" name="documentUsageRights" type="document:tDocumentUsageRights"/>	
+					
+      <xs:element minOccurs="0" name="integrity" type="document:tDocumentIntegrity"/>
+					
+      <xs:element name="documentType" type="document:tDocumentType"/>
+					
+      <xs:element default="N" name="composite" type="document:tYesNo"/>
+					
+      <xs:element name="url" type="xs:string"/>
+					
+      <xs:element default="N" name="directEditingEnabled" type="document:tYesNo"/>
+					
+      <xs:element minOccurs="0" name="checkout" type="document:tCheckout"/>
+					
+      <xs:element minOccurs="0" name="relatedDocuments" type="document:tDocumentVersionIdentifications"/>
+					
+      <xs:element name="targetSystems" type="document:tTargetSystemsStatus"/>
+					
+      <xs:element minOccurs="0" name="sourceSystem" type="document:tExtSystemStatus"/>
+				
+    </xs:sequence>
+				
+    <xs:attribute name="version" type="document:tVersion" use="required"/>
+				
+    <xs:attribute name="description" type="document:tVersionDescription" use="optional"/>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentVersionIdentification">
+				
+    <xs:simpleContent>
+					
+      <xs:extension base="document:tDocumentIdentification">
+						
+        <xs:attribute name="version" type="document:tVersion" use="required"/>
+						
+        <xs:attribute name="description" type="document:tVersionDescription" use="optional"/>
+					
+      </xs:extension>
+				
+    </xs:simpleContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentVersionIdentifications">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="1" name="identification" type="document:tDocumentVersionIdentification"/>
+				
+    </xs:sequence>
+				
+    <xs:attribute name="type" type="document:tDocumentRelationType" use="required"/>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentVersionList">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="document" type="document:tDocumentVersionListItem"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentVersionListItem">
+				
+    <xs:sequence>
+					
+      <xs:element name="referenceNumber" type="document:tDocumentIdentification"/>
+					
+      <xs:element name="case" type="document:tCaseId"/>
+					
+      <xs:element name="documentVersions" type="document:tDocumentVersions"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentVersionSearch">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tDocumentSearch">
+						
+        <xs:sequence>
+							
+          <xs:element minOccurs="0" name="hisStartDate" type="cases:tLookUpClause"/>
+							
+          <xs:element minOccurs="0" name="hisEndDate" type="cases:tLookUpClause"/>
+							
+          <xs:element minOccurs="0" name="isActual" type="cases:tLookUpClause"/>
+							
+          <xs:element minOccurs="0" name="versionDescription" type="cases:tLookUpClause"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentVersions">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="1" name="documentVersion" type="document:tDocumentVersion"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentsId">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="document" type="document:tDocumentId"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentsURL">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="document" type="document:tDocumentURL"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tExtCaseTypeDMS">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tCaseTypeDMS">
+						
+        <xs:sequence>
+							
+          <xs:element name="dmsDescription" type="document:tDMSDescription"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tExtCaseTypeDMSes">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="caseTypeDMS" type="document:tExtCaseTypeDMS"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tExtSystem">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tExtSystemId">
+						
+        <xs:sequence>
+							
+          <xs:element name="referenceNumber" type="document:tReferenceNumber"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tExtSystemId">
+				
+    <xs:sequence>
+					
+      <xs:element name="code" type="cases:tCode10"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tExtSystemStatus">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tExtSystem">
+						
+        <xs:sequence>
+							
+          <xs:element minOccurs="0" name="currentStatus" type="document:tDocumentStatus"/>
+						
+        </xs:sequence>
+						
+        <xs:attribute default="false" name="default" type="xs:boolean"/>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tHeadwordSearch">
+				
+    <xs:sequence>
+					
+      <xs:element minOccurs="0" name="headword" type="cases:tLookUpClause"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tHeadwords">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="headword" type="document:tHeadword"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tLanguage">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tLanguageId">
+						
+        <xs:sequence>
+							
+          <xs:element name="description" type="document:tLanguageDescription"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tLanguageId">
+				
+    <xs:sequence>
+					
+      <xs:element default="nl_NL" name="code" type="document:tLanguageCode"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tLanguageSearch">
+				
+    <xs:sequence>
+					
+      <xs:element minOccurs="0" name="code" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="description" type="cases:tLookUpClause"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tProvider">
+				
+    <xs:choice>
+					
+      <xs:element name="citizenNumber" nillable="true" type="cases:tCitizenNumber"/>
+					
+      <xs:element name="employeeUsername" type="cases:tUsername"/>
+					
+      <xs:element name="nnpId" nillable="true" type="cases:tNNPId"/>
+					
+      <xs:element name="numberOtherForeignNNP" nillable="true" type="cases:tStrictNumber17"/>
+					
+      <xs:element name="numberOtherNaturalPerson" nillable="true" type="cases:tStrictNumber17"/>
+					
+      <xs:element name="officeNumber" nillable="true" type="cases:tOfficeNumber"/>
+				
+    </xs:choice>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tRoles">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="role" type="xs:string"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tSingularDocumentIdentifications">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="singularDocumentIdentification" type="document:tDocumentIdentification"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tSystemSearch">
+				
+    <xs:sequence>
+					
+      <xs:element minOccurs="0" name="code" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="referenceNumber" type="cases:tLookUpClause"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tTargetSystems">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="targetSystem" type="document:tExtSystem"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tTargetSystemsStatus">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="targetSystem" type="document:tExtSystemStatus"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tTemplate">
+				
+    <xs:complexContent>
+					
+      <xs:extension base="document:tTemplateId">
+						
+        <xs:sequence>
+							
+          <xs:element name="link" type="xs:string"/>
+						
+        </xs:sequence>
+					
+      </xs:extension>
+				
+    </xs:complexContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tTemplateId">
+				
+    <xs:sequence>
+					
+      <xs:element name="name" type="document:tTemplateName"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tTemplateSearch">
+				
+    <xs:sequence>
+					
+      <xs:element minOccurs="0" name="name" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="link" type="cases:tLookUpClause"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tXML">
+				
+    <xs:sequence>
+					
+      <xs:any minOccurs="0" processContents="skip"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:element name="addCaseTypeDMSes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:caseTypeDMSSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addCaseTypeDMSesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:caseTypeDMSIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDMSes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:dmsSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDMSesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:dmsIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDocument">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDocumentExtensions">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentExtensionSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDocumentExtensionsResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentExtensionIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDocumentMimeTypes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentMimeTypeSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDocumentMimeTypesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentMimeTypeIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDocumentResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentSessionMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDocumentToCase">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:addDocumentToCaseMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDocumentToCaseMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="document" type="document:tDocumentInfo"/>
+						
+        <xs:element name="targetCase" type="document:tCaseId"/>
+						
+        <xs:element name="provider" type="document:tProvider"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDocumentToCaseResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:addDocumentToCaseResponseMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDocumentToCaseResponseMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="referenceNumber" type="document:tReferenceNumber"/>
+						
+        <xs:element name="system" type="document:tExtSystem"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDocumentTypes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentTypeSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addDocumentTypesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentTypeIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addTemplates">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:templateSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="addTemplatesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:templateIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="batchEndMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="batchNumber" type="document:tBatchNumber"/>
+						
+        <xs:element name="case" type="document:tCaseId"/>
+						
+        <xs:element name="provider" type="document:tProvider"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="batchEndResponseMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="batchNumber" type="document:tBatchNumber"/>
+						
+        <xs:element name="batchSize" nillable="true" type="document:tBatchSize"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="batchStartMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="case" type="document:tCaseId"/>
+						
+        <xs:element name="provider" type="document:tProvider"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="batchStartResponseMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="batchNumber" type="document:tBatchNumber"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="caseTypeDMSDetailsMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="caseTypeDMSes" type="document:tExtCaseTypeDMSes"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="caseTypeDMSIdMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="caseTypeDMSes">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" name="caseTypeDMS" type="document:tCaseTypeDMSId"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="caseTypeDMSSaveMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="caseTypeDMSes" type="document:tCaseTypeDMSes"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="caseTypeDMSSearchMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element minOccurs="0" name="caseTypeCode" type="cases:tLookUpClause"/>
+						
+        <xs:element minOccurs="0" name="dmsCode" type="cases:tLookUpClause"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteCaseTypeDMSes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:caseTypeDMSIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteCaseTypeDMSesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteDMSes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:dmsIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteDMSesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteDocument">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteDocumentExtensions">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentExtensionIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteDocumentExtensionsResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteDocumentMimeTypes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentMimeTypeIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteDocumentMimeTypesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteDocumentResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteDocumentTypes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentTypeIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteDocumentTypesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteTemplates">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:templateIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="deleteTemplatesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="dmsDetailsMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="dmses" type="document:tDMSes"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="dmsIdMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="dmses">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" name="dms" type="document:tDMSId"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="dmsSaveMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="dmses" type="document:tDMSes"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="dmsSearchMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element minOccurs="0" name="code" type="cases:tLookUpClause"/>
+						
+        <xs:element minOccurs="0" name="plugin" type="cases:tLookUpClause"/>
+						
+        <xs:element minOccurs="0" name="configuration" type="cases:tLookUpClause"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentCategoryListMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documentCategories">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="documentCategory" type="document:tDocumentCategory"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentDirectionListMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documentDirections">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="documentDirection" type="document:tDocumentDirection"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentExtensionDetailsMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documentExtensions" type="document:tDocumentExtensions"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentExtensionIdMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documentExtensions" type="document:tDocumentExtensionIds"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentExtensionSaveMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documentExtensions" type="document:tDocumentExtensions"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentExtensionSearchMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element minOccurs="0" name="extension" type="cases:tLookUpClause"/>
+						
+        <xs:element minOccurs="0" name="description" type="cases:tLookUpClause"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentIdMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="referenceNumber" type="document:tReferenceNumber"/>
+						
+        <xs:element name="provider" type="document:tProvider"/>
+						
+        <xs:element name="targetSystem" type="document:tExtSystem"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentIdentificationMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="identification" type="document:tDocumentIdentification"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentListMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documents" type="document:tDocumentList"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentMetadataSaveMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="document" type="document:tDocumentMetadata"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentMimeTypeDetailsMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documentMimeTypes">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="documentMimeType" type="document:tDocumentMimeType"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentMimeTypeIdMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documentMimeTypes">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="documentMimeType" type="document:tDocumentMimeTypeId"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentMimeTypeSaveMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documentMimeTypes">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="documentMimeType" type="document:tDocumentMimeType"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentMimeTypeSearchMessage" type="document:tDocumentMimeTypeSearch"/>
+			
+  <xs:element name="documentRoleListMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="roles" type="document:tRoles"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentSaveMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="document" type="document:tDocument"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentSearchMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element minOccurs="0" name="case" type="cases:tCaseSearch"/>
+						
+        <xs:element minOccurs="0" name="caseTarget" type="document:tSystemSearch"/>
+						
+        <xs:element minOccurs="0" name="caseType" type="cases:tCaseTypeSearch"/>
+						
+        <xs:element minOccurs="0" name="targetSystem" type="document:tSystemSearch"/>
+						
+        <xs:element minOccurs="0" name="sourceSystem" type="document:tSystemSearch"/>
+						
+        <xs:element minOccurs="0" name="document" type="document:tDocumentSearch"/>
+						
+        <xs:element minOccurs="0" name="language" type="document:tLanguageSearch"/>
+						
+        <xs:element minOccurs="0" name="documentType" type="document:tDocumentTypeSearch"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentSessionMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="sessionId" type="document:tSessionId"/>
+						
+        <xs:element name="referenceNumber" type="document:tReferenceNumber"/>
+						
+        <xs:element name="initiated" nillable="true" type="xs:dateTime"/>
+						
+        <xs:element name="timeToLive" nillable="true" type="xs:dateTime"/>
+						
+        <xs:element name="batchNumber" type="document:tBatchNumber"/>
+						
+        <xs:element name="batchSequenceNr" type="cases:tNumber4"/>
+						
+        <xs:element minOccurs="0" name="document" type="document:tDocumentListItem"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentTypeDetailsMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documentTypes">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="documentType" type="document:tDocumentTypeDetailsExt"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentTypeGenericDescriptionListMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="genericDescriptions">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="genericDescription" type="document:tDocumentTypeDescription"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentTypeIdMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documentTypes">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="documentType" type="document:tDocumentTypeId"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentTypeSaveMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documentTypes">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="documentType" type="document:tDocumentTypeSaveMessageExt"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentTypeSearchMessage" type="document:tDocumentTypeSearchExt"/>
+			
+  <xs:element name="directEditingURLRequestMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="referenceNumber" type="document:tReferenceNumber"/>
+						
+        <xs:element name="host" type="xs:string"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="directEditingURLResponseMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="url" type="xs:string"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="dmsContextPathRequestMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="referenceNumber" type="document:tReferenceNumber"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="dmsContextPathResponseMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="path" type="xs:string"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentURLRequestMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documents" type="document:tDocumentsId"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentURLResponseMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documents" type="document:tDocumentsURL"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentVersionIdentificationMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="referenceNumber" type="document:tDocumentIdentification"/>
+						
+        <xs:element name="version" type="document:tVersion"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentVersionListMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="documents" type="document:tDocumentVersionList"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="documentVersionSearchMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element minOccurs="0" name="case" type="cases:tCaseSearch"/>
+						
+        <xs:element minOccurs="0" name="caseTarget" type="document:tSystemSearch"/>
+						
+        <xs:element minOccurs="0" name="caseType" type="cases:tCaseTypeSearch"/>
+						
+        <xs:element minOccurs="0" name="targetSystem" type="document:tSystemSearch"/>
+						
+        <xs:element minOccurs="0" name="sourceSystem" type="document:tSystemSearch"/>
+						
+        <xs:element minOccurs="0" name="document" type="document:tDocumentVersionSearch"/>
+						
+        <xs:element minOccurs="0" name="language" type="document:tLanguageSearch"/>
+						
+        <xs:element minOccurs="0" name="documentType" type="document:tDocumentTypeSearch"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="endBatch">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:batchEndMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="endBatchResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:batchEndResponseMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="getDocumentIdentification">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:dummyMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="getDocumentIdentificationResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentIdentificationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="getDirectEditingURL">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:directEditingURLRequestMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="getDirectEditingURLResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:directEditingURLResponseMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="getDMSContextPath">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:dmsContextPathRequestMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="getDMSContextPathResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:dmsContextPathResponseMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="getDocumentURLs">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentURLRequestMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="getDocumentURLsResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentURLResponseMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="languageListMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="languages">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="language" type="document:tLanguage"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listDocumentCategories">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:dummyMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listDocumentCategoriesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentCategoryListMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listDocumentDirections">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:dummyMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listDocumentDirectionsResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentDirectionListMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listDocumentRoles">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:dummyMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listDocumentRolesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentRoleListMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listDocumentTypeGenericDescriptions">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:dummyMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listDocumentTypeGenericDescriptionsResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentTypeGenericDescriptionListMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listDocumentVersions">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentVersionSearchMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listDocumentVersionsResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentVersionListMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listDocuments">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentSearchMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listDocumentsResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentListMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listLanguages">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:dummyMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listLanguagesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:languageListMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listRelatedDocumentVersions">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentVersionIdentificationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="listRelatedDocumentVersionsResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentVersionListMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="lookUpCaseTypeDMSes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:caseTypeDMSSearchMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="lookUpCaseTypeDMSesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:caseTypeDMSDetailsMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="lookUpDMSes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:dmsSearchMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="lookUpDMSesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:dmsDetailsMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="lookUpDocumentExtensions">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentExtensionSearchMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="lookUpDocumentExtensionsResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentExtensionDetailsMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="lookUpDocumentMimeTypes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentMimeTypeSearchMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="lookUpDocumentMimeTypesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentMimeTypeDetailsMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="lookUpDocumentTypes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentTypeSearchMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="lookUpDocumentTypesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentTypeDetailsMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="lookUpTemplates">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:templateSearchMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="lookUpTemplatesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:templateDetailsMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readCaseTypeDMSes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:caseTypeDMSIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readCaseTypeDMSesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:caseTypeDMSDetailsMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readDMSes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:dmsIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readDMSesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:dmsDetailsMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readDocument">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readDocumentExtensions">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentExtensionIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readDocumentExtensionsResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentExtensionDetailsMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readDocumentMimeTypes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentMimeTypeIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readDocumentMimeTypesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentMimeTypeDetailsMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readDocumentResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentSessionMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readDocumentTypes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentTypeIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readDocumentTypesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentTypeDetailsMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readTemplates">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:templateIdMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="readTemplatesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:templateDetailsMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="startBatch">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:batchStartMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="startBatchResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:batchStartResponseMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="templateDetailsMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="templates">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="template" type="document:tTemplate"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="templateIdMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="templates">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="template" type="document:tTemplateId"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="templateSaveMessage">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="templates">
+							
+          <xs:complexType>
+								
+            <xs:sequence>
+									
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="template" type="document:tTemplate"/>
+								
+            </xs:sequence>
+							
+          </xs:complexType>
+						
+        </xs:element>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="templateSearchMessage" type="document:tTemplateSearch"/>
+			
+  <xs:element name="updateCaseTypeDMSes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:caseTypeDMSSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="updateCaseTypeDMSesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="updateDMSes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:dmsSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="updateDMSesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="updateDocumentExtensions">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentExtensionSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="updateDocumentExtensionsResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="updateDocumentMetadata">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentMetadataSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="updateDocumentMetadataResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="updateDocumentMimeTypes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentMimeTypeSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="updateDocumentMimeTypesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="updateDocumentTypes">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentTypeSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="updateDocumentTypesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="updateTemplates">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:templateSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="updateTemplatesResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="verifyAddDocument">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="document:documentSaveMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:element name="verifyAddDocumentResponse">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element ref="common:confirmationMessage"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+			
+  <xs:simpleType name="tSignType">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="10"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tAlgorithm">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:enumeration value="crc_16"/>
+					
+      <xs:enumeration value="crc_32"/>
+					
+      <xs:enumeration value="crc_64"/>
+					
+      <xs:enumeration value="fletcher_4"/>
+					
+      <xs:enumeration value="fletcher_8"/>
+					
+      <xs:enumeration value="fletcher_16"/>
+					
+      <xs:enumeration value="fletcher_32"/>
+					
+      <xs:enumeration value="hmac"/>
+					
+      <xs:enumeration value="md5"/>
+					
+      <xs:enumeration value="sha_1"/>
+					
+      <xs:enumeration value="sha_256"/>
+					
+      <xs:enumeration value="sha_512"/>
+					
+      <xs:enumeration value="sha_3"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tIntergityValue">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="128"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:complexType name="tDocumentIntegrity">
+				
+    <xs:sequence>
+					
+      <xs:element name="algorithm" type="document:tAlgorithm"/>
+					
+      <xs:element name="value" type="document:tIntergityValue"/>
+					
+      <xs:element name="date" type="xs:dateTime"/>					
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentSign">
+				
+    <xs:sequence>
+					
+      <xs:element name="documentSignType" type="document:tSignType"/>
+					
+      <xs:element name="documentSignDate" type="xs:dateTime"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:simpleType name="tDocumentUsageRightsDesciption">
+				
+    <xs:restriction base="xs:string">
+				      
+      <xs:enumeration value="Geen gebruiksrechten"/>
+				      
+      <xs:enumeration value="Hergebruik onder voorwaarden"/>
+				      
+      <xs:enumeration value="Verbod op hergebruik"/>				
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:complexType name="tDocumentUsageRight">
+				
+    <xs:sequence>
+					
+      <xs:element name="id" nillable="true" type="xs:int"/>			
+					
+      <xs:element name="description" type="document:tDocumentUsageRightsDesciption"/>
+					
+      <xs:element name="startDate" type="xs:dateTime"/>
+					
+      <xs:element name="endDate" nillable="true" type="xs:dateTime"/>					
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tDocumentUsageRights">
+				
+    <xs:sequence>
+					
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="documentUsageRight" type="document:tDocumentUsageRight"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:simpleType name="tAuthor">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="200"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tBatchNumber">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="30"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tBatchSize">
+				
+    <xs:restriction base="xs:int">
+					
+      <xs:minInclusive value="0"/>
+					
+      <xs:maxInclusive value="99"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tCharacteristic">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="50"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tCode">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="10"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tConfidentialityLevel">
+				
+    <xs:restriction base="xs:int">
+					
+      <xs:enumeration value="0"/>
+					
+      <xs:enumeration value="1"/>
+					
+      <xs:enumeration value="2"/>
+					
+      <xs:enumeration value="3"/>
+					
+      <xs:enumeration value="4"/>
+					
+      <xs:enumeration value="5"/>
+					
+      <xs:enumeration value="6"/>
+					
+      <xs:enumeration value="7"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tCheckoutType">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:enumeration value="lokaal"/>
+					
+      <xs:enumeration value="direct"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tConfidentialityLevelName">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="80"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tDMSDescription">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="80"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tDescription">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="150"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tDirection">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="20"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tDocumentCategory">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="80"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tDocumentDescription">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="1000"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tDocumentDirection">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="20"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tDocumentIdentification">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="40"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tDocumentRelationType">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:enumeration value="singular"/>
+					
+      <xs:enumeration value="composite"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tDocumentStatusCode">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="10"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tDocumentTypeDescription">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="80"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tExtension">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="10"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tFileName">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="255"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tFormat">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="10"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tForwardExtension">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="15"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tHashValue">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="100"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tHeadword">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="30"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tIncompleteDate">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:minLength value="8"/>
+					
+      <xs:maxLength value="8"/>
+					
+      <xs:pattern value="[0-9]{8}"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tLanguageCode">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="20"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tLanguageDescription">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="80"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tMailRegistrationNr">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="50"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tMimeType">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:minLength value="1"/>
+					
+      <xs:maxLength value="200"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tMimeTypeName">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:minLength value="1"/>
+					
+      <xs:maxLength value="150"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tMimeTypeReason">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="4000"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tMimeTypeVersion">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="150"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tPlugin">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="80"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tReasonDeactivation">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="4000"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tReferenceNumber">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="400"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tSessionId">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="50"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tStatus">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="20"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tTemplateName">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="60"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tTitle">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="200"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tVersion">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="5"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tVersionDescription">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="1500"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tYesNo">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:enumeration value="J"/>
+					
+      <xs:enumeration value="N"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+		
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mosoap="http://www.emaxx.org/core/soap" xmlns:document="http://www.emaxx.org/functional/cases/document" xmlns:core="http://www.emaxx.org/core" xmlns:common="http://www.emaxx.org/msg/common" xmlns:cases="http://www.emaxx.org/functional/cases" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/core/soap">
+			
+  <xs:element name="faultDetails">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="source" nillable="true" type="xs:string"/>
+						
+        <xs:element name="code" nillable="true" type="xs:string"/>
+						
+        <xs:element name="message" nillable="true" type="xs:string"/>
+						
+        <xs:element name="stacktrace" nillable="true" type="xs:string"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+		
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mosoap="http://www.emaxx.org/core/soap" xmlns:document="http://www.emaxx.org/functional/cases/document" xmlns:core="http://www.emaxx.org/core" xmlns:common="http://www.emaxx.org/msg/common" xmlns:cases="http://www.emaxx.org/functional/cases" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/msg/common">
+			
+  <xs:element name="confirmationMessage" type="xs:string"/>
+			
+  <xs:element name="dummyMessage" type="xs:string"/>
+		
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mosoap="http://www.emaxx.org/core/soap" xmlns:document="http://www.emaxx.org/functional/cases/document" xmlns:core="http://www.emaxx.org/core" xmlns:common="http://www.emaxx.org/msg/common" xmlns:cases="http://www.emaxx.org/functional/cases" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/functional/cases">
+			
+  <xs:complexType name="tCaseSearch">
+				
+    <xs:sequence>
+					
+      <xs:element minOccurs="0" name="id" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="referenceNumber" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="description" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="clarification" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="startDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="endDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="plannedEndDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="completionDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="registrationDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="publicationDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="caseLevel" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="subCaseIndication" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="paymentIndication" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="lastPaymentDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="confidentialityLevel" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="urgencyLevel" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="anonymous" type="cases:tLookUpClause"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tCaseTypeSearch">
+				
+    <xs:sequence>
+					
+      <xs:element minOccurs="0" name="id" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="seqNr" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="code" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="identification" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="description" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="descriptionGeneric" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="version" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="versionClarification" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="objective" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="cause" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="clarification" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="internal" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="subject" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="actionInitiator" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="actionExecutor" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="runTime" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="serviceNorm" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="postponementAllowed" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="extensionAllowed" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="extensionTerm" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="confidentialityLevel" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="publicationIndication" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="publicationText" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="caseCategory" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="archiveCode" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="validityStartDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="validityEndDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="isPublic" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="modifyStartDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="recalculatePlannedEndDate" type="cases:tLookUpClause"/>
+					
+      <xs:element minOccurs="0" name="catalogRSIN" type="cases:tLookUpClause"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tCitizenNumber">
+				
+    <xs:simpleContent>
+					
+      <xs:extension base="cases:tStrictNumber9">
+						
+        <xs:attribute default="J" name="authentic" type="cases:tJN" use="optional"/>
+					
+      </xs:extension>
+				
+    </xs:simpleContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tIncompleteDateTime">
+				
+    <xs:simpleContent>
+					
+      <xs:extension base="xs:dateTime">
+						
+        <xs:attribute default="V" name="indicationIncomplete" type="cases:tIndicationIncomplete" use="optional"/>
+					
+      </xs:extension>
+				
+    </xs:simpleContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tLookUpClause">
+				
+    <xs:simpleContent>
+					
+      <xs:extension base="xs:string">
+						
+        <xs:attribute default="EQUAL" name="operator" type="cases:tLookUpOperator"/>
+					
+      </xs:extension>
+				
+    </xs:simpleContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tNNPId">
+				
+    <xs:simpleContent>
+					
+      <xs:extension base="cases:tStrictNumber8or9">
+						
+        <xs:attribute default="J" name="authentic" type="cases:tJN" use="optional"/>
+					
+      </xs:extension>
+				
+    </xs:simpleContent>
+			
+  </xs:complexType>
+			
+  <xs:complexType name="tOfficeNumber">
+				
+    <xs:simpleContent>
+					
+      <xs:extension base="cases:tStrictNumber12">
+						
+        <xs:attribute default="J" name="authentic" type="cases:tJN" use="optional"/>
+					
+      </xs:extension>
+				
+    </xs:simpleContent>
+			
+  </xs:complexType>
+			
+  <xs:simpleType name="tCode10">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="10"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tIndicationIncomplete">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="1"/>
+					
+      <xs:enumeration value="D"/>
+					
+      <xs:enumeration value="M"/>
+					
+      <xs:enumeration value="J"/>
+					
+      <xs:enumeration value="V"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tJN">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="1"/>
+					
+      <xs:enumeration value="J"/>
+					
+      <xs:enumeration value="N"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tLookUpOperator">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:enumeration value="EQUAL"/>
+					
+      <xs:enumeration value="EQUAL_IGNORE_CASE"/>
+					
+      <xs:enumeration value="IN"/>
+					
+      <xs:enumeration value="LARGER"/>
+					
+      <xs:enumeration value="LARGER_EQUAL"/>
+					
+      <xs:enumeration value="LARGER_EQUAL_OR_NULL"/>
+					
+      <xs:enumeration value="LARGER_OR_NULL"/>
+					
+      <xs:enumeration value="LIKE"/>
+					
+      <xs:enumeration value="LIKE_END"/>
+					
+      <xs:enumeration value="LIKE_END_IGNORE_CASE"/>
+					
+      <xs:enumeration value="LIKE_IGNORE_CASE"/>
+					
+      <xs:enumeration value="LIKE_START"/>
+					
+      <xs:enumeration value="LIKE_START_IGNORE_CASE"/>
+					
+      <xs:enumeration value="NOT IN"/>
+					
+      <xs:enumeration value="NOT NULL"/>
+					
+      <xs:enumeration value="NULL"/>
+					
+      <xs:enumeration value="RANGE"/>
+					
+      <xs:enumeration value="SMALLER"/>
+					
+      <xs:enumeration value="SMALLER_EQUAL"/>
+					
+      <xs:enumeration value="SMALLER_EQUAL_OR_NULL"/>
+					
+      <xs:enumeration value="UNEQUAL"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tNumber18">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="18"/>
+					
+      <xs:pattern value="[0-9]{0,18}"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tNumber4">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="4"/>
+					
+      <xs:pattern value="[0-9]{0,4}"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tReferenceNumber">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="40"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tStrictNumber12">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:length value="12"/>
+					
+      <xs:pattern value="[0-9]{12}"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tStrictNumber17">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:length value="17"/>
+					
+      <xs:pattern value="[0-9]{17}"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tStrictNumber8or9">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:minLength value="8"/>
+					
+      <xs:maxLength value="9"/>
+					
+      <xs:pattern value="[0-9]{8,9}"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tStrictNumber9">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:length value="9"/>
+					
+      <xs:pattern value="[0-9]{9}"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tString1000">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="1000"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+			
+  <xs:simpleType name="tUsername">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:maxLength value="100"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+		
+</xs:schema>
+  </types>
+  <message name="updateDocumentExtensionsFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="readTemplatesRequest">
+    <part element="document:readTemplates" name="parameters">
+    </part>
+  </message>
+  <message name="deleteDocumentTypesResponse">
+    <part element="document:deleteDocumentTypesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="verifyAddDocumentResponse">
+    <part element="document:verifyAddDocumentResponse" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpDMSesRequest">
+    <part element="document:lookUpDMSes" name="parameters">
+    </part>
+  </message>
+  <message name="readDocumentTypesRequest">
+    <part element="document:readDocumentTypes" name="parameters">
+    </part>
+  </message>
+  <message name="readTemplatesResponse">
+    <part element="document:readTemplatesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="updateDMSesRequest">
+    <part element="document:updateDMSes" name="parameters">
+    </part>
+  </message>
+  <message name="updateDocumentExtensionsResponse">
+    <part element="document:updateDocumentExtensionsResponse" name="parameters">
+    </part>
+  </message>
+  <message name="listDocumentRolesResponse">
+    <part element="document:listDocumentRolesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="deleteDMSesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="listDocumentTypeGenericDescriptionsFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="readCaseTypeDMSesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="getDMSContextPathRequest">
+    <part element="document:getDMSContextPath" name="parameters">
+    </part>
+  </message>
+  <message name="updateDocumentMimeTypesResponse">
+    <part element="document:updateDocumentMimeTypesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="addTemplatesRequest">
+    <part element="document:addTemplates" name="parameters">
+    </part>
+  </message>
+  <message name="addCaseTypeDMSesResponse">
+    <part element="document:addCaseTypeDMSesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="deleteCaseTypeDMSesRequest">
+    <part element="document:deleteCaseTypeDMSes" name="parameters">
+    </part>
+  </message>
+  <message name="endBatchResponse">
+    <part element="document:endBatchResponse" name="parameters">
+    </part>
+  </message>
+  <message name="readCaseTypeDMSesRequest">
+    <part element="document:readCaseTypeDMSes" name="parameters">
+    </part>
+  </message>
+  <message name="readDocumentFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="addDocumentExtensionsResponse">
+    <part element="document:addDocumentExtensionsResponse" name="parameters">
+    </part>
+  </message>
+  <message name="deleteDMSesRequest">
+    <part element="document:deleteDMSes" name="parameters">
+    </part>
+  </message>
+  <message name="readDocumentResponse">
+    <part element="document:readDocumentResponse" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpDocumentTypesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="deleteDMSesResponse">
+    <part element="document:deleteDMSesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="getDMSContextPathResponse">
+    <part element="document:getDMSContextPathResponse" name="parameters">
+    </part>
+  </message>
+  <message name="readCaseTypeDMSesResponse">
+    <part element="document:readCaseTypeDMSesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="addDocumentMimeTypesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="verifyAddDocumentFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="deleteDocumentTypesRequest">
+    <part element="document:deleteDocumentTypes" name="parameters">
+    </part>
+  </message>
+  <message name="readDMSesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="addDocumentToCaseRequest">
+    <part element="document:addDocumentToCase" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpTemplatesRequest">
+    <part element="document:lookUpTemplates" name="parameters">
+    </part>
+  </message>
+  <message name="addCaseTypeDMSesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="updateCaseTypeDMSesRequest">
+    <part element="document:updateCaseTypeDMSes" name="parameters">
+    </part>
+  </message>
+  <message name="addDocumentResponse">
+    <part element="document:addDocumentResponse" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpDocumentMimeTypesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="lookUpDMSesResponse">
+    <part element="document:lookUpDMSesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="listDocumentVersionsFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="updateTemplatesRequest">
+    <part element="document:updateTemplates" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpDocumentTypesResponse">
+    <part element="document:lookUpDocumentTypesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="deleteDocumentExtensionsRequest">
+    <part element="document:deleteDocumentExtensions" name="parameters">
+    </part>
+  </message>
+  <message name="addCaseTypeDMSesRequest">
+    <part element="document:addCaseTypeDMSes" name="parameters">
+    </part>
+  </message>
+  <message name="startBatchResponse">
+    <part element="document:startBatchResponse" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpDocumentExtensionsResponse">
+    <part element="document:lookUpDocumentExtensionsResponse" name="parameters">
+    </part>
+  </message>
+  <message name="listDocumentsRequest">
+    <part element="document:listDocuments" name="parameters">
+    </part>
+  </message>
+  <message name="updateDocumentTypesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="deleteDocumentFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="addTemplatesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="updateTemplatesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="addDocumentRequest">
+    <part element="document:addDocument" name="parameters">
+    </part>
+  </message>
+  <message name="getDocumentURLsRequest">
+    <part element="document:getDocumentURLs" name="parameters">
+    </part>
+  </message>
+  <message name="listDocumentsFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="listDocumentTypeGenericDescriptionsRequest">
+    <part element="document:listDocumentTypeGenericDescriptions" name="parameters">
+    </part>
+  </message>
+  <message name="addDMSesResponse">
+    <part element="document:addDMSesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="endBatchRequest">
+    <part element="document:endBatch" name="parameters">
+    </part>
+  </message>
+  <message name="deleteDocumentMimeTypesResponse">
+    <part element="document:deleteDocumentMimeTypesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="listLanguagesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="updateDocumentMetadataFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="updateDocumentMetadataResponse">
+    <part element="document:updateDocumentMetadataResponse" name="parameters">
+    </part>
+  </message>
+  <message name="updateCaseTypeDMSesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="listDocumentDirectionsRequest">
+    <part element="document:listDocumentDirections" name="parameters">
+    </part>
+  </message>
+  <message name="listLanguagesResponse">
+    <part element="document:listLanguagesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="addDocumentToCaseFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="deleteCaseTypeDMSesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="readDMSesResponse">
+    <part element="document:readDMSesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="updateDocumentMimeTypesRequest">
+    <part element="document:updateDocumentMimeTypes" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpCaseTypeDMSesRequest">
+    <part element="document:lookUpCaseTypeDMSes" name="parameters">
+    </part>
+  </message>
+  <message name="getDocumentIdentificationResponse">
+    <part element="document:getDocumentIdentificationResponse" name="parameters">
+    </part>
+  </message>
+  <message name="deleteDocumentTypesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="deleteTemplatesRequest">
+    <part element="document:deleteTemplates" name="parameters">
+    </part>
+  </message>
+  <message name="listDocumentVersionsRequest">
+    <part element="document:listDocumentVersions" name="parameters">
+    </part>
+  </message>
+  <message name="listDocumentDirectionsFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="addDMSesRequest">
+    <part element="document:addDMSes" name="parameters">
+    </part>
+  </message>
+  <message name="deleteTemplatesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="updateDocumentTypesResponse">
+    <part element="document:updateDocumentTypesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="listRelatedDocumentVersionsRequest">
+    <part element="document:listRelatedDocumentVersions" name="parameters">
+    </part>
+  </message>
+  <message name="readDocumentMimeTypesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="readDocumentRequest">
+    <part element="document:readDocument" name="parameters">
+    </part>
+  </message>
+  <message name="deleteDocumentMimeTypesRequest">
+    <part element="document:deleteDocumentMimeTypes" name="parameters">
+    </part>
+  </message>
+  <message name="addTemplatesResponse">
+    <part element="document:addTemplatesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="updateDocumentExtensionsRequest">
+    <part element="document:updateDocumentExtensions" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpDocumentExtensionsFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="lookUpDocumentMimeTypesResponse">
+    <part element="document:lookUpDocumentMimeTypesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="deleteDocumentRequest">
+    <part element="document:deleteDocument" name="parameters">
+    </part>
+  </message>
+  <message name="getDocumentURLsFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="getDirectEditingURLResponse">
+    <part element="document:getDirectEditingURLResponse" name="parameters">
+    </part>
+  </message>
+  <message name="deleteDocumentExtensionsFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="getDirectEditingURLFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="startBatchFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="addDocumentTypesRequest">
+    <part element="document:addDocumentTypes" name="parameters">
+    </part>
+  </message>
+  <message name="updateTemplatesResponse">
+    <part element="document:updateTemplatesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="addDocumentExtensionsFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="addDocumentFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="readDocumentTypesResponse">
+    <part element="document:readDocumentTypesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpCaseTypeDMSesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="deleteDocumentResponse">
+    <part element="document:deleteDocumentResponse" name="parameters">
+    </part>
+  </message>
+  <message name="verifyAddDocumentRequest">
+    <part element="document:verifyAddDocument" name="parameters">
+    </part>
+  </message>
+  <message name="updateCaseTypeDMSesResponse">
+    <part element="document:updateCaseTypeDMSesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpCaseTypeDMSesResponse">
+    <part element="document:lookUpCaseTypeDMSesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="updateDocumentMimeTypesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="listDocumentsResponse">
+    <part element="document:listDocumentsResponse" name="parameters">
+    </part>
+  </message>
+  <message name="getDMSContextPathFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="readDocumentExtensionsResponse">
+    <part element="document:readDocumentExtensionsResponse" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpDocumentMimeTypesRequest">
+    <part element="document:lookUpDocumentMimeTypes" name="parameters">
+    </part>
+  </message>
+  <message name="readDocumentMimeTypesResponse">
+    <part element="document:readDocumentMimeTypesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="readDocumentMimeTypesRequest">
+    <part element="document:readDocumentMimeTypes" name="parameters">
+    </part>
+  </message>
+  <message name="getDocumentURLsResponse">
+    <part element="document:getDocumentURLsResponse" name="parameters">
+    </part>
+  </message>
+  <message name="listDocumentRolesRequest">
+    <part element="document:listDocumentRoles" name="parameters">
+    </part>
+  </message>
+  <message name="addDocumentTypesResponse">
+    <part element="document:addDocumentTypesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="listRelatedDocumentVersionsFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="addDMSesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="addDocumentMimeTypesRequest">
+    <part element="document:addDocumentMimeTypes" name="parameters">
+    </part>
+  </message>
+  <message name="readDMSesRequest">
+    <part element="document:readDMSes" name="parameters">
+    </part>
+  </message>
+  <message name="readDocumentTypesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="listDocumentDirectionsResponse">
+    <part element="document:listDocumentDirectionsResponse" name="parameters">
+    </part>
+  </message>
+  <message name="addDocumentTypesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="lookUpDMSesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="lookUpTemplatesResponse">
+    <part element="document:lookUpTemplatesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="readDocumentExtensionsRequest">
+    <part element="document:readDocumentExtensions" name="parameters">
+    </part>
+  </message>
+  <message name="listDocumentCategoriesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="deleteCaseTypeDMSesResponse">
+    <part element="document:deleteCaseTypeDMSesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="deleteTemplatesResponse">
+    <part element="document:deleteTemplatesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpTemplatesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="listDocumentVersionsResponse">
+    <part element="document:listDocumentVersionsResponse" name="parameters">
+    </part>
+  </message>
+  <message name="updateDMSesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="readDocumentExtensionsFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="addDocumentToCaseResponse">
+    <part element="document:addDocumentToCaseResponse" name="parameters">
+    </part>
+  </message>
+  <message name="readTemplatesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="listDocumentTypeGenericDescriptionsResponse">
+    <part element="document:listDocumentTypeGenericDescriptionsResponse" name="parameters">
+    </part>
+  </message>
+  <message name="getDocumentIdentificationFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="updateDocumentTypesRequest">
+    <part element="document:updateDocumentTypes" name="parameters">
+    </part>
+  </message>
+  <message name="updateDMSesResponse">
+    <part element="document:updateDMSesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="listLanguagesRequest">
+    <part element="document:listLanguages" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpDocumentTypesRequest">
+    <part element="document:lookUpDocumentTypes" name="parameters">
+    </part>
+  </message>
+  <message name="addDocumentMimeTypesResponse">
+    <part element="document:addDocumentMimeTypesResponse" name="parameters">
+    </part>
+  </message>
+  <message name="getDocumentIdentificationRequest">
+    <part element="document:getDocumentIdentification" name="parameters">
+    </part>
+  </message>
+  <message name="endBatchFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="getDirectEditingURLRequest">
+    <part element="document:getDirectEditingURL" name="parameters">
+    </part>
+  </message>
+  <message name="deleteDocumentMimeTypesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="listDocumentCategoriesRequest">
+    <part element="document:listDocumentCategories" name="parameters">
+    </part>
+  </message>
+  <message name="listRelatedDocumentVersionsResponse">
+    <part element="document:listRelatedDocumentVersionsResponse" name="parameters">
+    </part>
+  </message>
+  <message name="lookUpDocumentExtensionsRequest">
+    <part element="document:lookUpDocumentExtensions" name="parameters">
+    </part>
+  </message>
+  <message name="startBatchRequest">
+    <part element="document:startBatch" name="parameters">
+    </part>
+  </message>
+  <message name="listDocumentRolesFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="deleteDocumentExtensionsResponse">
+    <part element="document:deleteDocumentExtensionsResponse" name="parameters">
+    </part>
+  </message>
+  <message name="addDocumentExtensionsRequest">
+    <part element="document:addDocumentExtensions" name="parameters">
+    </part>
+  </message>
+  <message name="updateDocumentMetadataRequest">
+    <part element="document:updateDocumentMetadata" name="parameters">
+    </part>
+  </message>
+  <message name="listDocumentCategoriesResponse">
+    <part element="document:listDocumentCategoriesResponse" name="parameters">
+    </part>
+  </message>
+  <portType name="DocumentsPortType">
+    <operation name="addCaseTypeDMSes">
+      <input message="document:addCaseTypeDMSesRequest" name="addCaseTypeDMSesRequest">
+    </input>
+      <output message="document:addCaseTypeDMSesResponse" name="addCaseTypeDMSesResponse">
+    </output>
+      <fault message="document:addCaseTypeDMSesFault" name="addCaseTypeDMSesFault">
+    </fault>
+    </operation>
+    <operation name="addDMSes">
+      <input message="document:addDMSesRequest" name="addDMSesRequest">
+    </input>
+      <output message="document:addDMSesResponse" name="addDMSesResponse">
+    </output>
+      <fault message="document:addDMSesFault" name="addDMSesFault">
+    </fault>
+    </operation>
+    <operation name="addDocument">
+      <input message="document:addDocumentRequest" name="addDocumentRequest">
+    </input>
+      <output message="document:addDocumentResponse" name="addDocumentResponse">
+    </output>
+      <fault message="document:addDocumentFault" name="addDocumentFault">
+    </fault>
+    </operation>
+    <operation name="addDocumentExtensions">
+      <input message="document:addDocumentExtensionsRequest" name="addDocumentExtensionsRequest">
+    </input>
+      <output message="document:addDocumentExtensionsResponse" name="addDocumentExtensionsResponse">
+    </output>
+      <fault message="document:addDocumentExtensionsFault" name="addDocumentExtensionsFault">
+    </fault>
+    </operation>
+    <operation name="addDocumentMimeTypes">
+      <input message="document:addDocumentMimeTypesRequest" name="addDocumentMimeTypesRequest">
+    </input>
+      <output message="document:addDocumentMimeTypesResponse" name="addDocumentMimeTypesResponse">
+    </output>
+      <fault message="document:addDocumentMimeTypesFault" name="addDocumentMimeTypesFault">
+    </fault>
+    </operation>
+    <operation name="addDocumentToCase">
+      <input message="document:addDocumentToCaseRequest" name="addDocumentToCaseRequest">
+    </input>
+      <output message="document:addDocumentToCaseResponse" name="addDocumentToCaseResponse">
+    </output>
+      <fault message="document:addDocumentToCaseFault" name="addDocumentToCaseFault">
+    </fault>
+    </operation>
+    <operation name="addDocumentTypes">
+      <input message="document:addDocumentTypesRequest" name="addDocumentTypesRequest">
+    </input>
+      <output message="document:addDocumentTypesResponse" name="addDocumentTypesResponse">
+    </output>
+      <fault message="document:addDocumentTypesFault" name="addDocumentTypesFault">
+    </fault>
+    </operation>
+    <operation name="addTemplates">
+      <input message="document:addTemplatesRequest" name="addTemplatesRequest">
+    </input>
+      <output message="document:addTemplatesResponse" name="addTemplatesResponse">
+    </output>
+      <fault message="document:addTemplatesFault" name="addTemplatesFault">
+    </fault>
+    </operation>
+    <operation name="deleteCaseTypeDMSes">
+      <input message="document:deleteCaseTypeDMSesRequest" name="deleteCaseTypeDMSesRequest">
+    </input>
+      <output message="document:deleteCaseTypeDMSesResponse" name="deleteCaseTypeDMSesResponse">
+    </output>
+      <fault message="document:deleteCaseTypeDMSesFault" name="deleteCaseTypeDMSesFault">
+    </fault>
+    </operation>
+    <operation name="deleteDMSes">
+      <input message="document:deleteDMSesRequest" name="deleteDMSesRequest">
+    </input>
+      <output message="document:deleteDMSesResponse" name="deleteDMSesResponse">
+    </output>
+      <fault message="document:deleteDMSesFault" name="deleteDMSesFault">
+    </fault>
+    </operation>
+    <operation name="deleteDocument">
+      <input message="document:deleteDocumentRequest" name="deleteDocumentRequest">
+    </input>
+      <output message="document:deleteDocumentResponse" name="deleteDocumentResponse">
+    </output>
+      <fault message="document:deleteDocumentFault" name="deleteDocumentFault">
+    </fault>
+    </operation>
+    <operation name="deleteDocumentExtensions">
+      <input message="document:deleteDocumentExtensionsRequest" name="deleteDocumentExtensionsRequest">
+    </input>
+      <output message="document:deleteDocumentExtensionsResponse" name="deleteDocumentExtensionsResponse">
+    </output>
+      <fault message="document:deleteDocumentExtensionsFault" name="deleteDocumentExtensionsFault">
+    </fault>
+    </operation>
+    <operation name="deleteDocumentMimeTypes">
+      <input message="document:deleteDocumentMimeTypesRequest" name="deleteDocumentMimeTypesRequest">
+    </input>
+      <output message="document:deleteDocumentMimeTypesResponse" name="deleteDocumentMimeTypesResponse">
+    </output>
+      <fault message="document:deleteDocumentMimeTypesFault" name="deleteDocumentMimeTypesFault">
+    </fault>
+    </operation>
+    <operation name="deleteDocumentTypes">
+      <input message="document:deleteDocumentTypesRequest" name="deleteDocumentTypesRequest">
+    </input>
+      <output message="document:deleteDocumentTypesResponse" name="deleteDocumentTypesResponse">
+    </output>
+      <fault message="document:deleteDocumentTypesFault" name="deleteDocumentTypesFault">
+    </fault>
+    </operation>
+    <operation name="deleteTemplates">
+      <input message="document:deleteTemplatesRequest" name="deleteTemplatesRequest">
+    </input>
+      <output message="document:deleteTemplatesResponse" name="deleteTemplatesResponse">
+    </output>
+      <fault message="document:deleteTemplatesFault" name="deleteTemplatesFault">
+    </fault>
+    </operation>
+    <operation name="endBatch">
+      <input message="document:endBatchRequest" name="endBatchRequest">
+    </input>
+      <output message="document:endBatchResponse" name="endBatchResponse">
+    </output>
+      <fault message="document:endBatchFault" name="endBatchFault">
+    </fault>
+    </operation>
+    <operation name="getDirectEditingURL">
+      <input message="document:getDirectEditingURLRequest" name="getDirectEditingURLRequest">
+    </input>
+      <output message="document:getDirectEditingURLResponse" name="getDirectEditingURLResponse">
+    </output>
+      <fault message="document:getDirectEditingURLFault" name="getDirectEditingURLFault">
+    </fault>
+    </operation>
+    <operation name="getDMSContextPath">
+      <input message="document:getDMSContextPathRequest" name="getDMSContextPathRequest">
+    </input>
+      <output message="document:getDMSContextPathResponse" name="getDMSContextPathResponse">
+    </output>
+      <fault message="document:getDMSContextPathFault" name="getDMSContextPathFault">
+    </fault>
+    </operation>
+    <operation name="getDocumentIdentification">
+      <input message="document:getDocumentIdentificationRequest" name="getDocumentIdentificationRequest">
+    </input>
+      <output message="document:getDocumentIdentificationResponse" name="getDocumentIdentificationResponse">
+    </output>
+      <fault message="document:getDocumentIdentificationFault" name="getDocumentIdentificationFault">
+    </fault>
+    </operation>
+    <operation name="getDocumentURLs">
+      <input message="document:getDocumentURLsRequest" name="getDocumentURLsRequest">
+    </input>
+      <output message="document:getDocumentURLsResponse" name="getDocumentURLsResponse">
+    </output>
+      <fault message="document:getDocumentURLsFault" name="getDocumentURLsFault">
+    </fault>
+    </operation>
+    <operation name="listDocumentCategories">
+      <input message="document:listDocumentCategoriesRequest" name="listDocumentCategoriesRequest">
+    </input>
+      <output message="document:listDocumentCategoriesResponse" name="listDocumentCategoriesResponse">
+    </output>
+      <fault message="document:listDocumentCategoriesFault" name="listDocumentCategoriesFault">
+    </fault>
+    </operation>
+    <operation name="listDocumentDirections">
+      <input message="document:listDocumentDirectionsRequest" name="listDocumentDirectionsRequest">
+    </input>
+      <output message="document:listDocumentDirectionsResponse" name="listDocumentDirectionsResponse">
+    </output>
+      <fault message="document:listDocumentDirectionsFault" name="listDocumentDirectionsFault">
+    </fault>
+    </operation>
+    <operation name="listDocumentRoles">
+      <input message="document:listDocumentRolesRequest" name="listDocumentRolesRequest">
+    </input>
+      <output message="document:listDocumentRolesResponse" name="listDocumentRolesResponse">
+    </output>
+      <fault message="document:listDocumentRolesFault" name="listDocumentRolesFault">
+    </fault>
+    </operation>
+    <operation name="listDocumentTypeGenericDescriptions">
+      <input message="document:listDocumentTypeGenericDescriptionsRequest" name="listDocumentTypeGenericDescriptionsRequest">
+    </input>
+      <output message="document:listDocumentTypeGenericDescriptionsResponse" name="listDocumentTypeGenericDescriptionsResponse">
+    </output>
+      <fault message="document:listDocumentTypeGenericDescriptionsFault" name="listDocumentTypeGenericDescriptionsFault">
+    </fault>
+    </operation>
+    <operation name="listDocumentVersions">
+      <input message="document:listDocumentVersionsRequest" name="listDocumentVersionsRequest">
+    </input>
+      <output message="document:listDocumentVersionsResponse" name="listDocumentVersionsResponse">
+    </output>
+      <fault message="document:listDocumentVersionsFault" name="listDocumentVersionsFault">
+    </fault>
+    </operation>
+    <operation name="listDocuments">
+      <input message="document:listDocumentsRequest" name="listDocumentsRequest">
+    </input>
+      <output message="document:listDocumentsResponse" name="listDocumentsResponse">
+    </output>
+      <fault message="document:listDocumentsFault" name="listDocumentsFault">
+    </fault>
+    </operation>
+    <operation name="listLanguages">
+      <input message="document:listLanguagesRequest" name="listLanguagesRequest">
+    </input>
+      <output message="document:listLanguagesResponse" name="listLanguagesResponse">
+    </output>
+      <fault message="document:listLanguagesFault" name="listLanguagesFault">
+    </fault>
+    </operation>
+    <operation name="listRelatedDocumentVersions">
+      <input message="document:listRelatedDocumentVersionsRequest" name="listRelatedDocumentVersionsRequest">
+    </input>
+      <output message="document:listRelatedDocumentVersionsResponse" name="listRelatedDocumentVersionsResponse">
+    </output>
+      <fault message="document:listRelatedDocumentVersionsFault" name="listRelatedDocumentVersionsFault">
+    </fault>
+    </operation>
+    <operation name="lookUpCaseTypeDMSes">
+      <input message="document:lookUpCaseTypeDMSesRequest" name="lookUpCaseTypeDMSesRequest">
+    </input>
+      <output message="document:lookUpCaseTypeDMSesResponse" name="lookUpCaseTypeDMSesResponse">
+    </output>
+      <fault message="document:lookUpCaseTypeDMSesFault" name="lookUpCaseTypeDMSesFault">
+    </fault>
+    </operation>
+    <operation name="lookUpDMSes">
+      <input message="document:lookUpDMSesRequest" name="lookUpDMSesRequest">
+    </input>
+      <output message="document:lookUpDMSesResponse" name="lookUpDMSesResponse">
+    </output>
+      <fault message="document:lookUpDMSesFault" name="lookUpDMSesFault">
+    </fault>
+    </operation>
+    <operation name="lookUpDocumentExtensions">
+      <input message="document:lookUpDocumentExtensionsRequest" name="lookUpDocumentExtensionsRequest">
+    </input>
+      <output message="document:lookUpDocumentExtensionsResponse" name="lookUpDocumentExtensionsResponse">
+    </output>
+      <fault message="document:lookUpDocumentExtensionsFault" name="lookUpDocumentExtensionsFault">
+    </fault>
+    </operation>
+    <operation name="lookUpDocumentMimeTypes">
+      <input message="document:lookUpDocumentMimeTypesRequest" name="lookUpDocumentMimeTypesRequest">
+    </input>
+      <output message="document:lookUpDocumentMimeTypesResponse" name="lookUpDocumentMimeTypesResponse">
+    </output>
+      <fault message="document:lookUpDocumentMimeTypesFault" name="lookUpDocumentMimeTypesFault">
+    </fault>
+    </operation>
+    <operation name="lookUpDocumentTypes">
+      <input message="document:lookUpDocumentTypesRequest" name="lookUpDocumentTypesRequest">
+    </input>
+      <output message="document:lookUpDocumentTypesResponse" name="lookUpDocumentTypesResponse">
+    </output>
+      <fault message="document:lookUpDocumentTypesFault" name="lookUpDocumentTypesFault">
+    </fault>
+    </operation>
+    <operation name="lookUpTemplates">
+      <input message="document:lookUpTemplatesRequest" name="lookUpTemplatesRequest">
+    </input>
+      <output message="document:lookUpTemplatesResponse" name="lookUpTemplatesResponse">
+    </output>
+      <fault message="document:lookUpTemplatesFault" name="lookUpTemplatesFault">
+    </fault>
+    </operation>
+    <operation name="readCaseTypeDMSes">
+      <input message="document:readCaseTypeDMSesRequest" name="readCaseTypeDMSesRequest">
+    </input>
+      <output message="document:readCaseTypeDMSesResponse" name="readCaseTypeDMSesResponse">
+    </output>
+      <fault message="document:readCaseTypeDMSesFault" name="readCaseTypeDMSesFault">
+    </fault>
+    </operation>
+    <operation name="readDMSes">
+      <input message="document:readDMSesRequest" name="readDMSesRequest">
+    </input>
+      <output message="document:readDMSesResponse" name="readDMSesResponse">
+    </output>
+      <fault message="document:readDMSesFault" name="readDMSesFault">
+    </fault>
+    </operation>
+    <operation name="readDocument">
+      <input message="document:readDocumentRequest" name="readDocumentRequest">
+    </input>
+      <output message="document:readDocumentResponse" name="readDocumentResponse">
+    </output>
+      <fault message="document:readDocumentFault" name="readDocumentFault">
+    </fault>
+    </operation>
+    <operation name="readDocumentExtensions">
+      <input message="document:readDocumentExtensionsRequest" name="readDocumentExtensionsRequest">
+    </input>
+      <output message="document:readDocumentExtensionsResponse" name="readDocumentExtensionsResponse">
+    </output>
+      <fault message="document:readDocumentExtensionsFault" name="readDocumentExtensionsFault">
+    </fault>
+    </operation>
+    <operation name="readDocumentMimeTypes">
+      <input message="document:readDocumentMimeTypesRequest" name="readDocumentMimeTypesRequest">
+    </input>
+      <output message="document:readDocumentMimeTypesResponse" name="readDocumentMimeTypesResponse">
+    </output>
+      <fault message="document:readDocumentMimeTypesFault" name="readDocumentMimeTypesFault">
+    </fault>
+    </operation>
+    <operation name="readDocumentTypes">
+      <input message="document:readDocumentTypesRequest" name="readDocumentTypesRequest">
+    </input>
+      <output message="document:readDocumentTypesResponse" name="readDocumentTypesResponse">
+    </output>
+      <fault message="document:readDocumentTypesFault" name="readDocumentTypesFault">
+    </fault>
+    </operation>
+    <operation name="readTemplates">
+      <input message="document:readTemplatesRequest" name="readTemplatesRequest">
+    </input>
+      <output message="document:readTemplatesResponse" name="readTemplatesResponse">
+    </output>
+      <fault message="document:readTemplatesFault" name="readTemplatesFault">
+    </fault>
+    </operation>
+    <operation name="startBatch">
+      <input message="document:startBatchRequest" name="startBatchRequest">
+    </input>
+      <output message="document:startBatchResponse" name="startBatchResponse">
+    </output>
+      <fault message="document:startBatchFault" name="startBatchFault">
+    </fault>
+    </operation>
+    <operation name="updateCaseTypeDMSes">
+      <input message="document:updateCaseTypeDMSesRequest" name="updateCaseTypeDMSesRequest">
+    </input>
+      <output message="document:updateCaseTypeDMSesResponse" name="updateCaseTypeDMSesResponse">
+    </output>
+      <fault message="document:updateCaseTypeDMSesFault" name="updateCaseTypeDMSesFault">
+    </fault>
+    </operation>
+    <operation name="updateDMSes">
+      <input message="document:updateDMSesRequest" name="updateDMSesRequest">
+    </input>
+      <output message="document:updateDMSesResponse" name="updateDMSesResponse">
+    </output>
+      <fault message="document:updateDMSesFault" name="updateDMSesFault">
+    </fault>
+    </operation>
+    <operation name="updateDocumentExtensions">
+      <input message="document:updateDocumentExtensionsRequest" name="updateDocumentExtensionsRequest">
+    </input>
+      <output message="document:updateDocumentExtensionsResponse" name="updateDocumentExtensionsResponse">
+    </output>
+      <fault message="document:updateDocumentExtensionsFault" name="updateDocumentExtensionsFault">
+    </fault>
+    </operation>
+    <operation name="updateDocumentMetadata">
+      <input message="document:updateDocumentMetadataRequest" name="updateDocumentMetadataRequest">
+    </input>
+      <output message="document:updateDocumentMetadataResponse" name="updateDocumentMetadataResponse">
+    </output>
+      <fault message="document:updateDocumentMetadataFault" name="updateDocumentMetadataFault">
+    </fault>
+    </operation>
+    <operation name="updateDocumentMimeTypes">
+      <input message="document:updateDocumentMimeTypesRequest" name="updateDocumentMimeTypesRequest">
+    </input>
+      <output message="document:updateDocumentMimeTypesResponse" name="updateDocumentMimeTypesResponse">
+    </output>
+      <fault message="document:updateDocumentMimeTypesFault" name="updateDocumentMimeTypesFault">
+    </fault>
+    </operation>
+    <operation name="updateDocumentTypes">
+      <input message="document:updateDocumentTypesRequest" name="updateDocumentTypesRequest">
+    </input>
+      <output message="document:updateDocumentTypesResponse" name="updateDocumentTypesResponse">
+    </output>
+      <fault message="document:updateDocumentTypesFault" name="updateDocumentTypesFault">
+    </fault>
+    </operation>
+    <operation name="updateTemplates">
+      <input message="document:updateTemplatesRequest" name="updateTemplatesRequest">
+    </input>
+      <output message="document:updateTemplatesResponse" name="updateTemplatesResponse">
+    </output>
+      <fault message="document:updateTemplatesFault" name="updateTemplatesFault">
+    </fault>
+    </operation>
+    <operation name="verifyAddDocument">
+      <input message="document:verifyAddDocumentRequest" name="verifyAddDocumentRequest">
+    </input>
+      <output message="document:verifyAddDocumentResponse" name="verifyAddDocumentResponse">
+    </output>
+      <fault message="document:verifyAddDocumentFault" name="verifyAddDocumentFault">
+    </fault>
+    </operation>
+  </portType>
+  <binding name="DocumentsBinding" type="document:DocumentsPortType">
+    <soapbind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="addCaseTypeDMSes">
+<wsdl:documentation>[Adds case type document management systems.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:addCaseTypeDMSes"/>
+      <input name="addCaseTypeDMSesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addCaseTypeDMSesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addCaseTypeDMSesFault">
+        <soapbind:fault name="addCaseTypeDMSesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="addDMSes">
+<wsdl:documentation>[Adds document management systems.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:addDMSes"/>
+      <input name="addDMSesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addDMSesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addDMSesFault">
+        <soapbind:fault name="addDMSesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="addDocument">
+<wsdl:documentation>[Adds a document.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:addDocument"/>
+      <input name="addDocumentRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addDocumentResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addDocumentFault">
+        <soapbind:fault name="addDocumentFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="addDocumentExtensions">
+<wsdl:documentation>[Adds document extensions.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:addDocumentExtensions"/>
+      <input name="addDocumentExtensionsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addDocumentExtensionsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addDocumentExtensionsFault">
+        <soapbind:fault name="addDocumentExtensionsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="addDocumentMimeTypes">
+<wsdl:documentation>[Add document mime types to the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:addDocumentMimeTypes"/>
+      <input name="addDocumentMimeTypesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addDocumentMimeTypesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addDocumentMimeTypesFault">
+        <soapbind:fault name="addDocumentMimeTypesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="addDocumentToCase">
+<wsdl:documentation>[Adds an existing case document to another case in the same external system.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:addDocumentToCase"/>
+      <input name="addDocumentToCaseRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addDocumentToCaseResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addDocumentToCaseFault">
+        <soapbind:fault name="addDocumentToCaseFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="addDocumentTypes">
+<wsdl:documentation>[Add document types to the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:addDocumentTypes"/>
+      <input name="addDocumentTypesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addDocumentTypesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addDocumentTypesFault">
+        <soapbind:fault name="addDocumentTypesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="addTemplates">
+<wsdl:documentation>[Adds templates.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:addTemplates"/>
+      <input name="addTemplatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addTemplatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addTemplatesFault">
+        <soapbind:fault name="addTemplatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="deleteCaseTypeDMSes">
+<wsdl:documentation>[Deletes case type document management systems.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:deleteCaseTypeDMSes"/>
+      <input name="deleteCaseTypeDMSesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="deleteCaseTypeDMSesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="deleteCaseTypeDMSesFault">
+        <soapbind:fault name="deleteCaseTypeDMSesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="deleteDMSes">
+<wsdl:documentation>[Deletes document management systems.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:deleteDMSes"/>
+      <input name="deleteDMSesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="deleteDMSesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="deleteDMSesFault">
+        <soapbind:fault name="deleteDMSesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="deleteDocument">
+<wsdl:documentation>[Deletes a document.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:deleteDocument"/>
+      <input name="deleteDocumentRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="deleteDocumentResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="deleteDocumentFault">
+        <soapbind:fault name="deleteDocumentFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="deleteDocumentExtensions">
+<wsdl:documentation>[Deletes document extension.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:deleteDocumentExtensions"/>
+      <input name="deleteDocumentExtensionsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="deleteDocumentExtensionsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="deleteDocumentExtensionsFault">
+        <soapbind:fault name="deleteDocumentExtensionsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="deleteDocumentMimeTypes">
+<wsdl:documentation>[Deletes document mime types from the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:deleteDocumentMimeTypes"/>
+      <input name="deleteDocumentMimeTypesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="deleteDocumentMimeTypesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="deleteDocumentMimeTypesFault">
+        <soapbind:fault name="deleteDocumentMimeTypesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="deleteDocumentTypes">
+<wsdl:documentation>[Deletes document types from the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:deleteDocumentTypes"/>
+      <input name="deleteDocumentTypesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="deleteDocumentTypesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="deleteDocumentTypesFault">
+        <soapbind:fault name="deleteDocumentTypesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="deleteTemplates">
+<wsdl:documentation>[Deletes templates.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:deleteTemplates"/>
+      <input name="deleteTemplatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="deleteTemplatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="deleteTemplatesFault">
+        <soapbind:fault name="deleteTemplatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="endBatch">
+<wsdl:documentation>[Ends a document batch.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:endBatch"/>
+      <input name="endBatchRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="endBatchResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="endBatchFault">
+        <soapbind:fault name="endBatchFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getDirectEditingURL">
+<wsdl:documentation>[Returns the direct editing URL of a document.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:getDirectEditingURL"/>
+      <input name="getDirectEditingURLRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="getDirectEditingURLResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="getDirectEditingURLFault">
+        <soapbind:fault name="getDirectEditingURLFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getDMSContextPath">
+<wsdl:documentation>[Returns the full DMS context path for a document.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:getDMSContextPath"/>
+      <input name="getDMSContextPathRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="getDMSContextPathResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="getDMSContextPathFault">
+        <soapbind:fault name="getDMSContextPathFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getDocumentIdentification">
+<wsdl:documentation>[Returns a new document identification.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:getDocumentIdentification"/>
+      <input name="getDocumentIdentificationRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="getDocumentIdentificationResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="getDocumentIdentificationFault">
+        <soapbind:fault name="getDocumentIdentificationFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getDocumentURLs">
+<wsdl:documentation>[Returns the direct link URLs for the specified documents.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:getDocumentURLs"/>
+      <input name="getDocumentURLsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="getDocumentURLsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="getDocumentURLsFault">
+        <soapbind:fault name="getDocumentURLsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="listDocumentCategories">
+<wsdl:documentation>[Lists the document categories in the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:listDocumentCategories"/>
+      <input name="listDocumentCategoriesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="listDocumentCategoriesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="listDocumentCategoriesFault">
+        <soapbind:fault name="listDocumentCategoriesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="listDocumentDirections">
+<wsdl:documentation>[Lists the document directions in the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:listDocumentDirections"/>
+      <input name="listDocumentDirectionsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="listDocumentDirectionsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="listDocumentDirectionsFault">
+        <soapbind:fault name="listDocumentDirectionsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="listDocumentRoles">
+<wsdl:documentation>[Lists the document roles.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:listDocumentRoles"/>
+      <input name="listDocumentRolesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="listDocumentRolesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="listDocumentRolesFault">
+        <soapbind:fault name="listDocumentRolesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="listDocumentTypeGenericDescriptions">
+<wsdl:documentation>[Lists the generic descriptions of document types in the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:listDocumentTypeGenericDescriptions"/>
+      <input name="listDocumentTypeGenericDescriptionsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="listDocumentTypeGenericDescriptionsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="listDocumentTypeGenericDescriptionsFault">
+        <soapbind:fault name="listDocumentTypeGenericDescriptionsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="listDocumentVersions">
+<wsdl:documentation>[Lists the document versions.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:listDocumentVersions"/>
+      <input name="listDocumentVersionsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="listDocumentVersionsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="listDocumentVersionsFault">
+        <soapbind:fault name="listDocumentVersionsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="listDocuments">
+<wsdl:documentation>[Returns the document META data of all documents matching the specified search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:listDocuments"/>
+      <input name="listDocumentsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="listDocumentsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="listDocumentsFault">
+        <soapbind:fault name="listDocumentsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="listLanguages">
+<wsdl:documentation>[Lists the languages in the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:listLanguages"/>
+      <input name="listLanguagesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="listLanguagesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="listLanguagesFault">
+        <soapbind:fault name="listLanguagesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="listRelatedDocumentVersions">
+<wsdl:documentation>[Lists the document versions of related documents.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:listRelatedDocumentVersions"/>
+      <input name="listRelatedDocumentVersionsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="listRelatedDocumentVersionsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="listRelatedDocumentVersionsFault">
+        <soapbind:fault name="listRelatedDocumentVersionsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpCaseTypeDMSes">
+<wsdl:documentation>[Looks up case type document management systems.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:lookUpCaseTypeDMSes"/>
+      <input name="lookUpCaseTypeDMSesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpCaseTypeDMSesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpCaseTypeDMSesFault">
+        <soapbind:fault name="lookUpCaseTypeDMSesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpDMSes">
+<wsdl:documentation>[Looks up document management systems.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:lookUpDMSes"/>
+      <input name="lookUpDMSesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpDMSesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpDMSesFault">
+        <soapbind:fault name="lookUpDMSesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpDocumentExtensions">
+<wsdl:documentation>[Looks up document extensions in the Document Vault database.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:lookUpDocumentExtensions"/>
+      <input name="lookUpDocumentExtensionsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpDocumentExtensionsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpDocumentExtensionsFault">
+        <soapbind:fault name="lookUpDocumentExtensionsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpDocumentMimeTypes">
+<wsdl:documentation>[Look up document mime types in the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:lookUpDocumentMimeTypes"/>
+      <input name="lookUpDocumentMimeTypesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpDocumentMimeTypesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpDocumentMimeTypesFault">
+        <soapbind:fault name="lookUpDocumentMimeTypesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpDocumentTypes">
+<wsdl:documentation>[Look up document types in the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:lookUpDocumentTypes"/>
+      <input name="lookUpDocumentTypesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpDocumentTypesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpDocumentTypesFault">
+        <soapbind:fault name="lookUpDocumentTypesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpTemplates">
+<wsdl:documentation>[Looks up templates.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:lookUpTemplates"/>
+      <input name="lookUpTemplatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpTemplatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpTemplatesFault">
+        <soapbind:fault name="lookUpTemplatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="readCaseTypeDMSes">
+<wsdl:documentation>[Reads case type document management systems.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:readCaseTypeDMSes"/>
+      <input name="readCaseTypeDMSesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="readCaseTypeDMSesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="readCaseTypeDMSesFault">
+        <soapbind:fault name="readCaseTypeDMSesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="readDMSes">
+<wsdl:documentation>[Reads document management systems.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:readDMSes"/>
+      <input name="readDMSesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="readDMSesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="readDMSesFault">
+        <soapbind:fault name="readDMSesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="readDocument">
+<wsdl:documentation>[Returns the document META data of the specified document and session information for reading the document.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:readDocument"/>
+      <input name="readDocumentRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="readDocumentResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="readDocumentFault">
+        <soapbind:fault name="readDocumentFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="readDocumentExtensions">
+<wsdl:documentation>[Reads document extensions.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:readDocumentExtensions"/>
+      <input name="readDocumentExtensionsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="readDocumentExtensionsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="readDocumentExtensionsFault">
+        <soapbind:fault name="readDocumentExtensionsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="readDocumentMimeTypes">
+<wsdl:documentation>[Read document mime types from the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:readDocumentMimeTypes"/>
+      <input name="readDocumentMimeTypesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="readDocumentMimeTypesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="readDocumentMimeTypesFault">
+        <soapbind:fault name="readDocumentMimeTypesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="readDocumentTypes">
+<wsdl:documentation>[Read document types from the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:readDocumentTypes"/>
+      <input name="readDocumentTypesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="readDocumentTypesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="readDocumentTypesFault">
+        <soapbind:fault name="readDocumentTypesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="readTemplates">
+<wsdl:documentation>[Reads templates.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:readTemplates"/>
+      <input name="readTemplatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="readTemplatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="readTemplatesFault">
+        <soapbind:fault name="readTemplatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="startBatch">
+<wsdl:documentation>[Starts a batch for adding documents.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:startBatch"/>
+      <input name="startBatchRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="startBatchResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="startBatchFault">
+        <soapbind:fault name="startBatchFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updateCaseTypeDMSes">
+<wsdl:documentation>[Updates case type document management systems.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:updateCaseTypeDMSes"/>
+      <input name="updateCaseTypeDMSesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updateCaseTypeDMSesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updateCaseTypeDMSesFault">
+        <soapbind:fault name="updateCaseTypeDMSesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updateDMSes">
+<wsdl:documentation>[Updates document management systems.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:updateDMSes"/>
+      <input name="updateDMSesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updateDMSesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updateDMSesFault">
+        <soapbind:fault name="updateDMSesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updateDocumentExtensions">
+<wsdl:documentation>[Updates document extensions.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:updateDocumentExtensions"/>
+      <input name="updateDocumentExtensionsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updateDocumentExtensionsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updateDocumentExtensionsFault">
+        <soapbind:fault name="updateDocumentExtensionsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updateDocumentMetadata">
+<wsdl:documentation>[Updates the document metadata.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:updateDocumentMetadata"/>
+      <input name="updateDocumentMetadataRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updateDocumentMetadataResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updateDocumentMetadataFault">
+        <soapbind:fault name="updateDocumentMetadataFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updateDocumentMimeTypes">
+<wsdl:documentation>[Update document mime types in the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:updateDocumentMimeTypes"/>
+      <input name="updateDocumentMimeTypesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updateDocumentMimeTypesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updateDocumentMimeTypesFault">
+        <soapbind:fault name="updateDocumentMimeTypesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updateDocumentTypes">
+<wsdl:documentation>[Update document types in the case warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:updateDocumentTypes"/>
+      <input name="updateDocumentTypesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updateDocumentTypesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updateDocumentTypesFault">
+        <soapbind:fault name="updateDocumentTypesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updateTemplates">
+<wsdl:documentation>[Updates templates.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:updateTemplates"/>
+      <input name="updateTemplatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updateTemplatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updateTemplatesFault">
+        <soapbind:fault name="updateTemplatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="verifyAddDocument">
+<wsdl:documentation>[Verifies the rights for adding a document.]</wsdl:documentation>
+      <soapbind:operation soapAction="documents:verifyAddDocument"/>
+      <input name="verifyAddDocumentRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="verifyAddDocumentResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="verifyAddDocumentFault">
+        <soapbind:fault name="verifyAddDocumentFault" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="DocumentsService">
+<wsdl:documentation>[documents]|[Case warehouse documents]</wsdl:documentation>
+    <port binding="document:DocumentsBinding" name="DocumentsPortType">
+      <soapbind:address location="http://172.29.78.40:9180/zakmag-service/DocumentsService"/>
+    </port>
+  </service>
+</definitions>

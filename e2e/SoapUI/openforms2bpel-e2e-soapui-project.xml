@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="c7451bda-6915-4166-8379-a3921e2cca1f" activeEnvironment="Default" name="openforms2bpel" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="0d8a6a41-3b6a-4b40-be13-713e7dee7466" wadlVersion="http://wadl.dev.java.net/2009/02" name="Catalogi API" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:description>Een API om een zaaktypecatalogus (ZTC) te benaderen.
+<con:soapui-project id="c7451bda-6915-4166-8379-a3921e2cca1f" activeEnvironment="Default" name="openforms2bpel" resourceRoot="" soapui-version="5.7.2" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="0d8a6a41-3b6a-4b40-be13-713e7dee7466" wadlVersion="http://wadl.dev.java.net/2009/02" name="Catalogi API" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:description>Een API om een zaaktypecatalogus (ZTC) te benaderen.
 
 De zaaktypecatalogus helpt gemeenten om het proces vanuit de 'vraag van een
 klant' (productaanvraag, melding, aangifte, informatieverzoek e.d.) tot en met
@@ -820,7 +820,7 @@ Example: in order to display only objects with `height` equal to 100, query `dat
 should be used. If `height` is nested inside `dimensions` attribute, query should look like
 `data_attrs=dimensions__height__exact__100`
 </con:description></con:parameter><con:parameter><con:name>date</con:name><con:style>QUERY</con:style><con:description>Display record data for the specified material date, i.e. the specified date would be between `startAt` and `endAt` attributes. The default value is today</con:description></con:parameter><con:parameter><con:name>fields</con:name><con:style>QUERY</con:style><con:description>Comma-separated fields, which should be displayed in the response. For example: 'url, uuid, record__geometry'.</con:description></con:parameter><con:parameter><con:name>registrationDate</con:name><con:style>QUERY</con:style><con:description>Display record data for the specified registration date, i.e. the specified date would be between `registrationAt` attributes of different records</con:description></con:parameter><con:parameter><con:name>type</con:name><con:style>QUERY</con:style><con:description>Url reference to OBJECTTYPE in Objecttypes API</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:request name="Request 1" id="231b3a65-649a-4923-a2c6-4fab9ca7a9f1" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method><con:method name="object_create" id="905dc1ed-8dc2-4366-95cc-e44a60776731" method="POST"><con:description>Create an OBJECT and its initial RECORD.&#13;
-</con:description><con:settings/><con:parameters><con:parameter><con:name>Accept-Crs</con:name><con:style>HEADER</con:style><con:description>The desired 'Coordinate Reference System' (CRS) of the response data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Crs</con:name><con:style>HEADER</con:style><con:description>The 'Coordinate Reference System' (CRS) of the request data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Type</con:name><con:style>HEADER</con:style><con:description>Content type of the request body.</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>201</con:status><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>500</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>500</con:status><con:params/></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>404</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>404</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>201</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="82aa8045-70bf-466b-926f-b8a9da1d6345" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method></con:resource><con:resource name="/objects/{uuid}" path="/objects/{uuid}" id="93f4f118-33db-47aa-8be0-7ba832e64862"><con:settings/><con:parameters><con:parameter required="true"><con:name>uuid</con:name><con:style>TEMPLATE</con:style><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="object_read" id="3e180cc1-80b6-442d-b75d-8897ea703441" method="GET"><con:description>Retrieve a single OBJECT and its actual RECORD. The actual record is defined as if the query parameter `date=&lt;today>` was given.&#13;
+</con:description><con:settings/><con:parameters><con:parameter><con:name>Accept-Crs</con:name><con:style>HEADER</con:style><con:description>The desired 'Coordinate Reference System' (CRS) of the response data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Crs</con:name><con:style>HEADER</con:style><con:description>The 'Coordinate Reference System' (CRS) of the request data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Type</con:name><con:style>HEADER</con:style><con:description>Content type of the request body.</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>201</con:status><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>500</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>500</con:status><con:params/></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>404</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>404</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>201</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="82aa8045-70bf-466b-926f-b8a9da1d6345" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method></con:resource><con:resource name="/objects/{uuid}" path="/objects/{uuid}" id="93f4f118-33db-47aa-8be0-7ba832e64862"><con:settings/><con:parameters><con:parameter required="true"><con:name>uuid</con:name><con:style>TEMPLATE</con:style><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="object_read" id="3e180cc1-80b6-442d-b75d-8897ea703441" method="GET"><con:description>Retrieve a single OBJECT and its actual RECORD. The actual record is defined as if the query parameter `date=&lt;today>` was given.&#13;
 </con:description><con:settings/><con:parameters><con:parameter><con:name>Accept-Crs</con:name><con:style>HEADER</con:style><con:description>The desired 'Coordinate Reference System' (CRS) of the response data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter><con:name>fields</con:name><con:style>QUERY</con:style><con:description>Comma-separated fields, which should be displayed in the response. For example: 'url, uuid, record__geometry'.</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:request name="Request 1" id="5219b4f4-71f0-4bbd-89f7-ffcf90a8e9b2" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method><con:method name="object_update" id="0a5f2337-689e-4416-8360-05b107ebfbdf" method="PUT"><con:description>Update the OBJECT by creating a new RECORD with the updates values.&#13;
 </con:description><con:settings/><con:parameters><con:parameter><con:name>Accept-Crs</con:name><con:style>HEADER</con:style><con:description>The desired 'Coordinate Reference System' (CRS) of the response data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Crs</con:name><con:style>HEADER</con:style><con:description>The 'Coordinate Reference System' (CRS) of the request data. According to the GeoJSON spec, WGS84 is the default (EPSG: 4326 is the same as WGS84).</con:description></con:parameter><con:parameter required="true"><con:name>Content-Type</con:name><con:style>HEADER</con:style><con:description>Content type of the request body.</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:request name="Request 1" id="2540ab28-de40-450e-8bd1-57c9f602a590" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method><con:method name="object_delete" id="39eaa852-0b81-4dbc-bacf-8d4f598e61e0" method="DELETE"><con:description>Delete an OBJECT and all RECORDs belonging to it.&#13;
 </con:description><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>204</con:status><con:params/></con:representation><con:request name="Request 1" id="0d2b1f64-b4cd-4542-80df-f7da6b3c1836" mediaType="application/json"><con:settings/><con:parameters/></con:request></con:method><con:method name="object_partial_update" id="abc3b507-5f9e-4fc5-89f6-04f050964daa" method="PATCH"><con:description>Update the OBJECT by creating a new RECORD with the updates values.&#13;
@@ -951,6 +951,117 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       "startAt" : "2023-11-03",\r
       "endAt" : null,\r
       "registrationAt" : "2023-11-03",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request><con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes"><con:configuration><codes>201</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="Copy of objects_object_create" id="2c6fdc34-0a94-415a-b098-fb57c80a3cf9"><con:settings/><con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Copy of objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint><con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "999994542",\r
+         "data" : {\r
+            "uw-klacht" : {\r
+               "hoeLaat" : "Tijdstip",\r
+               "watIsUwKlacht" : "Klacht",\r
+               "wanneerIsDitGebeurd" : "Wanneer",\r
+               "welkOrganisatieOnderdeel" : "anders",\r
+               "tOverWieWiltUEenKlachtIndienen" : "Henk",\r
+               "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "Ontslag"\r
+            },\r
+            "uw-gegevenscompleet" : {\r
+               "fieldSetMetDigiD" : {\r
+                  "adresgegevensMD" : {\r
+                     "postcodePMD" : "1014 AW",\r
+                     "huisletterPMD" : "",\r
+                     "huisnummerPMD" : "14",\r
+                     "straatnaamPMD" : "Schakelstraat",\r
+                     "woonplaatsPMD" : "Amsterdam",\r
+                     "huisnummertoevoegingPMD" : "H"\r
+                  },\r
+                  "contactgegevensMD" : {\r
+                     "eMailadresPMD" : "m.van.altena@utrecht.nl",\r
+                     "telefoonnummerPMD" : "0612345678"\r
+                  },\r
+                  "persoonsgegevensMD" : {\r
+                     "achternaamPMD" : "Braber",\r
+                     "voorletterSPMD" : "",\r
+                     "tussenvoegselSPMD" : "den"\r
+                  }\r
+               }\r
+            },\r
+            "bijlagen-toevoegen-klacht" : {\r
+               "file" : [\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4df96139-ef95-419d-9259-e64799587c09",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4df96139-ef95-419d-9259-e64799587c09",\r
+                        "form" : "",\r
+                        "name" : "TEST_Marcel.pdf",\r
+                        "size" : 7286,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "TEST_Marcel-0aec57d3-db5d-4bfb-b95d-c68de83e6d34.pdf",\r
+                     "size" : 7286,\r
+                     "type" : "application/pdf",\r
+                     "storage" : "url",\r
+                     "originalName" : "TEST_Marcel.pdf"\r
+                  },\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/082db838-0867-46d3-9a55-8a94ab362c51",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/082db838-0867-46d3-9a55-8a94ab362c51",\r
+                        "form" : "",\r
+                        "name" : "1.txt",\r
+                        "size" : 13,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "1-9a195eac-3ee7-4eee-9a82-f225e3d58167.txt",\r
+                     "size" : 13,\r
+                     "type" : "text/plain",\r
+                     "storage" : "url",\r
+                     "originalName" : "1.txt"\r
+                  },\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4b292d56-7dd5-45a8-8e8c-23607cb2d0a0",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4b292d56-7dd5-45a8-8e8c-23607cb2d0a0",\r
+                        "form" : "",\r
+                        "name" : "test.docx",\r
+                        "size" : 172268,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "test-d7c2cfdd-2407-4374-b21e-0cc0373f99bf.docx",\r
+                     "size" : 172268,\r
+                     "type" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document",\r
+                     "storage" : "url",\r
+                     "originalName" : "test.docx"\r
+                  }\r
+               ],\r
+               "wiltUBijlagenMeesturen" : "ja",\r
+               "ikWilNaBehandelingTevredenheidsonderzoek" : "nee"\r
+            }\r
+         },\r
+         "type" : "P9_2_KLB",\r
+         "csv_url" : "",\r
+         "pdf_url" : "http://host.docker.internal:9002/documenten/api/v1/enkelvoudiginformatieobjecten/e5a1e6d1-f67f-4f79-aefd-a37ab209fa5c",\r
+         "attachments" : [\r
+            "http://host.docker.internal:9002/documenten/api/v1/enkelvoudiginformatieobjecten/e5a1e6d1-f67f-4f79-aefd-a37ab209fa5c",
+            "http://host.docker.internal:9002/documenten/api/v1/enkelvoudiginformatieobjecten/e5a1e6d1-f67f-4f79-aefd-a37ab209fa5c",
+            "http://host.docker.internal:9002/documenten/api/v1/enkelvoudiginformatieobjecten/e5a1e6d1-f67f-4f79-aefd-a37ab209fa5c"
+         ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "076f447a-f0d4-481a-aeb1-3c14aea183ec",\r
+         "public_reference" : "OF-XD3WM3"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2023-11-09",\r
+      "endAt" : null,\r
+      "registrationAt" : "2023-11-09",\r
       "correctionFor" : null,\r
       "correctedBy" : null\r
    }\r

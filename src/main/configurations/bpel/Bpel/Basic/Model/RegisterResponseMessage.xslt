@@ -35,7 +35,6 @@
                     'http://www.emaxx.org/bpel/proces/xsd/headerproperties')"/>
             </headerproperties:responseProperties>
             <basic:body>
-                <basic:referenceNumber>1564654</basic:referenceNumber>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:referenceNumber', 'empty', zgw:FromOrderedSource(
                     $ReferenceNumber, 
                     $RegisterResponseMessage//basic:referenceNumber, 

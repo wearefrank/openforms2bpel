@@ -4,7 +4,14 @@
         <!ENTITY Bpel_Basic_Mock                            SYSTEM "./Configuration_Bpel_Basic_Mock.xml">
         <!ENTITY Bpel_Basic_PostInitiate                    SYSTEM "./Configuration_Bpel_Basic_PostInitiate.xml">
         <!ENTITY Bpel_Basic_PostRegister                    SYSTEM "./Configuration_Bpel_Basic_PostRegister.xml">
-        <!ENTITY Notificaties_Subscribe                    SYSTEM "./Configuration_Notificaties_Subscribe.xml">
+        <!ENTITY Bpel_Documents_Mock                        SYSTEM "./Configuration_Bpel_Documents_Mock.xml">
+        <!ENTITY Bpel_Documents_PostAddDocument             SYSTEM "./Configuration_Bpel_Documents_PostAddDocument.xml">
+        <!ENTITY Bpel_Documents_PostEndBatch                SYSTEM "./Configuration_Bpel_Documents_PostEndBatch.xml">
+        <!ENTITY Bpel_Documents_PostStartBatch              SYSTEM "./Configuration_Bpel_Documents_PostStartBatch.xml">
+        <!ENTITY Bpel_Documents_UploadAttachment            SYSTEM "./Configuration_Bpel_Documents_UploadAttachment.xml">
+        <!ENTITY Bpel_Documents_UploadAttachments           SYSTEM "./Configuration_Bpel_Documents_UploadAttachments.xml">
+        <!ENTITY Bpel_Mtom_Mock                             SYSTEM "./Configuration_Bpel_Mtom_Mock.xml">
+        <!ENTITY Notificaties_Subscribe                     SYSTEM "./Configuration_Notificaties_Subscribe.xml">
         ]>
 
 <configuration name="bpel">
@@ -13,5 +20,12 @@
     &Bpel_Basic_Mock;
     &Bpel_Basic_PostInitiate;
     &Bpel_Basic_PostRegister;
+    &Bpel_Documents_Mock;
+    &Bpel_Documents_PostAddDocument;
+    &Bpel_Documents_PostEndBatch;
+    &Bpel_Documents_PostStartBatch;
+    &Bpel_Documents_UploadAttachment;
+    &Bpel_Documents_UploadAttachments;
+    &Bpel_Mtom_Mock;
     &Notificaties_Subscribe;
 </configuration>

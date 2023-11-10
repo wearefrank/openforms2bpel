@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8'?><definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.emaxx.org/functional/documents/mtom" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mosoap="http://www.emaxx.org/core/soap" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.emaxx.org/functional/documents/mtom">
+  <types>
+<schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.emaxx.org/functional/documents/mtom" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mosoap="http://www.emaxx.org/core/soap" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/functional/documents/mtom">
+		
+			
+  <xs:simpleType name="contentType">
+				
+    <xs:restriction base="xs:string">
+					
+      <xs:minLength value="3"/>
+				
+    </xs:restriction>
+			
+  </xs:simpleType>
+					
+			
+  <xs:complexType name="base64Binary" xmime:expectedContentTypes="application/octet-stream">
+				
+    <xs:simpleContent>
+					
+      <xs:extension base="xs:base64Binary">
+						
+        <xs:attribute name="contentType" type="tns:contentType"/>
+					
+      </xs:extension>
+				
+    </xs:simpleContent>
+			
+  </xs:complexType>
+			
+			
+  <xs:complexType name="AddDocumentRequestType">
+				
+    <xs:sequence>
+					
+      <xs:element name="sessionId" type="xs:string"/>
+					
+      <xs:element name="document" type="tns:base64Binary"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+			
+  <xs:complexType name="ReadDocumentRequestType">
+				
+    <xs:sequence>
+					
+      <xs:element name="sessionId" type="xs:string"/>
+				
+    </xs:sequence>
+			
+  </xs:complexType>
+			
+			
+  <xs:element name="AddDocumentRequest" type="tns:AddDocumentRequestType"/>
+			
+  <xs:element name="AddDocumentResponse" type="xs:string"/>
+			
+			
+  <xs:element name="ReadDocumentRequest" type="tns:ReadDocumentRequestType"/>
+			
+  <xs:element name="ReadDocumentResponse" type="tns:base64Binary"/>
+		
+</schema>
+<schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.emaxx.org/functional/documents/mtom" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mosoap="http://www.emaxx.org/core/soap" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/core/soap">
+			
+  <xs:element name="faultDetails">
+				
+    <xs:complexType>
+					
+      <xs:sequence>
+						
+        <xs:element name="source" nillable="true" type="xs:string"/>
+						
+        <xs:element name="code" nillable="true" type="xs:string"/>
+						
+        <xs:element name="message" nillable="true" type="xs:string"/>
+						
+        <xs:element name="stacktrace" nillable="true" type="xs:string"/>
+					
+      </xs:sequence>
+				
+    </xs:complexType>
+			
+  </xs:element>
+		
+</schema>
+  </types>
+  <message name="ReadDocumentResponse">
+    <part element="tns:ReadDocumentResponse" name="parameters">
+    </part>
+  </message>
+  <message name="AddDocumentRequest">
+    <part element="tns:AddDocumentRequest" name="parameters">
+    </part>
+  </message>
+  <message name="DocumentFault">
+    <part element="mosoap:faultDetails" name="error">
+    </part>
+  </message>
+  <message name="AddDocumentResponse">
+    <part element="tns:AddDocumentResponse" name="parameters">
+    </part>
+  </message>
+  <message name="ReadDocumentRequest">
+    <part element="tns:ReadDocumentRequest" name="parameters">
+    </part>
+  </message>
+  <portType name="MTOMServicePortType">
+    <operation name="addDocument">
+      <input message="tns:AddDocumentRequest" name="addDocumentRequest">
+    </input>
+      <output message="tns:AddDocumentResponse" name="addDocumentResponse">
+    </output>
+      <fault message="tns:DocumentFault" name="documentFault">
+    </fault>
+    </operation>
+    <operation name="readDocument">
+      <input message="tns:ReadDocumentRequest" name="readDocumentRequest">
+    </input>
+      <output message="tns:ReadDocumentResponse" name="readDocumentResponse">
+    </output>
+      <fault message="tns:DocumentFault" name="documentFault">
+    </fault>
+    </operation>
+  </portType>
+  <binding name="MTOMServiceBinding" type="tns:MTOMServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="addDocument">
+<wsdl:documentation>[Add document binary data to the case warehouse.]</wsdl:documentation>
+      <soap:operation soapAction="addDocument" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="documentFault">
+        <soap:fault name="documentFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="readDocument">
+<wsdl:documentation>[Read document binary data from the case warehouse.]</wsdl:documentation>
+      <soap:operation soapAction="readDocument" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="documentFault">
+        <soap:fault name="documentFault" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="DocumentVaultMTOMConnector">
+<wsdl:documentation>[documentsMtom]|[Case warehouse documents MTOM connector.]</wsdl:documentation>
+    <port binding="tns:MTOMServiceBinding" name="DocumentVaultMTOMPortType">
+      <soap:address location="http://172.29.78.40:9180/zakmag-service/DocumentVaultMTOMConnector"/>
+    </port>
+  </service>
+</definitions>

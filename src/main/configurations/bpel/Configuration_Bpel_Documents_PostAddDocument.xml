@@ -23,6 +23,7 @@
                     name="PostBpelDocumentsAddDocumentWebServiceSender"
                     soap="false"
                     methodType="POST"
+                    contentType="text/xml"
                     soapAction="http://www.emaxx.org/functional/cases/document/addDocument"
                     verifyHostname="${openforms2bpel.bpel.documents-service.verify-hostname}"
                     allowSelfSignedCertificates="${openforms2bpel.bpel.documents-service.allow-self-signed-certs}"

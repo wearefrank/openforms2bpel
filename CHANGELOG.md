@@ -1,5 +1,22 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.11.0](https://github.com/wearefrank/openforms2bpel/compare/v1.10.1...v1.11.0) (2023-11-21)
+
+
+### 🍕 Features
+
+* add wso2 security header in document and mtom service messages ([17e2c57](https://github.com/wearefrank/openforms2bpel/commit/17e2c57cf05590227e32bde473c27d32b65301ce))
+
+
+### 🐛 Bug Fixes
+
+* document service content type to text/xml ([90dcc9f](https://github.com/wearefrank/openforms2bpel/commit/90dcc9f313f977dc36387ab0bdaa6599f0c0a45d))
+
+
+### ✅ Tests
+
+* create mock endpoint for documents ([1a17ed5](https://github.com/wearefrank/openforms2bpel/commit/1a17ed50018fb096ec4aa4d59197f158bf06de7d))
+
 ## [1.10.1](https://github.com/wearefrank/openforms2bpel/compare/v1.10.0...v1.10.1) (2023-11-17)
 
 

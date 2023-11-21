@@ -56,6 +56,33 @@
         </xsl:choose>
     </xsl:function>
 
+    <xsl:function name="zgw:FromOrderedSource">
+        <xsl:param name="param"/>
+        <xsl:param name="zgwObject"/>
+        <xsl:param name="zdsObject"/>
+        <xsl:param name="self"/>
+        <xsl:param name="default"/>
+        <xsl:choose>
+            <xsl:when test="$param">
+                <xsl:value-of select="$param"/>
+            </xsl:when>
+            <xsl:when test="$zgwObject">
+                <xsl:value-of select="$zgwObject"/>
+            </xsl:when>
+            <xsl:when test="$zdsObject">
+                <xsl:value-of select="$zdsObject"/>
+            </xsl:when>
+            <xsl:when test="$self">
+                <xsl:value-of select="$self"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:if test="$default">
+                    <xsl:value-of select="$default"/>
+                </xsl:if>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+
     <xsl:function name="zgw:WrapNullOrSkip" as="node()*">
         <xsl:param name="elementName" as="xs:string"/>
         <xsl:param name="mode" as="xs:string" />

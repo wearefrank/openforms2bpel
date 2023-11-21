@@ -18,7 +18,16 @@
             <SenderPipe
                 name="PostBpelDocumentsAddDocumentSender"
                 >
-                <SoapInputWrapper direction="WRAP" />
+                <SoapInputWrapper
+                    direction="WRAP"
+                    soapHeaderStyleSheet="Bpel/Documents/Model/Security.xslt"
+                    >
+                    <Param name="Username" pattern="{username}@MidOffice" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" />
+                    <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
+                    <Param name="Created" xpathExpression="string($NowDateTime)" >
+                        <Param name="NowDateTime" pattern="{now}" type="DATETIME" />
+                    </Param>
+                </SoapInputWrapper>
                 <WebServiceSender
                     name="PostBpelDocumentsAddDocumentWebServiceSender"
                     soap="false"

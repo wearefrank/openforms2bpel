@@ -17,7 +17,8 @@
                 name="ValidateInput"
 				wsdl="Bpel/Documents/DocumentsService.wsdl"
                 soapBody="startBatch,endBatch,addDocument"
-                ignoreUnknownNamespaces="true"
+                ignoreUnknownNamespaces="true" 
+                soapHeader="Security"
                 >
 				<Forward name="success" path="UnwrapInput"/>
 				<Forward name="failure" path="CreateError"/>

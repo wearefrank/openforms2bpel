@@ -34,7 +34,7 @@
 
             <XmlSwitchPipe 
                 name="StartBatchActionCondition"
-                xpathExpression="$SOAPAction = 'http://www.emaxx.org/functional/cases/document/startBatch'"
+                xpathExpression="$SOAPAction = 'document:startBatch'"
                 >
                 <Param name="SOAPAction" sessionKey="SOAPAction" />
                 <Forward name="true" path="CreateStartBatchResponseMessage" />
@@ -53,7 +53,7 @@
 
             <XmlSwitchPipe 
                 name="EndBatchActionCondition"
-                xpathExpression="$SOAPAction = 'http://www.emaxx.org/functional/cases/document/endBatch'"
+                xpathExpression="$SOAPAction = 'document:endBatch'"
                 >
                 <Param name="SOAPAction" sessionKey="SOAPAction" />
                 <Forward name="true" path="CreateEndBatchResponseMessage" />
@@ -73,7 +73,7 @@
 
             <XmlSwitchPipe 
                 name="AddDocumentActionCondition"
-                xpathExpression="$SOAPAction = 'http://www.emaxx.org/functional/cases/document/addDocument'"
+                xpathExpression="$SOAPAction = 'document:addDocument'"
                 >
                 <Param name="SOAPAction" sessionKey="SOAPAction" />
                 <Forward name="true" path="CreateAddDocumentResponseMessage" />

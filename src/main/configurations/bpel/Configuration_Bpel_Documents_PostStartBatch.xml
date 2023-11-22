@@ -33,7 +33,7 @@
                     soap="false"
                     methodType="POST"
                     contentType="text/xml"
-                    soapAction="http://www.emaxx.org/functional/cases/document/startBatch"
+                    soapAction="document:startBatch"
                     verifyHostname="${openforms2bpel.bpel.documents-service.verify-hostname}"
                     allowSelfSignedCertificates="${openforms2bpel.bpel.documents-service.allow-self-signed-certs}"
                     ignoreCertificateExpiredException="${openforms2bpel.bpel.documents-service.ignore-expired-certs}"

@@ -34,7 +34,7 @@
 
             <XmlSwitchPipe 
                 name="StartBatchActionCondition"
-                xpathExpression="$SOAPAction = 'document:startBatch'"
+                xpathExpression="$SOAPAction = 'documents:startBatch'"
                 >
                 <Param name="SOAPAction" sessionKey="SOAPAction" />
                 <Forward name="true" path="CreateStartBatchResponseMessage" />
@@ -53,7 +53,7 @@
 
             <XmlSwitchPipe 
                 name="EndBatchActionCondition"
-                xpathExpression="$SOAPAction = 'document:endBatch'"
+                xpathExpression="$SOAPAction = 'documents:endBatch'"
                 >
                 <Param name="SOAPAction" sessionKey="SOAPAction" />
                 <Forward name="true" path="CreateEndBatchResponseMessage" />
@@ -73,7 +73,7 @@
 
             <XmlSwitchPipe 
                 name="AddDocumentActionCondition"
-                xpathExpression="$SOAPAction = 'document:addDocument'"
+                xpathExpression="$SOAPAction = 'documents:addDocument'"
                 >
                 <Param name="SOAPAction" sessionKey="SOAPAction" />
                 <Forward name="true" path="CreateAddDocumentResponseMessage" />

@@ -33,7 +33,7 @@
                     soap="false"
                     methodType="POST"
                     contentType="text/xml"
-                    soapAction="document:addDocument"
+                    soapAction="documents:addDocument"
                     verifyHostname="${openforms2bpel.bpel.documents-service.verify-hostname}"
                     allowSelfSignedCertificates="${openforms2bpel.bpel.documents-service.allow-self-signed-certs}"
                     ignoreCertificateExpiredException="${openforms2bpel.bpel.documents-service.ignore-expired-certs}"

@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.11.1](https://github.com/wearefrank/openforms2bpel/compare/v1.11.0...v1.11.1) (2023-11-22)
+
+
+### 🐛 Bug Fixes
+
+* documents service soap actions ([7096555](https://github.com/wearefrank/openforms2bpel/commit/70965553a2d78c325e853afbb069ecf3ed69de0c))
+
 ## [1.11.0](https://github.com/wearefrank/openforms2bpel/compare/v1.10.1...v1.11.0) (2023-11-21)
 
 

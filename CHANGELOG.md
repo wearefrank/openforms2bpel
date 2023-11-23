@@ -1,5 +1,19 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.11.3](https://github.com/wearefrank/openforms2bpel/compare/v1.11.2...v1.11.3) (2023-11-23)
+
+
+### 🐛 Bug Fixes
+
+* alpha2t language code not accepted by documents service ([56c2476](https://github.com/wearefrank/openforms2bpel/commit/56c2476a32099048acdf4ea1a4996779ecce8b2a))
+* initiating subject tranlation not working when no digid used ([65e43a1](https://github.com/wearefrank/openforms2bpel/commit/65e43a136848d45e2c1396785d70af0c8c493cf1))
+* mtom service soap action without namespace ([6a1132c](https://github.com/wearefrank/openforms2bpel/commit/6a1132cc9b3bc896c37179351559ccae3b256c01))
+
+
+### ✅ Tests
+
+* add enkelvoudiginformatieobject inhoud mock ([fafcea4](https://github.com/wearefrank/openforms2bpel/commit/fafcea43d2c74b29b5ec3133817956747855f0a8))
+
 ## [1.11.2](https://github.com/wearefrank/openforms2bpel/compare/v1.11.1...v1.11.2) (2023-11-22)
 
 

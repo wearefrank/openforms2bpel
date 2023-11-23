@@ -67,9 +67,37 @@
                 lineLength="0"
                 storeResultInSessionKey="ZgwEnkelvoudigInformatieObjectInhoud"
                 >
-                <Forward name="success" path="CreateAddDocumentRequestMessage" />
+                <Forward name="success" path="ConvertISO639TaalSender" />
 				<Forward name="Exception" path="EXCEPTION" />
             </Base64Pipe>
+
+            <SenderPipe
+                name="ConvertISO639TaalSender"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                storeResultInSessionKey="Alpha2"
+                >
+                <IbisLocalSender
+                    name="ConvertISO639TaalLocalSender"
+                    javaListener="ConvertISO639Taal"
+                    >
+                </IbisLocalSender>
+                <Param name="Alpha3t" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//taal" />
+                <Forward name="success" path="EnrichZgwEnkelvoudigInformatieObject" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <XsltPipe
+                name="EnrichZgwEnkelvoudigInformatieObject"
+                getInputFromSessionKey="ZgwEnkelvoudigInformatieObject"
+                styleSheetName="Zgw/Documenten/Model/ZgwEnkelvoudigInformatieObject.xslt"
+                storeResultInSessionKey="ZgwEnkelvoudigInformatieObject"
+                >
+                <Param name="Taal" xpathExpression="concat(concat($Alpha2, '_'), upper-case($Alpha2))">
+                    <Param name="Alpha2" sessionKey="Alpha2" />
+                </Param>
+                <Forward name="success" path="CreateAddDocumentRequestMessage"/>
+                <Forward name="error" path="EXCEPTION"/>
+            </XsltPipe>
 
             <XsltPipe
                 name="CreateAddDocumentRequestMessage"

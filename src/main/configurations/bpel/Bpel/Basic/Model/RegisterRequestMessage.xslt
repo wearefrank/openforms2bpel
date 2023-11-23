@@ -14,6 +14,7 @@
     
     <!-- Map -->
     <xsl:param name="InitiateResponseMessage" as="node()"><basic:initiateResponseMessage /></xsl:param>
+    <xsl:param name="Person" as="node()"><basic:person /></xsl:param>
     
     <!-- Create/Enrich -->
     <xsl:param name="RegisterRequestMessage" as="node()"><basic:registerRequestMessage /></xsl:param>
@@ -86,9 +87,11 @@
             <basic:body>
                 <!-- optional -->
                 <basic:initiatingSubject>
-                    <basic:person>
-                        <xsl:copy-of select="$bsn"/>
-                    </basic:person>
+                    <xsl:copy-of select="zgw:ObjectFromOrderedSource(
+                        $Person,
+                        $Person//basic:person,
+                        '',
+                        //basic:person)"/>
                 </basic:initiatingSubject>
                 <!-- optional -->
                 <xsl:copy-of select="zgw:ObjectFromOrderedSource(

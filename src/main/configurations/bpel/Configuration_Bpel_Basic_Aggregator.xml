@@ -135,8 +135,11 @@
                 styleSheetName="Bpel/Basic/Model/EmailParameters.xslt"
                 storeResultInSessionKey="EmailParameters"
                 >
-                <Param name="EmailAddress" xpathExpression="//fieldSetMetDigiD/contactgegevensMD/eMailadresPMD" />
-                <Param name="LastName" xpathExpression="concat(//fieldSetMetDigiD/contactgegevensMD/tussenvoegselSPMD, //fieldSetMetDigiD/contactgegevensMD/achternaamPMD)" />
+                <Param name="EmailAddress" xpathExpression="//*[starts-with(name(), 'fieldSet')]/*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')]" />
+                <Param name="LastName" xpathExpression="concat($Tussenvoegsel, $Achternaam)">
+                    <Param name="Tussenvoegsel" xpathExpression="//*[starts-with(name(), 'fieldSet')]/*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'tussenvoegsel')]" />
+                    <Param name="Achternaam" xpathExpression="//*[starts-with(name(), 'fieldSet')]/*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'achternaam')]" />
+                </Param>
                 <Forward name="success" path="CreateCaseParameters" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
@@ -154,6 +157,18 @@
                 <Param name="FileName" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//bestandsnaam" />
                 <Param name="FileMimeType" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//formaat" />
                 <Param name="FileData" sessionKey="ZgwEnkelvoudigInformatieObjectInhoud" />
+                <Forward name="success" path="CreateInitiatingSubjectPerson" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <XsltPipe
+                name="CreateInitiatingSubjectPerson"
+                getInputFromSessionKey="UnwrappedMessage"
+                styleSheetName="Bpel/Basic/Model/Person.xslt"
+                storeResultInSessionKey="InitiatingSubjectPerson"
+                >
+                <Param name="Bsn" xpathExpression="/ZgwObject/bsn/text()" />
+                <Param name="FieldSetZonderDigiD" xpathExpression="//fieldSetZonderDigiD" type="DOMDOC" />
                 <Forward name="success" path="CreateRegisterRequestMessage" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
@@ -165,6 +180,7 @@
                 storeResultInSessionKey="RegisterRequestMessage"
                 >
                 <Param name="InitiateResponseMessage" sessionKey="InitiateResponseMessage" type="DOMDOC" />
+                <Param name="Person" sessionKey="InitiatingSubjectPerson" type="DOMDOC" />
                 <Param name="User" xpathExpression="/ZgwObject/bsn/text()" />
                 <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
                 <Param name="Domain" sessionKey="Domain" />

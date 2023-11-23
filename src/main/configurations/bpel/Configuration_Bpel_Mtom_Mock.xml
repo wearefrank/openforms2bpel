@@ -33,7 +33,7 @@
 
             <XmlSwitchPipe 
                 name="InitiateActionCondition"
-                xpathExpression="$SOAPAction = 'http://www.emaxx.org/functional/documents/mtom/addDocument'"
+                xpathExpression="$SOAPAction = 'addDocument'"
                 >
                 <Param name="SOAPAction" sessionKey="SOAPAction" />
                 <Forward name="true" path="CreateAddDocumentResponseMessage" />

@@ -11883,11 +11883,11 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
          },\r
          "type" : "P9_2_KLB",\r
          "csv_url" : "",\r
-         "pdf_url" : "http://host.docker.internal:9002/documenten/api/v1/enkelvoudiginformatieobjecten/e5a1e6d1-f67f-4f79-aefd-a37ab209fa5c",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
          "attachments" : [
-            "http://host.docker.internal:9002/documenten/api/v1/enkelvoudiginformatieobjecten/e5a1e6d1-f67f-4f79-aefd-a37ab209fa5c",
-            "http://host.docker.internal:9002/documenten/api/v1/enkelvoudiginformatieobjecten/e5a1e6d1-f67f-4f79-aefd-a37ab209fa5c",
-            "http://host.docker.internal:9002/documenten/api/v1/enkelvoudiginformatieobjecten/e5a1e6d1-f67f-4f79-aefd-a37ab209fa5c"
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf"
          ],\r
          "language_code" : "nl",\r
          "submission_id" : "076f447a-f0d4-481a-aeb1-3c14aea183ec",\r
@@ -11950,7 +11950,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       "index" : 1,\r
       "typeVersion" : 1,\r
       "data" : {\r
-         "bsn" : "",\r
+         "bsn" : "999994542",\r
          "data" : {\r
             "uw-klacht" : {\r
                "hoeLaat" : "Tijdstip",\r
@@ -11989,7 +11989,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
          },\r
          "type" : "P9_2_KLB",\r
          "csv_url" : "",\r
-         "pdf_url" : "http://localhost:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/open-forms-Klacht over de gemeente doorgeven.pdf",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
          "attachments" : [ ],\r
          "language_code" : "nl",\r
          "submission_id" : "00ec0d75-922f-4368-a5cb-98601024609c",\r
@@ -12121,11 +12121,11 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
          },\r
          "type" : "P9_2_KLB",\r
          "csv_url" : "",\r
-         "pdf_url" : "http://host.docker.internal:9002/documenten/api/v1/enkelvoudiginformatieobjecten/e5a1e6d1-f67f-4f79-aefd-a37ab209fa5c",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
          "attachments" : [
-            "http://host.docker.internal:9002/documenten/api/v1/enkelvoudiginformatieobjecten/e5a1e6d1-f67f-4f79-aefd-a37ab209fa5c",
-            "http://host.docker.internal:9002/documenten/api/v1/enkelvoudiginformatieobjecten/e5a1e6d1-f67f-4f79-aefd-a37ab209fa5c",
-            "http://host.docker.internal:9002/documenten/api/v1/enkelvoudiginformatieobjecten/e5a1e6d1-f67f-4f79-aefd-a37ab209fa5c"
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf"
          ],\r
          "language_code" : "nl",\r
          "submission_id" : "076f447a-f0d4-481a-aeb1-3c14aea183ec",\r
@@ -12370,7 +12370,7 @@ if( requestBody.contains("some data") )
 }</con:responseContent>
       </con:response>
     </con:restMockAction>
-    <con:restMockAction name="/enkelvoudiginformatieobjecten//download" method="GET" resourcePath="/enkelvoudiginformatieobjecten//download" id="c24931cb-83d0-469b-be64-067fdf80ff77">
+    <con:restMockAction name="/enkelvoudiginformatieobjecten//download" method="GET" resourcePath="/enkelvoudiginformatieobjecten/download" id="c24931cb-83d0-469b-be64-067fdf80ff77">
       <con:settings/>
       <con:defaultResponse xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
       <con:dispatchStyle>SEQUENCE</con:dispatchStyle>

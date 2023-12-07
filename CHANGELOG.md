@@ -1,5 +1,23 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.12.0](https://github.com/wearefrank/openforms2bpel/compare/v1.11.3...v1.12.0) (2023-12-07)
+
+
+### 🍕 Features
+
+* basicStatusUpdate implementation for signalling document upload status ([f5d6d45](https://github.com/wearefrank/openforms2bpel/commit/f5d6d458c8fe2b2dc782714c8ee82f40720dc8ac))
+
+
+### 🐛 Bug Fixes
+
+* addDocument fails when format property is too long ([0422e8e](https://github.com/wearefrank/openforms2bpel/commit/0422e8ee5bcffdd8786084e3638e20de20daba3a))
+* form filled as person without digid fails due to wrong defaults ([33af55f](https://github.com/wearefrank/openforms2bpel/commit/33af55f951edf0a9453b3edf5a6f069f1deeef87))
+
+
+### ✅ Tests
+
+* add BasicStatusUpdate mock service ([e3ad58b](https://github.com/wearefrank/openforms2bpel/commit/e3ad58b403555477e10553c7189d9af26ef31f75))
+
 ## [1.11.3](https://github.com/wearefrank/openforms2bpel/compare/v1.11.2...v1.11.3) (2023-11-23)
 
 

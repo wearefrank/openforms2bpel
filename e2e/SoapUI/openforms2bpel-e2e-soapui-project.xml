@@ -11351,6 +11351,19 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       </con:method>
     </con:resource>
   </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="652bdd6a-dac5-42ad-b99d-08570f852094" wsaVersion="NONE" name="BasicStatusUpdateBinding" type="wsdl" bindingName="{http://www.emaxx.org/bpel/proces/wsdl/eMAXX/BasicStatusUpdate}BasicStatusUpdateBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Projects/openforms2bpel/src/main/configurations/bpel/Bpel/BasicStatusUpdate/BasisStatusUpdate.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:endpoints>
+      <con:endpoint>http://172.29.78.57:8180/active-bpel/services/BasicStatusUpdate</con:endpoint>
+      <con:endpoint>http://LAPTOP-UKAI1A6:8088/mock/BasicStatusUpdate</con:endpoint>
+    </con:endpoints>
+    <con:operation id="c3ad2bab-c830-44f8-ae43-a7b22a52cf6e" isOneWay="false" action="" name="documentStatus" bindingOperationName="documentStatus" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="6eb83dc4-508f-478d-b404-2e7669396903" isOneWay="false" action="" name="updateStatus" bindingOperationName="updateStatus" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+  </con:interface>
   <con:testSuite id="51faa60a-6964-478d-8f14-899c806b2805" name="e2e">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
@@ -12273,6 +12286,54 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
     </con:testCase>
     <con:properties/>
   </con:testSuite>
+  <con:mockService id="57c47a6e-b72b-4af3-b838-1db2256172c5" port="8088" path="/mock/BasicStatusUpdate" host="LAPTOP-UKAI1A6" name="BPEL BasicStatusUpdate Mock" bindToHostOnly="false" docroot="">
+    <con:settings>
+      <con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting>
+    </con:settings>
+    <con:properties/>
+    <con:mockOperation name="documentStatus" id="6662cd1d-d9a7-43cf-a794-1ad37004cf73" interface="BasicStatusUpdateBinding" operation="documentStatus">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="d69d0865-ae38-461e-be16-9d29e99d16a9" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bas="http://www.emaxx.org/bpel/proces/xsd/eMAXX/BasicStatusUpdate" xmlns:head="http://www.emaxx.org/bpel/proces/xsd/headerproperties">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bas:documentStatusResponseMessage>
+         <head:responseProperties>
+            <head:correlationId>?</head:correlationId>
+            <head:processId>?</head:processId>
+         </head:responseProperties>
+         <bas:body>
+            <bas:reply>?</bas:reply>
+         </bas:body>
+      </bas:documentStatusResponseMessage>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.emaxx.org/bpel/proces/wsdl/eMAXX/BasicStatusUpdate/BasicStatusUpdate/documentStatusResponse"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updateStatus" id="2939a5bd-2f6f-4c81-828e-c8345fe26410" interface="BasicStatusUpdateBinding" operation="updateStatus">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="77ad7112-4a64-4fe3-b2de-8a052b3667a2" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cal="http://www.emaxx.org/functional/cases/subscription/callback">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cal:updateStatusResponse>
+         <cal:reply>?</cal:reply>
+      </cal:updateStatusResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.emaxx.org/bpel/proces/wsdl/eMAXX/BasicStatusUpdate/BasicStatusUpdate/updateStatusResponse"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+  </con:mockService>
   <con:restMockService id="d63c7861-f9bf-4330-8cab-d5b197f52c85" port="8700" path="/mock/documenten/api/v1" host="LAPTOP-UKAI1A6" name="Documenten API Mock" docroot="">
     <con:settings/>
     <con:properties/>

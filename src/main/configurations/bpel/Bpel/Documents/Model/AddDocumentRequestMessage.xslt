@@ -60,7 +60,7 @@
         '', 
         //document:case/document:referenceNumber),
         'http://www.emaxx.org/functional/cases/document')"/>
-    <xsl:variable name="provider" select="zgw:WrapNullOrSkip('document:citizenNumber', 'skip', zgw:FromOrderedSource(
+    <xsl:variable name="provider" select="zgw:WrapNullOrSkip('document:citizenNumber', 'null', zgw:FromOrderedSource(
         $Provider, 
         $Document//document:provider/document:citizenNumber, 
         '', 
@@ -247,12 +247,14 @@
                         '', 
                         //document:case),
                         'http://www.emaxx.org/functional/cases/document')"/>
-                    <xsl:copy-of select="zgw:WrapNullOrSkip('document:provider', 'skip', zgw:ObjectFromOrderedSource(
-                        $provider, 
-                        $Document//document:provider, 
-                        '', 
-                        //document:provider),
-                        'http://www.emaxx.org/functional/cases/document')"/>
+                    <document:provider>
+                        <xsl:copy-of select="zgw:WrapNullOrSkip('document:citizenNumber', 'null', zgw:FromOrderedSource(
+                            $Provider, 
+                            $Document//document:provider/document:citizenNumber, 
+                            '', 
+                            //document:provider/document:citizenNumber),
+                            'http://www.emaxx.org/functional/cases/document')"/>
+                    </document:provider>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('document:targetSystems', 'empty', zgw:ObjectFromOrderedSource(
                         $TargetSystems, 
                         $Document//document:targetSystems, 

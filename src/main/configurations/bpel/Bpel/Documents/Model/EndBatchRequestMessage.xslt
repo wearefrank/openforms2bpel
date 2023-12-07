@@ -24,7 +24,7 @@
         '', 
         //document:case/document:referenceNumber),
         'http://www.emaxx.org/functional/cases/document')"/>
-    <xsl:variable name="provider" select="zgw:WrapNullOrSkip('document:citizenNumber', 'skip', zgw:FromOrderedSource(
+    <xsl:variable name="provider" select="zgw:WrapNullOrSkip('document:citizenNumber', 'null', zgw:FromOrderedSource(
         $Provider, 
         $EndBatch//document:provider/document:citizenNumber, 
         '', 

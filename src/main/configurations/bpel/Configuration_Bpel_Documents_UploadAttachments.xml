@@ -22,7 +22,7 @@
                 storeResultInSessionKey="StartBatchRequestMessage"
                 >
                 <Param name="Case" sessionKey="Case" />
-                <Param name="Provider" sessionKey="Provider" />
+                <Param name="CitizenNumber" sessionKey="Provider" />
                 <Forward name="success" path="BpelDocumentsPostStartBatchSender" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>

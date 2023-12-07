@@ -23,7 +23,7 @@
     <xsl:param name="Username" select="''" as="xs:string" />
     <xsl:param name="Process" select="''" as="xs:string" />
 
-    <xsl:variable name="bsn" select="zgw:WrapNullOrSkip('basic:bsn', 'skip', zgw:FromOrderedSource(
+    <xsl:variable name="bsn" select="zgw:WrapNullOrSkip('basic:bsn', 'empty', zgw:FromOrderedSource(
         $Bsn,
         $InitiateRequestMessage/basic:initiateRequestMessage/basic:body/basic:applicant/basic:person/basic:bsn,
         '',

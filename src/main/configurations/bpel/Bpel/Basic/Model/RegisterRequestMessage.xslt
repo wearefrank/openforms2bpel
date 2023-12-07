@@ -37,7 +37,7 @@
     <xsl:param name="CloseCase" select="''" as="xs:string" />
     <xsl:param name="CaseParameters" as="node()"><caseparameters:caseParameters /></xsl:param>
     
-    <xsl:variable name="bsn" select="zgw:WrapNullOrSkip('basic:bsn', 'skip', zgw:FromOrderedSource(
+    <xsl:variable name="bsn" select="zgw:WrapNullOrSkip('basic:bsn', 'null', zgw:FromOrderedSource(
                 $Bsn,
                 $RegisterRequestMessage/basic:registerRequestMessage/basic:body/basic:applicant/basic:person/basic:bsn,
                 '',

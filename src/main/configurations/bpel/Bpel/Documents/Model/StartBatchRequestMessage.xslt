@@ -15,19 +15,13 @@
     <xsl:param name="StartBatch" as="node()"><document:startBatch /></xsl:param>
     
     <xsl:param name="Case" select="''" as="xs:string" />
-    <xsl:param name="Provider" select="''" as="xs:string" />
+    <xsl:param name="CitizenNumber" select="''" as="xs:string" />
     
     <xsl:variable name="case" select="zgw:WrapNullOrSkip('document:referenceNumber', 'skip', zgw:FromOrderedSource(
         $Case,
         $StartBatch//document:case/document:referenceNumber, 
         '', 
         //document:case/document:referenceNumber),
-        'http://www.emaxx.org/functional/cases/document')"/>
-    <xsl:variable name="provider" select="zgw:WrapNullOrSkip('document:citizenNumber', 'skip', zgw:FromOrderedSource(
-        $Provider, 
-        $StartBatch//document:provider/document:citizenNumber, 
-        '', 
-        //document:provider/document:citizenNumber),
         'http://www.emaxx.org/functional/cases/document')"/>
 
     <xsl:template match="/">
@@ -39,12 +33,14 @@
                     '', 
                     //document:case),
                     'http://www.emaxx.org/functional/cases/document')"/>
-                <xsl:copy-of select="zgw:WrapNullOrSkip('document:provider', 'skip', zgw:ObjectFromOrderedSource(
-                    $provider, 
-                    $StartBatch//document:provider, 
-                    '', 
-                    //document:provider),
-                    'http://www.emaxx.org/functional/cases/document')"/>
+                <document:provider>
+                    <xsl:copy-of select="zgw:WrapNullOrSkip('document:citizenNumber', 'null', zgw:ObjectFromOrderedSource(
+                        $CitizenNumber, 
+                        $StartBatch//document:provider/document:citizenNumber, 
+                        '', 
+                        //document:provider/document:citizenNumber),
+                        'http://www.emaxx.org/functional/cases/document')"/>
+                </document:provider>
             </document:batchStartMessage>
         </document:startBatch>
     </xsl:template>

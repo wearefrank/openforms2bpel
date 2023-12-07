@@ -1,0 +1,359 @@
+<wsdl:definitions name="BasicStatusUpdate" targetNamespace="http://www.emaxx.org/bpel/proces/wsdl/eMAXX/BasicStatusUpdate" xmlns:basic="http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic" xmlns:basicstatusupdate="http://www.emaxx.org/bpel/proces/xsd/eMAXX/BasicStatusUpdate" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:cases="http://www.emaxx.org/functional/cases" xmlns:client="http://www.emaxx.org/bpel/proces/wsdl/eMAXX/BasicStatusUpdate" xmlns:common="http://www.emaxx.org/msg/common" xmlns:commonegov="http://www.emaxx.org/egov/common" xmlns:core="http://www.emaxx.org/core" xmlns:csc="http://www.emaxx.org/functional/cases/subscription/callback" xmlns:document="http://www.emaxx.org/functional/cases/document" xmlns:email="http://www.emaxx.org/msg/email" xmlns:faultproperties="http://www.emaxx.org/bpel/proces/xsd/faultproperties" xmlns:headerproperties="http://www.emaxx.org/bpel/proces/xsd/headerproperties" xmlns:payments="http://www.emaxx.org/functional/cases/payments" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:sub="http://www.emaxx.org/functional/cases/subscription" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xslt="http://www.emaxx.org/adapters/xslt">
+   <wsdl:types>
+      <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/bpel/proces/xsd/eMAXX/BasicStatusUpdate" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			   <xs:import namespace="http://www.emaxx.org/bpel/proces/xsd/headerproperties"/>
+			   <xs:import namespace="http://www.emaxx.org/bpel/proces/xsd/faultproperties"/>
+			   <xs:import namespace="http://www.emaxx.org/egov/common"/>
+			   <xs:element name="error">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element ref="headerproperties:responseProperties"/>
+						      <xs:element name="body">
+							       <xs:complexType>
+								        <xs:sequence>
+									         <xs:element ref="faultproperties:faultDetails"/>
+								        </xs:sequence>
+							       </xs:complexType>
+						      </xs:element>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+			   <xs:element name="documentStatusRequestMessage">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element ref="headerproperties:requestProperties"/>
+						      <xs:element name="body">
+							       <xs:complexType>
+								        <xs:sequence>
+									         <xs:element name="referenceNumber" type="xs:string"/>
+									         <xs:element name="documents" type="commonegov:tDocuments"/>
+								        </xs:sequence>
+							       </xs:complexType>
+						      </xs:element>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+			   <xs:element name="documentStatusResponseMessage">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element ref="headerproperties:responseProperties"/>
+						      <xs:element name="body">
+							       <xs:complexType>
+								        <xs:sequence>
+									         <xs:element name="reply" type="xs:string"/>
+								        </xs:sequence>
+							       </xs:complexType>
+						      </xs:element>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+			   <xs:element name="documentVariables">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element name="documents" type="commonegov:tDocuments"/>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+			   <xs:element name="documentData">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element ref="basicstatusupdate:documentVariables"/>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+			   <xs:element name="XSLTMessage">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element name="sendDate" type="xs:string"/>
+						      <xs:element name="sendTime" type="xs:string"/>
+						      <xs:element name="caseNumber" type="xs:string"/>
+						      <xs:element name="xml" type="xs:string"/>
+						      <xs:element name="processId" type="xs:string"/>
+						      <xs:element name="errorDescription" type="xs:string"/>
+						      <xs:element minOccurs="0" name="documents" type="commonegov:tDocuments"/>
+						      <xs:element minOccurs="0" ref="basicstatusupdate:documentsInBackOffice"/>
+						      <xs:element minOccurs="0" name="resetDocumentsURL" type="xs:string"/>
+						      <xs:element minOccurs="0" name="sendFormByMail" type="xs:boolean"/>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+			   <xs:element name="documentsInBackOffice">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element maxOccurs="unbounded" minOccurs="0" ref="basicstatusupdate:documentInBackOffice"/>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+			   <xs:element name="documentInBackOffice">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element name="fileName" type="xs:string"/>
+						      <xs:element name="fileLocation" type="xs:string"/>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+		  </xs:schema>
+      <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			   <xs:import namespace="http://www.emaxx.org/egov/common"/>
+			   <xs:element name="processVariables">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element name="emailAddress" type="xs:string"/>
+						      <xs:element name="gender" nillable="true" type="commonegov:tGender"/>
+						      <xs:element name="name" type="commonegov:tName"/>
+						      <xs:element minOccurs="0" name="documents" type="xs:boolean"/>
+						      <xs:element minOccurs="0" name="sendFormByMail" type="xs:boolean"/>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+		  </xs:schema>
+      <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/egov/common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			   <xs:complexType name="tDocument">
+				    <xs:sequence>
+					     <xs:element name="id" nillable="true" type="xs:int"/>
+					     <xs:element minOccurs="0" name="fileName" type="commonegov:tFileName"/>
+					     <xs:element name="documentType" type="xs:string"/>
+					     <xs:element name="author" type="xs:string"/>
+					     <xs:element name="title" type="xs:string"/>
+					     <xs:element name="subject" type="xs:string"/>
+					     <xs:element name="description" type="xs:string"/>
+					     <xs:element default="NL" name="language" type="commonegov:tDocumentLanguage"/>
+					     <xs:element default="text" name="contentType" type="commonegov:tContentType"/>
+					     <xs:element name="reference" nillable="true" type="commonegov:tDocumentReference"/>
+					     <xs:element minOccurs="0" name="status" type="commonegov:tStatus"/>
+				    </xs:sequence>
+			   </xs:complexType>
+			   <xs:simpleType name="tFileName">
+				    <xs:restriction base="xs:string">
+					     <xs:maxLength value="150"/>
+				    </xs:restriction>
+			   </xs:simpleType>
+			   <xs:complexType name="tStatus">
+				    <xs:sequence>
+					     <xs:element name="code" type="xs:string"/>
+					     <xs:element name="clarification" nillable="true" type="xs:string"/>
+				    </xs:sequence>
+			   </xs:complexType>
+			   <xs:complexType name="tDocuments">
+				    <xs:sequence>
+					     <xs:element maxOccurs="unbounded" minOccurs="0" name="document" type="commonegov:tDocument"/>
+				    </xs:sequence>
+			   </xs:complexType>
+			   <xs:simpleType name="tContentType">
+				    <xs:restriction base="xs:string">
+					     <xs:maxLength value="10"/>
+					     <xs:enumeration value="doc"/>
+					     <xs:enumeration value="html"/>
+					     <xs:enumeration value="pdf"/>
+					     <xs:enumeration value="text"/>
+				    </xs:restriction>
+			   </xs:simpleType>
+			   <xs:simpleType name="tDocumentLanguage">
+				    <xs:restriction base="xs:string">
+					     <xs:maxLength value="3"/>
+					     <xs:enumeration value="NL"/>
+				    </xs:restriction>
+			   </xs:simpleType>
+			   <xs:simpleType name="tDocumentReference">
+				    <xs:restriction base="xs:string">
+					     <xs:maxLength value="20"/>
+				    </xs:restriction>
+			   </xs:simpleType>
+			   <xs:complexType name="tName">
+				    <xs:sequence>
+					     <xs:element name="initials" nillable="true" type="xs:string"/>
+					     <xs:element name="firstNames" nillable="true" type="xs:string"/>
+					     <xs:element name="middleName" nillable="true" type="xs:string"/>
+					     <xs:element name="lastName" nillable="true" type="xs:string"/>
+					     <xs:element minOccurs="0" name="nameOfAddress" type="xs:string"/>
+				    </xs:sequence>
+			   </xs:complexType>
+			   <xs:simpleType name="tGender">
+				    <xs:restriction base="xs:string">
+					     <xs:maxLength value="1"/>
+					     <xs:enumeration value="M"/>
+					     <xs:enumeration value="V"/>
+					     <xs:enumeration value="F"/>
+					     <xs:enumeration value="O"/>
+				    </xs:restriction>
+			   </xs:simpleType>
+		  </xs:schema>
+      <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/bpel/proces/xsd/faultproperties" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			   <xs:element name="faultDetails">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element name="source" nillable="true" type="xs:string"/>
+						      <xs:element name="code" nillable="true" type="xs:string"/>
+						      <xs:element name="message" nillable="true" type="xs:string"/>
+						      <xs:element name="stacktrace" nillable="true" type="xs:string"/>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+		  </xs:schema>
+      <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/functional/cases/subscription/callback" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			   <xs:complexType name="tCaseStatus">
+				    <xs:sequence>
+					     <xs:element name="statusCode" nillable="true" type="xs:string"/>
+					     <xs:element name="date" nillable="true" type="xs:date"/>
+					     <xs:element name="clarification" type="xs:string"/>
+				    </xs:sequence>
+			   </xs:complexType>
+			   <xs:complexType name="tCaseStatuses">
+				    <xs:sequence>
+					     <xs:element maxOccurs="unbounded" minOccurs="0" name="caseStatus" type="csc:tCaseStatus"/>
+				    </xs:sequence>
+			   </xs:complexType>
+			   <xs:complexType name="tState">
+				    <xs:sequence>
+					     <xs:element name="code" type="xs:string"/>
+					     <xs:element name="description" type="xs:string"/>
+					     <xs:element name="clarification" type="xs:string"/>
+				    </xs:sequence>
+			   </xs:complexType>
+			   <xs:complexType name="tPaymentState">
+				    <xs:sequence>
+					     <xs:element name="paymentId" nillable="true" type="xs:int"/>
+					     <xs:element name="date" nillable="true" type="xs:date"/>
+					     <xs:element name="extCode" type="xs:string"/>
+					     <xs:element name="extMessage" type="xs:string"/>
+					     <xs:element name="state" type="csc:tState"/>
+				    </xs:sequence>
+			   </xs:complexType>
+			   <xs:complexType name="tPaymentStates">
+				    <xs:sequence>
+					     <xs:element maxOccurs="unbounded" minOccurs="0" name="paymentState" type="csc:tPaymentState"/>
+				    </xs:sequence>
+			   </xs:complexType>
+			   <xs:complexType name="tDocumentStatus">
+				    <xs:sequence>
+					     <xs:element name="code" type="xs:string"/>
+					     <xs:element name="description" type="xs:string"/>
+				    </xs:sequence>
+			   </xs:complexType>
+			   <xs:complexType name="tDocumentDocumentStatus">
+				    <xs:sequence>
+					     <xs:element name="documentId" nillable="true" type="xs:int"/>
+					     <xs:element name="date" nillable="true" type="xs:dateTime"/>
+					     <xs:element name="extReferenceNumber" type="xs:string"/>
+					     <xs:element name="clarification" type="xs:string"/>
+					     <xs:element name="documentReferenceNumber" type="xs:string"/>
+					     <xs:element name="targetCode" nillable="true" type="xs:string"/>
+					     <xs:element name="targetReferenceNumber" nillable="true" type="xs:string"/>
+					     <xs:element name="status" type="csc:tDocumentStatus"/>
+				    </xs:sequence>
+			   </xs:complexType>
+			   <xs:complexType name="tDocumentDocumentStatuses">
+				    <xs:sequence>
+					     <xs:element maxOccurs="unbounded" minOccurs="0" name="documentStatus" type="csc:tDocumentDocumentStatus"/>
+				    </xs:sequence>
+			   </xs:complexType>
+			   <xs:complexType name="tXML">
+				    <xs:sequence>
+					     <xs:any minOccurs="0" processContents="skip"/>
+				    </xs:sequence>
+			   </xs:complexType>
+			   <xs:element name="updateStatus">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element name="referenceNumber" type="xs:string"/>
+						      <xs:element minOccurs="0" name="processData" type="csc:tXML"/>
+						      <xs:choice>
+							       <xs:element name="caseStatuses" type="csc:tCaseStatuses"/>
+							       <xs:element name="paymentStates" type="csc:tPaymentStates"/>
+							       <xs:element name="documentStatuses" type="csc:tDocumentDocumentStatuses"/>
+						      </xs:choice>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+			   <xs:element name="updateStatusResponse">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element name="reply" type="xs:string"/>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+		  </xs:schema>
+      <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/bpel/proces/xsd/headerproperties" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			   <xs:element name="requestProperties">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element name="user" nillable="true" type="xs:string"/>
+						      <xs:element name="password" nillable="true" type="xs:string"/>
+						      <xs:element name="domain" nillable="true" type="xs:string"/>
+						      <xs:element name="correlationId" nillable="true" type="xs:string"/>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+			   <xs:element name="responseProperties">
+				    <xs:complexType>
+					     <xs:sequence>
+						      <xs:element name="correlationId" nillable="true" type="xs:string"/>
+						      <xs:element name="processId" nillable="true" type="xs:string"/>
+					     </xs:sequence>
+				    </xs:complexType>
+			   </xs:element>
+		  </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="updateStatusFault">
+      <wsdl:part element="basicstatusupdate:error" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="updateStatusRequest">
+      <wsdl:part element="csc:updateStatus" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="documentStatusResponse">
+      <wsdl:part element="basicstatusupdate:documentStatusResponseMessage" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="documentStatusRequest">
+      <wsdl:part element="basicstatusupdate:documentStatusRequestMessage" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="documentStatusFault">
+      <wsdl:part element="basicstatusupdate:error" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="updateStatusResponse">
+      <wsdl:part element="csc:updateStatusResponse" name="parameters"/>
+   </wsdl:message>
+   <wsdl:portType name="BasicStatusUpdate">
+      <wsdl:operation name="updateStatus">
+         <wsdl:input message="client:updateStatusRequest"/>
+         <wsdl:output message="client:updateStatusResponse"/>
+         <wsdl:fault message="client:updateStatusFault" name="updateStatusFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="documentStatus">
+         <wsdl:input message="client:documentStatusRequest"/>
+         <wsdl:output message="client:documentStatusResponse"/>
+         <wsdl:fault message="client:documentStatusFault" name="documentStatusFault"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="BasicStatusUpdateBinding" type="client:BasicStatusUpdate">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      <wsdl:operation name="updateStatus">
+       <soap:operation soapAction="" style="document" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+         <wsdl:input>
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+         </wsdl:input>
+         <wsdl:output>
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+         </wsdl:output>
+         <wsdl:fault name="updateStatusFault">
+        <soap:fault name="updateStatusFault" use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="documentStatus">
+       <soap:operation soapAction="" style="document" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+         <wsdl:input>
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+         </wsdl:input>
+         <wsdl:output>
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+         </wsdl:output>
+         <wsdl:fault name="documentStatusFault">
+        <soap:fault name="documentStatusFault" use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+         </wsdl:fault>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="BasicStatusUpdate">
+      <wsdl:port binding="client:BasicStatusUpdateBinding" name="BasicStatusUpdatePort">
+       <soap:address location="http://172.29.78.57:8180/active-bpel/services/BasicStatusUpdate" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

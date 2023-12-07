@@ -148,6 +148,32 @@
                     javaListener="Bpel_Mtom_PostAddDocument"
                     >
                 </IbisLocalSender>
+                <Forward name="success" path="CreateDocumentStatusRequestMessage" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <XsltPipe
+                name="CreateDocumentStatusRequestMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/BasicStatusUpdate/Model/DocumentStatusRequestMessage.xslt"
+                storeResultInSessionKey="DocumentStatusRequestMessage"
+                >
+                <Param name="Document" sessionKey="AddDocumentRequestMessage" type="DOMDOC" />
+                <Param name="ReferenceNumber" sessionKey="Case" />
+                <Param name="Status_Code" value="FORWARDED" />
+                <Forward name="success" path="BpelBasicStatusUpdateDocumentStatusSender" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelBasicStatusUpdateDocumentStatusSender"
+                storeResultInSessionKey="DocumentStatusResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelBasicStatusUpdateDocumentStatusLocalSender"
+                    javaListener="Bpel_BasicStatusUpdate_PostDocumentStatus"
+                    >
+                </IbisLocalSender>
                 <Forward name="success" path="EXIT" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>

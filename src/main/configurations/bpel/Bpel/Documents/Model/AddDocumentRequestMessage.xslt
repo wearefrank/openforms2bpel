@@ -194,7 +194,7 @@
                     <xsl:copy-of select="zgw:WrapNullOrSkip('document:format', 'empty', zgw:FromOrderedSource(
                         $Format, 
                         $Document//document:format, 
-                        tokenize($ZgwEnkelvoudigInformatieObject//formaat, '/')[last()], 
+                        '', 
                         //document:format),
                         'http://www.emaxx.org/functional/cases/document')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('document:status', 'empty', zgw:FromOrderedSource(

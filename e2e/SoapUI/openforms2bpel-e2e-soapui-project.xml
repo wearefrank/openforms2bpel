@@ -12178,6 +12178,222 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
         </con:property>
       </con:properties>
     </con:testCase>
+    <con:testCase id="cd3a8d4f-14ff-4f2c-bfce-2ade9fa4887b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Zaaktype P9_2_KLB - No EHerkenning" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="properties" name="Properties" id="0afff76c-8c30-4c29-a5e7-7c3b5a15b6e8">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties/>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="66b3edbe-147d-407a-81de-5c76fa6f585a">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "",\r
+         "data" : {\r
+            "uw-klacht" : {\r
+               "hoeLaat" : "sdfsd",\r
+               "watIsUwKlacht" : "sfsdfdf",\r
+               "wanneerIsDitGebeurd" : "sfd",\r
+               "welkOrganisatieOnderdeel" : "publiekzaken",\r
+               "tOverWieWiltUEenKlachtIndienen" : "Frans Bekker",\r
+               "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "sdfsd"\r
+            },\r
+            "uw-gegevenscompleet" : {\r
+               "fieldSetBedrijfZEH" : {\r
+                  "bezoekadresZEH" : {\r
+                     "plaatsZEH" : "Leusden",\r
+                     "postcodeZEH" : "3832 BC",\r
+                     "huisletterZEH" : "",\r
+                     "huisnummerZEH" : 87,\r
+                     "straatnaamZEH" : "Koningin Julianalaan",\r
+                     "huisnummertoevoegingZEH" : ""\r
+                  },\r
+                  "communicatieZEH" : {\r
+                     "eMailadresZEH" : "p.dorhout@utrecht.nl",\r
+                     "telefoonnummerZEH" : "0612345678"\r
+                  },\r
+                  "contactpersoonZEH" : {\r
+                     "aanhefZEH" : "deHeer",\r
+                     "achternaamZEH" : "Dorhout",\r
+                     "voorletterSZEH" : "P",\r
+                     "tussenvoegselSZEH" : ""\r
+                  },\r
+                  "gegevensBedrijfOrganisatieZEH" : {\r
+                     "kvKNummerZEH" : "12345678",\r
+                     "vestigingsnummerZEH" : "000012345678",\r
+                     "postbusGebruikenZEH1" : "nee",\r
+                     "naamBedrijfOrganisatieZEH" : "DMAA"\r
+                  }\r
+               },\r
+               "bentUEenPersoonOfEenBedrijf" : "bedrijf"\r
+            },\r
+            "bijlagen-toevoegen-klacht" : {\r
+               "wiltUBijlagenMeesturen" : "nee",\r
+               "ikWilNaBehandelingTevredenheidsonderzoek" : "nee"\r
+            }\r
+         },\r
+         "type" : "P9_2_KLBN",\r
+         "csv_url" : "",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [ ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "11e6c445-26dc-4db6-b3ea-7c4b91b1d4c5",\r
+         "public_reference" : "OF-BFWJTE"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2023-11-29",\r
+      "endAt" : null,\r
+      "registrationAt" : "2023-11-29",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>zaaktype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value>
+        </con:property>
+        <con:property>
+          <con:name>informatieobjecttype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
+    <con:testCase id="c0a51932-a03b-4687-8703-c41e0a68235c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Zaaktype P9_2_KLB - EHerkenning" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="properties" name="Properties" id="12ba106f-4d8e-4224-a957-34833872da00">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties/>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="3b8e527e-b841-466c-8aaa-78c5a4256a2b">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "",\r
+         "data" : {\r
+            "uw-klacht" : {\r
+               "hoeLaat" : "10 uur",\r
+               "watIsUwKlacht" : "Te laat",\r
+               "wanneerIsDitGebeurd" : "gisteren",\r
+               "welkOrganisatieOnderdeel" : "publiekzaken",\r
+               "tOverWieWiltUEenKlachtIndienen" : "Bekker",\r
+               "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "oplossen"\r
+            },\r
+            "uw-gegevenscompleet" : {\r
+               "fieldSetBedrijfMEH" : {\r
+                  "bezoekadresMEH" : {\r
+                     "plaatsMEH" : "Lollum",\r
+                     "postcodeMEH" : "8823SJ",\r
+                     "huisletterMEH" : "",\r
+                     "huisnummerMEH" : 3,\r
+                     "straatnaamMEH" : "Hizzaarderlaan",\r
+                     "huisnummertoevoegingMEH" : "A"\r
+                  },\r
+                  "communicatieMEH" : {\r
+                     "eMailadresMEH" : "p.dorhout@utrecht.nl",\r
+                     "telefoonnummerMEH" : "0612345678"\r
+                  },\r
+                  "contactpersoonMEH" : {\r
+                     "aanhefMEH" : "deHeer",\r
+                     "achternaamMEH" : "Dorhout",\r
+                     "voorletterSMEH" : "P",\r
+                     "tussenvoegselSMEH" : ""\r
+                  },\r
+                  "gegevensBedrijfOrganisatieMEH" : {\r
+                     "kvKNummerMEH" : "68750110",\r
+                     "vestigingsnummerMEH" : "000037178598",\r
+                     "naamBedrijfOrganisatieMEH" : "Test BV Donald"\r
+                  }\r
+               }\r
+            },\r
+            "bijlagen-toevoegen-klacht" : {\r
+               "wiltUBijlagenMeesturen" : "nee",\r
+               "ikWilNaBehandelingTevredenheidsonderzoek" : "nee"\r
+            }\r
+         },\r
+         "type" : "P9_2_KLBN",\r
+         "csv_url" : "",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [ ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "70e93c84-723f-4865-9226-97b1fc44d509",\r
+         "public_reference" : "OF-2J9BH4"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2023-11-29",\r
+      "endAt" : null,\r
+      "registrationAt" : "2023-11-29",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>zaaktype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value>
+        </con:property>
+        <con:property>
+          <con:name>informatieobjecttype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
     <con:properties/>
   </con:testSuite>
   <con:testSuite id="ed3fa0e1-6773-42cc-8151-5a1fa4eca15e" name="Integration Tests">

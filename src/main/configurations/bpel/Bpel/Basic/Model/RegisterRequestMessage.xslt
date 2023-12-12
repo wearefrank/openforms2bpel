@@ -14,7 +14,7 @@
     
     <!-- Map -->
     <xsl:param name="InitiateResponseMessage" as="node()"><basic:initiateResponseMessage /></xsl:param>
-    <xsl:param name="Person" as="node()"><basic:person /></xsl:param>
+    <xsl:param name="InitiatingSubject" as="node()"><basic:initiatingSubject /></xsl:param>
     
     <!-- Create/Enrich -->
     <xsl:param name="RegisterRequestMessage" as="node()"><basic:registerRequestMessage /></xsl:param>
@@ -85,15 +85,11 @@
                     'http://www.emaxx.org/bpel/proces/xsd/headerproperties')"/>
             </headerproperties:requestProperties>
             <basic:body>
-                <!-- optional -->
-                <basic:initiatingSubject>
-                    <xsl:copy-of select="zgw:ObjectFromOrderedSource(
-                        $Person,
-                        $Person//basic:person,
-                        '',
-                        //basic:person)"/>
-                </basic:initiatingSubject>
-                <!-- optional -->
+                <xsl:copy-of select="zgw:ObjectFromOrderedSource(
+                    $InitiatingSubject,
+                    $RegisterRequestMessage//basic:initiatingSubject,
+                    '',
+                    //basic:initiatingSubject)"/>
                 <xsl:copy-of select="zgw:ObjectFromOrderedSource(
                     $Parties/basic:parties,
                     $RegisterRequestMessage//basic:parties,

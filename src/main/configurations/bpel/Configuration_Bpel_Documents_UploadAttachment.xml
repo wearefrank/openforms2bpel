@@ -107,7 +107,7 @@
                 >
                 <Param name="ZgwEnkelvoudigInformatieObject" sessionKey="ZgwEnkelvoudigInformatieObject" type="DOMDOC" />
                 <Param name="Case" sessionKey="Case"/>
-                <Param name="Provider" sessionKey="Provider" />
+                <Param name="Provider" sessionKey="Provider" type="DOMDOC" />
                 <Param name="BatchNumber" sessionKey="BatchNumber" />
                 <Forward name="success" path="BpelDocumentsPostAddDocumentSender" />
                 <Forward name="error" path="EXCEPTION" />

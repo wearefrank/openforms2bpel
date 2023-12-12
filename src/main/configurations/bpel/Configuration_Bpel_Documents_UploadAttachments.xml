@@ -16,13 +16,25 @@
             </Exits>
 
             <XsltPipe
+                name="CreateProvider"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Documents/Model/Provider.xslt"
+                storeResultInSessionKey="Provider"
+                >
+                <Param name="Case" sessionKey="Case" />
+                <Param name="UwGegevensCompleet" sessionKey="originalMessage" xpathExpression="//uw-gegevenscompleet" type="DOMDOC" defaultValue="''"/>
+                <Forward name="success" path="CreateStartBatchMessage" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <XsltPipe
                 name="CreateStartBatchMessage"
                 getInputFromFixedValue="&lt;dummy/&gt;"
                 styleSheetName="Bpel/Documents/Model/StartBatchRequestMessage.xslt"
                 storeResultInSessionKey="StartBatchRequestMessage"
                 >
                 <Param name="Case" sessionKey="Case" />
-                <Param name="CitizenNumber" sessionKey="Provider" />
+                <Param name="Provider" sessionKey="Provider" type="DOMDOC" />
                 <Forward name="success" path="BpelDocumentsPostStartBatchSender" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
@@ -51,7 +63,7 @@
                     >
                     <Param name="Url" xpathExpression="/attachments" />
                     <Param name="Case" sessionKey="Case" />
-                    <Param name="Provider" sessionKey="Provider" />
+                    <Param name="Provider" sessionKey="Provider" type="DOMDOC" />
                     <Param name="BatchNumber" sessionKey="StartBatchResponseMessage" xpathExpression="//batchNumber" />
                 </IbisLocalSender>
                 <Forward name="success" path="CreateEndBatchMessage" />
@@ -66,7 +78,7 @@
                 >
                 <Param name="BatchNumber" sessionKey="StartBatchResponseMessage" xpathExpression="//*:batchNumber" />
                 <Param name="Case" sessionKey="Case" />
-                <Param name="Provider" sessionKey="Provider" />
+                <Param name="Provider" sessionKey="Provider" type="DOMDOC" />
                 <Forward name="success" path="BpelDocumentsPostEndBatchSender" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>

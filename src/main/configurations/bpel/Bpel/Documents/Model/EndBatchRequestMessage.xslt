@@ -16,7 +16,7 @@
     
     <xsl:param name="BatchNumber" select="''" as="xs:string" />
     <xsl:param name="Case" select="''" as="xs:string" />
-    <xsl:param name="Provider" select="''" as="xs:string" />
+    <xsl:param name="Provider" as="node()"><document:provider /></xsl:param>
     
     <xsl:variable name="case" select="zgw:WrapNullOrSkip('document:referenceNumber', 'skip', zgw:FromOrderedSource(
         $Case, 
@@ -46,12 +46,11 @@
                     '', 
                     //document:case),
                     'http://www.emaxx.org/functional/cases/document')"/>
-                <xsl:copy-of select="zgw:WrapNullOrSkip('document:provider', 'skip', zgw:ObjectFromOrderedSource(
-                    $provider, 
+                <xsl:copy-of select="zgw:ObjectFromOrderedSource(
+                    $Provider, 
                     $EndBatch//document:provider, 
                     '', 
-                    //document:provider),
-                    'http://www.emaxx.org/functional/cases/document')"/>
+                    //document:provider)"/>
             </document:batchEndMessage>
         </document:endBatch>
     </xsl:template>

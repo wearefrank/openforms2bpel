@@ -1,5 +1,25 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.13.0](https://github.com/wearefrank/openforms2bpel/compare/v1.12.0...v1.13.0) (2023-12-12)
+
+
+### 🍕 Features
+
+* expand Provider to include all different entities and auth methods for uploading documents ([c83a1db](https://github.com/wearefrank/openforms2bpel/commit/c83a1db1364356190858f492e9ec9dcaed1439c1))
+* rewrite of InitiatingSubject to handle all different entities and auth methods ([683f723](https://github.com/wearefrank/openforms2bpel/commit/683f723e1d97fcebcc1f046f8efe9f68a3796de8))
+
+
+### 🧑‍💻 Code Refactoring
+
+* also initiate a zaak as an organisation ([2401c66](https://github.com/wearefrank/openforms2bpel/commit/2401c66571bba66bae7ac353d6a6573d89dfdffd))
+* emailparameters to translate from uw-gegevenscompleet ignoring suffixes ([04c3cb1](https://github.com/wearefrank/openforms2bpel/commit/04c3cb1faeca4dde0483cbb233a353bc970a40b8))
+* fill caseParameters clarification with user email ([3fc5fcd](https://github.com/wearefrank/openforms2bpel/commit/3fc5fcd29951a1c8a76cb7bb30280a4fdf804d49))
+
+
+### ✅ Tests
+
+* add testcases for all entities and auth methods ([b8c1d45](https://github.com/wearefrank/openforms2bpel/commit/b8c1d45e466dd5070f466b611f3b6ad7cac28a9c))
+
 ## [1.12.0](https://github.com/wearefrank/openforms2bpel/compare/v1.11.3...v1.12.0) (2023-12-07)
 
 

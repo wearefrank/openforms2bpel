@@ -44,7 +44,7 @@
     <xsl:param name="Language" select="''" as="xs:string" />
     <xsl:param name="DocumentType" select="''" as="xs:string" />
     <xsl:param name="Case" select="''" as="xs:string" />
-    <xsl:param name="Provider" select="''" as="xs:string" />
+    <xsl:param name="Provider" as="node()"><document:provider /></xsl:param>
     <xsl:param name="TargetSystems" as="node()"><document:document /></xsl:param>
     <xsl:param name="SourceSystem" select="''" as="xs:string" />
     
@@ -59,12 +59,6 @@
         $Document//document:case/document:referenceNumber, 
         '', 
         //document:case/document:referenceNumber),
-        'http://www.emaxx.org/functional/cases/document')"/>
-    <xsl:variable name="provider" select="zgw:WrapNullOrSkip('document:citizenNumber', 'null', zgw:FromOrderedSource(
-        $Provider, 
-        $Document//document:provider/document:citizenNumber, 
-        '', 
-        //document:provider/document:citizenNumber),
         'http://www.emaxx.org/functional/cases/document')"/>
 
     <xsl:template match="/">
@@ -247,14 +241,11 @@
                         '', 
                         //document:case),
                         'http://www.emaxx.org/functional/cases/document')"/>
-                    <document:provider>
-                        <xsl:copy-of select="zgw:WrapNullOrSkip('document:citizenNumber', 'null', zgw:FromOrderedSource(
-                            $Provider, 
-                            $Document//document:provider/document:citizenNumber, 
-                            '', 
-                            //document:provider/document:citizenNumber),
-                            'http://www.emaxx.org/functional/cases/document')"/>
-                    </document:provider>
+                    <xsl:copy-of select="zgw:ObjectFromOrderedSource(
+                        $Provider, 
+                        $Document//document:provider, 
+                        '', 
+                        //document:provider)"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('document:targetSystems', 'empty', zgw:ObjectFromOrderedSource(
                         $TargetSystems, 
                         $Document//document:targetSystems, 

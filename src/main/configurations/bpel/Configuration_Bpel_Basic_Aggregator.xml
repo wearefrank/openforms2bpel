@@ -151,8 +151,7 @@
                 storeResultInSessionKey="CaseParameters"
                 >
                 <Param name="ReferenceNumber" xpathExpression="/ZgwObject/public_reference/text()" />
-                <Param name="Description" value="dummy" />
-                <Param name="Clarification" value="marcel@wearefrank.nl" />
+                <Param name="Clarification" xpathExpression="//*[starts-with(name(), 'fieldSet')]/*/*[starts-with(name(), 'eMailadres')]" />
                 <Param name="Channel" value="WEBFORM" />
                 <Param name="FileName" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//bestandsnaam" />
                 <Param name="FileMimeType" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//formaat" />

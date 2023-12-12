@@ -135,11 +135,7 @@
                 styleSheetName="Bpel/Basic/Model/EmailParameters.xslt"
                 storeResultInSessionKey="EmailParameters"
                 >
-                <Param name="EmailAddress" xpathExpression="//*[starts-with(name(), 'fieldSet')]/*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')]" />
-                <Param name="LastName" xpathExpression="concat($Tussenvoegsel, $Achternaam)">
-                    <Param name="Tussenvoegsel" xpathExpression="//*[starts-with(name(), 'fieldSet')]/*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'tussenvoegsel')]" />
-                    <Param name="Achternaam" xpathExpression="//*[starts-with(name(), 'fieldSet')]/*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'achternaam')]" />
-                </Param>
+                <Param name="UwGegevensCompleet" xpathExpression="//uw-gegevenscompleet" type="DOMDOC" />
                 <Forward name="success" path="CreateCaseParameters" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>

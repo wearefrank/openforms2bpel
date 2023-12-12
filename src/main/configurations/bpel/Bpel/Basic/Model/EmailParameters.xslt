@@ -10,75 +10,69 @@
     <xsl:include href="../../BpelFunctionsBase.xslt" />
     
     <!-- Map -->
+    <xsl:param name="UwGegevensCompleet" as="node()"><uw-gegevenscompleet /></xsl:param>
     
     <!-- Create/Enrich -->
     <xsl:param name="EmailParameters" as="node()"><emailparameters:emailParameters /></xsl:param>
     
     <xsl:param name="EmailAddress" select="''" as="xs:string" />
     <xsl:param name="Gender" select="''" as="xs:string" />
+    <xsl:param name="Initials" select="''" as="xs:string" />
     <xsl:param name="FirstNames" select="''" as="xs:string" />
     <xsl:param name="MiddleName" select="''" as="xs:string" />
     <xsl:param name="LastName" select="''" as="xs:string" />
     <xsl:param name="NameOfAddress" select="''" as="xs:string" />
-
-    <xsl:variable name="initials" select="zgw:WrapNullOrSkip('egov:initials', 'null', zgw:FromOrderedSource(
-        $EmailAddress,
-        $EmailParameters//emailparameters:emailAddress,
-        '', 
-        //emailparameters:emailAddress),
-        'http://www.emaxx.org/egov/common')"/>
-
-    <xsl:variable name="firstNames" select="zgw:WrapNullOrSkip('egov:firstNames', 'null', zgw:FromOrderedSource(
-        $FirstNames,
-        $EmailParameters//emailparameters:firstNames,
-        '', 
-        //emailparameters:firstNames),
-        'http://www.emaxx.org/egov/common')"/>
     
-    <xsl:variable name="middleName" select="zgw:WrapNullOrSkip('egov:middleName', 'null', zgw:FromOrderedSource(
-        $MiddleName,
-        $EmailParameters//emailparameters:middleName,
-        '', 
-        //emailparameters:middleName),
-        'http://www.emaxx.org/egov/common')"/>
-
-    <xsl:variable name="lastName" select="zgw:WrapNullOrSkip('egov:lastName', 'null', zgw:FromOrderedSource(
-        $LastName,
-        $EmailParameters//emailparameters:lastName,
-        '', 
-        //emailparameters:lastName),
-        'http://www.emaxx.org/egov/common')"/>
-
-    <xsl:variable name="nameOfAddress" select="zgw:WrapNullOrSkip('egov:nameOfAddress', 'skip', zgw:FromOrderedSource(
-        $NameOfAddress,
-        $EmailParameters//emailparameters:nameOfAddress,
-        '', 
-        //emailparameters:nameOfAddress),
-        'http://www.emaxx.org/egov/common')"/>
+    <xsl:variable name="tussenvoegsel" select="$UwGegevensCompleet//*[starts-with(name(), 'fieldSet')]/*/*[starts-with(name(), 'tussenvoegsel')]" />
+    <xsl:variable name="lastName" select="$UwGegevensCompleet//*[starts-with(name(), 'fieldSet')]/*/*[starts-with(name(), 'achternaam')]" />
 
     <xsl:template match="/">
         <emailparameters:emailParameters>
-            <xsl:copy-of select="zgw:WrapNullOrSkip('emailparameters:emailAddress', 'skip', zgw:FromOrderedSource(
+            <xsl:copy-of select="zgw:WrapNullOrSkip('emailparameters:emailAddress', 'empty', zgw:FromOrderedSource(
                 $EmailAddress, 
                 $EmailParameters//emailparameters:emailAddress, 
-                '', 
+                $UwGegevensCompleet//*[starts-with(name(), 'eMailadres')], 
                 //emailparameters:emailAddress),
                 'http://www.emaxx.org/bpel/proces/xsd/emailparameters')"/>
-            <xsl:copy-of select="zgw:WrapNullOrSkip('emailparameters:gender', 'null', zgw:FromOrderedSource(
+            <xsl:copy-of select="zgw:WrapNullOrSkip('emailparameters:gender', 'skip', zgw:FromOrderedSource(
                 $Gender, 
                 $EmailParameters//emailparameters:gender, 
                 '', 
-                //emailparameters:gender),
+                //emailparameters:gender,
+                'O'),
                 'http://www.emaxx.org/bpel/proces/xsd/emailparameters')"/>
-            <xsl:if test="$initials or $firstNames or $middleName or $lastName or $nameOfAddress">
-                <emailparameters:name>
-                    <xsl:copy-of select="$initials"/>
-                    <xsl:copy-of select="$firstNames"/>
-                    <xsl:copy-of select="$middleName"/>
-                    <xsl:copy-of select="$lastName"/>
-                    <xsl:copy-of select="$nameOfAddress"/>
-                </emailparameters:name>
-            </xsl:if>
+            <emailparameters:name>
+                <xsl:copy-of select="zgw:WrapNullOrSkip('egov:initials', 'null', zgw:FromOrderedSource(
+                    $Initials,
+                    $EmailParameters//emailparameters:initials,
+                    $UwGegevensCompleet//*[starts-with(name(), 'voorletter')], 
+                    //emailparameters:initials),
+                    'http://www.emaxx.org/egov/common')"/>
+                <xsl:copy-of select="zgw:WrapNullOrSkip('egov:firstNames', 'null', zgw:FromOrderedSource(
+                    $FirstNames,
+                    $EmailParameters//emailparameters:firstNames,
+                    '', 
+                    //emailparameters:firstNames),
+                    'http://www.emaxx.org/egov/common')"/>
+                <xsl:copy-of select="zgw:WrapNullOrSkip('egov:middleName', 'null', zgw:FromOrderedSource(
+                    $MiddleName,
+                    $EmailParameters//emailparameters:middleName,
+                    '', 
+                    //emailparameters:middleName),
+                    'http://www.emaxx.org/egov/common')"/>
+                <xsl:copy-of select="zgw:WrapNullOrSkip('egov:lastName', 'null', zgw:FromOrderedSource(
+                    $LastName,
+                    $EmailParameters//emailparameters:lastName,
+                    concat($tussenvoegsel, concat('', $lastName)), 
+                    //emailparameters:lastName),
+                    'http://www.emaxx.org/egov/common')"/>
+                <xsl:copy-of select="zgw:WrapNullOrSkip('egov:nameOfAddress', 'skip', zgw:FromOrderedSource(
+                    $NameOfAddress,
+                    $EmailParameters//emailparameters:nameOfAddress,
+                    '', 
+                    //emailparameters:nameOfAddress),
+                    'http://www.emaxx.org/egov/common')"/>
+            </emailparameters:name>
         </emailparameters:emailParameters>
     </xsl:template>
 </xsl:stylesheet>

@@ -29,13 +29,13 @@
         '',
         basic:initiateRequestMessage/basic:body/basic:applicant/basic:person/basic:bsn),
         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')" />
-    <xsl:variable name="commercialRegistryNumber" select="zgw:WrapNullOrSkip('basic:commercialRegistryNumber', 'skip', zgw:FromOrderedSource(
+    <xsl:variable name="commercialRegistryNumber" select="zgw:WrapNullOrSkip('basic:commercialRegistryNumber', 'empty', zgw:FromOrderedSource(
         $CommercialRegistryNumber,
         $InitiateRequestMessage/basic:initiateRequestMessage/basic:body/basic:applicant/basic:organization/basic:commercialRegistryNumber,
         '',
         basic:initiateRequestMessage/basic:body/basic:applicant/basic:organization/basic:commercialRegistryNumber),
         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')" />
-    <xsl:variable name="username" select="zgw:WrapNullOrSkip('basic:username', 'skip', zgw:FromOrderedSource(
+    <xsl:variable name="username" select="zgw:WrapNullOrSkip('basic:username', 'empty', zgw:FromOrderedSource(
         $Username,
         $InitiateRequestMessage/basic:initiateRequestMessage/basic:body/basic:applicant/basic:employee/basic:username,
         '',
@@ -72,7 +72,6 @@
             </headerproperties:requestProperties>
             <basic:body>
                 <basic:applicant>
-                    <!-- Choice, one of these elements must be set. -->
                     <xsl:choose>
                         <xsl:when test="$bsn">
                             <basic:person>
@@ -89,7 +88,11 @@
                                 <xsl:copy-of select="$username"/>
                             </basic:employee>
                         </xsl:when>
-                        <xsl:otherwise />
+                        <xsl:otherwise>
+                            <basic:person>
+                                <basic:bsn />
+                            </basic:person>
+                        </xsl:otherwise>
                     </xsl:choose>
                 </basic:applicant>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:process', 'empty', zgw:FromOrderedSource(

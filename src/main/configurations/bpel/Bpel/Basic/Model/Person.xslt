@@ -96,7 +96,7 @@
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:dateOfBirth', 'null', zgw:FromOrderedSource(
                     $DateOfBirth,
                     $Person//basic:dateOfBirth,
-                    '',
+                    $UwGegevensCompleet//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'geboortedatum')],
                     //basic:dateOfBirth),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:emailAddress', 'empty', zgw:FromOrderedSource(

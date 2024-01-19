@@ -10,7 +10,7 @@
     <xsl:include href="../../BpelFunctionsBase.xslt" />
     
     <!-- Map -->
-    <xsl:param name="UwGegevensCompleet" as="node()"><uw-gegevenscompleet /></xsl:param>
+    <xsl:param name="UwGegevens" as="node()"><uw-gegevenscompleet /></xsl:param>
     
     <!-- Create/Enrich -->
     <xsl:param name="EmailParameters" as="node()"><emailparameters:emailParameters /></xsl:param>
@@ -23,15 +23,15 @@
     <xsl:param name="LastName" select="''" as="xs:string" />
     <xsl:param name="NameOfAddress" select="''" as="xs:string" />
     
-    <xsl:variable name="tussenvoegsel" select="$UwGegevensCompleet//*[starts-with(name(), 'fieldSet')]/*/*[starts-with(name(), 'tussenvoegsel')]" />
-    <xsl:variable name="lastName" select="$UwGegevensCompleet//*[starts-with(name(), 'fieldSet')]/*/*[starts-with(name(), 'achternaam')]" />
+    <xsl:variable name="tussenvoegsel" select="$UwGegevens//*[starts-with(name(), 'fieldSet')]/*/*[starts-with(name(), 'tussenvoegsel')]" />
+    <xsl:variable name="lastName" select="$UwGegevens//*[starts-with(name(), 'fieldSet')]/*/*[starts-with(name(), 'achternaam')]" />
 
     <xsl:template match="/">
         <emailparameters:emailParameters>
             <xsl:copy-of select="zgw:WrapNullOrSkip('emailparameters:emailAddress', 'empty', zgw:FromOrderedSource(
                 $EmailAddress, 
                 $EmailParameters//emailparameters:emailAddress, 
-                $UwGegevensCompleet//*[starts-with(name(), 'eMailadres')], 
+                $UwGegevens//*[starts-with(name(), 'eMailadres')], 
                 //emailparameters:emailAddress),
                 'http://www.emaxx.org/bpel/proces/xsd/emailparameters')"/>
             <xsl:copy-of select="zgw:WrapNullOrSkip('emailparameters:gender', 'skip', zgw:FromOrderedSource(
@@ -45,7 +45,7 @@
                 <xsl:copy-of select="zgw:WrapNullOrSkip('egov:initials', 'null', zgw:FromOrderedSource(
                     $Initials,
                     $EmailParameters//emailparameters:initials,
-                    $UwGegevensCompleet//*[starts-with(name(), 'voorletter')], 
+                    $UwGegevens//*[starts-with(name(), 'voorletter')], 
                     //emailparameters:initials),
                     'http://www.emaxx.org/egov/common')"/>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('egov:firstNames', 'null', zgw:FromOrderedSource(

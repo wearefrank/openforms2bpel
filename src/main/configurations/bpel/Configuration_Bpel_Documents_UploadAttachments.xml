@@ -22,7 +22,7 @@
                 storeResultInSessionKey="Provider"
                 >
                 <Param name="Case" sessionKey="Case" />
-                <Param name="UwGegevensCompleet" sessionKey="originalMessage" xpathExpression="//uw-gegevenscompleet" type="DOMDOC" defaultValue="''"/>
+                <Param name="UwGegevens" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'uw-gegevens')]" type="DOMDOC" defaultValue="''"/>
                 <Forward name="success" path="CreateStartBatchMessage" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>

@@ -10,7 +10,7 @@
     <xsl:include href="../../BpelFunctionsBase.xslt" />
     
     <!-- Map -->
-    <xsl:param name="UwGegevensCompleet" as="node()"><uw-gegevenscompleet /></xsl:param>
+    <xsl:param name="UwGegevens" as="node()"><uw-gegevenscompleet /></xsl:param>
     
     <!-- Create/Enrich -->
     <xsl:param name="Provider" as="node()"><document:provider /></xsl:param>
@@ -26,13 +26,13 @@
     <xsl:template match="/">
         <document:provider>
             <xsl:choose>
-                <xsl:when test="$UwGegevensCompleet//uw-gegevenscompleet/*[ends-with(name(), 'DigiD')] or $CitizenNumber">
+                <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[ends-with(name(), 'DigiD')] or $CitizenNumber">
                     <document:citizenNumber>
                         <xsl:choose>
-                            <xsl:when test="$UwGegevensCompleet//uw-gegevenscompleet/*[ends-with(name(), 'MD')] or $CitizenNumber_Authentic='true'">
+                            <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[ends-with(name(), 'MD')] or $CitizenNumber_Authentic='true'">
                                 <xsl:attribute name="authentic" select="'J'" />
                             </xsl:when>
-                            <xsl:when test="$UwGegevensCompleet//uw-gegevenscompleet/*[ends-with(name(), 'ZD')] or $CitizenNumber_Authentic='false'">
+                            <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[ends-with(name(), 'ZD')] or $CitizenNumber_Authentic='false'">
                                 <xsl:attribute name="authentic" select="'N'" />
                             </xsl:when>
                             <xsl:otherwise><xsl:attribute name="xsi:nil" select="true()"/></xsl:otherwise>
@@ -40,17 +40,17 @@
                         <xsl:copy-of select="zgw:FromOrderedSource(
                             $CitizenNumber, 
                             $Provider//document:provider/cases:citizenNumber, 
-                            $UwGegevensCompleet//bsn, 
+                            $UwGegevens//bsn, 
                             //document:provider/cases:citizenNumber)" />
                     </document:citizenNumber>
                 </xsl:when>
-                <xsl:when test="$UwGegevensCompleet//uw-gegevenscompleet/*[starts-with(name(), 'fieldSetBedrijf')] or $NnpId">
+                <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[starts-with(name(), 'fieldSetBedrijf')] or $NnpId">
                     <document:nnpId>
                         <xsl:choose>
-                            <xsl:when test="$UwGegevensCompleet//uw-gegevenscompleet/*[ends-with(name(), 'MEH')] or $NnpId_Authentic='true'">
+                            <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[ends-with(name(), 'MEH')] or $NnpId_Authentic='true'">
                                 <xsl:attribute name="authentic" select="'J'" />
                             </xsl:when>
-                            <xsl:when test="$UwGegevensCompleet//uw-gegevenscompleet/*[ends-with(name(), 'ZEH')] or $NnpId_Authentic='false'">
+                            <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[ends-with(name(), 'ZEH')] or $NnpId_Authentic='false'">
                                 <xsl:attribute name="authentic" select="'N'" />
                             </xsl:when>
                             <xsl:otherwise><xsl:attribute name="xsi:nil" select="true()"/></xsl:otherwise>
@@ -58,7 +58,7 @@
                         <xsl:copy-of select="zgw:FromOrderedSource(
                             $NnpId, 
                             $Provider//document:provider/cases:nnpId, 
-                            $UwGegevensCompleet//*[starts-with(name(), 'gegevensBedrijfOrganisatie')]/*[starts-with(name(), 'kvKNummer')], 
+                            $UwGegevens//*[starts-with(name(), 'gegevensBedrijfOrganisatie')]/*[starts-with(name(), 'kvKNummer')], 
                             //document:provider/cases:nnpId)" />
                     </document:nnpId>
                 </xsl:when>

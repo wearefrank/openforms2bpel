@@ -10,7 +10,7 @@
     <xsl:include href="../../BpelFunctionsBase.xslt" />
     
     <!-- Map -->
-    <xsl:param name="UwGegevensCompleet" as="node()"><uw-gegevenscompleet /></xsl:param>
+    <xsl:param name="UwGegevens" as="node()"><uw-gegevenscompleet /></xsl:param>
     
     <!-- Create/Enrich -->
     <xsl:param name="Person" as="node()"><basic:person /></xsl:param>
@@ -41,10 +41,10 @@
         <basic:person>
             <basic:bsn>
                 <xsl:choose>
-                    <xsl:when test="$UwGegevensCompleet//uw-gegevenscompleet/*[ends-with(name(), 'MetDigiD')] or $Bsn_Authentic='true'">
+                    <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[ends-with(name(), 'MetDigiD')] or $Bsn_Authentic='true'">
                         <xsl:attribute name="authentic" select="true()" />
                     </xsl:when>
-                    <xsl:when test="$UwGegevensCompleet//uw-gegevenscompleet/*[ends-with(name(), 'ZonderDigiD')] or $Bsn_Authentic='false'">
+                    <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[ends-with(name(), 'ZonderDigiD')] or $Bsn_Authentic='false'">
                         <xsl:attribute name="authentic" select="false()" />
                     </xsl:when>
                     <xsl:otherwise/>
@@ -66,25 +66,25 @@
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:initials', 'empty', zgw:FromOrderedSource(
                     $Initials,
                     $Person//basic:initials,
-                    $UwGegevensCompleet//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'voorletter')],
+                    $UwGegevens//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'voorletter')],
                     //basic:initials),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:firstNames', 'empty', zgw:FromOrderedSource(
                     $FirstNames,
                     $Person//basic:firstNames,
-                    $UwGegevensCompleet//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'voornamen')],
+                    $UwGegevens//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'voornamen')],
                     //basic:firstNames),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:lastNamePrefix', 'empty', zgw:FromOrderedSource(
                     $LastNamePrefix,
                     $Person//basic:lastNamePrefix,
-                    $UwGegevensCompleet//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'tussenvoegsel')],
+                    $UwGegevens//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'tussenvoegsel')],
                     //basic:lastNamePrefix),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:lastName', 'empty', zgw:FromOrderedSource(
                     $LastName,
                     $Person//basic:lastName,
-                    $UwGegevensCompleet//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'achternaam')],
+                    $UwGegevens//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'achternaam')],
                     //basic:lastName),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:nameOfAddress', 'empty', zgw:FromOrderedSource(
@@ -96,19 +96,19 @@
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:dateOfBirth', 'null', zgw:FromOrderedSource(
                     $DateOfBirth,
                     $Person//basic:dateOfBirth,
-                    $UwGegevensCompleet//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'geboortedatum')],
+                    $UwGegevens//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'geboortedatum')],
                     //basic:dateOfBirth),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:emailAddress', 'empty', zgw:FromOrderedSource(
                     $EmailAddress,
                     $Person//basic:emailAddress,
-                    $UwGegevensCompleet//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')],
+                    $UwGegevens//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')],
                     //basic:emailAddress),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:telephoneNumber', 'empty', zgw:FromOrderedSource(
                     $TelephoneNumber,
                     $Person//basic:telephoneNumber,
-                    $UwGegevensCompleet//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer')],
+                    $UwGegevens//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer')],
                     //basic:telephoneNumber),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:faxNumber', 'empty', zgw:FromOrderedSource(
@@ -133,37 +133,37 @@
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:houseNumber', 'empty', zgw:FromOrderedSource(
                         $HouseNumber,
                         $Person//basic:residenceAddress/basic:houseNumber,
-                        $UwGegevensCompleet//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'huisnummer') and not(starts-with(name(), 'huisnummertoevoeging'))],
+                        $UwGegevens//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'huisnummer') and not(starts-with(name(), 'huisnummertoevoeging'))],
                         //basic:residenceAddress/basic:houseNumber),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:houseLetter', 'empty', zgw:FromOrderedSource(
                         $HouseLetter,
                         $Person//basic:residenceAddress/basic:houseLetter,
-                        $UwGegevensCompleet//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'huisletter')],
+                        $UwGegevens//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'huisletter')],
                         //basic:residenceAddress/basic:houseLetter),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:houseRemark', 'empty', zgw:FromOrderedSource(
                         $HouseRemark,
                         $Person//basic:residenceAddress/basic:houseRemark,
-                        $UwGegevensCompleet//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'huisnummertoevoeging')],
+                        $UwGegevens//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'huisnummertoevoeging')],
                         //basic:residenceAddress/basic:houseRemark),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:streetname', 'empty', zgw:FromOrderedSource(
                         $Streetname,
                         $Person//basic:residenceAddress/basic:streetname,
-                        $UwGegevensCompleet//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'straatnaam')],
+                        $UwGegevens//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'straatnaam')],
                         //basic:residenceAddress/basic:streetname),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:zipCode', 'empty', zgw:FromOrderedSource(
                         $ZipCode,
                         $Person//basic:residenceAddress/basic:zipCode,
-                        upper-case(replace($UwGegevensCompleet//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'postcode')], ' ', '')),
+                        upper-case(replace($UwGegevens//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'postcode')], ' ', '')),
                         //basic:residenceAddress/basic:zipCode),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:city', 'empty', zgw:FromOrderedSource(
                         $City,
                         $Person//basic:residenceAddress/basic:city,
-                        $UwGegevensCompleet//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'woonplaats')],
+                        $UwGegevens//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'woonplaats')],
                         //basic:residenceAddress/basic:city),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:locationDescription', 'empty', zgw:FromOrderedSource(

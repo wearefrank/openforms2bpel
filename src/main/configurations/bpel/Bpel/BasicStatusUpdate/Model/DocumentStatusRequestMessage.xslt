@@ -3,7 +3,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:zgw="http://google.com/zgw"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:basic="http://www.emaxx.org/bpel/proces/xsd/eMAXX/BasicStatusUpdate"
+    xmlns:basicstatusupdate="http://www.emaxx.org/bpel/proces/xsd/eMAXX/BasicStatusUpdate"
     xmlns:cases="http://www.emaxx.org/functional/cases"
     xmlns:document="http://www.emaxx.org/functional/cases/document"
     xmlns:common="http://www.emaxx.org/egov/common"
@@ -16,7 +16,7 @@
     <xsl:param name="Document" as="node()"><document:document /></xsl:param>
     
     <!-- Create/Enrich -->
-    <xsl:param name="DocumentStatusRequestMessage" as="node()"><basic:documentStatusRequestMessage /></xsl:param>
+    <xsl:param name="DocumentStatusRequestMessage" as="node()"><basicstatusupdate:documentStatusRequestMessage /></xsl:param>
     
     <xsl:param name="User" select="''" as="xs:string" />
     <xsl:param name="Password" select="''" as="xs:string" />
@@ -37,7 +37,7 @@
     <xsl:param name="Status_Clarification" select="''" as="xs:string" />
 
     <xsl:template match="/">
-        <basic:documentStatusRequestMessage>
+        <basicstatusupdate:documentStatusRequestMessage>
             <headerproperties:requestProperties>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('headerproperties:user', 'null', zgw:FromOrderedSource(
                     $User, 
@@ -64,14 +64,14 @@
                     //headerproperties:correlationId),
                     'http://www.emaxx.org/bpel/proces/xsd/headerproperties')"/>
             </headerproperties:requestProperties>
-            <basic:body>
-                <xsl:copy-of select="zgw:WrapNullOrSkip('basic:referenceNumber', 'empty', zgw:FromOrderedSource(
+            <basicstatusupdate:body>
+                <xsl:copy-of select="zgw:WrapNullOrSkip('basicstatusupdate:referenceNumber', 'empty', zgw:FromOrderedSource(
                     $ReferenceNumber, 
-                    $DocumentStatusRequestMessage//basic:referenceNumber, 
+                    $DocumentStatusRequestMessage//basicstatusupdate:referenceNumber, 
                     '', 
-                    //basic:referenceNumber),
+                    //basicstatusupdate:referenceNumber),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/BasicStatusUpdate')"/>
-                <basic:documents>
+                <basicstatusupdate:documents>
                     <common:document>
                         <xsl:copy-of select="zgw:WrapNullOrSkip('common:id', 'null', zgw:FromOrderedSource(
                             $Id, 
@@ -152,8 +152,8 @@
                                 'http://www.emaxx.org/egov/common')"/>
                         </common:status>
                     </common:document>
-                </basic:documents>
-            </basic:body>
-        </basic:documentStatusRequestMessage>
+                </basicstatusupdate:documents>
+            </basicstatusupdate:body>
+        </basicstatusupdate:documentStatusRequestMessage>
     </xsl:template>
 </xsl:stylesheet>

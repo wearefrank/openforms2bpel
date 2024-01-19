@@ -9,7 +9,7 @@
     <xsl:include href="../../BpelFunctionsBase.xslt" />
     
     <!-- Map -->
-    <xsl:param name="UwGegevensCompleet" as="node()"><uw-gegevenscompleet /></xsl:param>
+    <xsl:param name="UwGegevens" as="node()"><uw-gegevenscompleet /></xsl:param>
     
     <!-- Create/Enrich -->
     <xsl:param name="Person" as="node()"><basic:person /></xsl:param>
@@ -18,10 +18,10 @@
     <xsl:template match="/">
         <basic:initiatingSubject>
             <xsl:choose>
-                <xsl:when test="$UwGegevensCompleet//uw-gegevenscompleet/*[ends-with(name(), 'DigiD')]">
+                <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[ends-with(name(), 'DigiD')]">
                     <xsl:copy-of select="$Person" />
                 </xsl:when>
-                <xsl:when test="$UwGegevensCompleet//uw-gegevenscompleet/*[starts-with(name(), 'fieldSetBedrijf')]">
+                <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[starts-with(name(), 'fieldSetBedrijf')]">
                     <xsl:copy-of select="$Organization" />
                 </xsl:when>
                 <xsl:otherwise/>

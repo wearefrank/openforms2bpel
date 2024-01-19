@@ -142,7 +142,7 @@
                 styleSheetName="Bpel/Basic/Model/EmailParameters.xslt"
                 storeResultInSessionKey="EmailParameters"
                 >
-                <Param name="UwGegevensCompleet" xpathExpression="//uw-gegevenscompleet" type="DOMDOC" />
+                <Param name="UwGegevens" xpathExpression="//*[starts-with(name(), 'uw-gegevens')]" type="DOMDOC" />
                 <Forward name="success" path="CreateCaseParameters" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
@@ -169,13 +169,13 @@
                 styleSheetName="Bpel/Basic/Model/InitiatingSubject.xslt"
                 storeResultInSessionKey="InitiatingSubject"
                 >
-                <Param name="UwGegevensCompleet" xpathExpression="//uw-gegevenscompleet" type="DOMDOC" />
+                <Param name="UwGegevens" xpathExpression="//*[starts-with(name(), 'uw-gegevens')]" type="DOMDOC" />
                 <Param name="Person" styleSheetName="Bpel/Basic/Model/Person.xslt" type="DOMDOC">
                     <Param name="Bsn" xpathExpression="/ZgwObject/bsn" />
-                    <Param name="UwGegevensCompleet" xpathExpression="//uw-gegevenscompleet" type="DOMDOC" />
+                    <Param name="UwGegevens" xpathExpression="//*[starts-with(name(), 'uw-gegevens')]" type="DOMDOC" />
                 </Param>
                 <Param name="Organization" styleSheetName="Bpel/Basic/Model/Organization.xslt" type="DOMDOC">
-                    <Param name="UwGegevensCompleet" xpathExpression="//uw-gegevenscompleet" type="DOMDOC" />
+                    <Param name="UwGegevens" xpathExpression="//*[starts-with(name(), 'uw-gegevens')]" type="DOMDOC" />
                 </Param>
                 <Forward name="success" path="CreatePayment" />
                 <Forward name="error" path="EXCEPTION" />

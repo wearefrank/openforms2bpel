@@ -1,5 +1,34 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.14.0](https://github.com/wearefrank/openforms2bpel/compare/v1.13.0...v1.14.0) (2024-01-19)
+
+
+### 🍕 Features
+
+* payment support ([2865573](https://github.com/wearefrank/openforms2bpel/commit/2865573852b6076a4373f8a4e9e25b83afe30e75))
+
+
+### 🐛 Bug Fixes
+
+* geboortedatum under persoongegevens missing in zaak ([666b857](https://github.com/wearefrank/openforms2bpel/commit/666b85735823042072e42baebd4d1ea452d661ce))
+* voornamen under persoongegevens missing in zaak ([c271072](https://github.com/wearefrank/openforms2bpel/commit/c271072990f2ebc02b9c7004b4d9ed33dd020260))
+
+
+### 🧑‍💻 Code Refactoring
+
+* correct namespace naming to be in line with other messages ([f2c2126](https://github.com/wearefrank/openforms2bpel/commit/f2c21262225e247502642297ae4c7e5faca19ddb))
+
+
+### ✅ Tests
+
+* add testcase with payment ([65ccdff](https://github.com/wearefrank/openforms2bpel/commit/65ccdff426f5e83432f433219136aced79cf75ab))
+* add testcase with payment ([f58b378](https://github.com/wearefrank/openforms2bpel/commit/f58b378b728e6eb98a1ba96f3235e4a43b6078cf))
+
+
+### 🔁 Continuous Integration
+
+* lock semantic-release to 22 major ([c8a3d55](https://github.com/wearefrank/openforms2bpel/commit/c8a3d559e9a0cc7eb44d18e82a33d89159ba08da))
+
 ## [1.13.0](https://github.com/wearefrank/openforms2bpel/compare/v1.12.0...v1.13.0) (2023-12-12)
 
 

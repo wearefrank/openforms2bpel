@@ -11360,8 +11360,14 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
     <con:operation id="c3ad2bab-c830-44f8-ae43-a7b22a52cf6e" isOneWay="false" action="" name="documentStatus" bindingOperationName="documentStatus" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false">
       <con:settings/>
     </con:operation>
-    <con:operation id="6eb83dc4-508f-478d-b404-2e7669396903" isOneWay="false" action="" name="updateStatus" bindingOperationName="updateStatus" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="6eb83dc4-508f-478d-b404-2e7669396903" isOneWay="false" action="" name="updateStatus" bindingOperationName="updateStatus" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
+      <con:call id="7287a2ff-5f3f-4fd6-8168-e811460219a7" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://172.29.78.57:8180/active-bpel/services/BasicStatusUpdate</con:endpoint>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.emaxx.org/bpel/proces/wsdl/eMAXX/BasicStatusUpdate/BasicStatusUpdate/updateStatusRequest"/>
+      </con:call>
     </con:operation>
   </con:interface>
   <con:testSuite id="51faa60a-6964-478d-8f14-899c806b2805" name="e2e">
@@ -12364,6 +12370,204 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       "startAt" : "2023-11-29",\r
       "endAt" : null,\r
       "registrationAt" : "2023-11-29",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>zaaktype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value>
+        </con:property>
+        <con:property>
+          <con:name>informatieobjecttype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
+    <con:testCase id="e5faa09d-e407-40aa-921e-f76c70d91dc4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Betaling" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="properties" name="Properties" id="122956fe-39f5-4769-aa82-086739301dc6">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties/>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="f86b1b04-fa64-4778-8530-8ff1bb7d40ba">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "169795135",\r
+         "data" : {\r
+            "invulling-plaats" : {\r
+               "brancheMarktplaats" : {\r
+                  "stoffen" : false,\r
+                  "schoeisel" : false,\r
+                  "bovenkleding" : false,\r
+                  "groeiEnBloei" : false,\r
+                  "visEnZuurwaren" : false,\r
+                  "huishoudtextiel" : false,\r
+                  "zuivelproducten" : false,\r
+                  "janskerkhofPotten" : false,\r
+                  "oudegrachtBloemen" : false,\r
+                  "janskerkhofBloemen" : false,\r
+                  "kleinvakWolEnGarens" : false,\r
+                  "notenEnZuidvruchten" : false,\r
+                  "janskerkhofBloembollen" : false,\r
+                  "huishoudelijkeArtikelen" : false,\r
+                  "manufacturenmarktStoffen" : false,\r
+                  "janskerkhofBomenEnPlanten" : false,\r
+                  "aardappelenGroentenEnFruit" : true,\r
+                  "horlogesHaarmodeEnSieraden" : false,\r
+                  "janskerkhofTuingereedschap" : false,\r
+                  "lederwarenTassenEnPortemonnees" : false,\r
+                  "vleesVleeswarenEnPoulierswaren" : false,\r
+                  "cosmeticaEnDrogisterijArtikelen" : false,\r
+                  "gereedschappenRijwielonderdelen" : false,\r
+                  "broodKoekBanketDropSnoepEnChocola" : false,\r
+                  "onderEnNachtkledingEnBeenbekleding" : false,\r
+                  "manufacturenmarktKleinvakWolEnGarens" : false,\r
+                  "tweedehandsGoederenMarktJacobskerkhof" : false,\r
+                  "geringeEtenswarenVoorDirecteConsumptie" : false\r
+               },\r
+               "gebruiktUEenVerkoopwagen" : "nee",\r
+               "hebtUNogOpmerkingenOfZijnErNogZakenDieVolgensUVanBelangZijnVoorDezeAanvraagVulDezeIn" : "test"\r
+            },\r
+            "aanvraagmarktplaats" : {\r
+               "uwAanvraagBetreft" : "nieuweStandplaats",\r
+               "veldengroepGetallen" : {\r
+                  "totaalMarkt" : 37.35,\r
+                  "prijsVervolg" : 0.0,\r
+                  "aantalMarkten" : 1,\r
+                  "prijsEersteMarkt" : 37.35\r
+               },\r
+               "kvKNummerMarktplaats" : "12345678",\r
+               "voorWelkeMarktEnVraagtUEenVergunning" : {\r
+                  "a1" : true,\r
+                  "b2" : false,\r
+                  "c3" : false,\r
+                  "d4" : false,\r
+                  "e5" : false,\r
+                  "f6" : false,\r
+                  "g7" : false,\r
+                  "h8" : false,\r
+                  "i9" : false,\r
+                  "j10" : false,\r
+                  "k11" : false,\r
+                  "j12" : false,\r
+                  "m13" : false,\r
+                  "n14" : false,\r
+                  "o15" : false\r
+               }\r
+            },\r
+            "bijlagenmarktplaats" : {\r
+               "fileMarktplaats" : [\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/0e575f8c-f37a-42ef-917d-c92a3e42b900",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/0e575f8c-f37a-42ef-917d-c92a3e42b900",\r
+                        "form" : "",\r
+                        "name" : "1.txt",\r
+                        "size" : 13,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "1-aa5b4ce2-b568-474c-a438-5a0560f558a2.txt",\r
+                     "size" : 13,\r
+                     "type" : "text/plain",\r
+                     "storage" : "url",\r
+                     "originalName" : "1.txt"\r
+                  },\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/c70852bc-b203-444e-b6ab-ba397435efb1",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/c70852bc-b203-444e-b6ab-ba397435efb1",\r
+                        "form" : "",\r
+                        "name" : "TEST_Marcel.pdf",\r
+                        "size" : 7286,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "TEST_Marcel-418e90ee-7096-42bb-a4d4-e17ab28d0b17.pdf",\r
+                     "size" : 7286,\r
+                     "type" : "application/pdf",\r
+                     "storage" : "url",\r
+                     "originalName" : "TEST_Marcel.pdf"\r
+                  }\r
+               ]\r
+            },\r
+            "uw-gegevenscompleet" : {\r
+               "fieldSetMetDigiD" : {\r
+                  "adresgegevensMD" : {\r
+                     "postcodePMD" : "3554 AS",\r
+                     "huisletterPMD" : "",\r
+                     "huisnummerPMD" : "91",\r
+                     "straatnaamPMD" : "Van Hoornekade",\r
+                     "woonplaatsPMD" : "Utrecht",\r
+                     "huisnummertoevoegingPMD" : ""\r
+                  },\r
+                  "contactgegevensMD" : {\r
+                     "eMailadresPMD" : "m.van.altena@utrecht.nl",\r
+                     "telefoonnummerPMD" : "0612345678"\r
+                  },\r
+                  "persoonsgegevensMD" : {\r
+                     "bsnPMD" : "169795135",\r
+                     "achternaamPMD" : "Driel",\r
+                     "voorletterSPMD" : "",\r
+                     "tussenvoegselSPMD" : "van"\r
+                  }\r
+               }\r
+            },\r
+            "postadresmarktplaats" : {\r
+               "wiltUEenPostadresGebruikenAndersDanUwWoonadres" : "nee"\r
+            }\r
+         },\r
+         "type" : "MPV",\r
+         "csv_url" : "",\r
+         "payment" : {\r
+            "amount" : "37,35",\r
+            "completed" : "true",\r
+            "public_order_ids" : "OF-YQC62L"\r
+         },\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [\r
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf"\r
+         ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "90864c86-4c17-4511-9858-a2040214359a",\r
+         "public_reference" : "OF-YQC62L"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2024-01-12",\r
+      "endAt" : null,\r
+      "registrationAt" : "2024-01-12",\r
       "correctionFor" : null,\r
       "correctedBy" : null\r
    }\r

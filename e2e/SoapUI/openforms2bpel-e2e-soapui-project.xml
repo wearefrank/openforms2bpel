@@ -11368,6 +11368,12 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
     </con:operation>
     <con:operation id="6eb83dc4-508f-478d-b404-2e7669396903" isOneWay="false" action="" name="updateStatus" bindingOperationName="updateStatus" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
+      <con:call id="7287a2ff-5f3f-4fd6-8168-e811460219a7" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://172.29.78.57:8180/active-bpel/services/BasicStatusUpdate</con:endpoint>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.emaxx.org/bpel/proces/wsdl/eMAXX/BasicStatusUpdate/BasicStatusUpdate/updateStatusRequest"/>
+      </con:call>
     </con:operation>
   </con:interface>
   <con:testSuite id="51faa60a-6964-478d-8f14-899c806b2805" name="e2e">

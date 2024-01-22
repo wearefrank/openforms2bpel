@@ -47,13 +47,13 @@
                 <xsl:copy-of select="zgw:WrapNullOrSkip('egov:initials', 'null', zgw:FromOrderedSource(
                     $Initials,
                     $EmailParameters//emailparameters:initials,
-                    $UwGegevens//*[starts-with(name(), 'voorletter')], 
+                    $UwGegevens//*[starts-with(name(), 'voorletterS')], 
                     //emailparameters:initials),
                     'http://www.emaxx.org/egov/common')"/>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('egov:firstNames', 'null', zgw:FromOrderedSource(
                     $FirstNames,
                     $EmailParameters//emailparameters:firstNames,
-                    '', 
+                    $UwGegevens//*[starts-with(name(), 'voornamen')], 
                     //emailparameters:firstNames),
                     'http://www.emaxx.org/egov/common')"/>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('egov:middleName', 'null', zgw:FromOrderedSource(

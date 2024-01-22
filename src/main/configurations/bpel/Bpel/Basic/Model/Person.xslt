@@ -68,7 +68,7 @@
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:initials', 'empty', zgw:FromOrderedSource(
                     $Initials,
                     $Person//basic:initials,
-                    $UwGegevens//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'voorletter')],
+                    $UwGegevens//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'voorletterS')],
                     //basic:initials),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:firstNames', 'empty', zgw:FromOrderedSource(

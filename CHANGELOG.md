@@ -1,5 +1,20 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.14.1](https://github.com/wearefrank/openforms2bpel/compare/v1.14.0...v1.14.1) (2024-01-22)
+
+
+### 🐛 Bug Fixes
+
+* always translate to correspondenceAdress instead of locationAdress and add POBox field ([6fbfe5c](https://github.com/wearefrank/openforms2bpel/commit/6fbfe5cec4f85396ded897ce2bf0b9184534feba))
+* housenumber not translated as organisation ([eaaa2c2](https://github.com/wearefrank/openforms2bpel/commit/eaaa2c2b6f470baf2a951eb8a459efa28be33c0d))
+* uw-gegevens section name variations not recognized ([2150c84](https://github.com/wearefrank/openforms2bpel/commit/2150c84706a1e37514c981647b7041f0d995f6db))
+* voornamen not translated to person and email ([d752cbd](https://github.com/wearefrank/openforms2bpel/commit/d752cbd78ee619990463c6146f4bce082d1f775a))
+
+
+### 🧑‍💻 Code Refactoring
+
+* gender deducted from aanhef ([b195ae6](https://github.com/wearefrank/openforms2bpel/commit/b195ae6ac226542fd75c3c72dae9b8767232de74))
+
 ## [1.14.0](https://github.com/wearefrank/openforms2bpel/compare/v1.13.0...v1.14.0) (2024-01-19)
 
 

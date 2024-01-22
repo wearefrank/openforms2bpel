@@ -37,7 +37,9 @@
             <xsl:copy-of select="zgw:WrapNullOrSkip('emailparameters:gender', 'skip', zgw:FromOrderedSource(
                 $Gender, 
                 $EmailParameters//emailparameters:gender, 
-                '', 
+                if ($UwGegevens//*[starts-with(name(), 'aanhef')] = 'deHeer') then 'M' 
+                else if($UwGegevens//*[starts-with(name(), 'aanhef')] = 'mevrouw') then 'V' 
+                else 'O', 
                 //emailparameters:gender,
                 'O'),
                 'http://www.emaxx.org/bpel/proces/xsd/emailparameters')"/>

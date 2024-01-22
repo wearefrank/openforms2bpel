@@ -59,7 +59,9 @@
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:genderIndication', 'empty', zgw:FromOrderedSource(
                     $GenderIndication,
                     $Person//basic:genderIndication,
-                    '',
+                    if ($UwGegevens//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'aanhef')] = 'deHeer') then 'M' 
+                    else if ($UwGegevens//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'aanhef')] = 'mevrouw') then 'V' 
+                    else 'O',
                     //basic:genderIndication,
                     'O'),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>

@@ -98,7 +98,7 @@
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:houseNumber', 'empty', zgw:FromOrderedSource(
                         $HouseNumber,
                         $Organization//basic:correspondenceAddress/basic:houseNumber,
-                        $UwGegevens//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'huisnummer') and not(starts-with(name(), 'huisnummertoevoeging'))],
+                        $UwGegevens//*[starts-with(name(), 'bezoekadres')]/*[starts-with(name(), 'huisnummer') and not(starts-with(name(), 'huisnummertoevoeging'))],
                         //basic:correspondenceAddress/basic:houseNumber),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:houseLetter', 'empty', zgw:FromOrderedSource(

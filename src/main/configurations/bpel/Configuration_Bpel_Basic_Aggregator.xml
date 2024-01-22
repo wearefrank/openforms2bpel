@@ -242,13 +242,13 @@
                 onlyIfSessionKey="HasPayment"
                 onlyIfValue="true"
                 >
-                <Param name="ReferenceNumber" xpathExpression="/ZgwObject/public_reference/text()" />
+                <Param name="ReferenceNumber" xpathExpression="/ZgwObject/payment/public_order_ids" />
                 <Param name="PaymentState_Date" sessionKey="originalMessage" xpathExpression="/ZgwObject/record/startAt" />
-                <Param name="PaymentState_ExtCode" value="dummy" />
-                <Param name="PaymentState_ExtMessage" value="dummy" />
-                <Param name="PaymentState_State_Code" value="9" />
-                <Param name="PaymentState_State_Description" value="Payment requested" />
-                <Param name="PaymentState_State_Clarification" value="dummy" />
+                <Param name="PaymentState_ExtCode" value="9" />
+                <Param name="PaymentState_ExtMessage" value="Payment requested" />
+                <Param name="PaymentState_State_Code" value="004" />
+                <Param name="PaymentState_State_Description" value="Betaald" />
+                <Param name="PaymentState_State_Clarification" value="Betaald" />
                 <Forward name="success" path="BpelBasicStatusUpdatePostUpdateStatusSender" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>

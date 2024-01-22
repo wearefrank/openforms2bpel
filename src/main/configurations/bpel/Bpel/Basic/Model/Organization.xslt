@@ -26,6 +26,8 @@
     <xsl:param name="HouseNumber" select="''" as="xs:string" />
     <xsl:param name="HouseLetter" select="''" as="xs:string" />
     <xsl:param name="HouseRemark" select="''" as="xs:string" />
+    <xsl:param name="FreePost" select="''" as="xs:string" />
+    <xsl:param name="POBox" select="''" as="xs:string" />
     <xsl:param name="Streetname" select="''" as="xs:string" />
     <xsl:param name="ZipCode" select="''" as="xs:string" />
     <xsl:param name="City" select="''" as="xs:string" />
@@ -92,58 +94,62 @@
                     '',
                     //basic:bic),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
-                <basic:locationAddress>
+                <basic:correspondenceAddress>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:houseNumber', 'empty', zgw:FromOrderedSource(
                         $HouseNumber,
-                        $Organization//basic:locationAddress/basic:houseNumber,
+                        $Organization//basic:correspondenceAddress/basic:houseNumber,
                         $UwGegevens//*[starts-with(name(), 'adresgegevens')]/*[starts-with(name(), 'huisnummer') and not(starts-with(name(), 'huisnummertoevoeging'))],
-                        //basic:locationAddress/basic:houseNumber),
+                        //basic:correspondenceAddress/basic:houseNumber),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:houseLetter', 'empty', zgw:FromOrderedSource(
                         $HouseLetter,
-                        $Organization//basic:locationAddress/basic:houseLetter,
+                        $Organization//basic:correspondenceAddress/basic:houseLetter,
                         $UwGegevens//*[starts-with(name(), 'bezoekadres')]/*[starts-with(name(), 'huisletter')],
-                        //basic:locationAddress/basic:houseLetter),
+                        //basic:correspondenceAddress/basic:houseLetter),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:houseRemark', 'empty', zgw:FromOrderedSource(
                         $HouseRemark,
-                        $Organization//basic:locationAddress/basic:houseRemark,
+                        $Organization//basic:correspondenceAddress/basic:houseRemark,
                         $UwGegevens//*[starts-with(name(), 'bezoekadres')]/*[starts-with(name(), 'huisnummertoevoeging')],
-                        //basic:locationAddress/basic:houseRemark),
+                        //basic:correspondenceAddress/basic:houseRemark),
+                        'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
+                    <xsl:copy-of select="zgw:WrapNullOrSkip('basic:freePost', 'skip', zgw:FromOrderedSource(
+                        $FreePost,
+                        $Organization//basic:correspondenceAddress/basic:freePost,
+                        '',
+                        //basic:correspondenceAddress/basic:freePost),
+                        'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
+                    <xsl:copy-of select="zgw:WrapNullOrSkip('basic:POBox', 'skip', zgw:FromOrderedSource(
+                        $POBox,
+                        $Organization//basic:correspondenceAddress/basic:POBox,
+                        $UwGegevens//*[starts-with(name(), 'bezoekadres')]/*[starts-with(name(), 'postbusnummer')],
+                        //basic:correspondenceAddress/basic:POBox),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:streetname', 'empty', zgw:FromOrderedSource(
                         $Streetname,
-                        $Organization//basic:locationAddress/basic:streetname,
+                        $Organization//basic:correspondenceAddress/basic:streetname,
                         $UwGegevens//*[starts-with(name(), 'bezoekadres')]/*[starts-with(name(), 'straatnaam')],
-                        //basic:locationAddress/basic:streetname),
+                        //basic:correspondenceAddress/basic:streetname),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:zipCode', 'empty', zgw:FromOrderedSource(
                         $ZipCode,
-                        $Organization//basic:locationAddress/basic:zipCode,
+                        $Organization//basic:correspondenceAddress/basic:zipCode,
                         upper-case(replace($UwGegevens//*[starts-with(name(), 'bezoekadres')]/*[starts-with(name(), 'postcode')], ' ', '')),
-                        //basic:locationAddress/basic:zipCode),
+                        //basic:correspondenceAddress/basic:zipCode),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:city', 'empty', zgw:FromOrderedSource(
                         $City,
-                        $Organization//basic:locationAddress/basic:city,
+                        $Organization//basic:correspondenceAddress/basic:city,
                         $UwGegevens//*[starts-with(name(), 'bezoekadres')]/*[starts-with(name(), 'plaats')],
-                        //basic:locationAddress/basic:city),
+                        //basic:correspondenceAddress/basic:city),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                     <xsl:copy-of select="zgw:WrapNullOrSkip('basic:locationDescription', 'empty', zgw:FromOrderedSource(
                         $LocationDescription,
-                        $Organization//basic:locationAddress/basic:locationDescription,
+                        $Organization//basic:correspondenceAddress/basic:locationDescription,
                         '',
-                        //basic:locationAddress/basic:locationDescription),
+                        //basic:correspondenceAddress/basic:locationDescription),
                         'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
-                </basic:locationAddress>
-                <!-- <xs:element minOccurs="0" name="correspondenceAddress" type="basic:tCorrespondenceAddress"/>
-                <xsl:copy-of select="zgw:WrapNullOrSkip('basic:correspondenceAddress', 'skip', zgw:FromOrderedSource(
-                    $LocationDescription,
-                    $Organization//basic:locationAddress/basic:locationDescription,
-                    '',
-                    //basic:locationAddress/basic:locationDescription),
-                    'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/> -->
-                
+                </basic:correspondenceAddress>                
             </basic:nonAuthentic>
         </basic:organization>
     </xsl:template>

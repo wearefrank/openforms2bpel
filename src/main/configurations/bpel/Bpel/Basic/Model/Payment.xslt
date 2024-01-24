@@ -66,7 +66,7 @@
                 'http://www.emaxx.org/bpel/proces/xsd/processparameters')"/>
             <processparameters:paymentInfo>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('processparameters:price', 'empty', zgw:FromOrderedSource(
-                    $Price,
+                    replace($Price, ',', '.'),
                     $Payment//processparameters:price,
                     '',
                     //processparameters:price),

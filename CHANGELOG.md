@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.14.3](https://github.com/wearefrank/openforms2bpel/compare/v1.14.2...v1.14.3) (2024-01-24)
+
+
+### 🐛 Bug Fixes
+
+* replace comma with dot in price ([c4acaf0](https://github.com/wearefrank/openforms2bpel/commit/c4acaf0735625cd7e59a58339caed16832e6151e))
+
 ## [1.14.2](https://github.com/wearefrank/openforms2bpel/compare/v1.14.1...v1.14.2) (2024-01-22)
 
 

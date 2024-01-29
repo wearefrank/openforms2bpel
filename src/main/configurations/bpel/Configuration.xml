@@ -14,6 +14,7 @@
         <!ENTITY Bpel_Documents_UploadAttachments           SYSTEM "./Configuration_Bpel_Documents_UploadAttachments.xml">
         <!ENTITY Bpel_Mtom_Mock                             SYSTEM "./Configuration_Bpel_Mtom_Mock.xml">
         <!ENTITY Bpel_Mtom_PostAddDocument                  SYSTEM "./Configuration_Bpel_Mtom_PostAddDocument.xml">
+        <!ENTITY Bpel_Payment_PostAddPaymentStates          SYSTEM "./Configuration_Bpel_Payment_PostAddPaymentStates.xml">
         <!ENTITY Notificaties_Subscribe                     SYSTEM "./Configuration_Notificaties_Subscribe.xml">
         ]>
 
@@ -33,5 +34,6 @@
     &Bpel_Documents_UploadAttachments;
     &Bpel_Mtom_Mock;
     &Bpel_Mtom_PostAddDocument;
+    &Bpel_Payment_PostAddPaymentStates;
     &Notificaties_Subscribe;
 </configuration>

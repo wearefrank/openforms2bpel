@@ -1,0 +1,58 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter
+        name="Bpel_Payment_PostAddPaymentStates"
+        active="${Bpel_Payment_PostAddPaymentStates.Active}"
+        description=""
+        >
+
+        <Receiver name="Bpel_Payment_PostAddPaymentStates">
+            <JavaListener name="Bpel_Payment_PostAddPaymentStates" />
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <SenderPipe
+                name="PostBpelPaymentAddPaymentStatusSender"
+                >
+                <SoapInputWrapper
+                    direction="WRAP"
+                    soapHeaderStyleSheet="Bpel/Documents/Model/Security.xslt"
+                    >
+                    <Param name="Username" pattern="{username}@MidOffice" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" />
+                    <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
+                    <Param name="Created" xpathExpression="string($NowDateTime)" >
+                        <Param name="NowDateTime" pattern="{now}" type="DATETIME" />
+                    </Param>
+                </SoapInputWrapper>
+                <WebServiceSender
+                    name="PostBpelPaymentAddPaymentStatusWebServiceSender"
+                    soap="false"
+                    methodType="POST"
+                    contentType="text/xml"
+                    soapAction="payments:addPaymentStates"
+                    verifyHostname="${openforms2bpel.bpel.payment-service.verify-hostname}"
+                    allowSelfSignedCertificates="${openforms2bpel.bpel.payment-service.allow-self-signed-certs}"
+                    ignoreCertificateExpiredException="${openforms2bpel.bpel.payment-service.ignore-expired-certs}"
+                    timeout="${openforms2bpel.bpel.payment-service.timeout}"
+                    throwApplicationFaults="false"
+                    >
+                    <Param name="url" value="${openforms2bpel.bpel.payment-service.endoint}" />  
+                </WebServiceSender>
+                <Forward name="success" path="UnwrapResponse" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <SoapWrapperPipe
+                name="UnwrapResponse"
+                direction="UNWRAP" 
+                />
+
+            <!-- TODO: Error handling based on http code -->
+
+        </Pipeline>
+    </Adapter>
+</Module>

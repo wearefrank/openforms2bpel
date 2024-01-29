@@ -1,0 +1,1323 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:core="http://www.emaxx.org/core" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:cases="http://www.emaxx.org/functional/cases" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:common="http://www.emaxx.org/msg/common" xmlns:document="http://www.emaxx.org/functional/cases/document" xmlns:payments="http://www.emaxx.org/functional/cases/payments" xmlns:payment="http://www.emaxx.org/functional/cases/payment" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mosoap="http://www.emaxx.org/core/soap" targetNamespace="http://www.emaxx.org/functional/cases/payments">
+  <types>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/core/soap">
+			<xs:element name="faultDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="source" nillable="true" type="xs:string"/>
+						<xs:element name="code" nillable="true" type="xs:string"/>
+						<xs:element name="message" nillable="true" type="xs:string"/>
+						<xs:element name="stacktrace" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/functional/cases/payment">
+			<xs:import namespace="http://www.emaxx.org/functional/cases"/>
+			<xs:complexType name="tDetailedPaymentSaveExt">
+				<xs:complexContent>
+					<xs:extension base="payment:tPayment">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="extSystem" type="cases:tExtSystemId"/>
+							<xs:element minOccurs="0" name="paymentStates" type="payment:tPaymentStates"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tPayment">
+				<xs:complexContent>
+					<xs:extension base="payment:tPaymentId">
+						<xs:sequence>
+							<xs:element name="caseId" nillable="true" type="xs:int"/>
+							<xs:element name="referenceNumber" type="cases:tReferenceNumber"/>
+							<xs:element name="description" type="cases:tDescription"/>
+							<xs:element name="price" nillable="true" type="xs:float"/>
+							<xs:element name="setDate" nillable="true" type="xs:date"/>
+							<xs:element minOccurs="0" name="endDate" nillable="true" type="xs:date"/>
+							<xs:element name="extReferenceNumber" nillable="true" type="cases:tExtReferenceNumber"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tPaymentDetailsExt">
+				<xs:complexContent>
+					<xs:extension base="payment:tPayment">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="extSystem" type="cases:tExtSystem"/>
+							<xs:element minOccurs="0" name="paymentStates">
+								<xs:complexType>
+									<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="paymentState" type="payment:tPaymentState"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tPaymentId">
+				<xs:sequence>
+					<xs:element name="id" nillable="true" type="xs:int"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tPaymentSaveExt">
+				<xs:complexContent>
+					<xs:extension base="payment:tPayment">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="extSystem" type="cases:tExtSystemId"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tPaymentSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="id" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="caseId" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="referenceNumber" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="description" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="price" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="setDate" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="endDate" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="extReferenceNumber" type="cases:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tPaymentSearchExt">
+				<xs:complexContent>
+					<xs:extension base="payment:tPaymentSearch">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="extSystem" type="cases:tExtSystemSearch"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tPaymentState">
+				<xs:complexContent>
+					<xs:extension base="payment:tPaymentStateId">
+						<xs:sequence>
+							<xs:element name="paymentId" nillable="true" type="xs:int"/>
+							<xs:element name="stateCode" type="cases:tCode10"/>
+							<xs:element name="extCode" type="xs:string"/>
+							<xs:element name="extMessage" type="xs:string"/>
+							<xs:element name="setDate" nillable="true" type="xs:date"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tPaymentStateByAlias">
+				<xs:sequence>
+					<xs:element name="referenceNumber" type="cases:tReferenceNumber"/>
+					<xs:element minOccurs="0" name="alias" type="xs:string"/>
+					<xs:element name="extCode" type="xs:string"/>
+					<xs:element name="extMessage" type="xs:string"/>
+					<xs:element name="setDate" nillable="true" type="xs:date"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tPaymentStateId">
+				<xs:sequence>
+					<xs:element name="id" nillable="true" type="xs:int"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tPaymentStateSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="id" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="paymentId" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="stateCode" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="extCode" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="extMessage" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="setDate" type="cases:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tPaymentStates">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="paymentState" type="payment:tPaymentState"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tState">
+				<xs:complexContent>
+					<xs:extension base="payment:tStateId">
+						<xs:sequence>
+							<xs:element name="description" type="cases:tDescription"/>
+							<xs:element name="clarification" type="cases:tClarification"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tStateId">
+				<xs:sequence>
+					<xs:element name="code" type="cases:tCode10"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tStateSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="code" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="description" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="clarification" type="cases:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="detailedPaymentSaveMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="payment" type="payment:tDetailedPaymentSaveExt"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="paymentCaseIdMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="payments">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element minOccurs="0" name="payment">
+									<xs:complexType>
+									<xs:sequence>
+									<xs:element name="caseId" nillable="true" type="xs:int"/>
+									</xs:sequence>
+									</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="paymentDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="payments">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="payment" type="payment:tPaymentDetailsExt"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="paymentIdMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="payments">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="payment" type="payment:tPaymentId"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="paymentReferenceNrMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="payments">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element minOccurs="0" name="payment">
+									<xs:complexType>
+									<xs:sequence>
+									<xs:element name="id" nillable="true" type="xs:int"/>
+									<xs:element name="referenceNumber" type="cases:tReferenceNumber"/>
+									</xs:sequence>
+									</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="paymentSaveMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="payments">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="payment" type="payment:tPaymentSaveExt"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="paymentSearchMessage" type="payment:tPaymentSearchExt"/>
+			<xs:element name="paymentStateByAliasResponseMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="stateCode" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="paymentStateByAliasSaveMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="paymentState" type="payment:tPaymentStateByAlias"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="paymentStateDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="paymentStates" type="payment:tPaymentStates"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="paymentStateIdMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="paymentStates">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="paymentState" type="payment:tPaymentStateId"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="paymentStateSaveMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="paymentStates">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="paymentState" type="payment:tPaymentState"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="paymentStateSearchMessage" type="payment:tPaymentStateSearch"/>
+			<xs:element name="stateDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="states">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="state" type="payment:tState"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="stateIdMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="states">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="state" type="payment:tStateId"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="stateSaveMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="states">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="state" type="payment:tState"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="stateSearchMessage" type="payment:tStateSearch"/>
+		</xs:schema>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/msg/common">
+			<xs:element name="confirmationMessage" type="xs:string"/>
+		</xs:schema>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.emaxx.org/functional/cases/payments">
+			<xs:import namespace="http://www.emaxx.org/functional/cases/payment"/>
+			<xs:import namespace="http://www.emaxx.org/msg/common"/>
+			<xs:element name="addDetailedPayment">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:detailedPaymentSaveMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addDetailedPaymentResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addPaymentStateByAlias">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentStateByAliasSaveMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addPaymentStateByAliasResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentStateByAliasResponseMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addPaymentStates">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentStateSaveMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addPaymentStatesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentStateIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addPayments">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentSaveMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addPaymentsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addStates">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:stateSaveMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addStatesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:stateIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="deletePaymentStates">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentStateIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="deletePaymentStatesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="deletePayments">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="deletePaymentsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="deleteStates">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:stateIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="deleteStatesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getPaymentReferenceNumber">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentCaseIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getPaymentReferenceNumberResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentReferenceNrMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpPaymentStates">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentStateSearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpPaymentStatesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentStateDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpPayments">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentSearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpPaymentsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpStates">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:stateSearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpStatesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:stateDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="readPaymentStates">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentStateIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="readPaymentStatesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentStateDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="readPayments">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="readPaymentsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="readStates">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:stateIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="readStatesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:stateDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateDetailedPayment">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:detailedPaymentSaveMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateDetailedPaymentResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updatePaymentStates">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentStateSaveMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updatePaymentStatesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updatePayments">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:paymentSaveMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updatePaymentsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateStates">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="payment:stateSaveMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateStatesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/functional/cases">
+			<xs:complexType name="tExtSystem">
+				<xs:complexContent>
+					<xs:extension base="cases:tExtSystemId">
+						<xs:sequence>
+							<xs:element name="description" type="cases:tDescription"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tExtSystemId">
+				<xs:sequence>
+					<xs:element name="code" type="cases:tCode10"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tExtSystemSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="code" type="cases:tLookUpClause"/>
+					<xs:element minOccurs="0" name="description" type="cases:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tLookUpClause">
+				<xs:simpleContent>
+					<xs:extension base="xs:string">
+						<xs:attribute default="EQUAL" name="operator" type="cases:tLookUpOperator"/>
+					</xs:extension>
+				</xs:simpleContent>
+			</xs:complexType>
+			<xs:simpleType name="tClarification">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="992"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tCode10">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="10"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tDescription">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="80"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tExtReferenceNumber">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="20"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tLookUpOperator">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="EQUAL"/>
+					<xs:enumeration value="EQUAL_IGNORE_CASE"/>
+					<xs:enumeration value="IN"/>
+					<xs:enumeration value="LARGER"/>
+					<xs:enumeration value="LARGER_EQUAL"/>
+					<xs:enumeration value="LARGER_EQUAL_OR_NULL"/>
+					<xs:enumeration value="LARGER_OR_NULL"/>
+					<xs:enumeration value="LIKE"/>
+					<xs:enumeration value="LIKE_END"/>
+					<xs:enumeration value="LIKE_END_IGNORE_CASE"/>
+					<xs:enumeration value="LIKE_IGNORE_CASE"/>
+					<xs:enumeration value="LIKE_START"/>
+					<xs:enumeration value="LIKE_START_IGNORE_CASE"/>
+					<xs:enumeration value="NOT IN"/>
+					<xs:enumeration value="NOT NULL"/>
+					<xs:enumeration value="NULL"/>
+					<xs:enumeration value="RANGE"/>
+					<xs:enumeration value="SMALLER"/>
+					<xs:enumeration value="SMALLER_EQUAL"/>
+					<xs:enumeration value="SMALLER_EQUAL_OR_NULL"/>
+					<xs:enumeration value="UNEQUAL"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tReferenceNumber">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="40"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:schema>
+  </types>
+  <message name="addStatesResponse">
+    <part name="parameters" element="payments:addStatesResponse">
+    </part>
+  </message>
+  <message name="getPaymentReferenceNumberResponse">
+    <part name="parameters" element="payments:getPaymentReferenceNumberResponse">
+    </part>
+  </message>
+  <message name="getPaymentReferenceNumberRequest">
+    <part name="parameters" element="payments:getPaymentReferenceNumber">
+    </part>
+  </message>
+  <message name="addDetailedPaymentResponse">
+    <part name="parameters" element="payments:addDetailedPaymentResponse">
+    </part>
+  </message>
+  <message name="readStatesResponse">
+    <part name="parameters" element="payments:readStatesResponse">
+    </part>
+  </message>
+  <message name="lookUpPaymentStatesResponse">
+    <part name="parameters" element="payments:lookUpPaymentStatesResponse">
+    </part>
+  </message>
+  <message name="lookUpPaymentStatesFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="deletePaymentStatesRequest">
+    <part name="parameters" element="payments:deletePaymentStates">
+    </part>
+  </message>
+  <message name="addPaymentsResponse">
+    <part name="parameters" element="payments:addPaymentsResponse">
+    </part>
+  </message>
+  <message name="lookUpPaymentsResponse">
+    <part name="parameters" element="payments:lookUpPaymentsResponse">
+    </part>
+  </message>
+  <message name="lookUpPaymentsFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="addPaymentStateByAliasRequest">
+    <part name="parameters" element="payments:addPaymentStateByAlias">
+    </part>
+  </message>
+  <message name="deleteStatesFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="deletePaymentStatesFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="readPaymentStatesRequest">
+    <part name="parameters" element="payments:readPaymentStates">
+    </part>
+  </message>
+  <message name="addPaymentStatesResponse">
+    <part name="parameters" element="payments:addPaymentStatesResponse">
+    </part>
+  </message>
+  <message name="addPaymentStateByAliasFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="addDetailedPaymentRequest">
+    <part name="parameters" element="payments:addDetailedPayment">
+    </part>
+  </message>
+  <message name="readPaymentStatesFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="readPaymentsResponse">
+    <part name="parameters" element="payments:readPaymentsResponse">
+    </part>
+  </message>
+  <message name="readStatesFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="updatePaymentStatesResponse">
+    <part name="parameters" element="payments:updatePaymentStatesResponse">
+    </part>
+  </message>
+  <message name="lookUpStatesResponse">
+    <part name="parameters" element="payments:lookUpStatesResponse">
+    </part>
+  </message>
+  <message name="addPaymentsFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="deletePaymentsRequest">
+    <part name="parameters" element="payments:deletePayments">
+    </part>
+  </message>
+  <message name="lookUpPaymentsRequest">
+    <part name="parameters" element="payments:lookUpPayments">
+    </part>
+  </message>
+  <message name="updatePaymentsResponse">
+    <part name="parameters" element="payments:updatePaymentsResponse">
+    </part>
+  </message>
+  <message name="updatePaymentStatesFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="readPaymentsRequest">
+    <part name="parameters" element="payments:readPayments">
+    </part>
+  </message>
+  <message name="addStatesFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="deleteStatesResponse">
+    <part name="parameters" element="payments:deleteStatesResponse">
+    </part>
+  </message>
+  <message name="addPaymentStateByAliasResponse">
+    <part name="parameters" element="payments:addPaymentStateByAliasResponse">
+    </part>
+  </message>
+  <message name="lookUpPaymentStatesRequest">
+    <part name="parameters" element="payments:lookUpPaymentStates">
+    </part>
+  </message>
+  <message name="updatePaymentsRequest">
+    <part name="parameters" element="payments:updatePayments">
+    </part>
+  </message>
+  <message name="updateDetailedPaymentFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="deletePaymentsResponse">
+    <part name="parameters" element="payments:deletePaymentsResponse">
+    </part>
+  </message>
+  <message name="addStatesRequest">
+    <part name="parameters" element="payments:addStates">
+    </part>
+  </message>
+  <message name="readStatesRequest">
+    <part name="parameters" element="payments:readStates">
+    </part>
+  </message>
+  <message name="deletePaymentsFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="lookUpStatesFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="updateStatesRequest">
+    <part name="parameters" element="payments:updateStates">
+    </part>
+  </message>
+  <message name="lookUpStatesRequest">
+    <part name="parameters" element="payments:lookUpStates">
+    </part>
+  </message>
+  <message name="updateStatesResponse">
+    <part name="parameters" element="payments:updateStatesResponse">
+    </part>
+  </message>
+  <message name="updateDetailedPaymentResponse">
+    <part name="parameters" element="payments:updateDetailedPaymentResponse">
+    </part>
+  </message>
+  <message name="readPaymentsFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="addPaymentStatesFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="getPaymentReferenceNumberFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="addPaymentsRequest">
+    <part name="parameters" element="payments:addPayments">
+    </part>
+  </message>
+  <message name="addDetailedPaymentFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="updateDetailedPaymentRequest">
+    <part name="parameters" element="payments:updateDetailedPayment">
+    </part>
+  </message>
+  <message name="updatePaymentsFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="deletePaymentStatesResponse">
+    <part name="parameters" element="payments:deletePaymentStatesResponse">
+    </part>
+  </message>
+  <message name="readPaymentStatesResponse">
+    <part name="parameters" element="payments:readPaymentStatesResponse">
+    </part>
+  </message>
+  <message name="updatePaymentStatesRequest">
+    <part name="parameters" element="payments:updatePaymentStates">
+    </part>
+  </message>
+  <message name="updateStatesFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="addPaymentStatesRequest">
+    <part name="parameters" element="payments:addPaymentStates">
+    </part>
+  </message>
+  <message name="deleteStatesRequest">
+    <part name="parameters" element="payments:deleteStates">
+    </part>
+  </message>
+  <portType name="PaymentsPortType">
+    <operation name="addDetailedPayment">
+      <input name="addDetailedPaymentRequest" message="payments:addDetailedPaymentRequest">
+    </input>
+      <output name="addDetailedPaymentResponse" message="payments:addDetailedPaymentResponse">
+    </output>
+      <fault name="addDetailedPaymentFault" message="payments:addDetailedPaymentFault">
+    </fault>
+    </operation>
+    <operation name="addPaymentStateByAlias">
+      <input name="addPaymentStateByAliasRequest" message="payments:addPaymentStateByAliasRequest">
+    </input>
+      <output name="addPaymentStateByAliasResponse" message="payments:addPaymentStateByAliasResponse">
+    </output>
+      <fault name="addPaymentStateByAliasFault" message="payments:addPaymentStateByAliasFault">
+    </fault>
+    </operation>
+    <operation name="addPaymentStates">
+      <input name="addPaymentStatesRequest" message="payments:addPaymentStatesRequest">
+    </input>
+      <output name="addPaymentStatesResponse" message="payments:addPaymentStatesResponse">
+    </output>
+      <fault name="addPaymentStatesFault" message="payments:addPaymentStatesFault">
+    </fault>
+    </operation>
+    <operation name="addPayments">
+      <input name="addPaymentsRequest" message="payments:addPaymentsRequest">
+    </input>
+      <output name="addPaymentsResponse" message="payments:addPaymentsResponse">
+    </output>
+      <fault name="addPaymentsFault" message="payments:addPaymentsFault">
+    </fault>
+    </operation>
+    <operation name="addStates">
+      <input name="addStatesRequest" message="payments:addStatesRequest">
+    </input>
+      <output name="addStatesResponse" message="payments:addStatesResponse">
+    </output>
+      <fault name="addStatesFault" message="payments:addStatesFault">
+    </fault>
+    </operation>
+    <operation name="deletePaymentStates">
+      <input name="deletePaymentStatesRequest" message="payments:deletePaymentStatesRequest">
+    </input>
+      <output name="deletePaymentStatesResponse" message="payments:deletePaymentStatesResponse">
+    </output>
+      <fault name="deletePaymentStatesFault" message="payments:deletePaymentStatesFault">
+    </fault>
+    </operation>
+    <operation name="deletePayments">
+      <input name="deletePaymentsRequest" message="payments:deletePaymentsRequest">
+    </input>
+      <output name="deletePaymentsResponse" message="payments:deletePaymentsResponse">
+    </output>
+      <fault name="deletePaymentsFault" message="payments:deletePaymentsFault">
+    </fault>
+    </operation>
+    <operation name="deleteStates">
+      <input name="deleteStatesRequest" message="payments:deleteStatesRequest">
+    </input>
+      <output name="deleteStatesResponse" message="payments:deleteStatesResponse">
+    </output>
+      <fault name="deleteStatesFault" message="payments:deleteStatesFault">
+    </fault>
+    </operation>
+    <operation name="getPaymentReferenceNumber">
+      <input name="getPaymentReferenceNumberRequest" message="payments:getPaymentReferenceNumberRequest">
+    </input>
+      <output name="getPaymentReferenceNumberResponse" message="payments:getPaymentReferenceNumberResponse">
+    </output>
+      <fault name="getPaymentReferenceNumberFault" message="payments:getPaymentReferenceNumberFault">
+    </fault>
+    </operation>
+    <operation name="lookUpPaymentStates">
+      <input name="lookUpPaymentStatesRequest" message="payments:lookUpPaymentStatesRequest">
+    </input>
+      <output name="lookUpPaymentStatesResponse" message="payments:lookUpPaymentStatesResponse">
+    </output>
+      <fault name="lookUpPaymentStatesFault" message="payments:lookUpPaymentStatesFault">
+    </fault>
+    </operation>
+    <operation name="lookUpPayments">
+      <input name="lookUpPaymentsRequest" message="payments:lookUpPaymentsRequest">
+    </input>
+      <output name="lookUpPaymentsResponse" message="payments:lookUpPaymentsResponse">
+    </output>
+      <fault name="lookUpPaymentsFault" message="payments:lookUpPaymentsFault">
+    </fault>
+    </operation>
+    <operation name="lookUpStates">
+      <input name="lookUpStatesRequest" message="payments:lookUpStatesRequest">
+    </input>
+      <output name="lookUpStatesResponse" message="payments:lookUpStatesResponse">
+    </output>
+      <fault name="lookUpStatesFault" message="payments:lookUpStatesFault">
+    </fault>
+    </operation>
+    <operation name="readPaymentStates">
+      <input name="readPaymentStatesRequest" message="payments:readPaymentStatesRequest">
+    </input>
+      <output name="readPaymentStatesResponse" message="payments:readPaymentStatesResponse">
+    </output>
+      <fault name="readPaymentStatesFault" message="payments:readPaymentStatesFault">
+    </fault>
+    </operation>
+    <operation name="readPayments">
+      <input name="readPaymentsRequest" message="payments:readPaymentsRequest">
+    </input>
+      <output name="readPaymentsResponse" message="payments:readPaymentsResponse">
+    </output>
+      <fault name="readPaymentsFault" message="payments:readPaymentsFault">
+    </fault>
+    </operation>
+    <operation name="readStates">
+      <input name="readStatesRequest" message="payments:readStatesRequest">
+    </input>
+      <output name="readStatesResponse" message="payments:readStatesResponse">
+    </output>
+      <fault name="readStatesFault" message="payments:readStatesFault">
+    </fault>
+    </operation>
+    <operation name="updateDetailedPayment">
+      <input name="updateDetailedPaymentRequest" message="payments:updateDetailedPaymentRequest">
+    </input>
+      <output name="updateDetailedPaymentResponse" message="payments:updateDetailedPaymentResponse">
+    </output>
+      <fault name="updateDetailedPaymentFault" message="payments:updateDetailedPaymentFault">
+    </fault>
+    </operation>
+    <operation name="updatePaymentStates">
+      <input name="updatePaymentStatesRequest" message="payments:updatePaymentStatesRequest">
+    </input>
+      <output name="updatePaymentStatesResponse" message="payments:updatePaymentStatesResponse">
+    </output>
+      <fault name="updatePaymentStatesFault" message="payments:updatePaymentStatesFault">
+    </fault>
+    </operation>
+    <operation name="updatePayments">
+      <input name="updatePaymentsRequest" message="payments:updatePaymentsRequest">
+    </input>
+      <output name="updatePaymentsResponse" message="payments:updatePaymentsResponse">
+    </output>
+      <fault name="updatePaymentsFault" message="payments:updatePaymentsFault">
+    </fault>
+    </operation>
+    <operation name="updateStates">
+      <input name="updateStatesRequest" message="payments:updateStatesRequest">
+    </input>
+      <output name="updateStatesResponse" message="payments:updateStatesResponse">
+    </output>
+      <fault name="updateStatesFault" message="payments:updateStatesFault">
+    </fault>
+    </operation>
+  </portType>
+  <binding name="PaymentsBinding" type="payments:PaymentsPortType">
+    <soapbind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="addDetailedPayment">
+<wsdl:documentation>[Adds a detailed payment.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:addDetailedPayment"/>
+      <input name="addDetailedPaymentRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addDetailedPaymentResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addDetailedPaymentFault">
+        <soapbind:fault name="addDetailedPaymentFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="addPaymentStateByAlias">
+<wsdl:documentation>[Adds a payment state by alias.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:addPaymentStateByAlias"/>
+      <input name="addPaymentStateByAliasRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addPaymentStateByAliasResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addPaymentStateByAliasFault">
+        <soapbind:fault name="addPaymentStateByAliasFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="addPaymentStates">
+<wsdl:documentation>[Adds payment states.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:addPaymentStates"/>
+      <input name="addPaymentStatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addPaymentStatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addPaymentStatesFault">
+        <soapbind:fault name="addPaymentStatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="addPayments">
+<wsdl:documentation>[Adds payments.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:addPayments"/>
+      <input name="addPaymentsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addPaymentsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addPaymentsFault">
+        <soapbind:fault name="addPaymentsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="addStates">
+<wsdl:documentation>[Adds states.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:addStates"/>
+      <input name="addStatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addStatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addStatesFault">
+        <soapbind:fault name="addStatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="deletePaymentStates">
+<wsdl:documentation>[Deletes payment states.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:deletePaymentStates"/>
+      <input name="deletePaymentStatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="deletePaymentStatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="deletePaymentStatesFault">
+        <soapbind:fault name="deletePaymentStatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="deletePayments">
+<wsdl:documentation>[Deletes payments.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:deletePayments"/>
+      <input name="deletePaymentsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="deletePaymentsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="deletePaymentsFault">
+        <soapbind:fault name="deletePaymentsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="deleteStates">
+<wsdl:documentation>[Deletes states.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:deleteStates"/>
+      <input name="deleteStatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="deleteStatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="deleteStatesFault">
+        <soapbind:fault name="deleteStatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getPaymentReferenceNumber">
+<wsdl:documentation>[Returns the reference number to use for a payment.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:getPaymentReferenceNumber"/>
+      <input name="getPaymentReferenceNumberRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="getPaymentReferenceNumberResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="getPaymentReferenceNumberFault">
+        <soapbind:fault name="getPaymentReferenceNumberFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpPaymentStates">
+<wsdl:documentation>[Looks up payment states.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:lookUpPaymentStates"/>
+      <input name="lookUpPaymentStatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpPaymentStatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpPaymentStatesFault">
+        <soapbind:fault name="lookUpPaymentStatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpPayments">
+<wsdl:documentation>[Looks up payments.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:lookUpPayments"/>
+      <input name="lookUpPaymentsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpPaymentsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpPaymentsFault">
+        <soapbind:fault name="lookUpPaymentsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpStates">
+<wsdl:documentation>[Looks up states.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:lookUpStates"/>
+      <input name="lookUpStatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpStatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpStatesFault">
+        <soapbind:fault name="lookUpStatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="readPaymentStates">
+<wsdl:documentation>[Read payment states.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:readPaymentStates"/>
+      <input name="readPaymentStatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="readPaymentStatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="readPaymentStatesFault">
+        <soapbind:fault name="readPaymentStatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="readPayments">
+<wsdl:documentation>[Read payments.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:readPayments"/>
+      <input name="readPaymentsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="readPaymentsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="readPaymentsFault">
+        <soapbind:fault name="readPaymentsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="readStates">
+<wsdl:documentation>[Read states.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:readStates"/>
+      <input name="readStatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="readStatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="readStatesFault">
+        <soapbind:fault name="readStatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updateDetailedPayment">
+<wsdl:documentation>[Updates a detailed payment.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:updateDetailedPayment"/>
+      <input name="updateDetailedPaymentRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updateDetailedPaymentResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updateDetailedPaymentFault">
+        <soapbind:fault name="updateDetailedPaymentFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updatePaymentStates">
+<wsdl:documentation>[Update payment states.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:updatePaymentStates"/>
+      <input name="updatePaymentStatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updatePaymentStatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updatePaymentStatesFault">
+        <soapbind:fault name="updatePaymentStatesFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updatePayments">
+<wsdl:documentation>[Update payments.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:updatePayments"/>
+      <input name="updatePaymentsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updatePaymentsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updatePaymentsFault">
+        <soapbind:fault name="updatePaymentsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updateStates">
+<wsdl:documentation>[Update states.]</wsdl:documentation>
+      <soapbind:operation soapAction="payments:updateStates"/>
+      <input name="updateStatesRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updateStatesResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updateStatesFault">
+        <soapbind:fault name="updateStatesFault" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="PaymentsService">
+<wsdl:documentation>[payments]|[Case warehouse payments]</wsdl:documentation>
+    <port name="PaymentsPortType" binding="payments:PaymentsBinding">
+      <soapbind:address location="http://guo10702.k-domstad.org:8080/services/PaymentProxy"/>
+    </port>
+  </service>
+</definitions>

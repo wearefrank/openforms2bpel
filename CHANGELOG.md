@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.14.4](https://github.com/wearefrank/openforms2bpel/compare/v1.14.3...v1.14.4) (2024-01-29)
+
+
+### 🐛 Bug Fixes
+
+* updates payment status with addPaymentStatus ([ba2984c](https://github.com/wearefrank/openforms2bpel/commit/ba2984c70500da71261a29f34cf15939c846c37a))
+
+
+### ✅ Tests
+
+* add payment service mock ([fef529d](https://github.com/wearefrank/openforms2bpel/commit/fef529d3855df4de512a8ba2e472c6713e538d33))
+
 ## [1.14.3](https://github.com/wearefrank/openforms2bpel/compare/v1.14.2...v1.14.3) (2024-01-24)
 
 

@@ -15,6 +15,7 @@
         <!ENTITY Bpel_Mtom_Mock                             SYSTEM "./Configuration_Bpel_Mtom_Mock.xml">
         <!ENTITY Bpel_Mtom_PostAddDocument                  SYSTEM "./Configuration_Bpel_Mtom_PostAddDocument.xml">
         <!ENTITY Bpel_Payment_PostAddPaymentStates          SYSTEM "./Configuration_Bpel_Payment_PostAddPaymentStates.xml">
+        <!ENTITY Bpel_Payment_PostLookUpPayments            SYSTEM "./Configuration_Bpel_Payment_PostLookUpPayments.xml">
         <!ENTITY Notificaties_Subscribe                     SYSTEM "./Configuration_Notificaties_Subscribe.xml">
         ]>
 
@@ -35,5 +36,6 @@
     &Bpel_Mtom_Mock;
     &Bpel_Mtom_PostAddDocument;
     &Bpel_Payment_PostAddPaymentStates;
+    &Bpel_Payment_PostLookUpPayments;
     &Notificaties_Subscribe;
 </configuration>

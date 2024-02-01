@@ -230,6 +230,34 @@
                     javaListener="Bpel_Basic_PostRegister"
                     >
                 </IbisLocalSender>
+                <Forward name="success" path="CreateLookUpPaymentsMessage" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <XsltPipe
+                name="CreateLookUpPaymentsMessage"
+                getInputFromSessionKey="UnwrappedMessage"
+                styleSheetName="Bpel/Payment/Model/LookUpPaymentsMessage.xslt"
+                storeResultInSessionKey="LookUpPaymentsMessage"
+                onlyIfSessionKey="HasPayment"
+                onlyIfValue="true"
+                >
+                <Param name="ReferenceNumber" sessionKey="RegisterResponseMessage" xpathExpression="//*:referenceNumber" />
+                <Forward name="success" path="BpelPaymentPostLookUpPaymentsSender" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelPaymentPostLookUpPaymentsSender"
+                storeResultInSessionKey="LookUpPaymentsResponseMessage"
+                onlyIfSessionKey="HasPayment"
+                onlyIfValue="true"
+                >
+                <IbisLocalSender
+                    name="BpelPaymentPostLookUpPaymentsLocalSender"
+                    javaListener="Bpel_Payment_PostLookUpPayments"
+                    >
+                </IbisLocalSender>
                 <Forward name="success" path="CreateAddPaymentStatesMessage" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
@@ -242,7 +270,7 @@
                 onlyIfSessionKey="HasPayment"
                 onlyIfValue="true"
                 >
-                <Param name="PaymentId" xpathExpression="/ZgwObject/payment/public_order_ids" />
+                <Param name="PaymentId" sessionKey="LookUpPaymentsResponseMessage" xpathExpression="//*[local-name()='paymentId']" />
                 <Param name="StateCode" value="004" />
                 <Param name="ExtCode" value="9" />
                 <Param name="ExtMessage" value="Payment requested" />

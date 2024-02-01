@@ -11368,11 +11368,639 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
     </con:operation>
     <con:operation id="6eb83dc4-508f-478d-b404-2e7669396903" isOneWay="false" action="" name="updateStatus" bindingOperationName="updateStatus" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
-      <con:call id="7287a2ff-5f3f-4fd6-8168-e811460219a7" name="Request 1">
+    </con:operation>
+  </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="6bb39d95-4c28-470e-acd2-7107785a76be" wsaVersion="NONE" name="PaymentsBinding" type="wsdl" bindingName="{http://www.emaxx.org/functional/cases/payments}PaymentsBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Projects/openforms2bpel/src/main/configurations/bpel/Bpel/Payment/PaymentService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:endpoints>
+      <con:endpoint>http://LAPTOP-UKAI1A6:8090/mock/PaymentService</con:endpoint>
+      <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+    </con:endpoints>
+    <con:operation id="c7708670-2d63-4405-ba76-0eefc8e10441" isOneWay="false" action="payments:addDetailedPayment" name="addDetailedPayment" bindingOperationName="addDetailedPayment" type="Request-Response" outputName="addDetailedPaymentResponse" inputName="addDetailedPaymentRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="7b3cb7a9-431c-473d-80dc-7b360eb2993a" name="Request 1">
         <con:settings/>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>http://172.29.78.57:8180/active-bpel/services/BasicStatusUpdate</con:endpoint>
-        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.emaxx.org/bpel/proces/wsdl/eMAXX/BasicStatusUpdate/BasicStatusUpdate/updateStatusRequest"/>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment" xmlns:cas="http://www.emaxx.org/functional/cases">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:addDetailedPayment>\r
+         <pay1:detailedPaymentSaveMessage>\r
+            <pay1:payment>\r
+               <pay1:id>?</pay1:id>\r
+               <pay1:caseId>?</pay1:caseId>\r
+               <pay1:referenceNumber>?</pay1:referenceNumber>\r
+               <pay1:description>?</pay1:description>\r
+               <pay1:price>?</pay1:price>\r
+               <pay1:setDate>?</pay1:setDate>\r
+               <!--Optional:-->\r
+               <pay1:endDate>?</pay1:endDate>\r
+               <pay1:extReferenceNumber>?</pay1:extReferenceNumber>\r
+               <!--Optional:-->\r
+               <pay1:extSystem>\r
+                  <cas:code>?</cas:code>\r
+               </pay1:extSystem>\r
+               <!--Optional:-->\r
+               <pay1:paymentStates>\r
+                  <!--Zero or more repetitions:-->\r
+                  <pay1:paymentState>\r
+                     <pay1:id>?</pay1:id>\r
+                     <pay1:paymentId>?</pay1:paymentId>\r
+                     <pay1:stateCode>?</pay1:stateCode>\r
+                     <pay1:extCode>?</pay1:extCode>\r
+                     <pay1:extMessage>?</pay1:extMessage>\r
+                     <pay1:setDate>?</pay1:setDate>\r
+                  </pay1:paymentState>\r
+               </pay1:paymentStates>\r
+            </pay1:payment>\r
+         </pay1:detailedPaymentSaveMessage>\r
+      </pay:addDetailedPayment>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:addDetailedPayment"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="ce6f863f-f9b4-4194-ab7e-4c8ec1bb4577" isOneWay="false" action="payments:addPayments" name="addPayments" bindingOperationName="addPayments" type="Request-Response" outputName="addPaymentsResponse" inputName="addPaymentsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="dc9d1f91-bdf4-47b2-8af6-aa0e766a106a" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment" xmlns:cas="http://www.emaxx.org/functional/cases">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:addPayments>\r
+         <pay1:paymentSaveMessage>\r
+            <pay1:payments>\r
+               <!--Zero or more repetitions:-->\r
+               <pay1:payment>\r
+                  <pay1:id>?</pay1:id>\r
+                  <pay1:caseId>?</pay1:caseId>\r
+                  <pay1:referenceNumber>?</pay1:referenceNumber>\r
+                  <pay1:description>?</pay1:description>\r
+                  <pay1:price>?</pay1:price>\r
+                  <pay1:setDate>?</pay1:setDate>\r
+                  <!--Optional:-->\r
+                  <pay1:endDate>?</pay1:endDate>\r
+                  <pay1:extReferenceNumber>?</pay1:extReferenceNumber>\r
+                  <!--Optional:-->\r
+                  <pay1:extSystem>\r
+                     <cas:code>?</cas:code>\r
+                  </pay1:extSystem>\r
+               </pay1:payment>\r
+            </pay1:payments>\r
+         </pay1:paymentSaveMessage>\r
+      </pay:addPayments>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:addPayments"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="45530bbf-2efc-437d-a4fb-9e84e0d1c5ff" isOneWay="false" action="payments:addPaymentStateByAlias" name="addPaymentStateByAlias" bindingOperationName="addPaymentStateByAlias" type="Request-Response" outputName="addPaymentStateByAliasResponse" inputName="addPaymentStateByAliasRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="fe4afbed-a92b-4218-a317-fa57b372ff8a" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:addPaymentStateByAlias>\r
+         <pay1:paymentStateByAliasSaveMessage>\r
+            <pay1:paymentState>\r
+               <pay1:referenceNumber>?</pay1:referenceNumber>\r
+               <!--Optional:-->\r
+               <pay1:alias>?</pay1:alias>\r
+               <pay1:extCode>?</pay1:extCode>\r
+               <pay1:extMessage>?</pay1:extMessage>\r
+               <pay1:setDate>?</pay1:setDate>\r
+            </pay1:paymentState>\r
+         </pay1:paymentStateByAliasSaveMessage>\r
+      </pay:addPaymentStateByAlias>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:addPaymentStateByAlias"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="b9a7cc47-2d9f-4591-af17-eea261fa1637" isOneWay="false" action="payments:addPaymentStates" name="addPaymentStates" bindingOperationName="addPaymentStates" type="Request-Response" outputName="addPaymentStatesResponse" inputName="addPaymentStatesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="3de23b1f-4e40-4f17-849a-4fa4d2616363" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:addPaymentStates>\r
+         <pay1:paymentStateSaveMessage>\r
+            <pay1:paymentStates>\r
+               <!--Zero or more repetitions:-->\r
+               <pay1:paymentState>\r
+                  <pay1:id>?</pay1:id>\r
+                  <pay1:paymentId>?</pay1:paymentId>\r
+                  <pay1:stateCode>?</pay1:stateCode>\r
+                  <pay1:extCode>?</pay1:extCode>\r
+                  <pay1:extMessage>?</pay1:extMessage>\r
+                  <pay1:setDate>?</pay1:setDate>\r
+               </pay1:paymentState>\r
+            </pay1:paymentStates>\r
+         </pay1:paymentStateSaveMessage>\r
+      </pay:addPaymentStates>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:addPaymentStates"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="268ece7b-07c1-4c13-b92d-97a2704ccde6" isOneWay="false" action="payments:addStates" name="addStates" bindingOperationName="addStates" type="Request-Response" outputName="addStatesResponse" inputName="addStatesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="8501479b-e678-480f-adc5-7d6543589731" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:addStates>\r
+         <pay1:stateSaveMessage>\r
+            <pay1:states>\r
+               <!--Zero or more repetitions:-->\r
+               <pay1:state>\r
+                  <pay1:code>?</pay1:code>\r
+                  <pay1:description>?</pay1:description>\r
+                  <pay1:clarification>?</pay1:clarification>\r
+               </pay1:state>\r
+            </pay1:states>\r
+         </pay1:stateSaveMessage>\r
+      </pay:addStates>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:addStates"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="7bd27b54-cd20-439d-aa5e-fbee366b27e9" isOneWay="false" action="payments:deletePayments" name="deletePayments" bindingOperationName="deletePayments" type="Request-Response" outputName="deletePaymentsResponse" inputName="deletePaymentsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="39dc5e41-b64a-48bd-b40b-dbbf6f09dfec" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:deletePayments>\r
+         <pay1:paymentIdMessage>\r
+            <pay1:payments>\r
+               <!--Zero or more repetitions:-->\r
+               <pay1:payment>\r
+                  <pay1:id>?</pay1:id>\r
+               </pay1:payment>\r
+            </pay1:payments>\r
+         </pay1:paymentIdMessage>\r
+      </pay:deletePayments>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:deletePayments"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="3d74df4b-95c3-45ee-b3e8-070b990e27a9" isOneWay="false" action="payments:deletePaymentStates" name="deletePaymentStates" bindingOperationName="deletePaymentStates" type="Request-Response" outputName="deletePaymentStatesResponse" inputName="deletePaymentStatesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="fdcf7f6a-46c1-4fe5-ba39-25d4ee62a035" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:deletePaymentStates>\r
+         <pay1:paymentStateIdMessage>\r
+            <pay1:paymentStates>\r
+               <!--Zero or more repetitions:-->\r
+               <pay1:paymentState>\r
+                  <pay1:id>?</pay1:id>\r
+               </pay1:paymentState>\r
+            </pay1:paymentStates>\r
+         </pay1:paymentStateIdMessage>\r
+      </pay:deletePaymentStates>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:deletePaymentStates"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="fd0664e5-4d40-4cc3-ae82-9f9c6d3ed989" isOneWay="false" action="payments:deleteStates" name="deleteStates" bindingOperationName="deleteStates" type="Request-Response" outputName="deleteStatesResponse" inputName="deleteStatesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="fdd7ddcc-47db-4653-8f31-833b5d3e3f28" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:deleteStates>\r
+         <pay1:stateIdMessage>\r
+            <pay1:states>\r
+               <!--Zero or more repetitions:-->\r
+               <pay1:state>\r
+                  <pay1:code>?</pay1:code>\r
+               </pay1:state>\r
+            </pay1:states>\r
+         </pay1:stateIdMessage>\r
+      </pay:deleteStates>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:deleteStates"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="91ab472b-5a44-4b3b-ab3b-4c9058e11005" isOneWay="false" action="payments:getPaymentReferenceNumber" name="getPaymentReferenceNumber" bindingOperationName="getPaymentReferenceNumber" type="Request-Response" outputName="getPaymentReferenceNumberResponse" inputName="getPaymentReferenceNumberRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="4952db9c-b9a9-4d3f-abc2-43564d4324ff" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:getPaymentReferenceNumber>\r
+         <pay1:paymentCaseIdMessage>\r
+            <pay1:payments>\r
+               <!--Optional:-->\r
+               <pay1:payment>\r
+                  <pay1:caseId>?</pay1:caseId>\r
+               </pay1:payment>\r
+            </pay1:payments>\r
+         </pay1:paymentCaseIdMessage>\r
+      </pay:getPaymentReferenceNumber>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:getPaymentReferenceNumber"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="7d5f964d-bb2f-4e8f-8029-397e0fdcf6f2" isOneWay="false" action="payments:lookUpPayments" name="lookUpPayments" bindingOperationName="lookUpPayments" type="Request-Response" outputName="lookUpPaymentsResponse" inputName="lookUpPaymentsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="effd47a9-4903-4e00-89c4-ce064f903e07" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment" xmlns:cas="http://www.emaxx.org/functional/cases">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:lookUpPayments>\r
+         <pay1:paymentSearchMessage>\r
+            <!--Optional:-->\r
+            <pay1:id operator="EQUAL">?</pay1:id>\r
+            <!--Optional:-->\r
+            <pay1:caseId operator="EQUAL">?</pay1:caseId>\r
+            <!--Optional:-->\r
+            <pay1:referenceNumber operator="EQUAL">?</pay1:referenceNumber>\r
+            <!--Optional:-->\r
+            <pay1:description operator="EQUAL">?</pay1:description>\r
+            <!--Optional:-->\r
+            <pay1:price operator="EQUAL">?</pay1:price>\r
+            <!--Optional:-->\r
+            <pay1:setDate operator="EQUAL">?</pay1:setDate>\r
+            <!--Optional:-->\r
+            <pay1:endDate operator="EQUAL">?</pay1:endDate>\r
+            <!--Optional:-->\r
+            <pay1:extReferenceNumber operator="EQUAL">?</pay1:extReferenceNumber>\r
+            <!--Optional:-->\r
+            <pay1:extSystem>\r
+               <!--Optional:-->\r
+               <cas:code operator="EQUAL">?</cas:code>\r
+               <!--Optional:-->\r
+               <cas:description operator="EQUAL">?</cas:description>\r
+            </pay1:extSystem>\r
+         </pay1:paymentSearchMessage>\r
+      </pay:lookUpPayments>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:lookUpPayments"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="e7d6489b-79a0-4487-a8d8-f5f4056b6829" isOneWay="false" action="payments:lookUpPaymentStates" name="lookUpPaymentStates" bindingOperationName="lookUpPaymentStates" type="Request-Response" outputName="lookUpPaymentStatesResponse" inputName="lookUpPaymentStatesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="11d00bf5-cc9e-462c-879f-992f3dafa128" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:lookUpPaymentStates>\r
+         <pay1:paymentStateSearchMessage>\r
+            <!--Optional:-->\r
+            <pay1:id operator="EQUAL">?</pay1:id>\r
+            <!--Optional:-->\r
+            <pay1:paymentId operator="EQUAL">?</pay1:paymentId>\r
+            <!--Optional:-->\r
+            <pay1:stateCode operator="EQUAL">?</pay1:stateCode>\r
+            <!--Optional:-->\r
+            <pay1:extCode operator="EQUAL">?</pay1:extCode>\r
+            <!--Optional:-->\r
+            <pay1:extMessage operator="EQUAL">?</pay1:extMessage>\r
+            <!--Optional:-->\r
+            <pay1:setDate operator="EQUAL">?</pay1:setDate>\r
+         </pay1:paymentStateSearchMessage>\r
+      </pay:lookUpPaymentStates>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:lookUpPaymentStates"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="18d58243-7ea3-4e44-8996-6b0db1cf197b" isOneWay="false" action="payments:lookUpStates" name="lookUpStates" bindingOperationName="lookUpStates" type="Request-Response" outputName="lookUpStatesResponse" inputName="lookUpStatesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="d3bdae47-adf5-4ba9-ab75-45d10ce9ca3e" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:lookUpStates>\r
+         <pay1:stateSearchMessage>\r
+            <!--Optional:-->\r
+            <pay1:code operator="EQUAL">?</pay1:code>\r
+            <!--Optional:-->\r
+            <pay1:description operator="EQUAL">?</pay1:description>\r
+            <!--Optional:-->\r
+            <pay1:clarification operator="EQUAL">?</pay1:clarification>\r
+         </pay1:stateSearchMessage>\r
+      </pay:lookUpStates>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:lookUpStates"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="5bb73506-2752-4c19-87ac-f838432df6e0" isOneWay="false" action="payments:readPayments" name="readPayments" bindingOperationName="readPayments" type="Request-Response" outputName="readPaymentsResponse" inputName="readPaymentsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="684c107d-e328-4eb6-bfe4-9af66df8b5a4" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:readPayments>\r
+         <pay1:paymentIdMessage>\r
+            <pay1:payments>\r
+               <!--Zero or more repetitions:-->\r
+               <pay1:payment>\r
+                  <pay1:id>?</pay1:id>\r
+               </pay1:payment>\r
+            </pay1:payments>\r
+         </pay1:paymentIdMessage>\r
+      </pay:readPayments>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:readPayments"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="c4ac3089-bb41-4fd4-9241-fd27e0241f2e" isOneWay="false" action="payments:readPaymentStates" name="readPaymentStates" bindingOperationName="readPaymentStates" type="Request-Response" outputName="readPaymentStatesResponse" inputName="readPaymentStatesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="f9de39a6-442e-42a0-8dfa-89f2e85274dc" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:readPaymentStates>\r
+         <pay1:paymentStateIdMessage>\r
+            <pay1:paymentStates>\r
+               <!--Zero or more repetitions:-->\r
+               <pay1:paymentState>\r
+                  <pay1:id>?</pay1:id>\r
+               </pay1:paymentState>\r
+            </pay1:paymentStates>\r
+         </pay1:paymentStateIdMessage>\r
+      </pay:readPaymentStates>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:readPaymentStates"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="32fca977-55a2-4e3a-8372-d9a869ecafdc" isOneWay="false" action="payments:readStates" name="readStates" bindingOperationName="readStates" type="Request-Response" outputName="readStatesResponse" inputName="readStatesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="1cf02cc8-bd33-4a23-9c9e-f2a89448e084" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:readStates>\r
+         <pay1:stateIdMessage>\r
+            <pay1:states>\r
+               <!--Zero or more repetitions:-->\r
+               <pay1:state>\r
+                  <pay1:code>?</pay1:code>\r
+               </pay1:state>\r
+            </pay1:states>\r
+         </pay1:stateIdMessage>\r
+      </pay:readStates>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:readStates"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="6990e5d5-4610-4f7c-b8bd-3ecad8b01d09" isOneWay="false" action="payments:updateDetailedPayment" name="updateDetailedPayment" bindingOperationName="updateDetailedPayment" type="Request-Response" outputName="updateDetailedPaymentResponse" inputName="updateDetailedPaymentRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="41c08699-73ef-44db-a800-62eeceac0956" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment" xmlns:cas="http://www.emaxx.org/functional/cases">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:updateDetailedPayment>\r
+         <pay1:detailedPaymentSaveMessage>\r
+            <pay1:payment>\r
+               <pay1:id>?</pay1:id>\r
+               <pay1:caseId>?</pay1:caseId>\r
+               <pay1:referenceNumber>?</pay1:referenceNumber>\r
+               <pay1:description>?</pay1:description>\r
+               <pay1:price>?</pay1:price>\r
+               <pay1:setDate>?</pay1:setDate>\r
+               <!--Optional:-->\r
+               <pay1:endDate>?</pay1:endDate>\r
+               <pay1:extReferenceNumber>?</pay1:extReferenceNumber>\r
+               <!--Optional:-->\r
+               <pay1:extSystem>\r
+                  <cas:code>?</cas:code>\r
+               </pay1:extSystem>\r
+               <!--Optional:-->\r
+               <pay1:paymentStates>\r
+                  <!--Zero or more repetitions:-->\r
+                  <pay1:paymentState>\r
+                     <pay1:id>?</pay1:id>\r
+                     <pay1:paymentId>?</pay1:paymentId>\r
+                     <pay1:stateCode>?</pay1:stateCode>\r
+                     <pay1:extCode>?</pay1:extCode>\r
+                     <pay1:extMessage>?</pay1:extMessage>\r
+                     <pay1:setDate>?</pay1:setDate>\r
+                  </pay1:paymentState>\r
+               </pay1:paymentStates>\r
+            </pay1:payment>\r
+         </pay1:detailedPaymentSaveMessage>\r
+      </pay:updateDetailedPayment>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:updateDetailedPayment"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="dd58456b-6942-4561-8a32-911b51db3ef6" isOneWay="false" action="payments:updatePayments" name="updatePayments" bindingOperationName="updatePayments" type="Request-Response" outputName="updatePaymentsResponse" inputName="updatePaymentsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="227d137b-3920-4ca3-bae0-9b2a4ac51978" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment" xmlns:cas="http://www.emaxx.org/functional/cases">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:updatePayments>\r
+         <pay1:paymentSaveMessage>\r
+            <pay1:payments>\r
+               <!--Zero or more repetitions:-->\r
+               <pay1:payment>\r
+                  <pay1:id>?</pay1:id>\r
+                  <pay1:caseId>?</pay1:caseId>\r
+                  <pay1:referenceNumber>?</pay1:referenceNumber>\r
+                  <pay1:description>?</pay1:description>\r
+                  <pay1:price>?</pay1:price>\r
+                  <pay1:setDate>?</pay1:setDate>\r
+                  <!--Optional:-->\r
+                  <pay1:endDate>?</pay1:endDate>\r
+                  <pay1:extReferenceNumber>?</pay1:extReferenceNumber>\r
+                  <!--Optional:-->\r
+                  <pay1:extSystem>\r
+                     <cas:code>?</cas:code>\r
+                  </pay1:extSystem>\r
+               </pay1:payment>\r
+            </pay1:payments>\r
+         </pay1:paymentSaveMessage>\r
+      </pay:updatePayments>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:updatePayments"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="7a433320-e2b2-4846-8ab6-272953edbc94" isOneWay="false" action="payments:updatePaymentStates" name="updatePaymentStates" bindingOperationName="updatePaymentStates" type="Request-Response" outputName="updatePaymentStatesResponse" inputName="updatePaymentStatesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="d97ac06c-626e-4fca-8386-0f2037f2c080" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:updatePaymentStates>\r
+         <pay1:paymentStateSaveMessage>\r
+            <pay1:paymentStates>\r
+               <!--Zero or more repetitions:-->\r
+               <pay1:paymentState>\r
+                  <pay1:id>?</pay1:id>\r
+                  <pay1:paymentId>?</pay1:paymentId>\r
+                  <pay1:stateCode>?</pay1:stateCode>\r
+                  <pay1:extCode>?</pay1:extCode>\r
+                  <pay1:extMessage>?</pay1:extMessage>\r
+                  <pay1:setDate>?</pay1:setDate>\r
+               </pay1:paymentState>\r
+            </pay1:paymentStates>\r
+         </pay1:paymentStateSaveMessage>\r
+      </pay:updatePaymentStates>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:updatePaymentStates"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="f15d8914-cf6a-4db2-bc48-3cce2dd0a094" isOneWay="false" action="payments:updateStates" name="updateStates" bindingOperationName="updateStates" type="Request-Response" outputName="updateStatesResponse" inputName="updateStatesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="202622a5-bfc8-45ab-a280-0d7f6a889be3" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://guo10702.k-domstad.org:8080/services/PaymentProxy</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pay:updateStates>\r
+         <pay1:stateSaveMessage>\r
+            <pay1:states>\r
+               <!--Zero or more repetitions:-->\r
+               <pay1:state>\r
+                  <pay1:code>?</pay1:code>\r
+                  <pay1:description>?</pay1:description>\r
+                  <pay1:clarification>?</pay1:clarification>\r
+               </pay1:state>\r
+            </pay1:states>\r
+         </pay1:stateSaveMessage>\r
+      </pay:updateStates>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:updateStates"/>
       </con:call>
     </con:operation>
   </con:interface>
@@ -11387,11 +12015,11 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:properties>
             <con:property>
               <con:name>zaak</con:name>
-              <con:value>http://host.docker.internal:9000/zaken/api/v1/zaken/ac1a0007-1716a5f_18b38370950_-7fff</con:value>
+              <con:value>http://host.docker.internal:9000/zaken/api/v1/zaken/ac1d0002-75eea516_18d30c660ae_-7fff</con:value>
             </con:property>
             <con:property>
               <con:name>enkelvoudiginformatieobject</con:name>
-              <con:value>http://host.docker.internal:9000/documenten/api/v1/enkelvoudiginformatieobjecten/ac1a0007-1716a5f_18b38370950_-7ffd</con:value>
+              <con:value>http://host.docker.internal:9000/documenten/api/v1/enkelvoudiginformatieobjecten/ac1d0002-75eea516_18d30c660ae_-7ffd</con:value>
             </con:property>
           </con:properties>
         </con:config>
@@ -12756,6 +13384,500 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
    </soapenv:Body>
 </soapenv:Envelope>]]></con:responseContent>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.emaxx.org/bpel/proces/wsdl/eMAXX/BasicStatusUpdate/BasicStatusUpdate/updateStatusResponse"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+  </con:mockService>
+  <con:mockService id="c1fc5430-fdb3-41a8-a7be-a27f72b5a7e8" port="8090" path="/mock/PaymentService" host="LAPTOP-UKAI1A6" name="BPEL Payment Mock" bindToHostOnly="false" docroot="">
+    <con:settings>
+      <con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting>
+    </con:settings>
+    <con:properties/>
+    <con:mockOperation name="addDetailedPayment" id="26610747-fc50-41c9-941d-e41fb76042bb" interface="PaymentsBinding" operation="addDetailedPayment">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="18ec47a9-79ba-4d90-8587-7d36e84cf3d4" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:addDetailedPaymentResponse>
+         <pay1:paymentIdMessage>
+            <pay1:payments>
+               <!--Zero or more repetitions:-->
+               <pay1:payment>
+                  <pay1:id>?</pay1:id>
+               </pay1:payment>
+            </pay1:payments>
+         </pay1:paymentIdMessage>
+      </pay:addDetailedPaymentResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:addDetailedPayment"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="addPayments" id="f2bd6a1e-2725-4d5e-ac08-bbe9295ca5c5" interface="PaymentsBinding" operation="addPayments">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="d76437cc-57a3-4928-827d-80888e6e2f09" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:addPaymentsResponse>
+         <pay1:paymentIdMessage>
+            <pay1:payments>
+               <!--Zero or more repetitions:-->
+               <pay1:payment>
+                  <pay1:id>?</pay1:id>
+               </pay1:payment>
+            </pay1:payments>
+         </pay1:paymentIdMessage>
+      </pay:addPaymentsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:addPayments"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="addPaymentStateByAlias" id="b10bcd74-fb0d-44b8-ae50-1fb7589586d3" interface="PaymentsBinding" operation="addPaymentStateByAlias">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="52a96c06-deac-4385-8cdd-f6159bbad366" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:addPaymentStateByAliasResponse>
+         <pay1:paymentStateByAliasResponseMessage>
+            <pay1:stateCode>?</pay1:stateCode>
+         </pay1:paymentStateByAliasResponseMessage>
+      </pay:addPaymentStateByAliasResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:addPaymentStateByAlias"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="addPaymentStates" id="8c0950be-a528-4107-a8b7-bf92858a2068" interface="PaymentsBinding" operation="addPaymentStates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="40bc4c3f-ff6a-49e3-8fa3-ea7c701b03a2" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:addPaymentStatesResponse>
+         <pay1:paymentStateIdMessage>
+            <pay1:paymentStates>
+               <!--Zero or more repetitions:-->
+               <pay1:paymentState>
+                  <pay1:id>?</pay1:id>
+               </pay1:paymentState>
+            </pay1:paymentStates>
+         </pay1:paymentStateIdMessage>
+      </pay:addPaymentStatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:addPaymentStates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="addStates" id="e782665a-ef09-47f7-aa06-3bcb6450ad56" interface="PaymentsBinding" operation="addStates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="1d36e9fe-90b7-4f83-a970-0e9eedb3794e" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:addStatesResponse>
+         <pay1:stateIdMessage>
+            <pay1:states>
+               <!--Zero or more repetitions:-->
+               <pay1:state>
+                  <pay1:code>?</pay1:code>
+               </pay1:state>
+            </pay1:states>
+         </pay1:stateIdMessage>
+      </pay:addStatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:addStates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="deletePayments" id="ed09ead1-18bc-411e-9943-1c691ce1e94a" interface="PaymentsBinding" operation="deletePayments">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="a6a59720-30c1-4088-b3b0-566625714386" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:deletePaymentsResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </pay:deletePaymentsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:deletePayments"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="deletePaymentStates" id="dce6c9a0-ecb8-42e1-8ac8-bb983570737e" interface="PaymentsBinding" operation="deletePaymentStates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="82ef10a3-8d4c-433a-9cc9-40e333659f28" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:deletePaymentStatesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </pay:deletePaymentStatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:deletePaymentStates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="deleteStates" id="5fa49536-ecb1-4ce3-a413-12db2e00d327" interface="PaymentsBinding" operation="deleteStates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="0527cf5d-b1d1-4c18-b0d2-f4bb41397c17" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:deleteStatesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </pay:deleteStatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:deleteStates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="getPaymentReferenceNumber" id="75a0342b-949d-4c17-808a-8648bd399c7f" interface="PaymentsBinding" operation="getPaymentReferenceNumber">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="cbee5941-b5cc-4320-b8e2-d7b33814ebd2" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:getPaymentReferenceNumberResponse>
+         <pay1:paymentReferenceNrMessage>
+            <pay1:payments>
+               <!--Optional:-->
+               <pay1:payment>
+                  <pay1:id>?</pay1:id>
+                  <pay1:referenceNumber>?</pay1:referenceNumber>
+               </pay1:payment>
+            </pay1:payments>
+         </pay1:paymentReferenceNrMessage>
+      </pay:getPaymentReferenceNumberResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:getPaymentReferenceNumber"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpPayments" id="3d438e8d-3e7b-46bb-b886-cbdbc01d809f" interface="PaymentsBinding" operation="lookUpPayments">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="19a11228-fe0c-44fa-992e-72bfc0de7382" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment" xmlns:cas="http://www.emaxx.org/functional/cases">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:lookUpPaymentsResponse>
+         <pay1:paymentDetailsMessage>
+            <pay1:payments>
+               <!--Zero or more repetitions:-->
+               <pay1:payment>
+                  <pay1:id>?</pay1:id>
+                  <pay1:caseId>?</pay1:caseId>
+                  <pay1:referenceNumber>?</pay1:referenceNumber>
+                  <pay1:description>?</pay1:description>
+                  <pay1:price>?</pay1:price>
+                  <pay1:setDate>?</pay1:setDate>
+                  <!--Optional:-->
+                  <pay1:endDate>?</pay1:endDate>
+                  <pay1:extReferenceNumber>?</pay1:extReferenceNumber>
+                  <!--Optional:-->
+                  <pay1:extSystem>
+                     <cas:code>?</cas:code>
+                     <cas:description>?</cas:description>
+                  </pay1:extSystem>
+                  <!--Optional:-->
+                  <pay1:paymentStates>
+                     <!--Zero or more repetitions:-->
+                     <pay1:paymentState>
+                        <pay1:id>?</pay1:id>
+                        <pay1:paymentId>?</pay1:paymentId>
+                        <pay1:stateCode>?</pay1:stateCode>
+                        <pay1:extCode>?</pay1:extCode>
+                        <pay1:extMessage>?</pay1:extMessage>
+                        <pay1:setDate>?</pay1:setDate>
+                     </pay1:paymentState>
+                  </pay1:paymentStates>
+               </pay1:payment>
+            </pay1:payments>
+         </pay1:paymentDetailsMessage>
+      </pay:lookUpPaymentsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:lookUpPayments"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpPaymentStates" id="ff9c89ae-6617-4089-9489-aa24459ec7f8" interface="PaymentsBinding" operation="lookUpPaymentStates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="3d1ea784-24d2-4103-bd93-58fe02bad1b7" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:lookUpPaymentStatesResponse>
+         <pay1:paymentStateDetailsMessage>
+            <!--Optional:-->
+            <pay1:paymentStates>
+               <!--Zero or more repetitions:-->
+               <pay1:paymentState>
+                  <pay1:id>?</pay1:id>
+                  <pay1:paymentId>?</pay1:paymentId>
+                  <pay1:stateCode>?</pay1:stateCode>
+                  <pay1:extCode>?</pay1:extCode>
+                  <pay1:extMessage>?</pay1:extMessage>
+                  <pay1:setDate>?</pay1:setDate>
+               </pay1:paymentState>
+            </pay1:paymentStates>
+         </pay1:paymentStateDetailsMessage>
+      </pay:lookUpPaymentStatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:lookUpPaymentStates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpStates" id="dd837bea-68d6-4298-951e-1875346ad53b" interface="PaymentsBinding" operation="lookUpStates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="55a1e5ce-2ac5-46fa-9b91-b2fe175212f2" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:lookUpStatesResponse>
+         <pay1:stateDetailsMessage>
+            <pay1:states>
+               <!--Zero or more repetitions:-->
+               <pay1:state>
+                  <pay1:code>?</pay1:code>
+                  <pay1:description>?</pay1:description>
+                  <pay1:clarification>?</pay1:clarification>
+               </pay1:state>
+            </pay1:states>
+         </pay1:stateDetailsMessage>
+      </pay:lookUpStatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:lookUpStates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="readPayments" id="cffa2bdc-2e66-444c-8d7c-c6178a1f4f24" interface="PaymentsBinding" operation="readPayments">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="0d2eb94e-b525-43f2-a896-077bf3a3e012" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment" xmlns:cas="http://www.emaxx.org/functional/cases">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:readPaymentsResponse>
+         <pay1:paymentDetailsMessage>
+            <pay1:payments>
+               <!--Zero or more repetitions:-->
+               <pay1:payment>
+                  <pay1:id>?</pay1:id>
+                  <pay1:caseId>?</pay1:caseId>
+                  <pay1:referenceNumber>?</pay1:referenceNumber>
+                  <pay1:description>?</pay1:description>
+                  <pay1:price>?</pay1:price>
+                  <pay1:setDate>?</pay1:setDate>
+                  <!--Optional:-->
+                  <pay1:endDate>?</pay1:endDate>
+                  <pay1:extReferenceNumber>?</pay1:extReferenceNumber>
+                  <!--Optional:-->
+                  <pay1:extSystem>
+                     <cas:code>?</cas:code>
+                     <cas:description>?</cas:description>
+                  </pay1:extSystem>
+                  <!--Optional:-->
+                  <pay1:paymentStates>
+                     <!--Zero or more repetitions:-->
+                     <pay1:paymentState>
+                        <pay1:id>?</pay1:id>
+                        <pay1:paymentId>?</pay1:paymentId>
+                        <pay1:stateCode>?</pay1:stateCode>
+                        <pay1:extCode>?</pay1:extCode>
+                        <pay1:extMessage>?</pay1:extMessage>
+                        <pay1:setDate>?</pay1:setDate>
+                     </pay1:paymentState>
+                  </pay1:paymentStates>
+               </pay1:payment>
+            </pay1:payments>
+         </pay1:paymentDetailsMessage>
+      </pay:readPaymentsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:readPayments"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="readPaymentStates" id="f17d658f-756f-4ed8-b93d-73a02ba4417a" interface="PaymentsBinding" operation="readPaymentStates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="c0952af9-45be-44c8-9390-5b018a45e001" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:readPaymentStatesResponse>
+         <pay1:paymentStateDetailsMessage>
+            <!--Optional:-->
+            <pay1:paymentStates>
+               <!--Zero or more repetitions:-->
+               <pay1:paymentState>
+                  <pay1:id>?</pay1:id>
+                  <pay1:paymentId>?</pay1:paymentId>
+                  <pay1:stateCode>?</pay1:stateCode>
+                  <pay1:extCode>?</pay1:extCode>
+                  <pay1:extMessage>?</pay1:extMessage>
+                  <pay1:setDate>?</pay1:setDate>
+               </pay1:paymentState>
+            </pay1:paymentStates>
+         </pay1:paymentStateDetailsMessage>
+      </pay:readPaymentStatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:readPaymentStates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="readStates" id="67b5272a-0ab8-4e34-a19e-2c8ab9398c49" interface="PaymentsBinding" operation="readStates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="6747f4a4-ecbb-4d40-b43f-9eacc5a20e5e" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:pay1="http://www.emaxx.org/functional/cases/payment">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:readStatesResponse>
+         <pay1:stateDetailsMessage>
+            <pay1:states>
+               <!--Zero or more repetitions:-->
+               <pay1:state>
+                  <pay1:code>?</pay1:code>
+                  <pay1:description>?</pay1:description>
+                  <pay1:clarification>?</pay1:clarification>
+               </pay1:state>
+            </pay1:states>
+         </pay1:stateDetailsMessage>
+      </pay:readStatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:readStates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updateDetailedPayment" id="06166804-4c79-46f4-867c-75728e9bb243" interface="PaymentsBinding" operation="updateDetailedPayment">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="f5a8fbad-74b0-4450-91a7-b7b8f1f990bc" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:updateDetailedPaymentResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </pay:updateDetailedPaymentResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:updateDetailedPayment"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updatePayments" id="b56ae319-0638-4265-8f7e-707e6517299f" interface="PaymentsBinding" operation="updatePayments">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="7319d231-5945-4224-b6db-180143f2f505" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:updatePaymentsResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </pay:updatePaymentsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:updatePayments"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updatePaymentStates" id="ea335329-33bd-456b-9d49-011d16bf186f" interface="PaymentsBinding" operation="updatePaymentStates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="80aa9227-c5bf-44d6-8011-5e7d33491880" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:updatePaymentStatesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </pay:updatePaymentStatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:updatePaymentStates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updateStates" id="d52b918d-a6ce-46d7-9564-524f82fcedfa" interface="PaymentsBinding" operation="updateStates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="83d8036e-4215-4b81-8ef0-64846be90d7a" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pay="http://www.emaxx.org/functional/cases/payments" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <pay:updateStatesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </pay:updateStatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="payments:updateStates"/>
       </con:response>
       <con:dispatchConfig/>
     </con:mockOperation>

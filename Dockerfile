@@ -1,4 +1,4 @@
-FROM docker.io/wearefrank/zaakbrug:1.13.4 as ff-base
+FROM docker.io/wearefrank/zaakbrug:1.15.8 as ff-base
 
 # TempFix TODO: Move this to the credentialprovider.properties
 ENV credentialFactory.class=nl.nn.credentialprovider.PropertyFileCredentialFactory
@@ -18,7 +18,7 @@ COPY --chown=tomcat src/main/resources/ /opt/frank/resources/
 COPY --chown=tomcat src/test/testtool/ /opt/frank/testtool/
 
 # Compile custom class
-FROM eclipse-temurin:8-jdk-jammy AS custom-code-builder
+FROM eclipse-temurin:11-jdk-jammy AS custom-code-builder
 
 COPY --from=ff-base /usr/local/tomcat/lib/ /usr/local/tomcat/lib/
 COPY --from=ff-base /usr/local/tomcat/webapps/ROOT /usr/local/tomcat/webapps/ROOT
@@ -26,7 +26,7 @@ COPY --from=ff-base /usr/local/tomcat/webapps/ROOT /usr/local/tomcat/webapps/ROO
 COPY src/main/java /tmp/java
 RUN mkdir /tmp/classes \
       && javac \
-      /tmp/java/nl/nn/adapterframework/parameters/Parameter.java \
+      /tmp/java/org/frankframework/parameters/Parameter.java \
       -classpath "/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/*:/usr/local/tomcat/lib/*" \
       -verbose -d /tmp/classes 
 

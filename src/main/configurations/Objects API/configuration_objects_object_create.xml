@@ -40,8 +40,14 @@
 				<Exit name="InternalServerError" state="ERROR" code="500" />
 			</Exits>
 
+			<SenderPipe name="ReplaceXmlIllegalElementNamesSender">
+				<JavascriptSender name="ReplaceXmlIllegalElementNamesJavascriptSender" jsFileName="Common/ReplaceXmlIllegalElementNames.js" jsFunctionName="replaceXmlIllegalElementNames">
+					<Param name="obj" />
+				</JavascriptSender>
+			</SenderPipe>
+
 			<JsonPipe 
-				name="JsonToXml"
+				name="JsonToXml" 
 				>
                 <Forward name="success" path="UnwrapOpenZaakEnvelopeToSingle"/>
             </JsonPipe>

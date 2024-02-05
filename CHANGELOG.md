@@ -1,5 +1,22 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.14.6](https://github.com/wearefrank/openforms2bpel/compare/v1.14.5...v1.14.6) (2024-02-05)
+
+
+### 🐛 Bug Fixes
+
+* workaround for JSON keys being invalid XML element names ([453d4c2](https://github.com/wearefrank/openforms2bpel/commit/453d4c2f7014a7c111cadc14ab1e5625fcbc0d70))
+
+
+### ✅ Tests
+
+* testcase with different instances of invalid xml element names ([2f0bafa](https://github.com/wearefrank/openforms2bpel/commit/2f0bafa140430c600cbb0fbac0747e1ab533e5e1))
+
+
+### 🤖 Build System
+
+* update zaakbrug to v1.15.8 ([de23de4](https://github.com/wearefrank/openforms2bpel/commit/de23de4ec35e5d25cf5c4babf9bced067a4be81c))
+
 ## [1.14.5](https://github.com/wearefrank/openforms2bpel/compare/v1.14.4...v1.14.5) (2024-02-01)
 
 

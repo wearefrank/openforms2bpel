@@ -11177,6 +11177,12 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:params/>
           <con:element>data</con:element>
         </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>404</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
         <con:request name="Request 1" id="82aa8045-70bf-466b-926f-b8a9da1d6345" mediaType="application/json">
           <con:settings/>
           <con:parameters/>
@@ -13202,6 +13208,193 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       "startAt" : "2024-01-12",\r
       "endAt" : null,\r
       "registrationAt" : "2024-01-12",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>zaaktype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value>
+        </con:property>
+        <con:property>
+          <con:name>informatieobjecttype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
+    <con:testCase id="b483badf-b620-422e-bd44-140fef80f5a4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Illegal Xml Elements" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="properties" name="Properties" id="4d2c8f8e-7d78-4603-814d-3aedda99f8be">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties/>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="0145a900-d6f8-4b19-a84b-13f510eee96c">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "164830509",\r
+         "data" : {\r
+            "evenement" : {\r
+               "naamEvenement" : "gdfhgfh",\r
+               "soortEvenement" : "hardloopevenement",\r
+               "beschrijvingHWTEvenement" : "fghfgh",\r
+               "isDitEenJaarlijkseTerugkerendEvenement" : "nee"\r
+            },\r
+            "plekken-evenement" : {\r
+               "kolommen" : {\r
+                  "0" : {\r
+                     "startdatumOpbouw" : "2024-02-23"\r
+                  },\r
+                  "1" : {\r
+                     "startdatumEvenement" : "2024-02-24"\r
+                  },\r
+                  "2" : {\r
+                     "einddatumEvenement" : "2024-02-25"\r
+                  },\r
+                  "3" : {\r
+                     "einddatumAfbouw" : "2024-02-26"\r
+                  }\r
+               },\r
+               "kolommenTijden" : {\r
+                  "0" : {\r
+                     "openingstijdEvenement" : "10:00:00"\r
+                  },\r
+                  "1" : {\r
+                     "sluitingstijdEvenement" : "23:00:00"\r
+                  }\r
+               },\r
+               "meerdaagsEvenement" : "rtyrt",\r
+               "veldengroepEvenMent" : {\r
+                  "locatie" : {\r
+                     "kiesLocatie" : "domplein",\r
+                     "hoeveelBezoekers" : "51tot500",\r
+                     "afsluitingEvenement" : "nee",\r
+                     "druksteMomentLocatie" : 258\r
+                  },\r
+                  "hoeveelLocaties" : "een"\r
+               }\r
+            },\r
+            "bijlagen-evenement" : {\r
+               "bijlagenToevoegen" : [\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/15a1fa8f-635b-4fdc-bb63-096af64856f0",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/15a1fa8f-635b-4fdc-bb63-096af64856f0",\r
+                        "form" : "",\r
+                        "name" : "Bijlage 7.txt",\r
+                        "size" : 9,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "Bijlage 7-8e552b32-afd1-4699-926e-c48e1f3f7f66.txt",\r
+                     "size" : 9,\r
+                     "type" : "text/plain",\r
+                     "storage" : "url",\r
+                     "originalName" : "Bijlage 7.txt"\r
+                  }\r
+               ]\r
+            },\r
+            "bezoekers-evenement" : {\r
+               "overnachten" : "nee",\r
+               "drugsGebruik" : "nee",\r
+               "alcoholSchenken" : "nee",\r
+               "leeftijdBezoekers" : {
+                  "18-30 jaar" : false,
+                  "30-65 jaar" : false,
+                  "Alle leeftijden" : true,
+                  "65 jaar of ouder" : false,
+                  "0-12 jaar, met ouders" : false,
+                  "12-18 jaar, met ouders" : false,
+                  "0-12 jaar, zonder ouders" : false,
+                  "12-18 jaar, zonder ouders" : false
+               }
+
+            },\r
+            "uw-gegevenscompleet" : {\r
+               "fieldSetMetDigiD" : {\r
+                  "adresgegevensMD" : {\r
+                     "postcodePMD" : "3454 XP",\r
+                     "huisletterPMD" : "B",\r
+                     "huisnummerPMD" : "3",\r
+                     "straatnaamPMD" : "Mauritslaan",\r
+                     "woonplaatsPMD" : "De Meern",\r
+                     "huisnummertoevoegingPMD" : ""\r
+                  },\r
+                  "contactgegevensMD" : {\r
+                     "eMailadresPMD" : "p.dorhout@utrecht.nl",\r
+                     "telefoonnummerPMD" : "0612345678"\r
+                  },\r
+                  "persoonsgegevensMD" : {\r
+                     "bsnPMD" : "164830509",\r
+                     "aanhefPMD" : "V",\r
+                     "achternaamPMD" : "Boyd",\r
+                     "voorletterSPMD" : "",\r
+                     "tussenvoegselSPMD" : ""\r
+                  }\r
+               }\r
+            },\r
+            "invulling-evenementen" : {\r
+               "isErMuziek" : "nee",\r
+               "dierenAanwezig" : "nee",\r
+               "objectenEvenement" : "nee",\r
+               "andereVoorzieningen" : "nee",\r
+               "overigEntertainment" : "nee",\r
+               "verkooppuntenAanwezig" : "nee",\r
+               "doorWieWordtDeLocatieSchoongemaakt" : {\r
+                  "eigenOrganisatie" : true,\r
+                  "ingehuurdBedrijf" : false\r
+               },\r
+               "datumTijdSchoongemaakteLocatieNaAfbouw" : "2024-02-29T13:45:00+01:00"\r
+            }\r
+         },\r
+         "type" : "EVENIEUW",\r
+         "csv_url" : "",\r
+         "payment" : {\r
+            "amount" : "",\r
+            "completed" : false,\r
+            "public_order_ids" : ""\r
+         },\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [\r
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf"\r
+         ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "e0e14526-92b5-4413-ad9c-0a44185260a5",\r
+         "public_reference" : "OF-WEF5UT"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2024-02-01",\r
+      "endAt" : null,\r
+      "registrationAt" : "2024-02-01",\r
       "correctionFor" : null,\r
       "correctedBy" : null\r
    }\r

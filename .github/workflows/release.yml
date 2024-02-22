@@ -37,14 +37,14 @@ jobs:
         id: next-version
         run: semantic-release --dryRun
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
   ci:
     uses: wearefrank/ci-cd-templates/.github/workflows/ci-generic.yml@main
     needs: analyze-commits
     secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+      token: ${{ secrets.GH_TOKEN }}
     with:
       version: ${{ needs.analyze-commits.outputs.version-next }}
       docker-image-repo: ${{ vars.DOCKER_IMAGE_REPOSITORY }}
@@ -64,7 +64,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 #4.1.1
         with:
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Download Pre-build Artifacts"
         uses: actions/download-artifact@eaceaf801fd36c7dee90939fad912460b18a1ffe #4.1.2
@@ -89,8 +89,8 @@ jobs:
       - name: Semantic Release
         run: semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   docker-release:
     uses: wearefrank/ci-cd-templates/.github/workflows/docker-release-generic.yml@main
@@ -99,7 +99,7 @@ jobs:
     - ci
     - release
     secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+      token: ${{ secrets.GH_TOKEN }}
       dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
       dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
     with:

@@ -34,7 +34,7 @@ jobs:
     needs:
       - version-next
     secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+      token: ${{ secrets.GH_TOKEN }}
     with:
       version: ${{ needs.version-next.outputs.version-next }}
       docker-image-repo: ${{ vars.DOCKER_IMAGE_REPOSITORY }}

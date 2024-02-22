@@ -9,8 +9,6 @@ on:
 jobs:
   analyze-commits:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     outputs:
       version-next: ${{ steps.next-version.outputs.release-version }}
       version-next-tag: ${{ steps.next-version.outputs.release-tag }}

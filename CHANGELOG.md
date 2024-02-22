@@ -1,5 +1,14 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.14.7](https://github.com/wearefrank/openforms2bpel/compare/v1.14.6...v1.14.7) (2024-02-22)
+
+
+### 🔁 Continuous Integration
+
+* define github token permissions & disable sudo ([460a3f0](https://github.com/wearefrank/openforms2bpel/commit/460a3f0f62e595e3799889c8e0f6b77e1c805866))
+* swap elevated github token with regular one ([848f215](https://github.com/wearefrank/openforms2bpel/commit/848f21538dedc5833d15cb8cbab38161b374e05a))
+* switch to generic waf ci-cd-templates ([7ae3b0e](https://github.com/wearefrank/openforms2bpel/commit/7ae3b0ec172036746e6fbb96e0da755ba720add2))
+
 ## [1.14.6](https://github.com/wearefrank/openforms2bpel/compare/v1.14.5...v1.14.6) (2024-02-05)
 
 

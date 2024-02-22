@@ -9,18 +9,13 @@ on:
 jobs:
   version-next:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     outputs:
       version-next: ${{ steps.reference.outputs.next-reference }}
       version-next-strict: ${{ steps.reference.outputs.next-reference }}
     steps:
       - uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # v2.7.0
         with:
-          disable-sudo: true
-          egress-policy: block
-          allowed-endpoints: >
-            github.com:443
+          egress-policy: audit
 
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 #4.1.1

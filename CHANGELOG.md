@@ -1,5 +1,14 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.14.9](https://github.com/wearefrank/openforms2bpel/compare/v1.14.8...v1.14.9) (2024-02-26)
+
+
+### 🔁 Continuous Integration
+
+* include buildinfo.properties commit assets on release ([b190fca](https://github.com/wearefrank/openforms2bpel/commit/b190fcac04c6012ab67c6067437a6311d2d87750))
+* update deprecated version export command with the new github way ([c7985d5](https://github.com/wearefrank/openforms2bpel/commit/c7985d5e3fe906b1a6119c9eb095987f9995f0b1))
+* use release type for checking for new release ([5db861c](https://github.com/wearefrank/openforms2bpel/commit/5db861c4e9b994bc9536b9d2517a2c183b7eddad))
+
 ## [1.14.8](https://github.com/wearefrank/openforms2bpel/compare/v1.14.7...v1.14.8) (2024-02-26)
 
 

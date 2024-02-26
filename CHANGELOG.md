@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.14.8](https://github.com/wearefrank/openforms2bpel/compare/v1.14.7...v1.14.8) (2024-02-26)
+
+
+### 🔁 Continuous Integration
+
+* abort cicd on push without a new release ([c7fa729](https://github.com/wearefrank/openforms2bpel/commit/c7fa729159e1278a3633617a5e04a2af8cc563ec))
+
 ## [1.14.7](https://github.com/wearefrank/openforms2bpel/compare/v1.14.6...v1.14.7) (2024-02-22)
 
 

@@ -16,6 +16,8 @@
         <!ENTITY Bpel_Mtom_PostAddDocument                  SYSTEM "./Configuration_Bpel_Mtom_PostAddDocument.xml">
         <!ENTITY Bpel_Payment_PostAddPaymentStates          SYSTEM "./Configuration_Bpel_Payment_PostAddPaymentStates.xml">
         <!ENTITY Bpel_Payment_PostLookUpPayments            SYSTEM "./Configuration_Bpel_Payment_PostLookUpPayments.xml">
+        <!ENTITY ConvertISO639Taal                          SYSTEM "./Configuration_ConvertISO639Taal.xml">
+        <!ENTITY ImportFromLocalFS                          SYSTEM "./Configuration_ImportFromLocalFS.xml">
         <!ENTITY Notificaties_Subscribe                     SYSTEM "./Configuration_Notificaties_Subscribe.xml">
         ]>
 
@@ -37,5 +39,7 @@
     &Bpel_Mtom_PostAddDocument;
     &Bpel_Payment_PostAddPaymentStates;
     &Bpel_Payment_PostLookUpPayments;
+    &ConvertISO639Taal;
+    &ImportFromLocalFS;
     &Notificaties_Subscribe;
 </configuration>

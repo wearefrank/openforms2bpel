@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.14.10](https://github.com/wearefrank/openforms2bpel/compare/v1.14.9...v1.14.10) (2024-03-04)
+
+
+### 🤖 Build System
+
+* decouple from zaakbrug by using frank!framework as base image instead of zaakbrug ([ddd5d3a](https://github.com/wearefrank/openforms2bpel/commit/ddd5d3a088e19d34edc62c1834974ebf03db9b2e))
+
 ## [1.14.9](https://github.com/wearefrank/openforms2bpel/compare/v1.14.8...v1.14.9) (2024-02-26)
 
 

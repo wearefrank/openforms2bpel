@@ -44,8 +44,7 @@ jobs:
     needs: analyze-commits
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
-    if: >- 
-      ${{ needs.analyze-commits.outputs.version-next-type != '' }}
+    if: ${{ needs.analyze-commits.outputs.version-next-type != '' }}
     with:
       version: ${{ needs.analyze-commits.outputs.version-next }}
       docker-image-repo: ${{ vars.DOCKER_IMAGE_REPOSITORY }}

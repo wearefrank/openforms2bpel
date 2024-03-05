@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.14.11](https://github.com/wearefrank/openforms2bpel/compare/v1.14.10...v1.14.11) (2024-03-05)
+
+
+### 🐛 Bug Fixes
+
+* nested invalid xml elements names are not being replaced in the input json ([85a761a](https://github.com/wearefrank/openforms2bpel/commit/85a761a8a6c37bdab8cfc0f42c72988293c7774c))
+
 ## [1.14.10](https://github.com/wearefrank/openforms2bpel/compare/v1.14.9...v1.14.10) (2024-03-04)
 
 

@@ -19,6 +19,14 @@ Features:
 - Automatically prepend JSON key-names that result in llegal element names in XML.
 - Can be configured as "ZGW API" registration back-end without access to any formdata (limited implementation).
 
+# System
+### Option 1: Notification API - object created notification
+![ZGW API's](./docs/openforms2bpel-system-notification-api.drawio.svg)
+### Option 2: Objects API objects_create endpoint as registration backend
+![ZGW API's](./docs/openforms2bpel-system-objects-api.drawio.svg)
+### Option 3: ZGW API's as registration backend (Partially implemented)
+![ZGW API's](./docs/openforms2bpel-system-zgw-apis.drawio.svg)
+
 # Usage
 
 ### Running with Docker

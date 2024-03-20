@@ -13425,6 +13425,124 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
         </con:property>
       </con:properties>
     </con:testCase>
+    <con:testCase id="bd1f597c-2604-4bac-b93b-0b1676b26a62" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="2-way documents upload" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="properties" name="Properties" id="6a3164fe-d7e1-4b67-bb84-bd4759512efc">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties/>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="817e33f8-2c51-4a00-84c1-2f4e1171b595">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "169795135",\r
+         "data" : {\r
+            "uw-gegevens" : {\r
+               "fieldSetMetDigiD" : {\r
+                  "adresgegevensMD" : {\r
+                     "postcodePMD" : "3554 AS",\r
+                     "huisletterPMD" : "",\r
+                     "huisnummerPMD" : "91",\r
+                     "straatnaamPMD" : "Van Hoornekade",\r
+                     "woonplaatsPMD" : "Utrecht",\r
+                     "huisnummertoevoegingPMD" : ""\r
+                  },\r
+                  "contactgegevensMD" : {\r
+                     "eMailadresPMD" : "m.van.altena@utrecht.nl",\r
+                     "telefoonnummerPMD" : "0612345678"\r
+                  },\r
+                  "persoonsgegevensMD" : {\r
+                     "bsnPMD" : "169795135",\r
+                     "achternaamPMD" : "Driel",\r
+                     "voorletterSPMD" : "J.H.",\r
+                     "tussenvoegselSPMD" : "van"\r
+                  }\r
+               }\r
+            },\r
+            "gegevenstweewegcommunicatie" : {\r
+               "zaaknummer" : "OF-L5HPRJ",\r
+               "bestandsupload" : [\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/7c50b4b8-e22e-4c83-a50d-f52695aa673b",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/7c50b4b8-e22e-4c83-a50d-f52695aa673b",\r
+                        "form" : "",\r
+                        "name" : "TEST_Marcel.pdf",\r
+                        "size" : 7286,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "TEST_Marcel-82c19341-2c1b-486b-8d19-589234ec29ab.pdf",\r
+                     "size" : 7286,\r
+                     "type" : "application/pdf",\r
+                     "storage" : "url",\r
+                     "originalName" : "TEST_Marcel.pdf"\r
+                  }\r
+               ]\r
+            }\r
+         },\r
+         "type" : "TWEEWEGCOMMUNICATIE",\r
+         "csv_url" : "",\r
+         "payment" : {\r
+            "amount" : "",\r
+            "completed" : false,\r
+            "public_order_ids" : ""\r
+         },\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [\r
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf"\r
+         ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "60114ebd-cfb7-49d1-abad-6a22282b501a",\r
+         "public_reference" : "OF-WRPYRE"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2024-03-19",\r
+      "endAt" : null,\r
+      "registrationAt" : "2024-03-19",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>zaaktype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value>
+        </con:property>
+        <con:property>
+          <con:name>informatieobjecttype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
     <con:properties/>
   </con:testSuite>
   <con:testSuite id="ed3fa0e1-6773-42cc-8151-5a1fa4eca15e" name="Integration Tests">

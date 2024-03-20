@@ -22,7 +22,7 @@ services:
     volumes:
       - ../frank-runner/data:/usr/local/tomcat/data
       - logs:/usr/local/tomcat/logs
-      # - ./src/main/configurations:/opt/frank/configurations:ro
+      - ./src/main/configurations:/opt/frank/configurations:ro
     networks:
       - zaakbrug-stack
       - zaakbrug-backend

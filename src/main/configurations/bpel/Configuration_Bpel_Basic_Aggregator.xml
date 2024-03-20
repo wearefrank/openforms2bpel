@@ -39,8 +39,23 @@
                 name="StoreDigiDAsDomain"
                 >
                 <Param name="Domain" value="DigiD" />
-				<Forward name="success" path="StoreHasPayment" />
+				<Forward name="success" path="CheckForTwoWayCommunicationSection" />
 			</PutInSessionPipe>
+
+            <XmlIfPipe
+                name="CheckForTwoWayCommunicationSection"
+                xpathExpression="string-length(//gegevenstweewegcommunicatie) gt 0"
+                >
+                <Forward name="then" path="StoreCaseReferenceNumberFromTwoWayCommunication" />
+                <Forward name="else" path="StoreHasPayment" />
+            </XmlIfPipe>
+
+            <PutInSessionPipe
+                name="StoreCaseReferenceNumberFromTwoWayCommunication"
+                >
+                <Param name="CaseReferenceNumber" xpathExpression="//gegevenstweewegcommunicatie/zaaknummer" />
+                <Forward name="success" path="BpelDocumentsUploadAttachmentsSender" />
+            </PutInSessionPipe>
 
             <PutInSessionPipe
                 name="StoreHasPayment"
@@ -230,9 +245,16 @@
                     javaListener="Bpel_Basic_PostRegister"
                     >
                 </IbisLocalSender>
-                <Forward name="success" path="CreateLookUpPaymentsMessage" />
+                <Forward name="success" path="StoreCaseReferenceNumberFromRegisterResponse" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
+
+            <PutInSessionPipe
+                name="StoreCaseReferenceNumberFromRegisterResponse"
+                >
+                <Param name="CaseReferenceNumber" sessionKey="RegisterResponseMessage" xpathExpression="//*:referenceNumber" />
+                <Forward name="success" path="CreateLookUpPaymentsMessage" />
+            </PutInSessionPipe>
 
             <XsltPipe
                 name="CreateLookUpPaymentsMessage"
@@ -242,7 +264,7 @@
                 onlyIfSessionKey="HasPayment"
                 onlyIfValue="true"
                 >
-                <Param name="ReferenceNumber" sessionKey="RegisterResponseMessage" xpathExpression="//*:referenceNumber" />
+                <Param name="ReferenceNumber" sessionKey="CaseReferenceNumber" />
                 <Forward name="success" path="BpelPaymentPostLookUpPaymentsSender" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
@@ -303,7 +325,7 @@
                     javaListener="Bpel_Documents_UploadAttachments"
                     >
                 </IbisLocalSender>
-                <Param name="Case" sessionKey="RegisterResponseMessage" xpathExpression="//referenceNumber" />
+                <Param name="Case" sessionKey="CaseReferenceNumber" />
                 <Param name="Provider" xpathExpression="/ZgwObject/bsn/text()" />
                 <Forward name="success" path="EXIT" />
                 <Forward name="exception" path="EXCEPTION" />

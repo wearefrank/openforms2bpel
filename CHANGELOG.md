@@ -1,5 +1,18 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.15.0](https://github.com/wearefrank/openforms2bpel/compare/v1.14.11...v1.15.0) (2024-03-20)
+
+
+### 🍕 Features
+
+* support forms for uploading additional documents to an existing case ([ffa80cd](https://github.com/wearefrank/openforms2bpel/commit/ffa80cd30754cab2b5059b14dda48f2311bcfb79))
+
+
+### ✅ Tests
+
+* add two-way communication form testcase ([ee7913c](https://github.com/wearefrank/openforms2bpel/commit/ee7913cff63dfe40b94e07229750ec7927e56a44))
+* mount configurations folder to frank container to allow frank!console configuration reloads in development docker-compose ([86643fa](https://github.com/wearefrank/openforms2bpel/commit/86643fae47017377c55820fbf879e4b7a0d35efb))
+
 ## [1.14.11](https://github.com/wearefrank/openforms2bpel/compare/v1.14.10...v1.14.11) (2024-03-05)
 
 

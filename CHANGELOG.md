@@ -1,5 +1,18 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.15.1](https://github.com/wearefrank/openforms2bpel/compare/v1.15.0...v1.15.1) (2024-04-09)
+
+
+### 🐛 Bug Fixes
+
+* errors during translations when multiple uw-gegevens subsections are present ([f2db81f](https://github.com/wearefrank/openforms2bpel/commit/f2db81f275b23edbbdbd5013808156cc91c53105))
+* errorstore is eating errors without storing the message in the errorstore ([4b59c7b](https://github.com/wearefrank/openforms2bpel/commit/4b59c7b369005b844548a629071bc787f9373c65))
+
+
+### ✅ Tests
+
+* add testcase where all uw-gegevens sections are present ([d9769d7](https://github.com/wearefrank/openforms2bpel/commit/d9769d782c40a88a30558ec7481c319ceabedf37))
+
 ## [1.15.0](https://github.com/wearefrank/openforms2bpel/compare/v1.14.11...v1.15.0) (2024-03-20)
 
 

@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.15.2](https://github.com/wearefrank/openforms2bpel/compare/v1.15.1...v1.15.2) (2024-04-09)
+
+
+### ✅ Tests
+
+* larva unit-tests for FilterUwGegevensSection.xslt ([6884466](https://github.com/wearefrank/openforms2bpel/commit/6884466e231746e0982e748cca31e25d956393c5))
+
 ## [1.15.1](https://github.com/wearefrank/openforms2bpel/compare/v1.15.0...v1.15.1) (2024-04-09)
 
 

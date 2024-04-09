@@ -11183,6 +11183,12 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:params/>
           <con:element>data</con:element>
         </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>404</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
         <con:request name="Request 1" id="82aa8045-70bf-466b-926f-b8a9da1d6345" mediaType="application/json">
           <con:settings/>
           <con:parameters/>
@@ -13513,6 +13519,213 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       "startAt" : "2024-03-19",\r
       "endAt" : null,\r
       "registrationAt" : "2024-03-19",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>zaaktype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value>
+        </con:property>
+        <con:property>
+          <con:name>informatieobjecttype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
+    <con:testCase id="56766c4d-1637-4082-b5a1-c24861930064" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Person with DigiD" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="properties" name="Properties" id="18193fde-19ac-4847-8803-90ec1dd8abba">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties/>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="5743b81c-b97b-465f-aa14-1029370a85e5">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "176513280",\r
+         "data" : {\r
+            "het-besluit" : {\r
+               "opWelkeManier" : "",\r
+               "waaroverGingHetBesluit" : "klm",\r
+               "wieHeeftHetBesluitGenomen" : "hetCollegeVanBurgemeesterEnWethouders",\r
+               "wieHeeftHetBesluitDanGenomen" : "",\r
+               "ikVerklaarHiermeeBekendTeZijn" : true,\r
+               "tegenWelkBesluitMaaktUBezwaar" : "abc123",\r
+               "watIsDeRedenNa6WekenTermijnBrBezwaarMaakt" : "qqqq",\r
+               "hoeHeeftDeGemeenteHetBesluitKenbaarGemaakt" : "Brief",\r
+               "wanneerHeeftDeGemeenteHetBesluitKenbaarGemaakt" : "2023-12-01"\r
+            },\r
+            "het-bezwaar" : {\r
+               "wiltUGehoordWordenOverHetBezwaar" : "jaHoorzitting",\r
+               "waaromBentUHetNietEensMetHetBesluit" : "ccccc"\r
+            },\r
+            "wie-maakt-bezwaar" : {\r
+               "namensWieMaaktUBezwaar" : "",\r
+               "heeftIemandUGemachtigdOmBezwaarTeMaken" : "nee"\r
+            },\r
+            "bijlagen-toevoegen" : {\r
+               "file" : [ ],\r
+               "wiltUBijlagenMeesturen" : "nee",\r
+               "geeftUHiervoorToestemming" : "ja"\r
+            },\r
+            "uw-gegevenscompleet" : {\r
+               "fieldSetMetDigiD" : {\r
+                  "adresgegevensMD" : {\r
+                     "postcodePMD" : "3524 VD",\r
+                     "huisletterPMD" : "",\r
+                     "huisnummerPMD" : "26",\r
+                     "straatnaamPMD" : "Ardennen",\r
+                     "woonplaatsPMD" : "Utrecht",\r
+                     "huisnummertoevoegingPMD" : ""\r
+                  },\r
+                  "contactgegevensMD" : {\r
+                     "eMailadresPMD" : "f.bekker@utrecht.nl",\r
+                     "telefoonnummerPMD" : "0302865464",\r
+                     "telefoonnummerWerkPMD" : "",\r
+                     "telefoonnummerMobielPMD" : ""\r
+                  },\r
+                  "persoonsgegevensMD" : {\r
+                     "bsnPMD" : "176513280",\r
+                     "aanhefPMD" : "M",\r
+                     "voornamenPMD" : "Bob",\r
+                     "achternaamPMD" : "Hoekstra",\r
+                     "voorletterSPMD" : "B.",\r
+                     "geboortedatumPMD" : "1970-06-20",\r
+                     "geboorteplaatsPMD" : "Wijk bij Duurstede",\r
+                     "tussenvoegselSPMD" : ""\r
+                  }\r
+               },\r
+               "initiatingSubject" : "persoon",\r
+               "fieldSetBedrijfMEH" : {\r
+                  "bezoekadresMEH" : {\r
+                     "plaatsMEH" : "",\r
+                     "postcodeMEH" : "",\r
+                     "huisletterMEH" : "",\r
+                     "huisnummerMEH" : "",\r
+                     "straatnaamMEH" : "",\r
+                     "huisnummertoevoegingMEH" : ""\r
+                  },\r
+                  "communicatieMEH" : {\r
+                     "eMailadresMEH" : "",\r
+                     "telefoonnummerMEH" : ""\r
+                  },\r
+                  "contactpersoonMEH" : {\r
+                     "aanhefMEH" : "",\r
+                     "achternaamMEH" : "",\r
+                     "voorletterSMEH" : "",\r
+                     "tussenvoegselSMEH" : ""\r
+                  },\r
+                  "gegevensBedrijfOrganisatieMEH" : {\r
+                     "kvKNummerMEH" : "",\r
+                     "vestigingsnummerMEH" : "",\r
+                     "naamBedrijfOrganisatieMEH" : ""\r
+                  }\r
+               },\r
+               "fieldSetBedrijfZEH" : {\r
+                  "bezoekadresZEH" : {\r
+                     "plaatsZEH" : "",\r
+                     "postcodeZEH" : "",\r
+                     "huisletterZEH" : "",\r
+                     "huisnummerZEH" : null,\r
+                     "straatnaamZEH" : "",\r
+                     "huisnummertoevoegingZEH" : ""\r
+                  },\r
+                  "communicatieZEH" : {\r
+                     "eMailadresZEH" : "",\r
+                     "telefoonnummerZEH" : "",\r
+                     "postbusGebruikenZEH" : "",\r
+                     "postbusOndernemingZEH" : {\r
+                        "postbusnummerZEH" : null,\r
+                        "postbus_plaatsZEH" : "",\r
+                        "postbus_postcodeZEH" : ""\r
+                     }\r
+                  },\r
+                  "contactpersoonZEH" : {\r
+                     "aanhefZEH" : "",\r
+                     "achternaamZEH" : "",\r
+                     "voorletterSZEH" : "",\r
+                     "tussenvoegselSZEH" : ""\r
+                  },\r
+                  "gegevensBedrijfOrganisatieZEH" : {\r
+                     "kvKNummerZEH" : "",\r
+                     "vestigingsnummerZEH" : "",\r
+                     "naamBedrijfOrganisatieZEH" : ""\r
+                  }\r
+               },\r
+               "fieldSetZonderDigiD" : {\r
+                  "adresgegevensZD" : {\r
+                     "postcodePZD" : "",\r
+                     "huisletterPZD" : "",\r
+                     "huisnummerPZD" : null,\r
+                     "straatnaamPZD" : "",\r
+                     "woonplaatsPZD" : "",\r
+                     "huisnummertoevoegingPZD" : ""\r
+                  },\r
+                  "contactgegevensZD" : {\r
+                     "eMailadresPZD" : "",\r
+                     "telefoonnummerPZD" : "",\r
+                     "telefoonnummerWerkPZD" : "",\r
+                     "telefoonnummerMobielPZD" : ""\r
+                  },\r
+                  "persoonsgegevensZD" : {\r
+                     "bsnPZD" : "",\r
+                     "aanhefPZD" : "",\r
+                     "voornamenPZD" : "",\r
+                     "achternaamPZD" : "",\r
+                     "voorletterSPZD" : "",\r
+                     "geboortedatumPZD" : "",\r
+                     "tussenvoegselSPZD" : ""\r
+                  }\r
+               },\r
+               "initiatingSubjectAuth" : "DigiD",\r
+               "bentUEenPersoonOfEenBedrijf" : ""\r
+            },\r
+            "waartegen-bezwaar-maken" : {\r
+               "wiltUBezwaarMaken" : "nee"\r
+            }\r
+         },\r
+         "type" : "P9_3_BZB",\r
+         "csv_url" : "",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [ ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "3f1a7325-390b-415a-bd81-4c788d8bcabe",\r
+         "public_reference" : "OF-JVS4JY"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2024-04-09",\r
+      "endAt" : null,\r
+      "registrationAt" : "2024-04-09",\r
       "correctionFor" : null,\r
       "correctedBy" : null\r
    }\r

@@ -23,6 +23,7 @@ services:
       - ../frank-runner/data:/usr/local/tomcat/data
       - logs:/usr/local/tomcat/logs
       - ./src/main/configurations:/opt/frank/configurations:ro
+      - ./src/test/testtool:/opt/frank/testtool
     networks:
       - zaakbrug-stack
       - zaakbrug-backend

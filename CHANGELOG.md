@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.16.0](https://github.com/wearefrank/openforms2bpel/compare/v1.15.2...v1.16.0) (2024-04-10)
+
+
+### 🍕 Features
+
+* update initiatingsubject email and phone number in gegevens magazijn ([2d8ec2a](https://github.com/wearefrank/openforms2bpel/commit/2d8ec2a57349f856d0102cd56b7ca2ec8eff7f77))
+
+
+### ✅ Tests
+
+* add mock service for cases proxy service ([a1e8a17](https://github.com/wearefrank/openforms2bpel/commit/a1e8a1756a653dfc9b95c72bdd2c60fa66588331))
+
 ## [1.15.2](https://github.com/wearefrank/openforms2bpel/compare/v1.15.1...v1.15.2) (2024-04-09)
 
 

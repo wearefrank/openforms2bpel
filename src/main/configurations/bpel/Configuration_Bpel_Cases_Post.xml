@@ -1,0 +1,58 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter
+        name="Bpel_Cases_Post"
+        active="${Bpel_Cases_Post.Active}"
+        description=""
+        >
+
+        <Receiver name="Bpel_Cases_Post">
+            <JavaListener name="Bpel_Cases_Post" />
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <SenderPipe
+                name="BpelCasesServiceSender"
+                >
+                <SoapInputWrapper
+                    direction="WRAP"
+                    soapHeaderStyleSheet="Bpel/Documents/Model/Security.xslt"
+                    >
+                    <Param name="Username" pattern="{username}@MidOffice" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" />
+                    <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
+                    <Param name="Created" xpathExpression="string($NowDateTime)" >
+                        <Param name="NowDateTime" pattern="{now}" type="DATETIME" />
+                    </Param>
+                </SoapInputWrapper>
+                <WebServiceSender
+                    name="BpelCasesServiceWebServiceSender"
+                    soap="false"
+                    methodType="POST"
+                    contentType="text/xml"
+                    verifyHostname="${openforms2bpel.bpel.cases-service.verify-hostname}"
+                    allowSelfSignedCertificates="${openforms2bpel.bpel.cases-service.allow-self-signed-certs}"
+                    ignoreCertificateExpiredException="${openforms2bpel.bpel.cases-service.ignore-expired-certs}"
+                    timeout="${openforms2bpel.bpel.cases-service.timeout}"
+                    throwApplicationFaults="false"
+                    >
+                    <Param name="url" value="${openforms2bpel.bpel.cases-service.endoint}" /> 
+                    <Param name="soapAction" sessionKey="soapAction" /> 
+                </WebServiceSender>
+                <Forward name="success" path="UnwrapResponse" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <SoapWrapperPipe
+                name="UnwrapResponse"
+                direction="UNWRAP" 
+                />
+
+            <!-- TODO: Error handling based on http code -->
+
+        </Pipeline>
+    </Adapter>
+</Module>

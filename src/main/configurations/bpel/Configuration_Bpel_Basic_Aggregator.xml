@@ -286,7 +286,7 @@
                     javaListener="Bpel_Cases_Post"
                     >
                 </IbisLocalSender>
-                <Param name="soapAction" value="lookUpCaseIds" />
+                <Param name="soapAction" value="cases:lookUpCaseIds" />
                 <Forward name="success" path="CreateReadCasesRequestMessage" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
@@ -311,7 +311,7 @@
                     javaListener="Bpel_Cases_Post"
                     >
                 </IbisLocalSender>
-                <Param name="soapAction" value="readCases" />
+                <Param name="soapAction" value="cases:readCases" />
                 <Forward name="success" path="CreateUpdateDetailedCaseMessage" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
@@ -345,7 +345,7 @@
                     javaListener="Bpel_Cases_Post"
                     >
                 </IbisLocalSender>
-                <Param name="soapAction" value="updateDetailedCase" />
+                <Param name="soapAction" value="cases:updateDetailedCase" />
                 <Forward name="success" path="CreateLookUpPaymentsMessage" />
                 <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>

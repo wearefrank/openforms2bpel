@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.16.1](https://github.com/wearefrank/openforms2bpel/compare/v1.16.0...v1.16.1) (2024-04-11)
+
+
+### 🐛 Bug Fixes
+
+* cases-service soapactions missing cases namespace prefix ([99b3308](https://github.com/wearefrank/openforms2bpel/commit/99b3308a2d1feddacf6d711bfda7564cafb630d5))
+
 ## [1.16.0](https://github.com/wearefrank/openforms2bpel/compare/v1.15.2...v1.16.0) (2024-04-10)
 
 

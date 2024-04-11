@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.16.2](https://github.com/wearefrank/openforms2bpel/compare/v1.16.1...v1.16.2) (2024-04-11)
+
+
+### 🐛 Bug Fixes
+
+* missing referenceNumber when updating iniatingSubject email and tel ([7b524f0](https://github.com/wearefrank/openforms2bpel/commit/7b524f09305780c1423af583a4fd78d605807320))
+
 ## [1.16.1](https://github.com/wearefrank/openforms2bpel/compare/v1.16.0...v1.16.1) (2024-04-11)
 
 

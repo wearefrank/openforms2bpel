@@ -20,6 +20,7 @@
     <xsl:param name="Organization" as="node()"><cases:organization /></xsl:param>
 
     <xsl:param name="Id" select="''" as="xs:string" />
+    <xsl:param name="ReferenceNumber" select="''" as="xs:string" />
     
     <xsl:template match="/">
         <cases:updateDetailedCase>
@@ -30,6 +31,12 @@
                         '', 
                         $DetailedCaseSaveMessage//cases:case/cases:id, 
                         //cases:case/cases:id),
+                        'http://www.emaxx.org/functional/cases')" />
+                    <xsl:copy-of select="zgw:WrapNullOrSkip('cases:referenceNumber', 'skip', zgw:FromOrderedSource(
+                        $ReferenceNumber, 
+                        '', 
+                        $DetailedCaseSaveMessage//cases:case/cases:referenceNumber, 
+                        //cases:case/cases:referenceNumber),
                         'http://www.emaxx.org/functional/cases')" />
                     <cases:initiatingSubject verwerkingssoort="W">
                         <xsl:choose>

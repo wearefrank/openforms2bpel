@@ -323,6 +323,7 @@
                 storeResultInSessionKey="UpdateDetailedCaseRequestMessage"
                 >
                 <Param name="Id" sessionKey="LookUpCaseIdsResponseMessage" xpathExpression="//*:cases/*:case/*:id" />
+                <Param name="ReferenceNumber" sessionKey="CaseReferenceNumber" />
                 <Param name="UwGegevens" sessionKey="UwGegevens" type="DOMDOC" />
                 <Param name="Person" styleSheetName="Bpel/Cases/Model/Person.xslt" type="DOMDOC">
                     <Param name="Id" sessionKey="ReadCasesResponseMessage" xpathExpression="//*:cases/*:case/*:initiatingSubject/*/*:id" />

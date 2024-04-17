@@ -10,47 +10,43 @@
     <xsl:strip-space elements="*"/>
     <xsl:include href="../../BpelFunctionsBase.xslt" />
     
-    <xsl:param name="DetailedCaseSaveMessage" as="node()"><cases:detailedCaseSaveMessage /></xsl:param>
-
-    <!-- Map -->
-    <xsl:param name="UwGegevens" as="node()"><uw-gegevenscompleet /></xsl:param>
-    
     <!-- Create/Enrich -->
-    <xsl:param name="Person" as="node()"><cases:person /></xsl:param>
-    <xsl:param name="Organization" as="node()"><cases:organization /></xsl:param>
-
-    <xsl:param name="Id" select="''" as="xs:string" />
-    <xsl:param name="ReferenceNumber" select="''" as="xs:string" />
+    <xsl:param name="EmailAddress" select="''" as="xs:string" />
+    <xsl:param name="TelephoneNumber" select="''" as="xs:string" />
     
+    <xsl:template match="@*|node()">
+        <xsl:copy>
+            <xsl:apply-templates select="@*|node()"/>
+        </xsl:copy>
+    </xsl:template>
+
     <xsl:template match="/">
         <cases:updateDetailedCase>
             <cases:detailedCaseSaveMessage>
-                <cases:case verwerkingssoort="W">
-                    <xsl:copy-of select="zgw:WrapNullOrSkip('cases:id', 'skip', zgw:FromOrderedSource(
-                        $Id, 
-                        '', 
-                        $DetailedCaseSaveMessage//cases:case/cases:id, 
-                        //cases:case/cases:id),
-                        'http://www.emaxx.org/functional/cases')" />
-                    <xsl:copy-of select="zgw:WrapNullOrSkip('cases:referenceNumber', 'skip', zgw:FromOrderedSource(
-                        $ReferenceNumber, 
-                        '', 
-                        $DetailedCaseSaveMessage//cases:case/cases:referenceNumber, 
-                        //cases:case/cases:referenceNumber),
-                        'http://www.emaxx.org/functional/cases')" />
-                    <cases:initiatingSubject verwerkingssoort="W">
-                        <xsl:choose>
-                            <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[ends-with(name(), 'DigiD')]">
-                                <xsl:copy-of select="$Person" />
-                            </xsl:when>
-                            <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[starts-with(name(), 'fieldSetBedrijf')]">
-                                <xsl:copy-of select="$Organization" />
-                            </xsl:when>
-                            <xsl:otherwise/>
-                        </xsl:choose>
-                    </cases:initiatingSubject>
-                </cases:case>
+                <xsl:apply-templates select="//*:caseDetailsMessage/*:cases/*:case"/>
             </cases:detailedCaseSaveMessage>
         </cases:updateDetailedCase>
+    </xsl:template>
+
+    <xsl:template match="*:initiatingSubject">
+        <cases:initiatingSubject>
+            <xsl:apply-templates select="@*|node()"/>
+        </cases:initiatingSubject>
+    </xsl:template>
+
+    <xsl:template match="*:emailAddress">
+        <cases:emailAddress>
+            <xsl:value-of select="$EmailAddress"/>
+        </cases:emailAddress>
+    </xsl:template>
+
+    <xsl:template match="@verwerkingssoort">
+        <xsl:attribute name="verwerkingssoort" select="'W'" />
+    </xsl:template>
+
+    <xsl:template match="*:telephoneNumber">
+        <cases:telephoneNumber>
+            <xsl:value-of select="$TelephoneNumber"/>
+        </cases:telephoneNumber>
     </xsl:template>
 </xsl:stylesheet>

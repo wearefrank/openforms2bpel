@@ -1,0 +1,122 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter
+        name="UpdateInitiatorSubjectCommandHandler"
+        active="${UpdateInitiatorSubjectCommandHandler.Active}"
+        description=""
+        >
+        <!-- 
+            message: UwGegevens domdoc
+            sesionKey: CaseReferenceNumber string
+        -->
+        <Receiver
+            name="UpdateInitiatorSubjectCommandHandler"
+            transactionAttribute="Required"
+            pollInterval="1"
+            maxRetries="0"
+            >
+            <MessageStoreListener
+                name="UpdateInitiatorSubjectCommandHandler"
+				slotId="${instance.name}/UpdateInitiatorSubjectCommand"
+                moveToMessageLog="false"
+                sessionKeys="CaseReferenceNumber"
+				/>
+        </Receiver>
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <XsltPipe
+                name="CreateLookUpCaseIdsRequestMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Cases/Model/LookUpCaseIdsRequestMessage.xslt"
+                storeResultInSessionKey="LookUpCaseIdsRequestMessage"
+                >
+                <Param name="ReferenceNumber" sessionKey="CaseReferenceNumber" />
+                <Forward name="success" path="BpelCasesPostLookUpCaseIdsSender" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelCasesPostLookUpCaseIdsSender"
+                storeResultInSessionKey="LookUpCaseIdsResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelCasesPostLookUpCaseIdsLocalSender"
+                    javaListener="Bpel_Cases_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="cases:lookUpCaseIds" />
+                <Forward name="success" path="CreateReadCasesRequestMessage" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <XsltPipe
+                name="CreateReadCasesRequestMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Cases/Model/ReadCasesRequestMessage.xslt"
+                storeResultInSessionKey="ReadCasesRequestMessage"
+                >
+                <Param name="Id" sessionKey="LookUpCaseIdsResponseMessage" xpathExpression="//*:cases/*:case/*:id" />
+                <Forward name="success" path="BpelCasesPostReadCasesSender" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelCasesPostReadCasesSender"
+                storeResultInSessionKey="ReadCasesResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelCasesPostReadCasesLocalSender"
+                    javaListener="Bpel_Cases_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="cases:readCases" />
+                <Forward name="success" path="CreateUpdateDetailedCaseMessage" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <XsltPipe
+                name="CreateUpdateDetailedCaseMessage"
+                getInputFromSessionKey="ReadCasesResponseMessage"
+                styleSheetName="Bpel/Cases/Model/UpdateDetailedCaseRequestMessage.xslt"
+                storeResultInSessionKey="UpdateDetailedCaseRequestMessage"
+                >
+                <Param name="EmailAddress" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')]" />
+                <Param name="TelephoneNumber" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer')]" />
+                <Forward name="success" path="BpelCasesPostUpdateDetailedCaseSender" />
+                <Forward name="error" path="EXCEPTION" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelCasesPostUpdateDetailedCaseSender"
+                storeResultInSessionKey="UpdateDetailedCaseResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelCasesPostUpdateDetailedCaseLocalSender"
+                    javaListener="Bpel_Cases_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="cases:updateDetailedCase" />
+                <Forward name="success" path="InitiatorSubjectUpdatedEventSender" />
+                <Forward name="exception" path="EXCEPTION" />
+            </SenderPipe>
+
+            <SenderPipe
+				name="InitiatorSubjectUpdatedEventSender"
+                getInputFromSessionKey="CaseReferenceNumber"
+                transactionAttribute="NotSupported"
+				>
+				<MessageStoreSender
+					name="InitiatorSubjectUpdatedEventMessageStoreSender"
+					slotId="${instance.name}/InitiatorSubjectUpdatedEventEvent"
+                    onlyStoreWhenMessageIdUnique="true"
+					>
+				</MessageStoreSender>
+                <Forward name="success" path="EXIT" />
+			</SenderPipe>
+        </Pipeline>
+    </Adapter>
+</Module>

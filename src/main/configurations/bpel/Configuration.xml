@@ -20,6 +20,7 @@
         <!ENTITY ConvertISO639Taal                          SYSTEM "./Configuration_ConvertISO639Taal.xml">
         <!ENTITY ImportFromLocalFS                          SYSTEM "./Configuration_ImportFromLocalFS.xml">
         <!ENTITY Notificaties_Subscribe                     SYSTEM "./Configuration_Notificaties_Subscribe.xml">
+        <!ENTITY UpdateInitiatorSubjectCommandHandler       SYSTEM "./Configuration_UpdateInitiatorSubjectCommandHandler.xml">
         ]>
 
 <configuration name="bpel">
@@ -44,4 +45,5 @@
     &ConvertISO639Taal;
     &ImportFromLocalFS;
     &Notificaties_Subscribe;
+    &UpdateInitiatorSubjectCommandHandler;
 </configuration>

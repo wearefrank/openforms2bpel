@@ -1,5 +1,22 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.16.3](https://github.com/wearefrank/openforms2bpel/compare/v1.16.2...v1.16.3) (2024-04-17)
+
+
+### 🐛 Bug Fixes
+
+* updating iniatingsubject email & tel fails due to missing required fields ([0bba80d](https://github.com/wearefrank/openforms2bpel/commit/0bba80d81d1322e9d7d4b5cc7f7f47ac37f4d2bb))
+
+
+### ✅ Tests
+
+* configure transactionmanager and xa postgres driver in development docker-compose ([18601aa](https://github.com/wearefrank/openforms2bpel/commit/18601aaa52d4664be37e0f87059937fb878ccf60))
+
+
+### 🤖 Build System
+
+* **dependencies:** bump f!f version to 8.1.0-RC2-20240411.160355 ([34a66a4](https://github.com/wearefrank/openforms2bpel/commit/34a66a48303e7de5634187a7d75169392e14107f))
+
 ## [1.16.2](https://github.com/wearefrank/openforms2bpel/compare/v1.16.1...v1.16.2) (2024-04-11)
 
 

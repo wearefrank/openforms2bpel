@@ -61,6 +61,9 @@
                 name="StoreHasPayment"
                 >
                 <Param name="HasPayment" xpathExpression="/ZgwObject/payment/completed" defaultValue="false" />
+                <Param name="PaymentDate" xpathExpression="current-date()" >
+                    <Param name="NowDate" pattern="{now}" type="DATE" />
+                </Param>
 				<Forward name="success" path="FilterUwGegevensSection" />
 			</PutInSessionPipe>
 

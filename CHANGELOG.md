@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.16.4](https://github.com/wearefrank/openforms2bpel/compare/v1.16.3...v1.16.4) (2024-04-18)
+
+
+### 🐛 Bug Fixes
+
+* document provider invalid when form is sent anonymously ([1b3f47b](https://github.com/wearefrank/openforms2bpel/commit/1b3f47b600bfd79c39c14e7cf788c9044ca18e5a))
+
+
+### ✅ Tests
+
+* anonymous form testcase added ([31f3a89](https://github.com/wearefrank/openforms2bpel/commit/31f3a89a3c749382fbef7c65ea2d0912607b6b8f))
+
 ## [1.16.3](https://github.com/wearefrank/openforms2bpel/compare/v1.16.2...v1.16.3) (2024-04-17)
 
 

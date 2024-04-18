@@ -44,6 +44,8 @@
         <xsl:attribute name="verwerkingssoort" select="'W'" />
     </xsl:template>
 
+    <xsl:template match="*:primaryOrganization" />
+
     <xsl:template match="*:telephoneNumber">
         <cases:telephoneNumber>
             <xsl:value-of select="$TelephoneNumber"/>

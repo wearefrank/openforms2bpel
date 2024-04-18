@@ -85,11 +85,14 @@
                     'http://www.emaxx.org/bpel/proces/xsd/headerproperties')"/>
             </headerproperties:requestProperties>
             <basic:body>
-                <xsl:copy-of select="zgw:ObjectFromOrderedSource(
+                <xsl:variable name="initiatingSubjectResult" select="zgw:ObjectFromOrderedSource(
                     $InitiatingSubject,
                     $RegisterRequestMessage//basic:initiatingSubject,
                     '',
                     //basic:initiatingSubject)"/>
+                <xsl:if test="string-length($initiatingSubjectResult) gt 0">
+                    <xsl:copy-of select="$initiatingSubjectResult" /> 
+                </xsl:if>
                 <xsl:copy-of select="zgw:ObjectFromOrderedSource(
                     $Parties/basic:parties,
                     $RegisterRequestMessage//basic:parties,

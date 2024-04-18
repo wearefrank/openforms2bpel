@@ -35,7 +35,7 @@
                             <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[ends-with(name(), 'ZD')] or $CitizenNumber_Authentic='false'">
                                 <xsl:attribute name="authentic" select="'N'" />
                             </xsl:when>
-                            <xsl:otherwise><xsl:attribute name="xsi:nil" select="true()"/></xsl:otherwise>
+                            <xsl:otherwise><xsl:attribute name="xsi:nil" select="true"/></xsl:otherwise>
                         </xsl:choose>
                         <xsl:copy-of select="zgw:FromOrderedSource(
                             $CitizenNumber, 
@@ -53,7 +53,7 @@
                             <xsl:when test="$UwGegevens//*[starts-with(name(), 'uw-gegevens')]/*[ends-with(name(), 'ZEH')] or $NnpId_Authentic='false'">
                                 <xsl:attribute name="authentic" select="'N'" />
                             </xsl:when>
-                            <xsl:otherwise><xsl:attribute name="xsi:nil" select="true()"/></xsl:otherwise>
+                            <xsl:otherwise><xsl:attribute name="xsi:nil" select="true"/></xsl:otherwise>
                         </xsl:choose>
                         <xsl:copy-of select="zgw:FromOrderedSource(
                             $NnpId, 
@@ -63,7 +63,7 @@
                     </document:nnpId>
                 </xsl:when>
                 <xsl:otherwise>
-                    <document:citizenNumber xsi:nil="true()" />
+                    <document:citizenNumber xsi:nil="true" />
                 </xsl:otherwise>
             </xsl:choose>
         </document:provider>

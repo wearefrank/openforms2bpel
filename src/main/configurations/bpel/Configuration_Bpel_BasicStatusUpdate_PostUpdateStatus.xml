@@ -31,7 +31,6 @@
                 <WebServiceSender
                     name="PostBpelBasicStatusUpdateStatusWebServiceSender"
                     soap="false"
-                    methodType="POST"
                     contentType="text/xml"
                     soapAction="updateStatus"
                     verifyHostname="${openforms2bpel.bpel.basic-status-update-service.verify-hostname}"

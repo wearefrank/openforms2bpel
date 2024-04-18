@@ -22,7 +22,6 @@
                 <WebServiceSender
                     name="PostBpelMtomAddDocumentWebServiceSender"
                     soap="false"
-                    methodType="POST"
                     soapAction="addDocument"
                     verifyHostname="${openforms2bpel.bpel.mtom-service.verify-hostname}"
                     allowSelfSignedCertificates="${openforms2bpel.bpel.mtom-service.allow-self-signed-certs}"

@@ -31,7 +31,6 @@
                 <WebServiceSender
                     name="PostBpelDocumentsEndBatchWebServiceSender"
                     soap="false"
-                    methodType="POST"
                     contentType="text/xml"
                     soapAction="documents:endBatch"
                     verifyHostname="${openforms2bpel.bpel.documents-service.verify-hostname}"

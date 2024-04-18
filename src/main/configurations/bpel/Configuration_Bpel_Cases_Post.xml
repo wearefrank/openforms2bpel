@@ -31,7 +31,6 @@
                 <WebServiceSender
                     name="BpelCasesServiceWebServiceSender"
                     soap="false"
-                    methodType="POST"
                     contentType="text/xml"
                     verifyHostname="${openforms2bpel.bpel.cases-service.verify-hostname}"
                     allowSelfSignedCertificates="${openforms2bpel.bpel.cases-service.allow-self-signed-certs}"

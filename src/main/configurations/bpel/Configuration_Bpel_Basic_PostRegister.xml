@@ -22,7 +22,6 @@
                 <WebServiceSender
                     name="PostBpelBasicRegisterWebServiceSender"
                     soap="false"
-                    methodType="POST"
                     soapAction="register"
                     verifyHostname="${openforms2bpel.bpel.basic-service.verify-hostname}"
                     allowSelfSignedCertificates="${openforms2bpel.bpel.basic-service.allow-self-signed-certs}"

@@ -1,5 +1,22 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.16.5](https://github.com/wearefrank/openforms2bpel/compare/v1.16.4...v1.16.5) (2024-04-18)
+
+
+### 🐛 Bug Fixes
+
+* date of payment missing with newer forms ([f7b47ef](https://github.com/wearefrank/openforms2bpel/commit/f7b47ef0141c2e4903974e6159278352649ba317))
+* document nil=true instead of nil='true' ([c474113](https://github.com/wearefrank/openforms2bpel/commit/c474113786170e68fc2261a0528a3ee90541185e))
+* soap faults are being ignored in calls to bpel services ([c2df2c0](https://github.com/wearefrank/openforms2bpel/commit/c2df2c0fbd6860c6b63a9b5158e7747ee2a2ab43))
+* update payment referencenumber with openforms orderid ([ba0186c](https://github.com/wearefrank/openforms2bpel/commit/ba0186cb3aeb0bb111d4427c7c55760eba872326))
+* updating initiatingsubject invalid element primaryOrganization ([71af410](https://github.com/wearefrank/openforms2bpel/commit/71af4108b00691a1438a8563d7b9b778076b1bdd))
+
+
+### 🧑‍💻 Code Refactoring
+
+* consolidate specific payment service webservicesender adapter to single adapter ([2176fff](https://github.com/wearefrank/openforms2bpel/commit/2176fff43c7550c928ffe731797c20c15647db12))
+* remove obsolete methodtype post attribute on webservicesenders ([10dffb3](https://github.com/wearefrank/openforms2bpel/commit/10dffb3c305218b5b3842512258d592515a4b091))
+
 ## [1.16.4](https://github.com/wearefrank/openforms2bpel/compare/v1.16.3...v1.16.4) (2024-04-18)
 
 

@@ -11189,6 +11189,42 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:params/>
           <con:element>data</con:element>
         </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>404</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>404</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
         <con:request name="Request 1" id="82aa8045-70bf-466b-926f-b8a9da1d6345" mediaType="application/json">
           <con:settings/>
           <con:parameters/>
@@ -15938,6 +15974,108 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
             },\r
             "waartegen-bezwaar-maken" : {\r
                "wiltUBezwaarMaken" : "nee"\r
+            }\r
+         },\r
+         "type" : "P9_3_BZB",\r
+         "csv_url" : "",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [ ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "3f1a7325-390b-415a-bd81-4c788d8bcabe",\r
+         "public_reference" : "OF-JVS4JY"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2024-04-09",\r
+      "endAt" : null,\r
+      "registrationAt" : "2024-04-09",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>zaaktype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value>
+        </con:property>
+        <con:property>
+          <con:name>informatieobjecttype</con:name>
+          <con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
+    <con:testCase id="cd1e8273-eb22-4785-bfe9-cbd0c93d3717" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Anonymous Form" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="properties" name="Properties" id="afa7e1a1-478a-42e6-a969-93ae75a0e0c3">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties/>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="34d85eb7-f722-40da-9898-408ae3ec9af1">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "176513280",\r
+         "data" : {\r
+            "het-besluit" : {\r
+               "opWelkeManier" : "",\r
+               "waaroverGingHetBesluit" : "klm",\r
+               "wieHeeftHetBesluitGenomen" : "hetCollegeVanBurgemeesterEnWethouders",\r
+               "wieHeeftHetBesluitDanGenomen" : "",\r
+               "ikVerklaarHiermeeBekendTeZijn" : true,\r
+               "tegenWelkBesluitMaaktUBezwaar" : "abc123",\r
+               "watIsDeRedenNa6WekenTermijnBrBezwaarMaakt" : "qqqq",\r
+               "hoeHeeftDeGemeenteHetBesluitKenbaarGemaakt" : "Brief",\r
+               "wanneerHeeftDeGemeenteHetBesluitKenbaarGemaakt" : "2023-12-01"\r
+            },\r
+            "het-bezwaar" : {\r
+               "wiltUGehoordWordenOverHetBezwaar" : "jaHoorzitting",\r
+               "waaromBentUHetNietEensMetHetBesluit" : "ccccc"\r
+            },\r
+            "wie-maakt-bezwaar" : {\r
+               "namensWieMaaktUBezwaar" : "",\r
+               "heeftIemandUGemachtigdOmBezwaarTeMaken" : "nee"\r
+            },\r
+            "bijlagen-toevoegen" : {\r
+               "file" : [ ],\r
+               "wiltUBijlagenMeesturen" : "nee",\r
+               "geeftUHiervoorToestemming" : "ja"\r
+            },\r
+            "uw-gegevens" : {\r
+               "persoonsgegevens" : {\r
+                  "email" : "",\r
+                  "achternaam" : "",\r
+                  "phoneNumber" : "",\r
+                  "voorletterS" : "",\r
+                  "tussenvoegselS" : ""\r
+               },\r
+               "wiltUAnoniemBlijven" : "ja"\r
             }\r
          },\r
          "type" : "P9_3_BZB",\r

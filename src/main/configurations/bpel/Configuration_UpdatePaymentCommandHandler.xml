@@ -1,0 +1,109 @@
+<Module 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../FrankConfig.xsd"
+	>
+	<Adapter
+        name="UpdatePaymentCommandHandler"
+        active="${UpdatePaymentCommandHandler.Active}"
+        description=""
+        >
+        <!-- 
+            message: 
+            sesionKey: CaseReferenceNumber string
+            sesionKey: PaymentOrderId string
+            sesionKey: PaymentDate string
+        -->
+        <Receiver
+            name="UpdatePaymentCommandHandler"
+            transactionAttribute="RequiresNew"
+            pollInterval="1"
+            maxRetries="1"
+            >
+            <MessageStoreListener
+                name="UpdatePaymentCommandHandler"
+				slotId="${instance.name}/UpdatePaymentCommand"
+                sessionKeys="CaseReferenceNumber,PaymentOrderId,PaymentDate"
+				/>
+        </Receiver>
+
+		<Pipeline>
+			<Exits>
+				<Exit name="EXIT" state="SUCCESS" />
+				<Exit name="EXCEPTION" state="ERROR" />
+			</Exits>
+
+			<XsltPipe
+                name="CreateLookUpPaymentsMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Payment/Model/LookUpPaymentsMessage.xslt"
+                storeResultInSessionKey="LookUpPaymentsMessage"
+                >
+                <Param name="ReferenceNumber" sessionKey="CaseReferenceNumber" />
+                <Forward name="success" path="BpelPaymentPostLookUpPaymentsSender" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelPaymentPostLookUpPaymentsSender"
+                storeResultInSessionKey="LookUpPaymentsResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelPaymentPostLookUpPaymentsLocalSender"
+                    javaListener="Bpel_Payment_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="payments:lookUpPayments" />
+                <Forward name="success" path="CreateUpdateDetailedPaymentRequestMessage" />
+            </SenderPipe>
+
+			<XsltPipe
+                name="CreateUpdateDetailedPaymentRequestMessage"
+                styleSheetName="Bpel/Payment/Model/UpdateDetailedPaymentRequestMessage.xslt"
+                storeResultInSessionKey="UpdateDetailedPaymentRequestMessage"
+                >
+                <Param name="ReferenceNumber" sessionKey="PaymentOrderId" />
+                <Param name="Description" sessionKey="CaseReferenceNumber" />
+                <Forward name="success" path="CreateUpdateDetailedPaymentRequestSender" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="CreateUpdateDetailedPaymentRequestSender"
+                storeResultInSessionKey="CreateUpdateDetailedPaymentResponseMessage"
+                >
+                <IbisLocalSender
+                    name="CreateUpdateDetailedPaymentRequestLocalSender"
+                    javaListener="Bpel_Payment_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="payments:updateDetailedPayment" />
+                <Forward name="success" path="CreateAddPaymentStatesMessage" />
+            </SenderPipe>
+
+            <XsltPipe
+                name="CreateAddPaymentStatesMessage"
+                styleSheetName="Bpel/Payment/Model/AddPaymentStatesMessage.xslt"
+                storeResultInSessionKey="AddPaymentStatesMessage"
+                >
+                <Param name="PaymentId" sessionKey="LookUpPaymentsResponseMessage" xpathExpression="//*[local-name()='paymentId']" />
+                <Param name="StateCode" value="004" />
+                <Param name="ExtCode" value="9" />
+                <Param name="ExtMessage" value="Payment requested" />
+                <Param name="SetDate" sessionKey="PaymentDate" />
+                <Forward name="success" path="BpelPaymentPostAddPaymentStatesSender" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelPaymentPostAddPaymentStatesSender"
+                storeResultInSessionKey="AddPaymentStatesResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelPaymentPostAddPaymentStatesLocalSender"
+                    javaListener="Bpel_Payment_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="payments:addPaymentStates" />
+                <Forward name="success" path="EXIT" />
+            </SenderPipe>
+
+		</Pipeline>
+	</Adapter>
+</Module>

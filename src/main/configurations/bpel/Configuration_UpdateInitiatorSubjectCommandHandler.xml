@@ -10,14 +10,13 @@
         -->
         <Receiver
             name="UpdateInitiatorSubjectCommandHandler"
-            transactionAttribute="Required"
+            transactionAttribute="RequiresNew"
             pollInterval="1"
-            maxRetries="0"
+            maxRetries="1"
             >
             <MessageStoreListener
                 name="UpdateInitiatorSubjectCommandHandler"
 				slotId="${instance.name}/UpdateInitiatorSubjectCommand"
-                moveToMessageLog="false"
                 sessionKeys="CaseReferenceNumber"
 				/>
         </Receiver>
@@ -36,7 +35,6 @@
                 >
                 <Param name="ReferenceNumber" sessionKey="CaseReferenceNumber" />
                 <Forward name="success" path="BpelCasesPostLookUpCaseIdsSender" />
-                <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
 
             <SenderPipe
@@ -50,7 +48,6 @@
                 </IbisLocalSender>
                 <Param name="soapAction" value="cases:lookUpCaseIds" />
                 <Forward name="success" path="CreateReadCasesRequestMessage" />
-                <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
 
             <XsltPipe
@@ -61,7 +58,6 @@
                 >
                 <Param name="Id" sessionKey="LookUpCaseIdsResponseMessage" xpathExpression="//*:cases/*:case/*:id" />
                 <Forward name="success" path="BpelCasesPostReadCasesSender" />
-                <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
 
             <SenderPipe
@@ -75,7 +71,6 @@
                 </IbisLocalSender>
                 <Param name="soapAction" value="cases:readCases" />
                 <Forward name="success" path="CreateUpdateDetailedCaseMessage" />
-                <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
 
             <XsltPipe
@@ -87,7 +82,6 @@
                 <Param name="EmailAddress" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')]" />
                 <Param name="TelephoneNumber" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer')]" />
                 <Forward name="success" path="BpelCasesPostUpdateDetailedCaseSender" />
-                <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
 
             <SenderPipe
@@ -101,7 +95,6 @@
                 </IbisLocalSender>
                 <Param name="soapAction" value="cases:updateDetailedCase" />
                 <Forward name="success" path="InitiatorSubjectUpdatedEventSender" />
-                <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
 
             <SenderPipe

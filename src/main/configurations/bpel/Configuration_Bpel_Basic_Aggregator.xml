@@ -220,7 +220,7 @@
                 <Param name="InitiatePayment" sessionKey="HasPayment" />
                 <Param name="SubscriptionDuration" value="100" />
                 <Param name="Price" xpathExpression="/ZgwObject/payment/amount" />
-                <Param name="Description" xpathExpression="/ZgwObject/payment/public_order_ids" />
+                <Param name="Description" xpathExpression="/ZgwObject/public_reference" />
                 <Forward name="success" path="CreateRegisterRequestMessage" />
                 <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
@@ -266,6 +266,7 @@
                 name="StoreCaseReferenceNumberFromRegisterResponse"
                 >
                 <Param name="CaseReferenceNumber" sessionKey="RegisterResponseMessage" xpathExpression="//*:referenceNumber" />
+                <Param name="PaymentOrderId" sessionKey="UnwrappedMessage" xpathExpression="/ZgwObject/payment/public_order_ids" />
                 <Forward name="success" path="UpdateInitiatorSubjectCommandSender" />
             </PutInSessionPipe>
 
@@ -281,68 +282,25 @@
                     sessionKeys="CaseReferenceNumber"
 					>
 				</MessageStoreSender>
-                <Forward name="success" path="CreateLookUpPaymentsMessage" />
+                <Forward name="success" path="UpdatePaymentCommandSender" />
 			</SenderPipe>
 
-            <XsltPipe
-                name="CreateLookUpPaymentsMessage"
-                getInputFromSessionKey="UnwrappedMessage"
-                styleSheetName="Bpel/Payment/Model/LookUpPaymentsMessage.xslt"
-                storeResultInSessionKey="LookUpPaymentsMessage"
-                onlyIfSessionKey="HasPayment"
-                onlyIfValue="true"
-                >
-                <Param name="ReferenceNumber" sessionKey="CaseReferenceNumber" />
-                <Forward name="success" path="BpelPaymentPostLookUpPaymentsSender" />
-                <Forward name="error" path="EXCEPTION" />
-            </XsltPipe>
-
             <SenderPipe
-                name="BpelPaymentPostLookUpPaymentsSender"
-                storeResultInSessionKey="LookUpPaymentsResponseMessage"
+				name="UpdatePaymentCommandSender"
+                getInputFromSessionKey="UwGegevens"
+                transactionAttribute="Required"
                 onlyIfSessionKey="HasPayment"
                 onlyIfValue="true"
-                >
-                <IbisLocalSender
-                    name="BpelPaymentPostLookUpPaymentsLocalSender"
-                    javaListener="Bpel_Payment_PostLookUpPayments"
-                    >
-                </IbisLocalSender>
-                <Forward name="success" path="CreateAddPaymentStatesMessage" />
-                <Forward name="exception" path="EXCEPTION" />
-            </SenderPipe>
-
-            <XsltPipe
-                name="CreateAddPaymentStatesMessage"
-                getInputFromSessionKey="UnwrappedMessage"
-                styleSheetName="Bpel/Payment/Model/AddPaymentStatesMessage.xslt"
-                storeResultInSessionKey="AddPaymentStatesMessage"
-                onlyIfSessionKey="HasPayment"
-                onlyIfValue="true"
-                >
-                <Param name="PaymentId" sessionKey="LookUpPaymentsResponseMessage" xpathExpression="//*[local-name()='paymentId']" />
-                <Param name="StateCode" value="004" />
-                <Param name="ExtCode" value="9" />
-                <Param name="ExtMessage" value="Payment requested" />
-                <Param name="SetDate" sessionKey="originalMessage" xpathExpression="/ZgwObject/record/startAt" />
-                <Forward name="success" path="BpelPaymentPostAddPaymentStatesSender" />
-                <Forward name="error" path="EXCEPTION" />
-            </XsltPipe>
-
-            <SenderPipe
-                name="BpelPaymentPostAddPaymentStatesSender"
-                storeResultInSessionKey="AddPaymentStatesResponseMessage"
-                onlyIfSessionKey="HasPayment"
-                onlyIfValue="true"
-                >
-                <IbisLocalSender
-                    name="BpelPaymentPostAddPaymentStatesLocalSender"
-                    javaListener="Bpel_Payment_PostAddPaymentStates"
-                    >
-                </IbisLocalSender>
+				>
+				<MessageStoreSender
+					name="UpdatePaymentCommandMessageStoreSender"
+					slotId="${instance.name}/UpdatePaymentCommand"
+                    onlyStoreWhenMessageIdUnique="true"
+                    sessionKeys="CaseReferenceNumber,PaymentOrderId,PaymentDate"
+					>
+				</MessageStoreSender>
                 <Forward name="success" path="BpelDocumentsUploadAttachmentsSender" />
-                <Forward name="exception" path="EXCEPTION" />
-            </SenderPipe>
+			</SenderPipe>
 
             <SenderPipe
                 name="BpelDocumentsUploadAttachmentsSender"

@@ -40,7 +40,7 @@
         </payment:referenceNumber>
     </xsl:template>
 
-    <xsl:template match="*:description">
+    <xsl:template match="*:payment/*:description">
         <payment:description>
             <xsl:value-of select="$Description"/>
         </payment:description>

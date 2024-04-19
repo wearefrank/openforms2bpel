@@ -1,5 +1,15 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.16.6](https://github.com/wearefrank/openforms2bpel/compare/v1.16.5...v1.16.6) (2024-04-19)
+
+
+### 🐛 Bug Fixes
+
+* casetype wrongfully included om updatedetailedcaserequest ([8ad6dfc](https://github.com/wearefrank/openforms2bpel/commit/8ad6dfcbc0cdc99ca79228323fe375e0d4a6d8a5))
+* payment orderId incorrectly includes square brackets and single quotes ([0fda936](https://github.com/wearefrank/openforms2bpel/commit/0fda936a6a15b41e326f6ae9f14f5574c6d714fd))
+* updatedetailedcaserequest missing verwerkingsoort when attribute is not present in readcases response ([b524ce0](https://github.com/wearefrank/openforms2bpel/commit/b524ce06db5c33669fbf4c918adcf0147e360536))
+* updatepaymentrequest incorrectly also set the description field under extSystem ([f250825](https://github.com/wearefrank/openforms2bpel/commit/f250825e914c155e33138e3491625c5773bf78c3))
+
 ## [1.16.5](https://github.com/wearefrank/openforms2bpel/compare/v1.16.4...v1.16.5) (2024-04-18)
 
 

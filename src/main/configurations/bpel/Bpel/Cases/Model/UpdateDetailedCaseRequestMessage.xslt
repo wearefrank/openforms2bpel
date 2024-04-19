@@ -30,8 +30,16 @@
 
     <xsl:template match="*:initiatingSubject">
         <cases:initiatingSubject>
+            <xsl:attribute name="verwerkingssoort" select="'W'" />
             <xsl:apply-templates select="@*|node()"/>
         </cases:initiatingSubject>
+    </xsl:template>
+
+    <xsl:template match="*:case">
+        <cases:case>
+            <xsl:attribute name="verwerkingssoort" select="'W'" />
+            <xsl:apply-templates select="@*|node()"/>
+        </cases:case>
     </xsl:template>
 
     <xsl:template match="*:emailAddress">
@@ -40,9 +48,7 @@
         </cases:emailAddress>
     </xsl:template>
 
-    <xsl:template match="@verwerkingssoort">
-        <xsl:attribute name="verwerkingssoort" select="'W'" />
-    </xsl:template>
+    <xsl:template match="@verwerkingssoort" />
 
     <xsl:template match="*:primaryOrganization" />
 

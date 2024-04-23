@@ -1,5 +1,20 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.16.7](https://github.com/wearefrank/openforms2bpel/compare/v1.16.6...v1.16.7) (2024-04-23)
+
+
+### 🐛 Bug Fixes
+
+* missing caseType when updating initiatorsubject ([73a4ca3](https://github.com/wearefrank/openforms2bpel/commit/73a4ca31a018390b05bd28d04c4e91b39b1c2114))
+* remove brackets and quotes from payment orderid ([e66e6a4](https://github.com/wearefrank/openforms2bpel/commit/e66e6a4ab75f727aaf27c1847a8a9c900119b2a3))
+* updating initiatingsubject fails on invalid data according to schema ([0090572](https://github.com/wearefrank/openforms2bpel/commit/0090572adbfcb41399227450dad2380945fe0720))
+
+
+### ✅ Tests
+
+* fill readcases mock with schema compliant data ([73e2c72](https://github.com/wearefrank/openforms2bpel/commit/73e2c728daa2bb0a6aa8b7e8caf589678e670015))
+* update payment testcase to have public order id with brackets ([3eeb85e](https://github.com/wearefrank/openforms2bpel/commit/3eeb85e5a5b37a9282f22109d238af2e8602f047))
+
 ## [1.16.6](https://github.com/wearefrank/openforms2bpel/compare/v1.16.5...v1.16.6) (2024-04-19)
 
 

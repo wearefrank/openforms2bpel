@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.16.8](https://github.com/wearefrank/openforms2bpel/compare/v1.16.7...v1.16.8) (2024-04-23)
+
+
+### 🐛 Bug Fixes
+
+* replace updatedetailedcase message with seperate updatepersons and updateorganizations messages ([d92f8f9](https://github.com/wearefrank/openforms2bpel/commit/d92f8f92c12728ad61689e8f4461055738b8493e))
+
+
+### ✅ Tests
+
+* add updatePersons and updateOrganization to cases proxy mock ([2b1d6d5](https://github.com/wearefrank/openforms2bpel/commit/2b1d6d583316465e0b4baeed5e679e5aa4ab4b7c))
+
 ## [1.16.7](https://github.com/wearefrank/openforms2bpel/compare/v1.16.6...v1.16.7) (2024-04-23)
 
 

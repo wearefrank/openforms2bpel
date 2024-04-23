@@ -266,7 +266,7 @@
                 name="StoreCaseReferenceNumberFromRegisterResponse"
                 >
                 <Param name="CaseReferenceNumber" sessionKey="RegisterResponseMessage" xpathExpression="//*:referenceNumber" />
-                <Param name="PaymentOrderId" xpathExpression="substring($PublicOrderId, 2, string-length($PublicOrderId) - 2)">
+                <Param name="PaymentOrderId" xpathExpression="substring($PublicOrderId, 3, string-length($PublicOrderId) - 4)">
                     <Param name="PublicOrderId" sessionKey="UnwrappedMessage" xpathExpression="/ZgwObject/payment/public_order_ids" type="DOMDOC" />
                 </Param>
                 <Forward name="success" path="UpdateInitiatorSubjectCommandSender" />

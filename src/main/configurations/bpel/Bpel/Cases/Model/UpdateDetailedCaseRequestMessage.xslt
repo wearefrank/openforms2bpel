@@ -52,10 +52,6 @@
 
     <xsl:template match="*:primaryOrganization" />
 
-    <xsl:template match="*:caseType">
-        <cases:caseType />
-    </xsl:template>
-
     <xsl:template match="*:telephoneNumber">
         <cases:telephoneNumber>
             <xsl:value-of select="$TelephoneNumber"/>

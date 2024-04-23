@@ -14181,16 +14181,834 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
     <con:operation id="471b105d-c337-40bf-9387-3f3303093d27" isOneWay="false" action="cases:updateDetailedCase" name="updateDetailedCase" bindingOperationName="updateDetailedCase" type="Request-Response" outputName="updateDetailedCaseResponse" inputName="updateDetailedCaseRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
       <con:call id="f70b7f88-dd7c-4c93-a0ad-8724cdf1e013" name="Request 1">
-        <con:settings/>
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
         <con:encoding>UTF-8</con:encoding>
         <con:endpoint>http://LAPTOP-UKAI1A6:8091/mock/CasesService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cas="http://www.emaxx.org/functional/cases" xmlns:doc="http://www.emaxx.org/functional/cases/document">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cas:updateDetailedCase>\r
+         <cas:detailedCaseSaveMessage>\r
+            <!--Zero or more repetitions:-->\r
+            <cas:case verwerkingssoort="?">\r
+               <cas:id>?</cas:id>\r
+               <cas:referenceNumber>?</cas:referenceNumber>\r
+               <cas:description>?</cas:description>\r
+               <cas:clarification>?</cas:clarification>\r
+               <cas:xml>\r
+                  <!--You may enter ANY elements at this point-->\r
+               </cas:xml>\r
+               <cas:startDate>?</cas:startDate>\r
+               <!--Optional:-->\r
+               <cas:startTime>?</cas:startTime>\r
+               <cas:endDate>?</cas:endDate>\r
+               <cas:plannedEndDate>?</cas:plannedEndDate>\r
+               <cas:completionDate>?</cas:completionDate>\r
+               <!--Optional:-->\r
+               <cas:fileName>?</cas:fileName>\r
+               <!--Optional:-->\r
+               <cas:fileMimeType>?</cas:fileMimeType>\r
+               <!--Optional:-->\r
+               <cas:fileData>cid:943857142654</cas:fileData>\r
+               <!--Optional:-->\r
+               <cas:registrationDate>?</cas:registrationDate>\r
+               <cas:publicationDate>?</cas:publicationDate>\r
+               <cas:caseLevel>0</cas:caseLevel>\r
+               <cas:subCaseIndication>N</cas:subCaseIndication>\r
+               <cas:paymentIndication>?</cas:paymentIndication>\r
+               <cas:lastPaymentDate>?</cas:lastPaymentDate>\r
+               <cas:confidentialityLevel>?</cas:confidentialityLevel>\r
+               <cas:urgencyLevel>?</cas:urgencyLevel>\r
+               <cas:anonymous>N</cas:anonymous>\r
+               <!--Optional:-->\r
+               <cas:caseTargets>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:caseTarget verwerkingssoort="?">\r
+                     <cas:caseId>?</cas:caseId>\r
+                     <cas:code>?</cas:code>\r
+                     <cas:referenceNumber>?</cas:referenceNumber>\r
+                  </cas:caseTarget>\r
+               </cas:caseTargets>\r
+               <cas:caseType verwerkingssoort="?">\r
+                  <cas:code>?</cas:code>\r
+               </cas:caseType>\r
+               <!--Optional:-->\r
+               <cas:channel>\r
+                  <cas:code>?</cas:code>\r
+               </cas:channel>\r
+               <!--Optional:-->\r
+               <cas:result verwerkingssoort="?">\r
+                  <cas:id>?</cas:id>\r
+                  <cas:caseId>?</cas:caseId>\r
+                  <cas:description>?</cas:description>\r
+                  <cas:clarification>?</cas:clarification>\r
+               </cas:result>\r
+               <!--Optional:-->\r
+               <cas:archiveSettings>\r
+                  <cas:caseId>?</cas:caseId>\r
+                  <cas:baseDateArchiveProcedure>?</cas:baseDateArchiveProcedure>\r
+                  <cas:baseDate>?</cas:baseDate>\r
+                  <cas:archiveNomination>?</cas:archiveNomination>\r
+                  <cas:archiveTerm>?</cas:archiveTerm>\r
+                  <cas:archiveDate>?</cas:archiveDate>\r
+                  <cas:changeReason>?</cas:changeReason>\r
+                  <cas:remark>?</cas:remark>\r
+                  <!--Optional:-->\r
+                  <cas:selectionListClass>\r
+                     <cas:id>?</cas:id>\r
+                  </cas:selectionListClass>\r
+               </cas:archiveSettings>\r
+               <!--Optional:-->\r
+               <cas:statuses>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:status verwerkingssoort="?">\r
+                     <cas:id>?</cas:id>\r
+                     <cas:caseId>?</cas:caseId>\r
+                     <cas:statusType>\r
+                        <cas:id>?</cas:id>\r
+                        <cas:sequenceNumber>?</cas:sequenceNumber>\r
+                        <!--Optional:-->\r
+                        <cas:code>?</cas:code>\r
+                        <!--Optional:-->\r
+                        <cas:description>?</cas:description>\r
+                     </cas:statusType>\r
+                     <cas:date>?</cas:date>\r
+                     <cas:clarification>?</cas:clarification>\r
+                     <!--Optional:-->\r
+                     <cas:extDate>?</cas:extDate>\r
+                     <!--Optional:-->\r
+                     <cas:extClarification>?</cas:extClarification>\r
+                     <!--Optional:-->\r
+                     <cas:setByActor>\r
+                        <!--You have a CHOICE of the next 2 items at this level-->\r
+                        <cas:employee>\r
+                           <cas:id>?</cas:id>\r
+                           <!--Optional:-->\r
+                           <cas:identification>?</cas:identification>\r
+                        </cas:employee>\r
+                        <cas:unit>\r
+                           <cas:id>?</cas:id>\r
+                           <!--Optional:-->\r
+                           <cas:identification>?</cas:identification>\r
+                        </cas:unit>\r
+                     </cas:setByActor>\r
+                  </cas:status>\r
+               </cas:statuses>\r
+               <!--You have a CHOICE of the next 2 items at this level-->\r
+               <!--Optional:-->\r
+               <cas:initiatingActor verwerkingssoort="?">\r
+                  <!--You have a CHOICE of the next 2 items at this level-->\r
+                  <cas:employee>\r
+                     <cas:id>?</cas:id>\r
+                     <cas:username>?</cas:username>\r
+                     <cas:identification>?</cas:identification>\r
+                     <cas:clarification>?</cas:clarification>\r
+                     <cas:resignationDate>?</cas:resignationDate>\r
+                     <cas:genderIndication>?</cas:genderIndication>\r
+                     <cas:initials>?</cas:initials>\r
+                     <cas:lastNamePrefix>?</cas:lastNamePrefix>\r
+                     <cas:lastName>?</cas:lastName>\r
+                     <cas:nameOfAddress>?</cas:nameOfAddress>\r
+                     <cas:function>?</cas:function>\r
+                     <cas:emailAddress>?</cas:emailAddress>\r
+                     <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                  </cas:employee>\r
+                  <cas:unit>\r
+                     <cas:id>?</cas:id>\r
+                     <cas:code>?</cas:code>\r
+                     <cas:identification>?</cas:identification>\r
+                     <cas:name>?</cas:name>\r
+                     <cas:shortName>?</cas:shortName>\r
+                     <cas:description>?</cas:description>\r
+                     <cas:clarification>?</cas:clarification>\r
+                     <cas:foundingDate>?</cas:foundingDate>\r
+                     <cas:disbandingDate>?</cas:disbandingDate>\r
+                     <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                     <cas:faxNumber>?</cas:faxNumber>\r
+                     <cas:emailAddress>?</cas:emailAddress>\r
+                  </cas:unit>\r
+               </cas:initiatingActor>\r
+               <!--Optional:-->\r
+               <cas:initiatingSubject verwerkingssoort="?">\r
+                  <!--You have a CHOICE of the next 3 items at this level-->\r
+                  <cas:person>\r
+                     <cas:id>?</cas:id>\r
+                     <!--You have a CHOICE of the next 2 items at this level-->\r
+                     <cas:citizenNumber authentic="J">?</cas:citizenNumber>\r
+                     <cas:numberOtherNaturalPerson>?</cas:numberOtherNaturalPerson>\r
+                     <cas:genderIndication>?</cas:genderIndication>\r
+                     <cas:firstNames>?</cas:firstNames>\r
+                     <cas:lastNamePrefix>?</cas:lastNamePrefix>\r
+                     <cas:lastName>?</cas:lastName>\r
+                     <cas:dateOfBirth>?</cas:dateOfBirth>\r
+                     <cas:dateOfDeath>?</cas:dateOfDeath>\r
+                     <cas:emailAddress>?</cas:emailAddress>\r
+                     <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                     <cas:faxNumber>?</cas:faxNumber>\r
+                     <cas:bankAccountNumber>?</cas:bankAccountNumber>\r
+                     <cas:iban>?</cas:iban>\r
+                     <cas:bic>?</cas:bic>\r
+                     <cas:type>?</cas:type>\r
+                     <cas:nobleTitle>?</cas:nobleTitle>\r
+                     <cas:hisStartDate indicationIncomplete="V">?</cas:hisStartDate>\r
+                     <cas:hisEndDate indicationIncomplete="V">?</cas:hisEndDate>\r
+                     <!--Optional:-->\r
+                     <cas:nameOfAddress>\r
+                        <cas:title>?</cas:title>\r
+                        <cas:initials>?</cas:initials>\r
+                        <cas:firstNames>?</cas:firstNames>\r
+                        <cas:lastName>?</cas:lastName>\r
+                     </cas:nameOfAddress>\r
+                     <!--Optional:-->\r
+                     <cas:academicTitles>\r
+                        <!--0 to 3 repetitions:-->\r
+                        <cas:academicTitle>\r
+                           <cas:code>?</cas:code>\r
+                        </cas:academicTitle>\r
+                     </cas:academicTitles>\r
+                     <!--Optional:-->\r
+                     <cas:residenceAddress>\r
+                        <cas:houseNumber>?</cas:houseNumber>\r
+                        <cas:houseLetter>?</cas:houseLetter>\r
+                        <cas:houseRemark>?</cas:houseRemark>\r
+                        <cas:streetname>?</cas:streetname>\r
+                        <cas:streetnameBOCO>?</cas:streetnameBOCO>\r
+                        <cas:zipCode>?</cas:zipCode>\r
+                        <cas:city>?</cas:city>\r
+                        <cas:locationDescription>?</cas:locationDescription>\r
+                        <cas:namePublicSpace>?</cas:namePublicSpace>\r
+                     </cas:residenceAddress>\r
+                     <!--Optional:-->\r
+                     <cas:correspondenceAddress>\r
+                        <cas:houseNumber>?</cas:houseNumber>\r
+                        <cas:houseLetter>?</cas:houseLetter>\r
+                        <cas:houseRemark>?</cas:houseRemark>\r
+                        <cas:streetname>?</cas:streetname>\r
+                        <cas:streetnameBOCO>?</cas:streetnameBOCO>\r
+                        <cas:zipCode>?</cas:zipCode>\r
+                        <cas:city>?</cas:city>\r
+                        <cas:locationDescription>?</cas:locationDescription>\r
+                        <cas:namePublicSpace>?</cas:namePublicSpace>\r
+                     </cas:correspondenceAddress>\r
+                     <!--Optional:-->\r
+                     <cas:postalAddress>\r
+                        <cas:postalAddressType>?</cas:postalAddressType>\r
+                        <cas:poBoxNumber>?</cas:poBoxNumber>\r
+                        <cas:zipCode>?</cas:zipCode>\r
+                        <cas:city>?</cas:city>\r
+                     </cas:postalAddress>\r
+                     <!--Optional:-->\r
+                     <cas:foreignAddress>\r
+                        <cas:foreignAddress1>?</cas:foreignAddress1>\r
+                        <cas:foreignAddress2>?</cas:foreignAddress2>\r
+                        <cas:foreignAddress3>?</cas:foreignAddress3>\r
+                        <cas:countryName>?</cas:countryName>\r
+                     </cas:foreignAddress>\r
+                  </cas:person>\r
+                  <cas:organization>\r
+                     <cas:id>?</cas:id>\r
+                     <!--You have a CHOICE of the next 2 items at this level-->\r
+                     <cas:nnpId authentic="J">?</cas:nnpId>\r
+                     <cas:numberOtherForeignNNP>?</cas:numberOtherForeignNNP>\r
+                     <cas:kvkNumber>?</cas:kvkNumber>\r
+                     <cas:statutoryName>?</cas:statutoryName>\r
+                     <cas:foundingDate>?</cas:foundingDate>\r
+                     <cas:disbandingDate>?</cas:disbandingDate>\r
+                     <cas:emailAddress>?</cas:emailAddress>\r
+                     <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                     <cas:faxNumber>?</cas:faxNumber>\r
+                     <cas:bankAccountNumber>?</cas:bankAccountNumber>\r
+                     <cas:iban>?</cas:iban>\r
+                     <cas:bic>?</cas:bic>\r
+                     <cas:type>?</cas:type>\r
+                     <cas:hisStartDate indicationIncomplete="V">?</cas:hisStartDate>\r
+                     <cas:hisEndDate indicationIncomplete="V">?</cas:hisEndDate>\r
+                     <!--Optional:-->\r
+                     <cas:correspondenceAddress>\r
+                        <cas:houseNumber>?</cas:houseNumber>\r
+                        <cas:houseLetter>?</cas:houseLetter>\r
+                        <cas:houseRemark>?</cas:houseRemark>\r
+                        <cas:streetname>?</cas:streetname>\r
+                        <cas:streetnameBOCO>?</cas:streetnameBOCO>\r
+                        <cas:zipCode>?</cas:zipCode>\r
+                        <cas:city>?</cas:city>\r
+                        <cas:locationDescription>?</cas:locationDescription>\r
+                        <cas:namePublicSpace>?</cas:namePublicSpace>\r
+                     </cas:correspondenceAddress>\r
+                     <!--Optional:-->\r
+                     <cas:postalAddress>\r
+                        <cas:postalAddressType>?</cas:postalAddressType>\r
+                        <cas:poBoxNumber>?</cas:poBoxNumber>\r
+                        <cas:zipCode>?</cas:zipCode>\r
+                        <cas:city>?</cas:city>\r
+                     </cas:postalAddress>\r
+                     <!--Optional:-->\r
+                     <cas:foreignAddress>\r
+                        <cas:foreignAddress1>?</cas:foreignAddress1>\r
+                        <cas:foreignAddress2>?</cas:foreignAddress2>\r
+                        <cas:foreignAddress3>?</cas:foreignAddress3>\r
+                        <cas:countryName>?</cas:countryName>\r
+                     </cas:foreignAddress>\r
+                  </cas:organization>\r
+                  <cas:office>\r
+                     <cas:id>?</cas:id>\r
+                     <cas:officeNumber authentic="J">?</cas:officeNumber>\r
+                     <cas:kvkNumber>?</cas:kvkNumber>\r
+                     <cas:shortName>?</cas:shortName>\r
+                     <cas:foundingDate>?</cas:foundingDate>\r
+                     <cas:disbandingDate>?</cas:disbandingDate>\r
+                     <cas:emailAddress>?</cas:emailAddress>\r
+                     <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                     <cas:faxNumber>?</cas:faxNumber>\r
+                     <cas:bankAccountNumber>?</cas:bankAccountNumber>\r
+                     <cas:iban>?</cas:iban>\r
+                     <cas:bic>?</cas:bic>\r
+                     <cas:type>?</cas:type>\r
+                     <cas:hisStartDate indicationIncomplete="V">?</cas:hisStartDate>\r
+                     <cas:hisEndDate indicationIncomplete="V">?</cas:hisEndDate>\r
+                     <!--Optional:-->\r
+                     <cas:tradeNames>\r
+                        <!--Zero or more repetitions:-->\r
+                        <cas:tradeName>?</cas:tradeName>\r
+                     </cas:tradeNames>\r
+                     <!--Optional:-->\r
+                     <cas:locationAddress>\r
+                        <cas:houseNumber>?</cas:houseNumber>\r
+                        <cas:houseLetter>?</cas:houseLetter>\r
+                        <cas:houseRemark>?</cas:houseRemark>\r
+                        <cas:streetname>?</cas:streetname>\r
+                        <cas:streetnameBOCO>?</cas:streetnameBOCO>\r
+                        <cas:zipCode>?</cas:zipCode>\r
+                        <cas:city>?</cas:city>\r
+                        <cas:locationDescription>?</cas:locationDescription>\r
+                        <cas:namePublicSpace>?</cas:namePublicSpace>\r
+                     </cas:locationAddress>\r
+                     <!--Optional:-->\r
+                     <cas:correspondenceAddress>\r
+                        <cas:houseNumber>?</cas:houseNumber>\r
+                        <cas:houseLetter>?</cas:houseLetter>\r
+                        <cas:houseRemark>?</cas:houseRemark>\r
+                        <cas:streetname>?</cas:streetname>\r
+                        <cas:streetnameBOCO>?</cas:streetnameBOCO>\r
+                        <cas:zipCode>?</cas:zipCode>\r
+                        <cas:city>?</cas:city>\r
+                        <cas:locationDescription>?</cas:locationDescription>\r
+                        <cas:namePublicSpace>?</cas:namePublicSpace>\r
+                     </cas:correspondenceAddress>\r
+                     <!--Optional:-->\r
+                     <cas:postalAddress>\r
+                        <cas:postalAddressType>?</cas:postalAddressType>\r
+                        <cas:poBoxNumber>?</cas:poBoxNumber>\r
+                        <cas:zipCode>?</cas:zipCode>\r
+                        <cas:city>?</cas:city>\r
+                     </cas:postalAddress>\r
+                     <!--Optional:-->\r
+                     <cas:foreignAddress>\r
+                        <cas:foreignAddress1>?</cas:foreignAddress1>\r
+                        <cas:foreignAddress2>?</cas:foreignAddress2>\r
+                        <cas:foreignAddress3>?</cas:foreignAddress3>\r
+                        <cas:countryName>?</cas:countryName>\r
+                     </cas:foreignAddress>\r
+                  </cas:office>\r
+               </cas:initiatingSubject>\r
+               <!--Optional:-->\r
+               <cas:responsibleActor verwerkingssoort="?">\r
+                  <!--You have a CHOICE of the next 2 items at this level-->\r
+                  <cas:employee>\r
+                     <cas:id>?</cas:id>\r
+                     <cas:username>?</cas:username>\r
+                     <cas:identification>?</cas:identification>\r
+                     <cas:clarification>?</cas:clarification>\r
+                     <cas:resignationDate>?</cas:resignationDate>\r
+                     <cas:genderIndication>?</cas:genderIndication>\r
+                     <cas:initials>?</cas:initials>\r
+                     <cas:lastNamePrefix>?</cas:lastNamePrefix>\r
+                     <cas:lastName>?</cas:lastName>\r
+                     <cas:nameOfAddress>?</cas:nameOfAddress>\r
+                     <cas:function>?</cas:function>\r
+                     <cas:emailAddress>?</cas:emailAddress>\r
+                     <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                  </cas:employee>\r
+                  <cas:unit>\r
+                     <cas:id>?</cas:id>\r
+                     <cas:code>?</cas:code>\r
+                     <cas:identification>?</cas:identification>\r
+                     <cas:name>?</cas:name>\r
+                     <cas:shortName>?</cas:shortName>\r
+                     <cas:description>?</cas:description>\r
+                     <cas:clarification>?</cas:clarification>\r
+                     <cas:foundingDate>?</cas:foundingDate>\r
+                     <cas:disbandingDate>?</cas:disbandingDate>\r
+                     <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                     <cas:faxNumber>?</cas:faxNumber>\r
+                     <cas:emailAddress>?</cas:emailAddress>\r
+                  </cas:unit>\r
+               </cas:responsibleActor>\r
+               <!--Optional:-->\r
+               <cas:parties>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:party verwerkingssoort="?">\r
+                     <cas:caseId>?</cas:caseId>\r
+                     <cas:roleTypeCode>?</cas:roleTypeCode>\r
+                     <cas:actor>\r
+                        <!--You have a CHOICE of the next 5 items at this level-->\r
+                        <cas:employee>\r
+                           <cas:id>?</cas:id>\r
+                           <cas:username>?</cas:username>\r
+                           <cas:identification>?</cas:identification>\r
+                           <cas:clarification>?</cas:clarification>\r
+                           <cas:resignationDate>?</cas:resignationDate>\r
+                           <cas:genderIndication>?</cas:genderIndication>\r
+                           <cas:initials>?</cas:initials>\r
+                           <cas:lastNamePrefix>?</cas:lastNamePrefix>\r
+                           <cas:lastName>?</cas:lastName>\r
+                           <cas:nameOfAddress>?</cas:nameOfAddress>\r
+                           <cas:function>?</cas:function>\r
+                           <cas:emailAddress>?</cas:emailAddress>\r
+                           <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                        </cas:employee>\r
+                        <cas:unit>\r
+                           <cas:id>?</cas:id>\r
+                           <cas:code>?</cas:code>\r
+                           <cas:identification>?</cas:identification>\r
+                           <cas:name>?</cas:name>\r
+                           <cas:shortName>?</cas:shortName>\r
+                           <cas:description>?</cas:description>\r
+                           <cas:clarification>?</cas:clarification>\r
+                           <cas:foundingDate>?</cas:foundingDate>\r
+                           <cas:disbandingDate>?</cas:disbandingDate>\r
+                           <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                           <cas:faxNumber>?</cas:faxNumber>\r
+                           <cas:emailAddress>?</cas:emailAddress>\r
+                        </cas:unit>\r
+                        <cas:person>\r
+                           <cas:id>?</cas:id>\r
+                           <!--You have a CHOICE of the next 2 items at this level-->\r
+                           <cas:citizenNumber authentic="J">?</cas:citizenNumber>\r
+                           <cas:numberOtherNaturalPerson>?</cas:numberOtherNaturalPerson>\r
+                           <cas:genderIndication>?</cas:genderIndication>\r
+                           <cas:firstNames>?</cas:firstNames>\r
+                           <cas:lastNamePrefix>?</cas:lastNamePrefix>\r
+                           <cas:lastName>?</cas:lastName>\r
+                           <cas:dateOfBirth>?</cas:dateOfBirth>\r
+                           <cas:dateOfDeath>?</cas:dateOfDeath>\r
+                           <cas:emailAddress>?</cas:emailAddress>\r
+                           <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                           <cas:faxNumber>?</cas:faxNumber>\r
+                           <cas:bankAccountNumber>?</cas:bankAccountNumber>\r
+                           <cas:iban>?</cas:iban>\r
+                           <cas:bic>?</cas:bic>\r
+                           <cas:type>?</cas:type>\r
+                           <cas:nobleTitle>?</cas:nobleTitle>\r
+                           <cas:hisStartDate indicationIncomplete="V">?</cas:hisStartDate>\r
+                           <cas:hisEndDate indicationIncomplete="V">?</cas:hisEndDate>\r
+                           <!--Optional:-->\r
+                           <cas:nameOfAddress>\r
+                              <cas:title>?</cas:title>\r
+                              <cas:initials>?</cas:initials>\r
+                              <cas:firstNames>?</cas:firstNames>\r
+                              <cas:lastName>?</cas:lastName>\r
+                           </cas:nameOfAddress>\r
+                           <!--Optional:-->\r
+                           <cas:academicTitles>\r
+                              <!--0 to 3 repetitions:-->\r
+                              <cas:academicTitle>\r
+                                 <cas:code>?</cas:code>\r
+                              </cas:academicTitle>\r
+                           </cas:academicTitles>\r
+                           <!--Optional:-->\r
+                           <cas:residenceAddress>\r
+                              <cas:houseNumber>?</cas:houseNumber>\r
+                              <cas:houseLetter>?</cas:houseLetter>\r
+                              <cas:houseRemark>?</cas:houseRemark>\r
+                              <cas:streetname>?</cas:streetname>\r
+                              <cas:streetnameBOCO>?</cas:streetnameBOCO>\r
+                              <cas:zipCode>?</cas:zipCode>\r
+                              <cas:city>?</cas:city>\r
+                              <cas:locationDescription>?</cas:locationDescription>\r
+                              <cas:namePublicSpace>?</cas:namePublicSpace>\r
+                           </cas:residenceAddress>\r
+                           <!--Optional:-->\r
+                           <cas:correspondenceAddress>\r
+                              <cas:houseNumber>?</cas:houseNumber>\r
+                              <cas:houseLetter>?</cas:houseLetter>\r
+                              <cas:houseRemark>?</cas:houseRemark>\r
+                              <cas:streetname>?</cas:streetname>\r
+                              <cas:streetnameBOCO>?</cas:streetnameBOCO>\r
+                              <cas:zipCode>?</cas:zipCode>\r
+                              <cas:city>?</cas:city>\r
+                              <cas:locationDescription>?</cas:locationDescription>\r
+                              <cas:namePublicSpace>?</cas:namePublicSpace>\r
+                           </cas:correspondenceAddress>\r
+                           <!--Optional:-->\r
+                           <cas:postalAddress>\r
+                              <cas:postalAddressType>?</cas:postalAddressType>\r
+                              <cas:poBoxNumber>?</cas:poBoxNumber>\r
+                              <cas:zipCode>?</cas:zipCode>\r
+                              <cas:city>?</cas:city>\r
+                           </cas:postalAddress>\r
+                           <!--Optional:-->\r
+                           <cas:foreignAddress>\r
+                              <cas:foreignAddress1>?</cas:foreignAddress1>\r
+                              <cas:foreignAddress2>?</cas:foreignAddress2>\r
+                              <cas:foreignAddress3>?</cas:foreignAddress3>\r
+                              <cas:countryName>?</cas:countryName>\r
+                           </cas:foreignAddress>\r
+                        </cas:person>\r
+                        <cas:organization>\r
+                           <cas:id>?</cas:id>\r
+                           <!--You have a CHOICE of the next 2 items at this level-->\r
+                           <cas:nnpId authentic="J">?</cas:nnpId>\r
+                           <cas:numberOtherForeignNNP>?</cas:numberOtherForeignNNP>\r
+                           <cas:kvkNumber>?</cas:kvkNumber>\r
+                           <cas:statutoryName>?</cas:statutoryName>\r
+                           <cas:foundingDate>?</cas:foundingDate>\r
+                           <cas:disbandingDate>?</cas:disbandingDate>\r
+                           <cas:emailAddress>?</cas:emailAddress>\r
+                           <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                           <cas:faxNumber>?</cas:faxNumber>\r
+                           <cas:bankAccountNumber>?</cas:bankAccountNumber>\r
+                           <cas:iban>?</cas:iban>\r
+                           <cas:bic>?</cas:bic>\r
+                           <cas:type>?</cas:type>\r
+                           <cas:hisStartDate indicationIncomplete="V">?</cas:hisStartDate>\r
+                           <cas:hisEndDate indicationIncomplete="V">?</cas:hisEndDate>\r
+                           <!--Optional:-->\r
+                           <cas:correspondenceAddress>\r
+                              <cas:houseNumber>?</cas:houseNumber>\r
+                              <cas:houseLetter>?</cas:houseLetter>\r
+                              <cas:houseRemark>?</cas:houseRemark>\r
+                              <cas:streetname>?</cas:streetname>\r
+                              <cas:streetnameBOCO>?</cas:streetnameBOCO>\r
+                              <cas:zipCode>?</cas:zipCode>\r
+                              <cas:city>?</cas:city>\r
+                              <cas:locationDescription>?</cas:locationDescription>\r
+                              <cas:namePublicSpace>?</cas:namePublicSpace>\r
+                           </cas:correspondenceAddress>\r
+                           <!--Optional:-->\r
+                           <cas:postalAddress>\r
+                              <cas:postalAddressType>?</cas:postalAddressType>\r
+                              <cas:poBoxNumber>?</cas:poBoxNumber>\r
+                              <cas:zipCode>?</cas:zipCode>\r
+                              <cas:city>?</cas:city>\r
+                           </cas:postalAddress>\r
+                           <!--Optional:-->\r
+                           <cas:foreignAddress>\r
+                              <cas:foreignAddress1>?</cas:foreignAddress1>\r
+                              <cas:foreignAddress2>?</cas:foreignAddress2>\r
+                              <cas:foreignAddress3>?</cas:foreignAddress3>\r
+                              <cas:countryName>?</cas:countryName>\r
+                           </cas:foreignAddress>\r
+                        </cas:organization>\r
+                        <cas:office>\r
+                           <cas:id>?</cas:id>\r
+                           <cas:officeNumber authentic="J">?</cas:officeNumber>\r
+                           <cas:kvkNumber>?</cas:kvkNumber>\r
+                           <cas:shortName>?</cas:shortName>\r
+                           <cas:foundingDate>?</cas:foundingDate>\r
+                           <cas:disbandingDate>?</cas:disbandingDate>\r
+                           <cas:emailAddress>?</cas:emailAddress>\r
+                           <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                           <cas:faxNumber>?</cas:faxNumber>\r
+                           <cas:bankAccountNumber>?</cas:bankAccountNumber>\r
+                           <cas:iban>?</cas:iban>\r
+                           <cas:bic>?</cas:bic>\r
+                           <cas:type>?</cas:type>\r
+                           <cas:hisStartDate indicationIncomplete="V">?</cas:hisStartDate>\r
+                           <cas:hisEndDate indicationIncomplete="V">?</cas:hisEndDate>\r
+                           <!--Optional:-->\r
+                           <cas:tradeNames>\r
+                              <!--Zero or more repetitions:-->\r
+                              <cas:tradeName>?</cas:tradeName>\r
+                           </cas:tradeNames>\r
+                           <!--Optional:-->\r
+                           <cas:locationAddress>\r
+                              <cas:houseNumber>?</cas:houseNumber>\r
+                              <cas:houseLetter>?</cas:houseLetter>\r
+                              <cas:houseRemark>?</cas:houseRemark>\r
+                              <cas:streetname>?</cas:streetname>\r
+                              <cas:streetnameBOCO>?</cas:streetnameBOCO>\r
+                              <cas:zipCode>?</cas:zipCode>\r
+                              <cas:city>?</cas:city>\r
+                              <cas:locationDescription>?</cas:locationDescription>\r
+                              <cas:namePublicSpace>?</cas:namePublicSpace>\r
+                           </cas:locationAddress>\r
+                           <!--Optional:-->\r
+                           <cas:correspondenceAddress>\r
+                              <cas:houseNumber>?</cas:houseNumber>\r
+                              <cas:houseLetter>?</cas:houseLetter>\r
+                              <cas:houseRemark>?</cas:houseRemark>\r
+                              <cas:streetname>?</cas:streetname>\r
+                              <cas:streetnameBOCO>?</cas:streetnameBOCO>\r
+                              <cas:zipCode>?</cas:zipCode>\r
+                              <cas:city>?</cas:city>\r
+                              <cas:locationDescription>?</cas:locationDescription>\r
+                              <cas:namePublicSpace>?</cas:namePublicSpace>\r
+                           </cas:correspondenceAddress>\r
+                           <!--Optional:-->\r
+                           <cas:postalAddress>\r
+                              <cas:postalAddressType>?</cas:postalAddressType>\r
+                              <cas:poBoxNumber>?</cas:poBoxNumber>\r
+                              <cas:zipCode>?</cas:zipCode>\r
+                              <cas:city>?</cas:city>\r
+                           </cas:postalAddress>\r
+                           <!--Optional:-->\r
+                           <cas:foreignAddress>\r
+                              <cas:foreignAddress1>?</cas:foreignAddress1>\r
+                              <cas:foreignAddress2>?</cas:foreignAddress2>\r
+                              <cas:foreignAddress3>?</cas:foreignAddress3>\r
+                              <cas:countryName>?</cas:countryName>\r
+                           </cas:foreignAddress>\r
+                        </cas:office>\r
+                     </cas:actor>\r
+                  </cas:party>\r
+               </cas:parties>\r
+               <!--Optional:-->\r
+               <cas:addresses>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:address verwerkingssoort="?">\r
+                     <cas:id>?</cas:id>\r
+                     <cas:houseNumber>?</cas:houseNumber>\r
+                     <cas:houseLetter>?</cas:houseLetter>\r
+                     <cas:houseRemark>?</cas:houseRemark>\r
+                     <cas:houseIndication>?</cas:houseIndication>\r
+                     <cas:streetName>?</cas:streetName>\r
+                     <cas:city>?</cas:city>\r
+                     <cas:zipCode>?</cas:zipCode>\r
+                     <cas:locationNumber>?</cas:locationNumber>\r
+                     <cas:locationDescription>?</cas:locationDescription>\r
+                     <cas:neighbourhoodName>?</cas:neighbourhoodName>\r
+                     <cas:districtName>?</cas:districtName>\r
+                     <cas:municipalityCode>?</cas:municipalityCode>\r
+                     <cas:municipalityName>?</cas:municipalityName>\r
+                     <cas:xCoordinate>?</cas:xCoordinate>\r
+                     <cas:yCoordinate>?</cas:yCoordinate>\r
+                     <cas:zCoordinate>?</cas:zCoordinate>\r
+                  </cas:address>\r
+               </cas:addresses>\r
+               <!--Optional:-->\r
+               <cas:registryObjects>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:registryObject verwerkingssoort="?">\r
+                     <cas:id>?</cas:id>\r
+                     <cas:indexLetter>?</cas:indexLetter>\r
+                     <cas:indexNumber>?</cas:indexNumber>\r
+                     <cas:parcelNumber>?</cas:parcelNumber>\r
+                     <cas:municipalityCode>?</cas:municipalityCode>\r
+                     <cas:section>?</cas:section>\r
+                     <cas:xCoordinate>?</cas:xCoordinate>\r
+                     <cas:yCoordinate>?</cas:yCoordinate>\r
+                     <cas:zCoordinate>?</cas:zCoordinate>\r
+                  </cas:registryObject>\r
+               </cas:registryObjects>\r
+               <!--Optional:-->\r
+               <cas:ordinances>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:ordinance verwerkingssoort="?">\r
+                     <cas:id>?</cas:id>\r
+                     <cas:caseId>?</cas:caseId>\r
+                     <cas:caseIdentification>?</cas:caseIdentification>\r
+                     <cas:identification>?</cas:identification>\r
+                     <cas:ordinanceDate>?</cas:ordinanceDate>\r
+                     <cas:clarification>?</cas:clarification>\r
+                     <cas:effectiveDate>?</cas:effectiveDate>\r
+                     <cas:expirationDate>?</cas:expirationDate>\r
+                     <cas:expirationReason>?</cas:expirationReason>\r
+                     <cas:publicationDate>?</cas:publicationDate>\r
+                     <cas:sendDate>?</cas:sendDate>\r
+                     <cas:lastResponseDate>?</cas:lastResponseDate>\r
+                     <cas:setDate>?</cas:setDate>\r
+                     <!--Optional:-->\r
+                     <cas:ordinanceType>\r
+                        <cas:description>?</cas:description>\r
+                     </cas:ordinanceType>\r
+                     <!--Optional:-->\r
+                     <cas:documents>\r
+                        <!--Zero or more repetitions:-->\r
+                        <cas:document>\r
+                           <doc:referenceNumber>?</doc:referenceNumber>\r
+                        </cas:document>\r
+                     </cas:documents>\r
+                  </cas:ordinance>\r
+               </cas:ordinances>\r
+               <!--Optional:-->\r
+               <cas:extensions>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:extension verwerkingssoort="?">\r
+                     <cas:id>?</cas:id>\r
+                     <cas:caseId>?</cas:caseId>\r
+                     <cas:length>?</cas:length>\r
+                     <cas:reason>?</cas:reason>\r
+                  </cas:extension>\r
+               </cas:extensions>\r
+               <!--Optional:-->\r
+               <cas:postponements>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:postponement verwerkingssoort="?">\r
+                     <cas:id>?</cas:id>\r
+                     <cas:caseId>?</cas:caseId>\r
+                     <cas:indication>?</cas:indication>\r
+                     <cas:reason>?</cas:reason>\r
+                     <cas:durationType>End date</cas:durationType>\r
+                     <!--You have a CHOICE of the next 2 items at this level-->\r
+                     <cas:duration>?</cas:duration>\r
+                     <cas:endDate>?</cas:endDate>\r
+                  </cas:postponement>\r
+               </cas:postponements>\r
+               <!--Optional:-->\r
+               <cas:attributeGroups>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:attributeGroup>\r
+                     <cas:id>?</cas:id>\r
+                     <!--Optional:-->\r
+                     <cas:name>?</cas:name>\r
+                     <cas:index>?</cas:index>\r
+                     <cas:attributes>\r
+                        <!--Zero or more repetitions:-->\r
+                        <cas:attribute>\r
+                           <cas:id>?</cas:id>\r
+                           <!--Optional:-->\r
+                           <cas:name>?</cas:name>\r
+                           <cas:value>?</cas:value>\r
+                           <cas:setDate>?</cas:setDate>\r
+                           <!--Optional:-->\r
+                           <cas:setByActor>\r
+                              <!--You have a CHOICE of the next 2 items at this level-->\r
+                              <cas:employee>\r
+                                 <cas:id>?</cas:id>\r
+                                 <!--Optional:-->\r
+                                 <cas:identification>?</cas:identification>\r
+                              </cas:employee>\r
+                              <cas:unit>\r
+                                 <cas:id>?</cas:id>\r
+                                 <!--Optional:-->\r
+                                 <cas:identification>?</cas:identification>\r
+                              </cas:unit>\r
+                           </cas:setByActor>\r
+                           <!--Optional:-->\r
+                           <cas:step>\r
+                              <cas:id>?</cas:id>\r
+                           </cas:step>\r
+                        </cas:attribute>\r
+                     </cas:attributes>\r
+                  </cas:attributeGroup>\r
+               </cas:attributeGroups>\r
+               <!--Optional:-->\r
+               <cas:notes>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:note>\r
+                     <cas:id>?</cas:id>\r
+                     <cas:caseId>?</cas:caseId>\r
+                     <cas:title>?</cas:title>\r
+                     <cas:content>?</cas:content>\r
+                     <cas:setDate>?</cas:setDate>\r
+                     <!--Optional:-->\r
+                     <cas:setByActor>\r
+                        <!--You have a CHOICE of the next 2 items at this level-->\r
+                        <cas:employee>\r
+                           <cas:id>?</cas:id>\r
+                           <!--Optional:-->\r
+                           <cas:identification>?</cas:identification>\r
+                        </cas:employee>\r
+                        <cas:unit>\r
+                           <cas:id>?</cas:id>\r
+                           <!--Optional:-->\r
+                           <cas:identification>?</cas:identification>\r
+                        </cas:unit>\r
+                     </cas:setByActor>\r
+                  </cas:note>\r
+               </cas:notes>\r
+               <!--Optional:-->\r
+               <cas:otherCaseObjects>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:otherCaseObject verwerkingssoort="?">\r
+                     <cas:id>?</cas:id>\r
+                     <cas:description>?</cas:description>\r
+                     <cas:indication>?</cas:indication>\r
+                     <cas:location>\r
+                        <!--You may enter ANY elements at this point-->\r
+                     </cas:location>\r
+                     <cas:registration>?</cas:registration>\r
+                  </cas:otherCaseObject>\r
+               </cas:otherCaseObjects>\r
+               <!--Optional:-->\r
+               <cas:caseObjects>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:caseObject verwerkingssoort="?">\r
+                     <cas:id>?</cas:id>\r
+                     <cas:caseId>?</cas:caseId>\r
+                     <cas:objectId>?</cas:objectId>\r
+                     <cas:description>?</cas:description>\r
+                     <cas:object>\r
+                        <cas:id>?</cas:id>\r
+                        <cas:specializedObjectType>ONB</cas:specializedObjectType>\r
+                        <cas:content>\r
+                           <!--You may enter ANY elements at this point-->\r
+                        </cas:content>\r
+                     </cas:object>\r
+                  </cas:caseObject>\r
+               </cas:caseObjects>\r
+               <!--Optional:-->\r
+               <cas:characteristics>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:characteristic verwerkingssoort="?">\r
+                     <cas:caseId>?</cas:caseId>\r
+                     <cas:source>?</cas:source>\r
+                     <cas:characteristic>?</cas:characteristic>\r
+                  </cas:characteristic>\r
+               </cas:characteristics>\r
+               <!--Optional:-->\r
+               <cas:caseRelations>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:caseRelation verwerkingssoort="?">\r
+                     <cas:id>?</cas:id>\r
+                     <cas:parentCase>\r
+                        <cas:id>?</cas:id>\r
+                        <!--Optional:-->\r
+                        <cas:referenceNumber>?</cas:referenceNumber>\r
+                     </cas:parentCase>\r
+                     <cas:childCase>\r
+                        <cas:id>?</cas:id>\r
+                        <!--Optional:-->\r
+                        <cas:referenceNumber>?</cas:referenceNumber>\r
+                     </cas:childCase>\r
+                     <cas:relationType>\r
+                        <cas:code>?</cas:code>\r
+                     </cas:relationType>\r
+                  </cas:caseRelation>\r
+               </cas:caseRelations>\r
+               <!--Optional:-->\r
+               <cas:includes>\r
+                  <!--Zero or more repetitions:-->\r
+                  <cas:include>?</cas:include>\r
+               </cas:includes>\r
+            </cas:case>\r
+         </cas:detailedCaseSaveMessage>\r
+      </cas:updateDetailedCase>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="cases:updateDetailedCase"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
       <con:call id="0be30b76-942b-4821-8cd6-e61f81ff44d9" name="Request 2">
         <con:settings/>
         <con:encoding>UTF-8</con:encoding>
         <con:endpoint>http://LAPTOP-UKAI1A6:8091/mock/CasesService</con:endpoint>
+        <con:request/>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="cases:updateDetailedCase"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
     <con:operation id="6657c875-41dd-4b19-976e-e7555a1540d3" isOneWay="false" action="cases:updateEmployees" name="updateEmployees" bindingOperationName="updateEmployees" type="Request-Response" outputName="updateEmployeesResponse" inputName="updateEmployeesRequest" receivesAttachments="false" sendsAttachments="false">
@@ -15702,7 +16520,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       "index" : 1,\r
       "typeVersion" : 1,\r
       "data" : {\r
-         "bsn" : "164830509",\r
+         "bsn" : "999999990",\r
          "data" : {\r
             "evenement" : {\r
                "naamEvenement" : "gdfhgfh",\r
@@ -15783,11 +16601,11 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
             "uw-gegevenscompleet" : {\r
                "fieldSetMetDigiD" : {\r
                   "adresgegevensMD" : {\r
-                     "postcodePMD" : "3454 XP",\r
-                     "huisletterPMD" : "B",\r
-                     "huisnummerPMD" : "3",\r
-                     "straatnaamPMD" : "Mauritslaan",\r
-                     "woonplaatsPMD" : "De Meern",\r
+                     "postcodePMD" : "3554 AS",\r
+                     "huisletterPMD" : "",\r
+                     "huisnummerPMD" : "91",\r
+                     "straatnaamPMD" : "Van Hoornekade",\r
+                     "woonplaatsPMD" : "Utrecht",\r
                      "huisnummertoevoegingPMD" : ""\r
                   },\r
                   "contactgegevensMD" : {\r
@@ -15795,9 +16613,9 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
                      "telefoonnummerPMD" : "0612345678"\r
                   },\r
                   "persoonsgegevensMD" : {\r
-                     "bsnPMD" : "164830509",\r
-                     "aanhefPMD" : "V",\r
-                     "achternaamPMD" : "Boyd",\r
+                     "bsnPMD" : "169795135",\r
+                     "aanhefPMD" : "M",\r
+                     "achternaamPMD" : "Niem",\r
                      "voorletterSPMD" : "",\r
                      "tussenvoegselSPMD" : ""\r
                   }\r
@@ -16943,1009 +17761,140 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       <con:dispatchConfig/>
     </con:mockOperation>
   </con:mockService>
-  <con:mockService id="547abb77-ccdc-471e-9905-0c0b77e77739" port="8091" path="/mock/CasesService" host="LAPTOP-UKAI1A6" name="BPEL CasesProxy Mock" bindToHostOnly="false" docroot="">
+  <con:mockService id="547abb77-ccdc-471e-9905-0c0b77e77739" port="8091" path="/mock/CasesService" host="LAPTOP-UKAI1A6" name="BPEL CasesProxy Mock" bindToHostOnly="false" docroot="" dispatchResponseMessages="false">
     <con:settings>
       <con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting>
     </con:settings>
     <con:properties/>
+    <con:onRequestScript/>
     <con:mockOperation name="readCases" id="3c732cad-3b1a-439b-9af8-4a8b2fba0dbc" interface="CasesBinding" operation="readCases">
       <con:settings/>
       <con:defaultResponse>Response 1</con:defaultResponse>
       <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
       <con:response name="Response 1" id="e015aa61-6d46-436b-805d-ea418dc1d51a" httpResponseStatus="200" encoding="UTF-8">
         <con:settings/>
-        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cas="http://www.emaxx.org/functional/cases">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <cas:readCasesResponse>
-         <cas:caseDetailsMessage>
-            <cas:cases>
-               <!--Zero or more repetitions:-->
-               <cas:case verwerkingssoort="?">
-                  <cas:id>?</cas:id>
-                  <cas:referenceNumber>?</cas:referenceNumber>
-                  <cas:description>?</cas:description>
-                  <cas:clarification>?</cas:clarification>
-                  <cas:xml>
-                     <!--You may enter ANY elements at this point-->
-                  </cas:xml>
-                  <cas:startDate>?</cas:startDate>
-                  <!--Optional:-->
-                  <cas:startTime>?</cas:startTime>
-                  <cas:endDate>?</cas:endDate>
-                  <cas:plannedEndDate>?</cas:plannedEndDate>
-                  <cas:completionDate>?</cas:completionDate>
-                  <!--Optional:-->
-                  <cas:fileName>?</cas:fileName>
-                  <!--Optional:-->
-                  <cas:fileMimeType>?</cas:fileMimeType>
-                  <!--Optional:-->
-                  <cas:fileData>cid:1489157993630</cas:fileData>
-                  <!--Optional:-->
-                  <cas:registrationDate>?</cas:registrationDate>
-                  <cas:publicationDate>?</cas:publicationDate>
-                  <cas:caseLevel>0</cas:caseLevel>
-                  <cas:subCaseIndication>N</cas:subCaseIndication>
-                  <cas:paymentIndication>?</cas:paymentIndication>
-                  <cas:lastPaymentDate>?</cas:lastPaymentDate>
-                  <cas:confidentialityLevel>?</cas:confidentialityLevel>
-                  <cas:urgencyLevel>?</cas:urgencyLevel>
-                  <cas:anonymous>N</cas:anonymous>
-                  <cas:primaryOrganization>?</cas:primaryOrganization>
-                  <!--Optional:-->
-                  <cas:caseTargets>
-                     <!--Zero or more repetitions:-->
-                     <cas:caseTarget verwerkingssoort="?">
-                        <cas:caseId>?</cas:caseId>
-                        <cas:code>?</cas:code>
-                        <cas:referenceNumber>?</cas:referenceNumber>
-                     </cas:caseTarget>
-                  </cas:caseTargets>
-                  <cas:caseType>
-                     <cas:id>?</cas:id>
-                     <cas:seqNr>?</cas:seqNr>
-                     <cas:code>?</cas:code>
-                     <cas:identification>?</cas:identification>
-                     <cas:description>?</cas:description>
-                     <cas:descriptionGeneric>?</cas:descriptionGeneric>
-                     <cas:version>?</cas:version>
-                     <cas:versionClarification>?</cas:versionClarification>
-                     <cas:objective>?</cas:objective>
-                     <cas:cause>?</cas:cause>
-                     <cas:clarification>?</cas:clarification>
-                     <cas:internal>TE</cas:internal>
-                     <!--Optional:-->
-                     <cas:subject>?</cas:subject>
-                     <!--Optional:-->
-                     <cas:actionInitiator>?</cas:actionInitiator>
-                     <!--Optional:-->
-                     <cas:actionExecutor>?</cas:actionExecutor>
-                     <cas:runTime>999</cas:runTime>
-                     <cas:serviceNorm>?</cas:serviceNorm>
-                     <cas:postponementAllowed>J</cas:postponementAllowed>
-                     <cas:extensionAllowed>J</cas:extensionAllowed>
-                     <cas:extensionTerm>999</cas:extensionTerm>
-                     <cas:confidentialityLevel>?</cas:confidentialityLevel>
-                     <cas:publicationIndication>N</cas:publicationIndication>
-                     <cas:publicationText>?</cas:publicationText>
-                     <cas:caseCategory>?</cas:caseCategory>
-                     <cas:archiveCode>?</cas:archiveCode>
-                     <cas:validityStartDate>?</cas:validityStartDate>
-                     <cas:validityEndDate>?</cas:validityEndDate>
-                     <cas:isReferenceCaseType>N</cas:isReferenceCaseType>
-                     <cas:isPublic>J</cas:isPublic>
-                     <cas:modifyStartDate>N</cas:modifyStartDate>
-                     <cas:recalculatePlannedEndDate>J</cas:recalculatePlannedEndDate>
-                     <cas:catalogRSIN>?</cas:catalogRSIN>
-                  </cas:caseType>
-                  <!--Optional:-->
-                  <cas:channel>
-                     <cas:code>?</cas:code>
-                     <cas:name>?</cas:name>
-                     <cas:description>?</cas:description>
-                  </cas:channel>
-                  <!--Optional:-->
-                  <cas:result verwerkingssoort="?">
-                     <cas:id>?</cas:id>
-                     <cas:caseId>?</cas:caseId>
-                     <cas:description>?</cas:description>
-                     <cas:clarification>?</cas:clarification>
-                  </cas:result>
-                  <!--Optional:-->
-                  <cas:archiveSettings>
-                     <cas:caseId>?</cas:caseId>
-                     <cas:baseDateArchiveProcedure>?</cas:baseDateArchiveProcedure>
-                     <cas:baseDate>?</cas:baseDate>
-                     <cas:archiveNomination>?</cas:archiveNomination>
-                     <cas:archiveTerm>?</cas:archiveTerm>
-                     <cas:archiveDate>?</cas:archiveDate>
-                     <cas:changeReason>?</cas:changeReason>
-                     <cas:remark>?</cas:remark>
-                     <!--Optional:-->
-                     <cas:selectionListClass>
-                        <cas:id>?</cas:id>
-                        <cas:year>?</cas:year>
-                        <cas:number>?</cas:number>
-                        <cas:classNumber>?</cas:classNumber>
-                        <cas:className>?</cas:className>
-                        <cas:classDescription>?</cas:classDescription>
-                        <cas:classClarification>?</cas:classClarification>
-                        <cas:processObject>?</cas:processObject>
-                        <cas:processTerm>?</cas:processTerm>
-                        <cas:generic>?</cas:generic>
-                        <cas:result>?</cas:result>
-                        <cas:description>?</cas:description>
-                        <cas:clarification>?</cas:clarification>
-                        <cas:origin>?</cas:origin>
-                        <cas:archiveNomination>?</cas:archiveNomination>
-                        <cas:archiveTerm>?</cas:archiveTerm>
-                        <cas:baseDateArchiveProcedure>?</cas:baseDateArchiveProcedure>
-                        <cas:mutable>?</cas:mutable>
-                     </cas:selectionListClass>
-                  </cas:archiveSettings>
-                  <!--Optional:-->
-                  <cas:statuses>
-                     <!--Zero or more repetitions:-->
-                     <cas:status>
-                        <cas:id>?</cas:id>
-                        <cas:caseId>?</cas:caseId>
-                        <cas:statusType>
-                           <cas:id>?</cas:id>
-                           <cas:sequenceNumber>?</cas:sequenceNumber>
-                           <!--Optional:-->
-                           <cas:code>?</cas:code>
-                           <cas:description>?</cas:description>
-                           <cas:descriptionGeneric>?</cas:descriptionGeneric>
-                           <cas:clarification>?</cas:clarification>
-                           <cas:runTime>999</cas:runTime>
-                           <cas:publicationIndication>N</cas:publicationIndication>
-                           <cas:endStatusIndication>N</cas:endStatusIndication>
-                           <cas:validityStartDate>?</cas:validityStartDate>
-                           <cas:validityEndDate>?</cas:validityEndDate>
-                        </cas:statusType>
-                        <cas:date>?</cas:date>
-                        <cas:clarification>?</cas:clarification>
-                        <cas:lastStatusIndication>?</cas:lastStatusIndication>
-                        <!--Optional:-->
-                        <cas:setByActor verwerkingssoort="?">
-                           <!--You have a CHOICE of the next 2 items at this level-->
-                           <cas:employee>
-                              <cas:id>?</cas:id>
-                              <cas:username>?</cas:username>
-                              <cas:identification>?</cas:identification>
-                              <cas:clarification>?</cas:clarification>
-                              <cas:resignationDate>?</cas:resignationDate>
-                              <cas:genderIndication>?</cas:genderIndication>
-                              <cas:initials>?</cas:initials>
-                              <cas:lastNamePrefix>?</cas:lastNamePrefix>
-                              <cas:lastName>?</cas:lastName>
-                              <cas:nameOfAddress>?</cas:nameOfAddress>
-                              <cas:function>?</cas:function>
-                              <cas:emailAddress>?</cas:emailAddress>
-                              <cas:telephoneNumber>?</cas:telephoneNumber>
-                           </cas:employee>
-                           <cas:unit>
-                              <cas:id>?</cas:id>
-                              <cas:code>?</cas:code>
-                              <cas:identification>?</cas:identification>
-                              <cas:name>?</cas:name>
-                              <cas:shortName>?</cas:shortName>
-                              <cas:description>?</cas:description>
-                              <cas:clarification>?</cas:clarification>
-                              <cas:foundingDate>?</cas:foundingDate>
-                              <cas:disbandingDate>?</cas:disbandingDate>
-                              <cas:telephoneNumber>?</cas:telephoneNumber>
-                              <cas:faxNumber>?</cas:faxNumber>
-                              <cas:emailAddress>?</cas:emailAddress>
-                           </cas:unit>
-                        </cas:setByActor>
-                     </cas:status>
-                  </cas:statuses>
-                  <!--You have a CHOICE of the next 2 items at this level-->
-                  <!--Optional:-->
-                  <cas:initiatingActor verwerkingssoort="?">
-                     <!--You have a CHOICE of the next 2 items at this level-->
-                     <cas:employee>
-                        <cas:id>?</cas:id>
-                        <cas:username>?</cas:username>
-                        <cas:identification>?</cas:identification>
-                        <cas:clarification>?</cas:clarification>
-                        <cas:resignationDate>?</cas:resignationDate>
-                        <cas:genderIndication>?</cas:genderIndication>
-                        <cas:initials>?</cas:initials>
-                        <cas:lastNamePrefix>?</cas:lastNamePrefix>
-                        <cas:lastName>?</cas:lastName>
-                        <cas:nameOfAddress>?</cas:nameOfAddress>
-                        <cas:function>?</cas:function>
-                        <cas:emailAddress>?</cas:emailAddress>
-                        <cas:telephoneNumber>?</cas:telephoneNumber>
-                     </cas:employee>
-                     <cas:unit>
-                        <cas:id>?</cas:id>
-                        <cas:code>?</cas:code>
-                        <cas:identification>?</cas:identification>
-                        <cas:name>?</cas:name>
-                        <cas:shortName>?</cas:shortName>
-                        <cas:description>?</cas:description>
-                        <cas:clarification>?</cas:clarification>
-                        <cas:foundingDate>?</cas:foundingDate>
-                        <cas:disbandingDate>?</cas:disbandingDate>
-                        <cas:telephoneNumber>?</cas:telephoneNumber>
-                        <cas:faxNumber>?</cas:faxNumber>
-                        <cas:emailAddress>?</cas:emailAddress>
-                     </cas:unit>
-                  </cas:initiatingActor>
-                  <!--Optional:-->
-                  <cas:initiatingSubject verwerkingssoort="?">
-                     <!--You have a CHOICE of the next 3 items at this level-->
-                     <cas:person>
-                        <cas:id>person12345</cas:id>
-                        <!--You have a CHOICE of the next 2 items at this level-->
-                        <cas:citizenNumber authentic="J">?</cas:citizenNumber>
-                        <cas:numberOtherNaturalPerson>?</cas:numberOtherNaturalPerson>
-                        <cas:genderIndication>?</cas:genderIndication>
-                        <cas:firstNames>?</cas:firstNames>
-                        <cas:lastNamePrefix>?</cas:lastNamePrefix>
-                        <cas:lastName>?</cas:lastName>
-                        <cas:dateOfBirth>?</cas:dateOfBirth>
-                        <cas:dateOfDeath>?</cas:dateOfDeath>
-                        <cas:emailAddress>?</cas:emailAddress>
-                        <cas:telephoneNumber>?</cas:telephoneNumber>
-                        <cas:faxNumber>?</cas:faxNumber>
-                        <cas:bankAccountNumber>?</cas:bankAccountNumber>
-                        <cas:iban>?</cas:iban>
-                        <cas:bic>?</cas:bic>
-                        <cas:type>?</cas:type>
-                        <cas:nobleTitle>?</cas:nobleTitle>
-                        <cas:hisStartDate indicationIncomplete="V">?</cas:hisStartDate>
-                        <cas:hisEndDate indicationIncomplete="V">?</cas:hisEndDate>
-                        <!--Optional:-->
-                        <cas:nameOfAddress>
-                           <cas:title>?</cas:title>
-                           <cas:initials>?</cas:initials>
-                           <cas:firstNames>?</cas:firstNames>
-                           <cas:lastName>?</cas:lastName>
-                        </cas:nameOfAddress>
-                        <!--Optional:-->
-                        <cas:academicTitles>
-                           <!--0 to 3 repetitions:-->
-                           <cas:academicTitle>
-                              <cas:code>?</cas:code>
-                           </cas:academicTitle>
-                        </cas:academicTitles>
-                        <!--Optional:-->
-                        <cas:residenceAddress>
-                           <cas:houseNumber>?</cas:houseNumber>
-                           <cas:houseLetter>?</cas:houseLetter>
-                           <cas:houseRemark>?</cas:houseRemark>
-                           <cas:streetname>?</cas:streetname>
-                           <cas:streetnameBOCO>?</cas:streetnameBOCO>
-                           <cas:zipCode>?</cas:zipCode>
-                           <cas:city>?</cas:city>
-                           <cas:locationDescription>?</cas:locationDescription>
-                           <cas:namePublicSpace>?</cas:namePublicSpace>
-                        </cas:residenceAddress>
-                        <!--Optional:-->
-                        <cas:correspondenceAddress>
-                           <cas:houseNumber>?</cas:houseNumber>
-                           <cas:houseLetter>?</cas:houseLetter>
-                           <cas:houseRemark>?</cas:houseRemark>
-                           <cas:streetname>?</cas:streetname>
-                           <cas:streetnameBOCO>?</cas:streetnameBOCO>
-                           <cas:zipCode>?</cas:zipCode>
-                           <cas:city>?</cas:city>
-                           <cas:locationDescription>?</cas:locationDescription>
-                           <cas:namePublicSpace>?</cas:namePublicSpace>
-                        </cas:correspondenceAddress>
-                        <!--Optional:-->
-                        <cas:postalAddress>
-                           <cas:postalAddressType>?</cas:postalAddressType>
-                           <cas:poBoxNumber>?</cas:poBoxNumber>
-                           <cas:zipCode>?</cas:zipCode>
-                           <cas:city>?</cas:city>
-                        </cas:postalAddress>
-                        <!--Optional:-->
-                        <cas:foreignAddress>
-                           <cas:foreignAddress1>?</cas:foreignAddress1>
-                           <cas:foreignAddress2>?</cas:foreignAddress2>
-                           <cas:foreignAddress3>?</cas:foreignAddress3>
-                           <cas:countryName>?</cas:countryName>
-                        </cas:foreignAddress>
-                     </cas:person>
-                  </cas:initiatingSubject>
-                  <!--Optional:-->
-                  <cas:responsibleActor verwerkingssoort="?">
-                     <!--You have a CHOICE of the next 2 items at this level-->
-                     <cas:employee>
-                        <cas:id>?</cas:id>
-                        <cas:username>?</cas:username>
-                        <cas:identification>?</cas:identification>
-                        <cas:clarification>?</cas:clarification>
-                        <cas:resignationDate>?</cas:resignationDate>
-                        <cas:genderIndication>?</cas:genderIndication>
-                        <cas:initials>?</cas:initials>
-                        <cas:lastNamePrefix>?</cas:lastNamePrefix>
-                        <cas:lastName>?</cas:lastName>
-                        <cas:nameOfAddress>?</cas:nameOfAddress>
-                        <cas:function>?</cas:function>
-                        <cas:emailAddress>?</cas:emailAddress>
-                        <cas:telephoneNumber>?</cas:telephoneNumber>
-                     </cas:employee>
-                     <cas:unit>
-                        <cas:id>?</cas:id>
-                        <cas:code>?</cas:code>
-                        <cas:identification>?</cas:identification>
-                        <cas:name>?</cas:name>
-                        <cas:shortName>?</cas:shortName>
-                        <cas:description>?</cas:description>
-                        <cas:clarification>?</cas:clarification>
-                        <cas:foundingDate>?</cas:foundingDate>
-                        <cas:disbandingDate>?</cas:disbandingDate>
-                        <cas:telephoneNumber>?</cas:telephoneNumber>
-                        <cas:faxNumber>?</cas:faxNumber>
-                        <cas:emailAddress>?</cas:emailAddress>
-                     </cas:unit>
-                  </cas:responsibleActor>
-                  <!--Optional:-->
-                  <cas:parties>
-                     <!--Zero or more repetitions:-->
-                     <cas:party verwerkingssoort="?">
-                        <cas:caseId>?</cas:caseId>
-                        <cas:roleTypeCode>?</cas:roleTypeCode>
-                        <cas:actor>
-                           <!--You have a CHOICE of the next 5 items at this level-->
-                           <cas:employee>
-                              <cas:id>?</cas:id>
-                              <cas:username>?</cas:username>
-                              <cas:identification>?</cas:identification>
-                              <cas:clarification>?</cas:clarification>
-                              <cas:resignationDate>?</cas:resignationDate>
-                              <cas:genderIndication>?</cas:genderIndication>
-                              <cas:initials>?</cas:initials>
-                              <cas:lastNamePrefix>?</cas:lastNamePrefix>
-                              <cas:lastName>?</cas:lastName>
-                              <cas:nameOfAddress>?</cas:nameOfAddress>
-                              <cas:function>?</cas:function>
-                              <cas:emailAddress>?</cas:emailAddress>
-                              <cas:telephoneNumber>?</cas:telephoneNumber>
-                           </cas:employee>
-                           <cas:unit>
-                              <cas:id>?</cas:id>
-                              <cas:code>?</cas:code>
-                              <cas:identification>?</cas:identification>
-                              <cas:name>?</cas:name>
-                              <cas:shortName>?</cas:shortName>
-                              <cas:description>?</cas:description>
-                              <cas:clarification>?</cas:clarification>
-                              <cas:foundingDate>?</cas:foundingDate>
-                              <cas:disbandingDate>?</cas:disbandingDate>
-                              <cas:telephoneNumber>?</cas:telephoneNumber>
-                              <cas:faxNumber>?</cas:faxNumber>
-                              <cas:emailAddress>?</cas:emailAddress>
-                           </cas:unit>
-                           <cas:person>
-                              <cas:id>?</cas:id>
-                              <!--You have a CHOICE of the next 2 items at this level-->
-                              <cas:citizenNumber authentic="J">?</cas:citizenNumber>
-                              <cas:numberOtherNaturalPerson>?</cas:numberOtherNaturalPerson>
-                              <cas:genderIndication>?</cas:genderIndication>
-                              <cas:firstNames>?</cas:firstNames>
-                              <cas:lastNamePrefix>?</cas:lastNamePrefix>
-                              <cas:lastName>?</cas:lastName>
-                              <cas:dateOfBirth>?</cas:dateOfBirth>
-                              <cas:dateOfDeath>?</cas:dateOfDeath>
-                              <cas:emailAddress>?</cas:emailAddress>
-                              <cas:telephoneNumber>?</cas:telephoneNumber>
-                              <cas:faxNumber>?</cas:faxNumber>
-                              <cas:bankAccountNumber>?</cas:bankAccountNumber>
-                              <cas:iban>?</cas:iban>
-                              <cas:bic>?</cas:bic>
-                              <cas:type>?</cas:type>
-                              <cas:nobleTitle>?</cas:nobleTitle>
-                              <cas:hisStartDate indicationIncomplete="V">?</cas:hisStartDate>
-                              <cas:hisEndDate indicationIncomplete="V">?</cas:hisEndDate>
-                              <!--Optional:-->
-                              <cas:nameOfAddress>
-                                 <cas:title>?</cas:title>
-                                 <cas:initials>?</cas:initials>
-                                 <cas:firstNames>?</cas:firstNames>
-                                 <cas:lastName>?</cas:lastName>
-                              </cas:nameOfAddress>
-                              <!--Optional:-->
-                              <cas:academicTitles>
-                                 <!--0 to 3 repetitions:-->
-                                 <cas:academicTitle>
-                                    <cas:code>?</cas:code>
-                                 </cas:academicTitle>
-                              </cas:academicTitles>
-                              <!--Optional:-->
-                              <cas:residenceAddress>
-                                 <cas:houseNumber>?</cas:houseNumber>
-                                 <cas:houseLetter>?</cas:houseLetter>
-                                 <cas:houseRemark>?</cas:houseRemark>
-                                 <cas:streetname>?</cas:streetname>
-                                 <cas:streetnameBOCO>?</cas:streetnameBOCO>
-                                 <cas:zipCode>?</cas:zipCode>
-                                 <cas:city>?</cas:city>
-                                 <cas:locationDescription>?</cas:locationDescription>
-                                 <cas:namePublicSpace>?</cas:namePublicSpace>
-                              </cas:residenceAddress>
-                              <!--Optional:-->
-                              <cas:correspondenceAddress>
-                                 <cas:houseNumber>?</cas:houseNumber>
-                                 <cas:houseLetter>?</cas:houseLetter>
-                                 <cas:houseRemark>?</cas:houseRemark>
-                                 <cas:streetname>?</cas:streetname>
-                                 <cas:streetnameBOCO>?</cas:streetnameBOCO>
-                                 <cas:zipCode>?</cas:zipCode>
-                                 <cas:city>?</cas:city>
-                                 <cas:locationDescription>?</cas:locationDescription>
-                                 <cas:namePublicSpace>?</cas:namePublicSpace>
-                              </cas:correspondenceAddress>
-                              <!--Optional:-->
-                              <cas:postalAddress>
-                                 <cas:postalAddressType>?</cas:postalAddressType>
-                                 <cas:poBoxNumber>?</cas:poBoxNumber>
-                                 <cas:zipCode>?</cas:zipCode>
-                                 <cas:city>?</cas:city>
-                              </cas:postalAddress>
-                              <!--Optional:-->
-                              <cas:foreignAddress>
-                                 <cas:foreignAddress1>?</cas:foreignAddress1>
-                                 <cas:foreignAddress2>?</cas:foreignAddress2>
-                                 <cas:foreignAddress3>?</cas:foreignAddress3>
-                                 <cas:countryName>?</cas:countryName>
-                              </cas:foreignAddress>
-                           </cas:person>
-                           <cas:organization>
-                              <cas:id>?</cas:id>
-                              <!--You have a CHOICE of the next 2 items at this level-->
-                              <cas:nnpId authentic="J">?</cas:nnpId>
-                              <cas:numberOtherForeignNNP>?</cas:numberOtherForeignNNP>
-                              <cas:kvkNumber>?</cas:kvkNumber>
-                              <cas:statutoryName>?</cas:statutoryName>
-                              <cas:foundingDate>?</cas:foundingDate>
-                              <cas:disbandingDate>?</cas:disbandingDate>
-                              <cas:emailAddress>?</cas:emailAddress>
-                              <cas:telephoneNumber>?</cas:telephoneNumber>
-                              <cas:faxNumber>?</cas:faxNumber>
-                              <cas:bankAccountNumber>?</cas:bankAccountNumber>
-                              <cas:iban>?</cas:iban>
-                              <cas:bic>?</cas:bic>
-                              <cas:type>?</cas:type>
-                              <cas:hisStartDate indicationIncomplete="V">?</cas:hisStartDate>
-                              <cas:hisEndDate indicationIncomplete="V">?</cas:hisEndDate>
-                              <!--Optional:-->
-                              <cas:correspondenceAddress>
-                                 <cas:houseNumber>?</cas:houseNumber>
-                                 <cas:houseLetter>?</cas:houseLetter>
-                                 <cas:houseRemark>?</cas:houseRemark>
-                                 <cas:streetname>?</cas:streetname>
-                                 <cas:streetnameBOCO>?</cas:streetnameBOCO>
-                                 <cas:zipCode>?</cas:zipCode>
-                                 <cas:city>?</cas:city>
-                                 <cas:locationDescription>?</cas:locationDescription>
-                                 <cas:namePublicSpace>?</cas:namePublicSpace>
-                              </cas:correspondenceAddress>
-                              <!--Optional:-->
-                              <cas:postalAddress>
-                                 <cas:postalAddressType>?</cas:postalAddressType>
-                                 <cas:poBoxNumber>?</cas:poBoxNumber>
-                                 <cas:zipCode>?</cas:zipCode>
-                                 <cas:city>?</cas:city>
-                              </cas:postalAddress>
-                              <!--Optional:-->
-                              <cas:foreignAddress>
-                                 <cas:foreignAddress1>?</cas:foreignAddress1>
-                                 <cas:foreignAddress2>?</cas:foreignAddress2>
-                                 <cas:foreignAddress3>?</cas:foreignAddress3>
-                                 <cas:countryName>?</cas:countryName>
-                              </cas:foreignAddress>
-                           </cas:organization>
-                           <cas:office>
-                              <cas:id>?</cas:id>
-                              <cas:officeNumber authentic="J">?</cas:officeNumber>
-                              <cas:kvkNumber>?</cas:kvkNumber>
-                              <cas:shortName>?</cas:shortName>
-                              <cas:foundingDate>?</cas:foundingDate>
-                              <cas:disbandingDate>?</cas:disbandingDate>
-                              <cas:emailAddress>?</cas:emailAddress>
-                              <cas:telephoneNumber>?</cas:telephoneNumber>
-                              <cas:faxNumber>?</cas:faxNumber>
-                              <cas:bankAccountNumber>?</cas:bankAccountNumber>
-                              <cas:iban>?</cas:iban>
-                              <cas:bic>?</cas:bic>
-                              <cas:type>?</cas:type>
-                              <cas:hisStartDate indicationIncomplete="V">?</cas:hisStartDate>
-                              <cas:hisEndDate indicationIncomplete="V">?</cas:hisEndDate>
-                              <!--Optional:-->
-                              <cas:tradeNames>
-                                 <!--Zero or more repetitions:-->
-                                 <cas:tradeName>?</cas:tradeName>
-                              </cas:tradeNames>
-                              <!--Optional:-->
-                              <cas:locationAddress>
-                                 <cas:houseNumber>?</cas:houseNumber>
-                                 <cas:houseLetter>?</cas:houseLetter>
-                                 <cas:houseRemark>?</cas:houseRemark>
-                                 <cas:streetname>?</cas:streetname>
-                                 <cas:streetnameBOCO>?</cas:streetnameBOCO>
-                                 <cas:zipCode>?</cas:zipCode>
-                                 <cas:city>?</cas:city>
-                                 <cas:locationDescription>?</cas:locationDescription>
-                                 <cas:namePublicSpace>?</cas:namePublicSpace>
-                              </cas:locationAddress>
-                              <!--Optional:-->
-                              <cas:correspondenceAddress>
-                                 <cas:houseNumber>?</cas:houseNumber>
-                                 <cas:houseLetter>?</cas:houseLetter>
-                                 <cas:houseRemark>?</cas:houseRemark>
-                                 <cas:streetname>?</cas:streetname>
-                                 <cas:streetnameBOCO>?</cas:streetnameBOCO>
-                                 <cas:zipCode>?</cas:zipCode>
-                                 <cas:city>?</cas:city>
-                                 <cas:locationDescription>?</cas:locationDescription>
-                                 <cas:namePublicSpace>?</cas:namePublicSpace>
-                              </cas:correspondenceAddress>
-                              <!--Optional:-->
-                              <cas:postalAddress>
-                                 <cas:postalAddressType>?</cas:postalAddressType>
-                                 <cas:poBoxNumber>?</cas:poBoxNumber>
-                                 <cas:zipCode>?</cas:zipCode>
-                                 <cas:city>?</cas:city>
-                              </cas:postalAddress>
-                              <!--Optional:-->
-                              <cas:foreignAddress>
-                                 <cas:foreignAddress1>?</cas:foreignAddress1>
-                                 <cas:foreignAddress2>?</cas:foreignAddress2>
-                                 <cas:foreignAddress3>?</cas:foreignAddress3>
-                                 <cas:countryName>?</cas:countryName>
-                              </cas:foreignAddress>
-                           </cas:office>
-                        </cas:actor>
-                     </cas:party>
-                  </cas:parties>
-                  <!--Optional:-->
-                  <cas:addresses>
-                     <!--Zero or more repetitions:-->
-                     <cas:address verwerkingssoort="?">
-                        <cas:id>?</cas:id>
-                        <cas:houseNumber>?</cas:houseNumber>
-                        <cas:houseLetter>?</cas:houseLetter>
-                        <cas:houseRemark>?</cas:houseRemark>
-                        <cas:houseIndication>?</cas:houseIndication>
-                        <cas:streetName>?</cas:streetName>
-                        <cas:city>?</cas:city>
-                        <cas:zipCode>?</cas:zipCode>
-                        <cas:locationNumber>?</cas:locationNumber>
-                        <cas:locationDescription>?</cas:locationDescription>
-                        <cas:neighbourhoodName>?</cas:neighbourhoodName>
-                        <cas:districtName>?</cas:districtName>
-                        <cas:municipalityCode>?</cas:municipalityCode>
-                        <cas:municipalityName>?</cas:municipalityName>
-                        <cas:xCoordinate>?</cas:xCoordinate>
-                        <cas:yCoordinate>?</cas:yCoordinate>
-                        <cas:zCoordinate>?</cas:zCoordinate>
-                     </cas:address>
-                  </cas:addresses>
-                  <!--Optional:-->
-                  <cas:registryObjects>
-                     <!--Zero or more repetitions:-->
-                     <cas:registryObject verwerkingssoort="?">
-                        <cas:id>?</cas:id>
-                        <cas:indexLetter>?</cas:indexLetter>
-                        <cas:indexNumber>?</cas:indexNumber>
-                        <cas:parcelNumber>?</cas:parcelNumber>
-                        <cas:municipalityCode>?</cas:municipalityCode>
-                        <cas:section>?</cas:section>
-                        <cas:xCoordinate>?</cas:xCoordinate>
-                        <cas:yCoordinate>?</cas:yCoordinate>
-                        <cas:zCoordinate>?</cas:zCoordinate>
-                     </cas:registryObject>
-                  </cas:registryObjects>
-                  <!--Optional:-->
-                  <cas:ordinances>
-                     <!--Zero or more repetitions:-->
-                     <cas:ordinance verwerkingssoort="?">
-                        <cas:id>?</cas:id>
-                        <cas:caseId>?</cas:caseId>
-                        <cas:caseIdentification>?</cas:caseIdentification>
-                        <cas:identification>?</cas:identification>
-                        <cas:ordinanceDate>?</cas:ordinanceDate>
-                        <cas:clarification>?</cas:clarification>
-                        <cas:effectiveDate>?</cas:effectiveDate>
-                        <cas:expirationDate>?</cas:expirationDate>
-                        <cas:expirationReason>?</cas:expirationReason>
-                        <cas:publicationDate>?</cas:publicationDate>
-                        <cas:sendDate>?</cas:sendDate>
-                        <cas:lastResponseDate>?</cas:lastResponseDate>
-                        <cas:setDate>?</cas:setDate>
-                        <!--Optional:-->
-                        <cas:ordinanceType>
-                           <cas:description>?</cas:description>
-                        </cas:ordinanceType>
-                     </cas:ordinance>
-                  </cas:ordinances>
-                  <!--Optional:-->
-                  <cas:extension verwerkingssoort="?">
-                     <cas:id>?</cas:id>
-                     <cas:caseId>?</cas:caseId>
-                     <cas:length>?</cas:length>
-                     <cas:reason>?</cas:reason>
-                  </cas:extension>
-                  <!--Optional:-->
-                  <cas:postponements>
-                     <!--Zero or more repetitions:-->
-                     <cas:postponement>
-                        <cas:id>?</cas:id>
-                        <cas:caseId>?</cas:caseId>
-                        <cas:indication>?</cas:indication>
-                        <cas:reason>?</cas:reason>
-                        <cas:startDate>?</cas:startDate>
-                        <cas:endDate>?</cas:endDate>
-                     </cas:postponement>
-                  </cas:postponements>
-                  <!--Optional:-->
-                  <cas:attributeGroups>
-                     <!--Zero or more repetitions:-->
-                     <cas:attributeGroup>
-                        <cas:id>?</cas:id>
-                        <cas:index>?</cas:index>
-                        <cas:name>?</cas:name>
-                        <cas:clarification>?</cas:clarification>
-                        <cas:checklistIndication>N</cas:checklistIndication>
-                        <cas:repeatable>N</cas:repeatable>
-                        <cas:minRepetitions>?</cas:minRepetitions>
-                        <cas:maxRepetitions>?</cas:maxRepetitions>
-                        <cas:sortOrder>?</cas:sortOrder>
-                        <cas:attributes>
-                           <!--Zero or more repetitions:-->
-                           <cas:attribute>
-                              <cas:id>?</cas:id>
-                              <cas:name>?</cas:name>
-                              <cas:attributeType>
-                                 <cas:id>?</cas:id>
-                              </cas:attributeType>
-                              <cas:helpText>?</cas:helpText>
-                              <cas:question>?</cas:question>
-                              <cas:mandatory>N</cas:mandatory>
-                              <cas:mutable>J</cas:mutable>
-                              <cas:defaultValue>?</cas:defaultValue>
-                              <cas:sortOrder>?</cas:sortOrder>
-                              <cas:value>?</cas:value>
-                              <cas:setDate>?</cas:setDate>
-                              <!--Optional:-->
-                              <cas:setByActor>
-                                 <!--You have a CHOICE of the next 2 items at this level-->
-                                 <cas:employee>
-                                    <cas:id>?</cas:id>
-                                    <!--Optional:-->
-                                    <cas:identification>?</cas:identification>
-                                    <cas:username>?</cas:username>
-                                    <cas:identification>?</cas:identification>
-                                    <cas:clarification>?</cas:clarification>
-                                    <cas:resignationDate>?</cas:resignationDate>
-                                    <cas:genderIndication>?</cas:genderIndication>
-                                    <cas:initials>?</cas:initials>
-                                    <cas:lastNamePrefix>?</cas:lastNamePrefix>
-                                    <cas:lastName>?</cas:lastName>
-                                    <cas:nameOfAddress>?</cas:nameOfAddress>
-                                    <cas:function>?</cas:function>
-                                    <cas:emailAddress>?</cas:emailAddress>
-                                    <cas:telephoneNumber>?</cas:telephoneNumber>
-                                 </cas:employee>
-                                 <cas:unit>
-                                    <cas:id>?</cas:id>
-                                    <!--Optional:-->
-                                    <cas:identification>?</cas:identification>
-                                    <cas:code>?</cas:code>
-                                    <cas:identification>?</cas:identification>
-                                    <cas:name>?</cas:name>
-                                    <cas:shortName>?</cas:shortName>
-                                    <cas:description>?</cas:description>
-                                    <cas:clarification>?</cas:clarification>
-                                    <cas:foundingDate>?</cas:foundingDate>
-                                    <cas:disbandingDate>?</cas:disbandingDate>
-                                    <cas:telephoneNumber>?</cas:telephoneNumber>
-                                    <cas:faxNumber>?</cas:faxNumber>
-                                    <cas:emailAddress>?</cas:emailAddress>
-                                 </cas:unit>
-                              </cas:setByActor>
-                              <!--Optional:-->
-                              <cas:step>
-                                 <cas:id>?</cas:id>
-                                 <cas:caseId>?</cas:caseId>
-                                 <cas:runTime>999</cas:runTime>
-                                 <cas:executionDate>?</cas:executionDate>
-                              </cas:step>
-                           </cas:attribute>
-                        </cas:attributes>
-                     </cas:attributeGroup>
-                  </cas:attributeGroups>
-                  <!--Optional:-->
-                  <cas:summaryAttributeGroups>
-                     <!--Zero or more repetitions:-->
-                     <cas:attributeGroup>
-                        <cas:id>?</cas:id>
-                        <cas:index>?</cas:index>
-                        <cas:name>?</cas:name>
-                        <cas:sortOrder>?</cas:sortOrder>
-                        <cas:attributes>
-                           <!--Zero or more repetitions:-->
-                           <cas:attribute>
-                              <cas:id>?</cas:id>
-                              <cas:name>?</cas:name>
-                              <cas:question>?</cas:question>
-                              <cas:sortOrder>?</cas:sortOrder>
-                              <cas:value>?</cas:value>
-                           </cas:attribute>
-                        </cas:attributes>
-                     </cas:attributeGroup>
-                  </cas:summaryAttributeGroups>
-                  <!--Optional:-->
-                  <cas:notes>
-                     <!--Zero or more repetitions:-->
-                     <cas:note verwerkingssoort="?">
-                        <cas:id>?</cas:id>
-                        <cas:caseId>?</cas:caseId>
-                        <cas:title>?</cas:title>
-                        <cas:content>?</cas:content>
-                        <cas:setDate>?</cas:setDate>
-                        <!--Optional:-->
-                        <cas:setByActor verwerkingssoort="?">
-                           <!--You have a CHOICE of the next 2 items at this level-->
-                           <cas:employee>
-                              <cas:id>?</cas:id>
-                              <cas:username>?</cas:username>
-                              <cas:identification>?</cas:identification>
-                              <cas:clarification>?</cas:clarification>
-                              <cas:resignationDate>?</cas:resignationDate>
-                              <cas:genderIndication>?</cas:genderIndication>
-                              <cas:initials>?</cas:initials>
-                              <cas:lastNamePrefix>?</cas:lastNamePrefix>
-                              <cas:lastName>?</cas:lastName>
-                              <cas:nameOfAddress>?</cas:nameOfAddress>
-                              <cas:function>?</cas:function>
-                              <cas:emailAddress>?</cas:emailAddress>
-                              <cas:telephoneNumber>?</cas:telephoneNumber>
-                           </cas:employee>
-                           <cas:unit>
-                              <cas:id>?</cas:id>
-                              <cas:code>?</cas:code>
-                              <cas:identification>?</cas:identification>
-                              <cas:name>?</cas:name>
-                              <cas:shortName>?</cas:shortName>
-                              <cas:description>?</cas:description>
-                              <cas:clarification>?</cas:clarification>
-                              <cas:foundingDate>?</cas:foundingDate>
-                              <cas:disbandingDate>?</cas:disbandingDate>
-                              <cas:telephoneNumber>?</cas:telephoneNumber>
-                              <cas:faxNumber>?</cas:faxNumber>
-                              <cas:emailAddress>?</cas:emailAddress>
-                           </cas:unit>
-                        </cas:setByActor>
-                     </cas:note>
-                  </cas:notes>
-                  <!--Optional:-->
-                  <cas:currentStep>
-                     <cas:id>?</cas:id>
-                     <cas:caseId>?</cas:caseId>
-                     <cas:runTime>999</cas:runTime>
-                     <cas:executionDate>?</cas:executionDate>
-                     <!--Optional:-->
-                     <cas:stepType>
-                        <cas:id>?</cas:id>
-                        <cas:name>?</cas:name>
-                        <cas:clarification>?</cas:clarification>
-                        <cas:instructions>?</cas:instructions>
-                        <cas:runTime>999</cas:runTime>
-                        <cas:serviceNorm>?</cas:serviceNorm>
-                        <cas:intake>N</cas:intake>
-                        <cas:automatic>N</cas:automatic>
-                        <cas:condition>?</cas:condition>
-                     </cas:stepType>
-                  </cas:currentStep>
-                  <!--Optional:-->
-                  <cas:paymentSummary>
-                     <cas:fulfilled>?</cas:fulfilled>
-                     <cas:description>?</cas:description>
-                     <cas:price>?</cas:price>
-                  </cas:paymentSummary>
-                  <!--Optional:-->
-                  <cas:parentCaseRelations>
-                     <!--Zero or more repetitions:-->
-                     <cas:parentCaseRelation>
-                        <cas:id>?</cas:id>
-                        <cas:relatedCase>
-                           <cas:id>?</cas:id>
-                           <cas:referenceNumber>?</cas:referenceNumber>
-                           <cas:description>?</cas:description>
-                           <cas:startDate>?</cas:startDate>
-                           <!--Optional:-->
-                           <cas:startTime>?</cas:startTime>
-                           <cas:endDate>?</cas:endDate>
-                           <cas:plannedEndDate>?</cas:plannedEndDate>
-                           <!--Optional:-->
-                           <cas:signalDate>?</cas:signalDate>
-                           <!--Optional:-->
-                           <cas:registrationDate>?</cas:registrationDate>
-                           <cas:confidentialityLevel>?</cas:confidentialityLevel>
-                           <cas:caseType>
-                              <cas:id>?</cas:id>
-                              <cas:seqNr>?</cas:seqNr>
-                              <cas:code>?</cas:code>
-                              <cas:identification>?</cas:identification>
-                              <cas:description>?</cas:description>
-                              <cas:descriptionGeneric>?</cas:descriptionGeneric>
-                              <cas:version>?</cas:version>
-                              <cas:versionClarification>?</cas:versionClarification>
-                              <cas:objective>?</cas:objective>
-                              <cas:cause>?</cas:cause>
-                              <cas:clarification>?</cas:clarification>
-                              <cas:internal>TE</cas:internal>
-                              <!--Optional:-->
-                              <cas:subject>?</cas:subject>
-                              <!--Optional:-->
-                              <cas:actionInitiator>?</cas:actionInitiator>
-                              <!--Optional:-->
-                              <cas:actionExecutor>?</cas:actionExecutor>
-                              <cas:runTime>999</cas:runTime>
-                              <cas:serviceNorm>?</cas:serviceNorm>
-                              <cas:postponementAllowed>J</cas:postponementAllowed>
-                              <cas:extensionAllowed>J</cas:extensionAllowed>
-                              <cas:extensionTerm>999</cas:extensionTerm>
-                              <cas:confidentialityLevel>?</cas:confidentialityLevel>
-                              <cas:publicationIndication>N</cas:publicationIndication>
-                              <cas:publicationText>?</cas:publicationText>
-                              <cas:caseCategory>?</cas:caseCategory>
-                              <cas:archiveCode>?</cas:archiveCode>
-                              <cas:validityStartDate>?</cas:validityStartDate>
-                              <cas:validityEndDate>?</cas:validityEndDate>
-                              <cas:isReferenceCaseType>N</cas:isReferenceCaseType>
-                              <cas:isPublic>J</cas:isPublic>
-                              <cas:modifyStartDate>N</cas:modifyStartDate>
-                              <cas:recalculatePlannedEndDate>J</cas:recalculatePlannedEndDate>
-                              <cas:catalogRSIN>?</cas:catalogRSIN>
-                           </cas:caseType>
-                           <cas:statusType>
-                              <cas:code>?</cas:code>
-                              <cas:description>?</cas:description>
-                           </cas:statusType>
-                        </cas:relatedCase>
-                        <cas:relationType>
-                           <cas:code>?</cas:code>
-                           <cas:description>?</cas:description>
-                           <!--Optional:-->
-                           <cas:checkCycles>N</cas:checkCycles>
-                        </cas:relationType>
-                     </cas:parentCaseRelation>
-                  </cas:parentCaseRelations>
-                  <!--Optional:-->
-                  <cas:childCaseRelations>
-                     <!--Zero or more repetitions:-->
-                     <cas:childCaseRelation>
-                        <cas:id>?</cas:id>
-                        <cas:relatedCase>
-                           <cas:id>?</cas:id>
-                           <cas:referenceNumber>?</cas:referenceNumber>
-                           <cas:description>?</cas:description>
-                           <cas:startDate>?</cas:startDate>
-                           <!--Optional:-->
-                           <cas:startTime>?</cas:startTime>
-                           <cas:endDate>?</cas:endDate>
-                           <cas:plannedEndDate>?</cas:plannedEndDate>
-                           <!--Optional:-->
-                           <cas:signalDate>?</cas:signalDate>
-                           <!--Optional:-->
-                           <cas:registrationDate>?</cas:registrationDate>
-                           <cas:confidentialityLevel>?</cas:confidentialityLevel>
-                           <cas:caseType>
-                              <cas:id>?</cas:id>
-                              <cas:seqNr>?</cas:seqNr>
-                              <cas:code>?</cas:code>
-                              <cas:identification>?</cas:identification>
-                              <cas:description>?</cas:description>
-                              <cas:descriptionGeneric>?</cas:descriptionGeneric>
-                              <cas:version>?</cas:version>
-                              <cas:versionClarification>?</cas:versionClarification>
-                              <cas:objective>?</cas:objective>
-                              <cas:cause>?</cas:cause>
-                              <cas:clarification>?</cas:clarification>
-                              <cas:internal>TE</cas:internal>
-                              <!--Optional:-->
-                              <cas:subject>?</cas:subject>
-                              <!--Optional:-->
-                              <cas:actionInitiator>?</cas:actionInitiator>
-                              <!--Optional:-->
-                              <cas:actionExecutor>?</cas:actionExecutor>
-                              <cas:runTime>999</cas:runTime>
-                              <cas:serviceNorm>?</cas:serviceNorm>
-                              <cas:postponementAllowed>J</cas:postponementAllowed>
-                              <cas:extensionAllowed>J</cas:extensionAllowed>
-                              <cas:extensionTerm>999</cas:extensionTerm>
-                              <cas:confidentialityLevel>?</cas:confidentialityLevel>
-                              <cas:publicationIndication>N</cas:publicationIndication>
-                              <cas:publicationText>?</cas:publicationText>
-                              <cas:caseCategory>?</cas:caseCategory>
-                              <cas:archiveCode>?</cas:archiveCode>
-                              <cas:validityStartDate>?</cas:validityStartDate>
-                              <cas:validityEndDate>?</cas:validityEndDate>
-                              <cas:isReferenceCaseType>N</cas:isReferenceCaseType>
-                              <cas:isPublic>J</cas:isPublic>
-                              <cas:modifyStartDate>N</cas:modifyStartDate>
-                              <cas:recalculatePlannedEndDate>J</cas:recalculatePlannedEndDate>
-                              <cas:catalogRSIN>?</cas:catalogRSIN>
-                           </cas:caseType>
-                           <cas:statusType>
-                              <cas:code>?</cas:code>
-                              <cas:description>?</cas:description>
-                           </cas:statusType>
-                        </cas:relatedCase>
-                        <cas:relationType>
-                           <cas:code>?</cas:code>
-                           <cas:description>?</cas:description>
-                           <!--Optional:-->
-                           <cas:checkCycles>N</cas:checkCycles>
-                        </cas:relationType>
-                     </cas:childCaseRelation>
-                  </cas:childCaseRelations>
-                  <!--Optional:-->
-                  <cas:otherCaseObjects>
-                     <!--Zero or more repetitions:-->
-                     <cas:otherCaseObject verwerkingssoort="?">
-                        <cas:id>?</cas:id>
-                        <cas:description>?</cas:description>
-                        <cas:indication>?</cas:indication>
-                        <cas:location>
-                           <!--You may enter ANY elements at this point-->
-                        </cas:location>
-                        <cas:registration>?</cas:registration>
-                     </cas:otherCaseObject>
-                  </cas:otherCaseObjects>
-                  <!--Optional:-->
-                  <cas:caseObjects>
-                     <!--Zero or more repetitions:-->
-                     <cas:caseObject verwerkingssoort="?">
-                        <cas:id>?</cas:id>
-                        <cas:caseId>?</cas:caseId>
-                        <cas:objectId>?</cas:objectId>
-                        <cas:description>?</cas:description>
-                        <cas:object>
-                           <cas:id>?</cas:id>
-                           <cas:specializedObjectType>ONB</cas:specializedObjectType>
-                           <cas:content>
-                              <!--You may enter ANY elements at this point-->
-                           </cas:content>
-                        </cas:object>
-                     </cas:caseObject>
-                  </cas:caseObjects>
-                  <!--Optional:-->
-                  <cas:characteristics>
-                     <!--Zero or more repetitions:-->
-                     <cas:characteristic verwerkingssoort="?">
-                        <cas:caseId>?</cas:caseId>
-                        <cas:source>?</cas:source>
-                        <cas:characteristic>?</cas:characteristic>
-                     </cas:characteristic>
-                  </cas:characteristics>
-                  <!--Optional:-->
-                  <cas:counts>
-                     <cas:parties>?</cas:parties>
-                     <cas:relatedCases>?</cas:relatedCases>
-                     <cas:documents>?</cas:documents>
-                     <cas:locations>?</cas:locations>
-                     <cas:notes>?</cas:notes>
-                     <cas:caseObject>?</cas:caseObject>
-                     <cas:caseOtherCaseObject>?</cas:caseOtherCaseObject>
-                  </cas:counts>
-               </cas:case>
-            </cas:cases>
-            <!--Optional:-->
-            <cas:moreCasesAvailable>?</cas:moreCasesAvailable>
-         </cas:caseDetailsMessage>
-      </cas:readCasesResponse>
-   </soapenv:Body>
-</soapenv:Envelope>]]></con:responseContent>
+        <con:responseContent><![CDATA[<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <readCasesResponse xmlns="http://www.emaxx.org/functional/cases">
+         <cases:caseDetailsMessage xmlns:cases="http://www.emaxx.org/functional/cases" xmlns:document="http://www.emaxx.org/functional/cases/document" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <cases:cases>
+               <cases:case>
+                  <cases:id>227278</cases:id>
+                  <cases:referenceNumber>OF-FTGHLL</cases:referenceNumber>
+                  <cases:description/>
+                  <cases:clarification>p.dorhout@utrecht.nl</cases:clarification>
+                  <cases:xml/>
+                  <cases:startDate>2024-04-24</cases:startDate>
+                  <cases:startTime>00:00:00</cases:startTime>
+                  <cases:endDate xsi:nil="true"/>
+                  <cases:plannedEndDate xsi:nil="true"/>
+                  <cases:completionDate xsi:nil="true"/>
+                  <cases:fileName/>
+                  <cases:fileMimeType/>
+                  <cases:fileData/>
+                  <cases:registrationDate>2024-04-23T10:24:52</cases:registrationDate>
+                  <cases:publicationDate xsi:nil="true"/>
+                  <cases:caseLevel>1</cases:caseLevel>
+                  <cases:subCaseIndication>N</cases:subCaseIndication>
+                  <cases:paymentIndication xsi:nil="true"/>
+                  <cases:lastPaymentDate xsi:nil="true"/>
+                  <cases:confidentialityLevel>1</cases:confidentialityLevel>
+                  <cases:urgencyLevel>0</cases:urgencyLevel>
+                  <cases:anonymous>N</cases:anonymous>
+                  <cases:primaryOrganization xsi:nil="true"/>
+                  <cases:caseTargets/>
+                  <cases:caseType>
+                     <cases:id>8938</cases:id>
+                     <cases:seqNr>2</cases:seqNr>
+                     <cases:code>P4_3_PARLK</cases:code>
+                     <cases:identification>2419</cases:identification>
+                     <cases:description>PBZ Aanvraag registratie levenloos geboren kind behandelen</cases:description>
+                     <cases:descriptionGeneric/>
+                     <cases:version>1.1</cases:version>
+                     <cases:versionClarification/>
+                     <cases:objective>Verwerken van het verzoek een levenloos geboren kind te registreren op de persoonslijst van de ouder.</cases:objective>
+                     <cases:cause>Aanvraag van de burger een levenloos geboren kind te registreren op zijn of haar persoonslijst.</cases:cause>
+                     <cases:clarification/>
+                     <cases:internal>TE</cases:internal>
+                     <cases:subject xsi:nil="true"/>
+                     <cases:actionInitiator xsi:nil="true"/>
+                     <cases:actionExecutor xsi:nil="true"/>
+                     <cases:runTime>999</cases:runTime>
+                     <cases:serviceNorm/>
+                     <cases:postponementAllowed>J</cases:postponementAllowed>
+                     <cases:extensionAllowed>J</cases:extensionAllowed>
+                     <cases:extensionTerm>999</cases:extensionTerm>
+                     <cases:confidentialityLevel>1</cases:confidentialityLevel>
+                     <cases:publicationIndication>N</cases:publicationIndication>
+                     <cases:publicationText/>
+                     <cases:caseCategory>P4.3 Verzoeken</cases:caseCategory>
+                     <cases:archiveCode/>
+                     <cases:validityStartDate>2023-10-01</cases:validityStartDate>
+                     <cases:validityEndDate xsi:nil="true"/>
+                     <cases:isReferenceCaseType>N</cases:isReferenceCaseType>
+                     <cases:isPublic>J</cases:isPublic>
+                     <cases:modifyStartDate>N</cases:modifyStartDate>
+                     <cases:recalculatePlannedEndDate>J</cases:recalculatePlannedEndDate>
+                     <cases:catalogRSIN xsi:nil="true"/>
+                  </cases:caseType>
+                  <cases:initiatingSubject>
+                     <cases:person>
+                        <cases:id>198128</cases:id>
+                        <cases:citizenNumber authentic="J">169795135</cases:citizenNumber>
+                        <cases:genderIndication>M</cases:genderIndication>
+                        <cases:firstNames>Ano</cases:firstNames>
+                        <cases:lastNamePrefix/>
+                        <cases:lastName>Niem</cases:lastName>
+                        <cases:dateOfBirth>19860901</cases:dateOfBirth>
+                        <cases:dateOfDeath xsi:nil="true"/>
+                        <cases:emailAddress/>
+                        <cases:telephoneNumber/>
+                        <cases:faxNumber/>
+                        <cases:bankAccountNumber/>
+                        <cases:iban/>
+                        <cases:bic/>
+                        <cases:type>Ingezetene</cases:type>
+                        <cases:nobleTitle xsi:nil="true"/>
+                        <cases:hisStartDate indicationIncomplete="V">2024-04-23</cases:hisStartDate>
+                        <cases:hisEndDate indicationIncomplete="V" xsi:nil="true"/>
+                        <cases:nameOfAddress>
+                           <cases:title>meneer</cases:title>
+                           <cases:initials>A.</cases:initials>
+                           <cases:firstNames>Ano</cases:firstNames>
+                           <cases:lastName>Niem</cases:lastName>
+                        </cases:nameOfAddress>
+                        <cases:residenceAddress>
+                           <cases:houseNumber>91</cases:houseNumber>
+                           <cases:houseLetter>B</cases:houseLetter>
+                           <cases:houseRemark/>
+                           <cases:streetname>Van Hoornekade</cases:streetname>
+                           <cases:streetnameBOCO/>
+                           <cases:zipCode>3554AS</cases:zipCode>
+                           <cases:city>Utrecht</cases:city>
+                           <cases:locationDescription/>
+                           <cases:namePublicSpace/>
+                        </cases:residenceAddress>
+                     </cases:person>
+                  </cases:initiatingSubject>
+                  <cases:parties/>
+                  <cases:addresses/>
+                  <cases:registryObjects/>
+                  <cases:postponements/>
+                  <cases:attributeGroups/>
+                  <cases:summaryAttributeGroups/>
+                  <cases:notes/>
+                  <cases:parentCaseRelations/>
+                  <cases:childCaseRelations/>
+                  <cases:otherCaseObjects/>
+                  <cases:caseObjects/>
+                  <cases:characteristics/>
+               </cases:case>
+            </cases:cases>
+         </cases:caseDetailsMessage>
+      </readCasesResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>]]></con:responseContent>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="cases:readCases"/>
       </con:response>
       <con:dispatchConfig/>

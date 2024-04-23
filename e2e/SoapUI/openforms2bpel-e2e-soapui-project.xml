@@ -17947,6 +17947,42 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       </con:response>
       <con:dispatchConfig/>
     </con:mockOperation>
+    <con:mockOperation name="updateOrganizations" id="afc21037-1777-4b57-bf5f-5d2b36961546" interface="CasesBinding" operation="updateOrganizations">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="2c1ba92a-d605-402d-822d-c65e2aff9f68" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cas="http://www.emaxx.org/functional/cases" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cas:updateOrganizationsResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </cas:updateOrganizationsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="cases:updateOrganizations"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updatePersons" id="983f420f-cfd9-4319-84c2-466006ab3fb0" interface="CasesBinding" operation="updatePersons">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="7d972411-6e92-4fdb-b319-bcf376d7f7d0" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cas="http://www.emaxx.org/functional/cases" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cas:updatePersonsResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </cas:updatePersonsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="cases:updatePersons"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
   </con:mockService>
   <con:restMockService id="d63c7861-f9bf-4330-8cab-d5b197f52c85" port="8700" path="/mock/documenten/api/v1" host="LAPTOP-UKAI1A6" name="Documenten API Mock" docroot="">
     <con:settings/>

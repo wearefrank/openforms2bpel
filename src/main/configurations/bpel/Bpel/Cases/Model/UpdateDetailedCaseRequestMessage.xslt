@@ -51,6 +51,24 @@
     <xsl:template match="@verwerkingssoort" />
 
     <xsl:template match="*:primaryOrganization" />
+    <xsl:template match="*:parties" />
+    <xsl:template match="*:addresses" />
+    <xsl:template match="*:registryObjects" />
+    <xsl:template match="*:postponements" />
+    <xsl:template match="*:attributeGroups" />
+    <xsl:template match="*:summaryAttributeGroups" />
+    <xsl:template match="*:parentCaseRelations" />
+    <xsl:template match="*:childCaseRelations" />
+    <xsl:template match="*:otherCaseObjects" />
+    <xsl:template match="*:caseObjects" />
+    <xsl:template match="*:characteristics" />
+
+    <xsl:template match="*:caseType/*" />
+
+    <xsl:template match="*:caseType/*:code">
+        <cases:code><xsl:value-of select="." /></cases:code>
+
+    </xsl:template>
 
     <xsl:template match="*:telephoneNumber">
         <cases:telephoneNumber>

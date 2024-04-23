@@ -11225,6 +11225,12 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:params/>
           <con:element>data</con:element>
         </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
         <con:request name="Request 1" id="82aa8045-70bf-466b-926f-b8a9da1d6345" mediaType="application/json">
           <con:settings/>
           <con:parameters/>
@@ -14220,11 +14226,178 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
     <con:operation id="10e1df51-bc47-45f5-b76d-8ba86989a69d" isOneWay="false" action="cases:updateOrdinanceTypes" name="updateOrdinanceTypes" bindingOperationName="updateOrdinanceTypes" type="Request-Response" outputName="updateOrdinanceTypesResponse" inputName="updateOrdinanceTypesRequest" receivesAttachments="false" sendsAttachments="false">
       <con:settings/>
     </con:operation>
-    <con:operation id="4d2b3f18-b3a1-4a7e-8584-3a630973bb91" isOneWay="false" action="cases:updateOrganizations" name="updateOrganizations" bindingOperationName="updateOrganizations" type="Request-Response" outputName="updateOrganizationsResponse" inputName="updateOrganizationsRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="4d2b3f18-b3a1-4a7e-8584-3a630973bb91" isOneWay="false" action="cases:updateOrganizations" name="updateOrganizations" bindingOperationName="updateOrganizations" type="Request-Response" outputName="updateOrganizationsResponse" inputName="updateOrganizationsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
+      <con:call id="6aca0ac0-d4c9-4c93-b4ca-4712614af173" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8091/mock/CasesService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cas="http://www.emaxx.org/functional/cases">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cas:updateOrganizations>\r
+         <cas:organizationSaveMessage>\r
+            <cas:organizations>\r
+               <!--Zero or more repetitions:-->\r
+               <cas:organization>\r
+                  <cas:id>?</cas:id>\r
+                  <!--You have a CHOICE of the next 2 items at this level-->\r
+                  <cas:nnpId authentic="J">?</cas:nnpId>\r
+                  <cas:numberOtherForeignNNP>?</cas:numberOtherForeignNNP>\r
+                  <cas:kvkNumber>?</cas:kvkNumber>\r
+                  <cas:statutoryName>?</cas:statutoryName>\r
+                  <cas:foundingDate>?</cas:foundingDate>\r
+                  <cas:disbandingDate>?</cas:disbandingDate>\r
+                  <cas:emailAddress>?</cas:emailAddress>\r
+                  <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                  <cas:faxNumber>?</cas:faxNumber>\r
+                  <cas:bankAccountNumber>?</cas:bankAccountNumber>\r
+                  <cas:iban>?</cas:iban>\r
+                  <cas:bic>?</cas:bic>\r
+                  <cas:type>?</cas:type>\r
+                  <cas:hisStartDate indicationIncomplete="V">?</cas:hisStartDate>\r
+                  <cas:hisEndDate indicationIncomplete="V">?</cas:hisEndDate>\r
+                  <!--Optional:-->\r
+                  <cas:correspondenceAddress>\r
+                     <cas:houseNumber>?</cas:houseNumber>\r
+                     <cas:houseLetter>?</cas:houseLetter>\r
+                     <cas:houseRemark>?</cas:houseRemark>\r
+                     <cas:streetname>?</cas:streetname>\r
+                     <cas:streetnameBOCO>?</cas:streetnameBOCO>\r
+                     <cas:zipCode>?</cas:zipCode>\r
+                     <cas:city>?</cas:city>\r
+                     <cas:locationDescription>?</cas:locationDescription>\r
+                     <cas:namePublicSpace>?</cas:namePublicSpace>\r
+                  </cas:correspondenceAddress>\r
+                  <!--Optional:-->\r
+                  <cas:postalAddress>\r
+                     <cas:postalAddressType>?</cas:postalAddressType>\r
+                     <cas:poBoxNumber>?</cas:poBoxNumber>\r
+                     <cas:zipCode>?</cas:zipCode>\r
+                     <cas:city>?</cas:city>\r
+                  </cas:postalAddress>\r
+                  <!--Optional:-->\r
+                  <cas:foreignAddress>\r
+                     <cas:foreignAddress1>?</cas:foreignAddress1>\r
+                     <cas:foreignAddress2>?</cas:foreignAddress2>\r
+                     <cas:foreignAddress3>?</cas:foreignAddress3>\r
+                     <cas:countryName>?</cas:countryName>\r
+                  </cas:foreignAddress>\r
+               </cas:organization>\r
+            </cas:organizations>\r
+         </cas:organizationSaveMessage>\r
+      </cas:updateOrganizations>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="cases:updateOrganizations"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
     </con:operation>
-    <con:operation id="fdfd1d6a-b931-43ee-811d-b81c64adb763" isOneWay="false" action="cases:updatePersons" name="updatePersons" bindingOperationName="updatePersons" type="Request-Response" outputName="updatePersonsResponse" inputName="updatePersonsRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="fdfd1d6a-b931-43ee-811d-b81c64adb763" isOneWay="false" action="cases:updatePersons" name="updatePersons" bindingOperationName="updatePersons" type="Request-Response" outputName="updatePersonsResponse" inputName="updatePersonsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
+      <con:call id="6986e701-6f4e-4147-9252-507d224694d4" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8091/mock/CasesService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cas="http://www.emaxx.org/functional/cases">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cas:updatePersons>\r
+         <cas:personSaveMessage>\r
+            <cas:persons>\r
+               <!--Zero or more repetitions:-->\r
+               <cas:person>\r
+                  <cas:id>?</cas:id>\r
+                  <!--You have a CHOICE of the next 2 items at this level-->\r
+                  <cas:citizenNumber authentic="J">?</cas:citizenNumber>\r
+                  <cas:numberOtherNaturalPerson>?</cas:numberOtherNaturalPerson>\r
+                  <cas:genderIndication>?</cas:genderIndication>\r
+                  <cas:firstNames>?</cas:firstNames>\r
+                  <cas:lastNamePrefix>?</cas:lastNamePrefix>\r
+                  <cas:lastName>?</cas:lastName>\r
+                  <cas:dateOfBirth>?</cas:dateOfBirth>\r
+                  <cas:dateOfDeath>?</cas:dateOfDeath>\r
+                  <cas:emailAddress>?</cas:emailAddress>\r
+                  <cas:telephoneNumber>?</cas:telephoneNumber>\r
+                  <cas:faxNumber>?</cas:faxNumber>\r
+                  <cas:bankAccountNumber>?</cas:bankAccountNumber>\r
+                  <cas:iban>?</cas:iban>\r
+                  <cas:bic>?</cas:bic>\r
+                  <cas:type>?</cas:type>\r
+                  <cas:nobleTitle>?</cas:nobleTitle>\r
+                  <cas:hisStartDate indicationIncomplete="V">?</cas:hisStartDate>\r
+                  <cas:hisEndDate indicationIncomplete="V">?</cas:hisEndDate>\r
+                  <!--Optional:-->\r
+                  <cas:nameOfAddress>\r
+                     <cas:title>?</cas:title>\r
+                     <cas:initials>?</cas:initials>\r
+                     <cas:firstNames>?</cas:firstNames>\r
+                     <cas:lastName>?</cas:lastName>\r
+                  </cas:nameOfAddress>\r
+                  <!--Optional:-->\r
+                  <cas:academicTitles>\r
+                     <!--0 to 3 repetitions:-->\r
+                     <cas:academicTitle>\r
+                        <cas:code>?</cas:code>\r
+                     </cas:academicTitle>\r
+                  </cas:academicTitles>\r
+                  <!--Optional:-->\r
+                  <cas:residenceAddress>\r
+                     <cas:houseNumber>?</cas:houseNumber>\r
+                     <cas:houseLetter>?</cas:houseLetter>\r
+                     <cas:houseRemark>?</cas:houseRemark>\r
+                     <cas:streetname>?</cas:streetname>\r
+                     <cas:streetnameBOCO>?</cas:streetnameBOCO>\r
+                     <cas:zipCode>?</cas:zipCode>\r
+                     <cas:city>?</cas:city>\r
+                     <cas:locationDescription>?</cas:locationDescription>\r
+                     <cas:namePublicSpace>?</cas:namePublicSpace>\r
+                  </cas:residenceAddress>\r
+                  <!--Optional:-->\r
+                  <cas:correspondenceAddress>\r
+                     <cas:houseNumber>?</cas:houseNumber>\r
+                     <cas:houseLetter>?</cas:houseLetter>\r
+                     <cas:houseRemark>?</cas:houseRemark>\r
+                     <cas:streetname>?</cas:streetname>\r
+                     <cas:streetnameBOCO>?</cas:streetnameBOCO>\r
+                     <cas:zipCode>?</cas:zipCode>\r
+                     <cas:city>?</cas:city>\r
+                     <cas:locationDescription>?</cas:locationDescription>\r
+                     <cas:namePublicSpace>?</cas:namePublicSpace>\r
+                  </cas:correspondenceAddress>\r
+                  <!--Optional:-->\r
+                  <cas:postalAddress>\r
+                     <cas:postalAddressType>?</cas:postalAddressType>\r
+                     <cas:poBoxNumber>?</cas:poBoxNumber>\r
+                     <cas:zipCode>?</cas:zipCode>\r
+                     <cas:city>?</cas:city>\r
+                  </cas:postalAddress>\r
+                  <!--Optional:-->\r
+                  <cas:foreignAddress>\r
+                     <cas:foreignAddress1>?</cas:foreignAddress1>\r
+                     <cas:foreignAddress2>?</cas:foreignAddress2>\r
+                     <cas:foreignAddress3>?</cas:foreignAddress3>\r
+                     <cas:countryName>?</cas:countryName>\r
+                  </cas:foreignAddress>\r
+               </cas:person>\r
+            </cas:persons>\r
+         </cas:personSaveMessage>\r
+      </cas:updatePersons>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="cases:updatePersons"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
     </con:operation>
     <con:operation id="af09cfd1-aeaf-4c26-a692-8cb4b3409cbf" isOneWay="false" action="cases:updatePostponements" name="updatePostponements" bindingOperationName="updatePostponements" type="Request-Response" outputName="updatePostponementsResponse" inputName="updatePostponementsRequest" receivesAttachments="false" sendsAttachments="false">
       <con:settings/>
@@ -15461,7 +15634,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
          "payment" : {\r
             "amount" : "37,35",\r
             "completed" : "true",\r
-            "public_order_ids" : "OF-YQC62L"\r
+            "public_order_ids" : "['OF-8B297F_254']"
          },\r
          "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
          "attachments" : [\r

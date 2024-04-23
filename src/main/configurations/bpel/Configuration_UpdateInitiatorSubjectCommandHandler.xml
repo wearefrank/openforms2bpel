@@ -70,30 +70,70 @@
                     >
                 </IbisLocalSender>
                 <Param name="soapAction" value="cases:readCases" />
-                <Forward name="success" path="CreateUpdateDetailedCaseMessage" />
+                <Forward name="success" path="CheckInitiatorSubjectIsPerson" />
             </SenderPipe>
 
+            <XmlIfPipe
+                name="CheckInitiatorSubjectIsPerson"
+                xpathExpression="string-length(//*:caseDetailsMessage/*:cases/*:case/*:initiatingSubject/*:person) gt 0"
+                >
+                <Forward name="then" path="CreateUpdatePersonsMessage" />
+                <Forward name="else" path="CheckInitiatorSubjectIsOrganization" />
+            </XmlIfPipe>
+
             <XsltPipe
-                name="CreateUpdateDetailedCaseMessage"
+                name="CreateUpdatePersonsMessage"
                 getInputFromSessionKey="ReadCasesResponseMessage"
-                styleSheetName="Bpel/Cases/Model/UpdateDetailedCaseRequestMessage.xslt"
-                storeResultInSessionKey="UpdateDetailedCaseRequestMessage"
+                styleSheetName="Bpel/Cases/Model/UpdatePersonsRequestMessage.xslt"
+                storeResultInSessionKey="UpdatePersonsRequestMessage"
                 >
                 <Param name="EmailAddress" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')]" />
                 <Param name="TelephoneNumber" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer')]" />
-                <Forward name="success" path="BpelCasesPostUpdateDetailedCaseSender" />
+                <Forward name="success" path="BpelCasesPostUpdatePersonsSender" />
             </XsltPipe>
 
             <SenderPipe
-                name="BpelCasesPostUpdateDetailedCaseSender"
-                storeResultInSessionKey="UpdateDetailedCaseResponseMessage"
+                name="BpelCasesPostUpdatePersonsSender"
+                storeResultInSessionKey="UpdatePersonsResponseMessage"
                 >
                 <IbisLocalSender
-                    name="BpelCasesPostUpdateDetailedCaseLocalSender"
+                    name="BpelCasesPostUpdatePersonsLocalSender"
                     javaListener="Bpel_Cases_Post"
                     >
                 </IbisLocalSender>
-                <Param name="soapAction" value="cases:updateDetailedCase" />
+                <Param name="soapAction" value="cases:updatePersons" />
+                <Forward name="success" path="InitiatorSubjectUpdatedEventSender" />
+            </SenderPipe>
+
+            <XmlIfPipe
+                name="CheckInitiatorSubjectIsOrganization"
+                xpathExpression="string-length(//*:caseDetailsMessage/*:cases/*:case/*:initiatingSubject/*:organization) gt 0"
+                >
+                <Forward name="then" path="CreateUpdateOrganizationsMessage" />
+                <Forward name="else" path="EXIT" />
+            </XmlIfPipe>
+
+            <XsltPipe
+                name="CreateUpdateOrganizationsMessage"
+                getInputFromSessionKey="ReadCasesResponseMessage"
+                styleSheetName="Bpel/Cases/Model/UpdateOrganizationsRequestMessage.xslt"
+                storeResultInSessionKey="UpdateOrganizationsRequestMessage"
+                >
+                <Param name="EmailAddress" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')]" />
+                <Param name="TelephoneNumber" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer')]" />
+                <Forward name="success" path="BpelCasesPostUpdateOrganizationsSender" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelCasesPostUpdateOrganizationsSender"
+                storeResultInSessionKey="UpdateOrganizationsResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelCasesPostUpdateOrganizationsLocalSender"
+                    javaListener="Bpel_Cases_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="cases:updateOrganizations" />
                 <Forward name="success" path="InitiatorSubjectUpdatedEventSender" />
             </SenderPipe>
 

@@ -41,4 +41,10 @@
             <xsl:value-of select="$TelephoneNumber"/>
         </cases:telephoneNumber>
     </xsl:template>
+
+    <xsl:template match="*:hisEndDate">
+        <cases:hisEndDate indicationIncomplete="V">
+            <xsl:value-of select="format-date(current-date(), '[Y0001]-[M01]-[D01]')" />
+        </cases:hisEndDate>
+    </xsl:template>
 </xsl:stylesheet>

@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.16.10](https://github.com/wearefrank/openforms2bpel/compare/v1.16.9...v1.16.10) (2024-04-25)
+
+
+### 🐛 Bug Fixes
+
+* update initiatingsubject with id nil ([f3fd28c](https://github.com/wearefrank/openforms2bpel/commit/f3fd28c3040140e0421a13c27969326dcbc1018c))
+
 ## [1.16.9](https://github.com/wearefrank/openforms2bpel/compare/v1.16.8...v1.16.9) (2024-04-25)
 
 

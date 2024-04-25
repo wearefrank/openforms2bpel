@@ -42,9 +42,7 @@
         </cases:telephoneNumber>
     </xsl:template>
 
-    <xsl:template match="*:hisEndDate">
-        <cases:hisEndDate indicationIncomplete="V">
-            <xsl:value-of select="format-date(current-date(), '[Y0001]-[M01]-[D01]')" />
-        </cases:hisEndDate>
+    <xsl:template match="*:id">
+        <cases:id xsi:nil="true" />
     </xsl:template>
 </xsl:stylesheet>

@@ -45,4 +45,12 @@
     <xsl:template match="*:id">
         <cases:id xsi:nil="true" />
     </xsl:template>
+
+    <xsl:template match="*:hisEndDate">
+        <cases:hisEndDate indicationIncomplete="V" xsi:nil="true" />
+    </xsl:template>
+
+    <xsl:template match="*:hisStartDate">
+        <cases:hisStartDate indicationIncomplete="V" xsi:nil="true" />
+    </xsl:template>
 </xsl:stylesheet>

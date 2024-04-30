@@ -1,0 +1,38 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter
+        name="Workflow_Fallback"
+        active="${Workflow_Fallback.Active}"
+        description=""
+        >
+
+        <Receiver
+            name="Workflow_Fallback"
+            transactionAttribute="NotSupported"
+            >
+            <JavaListener
+                name="Workflow_Fallback"
+                />
+        </Receiver>
+        <!-- <Receiver
+            name="Workflow_FallbackHandler"
+            transactionAttribute="Mandatory"
+            pollInterval="1"
+            maxRetries="1"
+            >
+            <MessageStoreListener
+                name="Workflow_FallbackHandler"
+				slotId="${instance.name}/Workflow_Fallback"
+				/>
+        </Receiver> -->
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <ExceptionPipe name="NotImplemented_Exception" />
+
+        </Pipeline>
+    </Adapter>
+</Module>

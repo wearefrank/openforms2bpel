@@ -6,10 +6,6 @@
 		name="objects_object_create"
 		active="${objects_object_create.active}"
 		>
-		
-		<!-- TODO D1: Check if receiver is correct.
-			If there are other adapters using the ApiListener then it should likely be kept.
-			Otherwise, a simple JavaListener might be better in it's place. -->
 			
 		<Receiver name="objects_object_create">
 			<ApiListener 
@@ -40,35 +36,21 @@
 				<Exit name="InternalServerError" state="ERROR" code="500" />
 			</Exits>
 
-			<SenderPipe name="ReplaceXmlIllegalElementNamesSender">
-				<JavascriptSender name="ReplaceXmlIllegalElementNamesJavascriptSender" jsFileName="Common/ReplaceXmlIllegalElementNames.js" jsFunctionName="replaceXmlIllegalElementNames">
-					<Param name="obj" />
-				</JavascriptSender>
-			</SenderPipe>
-
-			<JsonPipe 
-				name="JsonToXml" 
-				>
-                <Forward name="success" path="UnwrapOpenZaakEnvelopeToSingle"/>
-            </JsonPipe>
-
-			<XsltPipe
-                name="UnwrapOpenZaakEnvelopeToSingle"
-                styleSheetName="Zgw/UnwrapOpenZaakApiEnvelopeToSingle.xslt"
-                >
-                <Param name="Type" value="ZgwObject"/>
-                <Forward name="success" path="BpelAggregatorSender"/>
-                <Forward name="error" path="InternalServerError"/>
-            </XsltPipe>
-
 			<SenderPipe
-                name="BpelAggregatorSender"
+                name="WorkflowSelectorSender"
                 >
-                <IbisLocalSender
-                    name="BpelAggregatorSenderLocalSender"
-                    javaListener="Bpel_Basic_Aggregator"
+                <!-- <IbisLocalSender
+                    name="WorkflowSelectorLocalSender"
+                    javaListener="WorkflowSelector"
                     >
-                </IbisLocalSender>
+                </IbisLocalSender> -->
+				<MessageStoreSender
+					name="WorkflowSelectorMessageStoreSender"
+					slotId="${instance.name}/WorkflowSelector"
+                    onlyStoreWhenMessageIdUnique="true"
+					transacted="true"
+					>
+				</MessageStoreSender>
                 <Forward name="success" path="Created" />
                 <Forward name="exception" path="InternalServerError" />
             </SenderPipe>

@@ -1,0 +1,105 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter
+        name="Workflow_TwoWayCommunication"
+        active="${Workflow_TwoWayCommunication.Active}"
+        description=""
+        >
+
+        <Receiver
+            name="Workflow_TwoWayCommunication"
+            transactionAttribute="NotSupported"
+            >
+            <JavaListener
+                name="Workflow_TwoWayCommunication"
+                />
+        </Receiver>
+        <!-- <Receiver
+            name="Workflow_TwoWayCommunicationHandler"
+            transactionAttribute="RequiresNew"
+            pollInterval="1"
+            maxRetries="1"
+            >
+            <MessageStoreListener
+                name="Workflow_TwoWayCommunicationHandler"
+				slotId="${instance.name}/Workflow_TwoWayCommunication"
+				/>
+        </Receiver> -->
+
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+
+            <PutInSessionPipe
+                name="StoreCaseReferenceNumberFromTwoWayCommunication"
+                >
+                <Param name="CaseReferenceNumber" xpathExpression="//gegevenstweewegcommunicatie/zaaknummer" />
+                <Param name="Provider" xpathExpression="/ZgwObject/bsn or //*[starts-with(name(), 'gegevensBedrijfOrganisatie')]/*[starts-with(name(), 'kvKNummer')]" />
+                <Forward name="success" path="FilterUwGegevensSection" />
+            </PutInSessionPipe>
+
+            <XsltPipe
+                name="FilterUwGegevensSection"
+                styleSheetName="Common/xsl/FilterUwGegevensSection.xslt"
+                storeResultInSessionKey="UwGegevens"
+                preserveInput="true"
+                >
+                <Forward name="success" path="UpdateInitiatorSubjectCommandSender" />
+            </XsltPipe>
+
+            <SenderPipe
+				name="UpdateInitiatorSubjectCommandSender"
+                getInputFromSessionKey="UwGegevens"
+                transactionAttribute="Required"
+				>
+				<MessageStoreSender
+					name="UpdateInitiatorSubjectCommandMessageStoreSender"
+					slotId="${instance.name}/UpdateInitiatorSubjectCommand"
+                    onlyStoreWhenMessageIdUnique="true"
+                    sessionKeys="CaseReferenceNumber"
+					>
+				</MessageStoreSender>
+                <Forward name="success" path="CreateAddDocumentsToCaseCommand" />
+			</SenderPipe>
+
+            <XsltPipe
+                name="CreateAddDocumentsToCaseCommand"
+                getInputFromSessionKey="originalMessage"
+                styleSheetName="Common/xsl/CreateAddDocumentsToCaseCommand.xslt"
+                storeResultInSessionKey="CreateAddDocumentsToCaseCommand"
+                >
+                <Param name="CaseReferenceNumber" sessionKey="CaseReferenceNumber" />
+                <Param name="Provider" styleSheetName="bpel/Bpel/Common/Model/Provider.xslt" type="DOMDOC">
+                    <Param name="UwGegevens" sessionKey="UwGegevens" type="DOMDOC" />
+                </Param>
+                <Param name="CommaSeperatedUrls" xpathExpression="string-join((//attachments/text(), //pdf_url/text()), ',')" />
+                <Forward name="success" path="CheckForDocumentsToAddToCase" />
+            </XsltPipe>
+
+            <XmlIfPipe
+                name="CheckForDocumentsToAddToCase"
+                xpathExpression="count(/*/url) gt 0"
+                >
+                <Forward name="then" path="AddDocumentsToCaseCommandSender" />
+                <Forward name="else" path="EXIT" />
+            </XmlIfPipe>
+
+            <SenderPipe
+                name="AddDocumentsToCaseCommandSender"
+                transactionAttribute="Required"
+                >
+                <MessageStoreSender
+					name="AddDocumentsToCaseCommandMessageStoreSender"
+					slotId="${instance.name}/AddDocumentsToCaseCommand"
+                    onlyStoreWhenMessageIdUnique="true"
+                    transacted="true"
+					>
+                    <Param name="messageId" xpathExpression="/*/CaseReferenceNumber" />
+				</MessageStoreSender>
+                <Forward name="success" path="EXIT" />
+            </SenderPipe>
+
+        </Pipeline>
+    </Adapter>
+</Module>

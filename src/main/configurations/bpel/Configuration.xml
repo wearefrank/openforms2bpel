@@ -1,6 +1,4 @@
 <!DOCTYPE configuration [
-        <!ENTITY Bpel_Basic_Aggregator                      SYSTEM "./Configuration_Bpel_Basic_Aggregator.xml">
-        <!ENTITY Bpel_Basic_Handler                         SYSTEM "./Configuration_Bpel_Basic_Handler.xml">
         <!ENTITY Bpel_Basic_Mock                            SYSTEM "./Configuration_Bpel_Basic_Mock.xml">
         <!ENTITY Bpel_Basic_PostInitiate                    SYSTEM "./Configuration_Bpel_Basic_PostInitiate.xml">
         <!ENTITY Bpel_Basic_PostRegister                    SYSTEM "./Configuration_Bpel_Basic_PostRegister.xml">
@@ -11,8 +9,8 @@
         <!ENTITY Bpel_Documents_PostAddDocument             SYSTEM "./Configuration_Bpel_Documents_PostAddDocument.xml">
         <!ENTITY Bpel_Documents_PostEndBatch                SYSTEM "./Configuration_Bpel_Documents_PostEndBatch.xml">
         <!ENTITY Bpel_Documents_PostStartBatch              SYSTEM "./Configuration_Bpel_Documents_PostStartBatch.xml">
-        <!ENTITY Bpel_Documents_UploadAttachment            SYSTEM "./Configuration_Bpel_Documents_UploadAttachment.xml">
-        <!ENTITY Bpel_Documents_UploadAttachments           SYSTEM "./Configuration_Bpel_Documents_UploadAttachments.xml">
+        <!ENTITY Handler_AddDocumentsToCaseCommand          SYSTEM "./Configuration_Handler_AddDocumentsToCaseCommand.xml">
+        <!ENTITY Handler_AddDocumentToCaseCommand           SYSTEM "./Configuration_Handler_AddDocumentToCaseCommand.xml">
         <!ENTITY Bpel_Mtom_Mock                             SYSTEM "./Configuration_Bpel_Mtom_Mock.xml">
         <!ENTITY Bpel_Mtom_PostAddDocument                  SYSTEM "./Configuration_Bpel_Mtom_PostAddDocument.xml">
         <!ENTITY Bpel_Payment_Post                          SYSTEM "./Configuration_Bpel_Payment_Post.xml">
@@ -21,11 +19,13 @@
         <!ENTITY Notificaties_Subscribe                     SYSTEM "./Configuration_Notificaties_Subscribe.xml">
         <!ENTITY UpdateInitiatorSubjectCommandHandler       SYSTEM "./Configuration_UpdateInitiatorSubjectCommandHandler.xml">
         <!ENTITY UpdatePaymentCommandHandler                SYSTEM "./Configuration_UpdatePaymentCommandHandler.xml">
+        <!ENTITY Workflow_Fallback                          SYSTEM "./Configuration_Workflow_Fallback.xml">
+        <!ENTITY Workflow_TwoWayCommunication               SYSTEM "./Configuration_Workflow_TwoWayCommunication.xml">
+        <!ENTITY Workflow_UwGegevens                        SYSTEM "./Configuration_Workflow_UwGegevens.xml">
+        <!ENTITY WorkflowSelector                           SYSTEM "./Configuration_WorkflowSelector.xml">
         ]>
 
 <configuration name="bpel">
-    &Bpel_Basic_Aggregator;
-    &Bpel_Basic_Handler;
     &Bpel_Basic_Mock;
     &Bpel_Basic_PostInitiate;
     &Bpel_Basic_PostRegister;
@@ -36,8 +36,8 @@
     &Bpel_Documents_PostAddDocument;
     &Bpel_Documents_PostEndBatch;
     &Bpel_Documents_PostStartBatch;
-    &Bpel_Documents_UploadAttachment;
-    &Bpel_Documents_UploadAttachments;
+    &Handler_AddDocumentsToCaseCommand;
+    &Handler_AddDocumentToCaseCommand;
     &Bpel_Mtom_Mock;
     &Bpel_Mtom_PostAddDocument;
     &Bpel_Payment_Post;
@@ -46,4 +46,8 @@
     &Notificaties_Subscribe;
     &UpdateInitiatorSubjectCommandHandler;
     &UpdatePaymentCommandHandler;
+    &Workflow_Fallback;
+    &Workflow_TwoWayCommunication;
+    &Workflow_UwGegevens;
+    &WorkflowSelector;
 </configuration>

@@ -67,7 +67,7 @@
                 >
                 <Param name="CorrelationId" sessionKey="cid" />
                 <Param name="ProcessId" value="B1096" />
-                <Param name="ReferenceNumber" value="dummy" />
+                <Param name="ReferenceNumber" sessionKey="originalMessage" xpathExpression="//*:caseParameters/*:referenceNumber" />
                 <Forward name="success" path="EXIT"/>
                 <Forward name="exception" path="CreateError"/>
             </SoapWrapperPipe>

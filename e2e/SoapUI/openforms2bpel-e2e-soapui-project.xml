@@ -11093,7 +11093,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
         </con:representation>
         <con:representation type="FAULT">
           <con:mediaType>text/html;charset=utf-8</con:mediaType>
-          <con:status>500</con:status>
+          <con:status>500 404</con:status>
           <con:params/>
           <con:element>html</con:element>
         </con:representation>
@@ -11198,6 +11198,24 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
         <con:representation type="FAULT">
           <con:mediaType xsi:nil="true"/>
           <con:status>404</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
           <con:params/>
           <con:element>data</con:element>
         </con:representation>
@@ -15269,6 +15287,267 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       <con:settings/>
     </con:operation>
   </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="a5d232cc-6de1-4d7a-a36a-7ba62a5697fe" wsaVersion="NONE" name="GegmagbasicBinding" type="wsdl" bindingName="{http://www.emaxx.org/functional/gegmag}GegmagbasicBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Projects/openforms2bpel.worktrees/update-gegmag/src/main/configurations/bpel/GegMag/gegmag.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:endpoints>
+      <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+      <con:endpoint>http://guo10702.k-domstad.org:8080/services/GegMagProxy</con:endpoint>
+    </con:endpoints>
+    <con:operation id="d28453ce-fe15-41c7-a438-82978816c02c" isOneWay="false" action="gegmagbasic:addExtendedOrganizationInfo" name="addExtendedOrganizationInfo" bindingOperationName="addExtendedOrganizationInfo" type="Request-Response" outputName="addExtendedOrganizationInfoResponse" inputName="addExtendedOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="6dadc9bd-d031-4fc9-8a7b-9b2e1bbaf1af" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:addExtendedOrganizationInfo"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="a7f58eea-e210-41e4-937d-f49c1d79f541" isOneWay="false" action="gegmagbasic:addExtendedPersonInfo" name="addExtendedPersonInfo" bindingOperationName="addExtendedPersonInfo" type="Request-Response" outputName="addExtendedPersonInfoResponse" inputName="addExtendedPersonInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="eabbdfb1-911f-440c-8817-6fee0ab3fb23" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:addExtendedPersonInfo"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="cad7a9d4-cac2-40e3-bbc7-cd65f30e5048" isOneWay="false" action="gegmagbasic:addSupplementaryOrganizationInfo" name="addSupplementaryOrganizationInfo" bindingOperationName="addSupplementaryOrganizationInfo" type="Request-Response" outputName="addSupplementaryOrganizationInfoResponse" inputName="addSupplementaryOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="a60a71df-d645-4318-b868-bb1e56569d36" isOneWay="false" action="gegmagbasic:clearCache" name="clearCache" bindingOperationName="clearCache" type="Request-Response" outputName="clearCacheResponse" inputName="clearCacheRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="2b0bb2d4-0921-4368-9e8c-2de1aed87557" isOneWay="false" action="gegmagbasic:deleteExtendedOrganizationInfo" name="deleteExtendedOrganizationInfo" bindingOperationName="deleteExtendedOrganizationInfo" type="Request-Response" outputName="deleteExtendedOrganizationInfoResponse" inputName="deleteExtendedOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="f2d908c2-4667-4c66-be1a-debeaddb9a19" isOneWay="false" action="gegmagbasic:deleteExtendedPersonInfo" name="deleteExtendedPersonInfo" bindingOperationName="deleteExtendedPersonInfo" type="Request-Response" outputName="deleteExtendedPersonInfoResponse" inputName="deleteExtendedPersonInfoRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="89be4d3c-dd83-48a2-a789-ecc2c169a6db" isOneWay="false" action="gegmagbasic:deleteSupplementaryOrganizationInfo" name="deleteSupplementaryOrganizationInfo" bindingOperationName="deleteSupplementaryOrganizationInfo" type="Request-Response" outputName="deleteSupplementaryOrganizationInfoResponse" inputName="deleteSupplementaryOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="8467f4d9-69d1-46de-81e7-2c248edb9782" isOneWay="false" action="gegmagbasic:findOrganization" name="findOrganization" bindingOperationName="findOrganization" type="Request-Response" outputName="findOrganizationResponse" inputName="findOrganizationRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="23719a1f-f554-4d3e-80fd-f2bfe12adfc1" isOneWay="false" action="gegmagbasic:getOrganizationDetails" name="getOrganizationDetails" bindingOperationName="getOrganizationDetails" type="Request-Response" outputName="getOrganizationDetailsResponse" inputName="getOrganizationDetailsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="012b1da2-141e-485e-aa59-beb300da2a33" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:getOrganizationDetails"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="13b0677d-37ef-4549-b86b-c68a7e286b64" isOneWay="false" action="gegmagbasic:getPersonDetails" name="getPersonDetails" bindingOperationName="getPersonDetails" type="Request-Response" outputName="getPersonDetailsResponse" inputName="getPersonDetailsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="de0bd882-9c5a-41a3-b2bc-541bd1922c5d" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <geg:getPersonDetails>\r
+         <geg:personIdMessage source="internal" details="all" maxResults="?">\r
+            <geg:persons>\r
+               <!--Zero or more repetitions:-->\r
+               <geg:person>\r
+                  <geg:aNumber>?</geg:aNumber>\r
+                  <geg:bsn>?</geg:bsn>\r
+                  <!--Optional:-->\r
+                  <geg:type details="?">?</geg:type>\r
+               </geg:person>\r
+            </geg:persons>\r
+            <geg:context>\r
+               <geg:name>?</geg:name>\r
+               <!--1 or more repetitions:-->\r
+               <geg:field>\r
+                  <geg:code>?</geg:code>\r
+                  <geg:name>?</geg:name>\r
+                  <geg:contextSelector>?</geg:contextSelector>\r
+               </geg:field>\r
+            </geg:context>\r
+            <!--You have a CHOICE of the next 2 items at this level-->\r
+            <geg:filter address="AND" filterOutput="false">\r
+               <!--Optional:-->\r
+               <geg:person>\r
+                  <!--Optional:-->\r
+                  <geg:alive>?</geg:alive>\r
+               </geg:person>\r
+               <!--Optional:-->\r
+               <geg:correspondenceAddress>\r
+                  <!--Optional:-->\r
+                  <geg:municipalityCodes>\r
+                     <!--Zero or more repetitions:-->\r
+                     <geg:municipalityCode>?</geg:municipalityCode>\r
+                  </geg:municipalityCodes>\r
+               </geg:correspondenceAddress>\r
+               <!--Optional:-->\r
+               <geg:registrationAddress>\r
+                  <!--Optional:-->\r
+                  <geg:municipalityCodes>\r
+                     <!--Zero or more repetitions:-->\r
+                     <geg:municipalityCode>?</geg:municipalityCode>\r
+                  </geg:municipalityCodes>\r
+               </geg:registrationAddress>\r
+               <!--Optional:-->\r
+               <geg:residenceAddress>\r
+                  <!--Optional:-->\r
+                  <geg:municipalityCodes>\r
+                     <!--Zero or more repetitions:-->\r
+                     <geg:municipalityCode>?</geg:municipalityCode>\r
+                  </geg:municipalityCodes>\r
+               </geg:residenceAddress>\r
+            </geg:filter>\r
+            <geg:splitFilter filterOutput="false">\r
+               <!--Optional:-->\r
+               <geg:internal address="AND">\r
+                  <!--Optional:-->\r
+                  <geg:person>\r
+                     <!--Optional:-->\r
+                     <geg:alive>?</geg:alive>\r
+                  </geg:person>\r
+                  <!--Optional:-->\r
+                  <geg:correspondenceAddress>\r
+                     <!--Optional:-->\r
+                     <geg:municipalityCodes>\r
+                        <!--Zero or more repetitions:-->\r
+                        <geg:municipalityCode>?</geg:municipalityCode>\r
+                     </geg:municipalityCodes>\r
+                  </geg:correspondenceAddress>\r
+                  <!--Optional:-->\r
+                  <geg:registrationAddress>\r
+                     <!--Optional:-->\r
+                     <geg:municipalityCodes>\r
+                        <!--Zero or more repetitions:-->\r
+                        <geg:municipalityCode>?</geg:municipalityCode>\r
+                     </geg:municipalityCodes>\r
+                  </geg:registrationAddress>\r
+                  <!--Optional:-->\r
+                  <geg:residenceAddress>\r
+                     <!--Optional:-->\r
+                     <geg:municipalityCodes>\r
+                        <!--Zero or more repetitions:-->\r
+                        <geg:municipalityCode>?</geg:municipalityCode>\r
+                     </geg:municipalityCodes>\r
+                  </geg:residenceAddress>\r
+               </geg:internal>\r
+               <!--Optional:-->\r
+               <geg:external address="AND">\r
+                  <!--Optional:-->\r
+                  <geg:person>\r
+                     <!--Optional:-->\r
+                     <geg:alive>?</geg:alive>\r
+                  </geg:person>\r
+                  <!--Optional:-->\r
+                  <geg:correspondenceAddress>\r
+                     <!--Optional:-->\r
+                     <geg:municipalityCodes>\r
+                        <!--Zero or more repetitions:-->\r
+                        <geg:municipalityCode>?</geg:municipalityCode>\r
+                     </geg:municipalityCodes>\r
+                  </geg:correspondenceAddress>\r
+                  <!--Optional:-->\r
+                  <geg:registrationAddress>\r
+                     <!--Optional:-->\r
+                     <geg:municipalityCodes>\r
+                        <!--Zero or more repetitions:-->\r
+                        <geg:municipalityCode>?</geg:municipalityCode>\r
+                     </geg:municipalityCodes>\r
+                  </geg:registrationAddress>\r
+                  <!--Optional:-->\r
+                  <geg:residenceAddress>\r
+                     <!--Optional:-->\r
+                     <geg:municipalityCodes>\r
+                        <!--Zero or more repetitions:-->\r
+                        <geg:municipalityCode>?</geg:municipalityCode>\r
+                     </geg:municipalityCodes>\r
+                  </geg:residenceAddress>\r
+               </geg:external>\r
+            </geg:splitFilter>\r
+         </geg:personIdMessage>\r
+      </geg:getPersonDetails>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:getPersonDetails"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="6cce542a-9182-43d5-93db-d2939c8569ab" isOneWay="false" action="gegmagbasic:getRelationDetails" name="getRelationDetails" bindingOperationName="getRelationDetails" type="Request-Response" outputName="getRelationDetailsResponse" inputName="getRelationDetailsRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="136c6ddb-80e2-41af-8281-fe719f08251a" isOneWay="false" action="gegmagbasic:lookUpAddress" name="lookUpAddress" bindingOperationName="lookUpAddress" type="Request-Response" outputName="lookUpAddressResponse" inputName="lookUpAddressRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="9c4a6d57-0218-4e19-bcef-dc42a054f93a" isOneWay="false" action="gegmagbasic:lookUpCity" name="lookUpCity" bindingOperationName="lookUpCity" type="Request-Response" outputName="lookUpCityResponse" inputName="lookUpCityRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="4075785b-85a7-48da-bb96-e7803b0f7dcc" isOneWay="false" action="gegmagbasic:lookUpCountry" name="lookUpCountry" bindingOperationName="lookUpCountry" type="Request-Response" outputName="lookUpCountryResponse" inputName="lookUpCountryRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="deff431e-1ac6-477d-bf31-df13f50ff8f7" isOneWay="false" action="gegmagbasic:lookUpDistrict" name="lookUpDistrict" bindingOperationName="lookUpDistrict" type="Request-Response" outputName="lookUpDistrictResponse" inputName="lookUpDistrictRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="3962d45a-51a4-485a-b53b-fe86c09087d7" isOneWay="false" action="gegmagbasic:lookUpExtendedOrganizationInfo" name="lookUpExtendedOrganizationInfo" bindingOperationName="lookUpExtendedOrganizationInfo" type="Request-Response" outputName="lookUpExtendedOrganizationInfoResponse" inputName="lookUpExtendedOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="d298244e-9584-4282-b5c3-cd3925c61a15" isOneWay="false" action="gegmagbasic:lookUpMunicipality" name="lookUpMunicipality" bindingOperationName="lookUpMunicipality" type="Request-Response" outputName="lookUpMunicipalityResponse" inputName="lookUpMunicipalityRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="e21e3fe0-9f32-47d4-8e29-e4951d192c3d" isOneWay="false" action="gegmagbasic:lookUpNeighbourhood" name="lookUpNeighbourhood" bindingOperationName="lookUpNeighbourhood" type="Request-Response" outputName="lookUpNeighbourhoodResponse" inputName="lookUpNeighbourhoodRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="193f2cd8-0e5f-43fe-820d-62be384a7e7e" isOneWay="false" action="gegmagbasic:lookUpOrganization" name="lookUpOrganization" bindingOperationName="lookUpOrganization" type="Request-Response" outputName="lookUpOrganizationResponse" inputName="lookUpOrganizationRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="f9930c07-d6df-43d2-926c-57ffac7e7942" isOneWay="false" action="gegmagbasic:lookUpPerson" name="lookUpPerson" bindingOperationName="lookUpPerson" type="Request-Response" outputName="lookUpPersonResponse" inputName="lookUpPersonRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="79d44d5f-9329-4c54-a12d-62b677f8a8d0" isOneWay="false" action="gegmagbasic:lookUpPersonBySupplementary" name="lookUpPersonBySupplementary" bindingOperationName="lookUpPersonBySupplementary" type="Request-Response" outputName="lookUpPersonBySupplementaryResponse" inputName="lookUpPersonBySupplementaryRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="2c5257d6-22d5-41f0-abfe-55e3aa452637" isOneWay="false" action="gegmagbasic:lookUpRegistryAddress" name="lookUpRegistryAddress" bindingOperationName="lookUpRegistryAddress" type="Request-Response" outputName="lookUpRegistryAddressResponse" inputName="lookUpRegistryAddressRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="0d64be07-b7f8-492b-b3f7-4684a957ca3f" isOneWay="false" action="gegmagbasic:lookUpRegistryObject" name="lookUpRegistryObject" bindingOperationName="lookUpRegistryObject" type="Request-Response" outputName="lookUpRegistryObjectResponse" inputName="lookUpRegistryObjectRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="bea86f4b-4e92-4832-99ec-89164f5d8b1c" isOneWay="false" action="gegmagbasic:lookUpStreet" name="lookUpStreet" bindingOperationName="lookUpStreet" type="Request-Response" outputName="lookUpStreetResponse" inputName="lookUpStreetRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="cd5285a0-0bb4-4af0-a11a-8b9236291fe4" isOneWay="false" action="gegmagbasic:readOrganizations" name="readOrganizations" bindingOperationName="readOrganizations" type="Request-Response" outputName="readOrganizationsResponse" inputName="readOrganizationsRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="e0335f00-70e6-4887-952b-416902eed3d0" isOneWay="false" action="gegmagbasic:saveExtendedPersonInfo" name="saveExtendedPersonInfo" bindingOperationName="saveExtendedPersonInfo" type="Request-Response" outputName="saveExtendedPersonInfoResponse" inputName="saveExtendedPersonInfoRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="20fa9a7b-0a60-4101-aad0-06acd760f4f2" isOneWay="false" action="gegmagbasic:updateExtendedOrganizationInfo" name="updateExtendedOrganizationInfo" bindingOperationName="updateExtendedOrganizationInfo" type="Request-Response" outputName="updateExtendedOrganizationInfoResponse" inputName="updateExtendedOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="4493a871-5788-46de-9c32-f1463bef94d1" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:updateExtendedOrganizationInfo"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="30dd8c06-bf12-46fc-bd5a-fcc5518c7b12" isOneWay="false" action="gegmagbasic:updateExtendedPersonInfo" name="updateExtendedPersonInfo" bindingOperationName="updateExtendedPersonInfo" type="Request-Response" outputName="updateExtendedPersonInfoResponse" inputName="updateExtendedPersonInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="eac7ff28-7e8f-4004-84b9-2ac89ed68203" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:updateExtendedPersonInfo"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="484cdcee-3fbc-4a18-8403-96f9592e72bb" isOneWay="false" action="gegmagbasic:updateSupplementaryOrganizationInfo" name="updateSupplementaryOrganizationInfo" bindingOperationName="updateSupplementaryOrganizationInfo" type="Request-Response" outputName="updateSupplementaryOrganizationInfoResponse" inputName="updateSupplementaryOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+  </con:interface>
   <con:testSuite id="51faa60a-6964-478d-8f14-899c806b2805" name="e2e">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
@@ -16461,7 +16740,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
          ],\r
          "language_code" : "nl",\r
          "submission_id" : "90864c86-4c17-4511-9858-a2040214359a",\r
-         "public_reference" : "OF-YQC62L"\r
+         "public_reference" : "OF-${=org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6)}"\r
       },\r
       "geometry" : null,\r
       "startAt" : "2024-01-12",\r
@@ -16729,10 +17008,12 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
                      "voorletterSPMD" : "J.H.",\r
                      "tussenvoegselSPMD" : "van"\r
                   }\r
-               }\r
+               }\r,
+               "initiatingSubjectAuth" : "DigiD",
+               "bentUEenPersoonOfEenBedrijf" : "Persoon"
             },\r
             "gegevenstweewegcommunicatie" : {\r
-               "zaaknummer" : "OF-L5HPRJ",\r
+               "zaaknummer" : "OF-${=org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6)}",\r
                "bestandsupload" : [\r
                   {\r
                      "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/7c50b4b8-e22e-4c83-a50d-f52695aa673b",\r
@@ -16766,7 +17047,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
          ],\r
          "language_code" : "nl",\r
          "submission_id" : "60114ebd-cfb7-49d1-abad-6a22282b501a",\r
-         "public_reference" : "OF-WRPYRE"\r
+         "public_reference" : "OF-${=org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6)}"\r
       },\r
       "geometry" : null,\r
       "startAt" : "2024-03-19",\r
@@ -16973,7 +17254,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
          "attachments" : [ ],\r
          "language_code" : "nl",\r
          "submission_id" : "3f1a7325-390b-415a-bd81-4c788d8bcabe",\r
-         "public_reference" : "OF-JVS4JY"\r
+         "public_reference" : "OF-${=org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6)}"\r
       },\r
       "geometry" : null,\r
       "startAt" : "2024-04-09",\r
@@ -17980,6 +18261,2339 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
    </soapenv:Body>
 </soapenv:Envelope>]]></con:responseContent>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="cases:updatePersons"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+  </con:mockService>
+  <con:mockService id="2a231a5c-f5cd-42db-81f7-a070744c040e" port="8094" path="/mock/Gegmag" host="LAPTOP-UKAI1A6" name="Gegmag Mock">
+    <con:settings>
+      <con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting>
+    </con:settings>
+    <con:properties/>
+    <con:mockOperation name="addExtendedOrganizationInfo" id="c11cd714-ae5d-4711-b4d1-3ca1cb321400" interface="GegmagbasicBinding" operation="addExtendedOrganizationInfo">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="20723faa-5411-4077-98f2-fafa1b6a3e46" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:addExtendedOrganizationInfoResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </geg:addExtendedOrganizationInfoResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:addExtendedOrganizationInfo"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="addExtendedPersonInfo" id="48a865ef-f69c-4c83-b6ad-94ed7de136c6" interface="GegmagbasicBinding" operation="addExtendedPersonInfo">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="227563bc-fe38-4075-a3a4-a00e390fa0ba" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:addExtendedPersonInfoResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </geg:addExtendedPersonInfoResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:addExtendedPersonInfo"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="addSupplementaryOrganizationInfo" id="84435465-1bce-4681-97c3-cb7bdb401da9" interface="GegmagbasicBinding" operation="addSupplementaryOrganizationInfo">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="e53c3de3-8ceb-4c9b-9e61-fb27e54750b1" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:addSupplementaryOrganizationInfoResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </geg:addSupplementaryOrganizationInfoResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:addSupplementaryOrganizationInfo"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="clearCache" id="9f56cebe-8bed-47a6-8ddb-d0a5d0d2c68c" interface="GegmagbasicBinding" operation="clearCache">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="1a2ffdf3-dcf9-404b-a527-24da39703d09" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:clearCacheResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </geg:clearCacheResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:clearCache"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="deleteExtendedOrganizationInfo" id="20cadae2-b1a8-427e-9d0c-b6e7dd6549a4" interface="GegmagbasicBinding" operation="deleteExtendedOrganizationInfo">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="b6a302e6-71c7-413f-96e9-9ad1e9451ac5" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:deleteExtendedOrganizationInfoResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </geg:deleteExtendedOrganizationInfoResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:deleteExtendedOrganizationInfo"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="deleteExtendedPersonInfo" id="08dec611-1566-40c3-b6c8-d52a090699b1" interface="GegmagbasicBinding" operation="deleteExtendedPersonInfo">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="c43a3483-8cf1-4698-988d-6e687b35fd47" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:deleteExtendedPersonInfoResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </geg:deleteExtendedPersonInfoResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:deleteExtendedPersonInfo"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="deleteSupplementaryOrganizationInfo" id="05f1b25e-e2d4-485e-a85e-41af29f35285" interface="GegmagbasicBinding" operation="deleteSupplementaryOrganizationInfo">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="6e3f3dd8-923f-44e8-b170-e5a62a0d6bf8" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:deleteSupplementaryOrganizationInfoResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </geg:deleteSupplementaryOrganizationInfoResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:deleteSupplementaryOrganizationInfo"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="findOrganization" id="ef35de52-8407-439f-989b-b61711637b4d" interface="GegmagbasicBinding" operation="findOrganization">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="124ab604-39e9-4a23-9e5c-f837ca373763" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:findOrganizationResponse>
+         <geg:organizationMessage unsupportedMethod="false">
+            <geg:organizations>
+               <!--Zero or more repetitions:-->
+               <geg:organization rank="?">
+                  <!--Optional:-->
+                  <geg:current source="?">
+                     <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>
+                     <!--Optional:-->
+                     <geg:kvkNumber>?</geg:kvkNumber>
+                     <!--Optional:-->
+                     <geg:organizationGroupName>?</geg:organizationGroupName>
+                     <!--Optional:-->
+                     <geg:trademark>?</geg:trademark>
+                     <!--Optional:-->
+                     <geg:commercialRegistryCity>?</geg:commercialRegistryCity>
+                     <!--Optional:-->
+                     <geg:statutoryName>?</geg:statutoryName>
+                     <!--Optional:-->
+                     <geg:companyName>?</geg:companyName>
+                     <geg:foundingDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:foundingDate>
+                     <geg:dissolutionDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dissolutionDate>
+                     <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>
+                     <!--Optional:-->
+                     <geg:branchOfIndustry>?</geg:branchOfIndustry>
+                     <!--Optional:-->
+                     <geg:indicationBankruptcy>?</geg:indicationBankruptcy>
+                     <!--Optional:-->
+                     <geg:indicationHeadquarters>?</geg:indicationHeadquarters>
+                     <!--Optional:-->
+                     <geg:indicationSuspensionPayment>?</geg:indicationSuspensionPayment>
+                     <!--Optional:-->
+                     <geg:workingMenFulltime>?</geg:workingMenFulltime>
+                     <!--Optional:-->
+                     <geg:workingMenParttime>?</geg:workingMenParttime>
+                     <!--Optional:-->
+                     <geg:workingWomenFulltime>?</geg:workingWomenFulltime>
+                     <!--Optional:-->
+                     <geg:workingWomenParttime>?</geg:workingWomenParttime>
+                     <!--Optional:-->
+                     <geg:citizenNumber>?</geg:citizenNumber>
+                     <!--Optional:-->
+                     <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>
+                     <!--Optional:-->
+                     <geg:subjectNumberAKR>?</geg:subjectNumberAKR>
+                     <!--Optional:-->
+                     <geg:bankNumber>?</geg:bankNumber>
+                     <!--Optional:-->
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <!--Optional:-->
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <!--Optional:-->
+                     <geg:phoneNumber>?</geg:phoneNumber>
+                     <!--Optional:-->
+                     <geg:organizationType>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:organizationType>
+                     <!--Optional:-->
+                     <geg:legalForm>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:legalForm>
+                     <!--Optional:-->
+                     <geg:countryOfBirth>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfBirth>
+                     <!--Optional:-->
+                     <geg:ownerBsn>?</geg:ownerBsn>
+                     <!--Optional:-->
+                     <geg:shortName>?</geg:shortName>
+                     <!--Optional:-->
+                     <geg:url>?</geg:url>
+                     <!--Optional:-->
+                     <geg:bic>?</geg:bic>
+                     <geg:addresses>
+                        <!--Zero or more repetitions:-->
+                        <geg:address source="?">
+                           <geg:type>?</geg:type>
+                           <geg:street>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <!--Optional:-->
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:locationDescription>?</geg:locationDescription>
+                           <geg:zipCode>?</geg:zipCode>
+                           <!--Optional:-->
+                           <geg:neighbourhood>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:neighbourhood>
+                           <geg:city>?</geg:city>
+                           <!--Optional:-->
+                           <geg:municipality>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:municipality>
+                           <!--Optional:-->
+                           <geg:district>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:district>
+                           <!--Optional:-->
+                           <geg:country>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:country>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                           <!--Optional:-->
+                           <geg:xCoordinate>?</geg:xCoordinate>
+                           <!--Optional:-->
+                           <geg:yCoordinate>?</geg:yCoordinate>
+                           <!--Optional:-->
+                           <geg:zCoordinate>?</geg:zCoordinate>
+                           <!--Optional:-->
+                           <geg:monumentStatus>?</geg:monumentStatus>
+                           <!--Optional:-->
+                           <geg:habitable>?</geg:habitable>
+                           <!--Optional:-->
+                           <geg:addressStatus>?</geg:addressStatus>
+                           <!--Optional:-->
+                           <geg:addressSystem>?</geg:addressSystem>
+                        </geg:address>
+                     </geg:addresses>
+                  </geg:current>
+                  <!--Optional:-->
+                  <geg:supplementary>
+                     <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>
+                     <!--Optional:-->
+                     <geg:kvkNumber>?</geg:kvkNumber>
+                     <geg:organizationGroupName>?</geg:organizationGroupName>
+                     <geg:trademark>?</geg:trademark>
+                     <geg:commercialRegistryCity>?</geg:commercialRegistryCity>
+                     <geg:statutoryName>?</geg:statutoryName>
+                     <geg:companyName>?</geg:companyName>
+                     <geg:foundingDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:foundingDate>
+                     <geg:dissolutionDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dissolutionDate>
+                     <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>
+                     <geg:branchOfIndustry>?</geg:branchOfIndustry>
+                     <geg:indicationBankruptcy>?</geg:indicationBankruptcy>
+                     <geg:indicationHeadquarters>?</geg:indicationHeadquarters>
+                     <geg:indicationSuspensionPayment>?</geg:indicationSuspensionPayment>
+                     <geg:workingMenFulltime>?</geg:workingMenFulltime>
+                     <geg:workingMenParttime>?</geg:workingMenParttime>
+                     <geg:workingWomenFulltime>?</geg:workingWomenFulltime>
+                     <geg:workingWomenParttime>?</geg:workingWomenParttime>
+                     <geg:citizenNumber>?</geg:citizenNumber>
+                     <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>
+                     <geg:subjectNumberAKR>?</geg:subjectNumberAKR>
+                     <geg:bankNumber>?</geg:bankNumber>
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <geg:phoneNumber>?</geg:phoneNumber>
+                     <geg:webAddress>?</geg:webAddress>
+                     <!--Optional:-->
+                     <geg:organizationType>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:organizationType>
+                     <!--Optional:-->
+                     <geg:legalForm>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:legalForm>
+                     <geg:prefComChannel>?</geg:prefComChannel>
+                     <geg:addresses>
+                        <!--0 to 2 repetitions:-->
+                        <geg:address>
+                           <geg:type>?</geg:type>
+                           <!--Optional:-->
+                           <geg:street>
+                              <geg:name>?</geg:name>
+                           </geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:locationDescription>?</geg:locationDescription>
+                           <geg:zipCode>?</geg:zipCode>
+                           <geg:city>?</geg:city>
+                           <!--Optional:-->
+                           <geg:municipality>
+                              <geg:name>?</geg:name>
+                           </geg:municipality>
+                           <!--Optional:-->
+                           <geg:country>
+                              <geg:name>?</geg:name>
+                           </geg:country>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                        </geg:address>
+                     </geg:addresses>
+                  </geg:supplementary>
+               </geg:organization>
+            </geg:organizations>
+         </geg:organizationMessage>
+      </geg:findOrganizationResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:findOrganization"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="getOrganizationDetails" id="dc9cba50-93cd-40c3-bcc7-e58316bf4783" interface="GegmagbasicBinding" operation="getOrganizationDetails">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="a83a64ca-1c89-4894-a0d7-f35f01bf7e79" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:getOrganizationDetailsResponse>
+         <geg:organizationDetailsMessage unsupportedMethod="false">
+            <geg:organizations>
+               <!--Zero or more repetitions:-->
+               <geg:organization>
+                  <!--Optional:-->
+                  <geg:current source="?">
+                     <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>
+                     <!--Optional:-->
+                     <geg:kvkNumber>?</geg:kvkNumber>
+                     <!--Optional:-->
+                     <geg:organizationGroupName>?</geg:organizationGroupName>
+                     <!--Optional:-->
+                     <geg:trademark>?</geg:trademark>
+                     <!--Optional:-->
+                     <geg:commercialRegistryCity>?</geg:commercialRegistryCity>
+                     <!--Optional:-->
+                     <geg:statutoryName>?</geg:statutoryName>
+                     <!--Optional:-->
+                     <geg:companyName>?</geg:companyName>
+                     <geg:foundingDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:foundingDate>
+                     <geg:dissolutionDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dissolutionDate>
+                     <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>
+                     <!--Optional:-->
+                     <geg:branchOfIndustry>?</geg:branchOfIndustry>
+                     <!--Optional:-->
+                     <geg:indicationBankruptcy>?</geg:indicationBankruptcy>
+                     <!--Optional:-->
+                     <geg:indicationHeadquarters>?</geg:indicationHeadquarters>
+                     <!--Optional:-->
+                     <geg:indicationSuspensionPayment>?</geg:indicationSuspensionPayment>
+                     <!--Optional:-->
+                     <geg:workingMenFulltime>?</geg:workingMenFulltime>
+                     <!--Optional:-->
+                     <geg:workingMenParttime>?</geg:workingMenParttime>
+                     <!--Optional:-->
+                     <geg:workingWomenFulltime>?</geg:workingWomenFulltime>
+                     <!--Optional:-->
+                     <geg:workingWomenParttime>?</geg:workingWomenParttime>
+                     <!--Optional:-->
+                     <geg:citizenNumber>?</geg:citizenNumber>
+                     <!--Optional:-->
+                     <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>
+                     <!--Optional:-->
+                     <geg:subjectNumberAKR>?</geg:subjectNumberAKR>
+                     <!--Optional:-->
+                     <geg:bankNumber>?</geg:bankNumber>
+                     <!--Optional:-->
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <!--Optional:-->
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <!--Optional:-->
+                     <geg:phoneNumber>?</geg:phoneNumber>
+                     <!--Optional:-->
+                     <geg:organizationType>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:organizationType>
+                     <!--Optional:-->
+                     <geg:legalForm>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:legalForm>
+                     <!--Optional:-->
+                     <geg:countryOfBirth>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfBirth>
+                     <!--Optional:-->
+                     <geg:ownerBsn>?</geg:ownerBsn>
+                     <!--Optional:-->
+                     <geg:shortName>?</geg:shortName>
+                     <!--Optional:-->
+                     <geg:url>?</geg:url>
+                     <!--Optional:-->
+                     <geg:bic>?</geg:bic>
+                     <geg:addresses>
+                        <!--Zero or more repetitions:-->
+                        <geg:address source="?">
+                           <geg:type>?</geg:type>
+                           <geg:street>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <!--Optional:-->
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:locationDescription>?</geg:locationDescription>
+                           <geg:zipCode>?</geg:zipCode>
+                           <!--Optional:-->
+                           <geg:neighbourhood>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:neighbourhood>
+                           <geg:city>?</geg:city>
+                           <!--Optional:-->
+                           <geg:municipality>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:municipality>
+                           <!--Optional:-->
+                           <geg:district>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:district>
+                           <!--Optional:-->
+                           <geg:country>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:country>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                           <!--Optional:-->
+                           <geg:xCoordinate>?</geg:xCoordinate>
+                           <!--Optional:-->
+                           <geg:yCoordinate>?</geg:yCoordinate>
+                           <!--Optional:-->
+                           <geg:zCoordinate>?</geg:zCoordinate>
+                           <!--Optional:-->
+                           <geg:monumentStatus>?</geg:monumentStatus>
+                           <!--Optional:-->
+                           <geg:habitable>?</geg:habitable>
+                           <!--Optional:-->
+                           <geg:addressStatus>?</geg:addressStatus>
+                           <!--Optional:-->
+                           <geg:addressSystem>?</geg:addressSystem>
+                        </geg:address>
+                     </geg:addresses>
+                  </geg:current>
+                  <!--Optional:-->
+                  <geg:supplementary>
+                     <geg:organizationNumber>?</geg:organizationNumber>
+                     <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>
+                     <geg:companyName>?</geg:companyName>
+                     <geg:branchOfIndustry>?</geg:branchOfIndustry>
+                     <geg:fiscalNumber>?</geg:fiscalNumber>
+                     <geg:commercialRegistryCity>?</geg:commercialRegistryCity>
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <geg:webAddress>?</geg:webAddress>
+                     <geg:telephoneNumber>?</geg:telephoneNumber>
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <geg:contactPersonLastName>?</geg:contactPersonLastName>
+                     <geg:contactPersonLastNamePrefix>?</geg:contactPersonLastNamePrefix>
+                     <geg:contactPersonInitials>?</geg:contactPersonInitials>
+                     <geg:contactPersonFirstNames>?</geg:contactPersonFirstNames>
+                     <geg:contactPersonSalutation>?</geg:contactPersonSalutation>
+                     <geg:contactPersonFunction>?</geg:contactPersonFunction>
+                     <geg:prefComChannel>?</geg:prefComChannel>
+                     <geg:addresses>
+                        <!--0 to 3 repetitions:-->
+                        <geg:address>
+                           <geg:type>?</geg:type>
+                           <geg:street>?</geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:zipCode>?</geg:zipCode>
+                           <geg:city>?</geg:city>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                        </geg:address>
+                     </geg:addresses>
+                  </geg:supplementary>
+               </geg:organization>
+            </geg:organizations>
+         </geg:organizationDetailsMessage>
+      </geg:getOrganizationDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:getOrganizationDetails"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="getPersonDetails" id="59716914-3181-46bb-880c-79ea208177a3" interface="GegmagbasicBinding" operation="getPersonDetails">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="1e2a25b6-43bf-4da1-ac99-e01cea7e09eb" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:getPersonDetailsResponse>
+         <geg:personDetailsMessage unsupportedMethod="false">
+            <geg:persons>
+               <!--Zero or more repetitions:-->
+               <geg:person>
+                  <!--Optional:-->
+                  <geg:current source="?">
+                     <geg:aNumber>?</geg:aNumber>
+                     <geg:bsn>?</geg:bsn>
+                     <geg:citizenNumber>?</geg:citizenNumber>
+                     <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>
+                     <geg:subjectNumberAKR>?</geg:subjectNumberAKR>
+                     <geg:genderIndication>?</geg:genderIndication>
+                     <geg:initials>?</geg:initials>
+                     <geg:firstNames>?</geg:firstNames>
+                     <geg:lastNamePrefix>?</geg:lastNamePrefix>
+                     <geg:lastName>?</geg:lastName>
+                     <geg:indicationOfNameUsage>?</geg:indicationOfNameUsage>
+                     <!--Optional:-->
+                     <geg:nameOfAddress>?</geg:nameOfAddress>
+                     <geg:nationalities>
+                        <!--Zero or more repetitions:-->
+                        <geg:nationality>
+                           <geg:code>?</geg:code>
+                           <geg:name>?</geg:name>
+                           <geg:description>?</geg:description>
+                        </geg:nationality>
+                     </geg:nationalities>
+                     <geg:maritalStatus>?</geg:maritalStatus>
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <geg:phoneNumber>?</geg:phoneNumber>
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <geg:bankNumber>?</geg:bankNumber>
+                     <geg:dateOfBirth ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfBirth>
+                     <!--Optional:-->
+                     <geg:cityOfBirth>?</geg:cityOfBirth>
+                     <!--Optional:-->
+                     <geg:municipalityOfBirth>?</geg:municipalityOfBirth>
+                     <!--Optional:-->
+                     <geg:countryOfBirth>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfBirth>
+                     <geg:dateOfDeath ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfDeath>
+                     <!--Optional:-->
+                     <geg:cityOfDeath>?</geg:cityOfDeath>
+                     <!--Optional:-->
+                     <geg:municipalityOfDeath>?</geg:municipalityOfDeath>
+                     <!--Optional:-->
+                     <geg:countryOfDeath>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfDeath>
+                     <geg:addresses>
+                        <!--Zero or more repetitions:-->
+                        <geg:address source="?">
+                           <geg:type>?</geg:type>
+                           <geg:street>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <!--Optional:-->
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:locationDescription>?</geg:locationDescription>
+                           <geg:zipCode>?</geg:zipCode>
+                           <!--Optional:-->
+                           <geg:neighbourhood>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:neighbourhood>
+                           <geg:city>?</geg:city>
+                           <!--Optional:-->
+                           <geg:municipality>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:municipality>
+                           <!--Optional:-->
+                           <geg:district>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:district>
+                           <!--Optional:-->
+                           <geg:country>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:country>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                           <!--Optional:-->
+                           <geg:xCoordinate>?</geg:xCoordinate>
+                           <!--Optional:-->
+                           <geg:yCoordinate>?</geg:yCoordinate>
+                           <!--Optional:-->
+                           <geg:zCoordinate>?</geg:zCoordinate>
+                           <!--Optional:-->
+                           <geg:monumentStatus>?</geg:monumentStatus>
+                           <!--Optional:-->
+                           <geg:habitable>?</geg:habitable>
+                           <!--Optional:-->
+                           <geg:addressStatus>?</geg:addressStatus>
+                           <!--Optional:-->
+                           <geg:addressSystem>?</geg:addressSystem>
+                        </geg:address>
+                     </geg:addresses>
+                     <geg:identifications>
+                        <!--Zero or more repetitions:-->
+                        <geg:identification>
+                           <geg:code>?</geg:code>
+                           <geg:type>?</geg:type>
+                           <geg:number>?</geg:number>
+                           <geg:handOutDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:handOutDate>
+                           <geg:expirationDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:expirationDate>
+                           <geg:description>?</geg:description>
+                           <geg:status>?</geg:status>
+                        </geg:identification>
+                     </geg:identifications>
+                     <geg:academicTitles>
+                        <!--Zero or more repetitions:-->
+                        <geg:academicTitle>
+                           <geg:title>?</geg:title>
+                           <geg:code>?</geg:code>
+                           <geg:description>?</geg:description>
+                           <geg:position>?</geg:position>
+                        </geg:academicTitle>
+                     </geg:academicTitles>
+                     <!--Optional:-->
+                     <geg:residencyTitle>
+                        <geg:title>?</geg:title>
+                        <geg:indication>?</geg:indication>
+                        <geg:description>?</geg:description>
+                     </geg:residencyTitle>
+                     <!--Optional:-->
+                     <geg:nobleTitle>
+                        <geg:title>?</geg:title>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                        <geg:type>?</geg:type>
+                     </geg:nobleTitle>
+                     <geg:municipalityOfRegistration>?</geg:municipalityOfRegistration>
+                     <geg:dateOfMunicipalRegistration ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfMunicipalRegistration>
+                     <geg:dateOfSuspensionTracking ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfSuspensionTracking>
+                     <geg:indicationOfSpecialCitizenship>?</geg:indicationOfSpecialCitizenship>
+                     <geg:countryOfEmigration>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfEmigration>
+                     <geg:countryOfImmigration>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfImmigration>
+                     <geg:dateOfObtainingResidencePermit ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfObtainingResidencePermit>
+                     <geg:dateOfLosingResidencePermit ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfLosingResidencePermit>
+                     <geg:dateOfSettlingInCountry ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfSettlingInCountry>
+                     <geg:dateOfLeavingCountry ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfLeavingCountry>
+                     <!--Optional:-->
+                     <geg:indicationLegalRestraint>?</geg:indicationLegalRestraint>
+                     <!--Optional:-->
+                     <geg:indicationOfSecrecy>?</geg:indicationOfSecrecy>
+                     <!--Optional:-->
+                     <geg:indicationAuthorityUnderAge>?</geg:indicationAuthorityUnderAge>
+                     <!--Optional:-->
+                     <geg:descriptionSuspensionTracking>?</geg:descriptionSuspensionTracking>
+                     <!--Optional:-->
+                     <geg:inExaminationList>
+                        <!--Zero or more repetitions:-->
+                        <geg:inExamination>
+                           <geg:code>?</geg:code>
+                           <geg:name>?</geg:name>
+                           <geg:startDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:startDate>
+                           <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>
+                        </geg:inExamination>
+                     </geg:inExaminationList>
+                  </geg:current>
+                  <!--Optional:-->
+                  <geg:supplementary>
+                     <geg:aNumber>?</geg:aNumber>
+                     <geg:bsn>?</geg:bsn>
+                     <geg:telephoneNumberHome>?</geg:telephoneNumberHome>
+                     <geg:telephoneNumberWork>?</geg:telephoneNumberWork>
+                     <geg:telephoneNumberMobile>?</geg:telephoneNumberMobile>
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <geg:dateOfBirth ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfBirth>
+                     <geg:cityOfBirth>?</geg:cityOfBirth>
+                     <geg:genderIndication>?</geg:genderIndication>
+                     <geg:lastName>?</geg:lastName>
+                     <geg:initials>?</geg:initials>
+                     <geg:firstNames>?</geg:firstNames>
+                     <geg:lastNamePrefix>?</geg:lastNamePrefix>
+                     <geg:bankNumber>?</geg:bankNumber>
+                     <geg:prefComChannel>?</geg:prefComChannel>
+                     <geg:addresses>
+                        <!--0 to 3 repetitions:-->
+                        <geg:address>
+                           <geg:type>?</geg:type>
+                           <geg:street>?</geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:zipCode>?</geg:zipCode>
+                           <geg:city>?</geg:city>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                        </geg:address>
+                     </geg:addresses>
+                  </geg:supplementary>
+               </geg:person>
+            </geg:persons>
+         </geg:personDetailsMessage>
+      </geg:getPersonDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:getPersonDetails"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="getRelationDetails" id="b597027e-f6a5-44fb-95d3-936029165b2d" interface="GegmagbasicBinding" operation="getRelationDetails">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="7395d1c9-e58e-4786-84fc-e8280026a1f6" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:getRelationDetailsResponse>
+         <geg:relationDetailsMessage unsupportedMethod="false">
+            <geg:persons>
+               <!--Zero or more repetitions:-->
+               <geg:person source="?">
+                  <geg:aNumber>?</geg:aNumber>
+                  <geg:bsn>?</geg:bsn>
+                  <geg:relations>
+                     <!--Zero or more repetitions:-->
+                     <geg:relation>
+                        <geg:aNumber>?</geg:aNumber>
+                        <geg:bsn>?</geg:bsn>
+                        <!--Optional:-->
+                        <geg:type details="?">?</geg:type>
+                     </geg:relation>
+                  </geg:relations>
+               </geg:person>
+            </geg:persons>
+         </geg:relationDetailsMessage>
+      </geg:getRelationDetailsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:getRelationDetails"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpAddress" id="8877f44b-8842-495f-b35f-8723fef641aa" interface="GegmagbasicBinding" operation="lookUpAddress">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="f486a8f6-75ce-4d5a-8be7-3fb1dcc8aeb5" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpAddressResponse>
+         <geg:addressDetailsMessage unsupportedMethod="false">
+            <geg:addresses>
+               <!--Zero or more repetitions:-->
+               <geg:address source="?">
+                  <geg:type>?</geg:type>
+                  <geg:street>
+                     <geg:code>?</geg:code>
+                     <geg:name>?</geg:name>
+                  </geg:street>
+                  <geg:houseNumber>?</geg:houseNumber>
+                  <geg:houseLetter>?</geg:houseLetter>
+                  <geg:houseRemark>?</geg:houseRemark>
+                  <!--Optional:-->
+                  <geg:houseIndication>?</geg:houseIndication>
+                  <geg:locationDescription>?</geg:locationDescription>
+                  <geg:zipCode>?</geg:zipCode>
+                  <!--Optional:-->
+                  <geg:neighbourhood>
+                     <geg:code>?</geg:code>
+                     <geg:name>?</geg:name>
+                  </geg:neighbourhood>
+                  <geg:city>?</geg:city>
+                  <!--Optional:-->
+                  <geg:municipality>
+                     <geg:code>?</geg:code>
+                     <geg:name>?</geg:name>
+                  </geg:municipality>
+                  <!--Optional:-->
+                  <geg:district>
+                     <geg:code>?</geg:code>
+                     <geg:name>?</geg:name>
+                  </geg:district>
+                  <!--Optional:-->
+                  <geg:country>
+                     <geg:code>?</geg:code>
+                     <geg:name>?</geg:name>
+                  </geg:country>
+                  <geg:freePost>?</geg:freePost>
+                  <geg:POBox>?</geg:POBox>
+                  <!--Optional:-->
+                  <geg:xCoordinate>?</geg:xCoordinate>
+                  <!--Optional:-->
+                  <geg:yCoordinate>?</geg:yCoordinate>
+                  <!--Optional:-->
+                  <geg:zCoordinate>?</geg:zCoordinate>
+                  <!--Optional:-->
+                  <geg:monumentStatus>?</geg:monumentStatus>
+                  <!--Optional:-->
+                  <geg:habitable>?</geg:habitable>
+                  <!--Optional:-->
+                  <geg:addressStatus>?</geg:addressStatus>
+                  <!--Optional:-->
+                  <geg:addressSystem>?</geg:addressSystem>
+               </geg:address>
+            </geg:addresses>
+         </geg:addressDetailsMessage>
+      </geg:lookUpAddressResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpAddress"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpCity" id="99df6ffd-791d-40db-9837-2f93cb78ce68" interface="GegmagbasicBinding" operation="lookUpCity">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="edc44ae4-9a78-4c31-bfba-e151bb19ef5f" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpCityResponse>
+         <geg:cityDetailsMessage unsupportedMethod="false">
+            <geg:cities>
+               <!--Zero or more repetitions:-->
+               <geg:city source="?">
+                  <geg:name>?</geg:name>
+               </geg:city>
+            </geg:cities>
+         </geg:cityDetailsMessage>
+      </geg:lookUpCityResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpCity"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpCountry" id="16e0ba68-65d0-4b71-8eeb-477daa16dfcb" interface="GegmagbasicBinding" operation="lookUpCountry">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="4deac947-98e0-4c32-a62d-60e54cfd8e06" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpCountryResponse>
+         <geg:countryDetailsMessage unsupportedMethod="false">
+            <geg:countries>
+               <!--Zero or more repetitions:-->
+               <geg:country source="?">
+                  <geg:code>?</geg:code>
+                  <geg:name>?</geg:name>
+               </geg:country>
+            </geg:countries>
+         </geg:countryDetailsMessage>
+      </geg:lookUpCountryResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpCountry"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpDistrict" id="76a1e802-0f58-4f08-99d7-c921a6b9e4be" interface="GegmagbasicBinding" operation="lookUpDistrict">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="8e9d4435-77f5-4b83-94ac-604db58d920f" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpDistrictResponse>
+         <geg:districtDetailsMessage unsupportedMethod="false">
+            <geg:districts>
+               <!--Zero or more repetitions:-->
+               <geg:district source="?">
+                  <geg:code>?</geg:code>
+                  <geg:name>?</geg:name>
+               </geg:district>
+            </geg:districts>
+         </geg:districtDetailsMessage>
+      </geg:lookUpDistrictResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpDistrict"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpExtendedOrganizationInfo" id="34eb58e8-c16c-45d7-a137-22a8a678814c" interface="GegmagbasicBinding" operation="lookUpExtendedOrganizationInfo">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="8976e5db-0d74-4856-8f6c-9ef3ce703db0" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpExtendedOrganizationInfoResponse>
+         <geg:organizationExtInfoMessage kvkCorrection="false">
+            <geg:organizations>
+               <!--Zero or more repetitions:-->
+               <geg:organization>
+                  <geg:organizationNumber>?</geg:organizationNumber>
+                  <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>
+                  <geg:companyName>?</geg:companyName>
+                  <geg:branchOfIndustry>?</geg:branchOfIndustry>
+                  <geg:fiscalNumber>?</geg:fiscalNumber>
+                  <geg:commercialRegistryCity>?</geg:commercialRegistryCity>
+                  <geg:emailAddress>?</geg:emailAddress>
+                  <geg:webAddress>?</geg:webAddress>
+                  <geg:telephoneNumber>?</geg:telephoneNumber>
+                  <geg:faxNumber>?</geg:faxNumber>
+                  <geg:contactPersonLastName>?</geg:contactPersonLastName>
+                  <geg:contactPersonLastNamePrefix>?</geg:contactPersonLastNamePrefix>
+                  <geg:contactPersonInitials>?</geg:contactPersonInitials>
+                  <geg:contactPersonFirstNames>?</geg:contactPersonFirstNames>
+                  <geg:contactPersonSalutation>?</geg:contactPersonSalutation>
+                  <geg:contactPersonFunction>?</geg:contactPersonFunction>
+                  <geg:prefComChannel>?</geg:prefComChannel>
+                  <geg:addresses>
+                     <!--0 to 3 repetitions:-->
+                     <geg:address>
+                        <geg:type>?</geg:type>
+                        <geg:street>?</geg:street>
+                        <geg:houseNumber>?</geg:houseNumber>
+                        <geg:houseLetter>?</geg:houseLetter>
+                        <geg:houseRemark>?</geg:houseRemark>
+                        <geg:houseIndication>?</geg:houseIndication>
+                        <geg:zipCode>?</geg:zipCode>
+                        <geg:city>?</geg:city>
+                        <geg:freePost>?</geg:freePost>
+                        <geg:POBox>?</geg:POBox>
+                     </geg:address>
+                  </geg:addresses>
+               </geg:organization>
+            </geg:organizations>
+         </geg:organizationExtInfoMessage>
+      </geg:lookUpExtendedOrganizationInfoResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpExtendedOrganizationInfo"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpMunicipality" id="9e0d0fc7-ad61-42e6-8c47-c0b5998d4a7b" interface="GegmagbasicBinding" operation="lookUpMunicipality">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="232be3c6-9e92-411d-84e5-ec7b589d7b53" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpMunicipalityResponse>
+         <geg:municipalityDetailsMessage unsupportedMethod="false">
+            <geg:municipalities>
+               <!--Zero or more repetitions:-->
+               <geg:municipality source="?">
+                  <geg:code>?</geg:code>
+                  <geg:name>?</geg:name>
+               </geg:municipality>
+            </geg:municipalities>
+         </geg:municipalityDetailsMessage>
+      </geg:lookUpMunicipalityResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpMunicipality"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpNeighbourhood" id="3c07f973-97eb-4b5d-9324-99e7b0c43ceb" interface="GegmagbasicBinding" operation="lookUpNeighbourhood">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="8da5b4ed-0576-4f90-a368-7383958a8421" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpNeighbourhoodResponse>
+         <geg:neighbourhoodDetailsMessage unsupportedMethod="false">
+            <geg:neighbourhoods>
+               <!--Zero or more repetitions:-->
+               <geg:neighbourhood source="?">
+                  <geg:code>?</geg:code>
+                  <geg:name>?</geg:name>
+               </geg:neighbourhood>
+            </geg:neighbourhoods>
+         </geg:neighbourhoodDetailsMessage>
+      </geg:lookUpNeighbourhoodResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpNeighbourhood"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpOrganization" id="045015ba-b4a8-4eca-a9ef-3b71b10b6152" interface="GegmagbasicBinding" operation="lookUpOrganization">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="25d96d2a-d643-457f-a447-72174fc0a343" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpOrganizationResponse>
+         <geg:organizationMessage unsupportedMethod="false">
+            <geg:organizations>
+               <!--Zero or more repetitions:-->
+               <geg:organization rank="?">
+                  <!--Optional:-->
+                  <geg:current source="?">
+                     <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>
+                     <!--Optional:-->
+                     <geg:kvkNumber>?</geg:kvkNumber>
+                     <!--Optional:-->
+                     <geg:organizationGroupName>?</geg:organizationGroupName>
+                     <!--Optional:-->
+                     <geg:trademark>?</geg:trademark>
+                     <!--Optional:-->
+                     <geg:commercialRegistryCity>?</geg:commercialRegistryCity>
+                     <!--Optional:-->
+                     <geg:statutoryName>?</geg:statutoryName>
+                     <!--Optional:-->
+                     <geg:companyName>?</geg:companyName>
+                     <geg:foundingDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:foundingDate>
+                     <geg:dissolutionDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dissolutionDate>
+                     <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>
+                     <!--Optional:-->
+                     <geg:branchOfIndustry>?</geg:branchOfIndustry>
+                     <!--Optional:-->
+                     <geg:indicationBankruptcy>?</geg:indicationBankruptcy>
+                     <!--Optional:-->
+                     <geg:indicationHeadquarters>?</geg:indicationHeadquarters>
+                     <!--Optional:-->
+                     <geg:indicationSuspensionPayment>?</geg:indicationSuspensionPayment>
+                     <!--Optional:-->
+                     <geg:workingMenFulltime>?</geg:workingMenFulltime>
+                     <!--Optional:-->
+                     <geg:workingMenParttime>?</geg:workingMenParttime>
+                     <!--Optional:-->
+                     <geg:workingWomenFulltime>?</geg:workingWomenFulltime>
+                     <!--Optional:-->
+                     <geg:workingWomenParttime>?</geg:workingWomenParttime>
+                     <!--Optional:-->
+                     <geg:citizenNumber>?</geg:citizenNumber>
+                     <!--Optional:-->
+                     <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>
+                     <!--Optional:-->
+                     <geg:subjectNumberAKR>?</geg:subjectNumberAKR>
+                     <!--Optional:-->
+                     <geg:bankNumber>?</geg:bankNumber>
+                     <!--Optional:-->
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <!--Optional:-->
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <!--Optional:-->
+                     <geg:phoneNumber>?</geg:phoneNumber>
+                     <!--Optional:-->
+                     <geg:organizationType>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:organizationType>
+                     <!--Optional:-->
+                     <geg:legalForm>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:legalForm>
+                     <!--Optional:-->
+                     <geg:countryOfBirth>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfBirth>
+                     <!--Optional:-->
+                     <geg:ownerBsn>?</geg:ownerBsn>
+                     <!--Optional:-->
+                     <geg:shortName>?</geg:shortName>
+                     <!--Optional:-->
+                     <geg:url>?</geg:url>
+                     <!--Optional:-->
+                     <geg:bic>?</geg:bic>
+                     <geg:addresses>
+                        <!--Zero or more repetitions:-->
+                        <geg:address source="?">
+                           <geg:type>?</geg:type>
+                           <geg:street>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <!--Optional:-->
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:locationDescription>?</geg:locationDescription>
+                           <geg:zipCode>?</geg:zipCode>
+                           <!--Optional:-->
+                           <geg:neighbourhood>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:neighbourhood>
+                           <geg:city>?</geg:city>
+                           <!--Optional:-->
+                           <geg:municipality>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:municipality>
+                           <!--Optional:-->
+                           <geg:district>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:district>
+                           <!--Optional:-->
+                           <geg:country>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:country>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                           <!--Optional:-->
+                           <geg:xCoordinate>?</geg:xCoordinate>
+                           <!--Optional:-->
+                           <geg:yCoordinate>?</geg:yCoordinate>
+                           <!--Optional:-->
+                           <geg:zCoordinate>?</geg:zCoordinate>
+                           <!--Optional:-->
+                           <geg:monumentStatus>?</geg:monumentStatus>
+                           <!--Optional:-->
+                           <geg:habitable>?</geg:habitable>
+                           <!--Optional:-->
+                           <geg:addressStatus>?</geg:addressStatus>
+                           <!--Optional:-->
+                           <geg:addressSystem>?</geg:addressSystem>
+                        </geg:address>
+                     </geg:addresses>
+                  </geg:current>
+                  <!--Optional:-->
+                  <geg:supplementary>
+                     <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>
+                     <!--Optional:-->
+                     <geg:kvkNumber>?</geg:kvkNumber>
+                     <geg:organizationGroupName>?</geg:organizationGroupName>
+                     <geg:trademark>?</geg:trademark>
+                     <geg:commercialRegistryCity>?</geg:commercialRegistryCity>
+                     <geg:statutoryName>?</geg:statutoryName>
+                     <geg:companyName>?</geg:companyName>
+                     <geg:foundingDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:foundingDate>
+                     <geg:dissolutionDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dissolutionDate>
+                     <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>
+                     <geg:branchOfIndustry>?</geg:branchOfIndustry>
+                     <geg:indicationBankruptcy>?</geg:indicationBankruptcy>
+                     <geg:indicationHeadquarters>?</geg:indicationHeadquarters>
+                     <geg:indicationSuspensionPayment>?</geg:indicationSuspensionPayment>
+                     <geg:workingMenFulltime>?</geg:workingMenFulltime>
+                     <geg:workingMenParttime>?</geg:workingMenParttime>
+                     <geg:workingWomenFulltime>?</geg:workingWomenFulltime>
+                     <geg:workingWomenParttime>?</geg:workingWomenParttime>
+                     <geg:citizenNumber>?</geg:citizenNumber>
+                     <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>
+                     <geg:subjectNumberAKR>?</geg:subjectNumberAKR>
+                     <geg:bankNumber>?</geg:bankNumber>
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <geg:phoneNumber>?</geg:phoneNumber>
+                     <geg:webAddress>?</geg:webAddress>
+                     <!--Optional:-->
+                     <geg:organizationType>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:organizationType>
+                     <!--Optional:-->
+                     <geg:legalForm>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:legalForm>
+                     <geg:prefComChannel>?</geg:prefComChannel>
+                     <geg:addresses>
+                        <!--0 to 2 repetitions:-->
+                        <geg:address>
+                           <geg:type>?</geg:type>
+                           <!--Optional:-->
+                           <geg:street>
+                              <geg:name>?</geg:name>
+                           </geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:locationDescription>?</geg:locationDescription>
+                           <geg:zipCode>?</geg:zipCode>
+                           <geg:city>?</geg:city>
+                           <!--Optional:-->
+                           <geg:municipality>
+                              <geg:name>?</geg:name>
+                           </geg:municipality>
+                           <!--Optional:-->
+                           <geg:country>
+                              <geg:name>?</geg:name>
+                           </geg:country>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                        </geg:address>
+                     </geg:addresses>
+                  </geg:supplementary>
+               </geg:organization>
+            </geg:organizations>
+         </geg:organizationMessage>
+      </geg:lookUpOrganizationResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpOrganization"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpPerson" id="c34ea4d3-ff9b-46db-929d-2c5c0fbf6df3" interface="GegmagbasicBinding" operation="lookUpPerson">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="70cac321-2b7b-4702-ab3b-94a687c5f343" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpPersonResponse>
+         <geg:personDetailsMessage unsupportedMethod="false">
+            <geg:persons>
+               <!--Zero or more repetitions:-->
+               <geg:person>
+                  <!--Optional:-->
+                  <geg:current source="?">
+                     <geg:aNumber>?</geg:aNumber>
+                     <geg:bsn>?</geg:bsn>
+                     <geg:citizenNumber>?</geg:citizenNumber>
+                     <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>
+                     <geg:subjectNumberAKR>?</geg:subjectNumberAKR>
+                     <geg:genderIndication>?</geg:genderIndication>
+                     <geg:initials>?</geg:initials>
+                     <geg:firstNames>?</geg:firstNames>
+                     <geg:lastNamePrefix>?</geg:lastNamePrefix>
+                     <geg:lastName>?</geg:lastName>
+                     <geg:indicationOfNameUsage>?</geg:indicationOfNameUsage>
+                     <!--Optional:-->
+                     <geg:nameOfAddress>?</geg:nameOfAddress>
+                     <geg:nationalities>
+                        <!--Zero or more repetitions:-->
+                        <geg:nationality>
+                           <geg:code>?</geg:code>
+                           <geg:name>?</geg:name>
+                           <geg:description>?</geg:description>
+                        </geg:nationality>
+                     </geg:nationalities>
+                     <geg:maritalStatus>?</geg:maritalStatus>
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <geg:phoneNumber>?</geg:phoneNumber>
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <geg:bankNumber>?</geg:bankNumber>
+                     <geg:dateOfBirth ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfBirth>
+                     <!--Optional:-->
+                     <geg:cityOfBirth>?</geg:cityOfBirth>
+                     <!--Optional:-->
+                     <geg:municipalityOfBirth>?</geg:municipalityOfBirth>
+                     <!--Optional:-->
+                     <geg:countryOfBirth>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfBirth>
+                     <geg:dateOfDeath ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfDeath>
+                     <!--Optional:-->
+                     <geg:cityOfDeath>?</geg:cityOfDeath>
+                     <!--Optional:-->
+                     <geg:municipalityOfDeath>?</geg:municipalityOfDeath>
+                     <!--Optional:-->
+                     <geg:countryOfDeath>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfDeath>
+                     <geg:addresses>
+                        <!--Zero or more repetitions:-->
+                        <geg:address source="?">
+                           <geg:type>?</geg:type>
+                           <geg:street>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <!--Optional:-->
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:locationDescription>?</geg:locationDescription>
+                           <geg:zipCode>?</geg:zipCode>
+                           <!--Optional:-->
+                           <geg:neighbourhood>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:neighbourhood>
+                           <geg:city>?</geg:city>
+                           <!--Optional:-->
+                           <geg:municipality>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:municipality>
+                           <!--Optional:-->
+                           <geg:district>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:district>
+                           <!--Optional:-->
+                           <geg:country>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:country>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                           <!--Optional:-->
+                           <geg:xCoordinate>?</geg:xCoordinate>
+                           <!--Optional:-->
+                           <geg:yCoordinate>?</geg:yCoordinate>
+                           <!--Optional:-->
+                           <geg:zCoordinate>?</geg:zCoordinate>
+                           <!--Optional:-->
+                           <geg:monumentStatus>?</geg:monumentStatus>
+                           <!--Optional:-->
+                           <geg:habitable>?</geg:habitable>
+                           <!--Optional:-->
+                           <geg:addressStatus>?</geg:addressStatus>
+                           <!--Optional:-->
+                           <geg:addressSystem>?</geg:addressSystem>
+                        </geg:address>
+                     </geg:addresses>
+                     <geg:identifications>
+                        <!--Zero or more repetitions:-->
+                        <geg:identification>
+                           <geg:code>?</geg:code>
+                           <geg:type>?</geg:type>
+                           <geg:number>?</geg:number>
+                           <geg:handOutDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:handOutDate>
+                           <geg:expirationDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:expirationDate>
+                           <geg:description>?</geg:description>
+                           <geg:status>?</geg:status>
+                        </geg:identification>
+                     </geg:identifications>
+                     <geg:academicTitles>
+                        <!--Zero or more repetitions:-->
+                        <geg:academicTitle>
+                           <geg:title>?</geg:title>
+                           <geg:code>?</geg:code>
+                           <geg:description>?</geg:description>
+                           <geg:position>?</geg:position>
+                        </geg:academicTitle>
+                     </geg:academicTitles>
+                     <!--Optional:-->
+                     <geg:residencyTitle>
+                        <geg:title>?</geg:title>
+                        <geg:indication>?</geg:indication>
+                        <geg:description>?</geg:description>
+                     </geg:residencyTitle>
+                     <!--Optional:-->
+                     <geg:nobleTitle>
+                        <geg:title>?</geg:title>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                        <geg:type>?</geg:type>
+                     </geg:nobleTitle>
+                     <geg:municipalityOfRegistration>?</geg:municipalityOfRegistration>
+                     <geg:dateOfMunicipalRegistration ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfMunicipalRegistration>
+                     <geg:dateOfSuspensionTracking ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfSuspensionTracking>
+                     <geg:indicationOfSpecialCitizenship>?</geg:indicationOfSpecialCitizenship>
+                     <geg:countryOfEmigration>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfEmigration>
+                     <geg:countryOfImmigration>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfImmigration>
+                     <geg:dateOfObtainingResidencePermit ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfObtainingResidencePermit>
+                     <geg:dateOfLosingResidencePermit ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfLosingResidencePermit>
+                     <geg:dateOfSettlingInCountry ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfSettlingInCountry>
+                     <geg:dateOfLeavingCountry ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfLeavingCountry>
+                     <!--Optional:-->
+                     <geg:indicationLegalRestraint>?</geg:indicationLegalRestraint>
+                     <!--Optional:-->
+                     <geg:indicationOfSecrecy>?</geg:indicationOfSecrecy>
+                     <!--Optional:-->
+                     <geg:indicationAuthorityUnderAge>?</geg:indicationAuthorityUnderAge>
+                     <!--Optional:-->
+                     <geg:descriptionSuspensionTracking>?</geg:descriptionSuspensionTracking>
+                     <!--Optional:-->
+                     <geg:inExaminationList>
+                        <!--Zero or more repetitions:-->
+                        <geg:inExamination>
+                           <geg:code>?</geg:code>
+                           <geg:name>?</geg:name>
+                           <geg:startDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:startDate>
+                           <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>
+                        </geg:inExamination>
+                     </geg:inExaminationList>
+                  </geg:current>
+                  <!--Optional:-->
+                  <geg:supplementary>
+                     <geg:aNumber>?</geg:aNumber>
+                     <geg:bsn>?</geg:bsn>
+                     <geg:telephoneNumberHome>?</geg:telephoneNumberHome>
+                     <geg:telephoneNumberWork>?</geg:telephoneNumberWork>
+                     <geg:telephoneNumberMobile>?</geg:telephoneNumberMobile>
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <geg:dateOfBirth ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfBirth>
+                     <geg:cityOfBirth>?</geg:cityOfBirth>
+                     <geg:genderIndication>?</geg:genderIndication>
+                     <geg:lastName>?</geg:lastName>
+                     <geg:initials>?</geg:initials>
+                     <geg:firstNames>?</geg:firstNames>
+                     <geg:lastNamePrefix>?</geg:lastNamePrefix>
+                     <geg:bankNumber>?</geg:bankNumber>
+                     <geg:prefComChannel>?</geg:prefComChannel>
+                     <geg:addresses>
+                        <!--0 to 3 repetitions:-->
+                        <geg:address>
+                           <geg:type>?</geg:type>
+                           <geg:street>?</geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:zipCode>?</geg:zipCode>
+                           <geg:city>?</geg:city>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                        </geg:address>
+                     </geg:addresses>
+                  </geg:supplementary>
+               </geg:person>
+            </geg:persons>
+         </geg:personDetailsMessage>
+      </geg:lookUpPersonResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpPerson"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpPersonBySupplementary" id="c017a2b0-bf0b-4ed9-8d6d-86bde66c3b5d" interface="GegmagbasicBinding" operation="lookUpPersonBySupplementary">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="c7b47d2b-9822-432b-8fba-a7901869d190" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpPersonBySupplementaryResponse>
+         <geg:personDetailsMessage unsupportedMethod="false">
+            <geg:persons>
+               <!--Zero or more repetitions:-->
+               <geg:person>
+                  <!--Optional:-->
+                  <geg:current source="?">
+                     <geg:aNumber>?</geg:aNumber>
+                     <geg:bsn>?</geg:bsn>
+                     <geg:citizenNumber>?</geg:citizenNumber>
+                     <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>
+                     <geg:subjectNumberAKR>?</geg:subjectNumberAKR>
+                     <geg:genderIndication>?</geg:genderIndication>
+                     <geg:initials>?</geg:initials>
+                     <geg:firstNames>?</geg:firstNames>
+                     <geg:lastNamePrefix>?</geg:lastNamePrefix>
+                     <geg:lastName>?</geg:lastName>
+                     <geg:indicationOfNameUsage>?</geg:indicationOfNameUsage>
+                     <!--Optional:-->
+                     <geg:nameOfAddress>?</geg:nameOfAddress>
+                     <geg:nationalities>
+                        <!--Zero or more repetitions:-->
+                        <geg:nationality>
+                           <geg:code>?</geg:code>
+                           <geg:name>?</geg:name>
+                           <geg:description>?</geg:description>
+                        </geg:nationality>
+                     </geg:nationalities>
+                     <geg:maritalStatus>?</geg:maritalStatus>
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <geg:phoneNumber>?</geg:phoneNumber>
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <geg:bankNumber>?</geg:bankNumber>
+                     <geg:dateOfBirth ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfBirth>
+                     <!--Optional:-->
+                     <geg:cityOfBirth>?</geg:cityOfBirth>
+                     <!--Optional:-->
+                     <geg:municipalityOfBirth>?</geg:municipalityOfBirth>
+                     <!--Optional:-->
+                     <geg:countryOfBirth>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfBirth>
+                     <geg:dateOfDeath ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfDeath>
+                     <!--Optional:-->
+                     <geg:cityOfDeath>?</geg:cityOfDeath>
+                     <!--Optional:-->
+                     <geg:municipalityOfDeath>?</geg:municipalityOfDeath>
+                     <!--Optional:-->
+                     <geg:countryOfDeath>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfDeath>
+                     <geg:addresses>
+                        <!--Zero or more repetitions:-->
+                        <geg:address source="?">
+                           <geg:type>?</geg:type>
+                           <geg:street>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <!--Optional:-->
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:locationDescription>?</geg:locationDescription>
+                           <geg:zipCode>?</geg:zipCode>
+                           <!--Optional:-->
+                           <geg:neighbourhood>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:neighbourhood>
+                           <geg:city>?</geg:city>
+                           <!--Optional:-->
+                           <geg:municipality>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:municipality>
+                           <!--Optional:-->
+                           <geg:district>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:district>
+                           <!--Optional:-->
+                           <geg:country>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:country>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                           <!--Optional:-->
+                           <geg:xCoordinate>?</geg:xCoordinate>
+                           <!--Optional:-->
+                           <geg:yCoordinate>?</geg:yCoordinate>
+                           <!--Optional:-->
+                           <geg:zCoordinate>?</geg:zCoordinate>
+                           <!--Optional:-->
+                           <geg:monumentStatus>?</geg:monumentStatus>
+                           <!--Optional:-->
+                           <geg:habitable>?</geg:habitable>
+                           <!--Optional:-->
+                           <geg:addressStatus>?</geg:addressStatus>
+                           <!--Optional:-->
+                           <geg:addressSystem>?</geg:addressSystem>
+                        </geg:address>
+                     </geg:addresses>
+                     <geg:identifications>
+                        <!--Zero or more repetitions:-->
+                        <geg:identification>
+                           <geg:code>?</geg:code>
+                           <geg:type>?</geg:type>
+                           <geg:number>?</geg:number>
+                           <geg:handOutDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:handOutDate>
+                           <geg:expirationDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:expirationDate>
+                           <geg:description>?</geg:description>
+                           <geg:status>?</geg:status>
+                        </geg:identification>
+                     </geg:identifications>
+                     <geg:academicTitles>
+                        <!--Zero or more repetitions:-->
+                        <geg:academicTitle>
+                           <geg:title>?</geg:title>
+                           <geg:code>?</geg:code>
+                           <geg:description>?</geg:description>
+                           <geg:position>?</geg:position>
+                        </geg:academicTitle>
+                     </geg:academicTitles>
+                     <!--Optional:-->
+                     <geg:residencyTitle>
+                        <geg:title>?</geg:title>
+                        <geg:indication>?</geg:indication>
+                        <geg:description>?</geg:description>
+                     </geg:residencyTitle>
+                     <!--Optional:-->
+                     <geg:nobleTitle>
+                        <geg:title>?</geg:title>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                        <geg:type>?</geg:type>
+                     </geg:nobleTitle>
+                     <geg:municipalityOfRegistration>?</geg:municipalityOfRegistration>
+                     <geg:dateOfMunicipalRegistration ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfMunicipalRegistration>
+                     <geg:dateOfSuspensionTracking ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfSuspensionTracking>
+                     <geg:indicationOfSpecialCitizenship>?</geg:indicationOfSpecialCitizenship>
+                     <geg:countryOfEmigration>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfEmigration>
+                     <geg:countryOfImmigration>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfImmigration>
+                     <geg:dateOfObtainingResidencePermit ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfObtainingResidencePermit>
+                     <geg:dateOfLosingResidencePermit ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfLosingResidencePermit>
+                     <geg:dateOfSettlingInCountry ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfSettlingInCountry>
+                     <geg:dateOfLeavingCountry ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfLeavingCountry>
+                     <!--Optional:-->
+                     <geg:indicationLegalRestraint>?</geg:indicationLegalRestraint>
+                     <!--Optional:-->
+                     <geg:indicationOfSecrecy>?</geg:indicationOfSecrecy>
+                     <!--Optional:-->
+                     <geg:indicationAuthorityUnderAge>?</geg:indicationAuthorityUnderAge>
+                     <!--Optional:-->
+                     <geg:descriptionSuspensionTracking>?</geg:descriptionSuspensionTracking>
+                     <!--Optional:-->
+                     <geg:inExaminationList>
+                        <!--Zero or more repetitions:-->
+                        <geg:inExamination>
+                           <geg:code>?</geg:code>
+                           <geg:name>?</geg:name>
+                           <geg:startDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:startDate>
+                           <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>
+                        </geg:inExamination>
+                     </geg:inExaminationList>
+                  </geg:current>
+                  <!--Optional:-->
+                  <geg:supplementary>
+                     <geg:aNumber>?</geg:aNumber>
+                     <geg:bsn>?</geg:bsn>
+                     <geg:telephoneNumberHome>?</geg:telephoneNumberHome>
+                     <geg:telephoneNumberWork>?</geg:telephoneNumberWork>
+                     <geg:telephoneNumberMobile>?</geg:telephoneNumberMobile>
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <geg:dateOfBirth ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfBirth>
+                     <geg:cityOfBirth>?</geg:cityOfBirth>
+                     <geg:genderIndication>?</geg:genderIndication>
+                     <geg:lastName>?</geg:lastName>
+                     <geg:initials>?</geg:initials>
+                     <geg:firstNames>?</geg:firstNames>
+                     <geg:lastNamePrefix>?</geg:lastNamePrefix>
+                     <geg:bankNumber>?</geg:bankNumber>
+                     <geg:prefComChannel>?</geg:prefComChannel>
+                     <geg:addresses>
+                        <!--0 to 3 repetitions:-->
+                        <geg:address>
+                           <geg:type>?</geg:type>
+                           <geg:street>?</geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:zipCode>?</geg:zipCode>
+                           <geg:city>?</geg:city>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                        </geg:address>
+                     </geg:addresses>
+                  </geg:supplementary>
+               </geg:person>
+            </geg:persons>
+         </geg:personDetailsMessage>
+      </geg:lookUpPersonBySupplementaryResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpPersonBySupplementary"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpRegistryAddress" id="7e552c5f-62ea-4c18-8566-a513d252fc22" interface="GegmagbasicBinding" operation="lookUpRegistryAddress">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="7f092dfc-c0ff-4d17-a083-b375d90317c8" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpRegistryAddressResponse>
+         <geg:registryObjectAddressDetailsMessage unsupportedMethod="false">
+            <geg:addresses>
+               <!--Zero or more repetitions:-->
+               <geg:address source="?">
+                  <geg:type>?</geg:type>
+                  <geg:street>
+                     <geg:code>?</geg:code>
+                     <geg:name>?</geg:name>
+                  </geg:street>
+                  <geg:houseNumber>?</geg:houseNumber>
+                  <geg:houseLetter>?</geg:houseLetter>
+                  <geg:houseRemark>?</geg:houseRemark>
+                  <!--Optional:-->
+                  <geg:houseIndication>?</geg:houseIndication>
+                  <geg:locationDescription>?</geg:locationDescription>
+                  <geg:zipCode>?</geg:zipCode>
+                  <!--Optional:-->
+                  <geg:neighbourhood>
+                     <geg:code>?</geg:code>
+                     <geg:name>?</geg:name>
+                  </geg:neighbourhood>
+                  <geg:city>?</geg:city>
+                  <!--Optional:-->
+                  <geg:municipality>
+                     <geg:code>?</geg:code>
+                     <geg:name>?</geg:name>
+                  </geg:municipality>
+                  <!--Optional:-->
+                  <geg:district>
+                     <geg:code>?</geg:code>
+                     <geg:name>?</geg:name>
+                  </geg:district>
+                  <!--Optional:-->
+                  <geg:country>
+                     <geg:code>?</geg:code>
+                     <geg:name>?</geg:name>
+                  </geg:country>
+                  <geg:freePost>?</geg:freePost>
+                  <geg:POBox>?</geg:POBox>
+                  <!--Optional:-->
+                  <geg:xCoordinate>?</geg:xCoordinate>
+                  <!--Optional:-->
+                  <geg:yCoordinate>?</geg:yCoordinate>
+                  <!--Optional:-->
+                  <geg:zCoordinate>?</geg:zCoordinate>
+                  <!--Optional:-->
+                  <geg:monumentStatus>?</geg:monumentStatus>
+                  <!--Optional:-->
+                  <geg:habitable>?</geg:habitable>
+                  <!--Optional:-->
+                  <geg:addressStatus>?</geg:addressStatus>
+                  <!--Optional:-->
+                  <geg:addressSystem>?</geg:addressSystem>
+                  <geg:registryObjects>
+                     <!--Zero or more repetitions:-->
+                     <geg:registryObject source="?">
+                        <geg:indexLetter>?</geg:indexLetter>
+                        <geg:indexNumber>?</geg:indexNumber>
+                        <geg:parcelNumber>?</geg:parcelNumber>
+                        <geg:municipalityCode>?</geg:municipalityCode>
+                        <geg:section>?</geg:section>
+                        <!--Optional:-->
+                        <geg:indicationImpediment>?</geg:indicationImpediment>
+                        <!--Optional:-->
+                        <geg:indicationSurfaceEstimated>?</geg:indicationSurfaceEstimated>
+                        <!--Optional:-->
+                        <geg:indicationExpired>?</geg:indicationExpired>
+                        <geg:startDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:startDate>
+                        <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>
+                        <!--Optional:-->
+                        <geg:xCoordinate>?</geg:xCoordinate>
+                        <!--Optional:-->
+                        <geg:yCoordinate>?</geg:yCoordinate>
+                        <!--Optional:-->
+                        <geg:zCoordinate>?</geg:zCoordinate>
+                        <!--Optional:-->
+                        <geg:descriptionSubParcel>?</geg:descriptionSubParcel>
+                        <!--Optional:-->
+                        <geg:surfaceArea>?</geg:surfaceArea>
+                        <geg:subject>
+                           <!--Optional:-->
+                           <geg:citizenNumber>?</geg:citizenNumber>
+                           <!--Optional:-->
+                           <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>
+                           <!--Optional:-->
+                           <geg:subjectNumberAKR>?</geg:subjectNumberAKR>
+                           <!--Optional:-->
+                           <geg:person>
+                              <!--Optional:-->
+                              <geg:aNumber>?</geg:aNumber>
+                              <!--Optional:-->
+                              <geg:bsn>?</geg:bsn>
+                              <!--Optional:-->
+                              <geg:genderIndication>?</geg:genderIndication>
+                              <!--Optional:-->
+                              <geg:initials>?</geg:initials>
+                              <!--Optional:-->
+                              <geg:firstNames>?</geg:firstNames>
+                              <!--Optional:-->
+                              <geg:lastNamePrefix>?</geg:lastNamePrefix>
+                              <!--Optional:-->
+                              <geg:lastName>?</geg:lastName>
+                              <!--Optional:-->
+                              <geg:dateOfBirth ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfBirth>
+                           </geg:person>
+                           <!--Optional:-->
+                           <geg:organization>
+                              <!--Optional:-->
+                              <geg:commercialRegistryNumber>?</geg:commercialRegistryNumber>
+                              <!--Optional:-->
+                              <geg:statutoryName>?</geg:statutoryName>
+                              <!--Optional:-->
+                              <geg:companyName>?</geg:companyName>
+                           </geg:organization>
+                        </geg:subject>
+                     </geg:registryObject>
+                  </geg:registryObjects>
+               </geg:address>
+            </geg:addresses>
+         </geg:registryObjectAddressDetailsMessage>
+      </geg:lookUpRegistryAddressResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpRegistryAddress"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpRegistryObject" id="2c6dc5c1-d519-41bf-ac8a-9ead61ccc120" interface="GegmagbasicBinding" operation="lookUpRegistryObject">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="f4a5157a-8436-4875-9e1b-bdc4120a9aef" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpRegistryObjectResponse>
+         <geg:registryObjectDetailsMessage unsupportedMethod="false">
+            <geg:registryObjects>
+               <!--Zero or more repetitions:-->
+               <geg:registryObject source="?">
+                  <geg:indexLetter>?</geg:indexLetter>
+                  <geg:indexNumber>?</geg:indexNumber>
+                  <geg:parcelNumber>?</geg:parcelNumber>
+                  <geg:municipalityCode>?</geg:municipalityCode>
+                  <geg:section>?</geg:section>
+                  <!--Optional:-->
+                  <geg:indicationImpediment>?</geg:indicationImpediment>
+                  <!--Optional:-->
+                  <geg:indicationSurfaceEstimated>?</geg:indicationSurfaceEstimated>
+                  <!--Optional:-->
+                  <geg:indicationExpired>?</geg:indicationExpired>
+                  <geg:startDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:startDate>
+                  <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>
+                  <!--Optional:-->
+                  <geg:xCoordinate>?</geg:xCoordinate>
+                  <!--Optional:-->
+                  <geg:yCoordinate>?</geg:yCoordinate>
+                  <!--Optional:-->
+                  <geg:zCoordinate>?</geg:zCoordinate>
+                  <!--Optional:-->
+                  <geg:descriptionSubParcel>?</geg:descriptionSubParcel>
+                  <!--Optional:-->
+                  <geg:surfaceArea>?</geg:surfaceArea>
+                  <geg:subject>
+                     <!--Optional:-->
+                     <geg:citizenNumber>?</geg:citizenNumber>
+                     <!--Optional:-->
+                     <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>
+                     <!--Optional:-->
+                     <geg:subjectNumberAKR>?</geg:subjectNumberAKR>
+                     <!--Optional:-->
+                     <geg:person>
+                        <!--Optional:-->
+                        <geg:aNumber>?</geg:aNumber>
+                        <!--Optional:-->
+                        <geg:bsn>?</geg:bsn>
+                        <!--Optional:-->
+                        <geg:genderIndication>?</geg:genderIndication>
+                        <!--Optional:-->
+                        <geg:initials>?</geg:initials>
+                        <!--Optional:-->
+                        <geg:firstNames>?</geg:firstNames>
+                        <!--Optional:-->
+                        <geg:lastNamePrefix>?</geg:lastNamePrefix>
+                        <!--Optional:-->
+                        <geg:lastName>?</geg:lastName>
+                        <!--Optional:-->
+                        <geg:dateOfBirth ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfBirth>
+                     </geg:person>
+                     <!--Optional:-->
+                     <geg:organization>
+                        <!--Optional:-->
+                        <geg:commercialRegistryNumber>?</geg:commercialRegistryNumber>
+                        <!--Optional:-->
+                        <geg:statutoryName>?</geg:statutoryName>
+                        <!--Optional:-->
+                        <geg:companyName>?</geg:companyName>
+                     </geg:organization>
+                  </geg:subject>
+                  <geg:filiations>
+                     <!--Zero or more repetitions:-->
+                     <geg:filiation>
+                        <geg:type>?</geg:type>
+                        <geg:indexLetter>?</geg:indexLetter>
+                        <geg:indexNumber>?</geg:indexNumber>
+                        <geg:parcelNumber>?</geg:parcelNumber>
+                        <geg:municipalityCode>?</geg:municipalityCode>
+                        <geg:section>?</geg:section>
+                     </geg:filiation>
+                  </geg:filiations>
+                  <geg:addresses>
+                     <!--Zero or more repetitions:-->
+                     <geg:address source="?">
+                        <geg:type>?</geg:type>
+                        <geg:street>
+                           <geg:code>?</geg:code>
+                           <geg:name>?</geg:name>
+                        </geg:street>
+                        <geg:houseNumber>?</geg:houseNumber>
+                        <geg:houseLetter>?</geg:houseLetter>
+                        <geg:houseRemark>?</geg:houseRemark>
+                        <!--Optional:-->
+                        <geg:houseIndication>?</geg:houseIndication>
+                        <geg:locationDescription>?</geg:locationDescription>
+                        <geg:zipCode>?</geg:zipCode>
+                        <!--Optional:-->
+                        <geg:neighbourhood>
+                           <geg:code>?</geg:code>
+                           <geg:name>?</geg:name>
+                        </geg:neighbourhood>
+                        <geg:city>?</geg:city>
+                        <!--Optional:-->
+                        <geg:municipality>
+                           <geg:code>?</geg:code>
+                           <geg:name>?</geg:name>
+                        </geg:municipality>
+                        <!--Optional:-->
+                        <geg:district>
+                           <geg:code>?</geg:code>
+                           <geg:name>?</geg:name>
+                        </geg:district>
+                        <!--Optional:-->
+                        <geg:country>
+                           <geg:code>?</geg:code>
+                           <geg:name>?</geg:name>
+                        </geg:country>
+                        <geg:freePost>?</geg:freePost>
+                        <geg:POBox>?</geg:POBox>
+                        <!--Optional:-->
+                        <geg:xCoordinate>?</geg:xCoordinate>
+                        <!--Optional:-->
+                        <geg:yCoordinate>?</geg:yCoordinate>
+                        <!--Optional:-->
+                        <geg:zCoordinate>?</geg:zCoordinate>
+                        <!--Optional:-->
+                        <geg:monumentStatus>?</geg:monumentStatus>
+                        <!--Optional:-->
+                        <geg:habitable>?</geg:habitable>
+                        <!--Optional:-->
+                        <geg:addressStatus>?</geg:addressStatus>
+                        <!--Optional:-->
+                        <geg:addressSystem>?</geg:addressSystem>
+                     </geg:address>
+                  </geg:addresses>
+               </geg:registryObject>
+            </geg:registryObjects>
+         </geg:registryObjectDetailsMessage>
+      </geg:lookUpRegistryObjectResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpRegistryObject"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpStreet" id="92c5c592-4c4e-4154-bf39-696be888072e" interface="GegmagbasicBinding" operation="lookUpStreet">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="c08fd9bc-8275-446b-abd6-c4f00ec861ee" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpStreetResponse>
+         <geg:streetDetailsMessage unsupportedMethod="false">
+            <geg:streets>
+               <!--Zero or more repetitions:-->
+               <geg:street source="?">
+                  <geg:name>?</geg:name>
+               </geg:street>
+            </geg:streets>
+         </geg:streetDetailsMessage>
+      </geg:lookUpStreetResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpStreet"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="readOrganizations" id="1490ee1c-3826-450d-b286-299934ae3132" interface="GegmagbasicBinding" operation="readOrganizations">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="18586853-dd4d-4489-b0bd-aeaab57e147d" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:readOrganizationsResponse>
+         <geg:organizationMessage unsupportedMethod="false">
+            <geg:organizations>
+               <!--Zero or more repetitions:-->
+               <geg:organization rank="?">
+                  <!--Optional:-->
+                  <geg:current source="?">
+                     <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>
+                     <!--Optional:-->
+                     <geg:kvkNumber>?</geg:kvkNumber>
+                     <!--Optional:-->
+                     <geg:organizationGroupName>?</geg:organizationGroupName>
+                     <!--Optional:-->
+                     <geg:trademark>?</geg:trademark>
+                     <!--Optional:-->
+                     <geg:commercialRegistryCity>?</geg:commercialRegistryCity>
+                     <!--Optional:-->
+                     <geg:statutoryName>?</geg:statutoryName>
+                     <!--Optional:-->
+                     <geg:companyName>?</geg:companyName>
+                     <geg:foundingDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:foundingDate>
+                     <geg:dissolutionDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dissolutionDate>
+                     <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>
+                     <!--Optional:-->
+                     <geg:branchOfIndustry>?</geg:branchOfIndustry>
+                     <!--Optional:-->
+                     <geg:indicationBankruptcy>?</geg:indicationBankruptcy>
+                     <!--Optional:-->
+                     <geg:indicationHeadquarters>?</geg:indicationHeadquarters>
+                     <!--Optional:-->
+                     <geg:indicationSuspensionPayment>?</geg:indicationSuspensionPayment>
+                     <!--Optional:-->
+                     <geg:workingMenFulltime>?</geg:workingMenFulltime>
+                     <!--Optional:-->
+                     <geg:workingMenParttime>?</geg:workingMenParttime>
+                     <!--Optional:-->
+                     <geg:workingWomenFulltime>?</geg:workingWomenFulltime>
+                     <!--Optional:-->
+                     <geg:workingWomenParttime>?</geg:workingWomenParttime>
+                     <!--Optional:-->
+                     <geg:citizenNumber>?</geg:citizenNumber>
+                     <!--Optional:-->
+                     <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>
+                     <!--Optional:-->
+                     <geg:subjectNumberAKR>?</geg:subjectNumberAKR>
+                     <!--Optional:-->
+                     <geg:bankNumber>?</geg:bankNumber>
+                     <!--Optional:-->
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <!--Optional:-->
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <!--Optional:-->
+                     <geg:phoneNumber>?</geg:phoneNumber>
+                     <!--Optional:-->
+                     <geg:organizationType>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:organizationType>
+                     <!--Optional:-->
+                     <geg:legalForm>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:legalForm>
+                     <!--Optional:-->
+                     <geg:countryOfBirth>
+                        <geg:code>?</geg:code>
+                        <geg:name>?</geg:name>
+                     </geg:countryOfBirth>
+                     <!--Optional:-->
+                     <geg:ownerBsn>?</geg:ownerBsn>
+                     <!--Optional:-->
+                     <geg:shortName>?</geg:shortName>
+                     <!--Optional:-->
+                     <geg:url>?</geg:url>
+                     <!--Optional:-->
+                     <geg:bic>?</geg:bic>
+                     <geg:addresses>
+                        <!--Zero or more repetitions:-->
+                        <geg:address source="?">
+                           <geg:type>?</geg:type>
+                           <geg:street>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <!--Optional:-->
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:locationDescription>?</geg:locationDescription>
+                           <geg:zipCode>?</geg:zipCode>
+                           <!--Optional:-->
+                           <geg:neighbourhood>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:neighbourhood>
+                           <geg:city>?</geg:city>
+                           <!--Optional:-->
+                           <geg:municipality>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:municipality>
+                           <!--Optional:-->
+                           <geg:district>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:district>
+                           <!--Optional:-->
+                           <geg:country>
+                              <geg:code>?</geg:code>
+                              <geg:name>?</geg:name>
+                           </geg:country>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                           <!--Optional:-->
+                           <geg:xCoordinate>?</geg:xCoordinate>
+                           <!--Optional:-->
+                           <geg:yCoordinate>?</geg:yCoordinate>
+                           <!--Optional:-->
+                           <geg:zCoordinate>?</geg:zCoordinate>
+                           <!--Optional:-->
+                           <geg:monumentStatus>?</geg:monumentStatus>
+                           <!--Optional:-->
+                           <geg:habitable>?</geg:habitable>
+                           <!--Optional:-->
+                           <geg:addressStatus>?</geg:addressStatus>
+                           <!--Optional:-->
+                           <geg:addressSystem>?</geg:addressSystem>
+                        </geg:address>
+                     </geg:addresses>
+                  </geg:current>
+                  <!--Optional:-->
+                  <geg:supplementary>
+                     <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>
+                     <!--Optional:-->
+                     <geg:kvkNumber>?</geg:kvkNumber>
+                     <geg:organizationGroupName>?</geg:organizationGroupName>
+                     <geg:trademark>?</geg:trademark>
+                     <geg:commercialRegistryCity>?</geg:commercialRegistryCity>
+                     <geg:statutoryName>?</geg:statutoryName>
+                     <geg:companyName>?</geg:companyName>
+                     <geg:foundingDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:foundingDate>
+                     <geg:dissolutionDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dissolutionDate>
+                     <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>
+                     <geg:branchOfIndustry>?</geg:branchOfIndustry>
+                     <geg:indicationBankruptcy>?</geg:indicationBankruptcy>
+                     <geg:indicationHeadquarters>?</geg:indicationHeadquarters>
+                     <geg:indicationSuspensionPayment>?</geg:indicationSuspensionPayment>
+                     <geg:workingMenFulltime>?</geg:workingMenFulltime>
+                     <geg:workingMenParttime>?</geg:workingMenParttime>
+                     <geg:workingWomenFulltime>?</geg:workingWomenFulltime>
+                     <geg:workingWomenParttime>?</geg:workingWomenParttime>
+                     <geg:citizenNumber>?</geg:citizenNumber>
+                     <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>
+                     <geg:subjectNumberAKR>?</geg:subjectNumberAKR>
+                     <geg:bankNumber>?</geg:bankNumber>
+                     <geg:emailAddress>?</geg:emailAddress>
+                     <geg:faxNumber>?</geg:faxNumber>
+                     <geg:phoneNumber>?</geg:phoneNumber>
+                     <geg:webAddress>?</geg:webAddress>
+                     <!--Optional:-->
+                     <geg:organizationType>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:organizationType>
+                     <!--Optional:-->
+                     <geg:legalForm>
+                        <geg:code>?</geg:code>
+                        <geg:description>?</geg:description>
+                     </geg:legalForm>
+                     <geg:prefComChannel>?</geg:prefComChannel>
+                     <geg:addresses>
+                        <!--0 to 2 repetitions:-->
+                        <geg:address>
+                           <geg:type>?</geg:type>
+                           <!--Optional:-->
+                           <geg:street>
+                              <geg:name>?</geg:name>
+                           </geg:street>
+                           <geg:houseNumber>?</geg:houseNumber>
+                           <geg:houseLetter>?</geg:houseLetter>
+                           <geg:houseRemark>?</geg:houseRemark>
+                           <geg:houseIndication>?</geg:houseIndication>
+                           <geg:locationDescription>?</geg:locationDescription>
+                           <geg:zipCode>?</geg:zipCode>
+                           <geg:city>?</geg:city>
+                           <!--Optional:-->
+                           <geg:municipality>
+                              <geg:name>?</geg:name>
+                           </geg:municipality>
+                           <!--Optional:-->
+                           <geg:country>
+                              <geg:name>?</geg:name>
+                           </geg:country>
+                           <geg:freePost>?</geg:freePost>
+                           <geg:POBox>?</geg:POBox>
+                        </geg:address>
+                     </geg:addresses>
+                  </geg:supplementary>
+               </geg:organization>
+            </geg:organizations>
+         </geg:organizationMessage>
+      </geg:readOrganizationsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:readOrganizations"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="saveExtendedPersonInfo" id="49cba861-f211-423c-be36-92e6458b9c69" interface="GegmagbasicBinding" operation="saveExtendedPersonInfo">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="d51b723f-8115-4f3e-8876-0f50a146ca43" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:saveExtendedPersonInfoResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </geg:saveExtendedPersonInfoResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:saveExtendedPersonInfo"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updateExtendedOrganizationInfo" id="53dd5708-81aa-4bcf-880c-d512f1bae7c2" interface="GegmagbasicBinding" operation="updateExtendedOrganizationInfo">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="5ea10157-ac92-4875-8d2b-a57ac57a363c" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:updateExtendedOrganizationInfoResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </geg:updateExtendedOrganizationInfoResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:updateExtendedOrganizationInfo"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updateExtendedPersonInfo" id="6db7b50b-6261-4b65-995b-f28976024ae3" interface="GegmagbasicBinding" operation="updateExtendedPersonInfo">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="b87287a9-122a-461c-9002-339680f4a19f" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:updateExtendedPersonInfoResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </geg:updateExtendedPersonInfoResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:updateExtendedPersonInfo"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updateSupplementaryOrganizationInfo" id="a6aebb69-8ac3-4bf1-88a7-c226d3a98751" interface="GegmagbasicBinding" operation="updateSupplementaryOrganizationInfo">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="a86bf72c-1c41-4fa0-803f-b160a490da47" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:updateSupplementaryOrganizationInfoResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </geg:updateSupplementaryOrganizationInfoResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:updateSupplementaryOrganizationInfo"/>
       </con:response>
       <con:dispatchConfig/>
     </con:mockOperation>

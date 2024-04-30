@@ -1,12 +1,20 @@
 <Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
     <Adapter
-        name="Bpel_Documents_UploadAttachments"
-        active="${Bpel_Documents_UploadAttachments.Active}"
+        name="Handler_AddDocumentsToCaseCommand"
+        active="${Handler_AddDocumentsToCaseCommand.Active}"
         description=""
         >
 
-        <Receiver name="Bpel_Documents_UploadAttachments">
-            <JavaListener name="Bpel_Documents_UploadAttachments" />
+        <Receiver
+            name="Handler_AddDocumentsToCaseCommand"
+            transactionAttribute="RequiresNew"
+            pollInterval="1"
+            maxRetries="1"
+            >
+            <MessageStoreListener
+                name="Handler_AddDocumentsToCaseCommand"
+				slotId="${instance.name}/AddDocumentsToCaseCommand"
+				/>
         </Receiver>
 
         <Pipeline>
@@ -17,14 +25,11 @@
 
             <XsltPipe
                 name="CreateProvider"
-                getInputFromFixedValue="&lt;dummy/&gt;"
-                styleSheetName="Bpel/Documents/Model/Provider.xslt"
+                styleSheetName="Bpel/Documents/Model/ProviderFromAddDocumentsToCaseCommand.xslt"
                 storeResultInSessionKey="Provider"
                 >
-                <Param name="Case" sessionKey="Case" />
-                <Param name="UwGegevens" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'uw-gegevens')]" type="DOMDOC" defaultValue="''"/>
+                <Param name="AddDocumentsToCaseCommand" type="DOMDOC" />
                 <Forward name="success" path="CreateStartBatchMessage" />
-                <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
 
             <XsltPipe
@@ -33,10 +38,9 @@
                 styleSheetName="Bpel/Documents/Model/StartBatchRequestMessage.xslt"
                 storeResultInSessionKey="StartBatchRequestMessage"
                 >
-                <Param name="Case" sessionKey="Case" />
+                <Param name="Case" sessionKey="originalMessage" xpathExpression="/*/CaseReferenceNumber" />
                 <Param name="Provider" sessionKey="Provider" type="DOMDOC" />
                 <Forward name="success" path="BpelDocumentsPostStartBatchSender" />
-                <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
 
             <SenderPipe
@@ -48,26 +52,39 @@
                     javaListener="Bpel_Documents_PostStartBatch"
                     >
                 </IbisLocalSender>
-                <Forward name="success" path="UploadAttachmentIterator" />
-                <Forward name="exception" path="EXCEPTION" />
+                <Forward name="success" path="AddDocumentToCaseCommandForEachChildElement" />
             </SenderPipe>
 
             <ForEachChildElementPipe
-                name="UploadAttachmentIterator"
-                elementXPathExpression="//attachments"
+                name="AddDocumentToCaseCommandForEachChildElement"
+                elementXPathExpression="/*/url"
                 getInputFromSessionKey="originalMessage"
-                storeResultInSessionKey="UploadAttachmentResults"
+                collectResults="false"
                 >
                 <IbisLocalSender
-                    javaListener="Bpel_Documents_UploadAttachment"
+                    javaListener="Handler_AddDocumentToCaseCommand"
                     >
-                    <Param name="Url" xpathExpression="/attachments" />
-                    <Param name="Case" sessionKey="Case" />
+                    <Param name="url" xpathExpression="/url" />
+                    <Param name="messageId" xpathExpression="concat($CaseReferenceNumber, '-', tokenize(/url, '/')[last()])">
+                        <Param name="CaseReferenceNumber" sessionKey="originalMessage" xpathExpression="/*/CaseReferenceNumber" />
+                    </Param>
+                    <Param name="CaseReferenceNumber" sessionKey="originalMessage" xpathExpression="/*/CaseReferenceNumber" />
                     <Param name="Provider" sessionKey="Provider" type="DOMDOC" />
                     <Param name="BatchNumber" sessionKey="StartBatchResponseMessage" xpathExpression="//batchNumber" />
                 </IbisLocalSender>
+                <!-- <MessageStoreSender
+					name="AddDocumentToCaseCommandMessageStoreSender"
+					slotId="${instance.name}/AddDocumentToCaseCommand"
+                    onlyStoreWhenMessageIdUnique="true"
+					>
+                    <Param name="messageId" xpathExpression="concat($CaseReferenceNumber, '-', tokenize(/url, '/')[last()])">
+                        <Param name="CaseReferenceNumber" sessionKey="originalMessage" xpathExpression="/*/CaseReferenceNumber" />
+                    </Param>
+                    <Param name="CaseReferenceNumber" sessionKey="originalMessage" xpathExpression="/*/CaseReferenceNumber" />
+                    <Param name="Provider" sessionKey="Provider" type="DOMDOC" />
+                    <Param name="BatchNumber" sessionKey="StartBatchResponseMessage" xpathExpression="//batchNumber" />
+				</MessageStoreSender> -->
                 <Forward name="success" path="CreateEndBatchMessage" />
-                <Forward name="exception" path="EXCEPTION" />
             </ForEachChildElementPipe>
 
             <XsltPipe
@@ -77,10 +94,9 @@
                 storeResultInSessionKey="EndBatchRequestMessage"
                 >
                 <Param name="BatchNumber" sessionKey="StartBatchResponseMessage" xpathExpression="//*:batchNumber" />
-                <Param name="Case" sessionKey="Case" />
+                <Param name="Case" sessionKey="originalMessage" xpathExpression="/*/CaseReferenceNumber" />
                 <Param name="Provider" sessionKey="Provider" type="DOMDOC" />
                 <Forward name="success" path="BpelDocumentsPostEndBatchSender" />
-                <Forward name="error" path="EXCEPTION" />
             </XsltPipe>
 
             <SenderPipe
@@ -93,7 +109,6 @@
                     >
                 </IbisLocalSender>
                 <Forward name="success" path="EXIT" />
-                <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
 
         </Pipeline>

@@ -1,0 +1,3060 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:core="http://www.emaxx.org/core" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:common="http://www.emaxx.org/msg/common" xmlns:gegmag="http://www.emaxx.org/functional/gegmag" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mosoap="http://www.emaxx.org/core/soap" targetNamespace="http://www.emaxx.org/functional/gegmag">
+  <types>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/functional/gegmag">
+			<xs:import namespace="http://www.emaxx.org/msg/common"/>
+			<xs:complexType name="tAcademicTitle">
+				<xs:sequence>
+					<xs:element name="title" type="xs:string"/>
+					<xs:element name="code" type="xs:string"/>
+					<xs:element name="description" type="xs:string"/>
+					<xs:element name="position" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tAcademicTitles">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="academicTitle" type="gegmag:tAcademicTitle"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tAddress">
+				<xs:sequence>
+					<xs:element name="type" nillable="true" type="gegmag:tAddressType"/>
+					<xs:element name="street" type="gegmag:tCodeName"/>
+					<xs:element name="houseNumber" type="xs:string"/>
+					<xs:element name="houseLetter" type="xs:string"/>
+					<xs:element name="houseRemark" type="xs:string"/>
+					<xs:element minOccurs="0" name="houseIndication" type="xs:string"/>
+					<xs:element name="locationDescription" type="xs:string"/>
+					<xs:element name="zipCode" type="xs:string"/>
+					<xs:element minOccurs="0" name="neighbourhood" type="gegmag:tCodeName"/>
+					<xs:element name="city" type="xs:string"/>
+					<xs:element minOccurs="0" name="municipality" type="gegmag:tCodeName"/>
+					<xs:element minOccurs="0" name="district" type="gegmag:tCodeName"/>
+					<xs:element minOccurs="0" name="country" type="gegmag:tCodeName"/>
+					<xs:element name="freePost" type="xs:string"/>
+					<xs:element name="POBox" type="xs:string"/>
+					<xs:element minOccurs="0" name="xCoordinate" nillable="true" type="gegmag:tXYCoordinate"/>
+					<xs:element minOccurs="0" name="yCoordinate" nillable="true" type="gegmag:tXYCoordinate"/>
+					<xs:element minOccurs="0" name="zCoordinate" nillable="true" type="gegmag:tZCoordinate"/>
+					<xs:element minOccurs="0" name="monumentStatus" nillable="true" type="xs:int"/>
+					<xs:element minOccurs="0" name="habitable" nillable="true" type="xs:int"/>
+					<xs:element minOccurs="0" name="addressStatus" nillable="true" type="gegmag:tAddressStatusIndicator"/>
+					<xs:element minOccurs="0" name="addressSystem" type="xs:string"/>
+				</xs:sequence>
+				<xs:attribute name="source" type="gegmag:tSource" use="optional"/>
+			</xs:complexType>
+			<xs:complexType name="tAddressExtInfo">
+				<xs:sequence>
+					<xs:element name="type" nillable="true" type="gegmag:tAddressType"/>
+					<xs:element name="street" nillable="true" type="gegmag:tString50"/>
+					<xs:element name="houseNumber" nillable="true" type="gegmag:tNumber5"/>
+					<xs:element name="houseLetter" nillable="true" type="gegmag:tHouseLetter"/>
+					<xs:element name="houseRemark" nillable="true" type="gegmag:tString4"/>
+					<xs:element name="houseIndication" nillable="true" type="gegmag:tString2"/>
+					<xs:element name="zipCode" nillable="true" type="gegmag:tZipCode"/>
+					<xs:element name="city" nillable="true" type="gegmag:tString50"/>
+					<xs:element name="freePost" nillable="true" type="gegmag:tNumber5"/>
+					<xs:element name="POBox" nillable="true" type="gegmag:tNumber5"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tAddressFilter">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="municipalityCodes" type="gegmag:tMunicipalityCodesFilter"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tAddressSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="type" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="street" type="gegmag:tLookUpCodeName"/>
+					<xs:element minOccurs="0" name="houseNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="houseLetter" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="houseRemark" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="houseIndication" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="locationDescription" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="zipCode" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="neighbourhood" type="gegmag:tLookUpCodeName"/>
+					<xs:element minOccurs="0" name="city" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="municipality" type="gegmag:tLookUpCodeName"/>
+					<xs:element minOccurs="0" name="district" type="gegmag:tLookUpCodeName"/>
+					<xs:element minOccurs="0" name="country" type="gegmag:tLookUpCodeName"/>
+					<xs:element minOccurs="0" name="freePost" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="POBox" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="xCoordinate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="yCoordinate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="zCoordinate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="habitable" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="addressSystem" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+ 			<xs:complexType name="tAddressSearchExt">
+				<xs:complexContent>
+					<xs:extension base="gegmag:tAddressSearch">
+						<xs:attribute default="internal" name="source" type="gegmag:tSource" use="optional"/>
+						<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tAddressSupInfo">
+				<xs:sequence>
+					<xs:element name="type" nillable="true" type="gegmag:tAddressType"/>
+					<xs:element minOccurs="0" name="street" type="gegmag:tName50"/>
+					<xs:element name="houseNumber" nillable="true" type="gegmag:tNumber5"/>
+					<xs:element name="houseLetter" nillable="true" type="gegmag:tHouseLetter"/>
+					<xs:element name="houseRemark" nillable="true" type="gegmag:tString4"/>
+					<xs:element name="houseIndication" nillable="true" type="gegmag:tString2"/>
+					<xs:element name="locationDescription" nillable="true" type="gegmag:tString40"/>
+					<xs:element name="zipCode" nillable="true" type="gegmag:tString6"/>
+					<xs:element name="city" nillable="true" type="gegmag:tString50"/>
+					<xs:element minOccurs="0" name="municipality" type="gegmag:tName40"/>
+					<xs:element minOccurs="0" name="country" type="gegmag:tName40"/>
+					<xs:element name="freePost" nillable="true" type="gegmag:tNumber5"/>
+					<xs:element name="POBox" nillable="true" type="gegmag:tNumber5"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tAddresses">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="address" type="gegmag:tAddress"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tAddressesExtInfo">
+				<xs:sequence>
+					<xs:element maxOccurs="3" minOccurs="0" name="address" type="gegmag:tAddressExtInfo"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tAddressesSupInfo">
+				<xs:sequence>
+					<xs:element maxOccurs="2" minOccurs="0" name="address" type="gegmag:tAddressSupInfo"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tBaseFilter">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="person" type="gegmag:tPersonFilter"/>
+					<xs:element minOccurs="0" name="correspondenceAddress" type="gegmag:tAddressFilter"/>
+					<xs:element minOccurs="0" name="registrationAddress" type="gegmag:tAddressFilter"/>
+					<xs:element minOccurs="0" name="residenceAddress" type="gegmag:tAddressFilter"/>
+				</xs:sequence>
+				<xs:attribute default="AND" name="address" type="gegmag:tAddressFilterType" use="optional"/>
+			</xs:complexType>
+			<xs:complexType name="tCodeDescription">
+				<xs:sequence>
+					<xs:element name="code" type="xs:string"/>
+					<xs:element name="description" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tCodeDescription100">
+				<xs:sequence>
+					<xs:element name="code" nillable="true" type="gegmag:tNumber2"/>
+					<xs:element name="description" nillable="true" type="gegmag:tString100"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tCodeDescription150">
+				<xs:sequence>
+					<xs:element name="code" nillable="true" type="gegmag:tNumber2"/>
+					<xs:element name="description" nillable="true" type="gegmag:tString150"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tCodeName">
+				<xs:sequence>
+					<xs:element name="code" type="xs:string"/>
+					<xs:element name="name" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tCommercialRegistryNumber">
+				<xs:simpleContent>
+					<xs:extension base="gegmag:tString13">
+						<xs:attribute name="type" type="gegmag:tOrgType" use="optional"/>
+					</xs:extension>
+				</xs:simpleContent>
+			</xs:complexType>
+			<xs:complexType name="tCountrySearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="code" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="name" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="startDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="endDate" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tDistrictSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="code" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="name" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="startDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="endDate" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tField">
+				<xs:sequence>
+					<xs:element name="code" type="gegmag:tContextCode"/>
+					<xs:element name="name" type="gegmag:tContextName"/>
+					<xs:element name="contextSelector" type="gegmag:tContextSelector"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tFiliation">
+				<xs:sequence>
+					<xs:element name="type" nillable="true" type="gegmag:tFiliationType"/>
+					<xs:element name="indexLetter" type="xs:string"/>
+					<xs:element name="indexNumber" type="xs:string"/>
+					<xs:element name="parcelNumber" type="xs:string"/>
+					<xs:element name="municipalityCode" type="xs:string"/>
+					<xs:element name="section" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tFiliations">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="filiation" type="gegmag:tFiliation"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tFilter">
+				<xs:complexContent>
+					<xs:extension base="gegmag:tBaseFilter">
+						<xs:attribute default="false" name="filterOutput" type="xs:boolean" use="optional"/>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tIdentification">
+				<xs:sequence>
+					<xs:element name="code" type="xs:string"/>
+					<xs:element name="type" type="xs:string"/>
+					<xs:element name="number" type="xs:string"/>
+					<xs:element name="handOutDate" nillable="true" type="gegmag:tPartialDate"/>
+					<xs:element name="expirationDate" nillable="true" type="gegmag:tPartialDate"/>
+					<xs:element name="description" type="xs:string"/>
+					<xs:element name="status" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tIdentificationSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="type" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="number" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="handOutDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="expirationDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="description" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tIdentifications">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="identification" type="gegmag:tIdentification"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tInExamination">
+				<xs:sequence>
+					<xs:element name="code" type="xs:string"/>
+					<xs:element name="name" type="xs:string"/>
+					<xs:element name="startDate" nillable="true" type="gegmag:tPartialDate"/>
+					<xs:element name="endDate" nillable="true" type="gegmag:tPartialDate"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tInExaminationList">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="inExamination" type="gegmag:tInExamination"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tInExaminationSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="code" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="name" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="startDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="endDate" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tLookUpClause">
+				<xs:simpleContent>
+					<xs:extension base="xs:string">
+						<xs:attribute default="EQUAL" name="operator" type="gegmag:tLookUpOperator" use="optional"/>
+					</xs:extension>
+				</xs:simpleContent>
+			</xs:complexType>
+			<xs:complexType name="tLookUpCodeDescription">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="code" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="description" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tLookUpCodeName">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="code" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="name" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tMunicipalityCodesFilter">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="municipalityCode" type="gegmag:tString4"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tMunicipalitySearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="code" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="name" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="startDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="endDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="municipalityOfTransition" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tName40">
+				<xs:sequence>
+					<xs:element name="name" type="gegmag:tString40"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tName50">
+				<xs:sequence>
+					<xs:element name="name" type="gegmag:tString50"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tNationalities">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="nationality" type="gegmag:tNationality"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tNationality">
+				<xs:sequence>
+					<xs:element name="code" type="xs:string"/>
+					<xs:element name="name" type="xs:string"/>
+					<xs:element name="description" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tNationalitySearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="code" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="name" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="description" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfObtainingNationality" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfLosingNationality" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tNeighbourhoodSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="code" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="name" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="startDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="endDate" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tNobleTitle">
+				<xs:sequence>
+					<xs:element name="title" type="xs:string"/>
+					<xs:element name="code" type="xs:string"/>
+					<xs:element name="description" type="xs:string"/>
+					<xs:element name="type" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tOrganization">
+				<xs:sequence>
+					<xs:element name="commercialRegistryNumber" nillable="true" type="gegmag:tCommercialRegistryNumber"/>
+					<xs:element minOccurs="0" name="kvkNumber" type="gegmag:tString8"/>
+					<xs:element minOccurs="0" name="organizationGroupName" type="xs:string"/>
+					<xs:element minOccurs="0" name="trademark" type="xs:string"/>
+					<xs:element minOccurs="0" name="commercialRegistryCity" type="xs:string"/>
+					<xs:element minOccurs="0" name="statutoryName" type="xs:string"/>
+					<xs:element minOccurs="0" name="companyName" type="xs:string"/>
+					<xs:element name="foundingDate" nillable="true" type="gegmag:tPartialDate"/>
+					<xs:element name="dissolutionDate" nillable="true" type="gegmag:tPartialDate"/>
+					<xs:element name="endDate" nillable="true" type="gegmag:tPartialDate"/>
+					<xs:element minOccurs="0" name="branchOfIndustry" type="xs:string"/>
+					<xs:element minOccurs="0" name="indicationBankruptcy" type="xs:string"/>
+					<xs:element minOccurs="0" name="indicationHeadquarters" type="xs:string"/>
+					<xs:element minOccurs="0" name="indicationSuspensionPayment" type="xs:string"/>
+					<xs:element minOccurs="0" name="workingMenFulltime" type="xs:string"/>
+					<xs:element minOccurs="0" name="workingMenParttime" type="xs:string"/>
+					<xs:element minOccurs="0" name="workingWomenFulltime" type="xs:string"/>
+					<xs:element minOccurs="0" name="workingWomenParttime" type="xs:string"/>
+					<xs:element minOccurs="0" name="citizenNumber" type="gegmag:tString9"/>
+					<xs:element minOccurs="0" name="citizenNumberSupplement" type="gegmag:tString4"/>
+					<xs:element minOccurs="0" name="subjectNumberAKR" type="xs:string"/>
+					<xs:element minOccurs="0" name="bankNumber" type="gegmag:tBankNumber"/>
+					<xs:element minOccurs="0" name="emailAddress" type="xs:string"/>
+					<xs:element minOccurs="0" name="faxNumber" type="xs:string"/>
+					<xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+					<xs:element minOccurs="0" name="organizationType" type="gegmag:tCodeDescription"/>
+					<xs:element minOccurs="0" name="legalForm" type="gegmag:tCodeDescription"/>
+					<xs:element minOccurs="0" name="countryOfBirth" type="gegmag:tCodeName"/>
+					<xs:element minOccurs="0" name="ownerBsn" type="xs:string"/>
+					<xs:element minOccurs="0" name="shortName" type="xs:string"/>
+					<xs:element minOccurs="0" name="url" type="xs:string"/>
+					<xs:element minOccurs="0" name="bic" type="xs:string"/>
+					<xs:element name="addresses" type="gegmag:tAddresses"/>
+				</xs:sequence>
+				<xs:attribute name="source" type="gegmag:tSource" use="optional"/>
+			</xs:complexType>
+			<xs:complexType name="tOrganizationExt">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="current" type="gegmag:tOrganization"/>
+					<xs:element minOccurs="0" name="supplementary" type="gegmag:tOrganizationExtInfo"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tOrganizationExtInfo">
+				<xs:sequence>
+					<xs:element name="organizationNumber" nillable="true" type="gegmag:tString100"/>
+					<xs:element name="commercialRegistryNumber" nillable="true" type="gegmag:tCommercialRegistryNumber"/>
+					<xs:element name="companyName" nillable="true" type="gegmag:tString45"/>
+					<xs:element name="branchOfIndustry" nillable="true" type="gegmag:tString100"/>
+					<xs:element name="fiscalNumber" nillable="true" type="gegmag:tString20"/>
+					<xs:element name="commercialRegistryCity" nillable="true" type="gegmag:tString40"/>
+					<xs:element name="emailAddress" nillable="true" type="gegmag:tEmailAddress"/>
+					<xs:element name="webAddress" nillable="true" type="gegmag:tString200"/>
+					<xs:element name="telephoneNumber" nillable="true" type="gegmag:tString20"/>
+					<xs:element name="faxNumber" nillable="true" type="gegmag:tString20"/>
+					<xs:element name="contactPersonLastName" nillable="true" type="gegmag:tString200"/>
+					<xs:element name="contactPersonLastNamePrefix" nillable="true" type="gegmag:tString10"/>
+					<xs:element name="contactPersonInitials" nillable="true" type="gegmag:tString20"/>
+					<xs:element name="contactPersonFirstNames" nillable="true" type="gegmag:tString200"/>
+					<xs:element name="contactPersonSalutation" nillable="true" type="gegmag:tString30"/>
+					<xs:element name="contactPersonFunction" nillable="true" type="gegmag:tString200"/>
+					<xs:element name="prefComChannel" nillable="true" type="gegmag:tString50"/>
+					<xs:element name="addresses" type="gegmag:tAddressesExtInfo"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tOrganizationExtInfoSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="organizationNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="commercialRegistryNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="companyName" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="branchOfIndustry" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="fiscalNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="commercialRegistryCity" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="emailAddress" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="webAddress" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="telephoneNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="faxNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="contactPersonLastName" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="contactPersonLastNamePrefix" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="contactPersonInitials" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="contactPersonFirstNames" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="contactPersonSalutation" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="contactPersonFunction" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="prefComChannel" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="resAddressStreet" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="resAddressHouseNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="resAddressHouseLetter" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="resAddressHouseRemark" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="resAddressHouseIndication" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="resAddressZipCode" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="resAddressCity" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="resAddressFreePost" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="resAddressPOBox" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="corAddressStreet" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="corAddressHouseNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="corAddressHouseLetter" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="corAddressHouseRemark" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="corAddressHouseIndication" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="corAddressZipCode" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="corAddressCity" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="corAddressFreePost" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="corAddressPOBox" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tOrganizationFreeSearch">
+				<xs:sequence>
+					<xs:element name="searchTerms" type="gegmag:tString150"/>
+				</xs:sequence>
+				<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+				<xs:attribute default="false" name="kvkCorrection" type="xs:boolean" use="optional"/>
+			</xs:complexType>
+			<xs:complexType name="tOrganizationId">
+				<xs:sequence>
+					<xs:choice>
+						<xs:element name="organizationNumber" nillable="true" type="gegmag:tString100"/>
+						<xs:element name="commercialRegistryNumber" nillable="true" type="gegmag:tCommercialRegistryNumber"/>
+					</xs:choice>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tOrganizationSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="commercialRegistryNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="kvkNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="organizationGroupName" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="trademark" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="commercialRegistryCity" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="statutoryName" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="companyName" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="foundingDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dissolutionDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="endDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="branchOfIndustry" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationBankruptcy" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationHeadquarters" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationSuspensionPayment" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="workingMenFulltime" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="workingMenParttime" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="workingWomenFulltime" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="workingWomenParttime" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="citizenNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="citizenNumberSupplement" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="subjectNumberAKR" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="bankNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="emailAddress" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="faxNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="phoneNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="organizationType" type="gegmag:tLookUpCodeDescription"/>
+					<xs:element minOccurs="0" name="legalForm" type="gegmag:tLookUpCodeDescription"/>
+					<xs:element minOccurs="0" name="countryOfBirth" type="gegmag:tLookUpCodeName"/>
+					<xs:element minOccurs="0" name="ownerBsn" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tOrganizationSearchExt">
+				<xs:complexContent>
+					<xs:extension base="gegmag:tOrganizationSearch">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="address" type="gegmag:tAddressSearch"/>
+						</xs:sequence>
+						<xs:attribute default="internal" name="source" type="gegmag:tSource" use="optional"/>
+						<xs:attribute default="current" name="details" type="gegmag:tDetails" use="optional"/>
+						<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+						<xs:attribute name="type" type="gegmag:tOrgType" use="optional"/>
+						<xs:attribute default="false" name="kvkCorrection" type="xs:boolean" use="optional"/>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tOrganizationSupInfo">
+				<xs:sequence>
+					<xs:element name="commercialRegistryNumber" nillable="true" type="gegmag:tCommercialRegistryNumber"/>
+					<xs:element minOccurs="0" name="kvkNumber" type="gegmag:tString8"/>
+					<xs:element name="organizationGroupName" nillable="true" type="gegmag:tString100"/>
+					<xs:element name="trademark" nillable="true" type="gegmag:tString132"/>
+					<xs:element name="commercialRegistryCity" nillable="true" type="gegmag:tString40"/>
+					<xs:element name="statutoryName" nillable="true" type="gegmag:tString132"/>
+					<xs:element name="companyName" nillable="true" type="gegmag:tString45"/>
+					<xs:element name="foundingDate" nillable="true" type="gegmag:tPartialDate"/>
+					<xs:element name="dissolutionDate" nillable="true" type="gegmag:tPartialDate"/>
+					<xs:element name="endDate" nillable="true" type="gegmag:tPartialDate"/>
+					<xs:element name="branchOfIndustry" nillable="true" type="gegmag:tString100"/>
+					<xs:element name="indicationBankruptcy" nillable="true" type="gegmag:tNumber1"/>
+					<xs:element name="indicationHeadquarters" nillable="true" type="gegmag:tNumber1"/>
+					<xs:element name="indicationSuspensionPayment" nillable="true" type="gegmag:tNumber1"/>
+					<xs:element name="workingMenFulltime" nillable="true" type="gegmag:tNumber6"/>
+					<xs:element name="workingMenParttime" nillable="true" type="gegmag:tNumber6"/>
+					<xs:element name="workingWomenFulltime" nillable="true" type="gegmag:tNumber6"/>
+					<xs:element name="workingWomenParttime" nillable="true" type="gegmag:tNumber6"/>
+					<xs:element name="citizenNumber" nillable="true" type="gegmag:tString9"/>
+					<xs:element name="citizenNumberSupplement" nillable="true" type="gegmag:tString4"/>
+					<xs:element name="subjectNumberAKR" nillable="true" type="gegmag:tNumber10"/>
+					<xs:element name="bankNumber" nillable="true" type="gegmag:tBankNumber"/>
+					<xs:element name="emailAddress" nillable="true" type="gegmag:tEmailAddress"/>
+					<xs:element name="faxNumber" nillable="true" type="gegmag:tString20"/>
+					<xs:element name="phoneNumber" nillable="true" type="gegmag:tString20"/>
+					<xs:element name="webAddress" nillable="true" type="gegmag:tString200"/>
+					<xs:element minOccurs="0" name="organizationType" type="gegmag:tCodeDescription100"/>
+					<xs:element minOccurs="0" name="legalForm" type="gegmag:tCodeDescription150"/>
+					<xs:element name="prefComChannel" nillable="true" type="gegmag:tString50"/>
+					<xs:element name="addresses" type="gegmag:tAddressesSupInfo"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tPartialDate">
+				<xs:simpleContent>
+					<xs:extension base="xs:date">
+						<xs:attribute default="false" name="ignoreDay" type="xs:boolean" use="optional"/>
+						<xs:attribute default="false" name="ignoreMonth" type="xs:boolean" use="optional"/>
+						<xs:attribute default="false" name="ignoreYear" type="xs:boolean" use="optional"/>
+					</xs:extension>
+				</xs:simpleContent>
+			</xs:complexType>
+			<xs:complexType name="tPerson">
+				<xs:complexContent>
+					<xs:extension base="gegmag:tPersonId">
+						<xs:sequence>
+							<xs:element name="citizenNumber" type="gegmag:tString9"/>
+							<xs:element name="citizenNumberSupplement" type="gegmag:tString10"/>
+							<xs:element name="subjectNumberAKR" type="xs:string"/>
+							<xs:element name="genderIndication" type="xs:string"/>
+							<xs:element name="initials" type="xs:string"/>
+							<xs:element name="firstNames" type="xs:string"/>
+							<xs:element name="lastNamePrefix" type="xs:string"/>
+							<xs:element name="lastName" type="xs:string"/>
+							<xs:element name="indicationOfNameUsage" type="xs:string"/>
+							<xs:element minOccurs="0" name="nameOfAddress" type="xs:string"/>
+							<xs:element name="nationalities" type="gegmag:tNationalities"/>
+							<xs:element name="maritalStatus" type="xs:string"/>
+							<xs:element name="emailAddress" type="gegmag:tEmailAddress"/>
+							<xs:element name="phoneNumber" type="xs:string"/>
+							<xs:element name="faxNumber" type="xs:string"/>
+							<xs:element name="bankNumber" type="gegmag:tBankNumber"/>
+							<xs:element name="dateOfBirth" nillable="true" type="gegmag:tPartialDate"/>
+							<xs:element minOccurs="0" name="cityOfBirth" type="xs:string"/>
+							<xs:element minOccurs="0" name="municipalityOfBirth" type="xs:string"/>
+							<xs:element minOccurs="0" name="countryOfBirth" type="gegmag:tCodeName"/>
+							<xs:element name="dateOfDeath" nillable="true" type="gegmag:tPartialDate"/>
+							<xs:element minOccurs="0" name="cityOfDeath" type="xs:string"/>
+							<xs:element minOccurs="0" name="municipalityOfDeath" type="xs:string"/>
+							<xs:element minOccurs="0" name="countryOfDeath" type="gegmag:tCodeName"/>
+							<xs:element name="addresses" type="gegmag:tAddresses"/>
+							<xs:element name="identifications" type="gegmag:tIdentifications"/>
+							<xs:element name="academicTitles" type="gegmag:tAcademicTitles"/>
+							<xs:element minOccurs="0" name="residencyTitle" type="gegmag:tResidencyTitle"/>
+							<xs:element minOccurs="0" name="nobleTitle" type="gegmag:tNobleTitle"/>
+							<xs:element name="municipalityOfRegistration" type="xs:string"/>
+							<xs:element name="dateOfMunicipalRegistration" nillable="true" type="gegmag:tPartialDate"/>
+							<xs:element name="dateOfSuspensionTracking" nillable="true" type="gegmag:tPartialDate"/>
+							<xs:element name="indicationOfSpecialCitizenship" type="xs:string"/>
+							<xs:element name="countryOfEmigration" type="gegmag:tCodeName"/>
+							<xs:element name="countryOfImmigration" type="gegmag:tCodeName"/>
+							<xs:element name="dateOfObtainingResidencePermit" nillable="true" type="gegmag:tPartialDate"/>
+							<xs:element name="dateOfLosingResidencePermit" nillable="true" type="gegmag:tPartialDate"/>
+							<xs:element name="dateOfSettlingInCountry" nillable="true" type="gegmag:tPartialDate"/>
+							<xs:element name="dateOfLeavingCountry" nillable="true" type="gegmag:tPartialDate"/>
+							<xs:element minOccurs="0" name="indicationLegalRestraint" type="xs:string"/>
+							<xs:element minOccurs="0" name="indicationOfSecrecy" type="xs:string"/>
+							<xs:element minOccurs="0" name="indicationAuthorityUnderAge" type="xs:string"/>
+							<xs:element minOccurs="0" name="descriptionSuspensionTracking" type="xs:string"/>
+							<xs:element minOccurs="0" name="inExaminationList" type="gegmag:tInExaminationList"/>
+						</xs:sequence>
+						<xs:attribute name="source" type="gegmag:tSource" use="optional"/>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tPersonExt">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="current" type="gegmag:tPerson"/>
+					<xs:element minOccurs="0" name="supplementary" type="gegmag:tPersonExtInfo"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tPersonExtInfo">
+				<xs:sequence>
+					<xs:element name="aNumber" nillable="true" type="gegmag:tNumber10"/>
+					<xs:element name="bsn" nillable="true" type="gegmag:tNumber9"/>
+					<xs:element name="telephoneNumberHome" nillable="true" type="gegmag:tString20"/>
+					<xs:element name="telephoneNumberWork" nillable="true" type="gegmag:tString20"/>
+					<xs:element name="telephoneNumberMobile" nillable="true" type="gegmag:tString20"/>
+					<xs:element name="faxNumber" nillable="true" type="gegmag:tString20"/>
+					<xs:element name="emailAddress" nillable="true" type="gegmag:tEmailAddress"/>
+					<xs:element name="dateOfBirth" nillable="true" type="gegmag:tPartialDate"/>
+					<xs:element name="cityOfBirth" nillable="true" type="gegmag:tString40"/>
+					<xs:element name="genderIndication" nillable="true" type="gegmag:tGender"/>
+					<xs:element name="lastName" nillable="true" type="gegmag:tString200"/>
+					<xs:element name="initials" nillable="true" type="gegmag:tString20"/>
+					<xs:element name="firstNames" nillable="true" type="gegmag:tString200"/>
+					<xs:element name="lastNamePrefix" nillable="true" type="gegmag:tString10"/>
+					<xs:element name="bankNumber" nillable="true" type="gegmag:tBankNumber"/>
+					<xs:element name="prefComChannel" nillable="true" type="gegmag:tString50"/>
+					<xs:element name="addresses" type="gegmag:tAddressesExtInfo"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tPersonFilter">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="alive" type="xs:boolean"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tPersonId">
+				<xs:sequence>
+					<xs:element name="aNumber" type="xs:string"/>
+					<xs:element name="bsn" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tPersonRelation">
+				<xs:complexContent>
+					<xs:extension base="gegmag:tPersonId">
+						<xs:sequence>
+							<xs:element name="relations" type="gegmag:tRelations"/>
+						</xs:sequence>
+						<xs:attribute name="source" type="gegmag:tSource" use="optional"/>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tPersonSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="aNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="bsn" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="citizenNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="citizenNumberSupplement" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="subjectNumberAKR" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="genderIndication" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="initials" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="firstNames" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="lastNamePrefix" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="lastName" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationOfNameUsage" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="nameOfAddress" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="maritalStatus" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="emailAddress" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="phoneNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="faxNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="bankNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfBirth" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="cityOfBirth" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="municipalityOfBirth" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfDeath" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="cityOfDeath" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="municipalityOfDeath" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="municipalityOfRegistration" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfMunicipalRegistration" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfSuspensionTracking" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationOfSpecialCitizenship" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfObtainingResidencePermit" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfLosingResidencePermit" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfSettlingInCountry" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfLeavingCountry" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationLegalRestraint" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationOfSecrecy" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationAuthorityUnderAge" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="descriptionSuspensionTracking" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="countryOfBirth" type="gegmag:tLookUpCodeName"/>
+					<xs:element minOccurs="0" name="countryOfDeath" type="gegmag:tLookUpCodeName"/>
+					<xs:element minOccurs="0" name="countryOfImmigration" type="gegmag:tLookUpCodeName"/>
+					<xs:element minOccurs="0" name="countryOfEmigration" type="gegmag:tLookUpCodeName"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tPersonSearchExt">
+				<xs:complexContent>
+					<xs:extension base="gegmag:tPersonSearch">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="address" type="gegmag:tAddressSearch"/>
+							<xs:element minOccurs="0" name="identification" type="gegmag:tIdentificationSearch"/>
+							<xs:element minOccurs="0" name="nationality" type="gegmag:tNationalitySearch"/>
+							<xs:element minOccurs="0" name="inExamination" type="gegmag:tInExaminationSearch"/>
+							<xs:element name="context">
+								<xs:complexType>
+									<xs:sequence>
+									<xs:element name="name" type="gegmag:tContextName"/>
+									<xs:element maxOccurs="unbounded" name="field" type="gegmag:tField"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute default="internal" name="source" type="gegmag:tSource" use="optional"/>
+						<xs:attribute default="all" name="details" type="gegmag:tDetails" use="optional"/>
+						<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+						<xs:attribute name="search" type="gegmag:tDetails" use="optional"/>
+						<xs:attribute name="return" type="gegmag:tDetails" use="optional"/>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tPersonSupplementarySearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="emailAddress" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tPersonSupplementarySearchExt">
+				<xs:complexContent>
+					<xs:extension base="gegmag:tPersonSearch">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="address" type="gegmag:tAddressSearch"/>
+							<xs:element minOccurs="0" name="identification" type="gegmag:tIdentificationSearch"/>
+							<xs:element minOccurs="0" name="nationality" type="gegmag:tNationalitySearch"/>
+							<xs:element minOccurs="0" name="inExamination" type="gegmag:tInExaminationSearch"/>
+							<xs:element minOccurs="0" name="supplementary" type="gegmag:tPersonSupplementarySearch"/>
+							<xs:element name="context">
+								<xs:complexType>
+									<xs:sequence>
+									<xs:element name="name" type="gegmag:tContextName"/>
+									<xs:element maxOccurs="unbounded" name="field" type="gegmag:tField"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute default="internal" name="source" type="gegmag:tSource" use="optional"/>
+						<xs:attribute default="all" name="details" type="gegmag:tDetails" use="optional"/>
+						<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+						<xs:attribute name="search" type="gegmag:tDetails" use="optional"/>
+						<xs:attribute name="return" type="gegmag:tDetails" use="optional"/>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tRegistryObject">
+				<xs:complexContent>
+					<xs:extension base="gegmag:tRegistryObjectId">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="indicationImpediment" type="xs:string"/>
+							<xs:element minOccurs="0" name="indicationSurfaceEstimated" type="xs:string"/>
+							<xs:element minOccurs="0" name="indicationExpired" type="xs:string"/>
+							<xs:element name="startDate" nillable="true" type="gegmag:tPartialDate"/>
+							<xs:element name="endDate" nillable="true" type="gegmag:tPartialDate"/>
+							<xs:element minOccurs="0" name="xCoordinate" nillable="true" type="gegmag:tXYCoordinate"/>
+							<xs:element minOccurs="0" name="yCoordinate" nillable="true" type="gegmag:tXYCoordinate"/>
+							<xs:element minOccurs="0" name="zCoordinate" nillable="true" type="gegmag:tZCoordinate"/>
+							<xs:element minOccurs="0" name="descriptionSubParcel" type="xs:string"/>
+							<xs:element minOccurs="0" name="surfaceArea" type="xs:string"/>
+							<xs:element name="subject" type="gegmag:tSimpleSubject"/>
+						</xs:sequence>
+						<xs:attribute name="source" type="gegmag:tSource" use="optional"/>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tRegistryObjectAddressExt">
+				<xs:complexContent>
+					<xs:extension base="gegmag:tAddress">
+						<xs:sequence>
+							<xs:element name="registryObjects" type="gegmag:tRegistryObjects"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tRegistryObjectExt">
+				<xs:complexContent>
+					<xs:extension base="gegmag:tRegistryObject">
+						<xs:sequence>
+							<xs:element name="filiations" type="gegmag:tFiliations"/>
+							<xs:element name="addresses" type="gegmag:tAddresses"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tRegistryObjectId">
+				<xs:sequence>
+					<xs:element name="indexLetter" type="xs:string"/>
+					<xs:element name="indexNumber" type="xs:string"/>
+					<xs:element name="parcelNumber" type="xs:string"/>
+					<xs:element name="municipalityCode" type="xs:string"/>
+					<xs:element name="section" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tRegistryObjectSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="indexLetter" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indexNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="parcelNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="municipalityCode" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="section" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationImpediment" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationSurfaceEstimated" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationExpired" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="startDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="endDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="xCoordinate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="yCoordinate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="zCoordinate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="descriptionSubParcel" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="surfaceArea" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tRegistryObjectSearchExt">
+				<xs:complexContent>
+					<xs:extension base="gegmag:tRegistryObjectSearch">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="subject" type="gegmag:tSubjectSearch"/>
+							<xs:element minOccurs="0" name="person" type="gegmag:tSimplePersonSearch"/>
+							<xs:element minOccurs="0" name="organization" type="gegmag:tSimpleOrganizationSearch"/>
+							<xs:element minOccurs="0" name="filiationFrom" type="gegmag:tRegistryObjectSearch"/>
+							<xs:element minOccurs="0" name="filiationTo" type="gegmag:tRegistryObjectSearch"/>
+							<xs:element minOccurs="0" name="address" type="gegmag:tSimpleAddressSearch"/>
+						</xs:sequence>
+						<xs:attribute default="internal" name="source" type="gegmag:tSource" use="optional"/>
+						<xs:attribute default="all" name="details" type="gegmag:tDetails" use="optional"/>
+						<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tRegistryObjects">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="registryObject" type="gegmag:tRegistryObject"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tRelation">
+				<xs:complexContent>
+					<xs:extension base="gegmag:tPersonId">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="type" type="gegmag:tRelationType"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:complexType name="tRelationType">
+				<xs:simpleContent>
+					<xs:extension base="gegmag:tRelationTypeBase">
+						<xs:attribute name="details" type="gegmag:tRelationDetailsType" use="optional"/>
+					</xs:extension>
+				</xs:simpleContent>
+			</xs:complexType>
+			<xs:complexType name="tRelations">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="relation" type="gegmag:tRelation"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tResidencyTitle">
+				<xs:sequence>
+					<xs:element name="title" type="xs:string"/>
+					<xs:element name="indication" type="xs:string"/>
+					<xs:element name="description" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tSimpleAddressSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="type" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="street" type="gegmag:tLookUpCodeName"/>
+					<xs:element minOccurs="0" name="houseNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="houseLetter" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="houseRemark" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="houseIndication" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="locationDescription" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="zipCode" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="neighbourhood" type="gegmag:tLookUpCodeName"/>
+					<xs:element minOccurs="0" name="city" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="municipality" type="gegmag:tLookUpCodeName"/>
+					<xs:element minOccurs="0" name="district" type="gegmag:tLookUpCodeName"/>
+					<xs:element minOccurs="0" name="xCoordinate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="yCoordinate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="zCoordinate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="habitable" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tSimpleOrganization">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="commercialRegistryNumber" nillable="true" type="gegmag:tString13"/>
+					<xs:element minOccurs="0" name="statutoryName" type="xs:string"/>
+					<xs:element minOccurs="0" name="companyName" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tSimpleOrganizationSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="commercialRegistryNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="trademark" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="commercialRegistryCity" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="statutoryName" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="companyName" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="foundingDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dissolutionDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="endDate" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="branchOfIndustry" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationBankruptcy" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationHeadquarters" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationSuspensionPayment" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="workingMenFulltime" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="workingMenParttime" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="workingWomenFulltime" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="workingWomenParttime" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tSimplePerson">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="aNumber" type="xs:string"/>
+					<xs:element minOccurs="0" name="bsn" type="xs:string"/>
+					<xs:element minOccurs="0" name="genderIndication" type="xs:string"/>
+					<xs:element minOccurs="0" name="initials" type="xs:string"/>
+					<xs:element minOccurs="0" name="firstNames" type="xs:string"/>
+					<xs:element minOccurs="0" name="lastNamePrefix" type="xs:string"/>
+					<xs:element minOccurs="0" name="lastName" type="xs:string"/>
+					<xs:element minOccurs="0" name="dateOfBirth" nillable="true" type="gegmag:tPartialDate"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tSimplePersonSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="aNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="bsn" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="genderIndication" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="initials" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="firstNames" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="lastNamePrefix" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="lastName" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationOfNameUsage" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="nameOfAddress" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="maritalStatus" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfBirth" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="cityOfBirth" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="municipalityOfBirth" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfDeath" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="cityOfDeath" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfMunicipalRegistration" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfSuspensionTracking" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationOfSpecialCitizenship" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfObtainingResidencePermit" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfLosingResidencePermit" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfSettlingInCountry" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="dateOfLeavingCountry" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationLegalRestraint" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationOfSecrecy" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="indicationAuthorityUnderAge" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="descriptionSuspensionTracking" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tSimpleSubject">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="citizenNumber" type="gegmag:tString9"/>
+					<xs:element minOccurs="0" name="citizenNumberSupplement" type="gegmag:tString10"/>
+					<xs:element minOccurs="0" name="subjectNumberAKR" type="xs:string"/>
+					<xs:element minOccurs="0" name="person" type="gegmag:tSimplePerson"/>
+					<xs:element minOccurs="0" name="organization" type="gegmag:tSimpleOrganization"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="tSplitFilter">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="internal" type="gegmag:tBaseFilter"/>
+					<xs:element minOccurs="0" name="external" type="gegmag:tBaseFilter"/>
+				</xs:sequence>
+				<xs:attribute default="false" name="filterOutput" type="xs:boolean" use="optional"/>
+			</xs:complexType>
+			<xs:complexType name="tSubjectSearch">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="citizenNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="citizenNumberSupplement" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="subjectNumberAKR" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="emailAddress" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="phoneNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="faxNumber" type="gegmag:tLookUpClause"/>
+					<xs:element minOccurs="0" name="bankNumber" type="gegmag:tLookUpClause"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="addExtendedOrganizationInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationExtInfoMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addExtendedOrganizationInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addExtendedPersonInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:personExtInfoMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addExtendedPersonInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addSupplementaryOrganizationInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationSupInfoMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addSupplementaryOrganizationInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="clearCache">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="dummyMessage" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="clearCacheResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addressDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="addresses" type="gegmag:tAddresses"/>
+					</xs:sequence>
+					<xs:attribute default="false" name="unsupportedMethod" type="gegmag:tUnsupportedMethod" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="addressSearchMessage" type="gegmag:tAddressSearchExt"/>
+			<xs:element name="cityDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="cities">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="city">
+									<xs:complexType>
+									<xs:sequence>
+									<xs:element name="name" type="xs:string"/>
+									</xs:sequence>
+									<xs:attribute name="source" type="gegmag:tSource" use="optional"/>
+									</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="unsupportedMethod" type="gegmag:tUnsupportedMethod" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="citySearchMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="city">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element minOccurs="0" name="name" type="gegmag:tLookUpClause"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element minOccurs="0" name="municipality" type="gegmag:tLookUpCodeName"/>
+					</xs:sequence>
+					<xs:attribute default="internal" name="source" type="gegmag:tSource" use="optional"/>
+					<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="countryDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="countries">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="country">
+									<xs:complexType>
+									<xs:complexContent>
+									<xs:extension base="gegmag:tCodeName">
+									<xs:attribute name="source" type="gegmag:tSource" use="optional"/>
+									</xs:extension>
+									</xs:complexContent>
+									</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="unsupportedMethod" type="gegmag:tUnsupportedMethod" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="countrySearchMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="country" type="gegmag:tCountrySearch"/>
+					</xs:sequence>
+					<xs:attribute default="internal" name="source" type="gegmag:tSource" use="optional"/>
+					<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="deleteExtendedOrganizationInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="deleteExtendedOrganizationInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="deleteExtendedPersonInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:personDeleteMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="deleteExtendedPersonInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="deleteSupplementaryOrganizationInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="deleteSupplementaryOrganizationInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="districtDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="districts">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="district">
+									<xs:complexType>
+									<xs:complexContent>
+									<xs:extension base="gegmag:tCodeName">
+									<xs:attribute name="source" type="gegmag:tSource" use="optional"/>
+									</xs:extension>
+									</xs:complexContent>
+									</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="unsupportedMethod" type="gegmag:tUnsupportedMethod" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="districtSearchMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="district" type="gegmag:tDistrictSearch"/>
+						<xs:element minOccurs="0" name="municipality" type="gegmag:tMunicipalitySearch"/>
+					</xs:sequence>
+					<xs:attribute default="internal" name="source" type="gegmag:tSource" use="optional"/>
+					<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="findOrganization">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationFreeSearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="findOrganizationResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getOrganizationDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getOrganizationDetailsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getPersonDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:personIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getPersonDetailsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:personDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getRelationDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:personIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="getRelationDetailsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:relationDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpAddress">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:addressSearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpAddressResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:addressDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpCity">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:citySearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpCityResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:cityDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpCountry">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:countrySearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpCountryResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:countryDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpDistrict">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:districtSearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpDistrictResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:districtDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpExtendedOrganizationInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationExtInfoSearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpExtendedOrganizationInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationExtInfoMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpMunicipality">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:municipalitySearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpMunicipalityResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:municipalityDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpNeighbourhood">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:neighbourhoodSearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpNeighbourhoodResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:neighbourhoodDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpOrganization">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationSearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpOrganizationResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpPerson">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:personSearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpPersonResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:personDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpPersonBySupplementary">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:personBySupplementarySearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpPersonBySupplementaryResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:personDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpRegistryAddress">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:registryObjectSearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpRegistryAddressResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:registryObjectAddressDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpRegistryObject">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:registryObjectSearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpRegistryObjectResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:registryObjectDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpStreet">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:streetSearchMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lookUpStreetResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:streetDetailsMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="municipalityDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="municipalities">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="municipality">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="code" type="xs:string"/>
+												<xs:element name="name" type="xs:string"/>
+											</xs:sequence>
+											<xs:attribute name="source" type="gegmag:tSource" use="optional"/>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="unsupportedMethod" type="gegmag:tUnsupportedMethod" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="municipalitySearchMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="municipality" type="gegmag:tMunicipalitySearch"/>
+					</xs:sequence>
+					<xs:attribute default="internal" name="source" type="gegmag:tSource" use="optional"/>
+					<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="neighbourhoodDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="neighbourhoods">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="neighbourhood">
+									<xs:complexType>
+									<xs:complexContent>
+									<xs:extension base="gegmag:tCodeName">
+									<xs:attribute name="source" type="gegmag:tSource" use="optional"/>
+									</xs:extension>
+									</xs:complexContent>
+									</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="unsupportedMethod" type="gegmag:tUnsupportedMethod" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="neighbourhoodSearchMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="neighbourhood" type="gegmag:tNeighbourhoodSearch"/>
+						<xs:element minOccurs="0" name="district" type="gegmag:tDistrictSearch"/>
+						<xs:element minOccurs="0" name="municipality" type="gegmag:tMunicipalitySearch"/>
+					</xs:sequence>
+					<xs:attribute default="internal" name="source" type="gegmag:tSource" use="optional"/>
+					<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="organizationDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="organizations">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="organization" type="gegmag:tOrganizationExt"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="unsupportedMethod" type="gegmag:tUnsupportedMethod" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="organizationExtInfoMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="organizations">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="organization" type="gegmag:tOrganizationExtInfo"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="kvkCorrection" type="xs:boolean" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="organizationExtInfoSearchMessage">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="gegmag:tOrganizationExtInfoSearch">
+							<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+							<xs:attribute name="type" type="gegmag:tOrgType" use="optional"/>
+							<xs:attribute default="false" name="kvkCorrection" type="xs:boolean" use="optional"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="organizationFreeSearchMessage" type="gegmag:tOrganizationFreeSearch"/>
+			<xs:element name="organizationIdMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="organizations">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="organization" type="gegmag:tOrganizationId"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="internal" name="source" type="gegmag:tSource" use="optional"/>
+					<xs:attribute default="all" name="details" type="gegmag:tDetails" use="optional"/>
+					<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+					<xs:attribute default="false" name="kvkCorrection" type="xs:boolean" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="organizationMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="organizations">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="organization">
+									<xs:complexType>
+									<xs:sequence>
+									<xs:element minOccurs="0" name="current" type="gegmag:tOrganization"/>
+									<xs:element minOccurs="0" name="supplementary" type="gegmag:tOrganizationSupInfo"/>
+									</xs:sequence>
+									<xs:attribute name="rank" type="gegmag:tRank" use="optional"/>
+									</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="unsupportedMethod" type="gegmag:tUnsupportedMethod" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="organizationSearchMessage" type="gegmag:tOrganizationSearchExt"/>
+			<xs:element name="organizationSupInfoMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="organizations">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="organization" type="gegmag:tOrganizationSupInfo"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="kvkCorrection" type="xs:boolean" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="personDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="persons">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="person" type="gegmag:tPersonExt"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="unsupportedMethod" type="gegmag:tUnsupportedMethod" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="personExtInfoMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="persons">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="person" type="gegmag:tPersonExtInfo"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="personIdMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="persons">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="person" type="gegmag:tRelation"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="context">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="gegmag:tContextName"/>
+									<xs:element maxOccurs="unbounded" name="field" type="gegmag:tField"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:choice minOccurs="0">
+							<xs:element name="filter" nillable="true" type="gegmag:tFilter"/>
+							<xs:element name="splitFilter" nillable="true" type="gegmag:tSplitFilter"/>
+						</xs:choice>						
+					</xs:sequence>
+					<xs:attribute default="internal" name="source" type="gegmag:tSource" use="optional"/>
+					<xs:attribute default="all" name="details" type="gegmag:tDetails" use="optional"/>
+					<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="personDeleteMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="persons">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="person" type="gegmag:tRelation"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>					
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>			
+			<xs:element name="personSearchMessage" type="gegmag:tPersonSearchExt"/>
+			<xs:element name="personBySupplementarySearchMessage" type="gegmag:tPersonSupplementarySearchExt"/>
+			<xs:element name="readOrganizations">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationIdMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="readOrganizationsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="registryObjectAddressDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="addresses">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="address" type="gegmag:tRegistryObjectAddressExt"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="unsupportedMethod" type="gegmag:tUnsupportedMethod" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="registryObjectDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="registryObjects">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="registryObject" type="gegmag:tRegistryObjectExt"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="unsupportedMethod" type="gegmag:tUnsupportedMethod" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="registryObjectSearchMessage" type="gegmag:tRegistryObjectSearchExt"/>
+			<xs:element name="relationDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="persons">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="person" type="gegmag:tPersonRelation"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="unsupportedMethod" type="gegmag:tUnsupportedMethod" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="saveExtendedPersonInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:personExtInfoMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="saveExtendedPersonInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="streetDetailsMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="streets">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element maxOccurs="unbounded" minOccurs="0" name="street">
+									<xs:complexType>
+									<xs:sequence>
+									<xs:element name="name" type="xs:string"/>
+									</xs:sequence>
+									<xs:attribute name="source" type="gegmag:tSource" use="optional"/>
+									</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute default="false" name="unsupportedMethod" type="gegmag:tUnsupportedMethod" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="streetSearchMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="city">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element minOccurs="0" name="name" type="gegmag:tLookUpClause"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element minOccurs="0" name="street">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element minOccurs="0" name="name" type="gegmag:tLookUpClause"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element minOccurs="0" name="addressSystem" type="gegmag:tLookUpClause"/>
+					</xs:sequence>
+					<xs:attribute default="internal" name="source" type="gegmag:tSource" use="optional"/>
+					<xs:attribute name="maxResults" type="xs:positiveInteger" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateExtendedOrganizationInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationExtInfoMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateExtendedOrganizationInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateExtendedPersonInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:personExtInfoMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateExtendedPersonInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateSupplementaryOrganizationInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="gegmag:organizationSupInfoMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="updateSupplementaryOrganizationInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="common:confirmationMessage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:simpleType name="tAddressFilterType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="AND"/>
+					<xs:enumeration value="OR"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tAddressStatusIndicator">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="DECLINED"/>
+					<xs:enumeration value="BLOCKED"/>
+					<xs:enumeration value="SPECIAL_BUILDING"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tAddressType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="correspondence"/>
+					<xs:enumeration value="registration"/>
+					<xs:enumeration value="residence"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tBankNumber">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="34"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tContextCode">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="20"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tContextName">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="200"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tContextSelector">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="992"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tDetails">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="all"/>
+					<xs:enumeration value="current"/>
+					<xs:enumeration value="supplementary"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tEmailAddress">
+				<xs:restriction base="xs:string">
+					<xs:pattern value="\S+@\S+|.{0}"/>
+					<xs:maxLength value="80"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tFiliationType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="from"/>
+					<xs:enumeration value="to"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tGender">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="M"/>
+					<xs:enumeration value="V"/>
+					<xs:enumeration value="O"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tHouseLetter">
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[a-zA-Z]{1}"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tLookUpOperator">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="EQUAL"/>
+					<xs:enumeration value="EQUAL_IGNORE_CASE"/>
+					<xs:enumeration value="IN"/>
+					<xs:enumeration value="LARGER"/>
+					<xs:enumeration value="LARGER_EQUAL"/>
+					<xs:enumeration value="LIKE"/>
+					<xs:enumeration value="LIKE_END"/>
+					<xs:enumeration value="LIKE_END_IGNORE_CASE"/>
+					<xs:enumeration value="LIKE_IGNORE_CASE"/>
+					<xs:enumeration value="LIKE_START"/>
+					<xs:enumeration value="LIKE_START_IGNORE_CASE"/>
+					<xs:enumeration value="NOT IN"/>
+					<xs:enumeration value="NOT NULL"/>
+					<xs:enumeration value="NULL"/>
+					<xs:enumeration value="RANGE"/>
+					<xs:enumeration value="SMALLER"/>
+					<xs:enumeration value="SMALLER_EQUAL"/>
+					<xs:enumeration value="UNEQUAL"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tNumber1">
+				<xs:restriction base="xs:integer">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="9"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tNumber10">
+				<xs:restriction base="xs:positiveInteger">
+					<xs:maxInclusive value="9999999999"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tNumber2">
+				<xs:restriction base="xs:integer">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="99"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tNumber5">
+				<xs:restriction base="xs:positiveInteger">
+					<xs:maxInclusive value="99999"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tNumber6">
+				<xs:restriction base="xs:positiveInteger">
+					<xs:maxInclusive value="999999"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tNumber9">
+				<xs:restriction base="xs:positiveInteger">
+					<xs:maxInclusive value="999999999"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tOrgType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="bedrijf"/>
+					<xs:enumeration value="bedr_aanv"/>
+					<xs:enumeration value="vestiging"/>
+					<xs:enumeration value="vest_aanv"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tRank">
+				<xs:restriction base="xs:integer">
+					<xs:minInclusive value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tRelationDetailsType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="H"/>
+					<xs:enumeration value="P"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tRelationTypeBase">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value=""/>
+					<xs:enumeration value="CHILD"/>
+					<xs:enumeration value="FATHER"/>
+					<xs:enumeration value="MOTHER"/>
+					<xs:enumeration value="PARTNER"/>
+					<xs:enumeration value="PARENT"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tSource">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="dont_care"/>
+					<xs:enumeration value="external"/>
+					<xs:enumeration value="internal"/>
+					<xs:enumeration value="gegmag"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString10">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="10"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString100">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="100"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString13">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="13"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString132">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="132"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString150">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="150"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString2">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="2"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString20">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="20"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString200">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="200"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString30">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="30"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString4">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="4"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString40">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="40"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString45">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="45"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString50">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="50"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString6">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="6"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString8">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="8"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tString9">
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="9"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tUnsupportedMethod">
+				<xs:restriction base="xs:boolean"/>
+			</xs:simpleType>
+			<xs:simpleType name="tXYCoordinate">
+				<xs:restriction base="xs:decimal">
+					<xs:totalDigits value="9"/>
+					<xs:fractionDigits value="3"/>
+					<xs:minInclusive value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tZCoordinate">
+				<xs:restriction base="xs:decimal">
+					<xs:totalDigits value="6"/>
+					<xs:fractionDigits value="3"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="tZipCode">
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[1-9]{1}\d{3}\s*[a-zA-Z]{2}"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:schema>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/core/soap">
+			<xs:element name="faultDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="source" nillable="true" type="xs:string"/>
+						<xs:element name="code" nillable="true" type="xs:string"/>
+						<xs:element name="message" nillable="true" type="xs:string"/>
+						<xs:element name="stacktrace" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.emaxx.org/msg/common">
+			<xs:element name="confirmationMessage" type="xs:string"/>
+		</xs:schema>
+  </types>
+  <message name="lookUpCountryFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="lookUpDistrictResponse">
+    <part name="parameters" element="gegmag:lookUpDistrictResponse">
+    </part>
+  </message>
+  <message name="updateExtendedOrganizationInfoFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="updateExtendedPersonInfoRequest">
+    <part name="parameters" element="gegmag:updateExtendedPersonInfo">
+    </part>
+  </message>
+  <message name="lookUpCountryResponse">
+    <part name="parameters" element="gegmag:lookUpCountryResponse">
+    </part>
+  </message>
+  <message name="lookUpRegistryAddressRequest">
+    <part name="parameters" element="gegmag:lookUpRegistryAddress">
+    </part>
+  </message>
+  <message name="addSupplementaryOrganizationInfoRequest">
+    <part name="parameters" element="gegmag:addSupplementaryOrganizationInfo">
+    </part>
+  </message>
+  <message name="addExtendedPersonInfoRequest">
+    <part name="parameters" element="gegmag:addExtendedPersonInfo">
+    </part>
+  </message>
+  <message name="addExtendedPersonInfoResponse">
+    <part name="parameters" element="gegmag:addExtendedPersonInfoResponse">
+    </part>
+  </message>
+  <message name="lookUpPersonBySupplementaryFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="updateSupplementaryOrganizationInfoResponse">
+    <part name="parameters" element="gegmag:updateSupplementaryOrganizationInfoResponse">
+    </part>
+  </message>
+  <message name="getRelationDetailsRequest">
+    <part name="parameters" element="gegmag:getRelationDetails">
+    </part>
+  </message>
+  <message name="lookUpExtendedOrganizationInfoFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="addSupplementaryOrganizationInfoResponse">
+    <part name="parameters" element="gegmag:addSupplementaryOrganizationInfoResponse">
+    </part>
+  </message>
+  <message name="updateExtendedOrganizationInfoResponse">
+    <part name="parameters" element="gegmag:updateExtendedOrganizationInfoResponse">
+    </part>
+  </message>
+  <message name="lookUpNeighbourhoodRequest">
+    <part name="parameters" element="gegmag:lookUpNeighbourhood">
+    </part>
+  </message>
+  <message name="lookUpAddressResponse">
+    <part name="parameters" element="gegmag:lookUpAddressResponse">
+    </part>
+  </message>
+  <message name="lookUpRegistryAddressFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="lookUpRegistryObjectFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="lookUpMunicipalityRequest">
+    <part name="parameters" element="gegmag:lookUpMunicipality">
+    </part>
+  </message>
+  <message name="saveExtendedPersonInfoResponse">
+    <part name="parameters" element="gegmag:saveExtendedPersonInfoResponse">
+    </part>
+  </message>
+  <message name="updateExtendedPersonInfoResponse">
+    <part name="parameters" element="gegmag:updateExtendedPersonInfoResponse">
+    </part>
+  </message>
+  <message name="findOrganizationRequest">
+    <part name="parameters" element="gegmag:findOrganization">
+    </part>
+  </message>
+  <message name="lookUpAddressFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="lookUpOrganizationRequest">
+    <part name="parameters" element="gegmag:lookUpOrganization">
+    </part>
+  </message>
+  <message name="lookUpCityFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="lookUpPersonBySupplementaryRequest">
+    <part name="parameters" element="gegmag:lookUpPersonBySupplementary">
+    </part>
+  </message>
+  <message name="lookUpPersonResponse">
+    <part name="parameters" element="gegmag:lookUpPersonResponse">
+    </part>
+  </message>
+  <message name="lookUpCountryRequest">
+    <part name="parameters" element="gegmag:lookUpCountry">
+    </part>
+  </message>
+  <message name="getOrganizationDetailsRequest">
+    <part name="parameters" element="gegmag:getOrganizationDetails">
+    </part>
+  </message>
+  <message name="clearCacheFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="addExtendedOrganizationInfoResponse">
+    <part name="parameters" element="gegmag:addExtendedOrganizationInfoResponse">
+    </part>
+  </message>
+  <message name="getOrganizationDetailsFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="lookUpCityResponse">
+    <part name="parameters" element="gegmag:lookUpCityResponse">
+    </part>
+  </message>
+  <message name="updateExtendedOrganizationInfoRequest">
+    <part name="parameters" element="gegmag:updateExtendedOrganizationInfo">
+    </part>
+  </message>
+  <message name="updateSupplementaryOrganizationInfoFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="deleteExtendedOrganizationInfoRequest">
+    <part name="parameters" element="gegmag:deleteExtendedOrganizationInfo">
+    </part>
+  </message>
+  <message name="deleteSupplementaryOrganizationInfoResponse">
+    <part name="parameters" element="gegmag:deleteSupplementaryOrganizationInfoResponse">
+    </part>
+  </message>
+  <message name="lookUpDistrictFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="saveExtendedPersonInfoRequest">
+    <part name="parameters" element="gegmag:saveExtendedPersonInfo">
+    </part>
+  </message>
+  <message name="deleteExtendedOrganizationInfoFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="lookUpNeighbourhoodResponse">
+    <part name="parameters" element="gegmag:lookUpNeighbourhoodResponse">
+    </part>
+  </message>
+  <message name="getPersonDetailsRequest">
+    <part name="parameters" element="gegmag:getPersonDetails">
+    </part>
+  </message>
+  <message name="lookUpOrganizationResponse">
+    <part name="parameters" element="gegmag:lookUpOrganizationResponse">
+    </part>
+  </message>
+  <message name="findOrganizationFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="addExtendedOrganizationInfoRequest">
+    <part name="parameters" element="gegmag:addExtendedOrganizationInfo">
+    </part>
+  </message>
+  <message name="lookUpOrganizationFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="addSupplementaryOrganizationInfoFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="clearCacheResponse">
+    <part name="parameters" element="gegmag:clearCacheResponse">
+    </part>
+  </message>
+  <message name="lookUpStreetRequest">
+    <part name="parameters" element="gegmag:lookUpStreet">
+    </part>
+  </message>
+  <message name="lookUpPersonBySupplementaryResponse">
+    <part name="parameters" element="gegmag:lookUpPersonBySupplementaryResponse">
+    </part>
+  </message>
+  <message name="deleteExtendedPersonInfoRequest">
+    <part name="parameters" element="gegmag:deleteExtendedPersonInfo">
+    </part>
+  </message>
+  <message name="getOrganizationDetailsResponse">
+    <part name="parameters" element="gegmag:getOrganizationDetailsResponse">
+    </part>
+  </message>
+  <message name="lookUpStreetFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="lookUpStreetResponse">
+    <part name="parameters" element="gegmag:lookUpStreetResponse">
+    </part>
+  </message>
+  <message name="readOrganizationsResponse">
+    <part name="parameters" element="gegmag:readOrganizationsResponse">
+    </part>
+  </message>
+  <message name="getPersonDetailsResponse">
+    <part name="parameters" element="gegmag:getPersonDetailsResponse">
+    </part>
+  </message>
+  <message name="saveExtendedPersonInfoFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="addExtendedPersonInfoFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="getPersonDetailsFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="updateExtendedPersonInfoFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="addExtendedOrganizationInfoFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="lookUpDistrictRequest">
+    <part name="parameters" element="gegmag:lookUpDistrict">
+    </part>
+  </message>
+  <message name="getRelationDetailsFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="clearCacheRequest">
+    <part name="parameters" element="gegmag:clearCache">
+    </part>
+  </message>
+  <message name="getRelationDetailsResponse">
+    <part name="parameters" element="gegmag:getRelationDetailsResponse">
+    </part>
+  </message>
+  <message name="deleteExtendedPersonInfoFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="lookUpExtendedOrganizationInfoRequest">
+    <part name="parameters" element="gegmag:lookUpExtendedOrganizationInfo">
+    </part>
+  </message>
+  <message name="lookUpPersonRequest">
+    <part name="parameters" element="gegmag:lookUpPerson">
+    </part>
+  </message>
+  <message name="lookUpPersonFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="deleteExtendedPersonInfoResponse">
+    <part name="parameters" element="gegmag:deleteExtendedPersonInfoResponse">
+    </part>
+  </message>
+  <message name="readOrganizationsRequest">
+    <part name="parameters" element="gegmag:readOrganizations">
+    </part>
+  </message>
+  <message name="lookUpMunicipalityFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="deleteSupplementaryOrganizationInfoFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="deleteExtendedOrganizationInfoResponse">
+    <part name="parameters" element="gegmag:deleteExtendedOrganizationInfoResponse">
+    </part>
+  </message>
+  <message name="findOrganizationResponse">
+    <part name="parameters" element="gegmag:findOrganizationResponse">
+    </part>
+  </message>
+  <message name="lookUpAddressRequest">
+    <part name="parameters" element="gegmag:lookUpAddress">
+    </part>
+  </message>
+  <message name="lookUpCityRequest">
+    <part name="parameters" element="gegmag:lookUpCity">
+    </part>
+  </message>
+  <message name="lookUpNeighbourhoodFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="deleteSupplementaryOrganizationInfoRequest">
+    <part name="parameters" element="gegmag:deleteSupplementaryOrganizationInfo">
+    </part>
+  </message>
+  <message name="lookUpRegistryObjectResponse">
+    <part name="parameters" element="gegmag:lookUpRegistryObjectResponse">
+    </part>
+  </message>
+  <message name="lookUpRegistryAddressResponse">
+    <part name="parameters" element="gegmag:lookUpRegistryAddressResponse">
+    </part>
+  </message>
+  <message name="lookUpMunicipalityResponse">
+    <part name="parameters" element="gegmag:lookUpMunicipalityResponse">
+    </part>
+  </message>
+  <message name="lookUpExtendedOrganizationInfoResponse">
+    <part name="parameters" element="gegmag:lookUpExtendedOrganizationInfoResponse">
+    </part>
+  </message>
+  <message name="updateSupplementaryOrganizationInfoRequest">
+    <part name="parameters" element="gegmag:updateSupplementaryOrganizationInfo">
+    </part>
+  </message>
+  <message name="readOrganizationsFault">
+    <part name="error" element="mosoap:faultDetails">
+    </part>
+  </message>
+  <message name="lookUpRegistryObjectRequest">
+    <part name="parameters" element="gegmag:lookUpRegistryObject">
+    </part>
+  </message>
+  <portType name="GegmagbasicPortType">
+    <operation name="addExtendedOrganizationInfo">
+      <input name="addExtendedOrganizationInfoRequest" message="gegmag:addExtendedOrganizationInfoRequest">
+    </input>
+      <output name="addExtendedOrganizationInfoResponse" message="gegmag:addExtendedOrganizationInfoResponse">
+    </output>
+      <fault name="addExtendedOrganizationInfoFault" message="gegmag:addExtendedOrganizationInfoFault">
+    </fault>
+    </operation>
+    <operation name="addExtendedPersonInfo">
+      <input name="addExtendedPersonInfoRequest" message="gegmag:addExtendedPersonInfoRequest">
+    </input>
+      <output name="addExtendedPersonInfoResponse" message="gegmag:addExtendedPersonInfoResponse">
+    </output>
+      <fault name="addExtendedPersonInfoFault" message="gegmag:addExtendedPersonInfoFault">
+    </fault>
+    </operation>
+    <operation name="addSupplementaryOrganizationInfo">
+      <input name="addSupplementaryOrganizationInfoRequest" message="gegmag:addSupplementaryOrganizationInfoRequest">
+    </input>
+      <output name="addSupplementaryOrganizationInfoResponse" message="gegmag:addSupplementaryOrganizationInfoResponse">
+    </output>
+      <fault name="addSupplementaryOrganizationInfoFault" message="gegmag:addSupplementaryOrganizationInfoFault">
+    </fault>
+    </operation>
+    <operation name="clearCache">
+      <input name="clearCacheRequest" message="gegmag:clearCacheRequest">
+    </input>
+      <output name="clearCacheResponse" message="gegmag:clearCacheResponse">
+    </output>
+      <fault name="clearCacheFault" message="gegmag:clearCacheFault">
+    </fault>
+    </operation>
+    <operation name="deleteExtendedOrganizationInfo">
+      <input name="deleteExtendedOrganizationInfoRequest" message="gegmag:deleteExtendedOrganizationInfoRequest">
+    </input>
+      <output name="deleteExtendedOrganizationInfoResponse" message="gegmag:deleteExtendedOrganizationInfoResponse">
+    </output>
+      <fault name="deleteExtendedOrganizationInfoFault" message="gegmag:deleteExtendedOrganizationInfoFault">
+    </fault>
+    </operation>
+    <operation name="deleteExtendedPersonInfo">
+      <input name="deleteExtendedPersonInfoRequest" message="gegmag:deleteExtendedPersonInfoRequest">
+    </input>
+      <output name="deleteExtendedPersonInfoResponse" message="gegmag:deleteExtendedPersonInfoResponse">
+    </output>
+      <fault name="deleteExtendedPersonInfoFault" message="gegmag:deleteExtendedPersonInfoFault">
+    </fault>
+    </operation>
+    <operation name="deleteSupplementaryOrganizationInfo">
+      <input name="deleteSupplementaryOrganizationInfoRequest" message="gegmag:deleteSupplementaryOrganizationInfoRequest">
+    </input>
+      <output name="deleteSupplementaryOrganizationInfoResponse" message="gegmag:deleteSupplementaryOrganizationInfoResponse">
+    </output>
+      <fault name="deleteSupplementaryOrganizationInfoFault" message="gegmag:deleteSupplementaryOrganizationInfoFault">
+    </fault>
+    </operation>
+    <operation name="findOrganization">
+      <input name="findOrganizationRequest" message="gegmag:findOrganizationRequest">
+    </input>
+      <output name="findOrganizationResponse" message="gegmag:findOrganizationResponse">
+    </output>
+      <fault name="findOrganizationFault" message="gegmag:findOrganizationFault">
+    </fault>
+    </operation>
+    <operation name="getOrganizationDetails">
+      <input name="getOrganizationDetailsRequest" message="gegmag:getOrganizationDetailsRequest">
+    </input>
+      <output name="getOrganizationDetailsResponse" message="gegmag:getOrganizationDetailsResponse">
+    </output>
+      <fault name="getOrganizationDetailsFault" message="gegmag:getOrganizationDetailsFault">
+    </fault>
+    </operation>
+    <operation name="getPersonDetails">
+      <input name="getPersonDetailsRequest" message="gegmag:getPersonDetailsRequest">
+    </input>
+      <output name="getPersonDetailsResponse" message="gegmag:getPersonDetailsResponse">
+    </output>
+      <fault name="getPersonDetailsFault" message="gegmag:getPersonDetailsFault">
+    </fault>
+    </operation>
+    <operation name="getRelationDetails">
+      <input name="getRelationDetailsRequest" message="gegmag:getRelationDetailsRequest">
+    </input>
+      <output name="getRelationDetailsResponse" message="gegmag:getRelationDetailsResponse">
+    </output>
+      <fault name="getRelationDetailsFault" message="gegmag:getRelationDetailsFault">
+    </fault>
+    </operation>
+    <operation name="lookUpAddress">
+      <input name="lookUpAddressRequest" message="gegmag:lookUpAddressRequest">
+    </input>
+      <output name="lookUpAddressResponse" message="gegmag:lookUpAddressResponse">
+    </output>
+      <fault name="lookUpAddressFault" message="gegmag:lookUpAddressFault">
+    </fault>
+    </operation>
+    <operation name="lookUpCity">
+      <input name="lookUpCityRequest" message="gegmag:lookUpCityRequest">
+    </input>
+      <output name="lookUpCityResponse" message="gegmag:lookUpCityResponse">
+    </output>
+      <fault name="lookUpCityFault" message="gegmag:lookUpCityFault">
+    </fault>
+    </operation>
+    <operation name="lookUpCountry">
+      <input name="lookUpCountryRequest" message="gegmag:lookUpCountryRequest">
+    </input>
+      <output name="lookUpCountryResponse" message="gegmag:lookUpCountryResponse">
+    </output>
+      <fault name="lookUpCountryFault" message="gegmag:lookUpCountryFault">
+    </fault>
+    </operation>
+    <operation name="lookUpDistrict">
+      <input name="lookUpDistrictRequest" message="gegmag:lookUpDistrictRequest">
+    </input>
+      <output name="lookUpDistrictResponse" message="gegmag:lookUpDistrictResponse">
+    </output>
+      <fault name="lookUpDistrictFault" message="gegmag:lookUpDistrictFault">
+    </fault>
+    </operation>
+    <operation name="lookUpExtendedOrganizationInfo">
+      <input name="lookUpExtendedOrganizationInfoRequest" message="gegmag:lookUpExtendedOrganizationInfoRequest">
+    </input>
+      <output name="lookUpExtendedOrganizationInfoResponse" message="gegmag:lookUpExtendedOrganizationInfoResponse">
+    </output>
+      <fault name="lookUpExtendedOrganizationInfoFault" message="gegmag:lookUpExtendedOrganizationInfoFault">
+    </fault>
+    </operation>
+    <operation name="lookUpMunicipality">
+      <input name="lookUpMunicipalityRequest" message="gegmag:lookUpMunicipalityRequest">
+    </input>
+      <output name="lookUpMunicipalityResponse" message="gegmag:lookUpMunicipalityResponse">
+    </output>
+      <fault name="lookUpMunicipalityFault" message="gegmag:lookUpMunicipalityFault">
+    </fault>
+    </operation>
+    <operation name="lookUpNeighbourhood">
+      <input name="lookUpNeighbourhoodRequest" message="gegmag:lookUpNeighbourhoodRequest">
+    </input>
+      <output name="lookUpNeighbourhoodResponse" message="gegmag:lookUpNeighbourhoodResponse">
+    </output>
+      <fault name="lookUpNeighbourhoodFault" message="gegmag:lookUpNeighbourhoodFault">
+    </fault>
+    </operation>
+    <operation name="lookUpOrganization">
+      <input name="lookUpOrganizationRequest" message="gegmag:lookUpOrganizationRequest">
+    </input>
+      <output name="lookUpOrganizationResponse" message="gegmag:lookUpOrganizationResponse">
+    </output>
+      <fault name="lookUpOrganizationFault" message="gegmag:lookUpOrganizationFault">
+    </fault>
+    </operation>
+    <operation name="lookUpPerson">
+      <input name="lookUpPersonRequest" message="gegmag:lookUpPersonRequest">
+    </input>
+      <output name="lookUpPersonResponse" message="gegmag:lookUpPersonResponse">
+    </output>
+      <fault name="lookUpPersonFault" message="gegmag:lookUpPersonFault">
+    </fault>
+    </operation>
+    <operation name="lookUpPersonBySupplementary">
+      <input name="lookUpPersonBySupplementaryRequest" message="gegmag:lookUpPersonBySupplementaryRequest">
+    </input>
+      <output name="lookUpPersonBySupplementaryResponse" message="gegmag:lookUpPersonBySupplementaryResponse">
+    </output>
+      <fault name="lookUpPersonBySupplementaryFault" message="gegmag:lookUpPersonBySupplementaryFault">
+    </fault>
+    </operation>
+    <operation name="lookUpRegistryAddress">
+      <input name="lookUpRegistryAddressRequest" message="gegmag:lookUpRegistryAddressRequest">
+    </input>
+      <output name="lookUpRegistryAddressResponse" message="gegmag:lookUpRegistryAddressResponse">
+    </output>
+      <fault name="lookUpRegistryAddressFault" message="gegmag:lookUpRegistryAddressFault">
+    </fault>
+    </operation>
+    <operation name="lookUpRegistryObject">
+      <input name="lookUpRegistryObjectRequest" message="gegmag:lookUpRegistryObjectRequest">
+    </input>
+      <output name="lookUpRegistryObjectResponse" message="gegmag:lookUpRegistryObjectResponse">
+    </output>
+      <fault name="lookUpRegistryObjectFault" message="gegmag:lookUpRegistryObjectFault">
+    </fault>
+    </operation>
+    <operation name="lookUpStreet">
+      <input name="lookUpStreetRequest" message="gegmag:lookUpStreetRequest">
+    </input>
+      <output name="lookUpStreetResponse" message="gegmag:lookUpStreetResponse">
+    </output>
+      <fault name="lookUpStreetFault" message="gegmag:lookUpStreetFault">
+    </fault>
+    </operation>
+    <operation name="readOrganizations">
+      <input name="readOrganizationsRequest" message="gegmag:readOrganizationsRequest">
+    </input>
+      <output name="readOrganizationsResponse" message="gegmag:readOrganizationsResponse">
+    </output>
+      <fault name="readOrganizationsFault" message="gegmag:readOrganizationsFault">
+    </fault>
+    </operation>
+    <operation name="saveExtendedPersonInfo">
+      <input name="saveExtendedPersonInfoRequest" message="gegmag:saveExtendedPersonInfoRequest">
+    </input>
+      <output name="saveExtendedPersonInfoResponse" message="gegmag:saveExtendedPersonInfoResponse">
+    </output>
+      <fault name="saveExtendedPersonInfoFault" message="gegmag:saveExtendedPersonInfoFault">
+    </fault>
+    </operation>
+    <operation name="updateExtendedOrganizationInfo">
+      <input name="updateExtendedOrganizationInfoRequest" message="gegmag:updateExtendedOrganizationInfoRequest">
+    </input>
+      <output name="updateExtendedOrganizationInfoResponse" message="gegmag:updateExtendedOrganizationInfoResponse">
+    </output>
+      <fault name="updateExtendedOrganizationInfoFault" message="gegmag:updateExtendedOrganizationInfoFault">
+    </fault>
+    </operation>
+    <operation name="updateExtendedPersonInfo">
+      <input name="updateExtendedPersonInfoRequest" message="gegmag:updateExtendedPersonInfoRequest">
+    </input>
+      <output name="updateExtendedPersonInfoResponse" message="gegmag:updateExtendedPersonInfoResponse">
+    </output>
+      <fault name="updateExtendedPersonInfoFault" message="gegmag:updateExtendedPersonInfoFault">
+    </fault>
+    </operation>
+    <operation name="updateSupplementaryOrganizationInfo">
+      <input name="updateSupplementaryOrganizationInfoRequest" message="gegmag:updateSupplementaryOrganizationInfoRequest">
+    </input>
+      <output name="updateSupplementaryOrganizationInfoResponse" message="gegmag:updateSupplementaryOrganizationInfoResponse">
+    </output>
+      <fault name="updateSupplementaryOrganizationInfoFault" message="gegmag:updateSupplementaryOrganizationInfoFault">
+    </fault>
+    </operation>
+  </portType>
+  <binding name="GegmagbasicBinding" type="gegmag:GegmagbasicPortType">
+    <soapbind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="addExtendedOrganizationInfo">
+<wsdl:documentation>[Adds extended organization information to the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:addExtendedOrganizationInfo"/>
+      <input name="addExtendedOrganizationInfoRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addExtendedOrganizationInfoResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addExtendedOrganizationInfoFault">
+        <soapbind:fault name="addExtendedOrganizationInfoFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="addExtendedPersonInfo">
+<wsdl:documentation>[Adds extended person information to the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:addExtendedPersonInfo"/>
+      <input name="addExtendedPersonInfoRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addExtendedPersonInfoResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addExtendedPersonInfoFault">
+        <soapbind:fault name="addExtendedPersonInfoFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="addSupplementaryOrganizationInfo">
+<wsdl:documentation>[Adds supplementary organization information to the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:addSupplementaryOrganizationInfo"/>
+      <input name="addSupplementaryOrganizationInfoRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="addSupplementaryOrganizationInfoResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="addSupplementaryOrganizationInfoFault">
+        <soapbind:fault name="addSupplementaryOrganizationInfoFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="clearCache">
+<wsdl:documentation>[Clears the organization and person cache of the GegMag Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:clearCache"/>
+      <input name="clearCacheRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="clearCacheResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="clearCacheFault">
+        <soapbind:fault name="clearCacheFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="deleteExtendedOrganizationInfo">
+<wsdl:documentation>[Deletes extended organization information from the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:deleteExtendedOrganizationInfo"/>
+      <input name="deleteExtendedOrganizationInfoRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="deleteExtendedOrganizationInfoResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="deleteExtendedOrganizationInfoFault">
+        <soapbind:fault name="deleteExtendedOrganizationInfoFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="deleteExtendedPersonInfo">
+<wsdl:documentation>[Deletes extended person information from the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:deleteExtendedPersonInfo"/>
+      <input name="deleteExtendedPersonInfoRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="deleteExtendedPersonInfoResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="deleteExtendedPersonInfoFault">
+        <soapbind:fault name="deleteExtendedPersonInfoFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="deleteSupplementaryOrganizationInfo">
+<wsdl:documentation>[Deletes supplementary organization information from the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:deleteSupplementaryOrganizationInfo"/>
+      <input name="deleteSupplementaryOrganizationInfoRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="deleteSupplementaryOrganizationInfoResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="deleteSupplementaryOrganizationInfoFault">
+        <soapbind:fault name="deleteSupplementaryOrganizationInfoFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="findOrganization">
+<wsdl:documentation>[Returns a ranked list of organizations matching the specified free search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:findOrganization"/>
+      <input name="findOrganizationRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="findOrganizationResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="findOrganizationFault">
+        <soapbind:fault name="findOrganizationFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getOrganizationDetails">
+<wsdl:documentation>[Returns organization details from the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:getOrganizationDetails"/>
+      <input name="getOrganizationDetailsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="getOrganizationDetailsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="getOrganizationDetailsFault">
+        <soapbind:fault name="getOrganizationDetailsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getPersonDetails">
+<wsdl:documentation>[Returns person details from the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:getPersonDetails"/>
+      <input name="getPersonDetailsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="getPersonDetailsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="getPersonDetailsFault">
+        <soapbind:fault name="getPersonDetailsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="getRelationDetails">
+<wsdl:documentation>[Returns relation details from the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:getRelationDetails"/>
+      <input name="getRelationDetailsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="getRelationDetailsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="getRelationDetailsFault">
+        <soapbind:fault name="getRelationDetailsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpAddress">
+<wsdl:documentation>[Return address details from the Data Warehouse for the specified address search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:lookUpAddress"/>
+      <input name="lookUpAddressRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpAddressResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpAddressFault">
+        <soapbind:fault name="lookUpAddressFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpCity">
+<wsdl:documentation>[Return the matching cities for the specified city search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:lookUpCity"/>
+      <input name="lookUpCityRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpCityResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpCityFault">
+        <soapbind:fault name="lookUpCityFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpCountry">
+<wsdl:documentation>[Return the matching country objects for the specified search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:lookUpCountry"/>
+      <input name="lookUpCountryRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpCountryResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpCountryFault">
+        <soapbind:fault name="lookUpCountryFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpDistrict">
+<wsdl:documentation>[Return the matching district objects for the specified search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:lookUpDistrict"/>
+      <input name="lookUpDistrictRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpDistrictResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpDistrictFault">
+        <soapbind:fault name="lookUpDistrictFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpExtendedOrganizationInfo">
+<wsdl:documentation>[Return the matching extended organization information for the specified search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:lookUpExtendedOrganizationInfo"/>
+      <input name="lookUpExtendedOrganizationInfoRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpExtendedOrganizationInfoResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpExtendedOrganizationInfoFault">
+        <soapbind:fault name="lookUpExtendedOrganizationInfoFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpMunicipality">
+<wsdl:documentation>[Return the matching municipality objects for the specified search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:lookUpMunicipality"/>
+      <input name="lookUpMunicipalityRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpMunicipalityResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpMunicipalityFault">
+        <soapbind:fault name="lookUpMunicipalityFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpNeighbourhood">
+<wsdl:documentation>[Return the matching neighbourhood objects for the specified search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:lookUpNeighbourhood"/>
+      <input name="lookUpNeighbourhoodRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpNeighbourhoodResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpNeighbourhoodFault">
+        <soapbind:fault name="lookUpNeighbourhoodFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpOrganization">
+<wsdl:documentation>[Return organization information from the Data Warehouse for the specified organization and/or address search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:lookUpOrganization"/>
+      <input name="lookUpOrganizationRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpOrganizationResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpOrganizationFault">
+        <soapbind:fault name="lookUpOrganizationFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpPerson">
+<wsdl:documentation>[Return person details from the Data Warehouse for the specified person and/or address search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:lookUpPerson"/>
+      <input name="lookUpPersonRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpPersonResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpPersonFault">
+        <soapbind:fault name="lookUpPersonFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpPersonBySupplementary">
+<wsdl:documentation>[Return person details from the Data Warehouse for the specified person and/or address and/or supplementary search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:lookUpPersonBySupplementary"/>
+      <input name="lookUpPersonBySupplementaryRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpPersonBySupplementaryResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpPersonBySupplementaryFault">
+        <soapbind:fault name="lookUpPersonBySupplementaryFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpRegistryAddress">
+<wsdl:documentation>[Return the matching registry object location addresses for the specified search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:lookUpRegistryAddress"/>
+      <input name="lookUpRegistryAddressRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpRegistryAddressResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpRegistryAddressFault">
+        <soapbind:fault name="lookUpRegistryAddressFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpRegistryObject">
+<wsdl:documentation>[Return the matching registry objects for the specified search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:lookUpRegistryObject"/>
+      <input name="lookUpRegistryObjectRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpRegistryObjectResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpRegistryObjectFault">
+        <soapbind:fault name="lookUpRegistryObjectFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="lookUpStreet">
+<wsdl:documentation>[Return the matching streets for the specified street search criteria.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:lookUpStreet"/>
+      <input name="lookUpStreetRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="lookUpStreetResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="lookUpStreetFault">
+        <soapbind:fault name="lookUpStreetFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="readOrganizations">
+<wsdl:documentation>[Returns organization information from the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:readOrganizations"/>
+      <input name="readOrganizationsRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="readOrganizationsResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="readOrganizationsFault">
+        <soapbind:fault name="readOrganizationsFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="saveExtendedPersonInfo">
+<wsdl:documentation>[Saves extended person information in the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:saveExtendedPersonInfo"/>
+      <input name="saveExtendedPersonInfoRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="saveExtendedPersonInfoResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="saveExtendedPersonInfoFault">
+        <soapbind:fault name="saveExtendedPersonInfoFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updateExtendedOrganizationInfo">
+<wsdl:documentation>[Updates extended organization information in the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:updateExtendedOrganizationInfo"/>
+      <input name="updateExtendedOrganizationInfoRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updateExtendedOrganizationInfoResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updateExtendedOrganizationInfoFault">
+        <soapbind:fault name="updateExtendedOrganizationInfoFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updateExtendedPersonInfo">
+<wsdl:documentation>[Updates extended person information in the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:updateExtendedPersonInfo"/>
+      <input name="updateExtendedPersonInfoRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updateExtendedPersonInfoResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updateExtendedPersonInfoFault">
+        <soapbind:fault name="updateExtendedPersonInfoFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="updateSupplementaryOrganizationInfo">
+<wsdl:documentation>[Updates supplementary organization information in the Data Warehouse.]</wsdl:documentation>
+      <soapbind:operation soapAction="gegmagbasic:updateSupplementaryOrganizationInfo"/>
+      <input name="updateSupplementaryOrganizationInfoRequest">
+        <soapbind:body use="literal"/>
+      </input>
+      <output name="updateSupplementaryOrganizationInfoResponse">
+        <soapbind:body use="literal"/>
+      </output>
+      <fault name="updateSupplementaryOrganizationInfoFault">
+        <soapbind:fault name="updateSupplementaryOrganizationInfoFault" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="GegmagbasicService">
+<wsdl:documentation>[gegmagbasic]|[Data Warehouse functional module.]</wsdl:documentation>
+    <port name="GegmagbasicPortType" binding="gegmag:GegmagbasicBinding">
+      <soapbind:address location="http://guo10702.k-domstad.org:8080/services/GegMagProxy"/>
+    </port>
+  </service>
+</definitions>

@@ -15290,25 +15290,132 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
   <con:interface xsi:type="con:WsdlInterface" id="a5d232cc-6de1-4d7a-a36a-7ba62a5697fe" wsaVersion="NONE" name="GegmagbasicBinding" type="wsdl" bindingName="{http://www.emaxx.org/functional/gegmag}GegmagbasicBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Projects/openforms2bpel.worktrees/update-gegmag/src/main/configurations/bpel/GegMag/gegmag.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
     <con:endpoints>
-      <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+      <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/GegMagService</con:endpoint>
       <con:endpoint>http://guo10702.k-domstad.org:8080/services/GegMagProxy</con:endpoint>
     </con:endpoints>
     <con:operation id="d28453ce-fe15-41c7-a438-82978816c02c" isOneWay="false" action="gegmagbasic:addExtendedOrganizationInfo" name="addExtendedOrganizationInfo" bindingOperationName="addExtendedOrganizationInfo" type="Request-Response" outputName="addExtendedOrganizationInfoResponse" inputName="addExtendedOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
       <con:call id="6dadc9bd-d031-4fc9-8a7b-9b2e1bbaf1af" name="Request 1">
-        <con:settings/>
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/GegMagService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <geg:addExtendedOrganizationInfo>\r
+         <geg:organizationExtInfoMessage kvkCorrection="false">\r
+            <geg:organizations>\r
+               <!--Zero or more repetitions:-->\r
+               <geg:organization>\r
+                  <geg:organizationNumber>?</geg:organizationNumber>\r
+                  <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>\r
+                  <geg:companyName>?</geg:companyName>\r
+                  <geg:branchOfIndustry>?</geg:branchOfIndustry>\r
+                  <geg:fiscalNumber>?</geg:fiscalNumber>\r
+                  <geg:commercialRegistryCity>?</geg:commercialRegistryCity>\r
+                  <geg:emailAddress>?</geg:emailAddress>\r
+                  <geg:webAddress>?</geg:webAddress>\r
+                  <geg:telephoneNumber>?</geg:telephoneNumber>\r
+                  <geg:faxNumber>?</geg:faxNumber>\r
+                  <geg:contactPersonLastName>?</geg:contactPersonLastName>\r
+                  <geg:contactPersonLastNamePrefix>?</geg:contactPersonLastNamePrefix>\r
+                  <geg:contactPersonInitials>?</geg:contactPersonInitials>\r
+                  <geg:contactPersonFirstNames>?</geg:contactPersonFirstNames>\r
+                  <geg:contactPersonSalutation>?</geg:contactPersonSalutation>\r
+                  <geg:contactPersonFunction>?</geg:contactPersonFunction>\r
+                  <geg:prefComChannel>?</geg:prefComChannel>\r
+                  <geg:addresses>\r
+                     <!--0 to 3 repetitions:-->\r
+                     <geg:address>\r
+                        <geg:type>?</geg:type>\r
+                        <geg:street>?</geg:street>\r
+                        <geg:houseNumber>?</geg:houseNumber>\r
+                        <geg:houseLetter>?</geg:houseLetter>\r
+                        <geg:houseRemark>?</geg:houseRemark>\r
+                        <geg:houseIndication>?</geg:houseIndication>\r
+                        <geg:zipCode>?</geg:zipCode>\r
+                        <geg:city>?</geg:city>\r
+                        <geg:freePost>?</geg:freePost>\r
+                        <geg:POBox>?</geg:POBox>\r
+                     </geg:address>\r
+                  </geg:addresses>\r
+               </geg:organization>\r
+            </geg:organizations>\r
+         </geg:organizationExtInfoMessage>\r
+      </geg:addExtendedOrganizationInfo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:addExtendedOrganizationInfo"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
     <con:operation id="a7f58eea-e210-41e4-937d-f49c1d79f541" isOneWay="false" action="gegmagbasic:addExtendedPersonInfo" name="addExtendedPersonInfo" bindingOperationName="addExtendedPersonInfo" type="Request-Response" outputName="addExtendedPersonInfoResponse" inputName="addExtendedPersonInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
       <con:call id="eabbdfb1-911f-440c-8817-6fee0ab3fb23" name="Request 1">
-        <con:settings/>
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/GegMagService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <geg:addExtendedPersonInfo>\r
+         <geg:personExtInfoMessage>\r
+            <geg:persons>\r
+               <!--Zero or more repetitions:-->\r
+               <geg:person>\r
+                  <geg:aNumber>?</geg:aNumber>\r
+                  <geg:bsn>?</geg:bsn>\r
+                  <geg:telephoneNumberHome>?</geg:telephoneNumberHome>\r
+                  <geg:telephoneNumberWork>?</geg:telephoneNumberWork>\r
+                  <geg:telephoneNumberMobile>?</geg:telephoneNumberMobile>\r
+                  <geg:faxNumber>?</geg:faxNumber>\r
+                  <geg:emailAddress>?</geg:emailAddress>\r
+                  <geg:dateOfBirth ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfBirth>\r
+                  <geg:cityOfBirth>?</geg:cityOfBirth>\r
+                  <geg:genderIndication>?</geg:genderIndication>\r
+                  <geg:lastName>?</geg:lastName>\r
+                  <geg:initials>?</geg:initials>\r
+                  <geg:firstNames>?</geg:firstNames>\r
+                  <geg:lastNamePrefix>?</geg:lastNamePrefix>\r
+                  <geg:bankNumber>?</geg:bankNumber>\r
+                  <geg:prefComChannel>?</geg:prefComChannel>\r
+                  <geg:addresses>\r
+                     <!--0 to 3 repetitions:-->\r
+                     <geg:address>\r
+                        <geg:type>?</geg:type>\r
+                        <geg:street>?</geg:street>\r
+                        <geg:houseNumber>?</geg:houseNumber>\r
+                        <geg:houseLetter>?</geg:houseLetter>\r
+                        <geg:houseRemark>?</geg:houseRemark>\r
+                        <geg:houseIndication>?</geg:houseIndication>\r
+                        <geg:zipCode>?</geg:zipCode>\r
+                        <geg:city>?</geg:city>\r
+                        <geg:freePost>?</geg:freePost>\r
+                        <geg:POBox>?</geg:POBox>\r
+                     </geg:address>\r
+                  </geg:addresses>\r
+               </geg:person>\r
+            </geg:persons>\r
+         </geg:personExtInfoMessage>\r
+      </geg:addExtendedPersonInfo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:addExtendedPersonInfo"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
     <con:operation id="cad7a9d4-cac2-40e3-bbc7-cd65f30e5048" isOneWay="false" action="gegmagbasic:addSupplementaryOrganizationInfo" name="addSupplementaryOrganizationInfo" bindingOperationName="addSupplementaryOrganizationInfo" type="Request-Response" outputName="addSupplementaryOrganizationInfoResponse" inputName="addSupplementaryOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false">
@@ -15332,10 +15439,35 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
     <con:operation id="23719a1f-f554-4d3e-80fd-f2bfe12adfc1" isOneWay="false" action="gegmagbasic:getOrganizationDetails" name="getOrganizationDetails" bindingOperationName="getOrganizationDetails" type="Request-Response" outputName="getOrganizationDetailsResponse" inputName="getOrganizationDetailsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
       <con:call id="012b1da2-141e-485e-aa59-beb300da2a33" name="Request 1">
-        <con:settings/>
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/GegMagService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <geg:getOrganizationDetails>\r
+         <geg:organizationIdMessage source="internal" details="all" maxResults="?" kvkCorrection="false">\r
+            <geg:organizations>\r
+               <!--Zero or more repetitions:-->\r
+               <geg:organization>\r
+                  <!--You have a CHOICE of the next 2 items at this level-->\r
+                  <geg:organizationNumber>?</geg:organizationNumber>\r
+                  <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>\r
+               </geg:organization>\r
+            </geg:organizations>\r
+         </geg:organizationIdMessage>\r
+      </geg:getOrganizationDetails>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:getOrganizationDetails"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
     <con:operation id="13b0677d-37ef-4549-b86b-c68a7e286b64" isOneWay="false" action="gegmagbasic:getPersonDetails" name="getPersonDetails" bindingOperationName="getPersonDetails" type="Request-Response" outputName="getPersonDetailsResponse" inputName="getPersonDetailsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -15343,7 +15475,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       <con:call id="de0bd882-9c5a-41a3-b2bc-541bd1922c5d" name="Request 1">
         <con:settings/>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/GegMagService</con:endpoint>
         <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
@@ -15493,8 +15625,99 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
     <con:operation id="deff431e-1ac6-477d-bf31-df13f50ff8f7" isOneWay="false" action="gegmagbasic:lookUpDistrict" name="lookUpDistrict" bindingOperationName="lookUpDistrict" type="Request-Response" outputName="lookUpDistrictResponse" inputName="lookUpDistrictRequest" receivesAttachments="false" sendsAttachments="false">
       <con:settings/>
     </con:operation>
-    <con:operation id="3962d45a-51a4-485a-b53b-fe86c09087d7" isOneWay="false" action="gegmagbasic:lookUpExtendedOrganizationInfo" name="lookUpExtendedOrganizationInfo" bindingOperationName="lookUpExtendedOrganizationInfo" type="Request-Response" outputName="lookUpExtendedOrganizationInfoResponse" inputName="lookUpExtendedOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="3962d45a-51a4-485a-b53b-fe86c09087d7" isOneWay="false" action="gegmagbasic:lookUpExtendedOrganizationInfo" name="lookUpExtendedOrganizationInfo" bindingOperationName="lookUpExtendedOrganizationInfo" type="Request-Response" outputName="lookUpExtendedOrganizationInfoResponse" inputName="lookUpExtendedOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
+      <con:call id="ae5ff8bc-b232-4523-81d6-f3f981a01731" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/GegMagService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <geg:lookUpExtendedOrganizationInfo>\r
+         <geg:organizationExtInfoSearchMessage maxResults="?" type="?" kvkCorrection="false">\r
+            <!--Optional:-->\r
+            <geg:organizationNumber operator="EQUAL">?</geg:organizationNumber>\r
+            <!--Optional:-->\r
+            <geg:commercialRegistryNumber operator="EQUAL">?</geg:commercialRegistryNumber>\r
+            <!--Optional:-->\r
+            <geg:companyName operator="EQUAL">?</geg:companyName>\r
+            <!--Optional:-->\r
+            <geg:branchOfIndustry operator="EQUAL">?</geg:branchOfIndustry>\r
+            <!--Optional:-->\r
+            <geg:fiscalNumber operator="EQUAL">?</geg:fiscalNumber>\r
+            <!--Optional:-->\r
+            <geg:commercialRegistryCity operator="EQUAL">?</geg:commercialRegistryCity>\r
+            <!--Optional:-->\r
+            <geg:emailAddress operator="EQUAL">?</geg:emailAddress>\r
+            <!--Optional:-->\r
+            <geg:webAddress operator="EQUAL">?</geg:webAddress>\r
+            <!--Optional:-->\r
+            <geg:telephoneNumber operator="EQUAL">?</geg:telephoneNumber>\r
+            <!--Optional:-->\r
+            <geg:faxNumber operator="EQUAL">?</geg:faxNumber>\r
+            <!--Optional:-->\r
+            <geg:contactPersonLastName operator="EQUAL">?</geg:contactPersonLastName>\r
+            <!--Optional:-->\r
+            <geg:contactPersonLastNamePrefix operator="EQUAL">?</geg:contactPersonLastNamePrefix>\r
+            <!--Optional:-->\r
+            <geg:contactPersonInitials operator="EQUAL">?</geg:contactPersonInitials>\r
+            <!--Optional:-->\r
+            <geg:contactPersonFirstNames operator="EQUAL">?</geg:contactPersonFirstNames>\r
+            <!--Optional:-->\r
+            <geg:contactPersonSalutation operator="EQUAL">?</geg:contactPersonSalutation>\r
+            <!--Optional:-->\r
+            <geg:contactPersonFunction operator="EQUAL">?</geg:contactPersonFunction>\r
+            <!--Optional:-->\r
+            <geg:prefComChannel operator="EQUAL">?</geg:prefComChannel>\r
+            <!--Optional:-->\r
+            <geg:resAddressStreet operator="EQUAL">?</geg:resAddressStreet>\r
+            <!--Optional:-->\r
+            <geg:resAddressHouseNumber operator="EQUAL">?</geg:resAddressHouseNumber>\r
+            <!--Optional:-->\r
+            <geg:resAddressHouseLetter operator="EQUAL">?</geg:resAddressHouseLetter>\r
+            <!--Optional:-->\r
+            <geg:resAddressHouseRemark operator="EQUAL">?</geg:resAddressHouseRemark>\r
+            <!--Optional:-->\r
+            <geg:resAddressHouseIndication operator="EQUAL">?</geg:resAddressHouseIndication>\r
+            <!--Optional:-->\r
+            <geg:resAddressZipCode operator="EQUAL">?</geg:resAddressZipCode>\r
+            <!--Optional:-->\r
+            <geg:resAddressCity operator="EQUAL">?</geg:resAddressCity>\r
+            <!--Optional:-->\r
+            <geg:resAddressFreePost operator="EQUAL">?</geg:resAddressFreePost>\r
+            <!--Optional:-->\r
+            <geg:resAddressPOBox operator="EQUAL">?</geg:resAddressPOBox>\r
+            <!--Optional:-->\r
+            <geg:corAddressStreet operator="EQUAL">?</geg:corAddressStreet>\r
+            <!--Optional:-->\r
+            <geg:corAddressHouseNumber operator="EQUAL">?</geg:corAddressHouseNumber>\r
+            <!--Optional:-->\r
+            <geg:corAddressHouseLetter operator="EQUAL">?</geg:corAddressHouseLetter>\r
+            <!--Optional:-->\r
+            <geg:corAddressHouseRemark operator="EQUAL">?</geg:corAddressHouseRemark>\r
+            <!--Optional:-->\r
+            <geg:corAddressHouseIndication operator="EQUAL">?</geg:corAddressHouseIndication>\r
+            <!--Optional:-->\r
+            <geg:corAddressZipCode operator="EQUAL">?</geg:corAddressZipCode>\r
+            <!--Optional:-->\r
+            <geg:corAddressCity operator="EQUAL">?</geg:corAddressCity>\r
+            <!--Optional:-->\r
+            <geg:corAddressFreePost operator="EQUAL">?</geg:corAddressFreePost>\r
+            <!--Optional:-->\r
+            <geg:corAddressPOBox operator="EQUAL">?</geg:corAddressPOBox>\r
+         </geg:organizationExtInfoSearchMessage>\r
+      </geg:lookUpExtendedOrganizationInfo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpExtendedOrganizationInfo"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
     </con:operation>
     <con:operation id="d298244e-9584-4282-b5c3-cd3925c61a15" isOneWay="false" action="gegmagbasic:lookUpMunicipality" name="lookUpMunicipality" bindingOperationName="lookUpMunicipality" type="Request-Response" outputName="lookUpMunicipalityResponse" inputName="lookUpMunicipalityRequest" receivesAttachments="false" sendsAttachments="false">
       <con:settings/>
@@ -15502,11 +15725,406 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
     <con:operation id="e21e3fe0-9f32-47d4-8e29-e4951d192c3d" isOneWay="false" action="gegmagbasic:lookUpNeighbourhood" name="lookUpNeighbourhood" bindingOperationName="lookUpNeighbourhood" type="Request-Response" outputName="lookUpNeighbourhoodResponse" inputName="lookUpNeighbourhoodRequest" receivesAttachments="false" sendsAttachments="false">
       <con:settings/>
     </con:operation>
-    <con:operation id="193f2cd8-0e5f-43fe-820d-62be384a7e7e" isOneWay="false" action="gegmagbasic:lookUpOrganization" name="lookUpOrganization" bindingOperationName="lookUpOrganization" type="Request-Response" outputName="lookUpOrganizationResponse" inputName="lookUpOrganizationRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="193f2cd8-0e5f-43fe-820d-62be384a7e7e" isOneWay="false" action="gegmagbasic:lookUpOrganization" name="lookUpOrganization" bindingOperationName="lookUpOrganization" type="Request-Response" outputName="lookUpOrganizationResponse" inputName="lookUpOrganizationRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
+      <con:call id="9038cc67-c320-46cd-9fb6-df77839dcd83" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/GegMagService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <geg:lookUpOrganization>\r
+         <geg:organizationSearchMessage source="internal" details="current" maxResults="?" type="?" kvkCorrection="false">\r
+            <!--Optional:-->\r
+            <geg:commercialRegistryNumber operator="EQUAL">?</geg:commercialRegistryNumber>\r
+            <!--Optional:-->\r
+            <geg:kvkNumber operator="EQUAL">?</geg:kvkNumber>\r
+            <!--Optional:-->\r
+            <geg:organizationGroupName operator="EQUAL">?</geg:organizationGroupName>\r
+            <!--Optional:-->\r
+            <geg:trademark operator="EQUAL">?</geg:trademark>\r
+            <!--Optional:-->\r
+            <geg:commercialRegistryCity operator="EQUAL">?</geg:commercialRegistryCity>\r
+            <!--Optional:-->\r
+            <geg:statutoryName operator="EQUAL">?</geg:statutoryName>\r
+            <!--Optional:-->\r
+            <geg:companyName operator="EQUAL">?</geg:companyName>\r
+            <!--Optional:-->\r
+            <geg:foundingDate operator="EQUAL">?</geg:foundingDate>\r
+            <!--Optional:-->\r
+            <geg:dissolutionDate operator="EQUAL">?</geg:dissolutionDate>\r
+            <!--Optional:-->\r
+            <geg:endDate operator="EQUAL">?</geg:endDate>\r
+            <!--Optional:-->\r
+            <geg:branchOfIndustry operator="EQUAL">?</geg:branchOfIndustry>\r
+            <!--Optional:-->\r
+            <geg:indicationBankruptcy operator="EQUAL">?</geg:indicationBankruptcy>\r
+            <!--Optional:-->\r
+            <geg:indicationHeadquarters operator="EQUAL">?</geg:indicationHeadquarters>\r
+            <!--Optional:-->\r
+            <geg:indicationSuspensionPayment operator="EQUAL">?</geg:indicationSuspensionPayment>\r
+            <!--Optional:-->\r
+            <geg:workingMenFulltime operator="EQUAL">?</geg:workingMenFulltime>\r
+            <!--Optional:-->\r
+            <geg:workingMenParttime operator="EQUAL">?</geg:workingMenParttime>\r
+            <!--Optional:-->\r
+            <geg:workingWomenFulltime operator="EQUAL">?</geg:workingWomenFulltime>\r
+            <!--Optional:-->\r
+            <geg:workingWomenParttime operator="EQUAL">?</geg:workingWomenParttime>\r
+            <!--Optional:-->\r
+            <geg:citizenNumber operator="EQUAL">?</geg:citizenNumber>\r
+            <!--Optional:-->\r
+            <geg:citizenNumberSupplement operator="EQUAL">?</geg:citizenNumberSupplement>\r
+            <!--Optional:-->\r
+            <geg:subjectNumberAKR operator="EQUAL">?</geg:subjectNumberAKR>\r
+            <!--Optional:-->\r
+            <geg:bankNumber operator="EQUAL">?</geg:bankNumber>\r
+            <!--Optional:-->\r
+            <geg:emailAddress operator="EQUAL">?</geg:emailAddress>\r
+            <!--Optional:-->\r
+            <geg:faxNumber operator="EQUAL">?</geg:faxNumber>\r
+            <!--Optional:-->\r
+            <geg:phoneNumber operator="EQUAL">?</geg:phoneNumber>\r
+            <!--Optional:-->\r
+            <geg:organizationType>\r
+               <!--Optional:-->\r
+               <geg:code operator="EQUAL">?</geg:code>\r
+               <!--Optional:-->\r
+               <geg:description operator="EQUAL">?</geg:description>\r
+            </geg:organizationType>\r
+            <!--Optional:-->\r
+            <geg:legalForm>\r
+               <!--Optional:-->\r
+               <geg:code operator="EQUAL">?</geg:code>\r
+               <!--Optional:-->\r
+               <geg:description operator="EQUAL">?</geg:description>\r
+            </geg:legalForm>\r
+            <!--Optional:-->\r
+            <geg:countryOfBirth>\r
+               <!--Optional:-->\r
+               <geg:code operator="EQUAL">?</geg:code>\r
+               <!--Optional:-->\r
+               <geg:name operator="EQUAL">?</geg:name>\r
+            </geg:countryOfBirth>\r
+            <!--Optional:-->\r
+            <geg:ownerBsn operator="EQUAL">?</geg:ownerBsn>\r
+            <!--Optional:-->\r
+            <geg:address>\r
+               <!--Optional:-->\r
+               <geg:type operator="EQUAL">?</geg:type>\r
+               <!--Optional:-->\r
+               <geg:street>\r
+                  <!--Optional:-->\r
+                  <geg:code operator="EQUAL">?</geg:code>\r
+                  <!--Optional:-->\r
+                  <geg:name operator="EQUAL">?</geg:name>\r
+               </geg:street>\r
+               <!--Optional:-->\r
+               <geg:houseNumber operator="EQUAL">?</geg:houseNumber>\r
+               <!--Optional:-->\r
+               <geg:houseLetter operator="EQUAL">?</geg:houseLetter>\r
+               <!--Optional:-->\r
+               <geg:houseRemark operator="EQUAL">?</geg:houseRemark>\r
+               <!--Optional:-->\r
+               <geg:houseIndication operator="EQUAL">?</geg:houseIndication>\r
+               <!--Optional:-->\r
+               <geg:locationDescription operator="EQUAL">?</geg:locationDescription>\r
+               <!--Optional:-->\r
+               <geg:zipCode operator="EQUAL">?</geg:zipCode>\r
+               <!--Optional:-->\r
+               <geg:neighbourhood>\r
+                  <!--Optional:-->\r
+                  <geg:code operator="EQUAL">?</geg:code>\r
+                  <!--Optional:-->\r
+                  <geg:name operator="EQUAL">?</geg:name>\r
+               </geg:neighbourhood>\r
+               <!--Optional:-->\r
+               <geg:city operator="EQUAL">?</geg:city>\r
+               <!--Optional:-->\r
+               <geg:municipality>\r
+                  <!--Optional:-->\r
+                  <geg:code operator="EQUAL">?</geg:code>\r
+                  <!--Optional:-->\r
+                  <geg:name operator="EQUAL">?</geg:name>\r
+               </geg:municipality>\r
+               <!--Optional:-->\r
+               <geg:district>\r
+                  <!--Optional:-->\r
+                  <geg:code operator="EQUAL">?</geg:code>\r
+                  <!--Optional:-->\r
+                  <geg:name operator="EQUAL">?</geg:name>\r
+               </geg:district>\r
+               <!--Optional:-->\r
+               <geg:country>\r
+                  <!--Optional:-->\r
+                  <geg:code operator="EQUAL">?</geg:code>\r
+                  <!--Optional:-->\r
+                  <geg:name operator="EQUAL">?</geg:name>\r
+               </geg:country>\r
+               <!--Optional:-->\r
+               <geg:freePost operator="EQUAL">?</geg:freePost>\r
+               <!--Optional:-->\r
+               <geg:POBox operator="EQUAL">?</geg:POBox>\r
+               <!--Optional:-->\r
+               <geg:xCoordinate operator="EQUAL">?</geg:xCoordinate>\r
+               <!--Optional:-->\r
+               <geg:yCoordinate operator="EQUAL">?</geg:yCoordinate>\r
+               <!--Optional:-->\r
+               <geg:zCoordinate operator="EQUAL">?</geg:zCoordinate>\r
+               <!--Optional:-->\r
+               <geg:habitable operator="EQUAL">?</geg:habitable>\r
+               <!--Optional:-->\r
+               <geg:addressSystem operator="EQUAL">?</geg:addressSystem>\r
+            </geg:address>\r
+         </geg:organizationSearchMessage>\r
+      </geg:lookUpOrganization>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpOrganization"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
     </con:operation>
-    <con:operation id="f9930c07-d6df-43d2-926c-57ffac7e7942" isOneWay="false" action="gegmagbasic:lookUpPerson" name="lookUpPerson" bindingOperationName="lookUpPerson" type="Request-Response" outputName="lookUpPersonResponse" inputName="lookUpPersonRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="f9930c07-d6df-43d2-926c-57ffac7e7942" isOneWay="false" action="gegmagbasic:lookUpPerson" name="lookUpPerson" bindingOperationName="lookUpPerson" type="Request-Response" outputName="lookUpPersonResponse" inputName="lookUpPersonRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
+      <con:call id="765f3b7c-676b-4a1c-ab29-a1c8b473c65e" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/GegMagService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <geg:lookUpPerson>\r
+         <geg:personSearchMessage source="internal" details="all" maxResults="?" search="?" return="?">\r
+            <!--Optional:-->\r
+            <geg:aNumber operator="EQUAL">?</geg:aNumber>\r
+            <!--Optional:-->\r
+            <geg:bsn operator="EQUAL">?</geg:bsn>\r
+            <!--Optional:-->\r
+            <geg:citizenNumber operator="EQUAL">?</geg:citizenNumber>\r
+            <!--Optional:-->\r
+            <geg:citizenNumberSupplement operator="EQUAL">?</geg:citizenNumberSupplement>\r
+            <!--Optional:-->\r
+            <geg:subjectNumberAKR operator="EQUAL">?</geg:subjectNumberAKR>\r
+            <!--Optional:-->\r
+            <geg:genderIndication operator="EQUAL">?</geg:genderIndication>\r
+            <!--Optional:-->\r
+            <geg:initials operator="EQUAL">?</geg:initials>\r
+            <!--Optional:-->\r
+            <geg:firstNames operator="EQUAL">?</geg:firstNames>\r
+            <!--Optional:-->\r
+            <geg:lastNamePrefix operator="EQUAL">?</geg:lastNamePrefix>\r
+            <!--Optional:-->\r
+            <geg:lastName operator="EQUAL">?</geg:lastName>\r
+            <!--Optional:-->\r
+            <geg:indicationOfNameUsage operator="EQUAL">?</geg:indicationOfNameUsage>\r
+            <!--Optional:-->\r
+            <geg:nameOfAddress operator="EQUAL">?</geg:nameOfAddress>\r
+            <!--Optional:-->\r
+            <geg:maritalStatus operator="EQUAL">?</geg:maritalStatus>\r
+            <!--Optional:-->\r
+            <geg:emailAddress operator="EQUAL">?</geg:emailAddress>\r
+            <!--Optional:-->\r
+            <geg:phoneNumber operator="EQUAL">?</geg:phoneNumber>\r
+            <!--Optional:-->\r
+            <geg:faxNumber operator="EQUAL">?</geg:faxNumber>\r
+            <!--Optional:-->\r
+            <geg:bankNumber operator="EQUAL">?</geg:bankNumber>\r
+            <!--Optional:-->\r
+            <geg:dateOfBirth operator="EQUAL">?</geg:dateOfBirth>\r
+            <!--Optional:-->\r
+            <geg:cityOfBirth operator="EQUAL">?</geg:cityOfBirth>\r
+            <!--Optional:-->\r
+            <geg:municipalityOfBirth operator="EQUAL">?</geg:municipalityOfBirth>\r
+            <!--Optional:-->\r
+            <geg:dateOfDeath operator="EQUAL">?</geg:dateOfDeath>\r
+            <!--Optional:-->\r
+            <geg:cityOfDeath operator="EQUAL">?</geg:cityOfDeath>\r
+            <!--Optional:-->\r
+            <geg:municipalityOfDeath operator="EQUAL">?</geg:municipalityOfDeath>\r
+            <!--Optional:-->\r
+            <geg:municipalityOfRegistration operator="EQUAL">?</geg:municipalityOfRegistration>\r
+            <!--Optional:-->\r
+            <geg:dateOfMunicipalRegistration operator="EQUAL">?</geg:dateOfMunicipalRegistration>\r
+            <!--Optional:-->\r
+            <geg:dateOfSuspensionTracking operator="EQUAL">?</geg:dateOfSuspensionTracking>\r
+            <!--Optional:-->\r
+            <geg:indicationOfSpecialCitizenship operator="EQUAL">?</geg:indicationOfSpecialCitizenship>\r
+            <!--Optional:-->\r
+            <geg:dateOfObtainingResidencePermit operator="EQUAL">?</geg:dateOfObtainingResidencePermit>\r
+            <!--Optional:-->\r
+            <geg:dateOfLosingResidencePermit operator="EQUAL">?</geg:dateOfLosingResidencePermit>\r
+            <!--Optional:-->\r
+            <geg:dateOfSettlingInCountry operator="EQUAL">?</geg:dateOfSettlingInCountry>\r
+            <!--Optional:-->\r
+            <geg:dateOfLeavingCountry operator="EQUAL">?</geg:dateOfLeavingCountry>\r
+            <!--Optional:-->\r
+            <geg:indicationLegalRestraint operator="EQUAL">?</geg:indicationLegalRestraint>\r
+            <!--Optional:-->\r
+            <geg:indicationOfSecrecy operator="EQUAL">?</geg:indicationOfSecrecy>\r
+            <!--Optional:-->\r
+            <geg:indicationAuthorityUnderAge operator="EQUAL">?</geg:indicationAuthorityUnderAge>\r
+            <!--Optional:-->\r
+            <geg:descriptionSuspensionTracking operator="EQUAL">?</geg:descriptionSuspensionTracking>\r
+            <!--Optional:-->\r
+            <geg:countryOfBirth>\r
+               <!--Optional:-->\r
+               <geg:code operator="EQUAL">?</geg:code>\r
+               <!--Optional:-->\r
+               <geg:name operator="EQUAL">?</geg:name>\r
+            </geg:countryOfBirth>\r
+            <!--Optional:-->\r
+            <geg:countryOfDeath>\r
+               <!--Optional:-->\r
+               <geg:code operator="EQUAL">?</geg:code>\r
+               <!--Optional:-->\r
+               <geg:name operator="EQUAL">?</geg:name>\r
+            </geg:countryOfDeath>\r
+            <!--Optional:-->\r
+            <geg:countryOfImmigration>\r
+               <!--Optional:-->\r
+               <geg:code operator="EQUAL">?</geg:code>\r
+               <!--Optional:-->\r
+               <geg:name operator="EQUAL">?</geg:name>\r
+            </geg:countryOfImmigration>\r
+            <!--Optional:-->\r
+            <geg:countryOfEmigration>\r
+               <!--Optional:-->\r
+               <geg:code operator="EQUAL">?</geg:code>\r
+               <!--Optional:-->\r
+               <geg:name operator="EQUAL">?</geg:name>\r
+            </geg:countryOfEmigration>\r
+            <!--Optional:-->\r
+            <geg:address>\r
+               <!--Optional:-->\r
+               <geg:type operator="EQUAL">?</geg:type>\r
+               <!--Optional:-->\r
+               <geg:street>\r
+                  <!--Optional:-->\r
+                  <geg:code operator="EQUAL">?</geg:code>\r
+                  <!--Optional:-->\r
+                  <geg:name operator="EQUAL">?</geg:name>\r
+               </geg:street>\r
+               <!--Optional:-->\r
+               <geg:houseNumber operator="EQUAL">?</geg:houseNumber>\r
+               <!--Optional:-->\r
+               <geg:houseLetter operator="EQUAL">?</geg:houseLetter>\r
+               <!--Optional:-->\r
+               <geg:houseRemark operator="EQUAL">?</geg:houseRemark>\r
+               <!--Optional:-->\r
+               <geg:houseIndication operator="EQUAL">?</geg:houseIndication>\r
+               <!--Optional:-->\r
+               <geg:locationDescription operator="EQUAL">?</geg:locationDescription>\r
+               <!--Optional:-->\r
+               <geg:zipCode operator="EQUAL">?</geg:zipCode>\r
+               <!--Optional:-->\r
+               <geg:neighbourhood>\r
+                  <!--Optional:-->\r
+                  <geg:code operator="EQUAL">?</geg:code>\r
+                  <!--Optional:-->\r
+                  <geg:name operator="EQUAL">?</geg:name>\r
+               </geg:neighbourhood>\r
+               <!--Optional:-->\r
+               <geg:city operator="EQUAL">?</geg:city>\r
+               <!--Optional:-->\r
+               <geg:municipality>\r
+                  <!--Optional:-->\r
+                  <geg:code operator="EQUAL">?</geg:code>\r
+                  <!--Optional:-->\r
+                  <geg:name operator="EQUAL">?</geg:name>\r
+               </geg:municipality>\r
+               <!--Optional:-->\r
+               <geg:district>\r
+                  <!--Optional:-->\r
+                  <geg:code operator="EQUAL">?</geg:code>\r
+                  <!--Optional:-->\r
+                  <geg:name operator="EQUAL">?</geg:name>\r
+               </geg:district>\r
+               <!--Optional:-->\r
+               <geg:country>\r
+                  <!--Optional:-->\r
+                  <geg:code operator="EQUAL">?</geg:code>\r
+                  <!--Optional:-->\r
+                  <geg:name operator="EQUAL">?</geg:name>\r
+               </geg:country>\r
+               <!--Optional:-->\r
+               <geg:freePost operator="EQUAL">?</geg:freePost>\r
+               <!--Optional:-->\r
+               <geg:POBox operator="EQUAL">?</geg:POBox>\r
+               <!--Optional:-->\r
+               <geg:xCoordinate operator="EQUAL">?</geg:xCoordinate>\r
+               <!--Optional:-->\r
+               <geg:yCoordinate operator="EQUAL">?</geg:yCoordinate>\r
+               <!--Optional:-->\r
+               <geg:zCoordinate operator="EQUAL">?</geg:zCoordinate>\r
+               <!--Optional:-->\r
+               <geg:habitable operator="EQUAL">?</geg:habitable>\r
+               <!--Optional:-->\r
+               <geg:addressSystem operator="EQUAL">?</geg:addressSystem>\r
+            </geg:address>\r
+            <!--Optional:-->\r
+            <geg:identification>\r
+               <!--Optional:-->\r
+               <geg:type operator="EQUAL">?</geg:type>\r
+               <!--Optional:-->\r
+               <geg:number operator="EQUAL">?</geg:number>\r
+               <!--Optional:-->\r
+               <geg:handOutDate operator="EQUAL">?</geg:handOutDate>\r
+               <!--Optional:-->\r
+               <geg:expirationDate operator="EQUAL">?</geg:expirationDate>\r
+               <!--Optional:-->\r
+               <geg:description operator="EQUAL">?</geg:description>\r
+            </geg:identification>\r
+            <!--Optional:-->\r
+            <geg:nationality>\r
+               <!--Optional:-->\r
+               <geg:code operator="EQUAL">?</geg:code>\r
+               <!--Optional:-->\r
+               <geg:name operator="EQUAL">?</geg:name>\r
+               <!--Optional:-->\r
+               <geg:description operator="EQUAL">?</geg:description>\r
+               <!--Optional:-->\r
+               <geg:dateOfObtainingNationality operator="EQUAL">?</geg:dateOfObtainingNationality>\r
+               <!--Optional:-->\r
+               <geg:dateOfLosingNationality operator="EQUAL">?</geg:dateOfLosingNationality>\r
+            </geg:nationality>\r
+            <!--Optional:-->\r
+            <geg:inExamination>\r
+               <!--Optional:-->\r
+               <geg:code operator="EQUAL">?</geg:code>\r
+               <!--Optional:-->\r
+               <geg:name operator="EQUAL">?</geg:name>\r
+               <!--Optional:-->\r
+               <geg:startDate operator="EQUAL">?</geg:startDate>\r
+               <!--Optional:-->\r
+               <geg:endDate operator="EQUAL">?</geg:endDate>\r
+            </geg:inExamination>\r
+            <geg:context>\r
+               <geg:name>?</geg:name>\r
+               <!--1 or more repetitions:-->\r
+               <geg:field>\r
+                  <geg:code>?</geg:code>\r
+                  <geg:name>?</geg:name>\r
+                  <geg:contextSelector>?</geg:contextSelector>\r
+               </geg:field>\r
+            </geg:context>\r
+         </geg:personSearchMessage>\r
+      </geg:lookUpPerson>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpPerson"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
     </con:operation>
     <con:operation id="79d44d5f-9329-4c54-a12d-62b677f8a8d0" isOneWay="false" action="gegmagbasic:lookUpPersonBySupplementary" name="lookUpPersonBySupplementary" bindingOperationName="lookUpPersonBySupplementary" type="Request-Response" outputName="lookUpPersonBySupplementaryResponse" inputName="lookUpPersonBySupplementaryRequest" receivesAttachments="false" sendsAttachments="false">
       <con:settings/>
@@ -15523,29 +16141,284 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
     <con:operation id="cd5285a0-0bb4-4af0-a11a-8b9236291fe4" isOneWay="false" action="gegmagbasic:readOrganizations" name="readOrganizations" bindingOperationName="readOrganizations" type="Request-Response" outputName="readOrganizationsResponse" inputName="readOrganizationsRequest" receivesAttachments="false" sendsAttachments="false">
       <con:settings/>
     </con:operation>
-    <con:operation id="e0335f00-70e6-4887-952b-416902eed3d0" isOneWay="false" action="gegmagbasic:saveExtendedPersonInfo" name="saveExtendedPersonInfo" bindingOperationName="saveExtendedPersonInfo" type="Request-Response" outputName="saveExtendedPersonInfoResponse" inputName="saveExtendedPersonInfoRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="e0335f00-70e6-4887-952b-416902eed3d0" isOneWay="false" action="gegmagbasic:saveExtendedPersonInfo" name="saveExtendedPersonInfo" bindingOperationName="saveExtendedPersonInfo" type="Request-Response" outputName="saveExtendedPersonInfoResponse" inputName="saveExtendedPersonInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
+      <con:call id="168a160f-134a-4183-8cff-39ddd57725bb" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/GegMagService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <geg:saveExtendedPersonInfo>\r
+         <geg:personExtInfoMessage>\r
+            <geg:persons>\r
+               <!--Zero or more repetitions:-->\r
+               <geg:person>\r
+                  <geg:aNumber>?</geg:aNumber>\r
+                  <geg:bsn>?</geg:bsn>\r
+                  <geg:telephoneNumberHome>?</geg:telephoneNumberHome>\r
+                  <geg:telephoneNumberWork>?</geg:telephoneNumberWork>\r
+                  <geg:telephoneNumberMobile>?</geg:telephoneNumberMobile>\r
+                  <geg:faxNumber>?</geg:faxNumber>\r
+                  <geg:emailAddress>?</geg:emailAddress>\r
+                  <geg:dateOfBirth ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfBirth>\r
+                  <geg:cityOfBirth>?</geg:cityOfBirth>\r
+                  <geg:genderIndication>?</geg:genderIndication>\r
+                  <geg:lastName>?</geg:lastName>\r
+                  <geg:initials>?</geg:initials>\r
+                  <geg:firstNames>?</geg:firstNames>\r
+                  <geg:lastNamePrefix>?</geg:lastNamePrefix>\r
+                  <geg:bankNumber>?</geg:bankNumber>\r
+                  <geg:prefComChannel>?</geg:prefComChannel>\r
+                  <geg:addresses>\r
+                     <!--0 to 3 repetitions:-->\r
+                     <geg:address>\r
+                        <geg:type>?</geg:type>\r
+                        <geg:street>?</geg:street>\r
+                        <geg:houseNumber>?</geg:houseNumber>\r
+                        <geg:houseLetter>?</geg:houseLetter>\r
+                        <geg:houseRemark>?</geg:houseRemark>\r
+                        <geg:houseIndication>?</geg:houseIndication>\r
+                        <geg:zipCode>?</geg:zipCode>\r
+                        <geg:city>?</geg:city>\r
+                        <geg:freePost>?</geg:freePost>\r
+                        <geg:POBox>?</geg:POBox>\r
+                     </geg:address>\r
+                  </geg:addresses>\r
+               </geg:person>\r
+            </geg:persons>\r
+         </geg:personExtInfoMessage>\r
+      </geg:saveExtendedPersonInfo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:saveExtendedPersonInfo"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
     </con:operation>
     <con:operation id="20fa9a7b-0a60-4101-aad0-06acd760f4f2" isOneWay="false" action="gegmagbasic:updateExtendedOrganizationInfo" name="updateExtendedOrganizationInfo" bindingOperationName="updateExtendedOrganizationInfo" type="Request-Response" outputName="updateExtendedOrganizationInfoResponse" inputName="updateExtendedOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
       <con:call id="4493a871-5788-46de-9c32-f1463bef94d1" name="Request 1">
-        <con:settings/>
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/GegMagService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <geg:updateExtendedOrganizationInfo>\r
+         <geg:organizationExtInfoMessage kvkCorrection="false">\r
+            <geg:organizations>\r
+               <!--Zero or more repetitions:-->\r
+               <geg:organization>\r
+                  <geg:organizationNumber>?</geg:organizationNumber>\r
+                  <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>\r
+                  <geg:companyName>?</geg:companyName>\r
+                  <geg:branchOfIndustry>?</geg:branchOfIndustry>\r
+                  <geg:fiscalNumber>?</geg:fiscalNumber>\r
+                  <geg:commercialRegistryCity>?</geg:commercialRegistryCity>\r
+                  <geg:emailAddress>?</geg:emailAddress>\r
+                  <geg:webAddress>?</geg:webAddress>\r
+                  <geg:telephoneNumber>?</geg:telephoneNumber>\r
+                  <geg:faxNumber>?</geg:faxNumber>\r
+                  <geg:contactPersonLastName>?</geg:contactPersonLastName>\r
+                  <geg:contactPersonLastNamePrefix>?</geg:contactPersonLastNamePrefix>\r
+                  <geg:contactPersonInitials>?</geg:contactPersonInitials>\r
+                  <geg:contactPersonFirstNames>?</geg:contactPersonFirstNames>\r
+                  <geg:contactPersonSalutation>?</geg:contactPersonSalutation>\r
+                  <geg:contactPersonFunction>?</geg:contactPersonFunction>\r
+                  <geg:prefComChannel>?</geg:prefComChannel>\r
+                  <geg:addresses>\r
+                     <!--0 to 3 repetitions:-->\r
+                     <geg:address>\r
+                        <geg:type>?</geg:type>\r
+                        <geg:street>?</geg:street>\r
+                        <geg:houseNumber>?</geg:houseNumber>\r
+                        <geg:houseLetter>?</geg:houseLetter>\r
+                        <geg:houseRemark>?</geg:houseRemark>\r
+                        <geg:houseIndication>?</geg:houseIndication>\r
+                        <geg:zipCode>?</geg:zipCode>\r
+                        <geg:city>?</geg:city>\r
+                        <geg:freePost>?</geg:freePost>\r
+                        <geg:POBox>?</geg:POBox>\r
+                     </geg:address>\r
+                  </geg:addresses>\r
+               </geg:organization>\r
+            </geg:organizations>\r
+         </geg:organizationExtInfoMessage>\r
+      </geg:updateExtendedOrganizationInfo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:updateExtendedOrganizationInfo"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
     <con:operation id="30dd8c06-bf12-46fc-bd5a-fcc5518c7b12" isOneWay="false" action="gegmagbasic:updateExtendedPersonInfo" name="updateExtendedPersonInfo" bindingOperationName="updateExtendedPersonInfo" type="Request-Response" outputName="updateExtendedPersonInfoResponse" inputName="updateExtendedPersonInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
       <con:call id="eac7ff28-7e8f-4004-84b9-2ac89ed68203" name="Request 1">
-        <con:settings/>
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
         <con:encoding>UTF-8</con:encoding>
-        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/Gegmag</con:endpoint>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/GegMagService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <geg:updateExtendedPersonInfo>\r
+         <geg:personExtInfoMessage>\r
+            <geg:persons>\r
+               <!--Zero or more repetitions:-->\r
+               <geg:person>\r
+                  <geg:aNumber>?</geg:aNumber>\r
+                  <geg:bsn>?</geg:bsn>\r
+                  <geg:telephoneNumberHome>?</geg:telephoneNumberHome>\r
+                  <geg:telephoneNumberWork>?</geg:telephoneNumberWork>\r
+                  <geg:telephoneNumberMobile>?</geg:telephoneNumberMobile>\r
+                  <geg:faxNumber>?</geg:faxNumber>\r
+                  <geg:emailAddress>?</geg:emailAddress>\r
+                  <geg:dateOfBirth ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfBirth>\r
+                  <geg:cityOfBirth>?</geg:cityOfBirth>\r
+                  <geg:genderIndication>?</geg:genderIndication>\r
+                  <geg:lastName>?</geg:lastName>\r
+                  <geg:initials>?</geg:initials>\r
+                  <geg:firstNames>?</geg:firstNames>\r
+                  <geg:lastNamePrefix>?</geg:lastNamePrefix>\r
+                  <geg:bankNumber>?</geg:bankNumber>\r
+                  <geg:prefComChannel>?</geg:prefComChannel>\r
+                  <geg:addresses>\r
+                     <!--0 to 3 repetitions:-->\r
+                     <geg:address>\r
+                        <geg:type>?</geg:type>\r
+                        <geg:street>?</geg:street>\r
+                        <geg:houseNumber>?</geg:houseNumber>\r
+                        <geg:houseLetter>?</geg:houseLetter>\r
+                        <geg:houseRemark>?</geg:houseRemark>\r
+                        <geg:houseIndication>?</geg:houseIndication>\r
+                        <geg:zipCode>?</geg:zipCode>\r
+                        <geg:city>?</geg:city>\r
+                        <geg:freePost>?</geg:freePost>\r
+                        <geg:POBox>?</geg:POBox>\r
+                     </geg:address>\r
+                  </geg:addresses>\r
+               </geg:person>\r
+            </geg:persons>\r
+         </geg:personExtInfoMessage>\r
+      </geg:updateExtendedPersonInfo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:updateExtendedPersonInfo"/>
+        <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
-    <con:operation id="484cdcee-3fbc-4a18-8403-96f9592e72bb" isOneWay="false" action="gegmagbasic:updateSupplementaryOrganizationInfo" name="updateSupplementaryOrganizationInfo" bindingOperationName="updateSupplementaryOrganizationInfo" type="Request-Response" outputName="updateSupplementaryOrganizationInfoResponse" inputName="updateSupplementaryOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="484cdcee-3fbc-4a18-8403-96f9592e72bb" isOneWay="false" action="gegmagbasic:updateSupplementaryOrganizationInfo" name="updateSupplementaryOrganizationInfo" bindingOperationName="updateSupplementaryOrganizationInfo" type="Request-Response" outputName="updateSupplementaryOrganizationInfoResponse" inputName="updateSupplementaryOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
+      <con:call id="0f3eec30-cd12-4065-8a6a-2d38a16a5025" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/GegMagService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <geg:updateSupplementaryOrganizationInfo>\r
+         <geg:organizationSupInfoMessage kvkCorrection="false">\r
+            <geg:organizations>\r
+               <!--Zero or more repetitions:-->\r
+               <geg:organization>\r
+                  <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>\r
+                  <!--Optional:-->\r
+                  <geg:kvkNumber>?</geg:kvkNumber>\r
+                  <geg:organizationGroupName>?</geg:organizationGroupName>\r
+                  <geg:trademark>?</geg:trademark>\r
+                  <geg:commercialRegistryCity>?</geg:commercialRegistryCity>\r
+                  <geg:statutoryName>?</geg:statutoryName>\r
+                  <geg:companyName>?</geg:companyName>\r
+                  <geg:foundingDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:foundingDate>\r
+                  <geg:dissolutionDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dissolutionDate>\r
+                  <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>\r
+                  <geg:branchOfIndustry>?</geg:branchOfIndustry>\r
+                  <geg:indicationBankruptcy>?</geg:indicationBankruptcy>\r
+                  <geg:indicationHeadquarters>?</geg:indicationHeadquarters>\r
+                  <geg:indicationSuspensionPayment>?</geg:indicationSuspensionPayment>\r
+                  <geg:workingMenFulltime>?</geg:workingMenFulltime>\r
+                  <geg:workingMenParttime>?</geg:workingMenParttime>\r
+                  <geg:workingWomenFulltime>?</geg:workingWomenFulltime>\r
+                  <geg:workingWomenParttime>?</geg:workingWomenParttime>\r
+                  <geg:citizenNumber>?</geg:citizenNumber>\r
+                  <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>\r
+                  <geg:subjectNumberAKR>?</geg:subjectNumberAKR>\r
+                  <geg:bankNumber>?</geg:bankNumber>\r
+                  <geg:emailAddress>?</geg:emailAddress>\r
+                  <geg:faxNumber>?</geg:faxNumber>\r
+                  <geg:phoneNumber>?</geg:phoneNumber>\r
+                  <geg:webAddress>?</geg:webAddress>\r
+                  <!--Optional:-->\r
+                  <geg:organizationType>\r
+                     <geg:code>?</geg:code>\r
+                     <geg:description>?</geg:description>\r
+                  </geg:organizationType>\r
+                  <!--Optional:-->\r
+                  <geg:legalForm>\r
+                     <geg:code>?</geg:code>\r
+                     <geg:description>?</geg:description>\r
+                  </geg:legalForm>\r
+                  <geg:prefComChannel>?</geg:prefComChannel>\r
+                  <geg:addresses>\r
+                     <!--0 to 2 repetitions:-->\r
+                     <geg:address>\r
+                        <geg:type>?</geg:type>\r
+                        <!--Optional:-->\r
+                        <geg:street>\r
+                           <geg:name>?</geg:name>\r
+                        </geg:street>\r
+                        <geg:houseNumber>?</geg:houseNumber>\r
+                        <geg:houseLetter>?</geg:houseLetter>\r
+                        <geg:houseRemark>?</geg:houseRemark>\r
+                        <geg:houseIndication>?</geg:houseIndication>\r
+                        <geg:locationDescription>?</geg:locationDescription>\r
+                        <geg:zipCode>?</geg:zipCode>\r
+                        <geg:city>?</geg:city>\r
+                        <!--Optional:-->\r
+                        <geg:municipality>\r
+                           <geg:name>?</geg:name>\r
+                        </geg:municipality>\r
+                        <!--Optional:-->\r
+                        <geg:country>\r
+                           <geg:name>?</geg:name>\r
+                        </geg:country>\r
+                        <geg:freePost>?</geg:freePost>\r
+                        <geg:POBox>?</geg:POBox>\r
+                     </geg:address>\r
+                  </geg:addresses>\r
+               </geg:organization>\r
+            </geg:organizations>\r
+         </geg:organizationSupInfoMessage>\r
+      </geg:updateSupplementaryOrganizationInfo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:updateSupplementaryOrganizationInfo"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
     </con:operation>
   </con:interface>
   <con:testSuite id="51faa60a-6964-478d-8f14-899c806b2805" name="e2e">
@@ -18265,7 +19138,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       <con:dispatchConfig/>
     </con:mockOperation>
   </con:mockService>
-  <con:mockService id="2a231a5c-f5cd-42db-81f7-a070744c040e" port="8094" path="/mock/Gegmag" host="LAPTOP-UKAI1A6" name="Gegmag Mock">
+  <con:mockService id="2a231a5c-f5cd-42db-81f7-a070744c040e" port="8094" path="/mock/GegMagService" host="LAPTOP-UKAI1A6" name="BPEL GegMag Mock" bindToHostOnly="false" docroot="">
     <con:settings>
       <con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting>
     </con:settings>

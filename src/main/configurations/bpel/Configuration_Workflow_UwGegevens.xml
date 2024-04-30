@@ -116,8 +116,29 @@
                 lineLength="0"
                 storeResultInSessionKey="ZgwEnkelvoudigInformatieObjectInhoud"
                 >
-                <Forward name="success" path="CreateInitiateRequestMessage" />
+                <Forward name="success" path="UpdateInitiatingSubjectGegMagCommandSender" />
             </Base64Pipe>
+
+            <SenderPipe
+                name="UpdateInitiatingSubjectGegMagCommandSender"
+                getInputFromSessionKey="UwGegevens"
+                transactionAttribute="Required"
+                >
+                <IbisLocalSender
+                    name="UpdateInitiatingSubjectGegMagCommandLocalSender"
+                    javaListener="Handler_UpdateInitiatingSubjectGegMagCommand"
+                    >
+                </IbisLocalSender>
+                <!-- <MessageStoreSender
+					name="UpdateInitiatingSubjectGegMagCommandMessageStoreSender"
+					slotId="${instance.name}/UpdateInitiatingSubjectGegMagCommand"
+                    onlyStoreWhenMessageIdUnique="true"
+                    transacted="true"
+					>
+                    <Param name="messageId" xpathExpression="/*/CaseReferenceNumber" />
+				</MessageStoreSender> -->
+                <Forward name="success" path="CreateInitiateRequestMessage" />
+            </SenderPipe>
 
             <XsltPipe
                 name="CreateInitiateRequestMessage"
@@ -247,24 +268,8 @@
                 <Param name="PaymentOrderId" xpathExpression="substring($PublicOrderId, 3, string-length($PublicOrderId) - 4)">
                     <Param name="PublicOrderId" sessionKey="originalMessage" xpathExpression="/ZgwObject/payment/public_order_ids" type="DOMDOC" />
                 </Param>
-                <Forward name="success" path="UpdateInitiatorSubjectCommandSender" />
-            </PutInSessionPipe>
-
-            <SenderPipe
-				name="UpdateInitiatorSubjectCommandSender"
-                getInputFromSessionKey="UwGegevens"
-                transactionAttribute="Required"
-				>
-				<MessageStoreSender
-					name="UpdateInitiatorSubjectCommandMessageStoreSender"
-					slotId="${instance.name}/UpdateInitiatorSubjectCommand"
-                    onlyStoreWhenMessageIdUnique="true"
-                    transacted="true"
-                    sessionKeys="CaseReferenceNumber"
-					>
-				</MessageStoreSender>
                 <Forward name="success" path="UpdatePaymentCommandSender" />
-			</SenderPipe>
+            </PutInSessionPipe>
 
             <SenderPipe
 				name="UpdatePaymentCommandSender"

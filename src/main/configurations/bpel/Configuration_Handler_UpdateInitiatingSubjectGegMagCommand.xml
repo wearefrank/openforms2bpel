@@ -1,0 +1,156 @@
+<Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
+    <Adapter
+        name="Handler_UpdateInitiatingSubjectGegMagCommand"
+        active="${Handler_UpdateInitiatingSubjectGegMagCommand.Active}"
+        description=""
+        >
+
+        <Receiver
+            name="Handler_UpdateInitiatingSubjectGegMagCommand"
+            transactionAttribute="NotSupported"
+            >
+            <JavaListener
+                name="Handler_UpdateInitiatingSubjectGegMagCommand"
+                />
+        </Receiver>
+        <!-- <Receiver
+            name="Handler_UpdateInitiatingSubjectGegMagCommand"
+            transactionAttribute="Required"
+            pollInterval="1"
+            maxRetries="1"
+            >
+            <MessageStoreListener
+            name="Handler_UpdateInitiatingSubjectGegMagCommand"
+            slotId="${instance.name}/UpdateInitiatingSubjectGegMagCommand"
+            />
+        </Receiver> -->
+        
+        <Pipeline>
+            <Exits>
+                <Exit name="EXIT" state="SUCCESS" />
+                <Exit name="EXCEPTION" state="ERROR" />
+            </Exits>
+            
+            <XmlIfPipe
+                name="CheckForUwGegevensAuthenticated"
+                getInputFromSessionKey="originalMessage"
+                xpathExpression="//*[starts-with(name(), 'uw-gegevens')]/*/*[ends-with(name(), 'MD')] or //*[starts-with(name(), 'uw-gegevens')]/*/*[ends-with(name(), 'MEH')]"
+                >
+                <Forward name="then" path="CheckInitiatorSubjectIsPerson" />
+                <Forward name="else" path="EXIT" />
+            </XmlIfPipe>
+
+            <XmlIfPipe
+                name="CheckInitiatorSubjectIsPerson"
+                xpathExpression="//*[starts-with(name(), 'uw-gegevens')]/*[ends-with(name(), 'DigiD')]"
+                >
+                <Forward name="then" path="CreateLookUpPersonRequestMessage" />
+                <Forward name="else" path="CheckInitiatorSubjectIsOrganization" />
+            </XmlIfPipe>
+
+            <XsltPipe
+                name="CreateLookUpPersonRequestMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/GegMag/Model/LookUpPersonRequestMessage.xslt"
+                storeResultInSessionKey="LookUpPersonRequestMessage"
+                >
+                <Param name="Bsn" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'bsn')]" />
+                <Forward name="success" path="BpelGegMagLookupPersonSender" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelGegMagLookupPersonSender"
+                storeResultInSessionKey="LookupPersonResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelGegMagLookupPersonLocalSender"
+                    javaListener="Bpel_GegMag_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="gegmagbasic:lookUpPerson" />
+                <Forward name="success" path="CreateUpdateExtendedPersonInfoRequestMessage" />
+            </SenderPipe>
+
+            <XsltPipe
+                name="CreateUpdateExtendedPersonInfoRequestMessage"
+                getInputFromSessionKey="LookupPersonResponseMessage"
+                styleSheetName="Bpel/GegMag/Model/UpdateExtendedPersonInfoRequestMessage.xslt"
+                storeResultInSessionKey="UpdateExtendedPersonInfoRequestMessage"
+                >
+                <Param name="EmailAddress" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')]" />
+                <Param name="TelephoneNumber" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer')]" />
+                <Forward name="success" path="BpelGegMagUpdateExtendedPersonInfoSender" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelGegMagUpdateExtendedPersonInfoSender"
+                storeResultInSessionKey="UpdateExtendedPersonInfoResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelGegMagUpdateExtendedPersonInfoLocalSender"
+                    javaListener="Bpel_GegMag_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="gegmagbasic:updateExtendedPersonInfo" />
+                <Forward name="success" path="EXIT" />
+            </SenderPipe>
+
+            <XmlIfPipe
+                name="CheckInitiatorSubjectIsOrganization"
+                xpathExpression="//*[starts-with(name(), 'uw-gegevens')]/*[starts-with(name(), 'fieldSetBedrijf')]"
+                >
+                <Forward name="then" path="CreateLookUpExtendedOrganizationInfoRequestMessage" />
+                <Forward name="else" path="MissingUwGegevensException" />
+            </XmlIfPipe>
+
+            <ExceptionPipe name="MissingUwGegevensException" />
+
+            <XsltPipe
+                name="CreateLookUpExtendedOrganizationInfoRequestMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/GegMag/Model/LookUpExtendedOrganizationInfoRequestMessage.xslt"
+                storeResultInSessionKey="LookUpExtendedOrganizationInfoRequestMessage"
+                >
+                <Param name="CommercialRegistryNumber" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'gegevensBedrijfOrganisatie')]/*[starts-with(name(), 'kvKNummer')]" />
+                <Forward name="success" path="BpelGegMagLookupExtendedOrganizationInfoSender" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelGegMagLookupExtendedOrganizationInfoSender"
+                storeResultInSessionKey="LookupExtendedOrganizationInfoResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelGegMagLookUpExtendedOrganizationInfoLocalSender"
+                    javaListener="Bpel_GegMag_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="gegmagbasic:lookUpExtendedOrganizationInfo" />
+                <Forward name="success" path="CreateUpdateExtendedOrganizationInfoRequestMessage" />
+            </SenderPipe>
+
+            <XsltPipe
+                name="CreateUpdateExtendedOrganizationInfoRequestMessage"
+                getInputFromSessionKey="LookupExtendedOrganizationInfoResponseMessage"
+                styleSheetName="Bpel/GegMag/Model/UpdateExtendedOrganizationInfoRequestMessage.xslt"
+                storeResultInSessionKey="UpdateExtendedOrganizationInfoRequestMessage"
+                >
+                <Param name="EmailAddress" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')]" />
+                <Param name="TelephoneNumber" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer')]" />
+                <Forward name="success" path="BpelGegMagUpdateExtendedOrganizationInfoSender" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelGegMagUpdateExtendedOrganizationInfoSender"
+                storeResultInSessionKey="UpdateExtendedOrganizationInfoResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelGegMagUpdateExtendedOrganizationInfoLocalSender"
+                    javaListener="Bpel_GegMag_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="gegmagbasic:updateExtendedOrganizationInfo" />
+                <Forward name="success" path="EXIT" />
+            </SenderPipe>
+        </Pipeline>
+    </Adapter>
+</Module>

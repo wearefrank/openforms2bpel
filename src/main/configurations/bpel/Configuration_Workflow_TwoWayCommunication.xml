@@ -45,23 +45,8 @@
                 storeResultInSessionKey="UwGegevens"
                 preserveInput="true"
                 >
-                <Forward name="success" path="UpdateInitiatorSubjectCommandSender" />
-            </XsltPipe>
-
-            <SenderPipe
-				name="UpdateInitiatorSubjectCommandSender"
-                getInputFromSessionKey="UwGegevens"
-                transactionAttribute="Required"
-				>
-				<MessageStoreSender
-					name="UpdateInitiatorSubjectCommandMessageStoreSender"
-					slotId="${instance.name}/UpdateInitiatorSubjectCommand"
-                    onlyStoreWhenMessageIdUnique="true"
-                    sessionKeys="CaseReferenceNumber"
-					>
-				</MessageStoreSender>
                 <Forward name="success" path="CreateAddDocumentsToCaseCommand" />
-			</SenderPipe>
+            </XsltPipe>
 
             <XsltPipe
                 name="CreateAddDocumentsToCaseCommand"

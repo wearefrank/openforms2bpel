@@ -10997,6 +10997,7 @@ these operations are published to the configured Notifications API in the
 `objecten` channel.</con:description>
     <con:settings/>
     <con:endpoints>
+      <con:endpoint>http://LAPTOP-UKAI1A6:8089/</con:endpoint>
       <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
     </con:endpoints>
     <con:resource name="/objects" path="/objects" id="411de765-05a5-4934-a930-8d2e4bb5cafd">
@@ -11249,6 +11250,12 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:params/>
           <con:element>data</con:element>
         </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>0</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
         <con:request name="Request 1" id="82aa8045-70bf-466b-926f-b8a9da1d6345" mediaType="application/json">
           <con:settings/>
           <con:parameters/>
@@ -11283,6 +11290,359 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:mediaType>application/json</con:mediaType>
           <con:status>200</con:status>
           <con:params/>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>404</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>404</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>404</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/xml</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType xsi:nil="true"/>
+          <con:status>500</con:status>
+          <con:params/>
+          <con:element>data</con:element>
         </con:representation>
         <con:request name="Request 1" id="5219b4f4-71f0-4bbd-89f7-ffcf90a8e9b2" mediaType="application/json">
           <con:settings/>
@@ -15287,7 +15647,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       <con:settings/>
     </con:operation>
   </con:interface>
-  <con:interface xsi:type="con:WsdlInterface" id="a5d232cc-6de1-4d7a-a36a-7ba62a5697fe" wsaVersion="NONE" name="GegmagbasicBinding" type="wsdl" bindingName="{http://www.emaxx.org/functional/gegmag}GegmagbasicBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Projects/openforms2bpel.worktrees/update-gegmag/src/main/configurations/bpel/GegMag/gegmag.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:interface xsi:type="con:WsdlInterface" id="a5d232cc-6de1-4d7a-a36a-7ba62a5697fe" wsaVersion="NONE" name="GegmagbasicBinding" type="wsdl" bindingName="{http://www.emaxx.org/functional/gegmag}GegmagbasicBinding" soapVersion="1_1" anonymous="optional" definition="C:/Projects/openforms2bpel/src/main/configurations/bpel/Bpel/GegMag/gegmag.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
     <con:endpoints>
       <con:endpoint>http://LAPTOP-UKAI1A6:8094/mock/GegMagService</con:endpoint>
@@ -15418,22 +15778,22 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
         <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
-    <con:operation id="cad7a9d4-cac2-40e3-bbc7-cd65f30e5048" isOneWay="false" action="gegmagbasic:addSupplementaryOrganizationInfo" name="addSupplementaryOrganizationInfo" bindingOperationName="addSupplementaryOrganizationInfo" type="Request-Response" outputName="addSupplementaryOrganizationInfoResponse" inputName="addSupplementaryOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="cad7a9d4-cac2-40e3-bbc7-cd65f30e5048" isOneWay="false" action="gegmagbasic:addSupplementaryOrganizationInfo" name="addSupplementaryOrganizationInfo" bindingOperationName="addSupplementaryOrganizationInfo" type="Request-Response" outputName="addSupplementaryOrganizationInfoResponse" inputName="addSupplementaryOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="a60a71df-d645-4318-b868-bb1e56569d36" isOneWay="false" action="gegmagbasic:clearCache" name="clearCache" bindingOperationName="clearCache" type="Request-Response" outputName="clearCacheResponse" inputName="clearCacheRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="a60a71df-d645-4318-b868-bb1e56569d36" isOneWay="false" action="gegmagbasic:clearCache" name="clearCache" bindingOperationName="clearCache" type="Request-Response" outputName="clearCacheResponse" inputName="clearCacheRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="2b0bb2d4-0921-4368-9e8c-2de1aed87557" isOneWay="false" action="gegmagbasic:deleteExtendedOrganizationInfo" name="deleteExtendedOrganizationInfo" bindingOperationName="deleteExtendedOrganizationInfo" type="Request-Response" outputName="deleteExtendedOrganizationInfoResponse" inputName="deleteExtendedOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="2b0bb2d4-0921-4368-9e8c-2de1aed87557" isOneWay="false" action="gegmagbasic:deleteExtendedOrganizationInfo" name="deleteExtendedOrganizationInfo" bindingOperationName="deleteExtendedOrganizationInfo" type="Request-Response" outputName="deleteExtendedOrganizationInfoResponse" inputName="deleteExtendedOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="f2d908c2-4667-4c66-be1a-debeaddb9a19" isOneWay="false" action="gegmagbasic:deleteExtendedPersonInfo" name="deleteExtendedPersonInfo" bindingOperationName="deleteExtendedPersonInfo" type="Request-Response" outputName="deleteExtendedPersonInfoResponse" inputName="deleteExtendedPersonInfoRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="f2d908c2-4667-4c66-be1a-debeaddb9a19" isOneWay="false" action="gegmagbasic:deleteExtendedPersonInfo" name="deleteExtendedPersonInfo" bindingOperationName="deleteExtendedPersonInfo" type="Request-Response" outputName="deleteExtendedPersonInfoResponse" inputName="deleteExtendedPersonInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="89be4d3c-dd83-48a2-a789-ecc2c169a6db" isOneWay="false" action="gegmagbasic:deleteSupplementaryOrganizationInfo" name="deleteSupplementaryOrganizationInfo" bindingOperationName="deleteSupplementaryOrganizationInfo" type="Request-Response" outputName="deleteSupplementaryOrganizationInfoResponse" inputName="deleteSupplementaryOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="89be4d3c-dd83-48a2-a789-ecc2c169a6db" isOneWay="false" action="gegmagbasic:deleteSupplementaryOrganizationInfo" name="deleteSupplementaryOrganizationInfo" bindingOperationName="deleteSupplementaryOrganizationInfo" type="Request-Response" outputName="deleteSupplementaryOrganizationInfoResponse" inputName="deleteSupplementaryOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="8467f4d9-69d1-46de-81e7-2c248edb9782" isOneWay="false" action="gegmagbasic:findOrganization" name="findOrganization" bindingOperationName="findOrganization" type="Request-Response" outputName="findOrganizationResponse" inputName="findOrganizationRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="8467f4d9-69d1-46de-81e7-2c248edb9782" isOneWay="false" action="gegmagbasic:findOrganization" name="findOrganization" bindingOperationName="findOrganization" type="Request-Response" outputName="findOrganizationResponse" inputName="findOrganizationRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
     <con:operation id="23719a1f-f554-4d3e-80fd-f2bfe12adfc1" isOneWay="false" action="gegmagbasic:getOrganizationDetails" name="getOrganizationDetails" bindingOperationName="getOrganizationDetails" type="Request-Response" outputName="getOrganizationDetailsResponse" inputName="getOrganizationDetailsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -15610,19 +15970,19 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
         <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
-    <con:operation id="6cce542a-9182-43d5-93db-d2939c8569ab" isOneWay="false" action="gegmagbasic:getRelationDetails" name="getRelationDetails" bindingOperationName="getRelationDetails" type="Request-Response" outputName="getRelationDetailsResponse" inputName="getRelationDetailsRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="6cce542a-9182-43d5-93db-d2939c8569ab" isOneWay="false" action="gegmagbasic:getRelationDetails" name="getRelationDetails" bindingOperationName="getRelationDetails" type="Request-Response" outputName="getRelationDetailsResponse" inputName="getRelationDetailsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="136c6ddb-80e2-41af-8281-fe719f08251a" isOneWay="false" action="gegmagbasic:lookUpAddress" name="lookUpAddress" bindingOperationName="lookUpAddress" type="Request-Response" outputName="lookUpAddressResponse" inputName="lookUpAddressRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="136c6ddb-80e2-41af-8281-fe719f08251a" isOneWay="false" action="gegmagbasic:lookUpAddress" name="lookUpAddress" bindingOperationName="lookUpAddress" type="Request-Response" outputName="lookUpAddressResponse" inputName="lookUpAddressRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="9c4a6d57-0218-4e19-bcef-dc42a054f93a" isOneWay="false" action="gegmagbasic:lookUpCity" name="lookUpCity" bindingOperationName="lookUpCity" type="Request-Response" outputName="lookUpCityResponse" inputName="lookUpCityRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="9c4a6d57-0218-4e19-bcef-dc42a054f93a" isOneWay="false" action="gegmagbasic:lookUpCity" name="lookUpCity" bindingOperationName="lookUpCity" type="Request-Response" outputName="lookUpCityResponse" inputName="lookUpCityRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="4075785b-85a7-48da-bb96-e7803b0f7dcc" isOneWay="false" action="gegmagbasic:lookUpCountry" name="lookUpCountry" bindingOperationName="lookUpCountry" type="Request-Response" outputName="lookUpCountryResponse" inputName="lookUpCountryRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="4075785b-85a7-48da-bb96-e7803b0f7dcc" isOneWay="false" action="gegmagbasic:lookUpCountry" name="lookUpCountry" bindingOperationName="lookUpCountry" type="Request-Response" outputName="lookUpCountryResponse" inputName="lookUpCountryRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="deff431e-1ac6-477d-bf31-df13f50ff8f7" isOneWay="false" action="gegmagbasic:lookUpDistrict" name="lookUpDistrict" bindingOperationName="lookUpDistrict" type="Request-Response" outputName="lookUpDistrictResponse" inputName="lookUpDistrictRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="deff431e-1ac6-477d-bf31-df13f50ff8f7" isOneWay="false" action="gegmagbasic:lookUpDistrict" name="lookUpDistrict" bindingOperationName="lookUpDistrict" type="Request-Response" outputName="lookUpDistrictResponse" inputName="lookUpDistrictRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
     <con:operation id="3962d45a-51a4-485a-b53b-fe86c09087d7" isOneWay="false" action="gegmagbasic:lookUpExtendedOrganizationInfo" name="lookUpExtendedOrganizationInfo" bindingOperationName="lookUpExtendedOrganizationInfo" type="Request-Response" outputName="lookUpExtendedOrganizationInfoResponse" inputName="lookUpExtendedOrganizationInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -15719,10 +16079,10 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
         <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
-    <con:operation id="d298244e-9584-4282-b5c3-cd3925c61a15" isOneWay="false" action="gegmagbasic:lookUpMunicipality" name="lookUpMunicipality" bindingOperationName="lookUpMunicipality" type="Request-Response" outputName="lookUpMunicipalityResponse" inputName="lookUpMunicipalityRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="d298244e-9584-4282-b5c3-cd3925c61a15" isOneWay="false" action="gegmagbasic:lookUpMunicipality" name="lookUpMunicipality" bindingOperationName="lookUpMunicipality" type="Request-Response" outputName="lookUpMunicipalityResponse" inputName="lookUpMunicipalityRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="e21e3fe0-9f32-47d4-8e29-e4951d192c3d" isOneWay="false" action="gegmagbasic:lookUpNeighbourhood" name="lookUpNeighbourhood" bindingOperationName="lookUpNeighbourhood" type="Request-Response" outputName="lookUpNeighbourhoodResponse" inputName="lookUpNeighbourhoodRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="e21e3fe0-9f32-47d4-8e29-e4951d192c3d" isOneWay="false" action="gegmagbasic:lookUpNeighbourhood" name="lookUpNeighbourhood" bindingOperationName="lookUpNeighbourhood" type="Request-Response" outputName="lookUpNeighbourhoodResponse" inputName="lookUpNeighbourhoodRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
     <con:operation id="193f2cd8-0e5f-43fe-820d-62be384a7e7e" isOneWay="false" action="gegmagbasic:lookUpOrganization" name="lookUpOrganization" bindingOperationName="lookUpOrganization" type="Request-Response" outputName="lookUpOrganizationResponse" inputName="lookUpOrganizationRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -16126,19 +16486,19 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
         <con:wsrmConfig version="1.2"/>
       </con:call>
     </con:operation>
-    <con:operation id="79d44d5f-9329-4c54-a12d-62b677f8a8d0" isOneWay="false" action="gegmagbasic:lookUpPersonBySupplementary" name="lookUpPersonBySupplementary" bindingOperationName="lookUpPersonBySupplementary" type="Request-Response" outputName="lookUpPersonBySupplementaryResponse" inputName="lookUpPersonBySupplementaryRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="79d44d5f-9329-4c54-a12d-62b677f8a8d0" isOneWay="false" action="gegmagbasic:lookUpPersonBySupplementary" name="lookUpPersonBySupplementary" bindingOperationName="lookUpPersonBySupplementary" type="Request-Response" outputName="lookUpPersonBySupplementaryResponse" inputName="lookUpPersonBySupplementaryRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="2c5257d6-22d5-41f0-abfe-55e3aa452637" isOneWay="false" action="gegmagbasic:lookUpRegistryAddress" name="lookUpRegistryAddress" bindingOperationName="lookUpRegistryAddress" type="Request-Response" outputName="lookUpRegistryAddressResponse" inputName="lookUpRegistryAddressRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="2c5257d6-22d5-41f0-abfe-55e3aa452637" isOneWay="false" action="gegmagbasic:lookUpRegistryAddress" name="lookUpRegistryAddress" bindingOperationName="lookUpRegistryAddress" type="Request-Response" outputName="lookUpRegistryAddressResponse" inputName="lookUpRegistryAddressRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="0d64be07-b7f8-492b-b3f7-4684a957ca3f" isOneWay="false" action="gegmagbasic:lookUpRegistryObject" name="lookUpRegistryObject" bindingOperationName="lookUpRegistryObject" type="Request-Response" outputName="lookUpRegistryObjectResponse" inputName="lookUpRegistryObjectRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="0d64be07-b7f8-492b-b3f7-4684a957ca3f" isOneWay="false" action="gegmagbasic:lookUpRegistryObject" name="lookUpRegistryObject" bindingOperationName="lookUpRegistryObject" type="Request-Response" outputName="lookUpRegistryObjectResponse" inputName="lookUpRegistryObjectRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="bea86f4b-4e92-4832-99ec-89164f5d8b1c" isOneWay="false" action="gegmagbasic:lookUpStreet" name="lookUpStreet" bindingOperationName="lookUpStreet" type="Request-Response" outputName="lookUpStreetResponse" inputName="lookUpStreetRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="bea86f4b-4e92-4832-99ec-89164f5d8b1c" isOneWay="false" action="gegmagbasic:lookUpStreet" name="lookUpStreet" bindingOperationName="lookUpStreet" type="Request-Response" outputName="lookUpStreetResponse" inputName="lookUpStreetRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
-    <con:operation id="cd5285a0-0bb4-4af0-a11a-8b9236291fe4" isOneWay="false" action="gegmagbasic:readOrganizations" name="readOrganizations" bindingOperationName="readOrganizations" type="Request-Response" outputName="readOrganizationsResponse" inputName="readOrganizationsRequest" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="cd5285a0-0bb4-4af0-a11a-8b9236291fe4" isOneWay="false" action="gegmagbasic:readOrganizations" name="readOrganizations" bindingOperationName="readOrganizations" type="Request-Response" outputName="readOrganizationsResponse" inputName="readOrganizationsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
     </con:operation>
     <con:operation id="e0335f00-70e6-4887-952b-416902eed3d0" isOneWay="false" action="gegmagbasic:saveExtendedPersonInfo" name="saveExtendedPersonInfo" bindingOperationName="saveExtendedPersonInfo" type="Request-Response" outputName="saveExtendedPersonInfoResponse" inputName="saveExtendedPersonInfoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
@@ -16765,10 +17125,46 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       <con:testStep type="properties" name="Properties" id="003781bf-43fb-455d-a8e5-4f4907cc5547">
         <con:settings/>
         <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:properties/>
+          <con:target>C:/Projects/openforms2bpel/e2e/SoapUI/test</con:target>
+          <con:properties>
+            <con:property>
+              <con:name>caseReferenceNumber</con:name>
+              <con:value>OF-OCJLPJ</con:value>
+            </con:property>
+          </con:properties>
         </con:config>
       </con:testStep>
-      <con:testStep type="restrequest" name="objects_object_create" id="ee0c122e-d7f4-42fd-a402-c08e7b784732">
+      <con:testStep type="groovy" name="generate-dynamic-properties" id="0be5428a-121a-4dd8-9bf4-4330b2c954a9">
+        <con:settings/>
+        <con:config>
+          <script>def dynamicProperties = testRunner.testCase.getTestStepByName("Properties");
+
+def caseReferenceNumber = "OF-" + org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6).toUpperCase();
+dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="start-mock-services" id="3a2efff4-cf30-45c7-871f-f2c14f82d360">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.mockServices.each()
+{
+	entry -> entry.value.start();
+}</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="set-dynamic-mock-properties" id="27ea4e4a-8c2d-4068-9d32-613e6c85bbe3">
+        <con:settings/>
+        <con:config>
+          <script>def casesServiceMock = testRunner.testCase.testSuite.project.mockServices["BPEL CasesProxy Mock"].getMockRunner().getMockService();
+
+def caseReferenceNumber = context.expand('${Properties#caseReferenceNumber}');
+casesServiceMock.setPropertyValue("caseReferenceNumber", caseReferenceNumber);
+def initiatingSubjectCitizenNumber = context.expand('${#TestCase#initiatingSubjectCitizenNumber}');
+casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSubjectCitizenNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="ee0c122e-d7f4-42fd-a402-c08e7b784732" disabled="true">
         <con:settings/>
         <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
@@ -16825,7 +17221,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
          "attachments" : [ ],\r
          "language_code" : "nl",\r
          "submission_id" : "ec246c46-4578-4781-a400-f35daa82ecb2",\r
-         "public_reference" : "OF-V27G9D"\r
+         "public_reference" : "${Properties#CaseReferenceNumber}"\r
       },\r
       "geometry" : null,\r
       "startAt" : "2023-11-03",\r
@@ -16865,7 +17261,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       "index" : 1,\r
       "typeVersion" : 1,\r
       "data" : {\r
-         "bsn" : "999994542",\r
+         "bsn" : "${#TestCase#initiatingSubjectCitizenNumber}",\r
          "data" : {\r
             "uw-klacht" : {\r
                "hoeLaat" : "Tijdstip",\r
@@ -16875,27 +17271,118 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
                "tOverWieWiltUEenKlachtIndienen" : "Henk",\r
                "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "Ontslag"\r
             },\r
-            "uw-gegevenscompleet" : {\r
-               "fieldSetMetDigiD" : {\r
-                  "adresgegevensMD" : {\r
-                     "postcodePMD" : "1014 AW",\r
-                     "huisletterPMD" : "",\r
-                     "huisnummerPMD" : "14",\r
-                     "straatnaamPMD" : "Schakelstraat",\r
-                     "woonplaatsPMD" : "Amsterdam",\r
-                     "huisnummertoevoegingPMD" : "H"\r
-                  },\r
-                  "contactgegevensMD" : {\r
-                     "eMailadresPMD" : "m.van.altena@utrecht.nl",\r
-                     "telefoonnummerPMD" : "0612345678"\r
-                  },\r
-                  "persoonsgegevensMD" : {\r
-                     "achternaamPMD" : "Braber",\r
-                     "voorletterSPMD" : "",\r
-                     "tussenvoegselSPMD" : "den"\r
-                  }\r
-               }\r
-            },\r
+            "uw-gegevenscompleet" : {
+               "fieldSetMetDigiD" : {
+                  "adresgegevensMD" : {
+                     "postcodePMD" : "3524 VD",
+                     "huisletterPMD" : "",
+                     "huisnummerPMD" : "26",
+                     "straatnaamPMD" : "Ardennen",
+                     "woonplaatsPMD" : "Utrecht",
+                     "huisnummertoevoegingPMD" : ""
+                  },
+                  "contactgegevensMD" : {
+                     "eMailadresPMD" : "f.bekker@utrecht.nl",
+                     "telefoonnummerPMD" : "0302865464",
+                     "telefoonnummerWerkPMD" : "",
+                     "telefoonnummerMobielPMD" : ""
+                  },
+                  "persoonsgegevensMD" : {
+                     "bsnPMD" : "${#TestCase#initiatingSubjectCitizenNumber}",
+                     "aanhefPMD" : "M",
+                     "voornamenPMD" : "Bob",
+                     "achternaamPMD" : "Hoekstra",
+                     "voorletterSPMD" : "B.",
+                     "geboortedatumPMD" : "1970-06-20",
+                     "geboorteplaatsPMD" : "Wijk bij Duurstede",
+                     "tussenvoegselSPMD" : ""
+                  }
+               },
+               "initiatingSubject" : "persoon",
+               "fieldSetBedrijfMEH" : {
+                  "bezoekadresMEH" : {
+                     "plaatsMEH" : "",
+                     "postcodeMEH" : "",
+                     "huisletterMEH" : "",
+                     "huisnummerMEH" : "",
+                     "straatnaamMEH" : "",
+                     "huisnummertoevoegingMEH" : ""
+                  },
+                  "communicatieMEH" : {
+                     "eMailadresMEH" : "",
+                     "telefoonnummerMEH" : ""
+                  },
+                  "contactpersoonMEH" : {
+                     "aanhefMEH" : "",
+                     "achternaamMEH" : "",
+                     "voorletterSMEH" : "",
+                     "tussenvoegselSMEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieMEH" : {
+                     "kvKNummerMEH" : "",
+                     "vestigingsnummerMEH" : "",
+                     "naamBedrijfOrganisatieMEH" : ""
+                  }
+               },
+               "fieldSetBedrijfZEH" : {
+                  "bezoekadresZEH" : {
+                     "plaatsZEH" : "",
+                     "postcodeZEH" : "",
+                     "huisletterZEH" : "",
+                     "huisnummerZEH" : null,
+                     "straatnaamZEH" : "",
+                     "huisnummertoevoegingZEH" : ""
+                  },
+                  "communicatieZEH" : {
+                     "eMailadresZEH" : "",
+                     "telefoonnummerZEH" : "",
+                     "postbusGebruikenZEH" : "",
+                     "postbusOndernemingZEH" : {
+                        "postbusnummerZEH" : null,
+                        "postbus_plaatsZEH" : "",
+                        "postbus_postcodeZEH" : ""
+                     }
+                  },
+                  "contactpersoonZEH" : {
+                     "aanhefZEH" : "",
+                     "achternaamZEH" : "",
+                     "voorletterSZEH" : "",
+                     "tussenvoegselSZEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieZEH" : {
+                     "kvKNummerZEH" : "",
+                     "vestigingsnummerZEH" : "",
+                     "naamBedrijfOrganisatieZEH" : ""
+                  }
+               },
+               "fieldSetZonderDigiD" : {
+                  "adresgegevensZD" : {
+                     "postcodePZD" : "",
+                     "huisletterPZD" : "",
+                     "huisnummerPZD" : null,
+                     "straatnaamPZD" : "",
+                     "woonplaatsPZD" : "",
+                     "huisnummertoevoegingPZD" : ""
+                  },
+                  "contactgegevensZD" : {
+                     "eMailadresPZD" : "",
+                     "telefoonnummerPZD" : "",
+                     "telefoonnummerWerkPZD" : "",
+                     "telefoonnummerMobielPZD" : ""
+                  },
+                  "persoonsgegevensZD" : {
+                     "bsnPZD" : "",
+                     "aanhefPZD" : "",
+                     "voornamenPZD" : "",
+                     "achternaamPZD" : "",
+                     "voorletterSPZD" : "",
+                     "geboortedatumPZD" : "",
+                     "tussenvoegselSPZD" : ""
+                  }
+               },
+               "initiatingSubjectAuth" : "DigiD",
+               "bentUEenPersoonOfEenBedrijf" : ""
+            },
             "bijlagen-toevoegen-klacht" : {\r
                "file" : [\r
                   {\r
@@ -16961,7 +17448,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
          ],\r
          "language_code" : "nl",\r
          "submission_id" : "076f447a-f0d4-481a-aeb1-3c14aea183ec",\r
-         "public_reference" : "OF-XD3WM3"\r
+         "public_reference" : "${Properties#CaseReferenceNumber}"\r
       },\r
       "geometry" : null,\r
       "startAt" : "2023-11-09",\r
@@ -16986,14 +17473,41 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           </con:restRequest>
         </con:config>
       </con:testStep>
+      <con:testStep type="groovy" name="stop-mock-services" id="8db01f28-3407-4fd5-91b8-6e33f9dd7fe5">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.mockServices.each()
+{
+	entry -> entry.value.getMockRunner().stop();
+}</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Notification" id="96d08740-8691-41cd-bdbd-9639fdcb1da4" disabled="true">
+        <con:settings/>
+        <con:config service="Objects API" resourcePath="/objects/{uuid}" methodName="object_read" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Notification" id="5219b4f4-71f0-4bbd-89f7-ffcf90a8e9b2" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://host.docker.internal:8089/mock/objects/api/v2</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://host.docker.internal/mock/objects/api/v2/testuuid/objects/</con:originalUri>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters>
+              <entry key="uuid" value="P9_2_KLB-uw-gegevens-digid-default" xmlns="http://eviware.com/soapui/config"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
       <con:properties>
         <con:property>
-          <con:name>zaaktype</con:name>
-          <con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value>
-        </con:property>
-        <con:property>
-          <con:name>informatieobjecttype</con:name>
-          <con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value>
+          <con:name>initiatingSubjectCitizenNumber</con:name>
+          <con:value>176513280</con:value>
         </con:property>
       </con:properties>
     </con:testCase>
@@ -17841,7 +18355,42 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       <con:testStep type="properties" name="Properties" id="6a3164fe-d7e1-4b67-bb84-bd4759512efc">
         <con:settings/>
         <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:properties/>
+          <con:properties>
+            <con:property>
+              <con:name>caseReferenceNumber</con:name>
+              <con:value>OF-IOBSTV</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="generate-dynamic-properties" id="87c94044-303b-406b-87ec-0e94eed19c54">
+        <con:settings/>
+        <con:config>
+          <script>def dynamicProperties = testRunner.testCase.getTestStepByName("Properties");
+
+def caseReferenceNumber = "OF-" + org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6).toUpperCase();
+dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="start-mock-services" id="059f315a-91d0-427e-adc1-4ecf822610f0">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.mockServices.each()
+{
+	entry -> entry.value.start();
+}</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="set-dynamic-mock-properties" id="eacc93ba-8e37-4821-9e1d-82ba7db615ec">
+        <con:settings/>
+        <con:config>
+          <script>def casesServiceMock = testRunner.testCase.testSuite.project.mockServices["BPEL CasesProxy Mock"].getMockRunner().getMockService();
+
+def caseReferenceNumber = context.expand('${Properties#caseReferenceNumber}');
+casesServiceMock.setPropertyValue("caseReferenceNumber", caseReferenceNumber);
+def initiatingSubjectCitizenNumber = context.expand('${#TestCase#initiatingSubjectCitizenNumber}');
+casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSubjectCitizenNumber);</script>
         </con:config>
       </con:testStep>
       <con:testStep type="restrequest" name="objects_object_create" id="817e33f8-2c51-4a00-84c1-2f4e1171b595">
@@ -17859,34 +18408,122 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       "index" : 1,\r
       "typeVersion" : 1,\r
       "data" : {\r
-         "bsn" : "169795135",\r
+         "bsn" : "${#TestCase#initiatingSubjectCitizenNumber}",\r
          "data" : {\r
-            "uw-gegevens" : {\r
-               "fieldSetMetDigiD" : {\r
-                  "adresgegevensMD" : {\r
-                     "postcodePMD" : "3554 AS",\r
-                     "huisletterPMD" : "",\r
-                     "huisnummerPMD" : "91",\r
-                     "straatnaamPMD" : "Van Hoornekade",\r
-                     "woonplaatsPMD" : "Utrecht",\r
-                     "huisnummertoevoegingPMD" : ""\r
-                  },\r
-                  "contactgegevensMD" : {\r
-                     "eMailadresPMD" : "m.van.altena@utrecht.nl",\r
-                     "telefoonnummerPMD" : "0612345678"\r
-                  },\r
-                  "persoonsgegevensMD" : {\r
-                     "bsnPMD" : "169795135",\r
-                     "achternaamPMD" : "Driel",\r
-                     "voorletterSPMD" : "J.H.",\r
-                     "tussenvoegselSPMD" : "van"\r
-                  }\r
-               }\r,
+            "uw-gegevenscompleet" : {
+               "fieldSetMetDigiD" : {
+                  "adresgegevensMD" : {
+                     "postcodePMD" : "3524 VD",
+                     "huisletterPMD" : "",
+                     "huisnummerPMD" : "26",
+                     "straatnaamPMD" : "Ardennen",
+                     "woonplaatsPMD" : "Utrecht",
+                     "huisnummertoevoegingPMD" : ""
+                  },
+                  "contactgegevensMD" : {
+                     "eMailadresPMD" : "f.bekker@utrecht.nl",
+                     "telefoonnummerPMD" : "0302865464",
+                     "telefoonnummerWerkPMD" : "",
+                     "telefoonnummerMobielPMD" : ""
+                  },
+                  "persoonsgegevensMD" : {
+                     "bsnPMD" : "${#TestCase#initiatingSubjectCitizenNumber}",
+                     "aanhefPMD" : "M",
+                     "voornamenPMD" : "Bob",
+                     "achternaamPMD" : "Hoekstra",
+                     "voorletterSPMD" : "B.",
+                     "geboortedatumPMD" : "1970-06-20",
+                     "geboorteplaatsPMD" : "Wijk bij Duurstede",
+                     "tussenvoegselSPMD" : ""
+                  }
+               },
+               "initiatingSubject" : "persoon",
+               "fieldSetBedrijfMEH" : {
+                  "bezoekadresMEH" : {
+                     "plaatsMEH" : "",
+                     "postcodeMEH" : "",
+                     "huisletterMEH" : "",
+                     "huisnummerMEH" : "",
+                     "straatnaamMEH" : "",
+                     "huisnummertoevoegingMEH" : ""
+                  },
+                  "communicatieMEH" : {
+                     "eMailadresMEH" : "",
+                     "telefoonnummerMEH" : ""
+                  },
+                  "contactpersoonMEH" : {
+                     "aanhefMEH" : "",
+                     "achternaamMEH" : "",
+                     "voorletterSMEH" : "",
+                     "tussenvoegselSMEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieMEH" : {
+                     "kvKNummerMEH" : "",
+                     "vestigingsnummerMEH" : "",
+                     "naamBedrijfOrganisatieMEH" : ""
+                  }
+               },
+               "fieldSetBedrijfZEH" : {
+                  "bezoekadresZEH" : {
+                     "plaatsZEH" : "",
+                     "postcodeZEH" : "",
+                     "huisletterZEH" : "",
+                     "huisnummerZEH" : null,
+                     "straatnaamZEH" : "",
+                     "huisnummertoevoegingZEH" : ""
+                  },
+                  "communicatieZEH" : {
+                     "eMailadresZEH" : "",
+                     "telefoonnummerZEH" : "",
+                     "postbusGebruikenZEH" : "",
+                     "postbusOndernemingZEH" : {
+                        "postbusnummerZEH" : null,
+                        "postbus_plaatsZEH" : "",
+                        "postbus_postcodeZEH" : ""
+                     }
+                  },
+                  "contactpersoonZEH" : {
+                     "aanhefZEH" : "",
+                     "achternaamZEH" : "",
+                     "voorletterSZEH" : "",
+                     "tussenvoegselSZEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieZEH" : {
+                     "kvKNummerZEH" : "",
+                     "vestigingsnummerZEH" : "",
+                     "naamBedrijfOrganisatieZEH" : ""
+                  }
+               },
+               "fieldSetZonderDigiD" : {
+                  "adresgegevensZD" : {
+                     "postcodePZD" : "",
+                     "huisletterPZD" : "",
+                     "huisnummerPZD" : null,
+                     "straatnaamPZD" : "",
+                     "woonplaatsPZD" : "",
+                     "huisnummertoevoegingPZD" : ""
+                  },
+                  "contactgegevensZD" : {
+                     "eMailadresPZD" : "",
+                     "telefoonnummerPZD" : "",
+                     "telefoonnummerWerkPZD" : "",
+                     "telefoonnummerMobielPZD" : ""
+                  },
+                  "persoonsgegevensZD" : {
+                     "bsnPZD" : "",
+                     "aanhefPZD" : "",
+                     "voornamenPZD" : "",
+                     "achternaamPZD" : "",
+                     "voorletterSPZD" : "",
+                     "geboortedatumPZD" : "",
+                     "tussenvoegselSPZD" : ""
+                  }
+               },
                "initiatingSubjectAuth" : "DigiD",
-               "bentUEenPersoonOfEenBedrijf" : "Persoon"
-            },\r
+               "bentUEenPersoonOfEenBedrijf" : ""
+            },
             "gegevenstweewegcommunicatie" : {\r
-               "zaaknummer" : "OF-${=org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6)}",\r
+               "zaaknummer" : "${Properties#CaseReferenceNumber}",\r
                "bestandsupload" : [\r
                   {\r
                      "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/7c50b4b8-e22e-4c83-a50d-f52695aa673b",\r
@@ -17945,14 +18582,20 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           </con:restRequest>
         </con:config>
       </con:testStep>
+      <con:testStep type="groovy" name="stop-mock-services" id="48e69323-6c89-408f-87f7-5000d95a76e5">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.mockServices.each()
+{
+	entry -> entry.value.getMockRunner().stop();
+}</script>
+        </con:config>
+      </con:testStep>
       <con:properties>
         <con:property>
-          <con:name>zaaktype</con:name>
-          <con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value>
-        </con:property>
-        <con:property>
-          <con:name>informatieobjecttype</con:name>
-          <con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value>
+          <con:name>initiatingSubjectCitizenNumber</con:name>
+          <con:value>176513280</con:value>
         </con:property>
       </con:properties>
     </con:testCase>
@@ -18919,14 +19562,24 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
     <con:settings>
       <con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting>
     </con:settings>
-    <con:properties/>
+    <con:properties>
+      <con:property>
+        <con:name>caseReferenceNumber</con:name>
+        <con:value>OF-IOBSTV</con:value>
+      </con:property>
+      <con:property>
+        <con:name>initiatingSubjectCitizenNumber</con:name>
+        <con:value>176513280</con:value>
+      </con:property>
+    </con:properties>
     <con:onRequestScript/>
     <con:mockOperation name="readCases" id="3c732cad-3b1a-439b-9af8-4a8b2fba0dbc" interface="CasesBinding" operation="readCases">
       <con:settings/>
-      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:defaultResponse>InitiatingSubject-Person</con:defaultResponse>
       <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
-      <con:response name="Response 1" id="e015aa61-6d46-436b-805d-ea418dc1d51a" httpResponseStatus="200" encoding="UTF-8">
+      <con:response name="InitiatingSubject-Person" id="e015aa61-6d46-436b-805d-ea418dc1d51a" httpResponseStatus="200" encoding="UTF-8">
         <con:settings/>
+        <con:script/>
         <con:responseContent><![CDATA[<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
    <SOAP-ENV:Header/>
    <SOAP-ENV:Body>
@@ -18935,7 +19588,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
             <cases:cases>
                <cases:case>
                   <cases:id>227278</cases:id>
-                  <cases:referenceNumber>OF-FTGHLL</cases:referenceNumber>
+                  <cases:referenceNumber>${#MockService#caseReferenceNumber}</cases:referenceNumber>
                   <cases:description/>
                   <cases:clarification>p.dorhout@utrecht.nl</cases:clarification>
                   <cases:xml/>
@@ -18995,7 +19648,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
                   <cases:initiatingSubject>
                      <cases:person>
                         <cases:id>198128</cases:id>
-                        <cases:citizenNumber authentic="J">169795135</cases:citizenNumber>
+                        <cases:citizenNumber authentic="J">${#MockService#initiatingSubjectCitizenNumber}</cases:citizenNumber>
                         <cases:genderIndication>M</cases:genderIndication>
                         <cases:firstNames>Ano</cases:firstNames>
                         <cases:lastNamePrefix/>
@@ -20426,181 +21079,9 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
             <geg:persons>
                <!--Zero or more repetitions:-->
                <geg:person>
-                  <!--Optional:-->
-                  <geg:current source="?">
-                     <geg:aNumber>?</geg:aNumber>
-                     <geg:bsn>?</geg:bsn>
-                     <geg:citizenNumber>?</geg:citizenNumber>
-                     <geg:citizenNumberSupplement>?</geg:citizenNumberSupplement>
-                     <geg:subjectNumberAKR>?</geg:subjectNumberAKR>
-                     <geg:genderIndication>?</geg:genderIndication>
-                     <geg:initials>?</geg:initials>
-                     <geg:firstNames>?</geg:firstNames>
-                     <geg:lastNamePrefix>?</geg:lastNamePrefix>
-                     <geg:lastName>?</geg:lastName>
-                     <geg:indicationOfNameUsage>?</geg:indicationOfNameUsage>
-                     <!--Optional:-->
-                     <geg:nameOfAddress>?</geg:nameOfAddress>
-                     <geg:nationalities>
-                        <!--Zero or more repetitions:-->
-                        <geg:nationality>
-                           <geg:code>?</geg:code>
-                           <geg:name>?</geg:name>
-                           <geg:description>?</geg:description>
-                        </geg:nationality>
-                     </geg:nationalities>
-                     <geg:maritalStatus>?</geg:maritalStatus>
-                     <geg:emailAddress>?</geg:emailAddress>
-                     <geg:phoneNumber>?</geg:phoneNumber>
-                     <geg:faxNumber>?</geg:faxNumber>
-                     <geg:bankNumber>?</geg:bankNumber>
-                     <geg:dateOfBirth ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfBirth>
-                     <!--Optional:-->
-                     <geg:cityOfBirth>?</geg:cityOfBirth>
-                     <!--Optional:-->
-                     <geg:municipalityOfBirth>?</geg:municipalityOfBirth>
-                     <!--Optional:-->
-                     <geg:countryOfBirth>
-                        <geg:code>?</geg:code>
-                        <geg:name>?</geg:name>
-                     </geg:countryOfBirth>
-                     <geg:dateOfDeath ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfDeath>
-                     <!--Optional:-->
-                     <geg:cityOfDeath>?</geg:cityOfDeath>
-                     <!--Optional:-->
-                     <geg:municipalityOfDeath>?</geg:municipalityOfDeath>
-                     <!--Optional:-->
-                     <geg:countryOfDeath>
-                        <geg:code>?</geg:code>
-                        <geg:name>?</geg:name>
-                     </geg:countryOfDeath>
-                     <geg:addresses>
-                        <!--Zero or more repetitions:-->
-                        <geg:address source="?">
-                           <geg:type>?</geg:type>
-                           <geg:street>
-                              <geg:code>?</geg:code>
-                              <geg:name>?</geg:name>
-                           </geg:street>
-                           <geg:houseNumber>?</geg:houseNumber>
-                           <geg:houseLetter>?</geg:houseLetter>
-                           <geg:houseRemark>?</geg:houseRemark>
-                           <!--Optional:-->
-                           <geg:houseIndication>?</geg:houseIndication>
-                           <geg:locationDescription>?</geg:locationDescription>
-                           <geg:zipCode>?</geg:zipCode>
-                           <!--Optional:-->
-                           <geg:neighbourhood>
-                              <geg:code>?</geg:code>
-                              <geg:name>?</geg:name>
-                           </geg:neighbourhood>
-                           <geg:city>?</geg:city>
-                           <!--Optional:-->
-                           <geg:municipality>
-                              <geg:code>?</geg:code>
-                              <geg:name>?</geg:name>
-                           </geg:municipality>
-                           <!--Optional:-->
-                           <geg:district>
-                              <geg:code>?</geg:code>
-                              <geg:name>?</geg:name>
-                           </geg:district>
-                           <!--Optional:-->
-                           <geg:country>
-                              <geg:code>?</geg:code>
-                              <geg:name>?</geg:name>
-                           </geg:country>
-                           <geg:freePost>?</geg:freePost>
-                           <geg:POBox>?</geg:POBox>
-                           <!--Optional:-->
-                           <geg:xCoordinate>?</geg:xCoordinate>
-                           <!--Optional:-->
-                           <geg:yCoordinate>?</geg:yCoordinate>
-                           <!--Optional:-->
-                           <geg:zCoordinate>?</geg:zCoordinate>
-                           <!--Optional:-->
-                           <geg:monumentStatus>?</geg:monumentStatus>
-                           <!--Optional:-->
-                           <geg:habitable>?</geg:habitable>
-                           <!--Optional:-->
-                           <geg:addressStatus>?</geg:addressStatus>
-                           <!--Optional:-->
-                           <geg:addressSystem>?</geg:addressSystem>
-                        </geg:address>
-                     </geg:addresses>
-                     <geg:identifications>
-                        <!--Zero or more repetitions:-->
-                        <geg:identification>
-                           <geg:code>?</geg:code>
-                           <geg:type>?</geg:type>
-                           <geg:number>?</geg:number>
-                           <geg:handOutDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:handOutDate>
-                           <geg:expirationDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:expirationDate>
-                           <geg:description>?</geg:description>
-                           <geg:status>?</geg:status>
-                        </geg:identification>
-                     </geg:identifications>
-                     <geg:academicTitles>
-                        <!--Zero or more repetitions:-->
-                        <geg:academicTitle>
-                           <geg:title>?</geg:title>
-                           <geg:code>?</geg:code>
-                           <geg:description>?</geg:description>
-                           <geg:position>?</geg:position>
-                        </geg:academicTitle>
-                     </geg:academicTitles>
-                     <!--Optional:-->
-                     <geg:residencyTitle>
-                        <geg:title>?</geg:title>
-                        <geg:indication>?</geg:indication>
-                        <geg:description>?</geg:description>
-                     </geg:residencyTitle>
-                     <!--Optional:-->
-                     <geg:nobleTitle>
-                        <geg:title>?</geg:title>
-                        <geg:code>?</geg:code>
-                        <geg:description>?</geg:description>
-                        <geg:type>?</geg:type>
-                     </geg:nobleTitle>
-                     <geg:municipalityOfRegistration>?</geg:municipalityOfRegistration>
-                     <geg:dateOfMunicipalRegistration ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfMunicipalRegistration>
-                     <geg:dateOfSuspensionTracking ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfSuspensionTracking>
-                     <geg:indicationOfSpecialCitizenship>?</geg:indicationOfSpecialCitizenship>
-                     <geg:countryOfEmigration>
-                        <geg:code>?</geg:code>
-                        <geg:name>?</geg:name>
-                     </geg:countryOfEmigration>
-                     <geg:countryOfImmigration>
-                        <geg:code>?</geg:code>
-                        <geg:name>?</geg:name>
-                     </geg:countryOfImmigration>
-                     <geg:dateOfObtainingResidencePermit ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfObtainingResidencePermit>
-                     <geg:dateOfLosingResidencePermit ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfLosingResidencePermit>
-                     <geg:dateOfSettlingInCountry ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfSettlingInCountry>
-                     <geg:dateOfLeavingCountry ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfLeavingCountry>
-                     <!--Optional:-->
-                     <geg:indicationLegalRestraint>?</geg:indicationLegalRestraint>
-                     <!--Optional:-->
-                     <geg:indicationOfSecrecy>?</geg:indicationOfSecrecy>
-                     <!--Optional:-->
-                     <geg:indicationAuthorityUnderAge>?</geg:indicationAuthorityUnderAge>
-                     <!--Optional:-->
-                     <geg:descriptionSuspensionTracking>?</geg:descriptionSuspensionTracking>
-                     <!--Optional:-->
-                     <geg:inExaminationList>
-                        <!--Zero or more repetitions:-->
-                        <geg:inExamination>
-                           <geg:code>?</geg:code>
-                           <geg:name>?</geg:name>
-                           <geg:startDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:startDate>
-                           <geg:endDate ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:endDate>
-                        </geg:inExamination>
-                     </geg:inExaminationList>
-                  </geg:current>
-                  <!--Optional:-->
                   <geg:supplementary>
                      <geg:aNumber>?</geg:aNumber>
-                     <geg:bsn>?</geg:bsn>
+                     <geg:bsn>${#MockResponse#Request#//*:personSearchMessage/*:bsn}</geg:bsn>
                      <geg:telephoneNumberHome>?</geg:telephoneNumberHome>
                      <geg:telephoneNumberWork>?</geg:telephoneNumberWork>
                      <geg:telephoneNumberMobile>?</geg:telephoneNumberMobile>
@@ -21631,6 +22112,516 @@ if( requestBody.contains("some data") )
           <con:name>content-disposition</con:name>
           <con:value>attachment; filename="8d4dad1d-975e-403d-a3a9-1df0ff218f0a.bin"</con:value>
         </con:header>
+      </con:response>
+    </con:restMockAction>
+  </con:restMockService>
+  <con:restMockService id="662c932b-b70a-4a18-a4ac-500b24e99ac5" port="8089" path="/mock/objects/api/v2" host="LAPTOP-UKAI1A6" name="Objects API Mock" docroot="">
+    <con:settings/>
+    <con:properties/>
+    <con:restMockAction name="/objects" method="GET" resourcePath="/objects" id="ba3f862c-a7a9-4803-a8e3-195dc2ea6cb9">
+      <con:settings/>
+      <con:defaultResponse xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchPath>/*
+// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+
+if( requestPath.contains("json") )
+{
+    // return the name of the response you want to dispatch
+    return "JSON Response"
+}
+
+
+// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("stockholm") )
+{
+    // return the name of the response you want to dispatch
+    return "Response Stockholm"
+}
+else if( queryString.contains("london") )
+{
+    // return the name of the response you want to dispatch
+    return "Response London"
+}
+
+
+// Match based on header
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList
+
+if( acceptEncodingHeaderList.contains("gzip,deflate") )
+{
+    // return the name of the response you want to dispatch
+    return "GZiped Response"
+}
+
+
+// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("some data") )
+{
+    // return the name of the response you want to dispatch
+    return "Response N"
+}
+*/</con:dispatchPath>
+      <con:response name="Response 1" id="54f3861b-19a4-42e5-bb89-c1b02499e15f" httpResponseStatus="200">
+        <con:settings/>
+      </con:response>
+    </con:restMockAction>
+    <con:restMockAction name="/objects" method="POST" resourcePath="/objects" id="f91e22b4-8061-4d2f-b630-27613171a218">
+      <con:settings/>
+      <con:defaultResponse xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchPath>/*
+// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+
+if( requestPath.contains("json") )
+{
+    // return the name of the response you want to dispatch
+    return "JSON Response"
+}
+
+
+// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("stockholm") )
+{
+    // return the name of the response you want to dispatch
+    return "Response Stockholm"
+}
+else if( queryString.contains("london") )
+{
+    // return the name of the response you want to dispatch
+    return "Response London"
+}
+
+
+// Match based on header
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList
+
+if( acceptEncodingHeaderList.contains("gzip,deflate") )
+{
+    // return the name of the response you want to dispatch
+    return "GZiped Response"
+}
+
+
+// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("some data") )
+{
+    // return the name of the response you want to dispatch
+    return "Response N"
+}
+*/</con:dispatchPath>
+      <con:response name="Response 1" id="1772b0d5-354a-4797-ae91-ebd0d35ba232" httpResponseStatus="200">
+        <con:settings/>
+      </con:response>
+    </con:restMockAction>
+    <con:restMockAction name="/objects/" method="GET" resourcePath="/objects/" id="e271c8f0-8f0b-40f6-a5af-e7efd9e232b8">
+      <con:settings/>
+      <con:defaultResponse xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+ 
+
+if(requestPath.contains("P9_2_KLB"))
+{
+    return "P9_2_KLB"
+}</con:dispatchPath>
+      <con:response name="P9_2_KLB" id="02997fa7-39d6-4a74-88f4-e312c32b19c7" httpResponseStatus="200" mediaType="application/json">
+        <con:settings/>
+        <con:script>import groovy.json.*;
+
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+ 
+
+if(requestPath.contains("uw-gegevens-digid-default"))
+{
+	def projectDir = context.expand('${projectDir}');
+    def inputFile = new File(projectDir + "/uw-gegevens-digid-default.json");
+    def slurper = new JsonSlurper().parse(inputFile);
+    context["uw-gegevens"] = JsonOutput.prettyPrint(new JsonBuilder(slurper).toString());
+}</con:script>
+        <con:responseContent>{
+   "type" : "dummy",
+   "record" : {
+      "index" : 1,
+      "typeVersion" : 1,
+      "data" : {
+         "bsn" : "176513280",
+         "data" : {
+            "het-besluit" : {
+               "opWelkeManier" : "",
+               "waaroverGingHetBesluit" : "klm",
+               "wieHeeftHetBesluitGenomen" : "hetCollegeVanBurgemeesterEnWethouders",
+               "wieHeeftHetBesluitDanGenomen" : "",
+               "ikVerklaarHiermeeBekendTeZijn" : true,
+               "tegenWelkBesluitMaaktUBezwaar" : "abc123",
+               "watIsDeRedenNa6WekenTermijnBrBezwaarMaakt" : "qqqq",
+               "hoeHeeftDeGemeenteHetBesluitKenbaarGemaakt" : "Brief",
+               "wanneerHeeftDeGemeenteHetBesluitKenbaarGemaakt" : "2023-12-01"
+            },
+            "het-bezwaar" : {
+               "wiltUGehoordWordenOverHetBezwaar" : "jaHoorzitting",
+               "waaromBentUHetNietEensMetHetBesluit" : "ccccc"
+            },
+            "wie-maakt-bezwaar" : {
+               "namensWieMaaktUBezwaar" : "",
+               "heeftIemandUGemachtigdOmBezwaarTeMaken" : "nee"
+            },
+            "bijlagen-toevoegen" : {
+               "file" : [ ],
+               "wiltUBijlagenMeesturen" : "nee",
+               "geeftUHiervoorToestemming" : "ja"
+            },
+            "uw-gegevenscompleet": ${uw-gegevens#$.uw-gegevenscompleet},
+            "waartegen-bezwaar-maken" : {
+               "wiltUBezwaarMaken" : "nee"
+            }
+         },
+         "type" : "P9_3_BZB",
+         "csv_url" : "",
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",
+         "attachments" : [ ],
+         "language_code" : "nl",
+         "submission_id" : "3f1a7325-390b-415a-bd81-4c788d8bcabe",
+         "public_reference" : "OF-${=org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6)}"
+      },
+      "geometry" : null,
+      "startAt" : "2024-04-09",
+      "endAt" : null,
+      "registrationAt" : "2024-04-09",
+      "correctionFor" : null,
+      "correctedBy" : null
+   }
+}</con:responseContent>
+      </con:response>
+    </con:restMockAction>
+    <con:restMockAction name="/objects/" method="PUT" resourcePath="/objects/" id="726be142-dcb1-4c3e-8401-8eb438bb3f7a">
+      <con:settings/>
+      <con:defaultResponse xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchPath>/*
+// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+
+if( requestPath.contains("json") )
+{
+    // return the name of the response you want to dispatch
+    return "JSON Response"
+}
+
+
+// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("stockholm") )
+{
+    // return the name of the response you want to dispatch
+    return "Response Stockholm"
+}
+else if( queryString.contains("london") )
+{
+    // return the name of the response you want to dispatch
+    return "Response London"
+}
+
+
+// Match based on header
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList
+
+if( acceptEncodingHeaderList.contains("gzip,deflate") )
+{
+    // return the name of the response you want to dispatch
+    return "GZiped Response"
+}
+
+
+// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("some data") )
+{
+    // return the name of the response you want to dispatch
+    return "Response N"
+}
+*/</con:dispatchPath>
+      <con:response name="Response 1" id="bc6d0d59-0ca0-4f07-9d4e-465500c878db" httpResponseStatus="200">
+        <con:settings/>
+      </con:response>
+    </con:restMockAction>
+    <con:restMockAction name="/objects/" method="DELETE" resourcePath="/objects/" id="20833292-89b8-4a2c-b02d-386bccbc8284">
+      <con:settings/>
+      <con:defaultResponse xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchPath>/*
+// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+
+if( requestPath.contains("json") )
+{
+    // return the name of the response you want to dispatch
+    return "JSON Response"
+}
+
+
+// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("stockholm") )
+{
+    // return the name of the response you want to dispatch
+    return "Response Stockholm"
+}
+else if( queryString.contains("london") )
+{
+    // return the name of the response you want to dispatch
+    return "Response London"
+}
+
+
+// Match based on header
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList
+
+if( acceptEncodingHeaderList.contains("gzip,deflate") )
+{
+    // return the name of the response you want to dispatch
+    return "GZiped Response"
+}
+
+
+// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("some data") )
+{
+    // return the name of the response you want to dispatch
+    return "Response N"
+}
+*/</con:dispatchPath>
+      <con:response name="Response 1" id="7dd0673e-b1a4-4937-86d4-d25b0b18ad12" httpResponseStatus="200">
+        <con:settings/>
+      </con:response>
+    </con:restMockAction>
+    <con:restMockAction name="/objects/" method="PATCH" resourcePath="/objects/" id="6b8b45c1-5678-4fd9-9753-f53650bd4bfa">
+      <con:settings/>
+      <con:defaultResponse xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchPath>/*
+// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+
+if( requestPath.contains("json") )
+{
+    // return the name of the response you want to dispatch
+    return "JSON Response"
+}
+
+
+// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("stockholm") )
+{
+    // return the name of the response you want to dispatch
+    return "Response Stockholm"
+}
+else if( queryString.contains("london") )
+{
+    // return the name of the response you want to dispatch
+    return "Response London"
+}
+
+
+// Match based on header
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList
+
+if( acceptEncodingHeaderList.contains("gzip,deflate") )
+{
+    // return the name of the response you want to dispatch
+    return "GZiped Response"
+}
+
+
+// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("some data") )
+{
+    // return the name of the response you want to dispatch
+    return "Response N"
+}
+*/</con:dispatchPath>
+      <con:response name="Response 1" id="591ddab7-38de-480e-af58-dc23c0043cda" httpResponseStatus="200">
+        <con:settings/>
+      </con:response>
+    </con:restMockAction>
+    <con:restMockAction name="/objects//history" method="GET" resourcePath="/objects//history" id="09d47836-a7d0-4010-a4a3-239fb8d0dfc5">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchPath>/*
+// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+
+if( requestPath.contains("json") )
+{
+    // return the name of the response you want to dispatch
+    return "JSON Response"
+}
+
+
+// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("stockholm") )
+{
+    // return the name of the response you want to dispatch
+    return "Response Stockholm"
+}
+else if( queryString.contains("london") )
+{
+    // return the name of the response you want to dispatch
+    return "Response London"
+}
+
+
+// Match based on header
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList
+
+if( acceptEncodingHeaderList.contains("gzip,deflate") )
+{
+    // return the name of the response you want to dispatch
+    return "GZiped Response"
+}
+
+
+// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("some data") )
+{
+    // return the name of the response you want to dispatch
+    return "Response N"
+}
+*/</con:dispatchPath>
+      <con:response name="Response 1" id="435fd0d0-d3f6-45d0-a344-d4fc47652abf" httpResponseStatus="200">
+        <con:settings/>
+      </con:response>
+    </con:restMockAction>
+    <con:restMockAction name="/objects/search" method="POST" resourcePath="/objects/search" id="1e0f78dd-2253-4518-8130-50975ef604c6">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchPath>/*
+// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+
+if( requestPath.contains("json") )
+{
+    // return the name of the response you want to dispatch
+    return "JSON Response"
+}
+
+
+// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("stockholm") )
+{
+    // return the name of the response you want to dispatch
+    return "Response Stockholm"
+}
+else if( queryString.contains("london") )
+{
+    // return the name of the response you want to dispatch
+    return "Response London"
+}
+
+
+// Match based on header
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList
+
+if( acceptEncodingHeaderList.contains("gzip,deflate") )
+{
+    // return the name of the response you want to dispatch
+    return "GZiped Response"
+}
+
+
+// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("some data") )
+{
+    // return the name of the response you want to dispatch
+    return "Response N"
+}
+*/</con:dispatchPath>
+      <con:response name="Response 1" id="3d2a5a55-eaa8-4a45-b1d7-fd5f34bd162c" httpResponseStatus="200">
+        <con:settings/>
       </con:response>
     </con:restMockAction>
   </con:restMockService>

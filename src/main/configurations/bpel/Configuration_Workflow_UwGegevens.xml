@@ -55,8 +55,18 @@
                 <Param name="PaymentDate" xpathExpression="current-date()" >
                     <Param name="NowDate" pattern="{now}" type="DATE" />
                 </Param>
-				<Forward name="success" path="FilterUwGegevensSection" />
+				<Forward name="success" path="UwGegevensMissing_Condition" />
 			</PutInSessionPipe>
+
+            <XmlIfPipe
+                name="UwGegevensMissing_Condition"
+                xpathExpression="string-length(//*[starts-with(name(), 'uw-gegevens')]) = 0"
+                >
+                <Forward name="then" path="UwGegevensMissing_Exception" />
+                <Forward name="else" path="FilterUwGegevensSection" />
+            </XmlIfPipe>
+            
+            <ExceptionPipe name="UwGegevensMissing_Exception" />
 
             <XsltPipe
                 name="FilterUwGegevensSection"

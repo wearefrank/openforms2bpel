@@ -1,0 +1,114 @@
+{
+    "uw-gegevenscompleet": {
+        "fieldSetMetDigiD": {
+            "adresgegevensMD": {
+                "postcodePMD": "3524 VD",
+                "huisletterPMD": "",
+                "huisnummerPMD": "26",
+                "straatnaamPMD": "Ardennen",
+                "woonplaatsPMD": "Utrecht",
+                "huisnummertoevoegingPMD": ""
+            },
+            "contactgegevensMD": {
+                "eMailadresPMD": "f.bekker@utrecht.nl",
+                "telefoonnummerPMD": "0302865464",
+                "telefoonnummerWerkPMD": "",
+                "telefoonnummerMobielPMD": ""
+            },
+            "persoonsgegevensMD": {
+                "bsnPMD": "176513280",
+                "aanhefPMD": "M",
+                "voornamenPMD": "Bob",
+                "achternaamPMD": "Hoekstra",
+                "voorletterSPMD": "B.",
+                "geboortedatumPMD": "1970-06-20",
+                "geboorteplaatsPMD": "Wijk bij Duurstede",
+                "tussenvoegselSPMD": ""
+            }
+        },
+        "initiatingSubject": "persoon",
+        "fieldSetBedrijfMEH": {
+            "bezoekadresMEH": {
+                "plaatsMEH": "",
+                "postcodeMEH": "",
+                "huisletterMEH": "",
+                "huisnummerMEH": "",
+                "straatnaamMEH": "",
+                "huisnummertoevoegingMEH": ""
+            },
+            "communicatieMEH": {
+                "eMailadresMEH": "",
+                "telefoonnummerMEH": ""
+            },
+            "contactpersoonMEH": {
+                "aanhefMEH": "",
+                "achternaamMEH": "",
+                "voorletterSMEH": "",
+                "tussenvoegselSMEH": ""
+            },
+            "gegevensBedrijfOrganisatieMEH": {
+                "kvKNummerMEH": "",
+                "vestigingsnummerMEH": "",
+                "naamBedrijfOrganisatieMEH": ""
+            }
+        },
+        "fieldSetBedrijfZEH": {
+            "bezoekadresZEH": {
+                "plaatsZEH": "",
+                "postcodeZEH": "",
+                "huisletterZEH": "",
+                "huisnummerZEH": null,
+                "straatnaamZEH": "",
+                "huisnummertoevoegingZEH": ""
+            },
+            "communicatieZEH": {
+                "eMailadresZEH": "",
+                "telefoonnummerZEH": "",
+                "postbusGebruikenZEH": "",
+                "postbusOndernemingZEH": {
+                    "postbusnummerZEH": null,
+                    "postbus_plaatsZEH": "",
+                    "postbus_postcodeZEH": ""
+                }
+            },
+            "contactpersoonZEH": {
+                "aanhefZEH": "",
+                "achternaamZEH": "",
+                "voorletterSZEH": "",
+                "tussenvoegselSZEH": ""
+            },
+            "gegevensBedrijfOrganisatieZEH": {
+                "kvKNummerZEH": "",
+                "vestigingsnummerZEH": "",
+                "naamBedrijfOrganisatieZEH": ""
+            }
+        },
+        "fieldSetZonderDigiD": {
+            "adresgegevensZD": {
+                "postcodePZD": "",
+                "huisletterPZD": "",
+                "huisnummerPZD": null,
+                "straatnaamPZD": "",
+                "woonplaatsPZD": "",
+                "huisnummertoevoegingPZD": ""
+            },
+            "contactgegevensZD": {
+                "eMailadresPZD": "",
+                "telefoonnummerPZD": "",
+                "telefoonnummerWerkPZD": "",
+                "telefoonnummerMobielPZD": ""
+            },
+            "persoonsgegevensZD": {
+                "bsnPZD": "",
+                "aanhefPZD": "",
+                "voornamenPZD": "",
+                "achternaamPZD": "",
+                "voorletterSPZD": "",
+                "geboortedatumPZD": "",
+                "tussenvoegselSPZD": ""
+            }
+        },
+        "initiatingSubjectAuth": "DigiD",
+        "bentUEenPersoonOfEenBedrijf": ""
+    }
+}

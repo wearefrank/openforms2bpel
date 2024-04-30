@@ -43,10 +43,121 @@
                 name="FilterUwGegevensSection"
                 styleSheetName="Common/xsl/FilterUwGegevensSection.xslt"
                 storeResultInSessionKey="UwGegevens"
-                preserveInput="true"
                 >
-                <Forward name="success" path="CreateAddDocumentsToCaseCommand" />
+                <Forward name="success" path="UwGegevensSubjectUnauthenticated_Condition" />
             </XsltPipe>
+
+            <XmlIfPipe
+                name="UwGegevensSubjectUnauthenticated_Condition"
+                xpathExpression="not(//*[starts-with(name(), 'uw-gegevens')]/*/*[ends-with(name(), 'MD')] or //*[starts-with(name(), 'uw-gegevens')]/*/*[ends-with(name(), 'MEH')])"
+                >
+                <Forward name="then" path="UwGegevensSubjectUnauthenticated_Exception" />
+                <Forward name="else" path="CreateLookUpCaseIdsRequestMessage" />
+            </XmlIfPipe>
+
+            <ExceptionPipe name="UwGegevensSubjectUnauthenticated_Exception" />
+
+            <XsltPipe
+                name="CreateLookUpCaseIdsRequestMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Cases/Model/LookUpCaseIdsRequestMessage.xslt"
+                storeResultInSessionKey="LookUpCaseIdsRequestMessage"
+                >
+                <Param name="ReferenceNumber" sessionKey="CaseReferenceNumber" />
+                <Forward name="success" path="BpelCasesPostLookUpCaseIdsSender" />
+            </XsltPipe>
+            
+            <SenderPipe
+                name="BpelCasesPostLookUpCaseIdsSender"
+                storeResultInSessionKey="LookUpCaseIdsResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelCasesPostLookUpCaseIdsLocalSender"
+                    javaListener="Bpel_Cases_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="cases:lookUpCaseIds" />
+                <Forward name="success" path="CaseNotFound_Condition" />
+            </SenderPipe>
+
+            <XmlIfPipe
+                name="CaseNotFound_Condition"
+                xpathExpression="string-length(//*:lookUpCaseIdsResponse/*:caseIdMessage/*:cases/*:case) gt 0"
+                >
+                <Forward name="then" path="CreateReadCasesRequestMessage" />
+                <Forward name="else" path="CaseNotFound_Exception" />
+            </XmlIfPipe>
+
+            <ExceptionPipe name="CaseNotFound_Exception" />
+
+            <XsltPipe
+                name="CreateReadCasesRequestMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Cases/Model/ReadCasesRequestMessage.xslt"
+                storeResultInSessionKey="ReadCasesRequestMessage"
+                >
+                <Param name="Id" sessionKey="LookUpCaseIdsResponseMessage" xpathExpression="//*:lookUpCaseIdsResponse/*:caseIdMessage/*:cases/*:case/*:id" />
+                <Forward name="success" path="BpelCasesPostReadCasesSender" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelCasesPostReadCasesSender"
+                storeResultInSessionKey="ReadCasesResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelCasesPostReadCasesLocalSender"
+                    javaListener="Bpel_Cases_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="cases:readCases" />
+                <Forward name="success" path="CheckForUwGegevensIsPerson" />
+            </SenderPipe>
+
+            <XmlIfPipe
+                name="CheckForUwGegevensIsPerson"
+                getInputFromSessionKey="UwGegevens"
+                xpathExpression="//*[starts-with(name(), 'uw-gegevens')]/*[ends-with(name(), 'DigiD')]"
+                >
+                <Forward name="then" path="StorePersonIdentifiers" />
+                <Forward name="else" path="CheckForUwGegevensIsOrganization" />
+            </XmlIfPipe>
+
+            <PutInSessionPipe
+                name="StorePersonIdentifiers"
+                >
+                <Param name="UwGegevensSubject" hidden="true" sessionKey="UwGegevens" xpathExpression="//*[starts-with(name(), 'uw-gegevens')]//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'bsn')]" />
+                <Param name="CaseInitiatingSubject" hidden="true" sessionKey="ReadCasesResponseMessage" xpathExpression="//*:readCasesResponse/*:caseDetailsMessage/*:cases/*:case/*:initiatingSubject/*:person/*:citizenNumber" />
+                <Forward name="success" path="CheckForUwGegevensSubjectMatchingCaseInitiatingSubject" />
+            </PutInSessionPipe>
+
+            <XmlIfPipe
+                name="CheckForUwGegevensIsOrganization"
+                getInputFromSessionKey="UwGegevens"
+                xpathExpression="//*[starts-with(name(), 'uw-gegevens')]/*[starts-with(name(), 'fieldSetBedrijf')]"
+                >
+                <Forward name="then" path="StoreOrganizationIdentifiers" />
+                <Forward name="else" path="UwGegevensSubjectFallthrough_Exception" />
+            </XmlIfPipe>
+
+            <ExceptionPipe name="UwGegevensSubjectFallthrough_Exception" />
+
+            <PutInSessionPipe
+                name="StoreOrganizationIdentifiers"
+                >
+                <Param name="UwGegevensSubject" hidden="true" sessionKey="UwGegevens" xpathExpression="//*[starts-with(name(), 'uw-gegevens')]//*[starts-with(name(), 'gegevensBedrijfOrganisatie')]/*[starts-with(name(), 'kvKNummer')]" />
+                <Param name="CaseInitiatingSubject" hidden="true" sessionKey="ReadCasesResponseMessage" xpathExpression="//*:readCasesResponse/*:caseDetailsMessage/*:cases/*:case/*:initiatingSubject/*:organization/*:nnpId" />
+                <Forward name="success" path="CheckForUwGegevensSubjectMatchingCaseInitiatingSubject" />
+            </PutInSessionPipe>
+
+            <XmlIfPipe
+                name="CheckForUwGegevensSubjectMatchingCaseInitiatingSubject"
+                xpathExpression="$UwGegevensSubject = $CaseInitiatingSubject and string-length($UwGegevensSubject) gt 0 and string-length($CaseInitiatingSubject) gt 0"
+                >
+                <Forward name="then" path="CreateAddDocumentsToCaseCommand" />
+                <Forward name="else" path="UwGegevensSubjectIsNotCaseInitiatingSubject_Exception" />
+            </XmlIfPipe>
+
+            <ExceptionPipe name="UwGegevensSubjectIsNotCaseInitiatingSubject_Exception" />
 
             <XsltPipe
                 name="CreateAddDocumentsToCaseCommand"
@@ -69,12 +180,12 @@
                 <Forward name="then" path="AddDocumentsToCaseCommandSender" />
                 <Forward name="else" path="EXIT" />
             </XmlIfPipe>
-
+            
             <SenderPipe
-                name="AddDocumentsToCaseCommandSender"
-                transactionAttribute="Required"
-                >
-                <MessageStoreSender
+            name="AddDocumentsToCaseCommandSender"
+            transactionAttribute="Required"
+            >
+            <MessageStoreSender
 					name="AddDocumentsToCaseCommandMessageStoreSender"
 					slotId="${instance.name}/AddDocumentsToCaseCommand"
                     onlyStoreWhenMessageIdUnique="true"

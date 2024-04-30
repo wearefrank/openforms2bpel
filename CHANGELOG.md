@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.17.0](https://github.com/wearefrank/openforms2bpel/compare/v1.16.11...v1.17.0) (2024-04-30)
+
+
+### 🍕 Features
+
+* add form result pdf to existing case in twowaycommunication workflow ([482d9c1](https://github.com/wearefrank/openforms2bpel/commit/482d9c17ac5b95b6b657298308e1f5786ede4455))
+
 ## [1.16.11](https://github.com/wearefrank/openforms2bpel/compare/v1.16.10...v1.16.11) (2024-04-26)
 
 

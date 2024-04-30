@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.17.1](https://github.com/wearefrank/openforms2bpel/compare/v1.17.0...v1.17.1) (2024-04-30)
+
+
+### 🐛 Bug Fixes
+
+* update initiatingsubject email and telnr in gegmag instead of cases proxy ([b63169f](https://github.com/wearefrank/openforms2bpel/commit/b63169f53331f049591aa1fc6db5aafa232dbc6d))
+
 ## [1.17.0](https://github.com/wearefrank/openforms2bpel/compare/v1.16.11...v1.17.0) (2024-04-30)
 
 

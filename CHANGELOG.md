@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.17.5](https://github.com/wearefrank/openforms2bpel/compare/v1.17.4...v1.17.5) (2024-05-02)
+
+
+### 🧑‍💻 Code Refactoring
+
+* set lookupperson source to dont_care instead of internal ([093ddb3](https://github.com/wearefrank/openforms2bpel/commit/093ddb383a17de077b1a0a4a565ad940b9a5bc93))
+
 ## [1.17.4](https://github.com/wearefrank/openforms2bpel/compare/v1.17.3...v1.17.4) (2024-05-02)
 
 

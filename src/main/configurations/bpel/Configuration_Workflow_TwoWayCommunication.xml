@@ -202,7 +202,10 @@
                     onlyStoreWhenMessageIdUnique="true"
                     transacted="true"
 					>
-                    <Param name="messageId" xpathExpression="/*/CaseReferenceNumber" />
+                    <Param name="messageId" xpathExpression="concat($CaseReferenceNumber, '-', $TargetCaseReferenceNumber)">
+                        <Param name="TargetCaseReferenceNumber" xpathExpression="/*/CaseReferenceNumber" />
+                        <Param name="CaseReferenceNumber" sessionKey="originalMessage" xpathExpression="/ZgwObject/public_reference" />
+                    </Param>
 				</MessageStoreSender>
                 <Forward name="success" path="EXIT" />
             </SenderPipe>

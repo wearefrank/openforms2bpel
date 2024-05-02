@@ -20,7 +20,7 @@
         </Receiver> -->
         <Receiver
             name="WorkflowSelector"
-            transactionAttribute="Mandatory"
+            transactionAttribute="Required"
             pollInterval="1"
             maxRetries="1"
             >

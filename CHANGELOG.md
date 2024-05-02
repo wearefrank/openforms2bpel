@@ -1,5 +1,20 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.17.3](https://github.com/wearefrank/openforms2bpel/compare/v1.17.2...v1.17.3) (2024-05-02)
+
+
+### 🐛 Bug Fixes
+
+* throw error when initiatingsubject is not found in gegmag so that it can be retried ([50c9c1d](https://github.com/wearefrank/openforms2bpel/commit/50c9c1d587a60ee19fc2b092ec307328305fbda0))
+* tweecommunicatie flagged as duplicate due casereference as messageid ([08a9421](https://github.com/wearefrank/openforms2bpel/commit/08a942132dbefeef58e883acbf36b81a06d10ac7))
+
+## [1.17.2](https://github.com/wearefrank/openforms2bpel/compare/v1.17.1...v1.17.2) (2024-05-01)
+
+
+### 🐛 Bug Fixes
+
+* no transaction when resending message from errorstore ([8420a21](https://github.com/wearefrank/openforms2bpel/commit/8420a212397528f9779c151f75b7012da9c5c1a1))
+
 ## [1.17.1](https://github.com/wearefrank/openforms2bpel/compare/v1.17.0...v1.17.1) (2024-04-30)
 
 

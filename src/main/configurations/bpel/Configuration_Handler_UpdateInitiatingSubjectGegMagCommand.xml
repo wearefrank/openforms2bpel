@@ -68,8 +68,18 @@
                     >
                 </IbisLocalSender>
                 <Param name="soapAction" value="gegmagbasic:lookUpPerson" />
-                <Forward name="success" path="CreateUpdateExtendedPersonInfoRequestMessage" />
+                <Forward name="success" path="PersonNotFound_Condition" />
             </SenderPipe>
+
+            <XmlIfPipe
+                name="PersonNotFound_Condition"
+                xpathExpression="string-length(//*:lookUpPersonResponse/*:personDetailsMessage/*:persons) = 0"
+                >
+                <Forward name="then" path="PersonNotFound_Exception" />
+                <Forward name="else" path="CreateUpdateExtendedPersonInfoRequestMessage" />
+            </XmlIfPipe>
+
+            <ExceptionPipe name="PersonNotFound_Exception" />
 
             <XsltPipe
                 name="CreateUpdateExtendedPersonInfoRequestMessage"
@@ -125,8 +135,18 @@
                     >
                 </IbisLocalSender>
                 <Param name="soapAction" value="gegmagbasic:lookUpExtendedOrganizationInfo" />
-                <Forward name="success" path="CreateUpdateExtendedOrganizationInfoRequestMessage" />
+                <Forward name="success" path="OrganizationNotFound_Condition" />
             </SenderPipe>
+
+            <XmlIfPipe
+                name="OrganizationNotFound_Condition"
+                xpathExpression="string-length(//*:lookUpExtendedOrganizationInfoResponse/*:organizationExtInfoMessage/*:organizations) = 0"
+                >
+                <Forward name="then" path="OrganizationNotFound_Exception" />
+                <Forward name="else" path="CreateUpdateExtendedOrganizationInfoRequestMessage" />
+            </XmlIfPipe>
+
+            <ExceptionPipe name="OrganizationNotFound_Exception" />
 
             <XsltPipe
                 name="CreateUpdateExtendedOrganizationInfoRequestMessage"

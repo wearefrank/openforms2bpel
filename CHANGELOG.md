@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.17.4](https://github.com/wearefrank/openforms2bpel/compare/v1.17.3...v1.17.4) (2024-05-02)
+
+
+### 🐛 Bug Fixes
+
+* check if form initiatingsubject is the same as the case initiatingsubject in tweewegcommunicatie workflow ([c5f5699](https://github.com/wearefrank/openforms2bpel/commit/c5f56990183509b33f11dabbf04f59dd772b204c))
+
 ## [1.17.3](https://github.com/wearefrank/openforms2bpel/compare/v1.17.2...v1.17.3) (2024-05-02)
 
 

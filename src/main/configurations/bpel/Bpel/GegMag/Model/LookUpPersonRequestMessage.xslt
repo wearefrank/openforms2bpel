@@ -12,7 +12,7 @@
     
     <xsl:template match="/">
         <geg:lookUpPerson>
-            <geg:personSearchMessage source="internal" details="supplementary" search="all" return="supplementary">
+            <geg:personSearchMessage source="dont_care" details="supplementary" search="all" return="supplementary">
                 <geg:bsn operator="EQUAL"><xsl:value-of select="$Bsn"/></geg:bsn>
                 <geg:context>
                     <geg:name>7.0 migratieset</geg:name>

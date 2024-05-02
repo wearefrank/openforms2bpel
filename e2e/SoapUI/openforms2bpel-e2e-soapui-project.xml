@@ -17150,7 +17150,9 @@ dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);<
 project.mockServices.each()
 {
 	entry -> entry.value.start();
-}</script>
+}
+project.getRestMockServiceByName("Documenten API Mock").start();
+project.getRestMockServiceByName("Objects API Mock").start();</script>
         </con:config>
       </con:testStep>
       <con:testStep type="groovy" name="set-dynamic-mock-properties" id="27ea4e4a-8c2d-4068-9d32-613e6c85bbe3">
@@ -17480,7 +17482,9 @@ casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSu
 project.mockServices.each()
 {
 	entry -> entry.value.getMockRunner().stop();
-}</script>
+}
+project.getRestMockServiceByName("Documenten API Mock").getMockRunner().stop();
+project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</script>
         </con:config>
       </con:testStep>
       <con:testStep type="restrequest" name="Notification" id="96d08740-8691-41cd-bdbd-9639fdcb1da4" disabled="true">
@@ -18379,7 +18383,9 @@ dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);<
 project.mockServices.each()
 {
 	entry -> entry.value.start();
-}</script>
+}
+project.getRestMockServiceByName("Documenten API Mock").start();
+project.getRestMockServiceByName("Objects API Mock").start();</script>
         </con:config>
       </con:testStep>
       <con:testStep type="groovy" name="set-dynamic-mock-properties" id="eacc93ba-8e37-4821-9e1d-82ba7db615ec">
@@ -18589,7 +18595,9 @@ casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSu
 project.mockServices.each()
 {
 	entry -> entry.value.getMockRunner().stop();
-}</script>
+}
+project.getRestMockServiceByName("Documenten API Mock").getMockRunner().stop();
+project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</script>
         </con:config>
       </con:testStep>
       <con:properties>
@@ -18905,6 +18913,271 @@ project.mockServices.each()
         <con:property>
           <con:name>informatieobjecttype</con:name>
           <con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
+    <con:testCase id="1adb279c-b69e-43b0-b9b1-6ea4d2994617" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="casesservice-unavailable" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="properties" name="Properties" id="1222514b-0920-402a-9ce0-1136fe8f13ea">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>caseReferenceNumber</con:name>
+              <con:value>OF-WWHOOX</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="generate-dynamic-properties" id="a4d2f0cb-6d49-4cff-989c-def295315223">
+        <con:settings/>
+        <con:config>
+          <script>def dynamicProperties = testRunner.testCase.getTestStepByName("Properties");
+
+def caseReferenceNumber = "OF-" + org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6).toUpperCase();
+dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="start-mock-services" id="02b0d934-a762-413f-bb55-ac2c5deaaa2e">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.getMockServiceByName("BPEL BasicStatusUpdate Mock").start()
+project.getMockServiceByName("BPEL Payment Mock").start()
+//project.getMockServiceByName("BPEL CasesProxy Mock").start()
+project.getMockServiceByName("BPEL GegMag Mock").start()
+project.getRestMockServiceByName("Documenten API Mock").start();
+project.getRestMockServiceByName("Objects API Mock").start();</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay" id="4f31d19e-1476-4239-9a90-c142c8077bae">
+        <con:settings/>
+        <con:config>
+          <delay>1000</delay>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="set-dynamic-mock-properties" id="5212c68d-b212-4167-ad42-4b14edcaaba4" disabled="true">
+        <con:settings/>
+        <con:config>
+          <script>def casesServiceMock = testRunner.testCase.testSuite.project.mockServices["BPEL CasesProxy Mock"].getMockRunner().getMockService();
+
+def caseReferenceNumber = context.expand('${Properties#caseReferenceNumber}');
+casesServiceMock.setPropertyValue("caseReferenceNumber", caseReferenceNumber);
+def initiatingSubjectCitizenNumber = context.expand('${#TestCase#initiatingSubjectCitizenNumber}');
+casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSubjectCitizenNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="28b598eb-e467-4123-9e22-ad98eb9b4fb4">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "${#TestCase#initiatingSubjectCitizenNumber}",\r
+         "data" : {\r
+            "uw-gegevenscompleet" : {
+               "fieldSetMetDigiD" : {
+                  "adresgegevensMD" : {
+                     "postcodePMD" : "3524 VD",
+                     "huisletterPMD" : "",
+                     "huisnummerPMD" : "26",
+                     "straatnaamPMD" : "Ardennen",
+                     "woonplaatsPMD" : "Utrecht",
+                     "huisnummertoevoegingPMD" : ""
+                  },
+                  "contactgegevensMD" : {
+                     "eMailadresPMD" : "f.bekker@utrecht.nl",
+                     "telefoonnummerPMD" : "0302865464",
+                     "telefoonnummerWerkPMD" : "",
+                     "telefoonnummerMobielPMD" : ""
+                  },
+                  "persoonsgegevensMD" : {
+                     "bsnPMD" : "${#TestCase#initiatingSubjectCitizenNumber}",
+                     "aanhefPMD" : "M",
+                     "voornamenPMD" : "Bob",
+                     "achternaamPMD" : "Hoekstra",
+                     "voorletterSPMD" : "B.",
+                     "geboortedatumPMD" : "1970-06-20",
+                     "geboorteplaatsPMD" : "Wijk bij Duurstede",
+                     "tussenvoegselSPMD" : ""
+                  }
+               },
+               "initiatingSubject" : "persoon",
+               "fieldSetBedrijfMEH" : {
+                  "bezoekadresMEH" : {
+                     "plaatsMEH" : "",
+                     "postcodeMEH" : "",
+                     "huisletterMEH" : "",
+                     "huisnummerMEH" : "",
+                     "straatnaamMEH" : "",
+                     "huisnummertoevoegingMEH" : ""
+                  },
+                  "communicatieMEH" : {
+                     "eMailadresMEH" : "",
+                     "telefoonnummerMEH" : ""
+                  },
+                  "contactpersoonMEH" : {
+                     "aanhefMEH" : "",
+                     "achternaamMEH" : "",
+                     "voorletterSMEH" : "",
+                     "tussenvoegselSMEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieMEH" : {
+                     "kvKNummerMEH" : "",
+                     "vestigingsnummerMEH" : "",
+                     "naamBedrijfOrganisatieMEH" : ""
+                  }
+               },
+               "fieldSetBedrijfZEH" : {
+                  "bezoekadresZEH" : {
+                     "plaatsZEH" : "",
+                     "postcodeZEH" : "",
+                     "huisletterZEH" : "",
+                     "huisnummerZEH" : null,
+                     "straatnaamZEH" : "",
+                     "huisnummertoevoegingZEH" : ""
+                  },
+                  "communicatieZEH" : {
+                     "eMailadresZEH" : "",
+                     "telefoonnummerZEH" : "",
+                     "postbusGebruikenZEH" : "",
+                     "postbusOndernemingZEH" : {
+                        "postbusnummerZEH" : null,
+                        "postbus_plaatsZEH" : "",
+                        "postbus_postcodeZEH" : ""
+                     }
+                  },
+                  "contactpersoonZEH" : {
+                     "aanhefZEH" : "",
+                     "achternaamZEH" : "",
+                     "voorletterSZEH" : "",
+                     "tussenvoegselSZEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieZEH" : {
+                     "kvKNummerZEH" : "",
+                     "vestigingsnummerZEH" : "",
+                     "naamBedrijfOrganisatieZEH" : ""
+                  }
+               },
+               "fieldSetZonderDigiD" : {
+                  "adresgegevensZD" : {
+                     "postcodePZD" : "",
+                     "huisletterPZD" : "",
+                     "huisnummerPZD" : null,
+                     "straatnaamPZD" : "",
+                     "woonplaatsPZD" : "",
+                     "huisnummertoevoegingPZD" : ""
+                  },
+                  "contactgegevensZD" : {
+                     "eMailadresPZD" : "",
+                     "telefoonnummerPZD" : "",
+                     "telefoonnummerWerkPZD" : "",
+                     "telefoonnummerMobielPZD" : ""
+                  },
+                  "persoonsgegevensZD" : {
+                     "bsnPZD" : "",
+                     "aanhefPZD" : "",
+                     "voornamenPZD" : "",
+                     "achternaamPZD" : "",
+                     "voorletterSPZD" : "",
+                     "geboortedatumPZD" : "",
+                     "tussenvoegselSPZD" : ""
+                  }
+               },
+               "initiatingSubjectAuth" : "DigiD",
+               "bentUEenPersoonOfEenBedrijf" : ""
+            },
+            "gegevenstweewegcommunicatie" : {\r
+               "zaaknummer" : "${Properties#CaseReferenceNumber}",\r
+               "bestandsupload" : [\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/7c50b4b8-e22e-4c83-a50d-f52695aa673b",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/7c50b4b8-e22e-4c83-a50d-f52695aa673b",\r
+                        "form" : "",\r
+                        "name" : "TEST_Marcel.pdf",\r
+                        "size" : 7286,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "TEST_Marcel-82c19341-2c1b-486b-8d19-589234ec29ab.pdf",\r
+                     "size" : 7286,\r
+                     "type" : "application/pdf",\r
+                     "storage" : "url",\r
+                     "originalName" : "TEST_Marcel.pdf"\r
+                  }\r
+               ]\r
+            }\r
+         },\r
+         "type" : "TWEEWEGCOMMUNICATIE",\r
+         "csv_url" : "",\r
+         "payment" : {\r
+            "amount" : "",\r
+            "completed" : false,\r
+            "public_order_ids" : ""\r
+         },\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [\r
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf"\r
+         ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "60114ebd-cfb7-49d1-abad-6a22282b501a",\r
+         "public_reference" : "OF-${=org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6)}"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2024-03-19",\r
+      "endAt" : null,\r
+      "registrationAt" : "2024-03-19",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay 1" id="79d81e8e-d703-4608-bf51-09aee9e99dd7">
+        <con:settings/>
+        <con:config>
+          <delay>5000</delay>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="stop-mock-services" id="62119333-422c-4024-b3cc-0f26ac214272">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.getMockServiceByName("BPEL BasicStatusUpdate Mock").getMockRunner().stop()
+project.getMockServiceByName("BPEL Payment Mock").getMockRunner().stop()
+//project.getMockServiceByName("BPEL CasesProxy Mock").getMockRunner().stop()
+project.getMockServiceByName("BPEL GegMag Mock").getMockRunner().stop()
+project.getRestMockServiceByName("Documenten API Mock").getMockRunner().stop();
+project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</script>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>initiatingSubjectCitizenNumber</con:name>
+          <con:value>176513280</con:value>
         </con:property>
       </con:properties>
     </con:testCase>

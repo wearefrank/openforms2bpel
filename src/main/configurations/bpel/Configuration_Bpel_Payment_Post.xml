@@ -42,7 +42,6 @@
                     <Param name="soapAction" sessionKey="soapAction" /> 
                 </WebServiceSender>
                 <Forward name="success" path="UnwrapResponse" />
-                <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
 
             <SoapWrapperPipe

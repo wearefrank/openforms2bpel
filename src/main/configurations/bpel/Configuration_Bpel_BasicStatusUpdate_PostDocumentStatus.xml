@@ -42,7 +42,6 @@
                     <Param name="url" value="${openforms2bpel.bpel.basic-status-update-service.endoint}" />  
                 </WebServiceSender>
                 <Forward name="success" path="UnwrapResponse" />
-                <Forward name="exception" path="EXCEPTION" />
             </SenderPipe>
 
             <SoapWrapperPipe

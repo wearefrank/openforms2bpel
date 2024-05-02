@@ -18924,7 +18924,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-WWHOOX</con:value>
+              <con:value>OF-HFVOEM</con:value>
             </con:property>
           </con:properties>
         </con:config>

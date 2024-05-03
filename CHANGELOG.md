@@ -1,5 +1,28 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.18.0](https://github.com/wearefrank/openforms2bpel/compare/v1.17.5...v1.18.0) (2024-05-03)
+
+
+### 🍕 Features
+
+* add a person to gegmag when the person is not present in gegmag ([8f44619](https://github.com/wearefrank/openforms2bpel/commit/8f44619b6ad47f75fa319ce0af0eeab3db62a5fa))
+
+
+### 🐛 Bug Fixes
+
+* pick first telnr in uw-gegevens to initiatingsubject translation to prevent error when multiple telnrs are given in uw-gegevens ([7cfe966](https://github.com/wearefrank/openforms2bpel/commit/7cfe966eea5f7d44a88d68b9253afbdb8156aeae))
+
+
+### 🧑‍💻 Code Refactoring
+
+* errors from bpel service calls are caught on the spot for better error feedback ([cee241a](https://github.com/wearefrank/openforms2bpel/commit/cee241aadc06adaa796f694ea156b0d9630f4f2b))
+
+
+### ✅ Tests
+
+* testcase for adding a person to gegmag when the person is not present in gegmag ([b345108](https://github.com/wearefrank/openforms2bpel/commit/b345108b586b475d6b7f2cc6c2576d0099823d78))
+* transactionality and error handling testcase for unavailable cases service endpoint ([0d453ba](https://github.com/wearefrank/openforms2bpel/commit/0d453ba0605f9b52abd4c6a1195d58e003896596))
+
 ## [1.17.5](https://github.com/wearefrank/openforms2bpel/compare/v1.17.4...v1.17.5) (2024-05-02)
 
 

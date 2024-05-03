@@ -75,11 +75,35 @@
                 name="PersonNotFound_Condition"
                 xpathExpression="string-length(//*:lookUpPersonResponse/*:personDetailsMessage/*:persons) = 0"
                 >
-                <Forward name="then" path="PersonNotFound_Exception" />
+                <Forward name="then" path="CreateAddExtendedPersonInfoRequestMessage" />
                 <Forward name="else" path="CreateUpdateExtendedPersonInfoRequestMessage" />
             </XmlIfPipe>
 
-            <ExceptionPipe name="PersonNotFound_Exception" />
+            <XsltPipe
+                name="CreateAddExtendedPersonInfoRequestMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/GegMag/Model/AddExtendedPersonInfoRequestMessage.xslt"
+                storeResultInSessionKey="UpdateExtendedPersonInfoRequestMessage"
+                >
+                <Param name="UwGegevens" sessionKey="originalMessage" type="DOMDOC" />
+                <Param name="Address" styleSheetName="Bpel/GegMag/Model/tAddressExtInfo.xslt" type="DOMDOC">
+                    <Param name="UwGegevens" sessionKey="originalMessage" type="DOMDOC" />
+                </Param>
+                <Forward name="success" path="BpelGegMagAddExtendedPersonInfoSender" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelGegMagAddExtendedPersonInfoSender"
+                storeResultInSessionKey="AddExtendedPersonInfoResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelGegMagAddExtendedPersonInfoLocalSender"
+                    javaListener="Bpel_GegMag_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="gegmagbasic:addExtendedPersonInfo" />
+                <Forward name="success" path="EXIT" />
+            </SenderPipe>
 
             <XsltPipe
                 name="CreateUpdateExtendedPersonInfoRequestMessage"

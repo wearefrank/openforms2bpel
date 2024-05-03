@@ -17129,7 +17129,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-OCJLPJ</con:value>
+              <con:value>OF-GEESFP</con:value>
             </con:property>
           </con:properties>
         </con:config>
@@ -17164,6 +17164,12 @@ def caseReferenceNumber = context.expand('${Properties#caseReferenceNumber}');
 casesServiceMock.setPropertyValue("caseReferenceNumber", caseReferenceNumber);
 def initiatingSubjectCitizenNumber = context.expand('${#TestCase#initiatingSubjectCitizenNumber}');
 casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSubjectCitizenNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay" id="e6c287e5-b85f-4c04-8dd8-11067fb2ee56">
+        <con:settings/>
+        <con:config>
+          <delay>5000</delay>
         </con:config>
       </con:testStep>
       <con:testStep type="restrequest" name="objects_object_create" id="ee0c122e-d7f4-42fd-a402-c08e7b784732" disabled="true">
@@ -17466,6 +17472,9 @@ casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSu
                 <codes>201</codes>
               </con:configuration>
             </con:assertion>
+            <con:assertion type="GroovyScriptAssertion" id="b3830613-c256-4032-bc81-2bf6507d6668" name="Script Assertion">
+              <con:configuration/>
+            </con:assertion>
             <con:credentials>
               <con:authType>No Authorization</con:authType>
             </con:credentials>
@@ -17473,6 +17482,12 @@ casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSu
             <con:jmsPropertyConfig/>
             <con:parameters/>
           </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay 1" id="aa965db9-a36f-41f2-a83b-46b3abfabf28">
+        <con:settings/>
+        <con:config>
+          <delay>5000</delay>
         </con:config>
       </con:testStep>
       <con:testStep type="groovy" name="stop-mock-services" id="8db01f28-3407-4fd5-91b8-6e33f9dd7fe5">
@@ -19181,6 +19196,416 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
         </con:property>
       </con:properties>
     </con:testCase>
+    <con:testCase id="912f62a5-7b93-480d-ba95-8113e9c58e19" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Person with DigiD - Add to GegMag" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="properties" name="Properties" id="5c265a92-0f00-4689-b308-e637ef2e45a7">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:target>C:/Projects/openforms2bpel/e2e/SoapUI/test</con:target>
+          <con:properties>
+            <con:property>
+              <con:name>caseReferenceNumber</con:name>
+              <con:value>OF-EZURSD</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="generate-dynamic-properties" id="29f96bf1-0587-4ffb-b12a-11b1ec0ee0a6">
+        <con:settings/>
+        <con:config>
+          <script>def dynamicProperties = testRunner.testCase.getTestStepByName("Properties");
+
+def caseReferenceNumber = "OF-" + org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6).toUpperCase();
+dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="start-mock-services" id="0ae501ee-aacb-470e-ae74-5c61fc0804ad">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.mockServices.each()
+{
+	entry -> entry.value.start();
+}
+project.getRestMockServiceByName("Documenten API Mock").start();
+project.getRestMockServiceByName("Objects API Mock").start();</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="set-dynamic-mock-properties" id="6bf80da2-55e3-4006-a066-45735d8cb638">
+        <con:settings/>
+        <con:config>
+          <script>def casesServiceMock = testRunner.testCase.testSuite.project.mockServices["BPEL CasesProxy Mock"].getMockRunner().getMockService();
+
+def caseReferenceNumber = context.expand('${Properties#caseReferenceNumber}');
+casesServiceMock.setPropertyValue("caseReferenceNumber", caseReferenceNumber);
+def initiatingSubjectCitizenNumber = context.expand('${#TestCase#initiatingSubjectCitizenNumber}');
+casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSubjectCitizenNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay" id="9063db69-95e1-4d2a-87de-3315d867f55d">
+        <con:settings/>
+        <con:config>
+          <delay>5000</delay>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="27f386ea-a6a2-49f0-80dc-90f97baaabe4" disabled="true">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "999994542",\r
+         "data" : {\r
+            "uw-klacht" : {\r
+               "hoeLaat" : "",\r
+               "watIsUwKlacht" : "Klacht",\r
+               "wanneerIsDitGebeurd" : "Tijdstip",\r
+               "welkOrganisatieOnderdeel" : "anders",\r
+               "tOverWieWiltUEenKlachtIndienen" : "Henk",\r
+               "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "Ontslag"\r
+            },\r
+            "uw-gegevenscompleet" : {\r
+               "fieldSetMetDigiD" : {\r
+                  "adresgegevensMD" : {\r
+                     "postcodePMD" : "1014 AW",\r
+                     "huisletterPMD" : "",\r
+                     "huisnummerPMD" : "14",\r
+                     "straatnaamPMD" : "Schakelstraat",\r
+                     "woonplaatsPMD" : "Amsterdam",\r
+                     "huisnummertoevoegingPMD" : "H"\r
+                  },\r
+                  "contactgegevensMD" : {\r
+                     "eMailadresPMD" : "m.van.altena@utrecht.nl",\r
+                     "telefoonnummerPMD" : "0169795135"\r
+                  },\r
+                  "persoonsgegevensMD" : {\r
+                     "achternaamPMD" : "Braber",\r
+                     "voorletterSPMD" : "",\r
+                     "tussenvoegselSPMD" : "den"\r
+                  }\r
+               }\r
+            },\r
+            "bijlagen-toevoegen-klacht" : {\r
+               "wiltUBijlagenMeesturen" : "nee",\r
+               "ikWilNaBehandelingTevredenheidsonderzoek" : "nee"\r
+            }\r
+         },\r
+         "type" : "P9_2_KLB",\r
+         "csv_url" : "",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [ ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "ec246c46-4578-4781-a400-f35daa82ecb2",\r
+         "public_reference" : "${Properties#CaseReferenceNumber}"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2023-11-03",\r
+      "endAt" : null,\r
+      "registrationAt" : "2023-11-03",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Copy of objects_object_create" id="1d90a376-b424-4bec-bd1c-51512ad2e551">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Copy of objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "${#TestCase#initiatingSubjectCitizenNumber}",\r
+         "data" : {\r
+            "uw-klacht" : {\r
+               "hoeLaat" : "Tijdstip",\r
+               "watIsUwKlacht" : "Klacht",\r
+               "wanneerIsDitGebeurd" : "Wanneer",\r
+               "welkOrganisatieOnderdeel" : "anders",\r
+               "tOverWieWiltUEenKlachtIndienen" : "Henk",\r
+               "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "Ontslag"\r
+            },\r
+            "uw-gegevenscompleet" : {
+               "fieldSetMetDigiD" : {
+                  "adresgegevensMD" : {
+                     "postcodePMD" : "3524 VD",
+                     "huisletterPMD" : "A",
+                     "huisnummerPMD" : "26",
+                     "straatnaamPMD" : "Ardennen",
+                     "woonplaatsPMD" : "Utrecht",
+                     "huisnummertoevoegingPMD" : "1"
+                  },
+                  "contactgegevensMD" : {
+                     "eMailadresPMD" : "f.bekker@utrecht.nl",
+                     "telefoonnummerPMD" : "0302865464",
+                     "telefoonnummerWerkPMD" : "0302865465",
+                     "telefoonnummerMobielPMD" : "0302865466"
+                  },
+                  "persoonsgegevensMD" : {
+                     "bsnPMD" : "${#TestCase#initiatingSubjectCitizenNumber}",
+                     "aanhefPMD" : "deHeer",
+                     "voornamenPMD" : "Bob",
+                     "achternaamPMD" : "Hoekstra",
+                     "voorletterSPMD" : "B.",
+                     "geboortedatumPMD" : "1970-06-20",
+                     "geboorteplaatsPMD" : "Wijk bij Duurstede",
+                     "tussenvoegselSPMD" : "van"
+                  }
+               },
+               "initiatingSubject" : "persoon",
+               "fieldSetBedrijfMEH" : {
+                  "bezoekadresMEH" : {
+                     "plaatsMEH" : "",
+                     "postcodeMEH" : "",
+                     "huisletterMEH" : "",
+                     "huisnummerMEH" : "",
+                     "straatnaamMEH" : "",
+                     "huisnummertoevoegingMEH" : ""
+                  },
+                  "communicatieMEH" : {
+                     "eMailadresMEH" : "",
+                     "telefoonnummerMEH" : ""
+                  },
+                  "contactpersoonMEH" : {
+                     "aanhefMEH" : "",
+                     "achternaamMEH" : "",
+                     "voorletterSMEH" : "",
+                     "tussenvoegselSMEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieMEH" : {
+                     "kvKNummerMEH" : "",
+                     "vestigingsnummerMEH" : "",
+                     "naamBedrijfOrganisatieMEH" : ""
+                  }
+               },
+               "fieldSetBedrijfZEH" : {
+                  "bezoekadresZEH" : {
+                     "plaatsZEH" : "",
+                     "postcodeZEH" : "",
+                     "huisletterZEH" : "",
+                     "huisnummerZEH" : null,
+                     "straatnaamZEH" : "",
+                     "huisnummertoevoegingZEH" : ""
+                  },
+                  "communicatieZEH" : {
+                     "eMailadresZEH" : "",
+                     "telefoonnummerZEH" : "",
+                     "postbusGebruikenZEH" : "",
+                     "postbusOndernemingZEH" : {
+                        "postbusnummerZEH" : null,
+                        "postbus_plaatsZEH" : "",
+                        "postbus_postcodeZEH" : ""
+                     }
+                  },
+                  "contactpersoonZEH" : {
+                     "aanhefZEH" : "",
+                     "achternaamZEH" : "",
+                     "voorletterSZEH" : "",
+                     "tussenvoegselSZEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieZEH" : {
+                     "kvKNummerZEH" : "",
+                     "vestigingsnummerZEH" : "",
+                     "naamBedrijfOrganisatieZEH" : ""
+                  }
+               },
+               "fieldSetZonderDigiD" : {
+                  "adresgegevensZD" : {
+                     "postcodePZD" : "",
+                     "huisletterPZD" : "",
+                     "huisnummerPZD" : null,
+                     "straatnaamPZD" : "",
+                     "woonplaatsPZD" : "",
+                     "huisnummertoevoegingPZD" : ""
+                  },
+                  "contactgegevensZD" : {
+                     "eMailadresPZD" : "",
+                     "telefoonnummerPZD" : "",
+                     "telefoonnummerWerkPZD" : "",
+                     "telefoonnummerMobielPZD" : ""
+                  },
+                  "persoonsgegevensZD" : {
+                     "bsnPZD" : "",
+                     "aanhefPZD" : "",
+                     "voornamenPZD" : "",
+                     "achternaamPZD" : "",
+                     "voorletterSPZD" : "",
+                     "geboortedatumPZD" : "",
+                     "tussenvoegselSPZD" : ""
+                  }
+               },
+               "initiatingSubjectAuth" : "DigiD",
+               "bentUEenPersoonOfEenBedrijf" : ""
+            },
+            "bijlagen-toevoegen-klacht" : {\r
+               "file" : [\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4df96139-ef95-419d-9259-e64799587c09",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4df96139-ef95-419d-9259-e64799587c09",\r
+                        "form" : "",\r
+                        "name" : "TEST_Marcel.pdf",\r
+                        "size" : 7286,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "TEST_Marcel-0aec57d3-db5d-4bfb-b95d-c68de83e6d34.pdf",\r
+                     "size" : 7286,\r
+                     "type" : "application/pdf",\r
+                     "storage" : "url",\r
+                     "originalName" : "TEST_Marcel.pdf"\r
+                  },\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/082db838-0867-46d3-9a55-8a94ab362c51",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/082db838-0867-46d3-9a55-8a94ab362c51",\r
+                        "form" : "",\r
+                        "name" : "1.txt",\r
+                        "size" : 13,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "1-9a195eac-3ee7-4eee-9a82-f225e3d58167.txt",\r
+                     "size" : 13,\r
+                     "type" : "text/plain",\r
+                     "storage" : "url",\r
+                     "originalName" : "1.txt"\r
+                  },\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4b292d56-7dd5-45a8-8e8c-23607cb2d0a0",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4b292d56-7dd5-45a8-8e8c-23607cb2d0a0",\r
+                        "form" : "",\r
+                        "name" : "test.docx",\r
+                        "size" : 172268,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "test-d7c2cfdd-2407-4374-b21e-0cc0373f99bf.docx",\r
+                     "size" : 172268,\r
+                     "type" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document",\r
+                     "storage" : "url",\r
+                     "originalName" : "test.docx"\r
+                  }\r
+               ],\r
+               "wiltUBijlagenMeesturen" : "ja",\r
+               "ikWilNaBehandelingTevredenheidsonderzoek" : "nee"\r
+            }\r
+         },\r
+         "type" : "P9_2_KLB",\r
+         "csv_url" : "",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf"
+         ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "076f447a-f0d4-481a-aeb1-3c14aea183ec",\r
+         "public_reference" : "${Properties#CaseReferenceNumber}"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2023-11-09",\r
+      "endAt" : null,\r
+      "registrationAt" : "2023-11-09",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="GroovyScriptAssertion" id="b3830613-c256-4032-bc81-2bf6507d6668" name="Script Assertion">
+              <con:configuration/>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay 1" id="6baef09f-5e5a-4edc-a861-72c17a6a73ba">
+        <con:settings/>
+        <con:config>
+          <delay>5000</delay>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="stop-mock-services" id="d3f267d4-13b8-4255-a5bd-8fb2c54e610a">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.mockServices.each()
+{
+	entry -> entry.value.getMockRunner().stop();
+}
+project.getRestMockServiceByName("Documenten API Mock").getMockRunner().stop();
+project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Notification" id="6450fcb2-4890-49dd-b527-fd376a214599" disabled="true">
+        <con:settings/>
+        <con:config service="Objects API" resourcePath="/objects/{uuid}" methodName="object_read" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Notification" id="5219b4f4-71f0-4bbd-89f7-ffcf90a8e9b2" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://host.docker.internal:8089/mock/objects/api/v2</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://host.docker.internal/mock/objects/api/v2/testuuid/objects/</con:originalUri>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters>
+              <entry key="uuid" value="P9_2_KLB-uw-gegevens-digid-default" xmlns="http://eviware.com/soapui/config"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>initiatingSubjectCitizenNumber</con:name>
+          <con:value>999999990</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
     <con:properties/>
   </con:testSuite>
   <con:testSuite id="ed3fa0e1-6773-42cc-8151-5a1fa4eca15e" name="Integration Tests">
@@ -19838,11 +20263,11 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
     <con:properties>
       <con:property>
         <con:name>caseReferenceNumber</con:name>
-        <con:value>OF-IOBSTV</con:value>
+        <con:value>OF-EZURSD</con:value>
       </con:property>
       <con:property>
         <con:name>initiatingSubjectCitizenNumber</con:name>
-        <con:value>176513280</con:value>
+        <con:value>999999990</con:value>
       </con:property>
     </con:properties>
     <con:onRequestScript/>
@@ -21340,9 +21765,9 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
     </con:mockOperation>
     <con:mockOperation name="lookUpPerson" id="c34ea4d3-ff9b-46db-929d-2c5c0fbf6df3" interface="GegmagbasicBinding" operation="lookUpPerson">
       <con:settings/>
-      <con:defaultResponse>Response 1</con:defaultResponse>
-      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
-      <con:response name="Response 1" id="70cac321-2b7b-4702-ab3b-94a687c5f343" httpResponseStatus="200" encoding="UTF-8">
+      <con:defaultResponse>Default</con:defaultResponse>
+      <con:dispatchStyle>QUERY_MATCH</con:dispatchStyle>
+      <con:response name="Default" id="70cac321-2b7b-4702-ab3b-94a687c5f343" httpResponseStatus="200" encoding="UTF-8">
         <con:settings/>
         <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
    <soapenv:Header/>
@@ -21393,7 +21818,28 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
 </soapenv:Envelope>]]></con:responseContent>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpPerson"/>
       </con:response>
-      <con:dispatchConfig/>
+      <con:response name="NotFound" id="70cac321-2b7b-4702-ab3b-94a687c5f343" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:geg="http://www.emaxx.org/functional/gegmag">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <geg:lookUpPersonResponse>
+         <geg:personDetailsMessage unsupportedMethod="false">
+            <geg:persons/>
+         </geg:personDetailsMessage>
+      </geg:lookUpPersonResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:lookUpPerson"/>
+      </con:response>
+      <con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:query>
+          <con:name>bsn</con:name>
+          <con:query>//*:lookUpPerson/*:personSearchMessage/*:bsn/text()</con:query>
+          <con:match>999999990</con:match>
+          <con:response>NotFound</con:response>
+        </con:query>
+      </con:dispatchConfig>
     </con:mockOperation>
     <con:mockOperation name="lookUpPersonBySupplementary" id="c017a2b0-bf0b-4ed9-8d6d-86bde66c3b5d" interface="GegmagbasicBinding" operation="lookUpPersonBySupplementary">
       <con:settings/>

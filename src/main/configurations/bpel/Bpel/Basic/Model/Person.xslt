@@ -110,7 +110,7 @@
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:telephoneNumber', 'empty', zgw:FromOrderedSource(
                     $TelephoneNumber,
                     $Person//basic:telephoneNumber,
-                    $UwGegevens//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer')],
+                    $UwGegevens//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer')][0],
                     //basic:telephoneNumber),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')"/>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basic:faxNumber', 'empty', zgw:FromOrderedSource(

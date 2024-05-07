@@ -1,5 +1,18 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.18.1](https://github.com/wearefrank/openforms2bpel/compare/v1.18.0...v1.18.1) (2024-05-07)
+
+
+### 🐛 Bug Fixes
+
+* continue without error when an organization is not found in gegmag ([e69e9af](https://github.com/wearefrank/openforms2bpel/commit/e69e9af8a6f2eb3ec18154871c6a5976662c225c))
+
+
+### 🔁 Continuous Integration
+
+* lock conventionalcommit preset version to major 7 due to breaking change ([e1409a6](https://github.com/wearefrank/openforms2bpel/commit/e1409a607b54ae2e07c54a0036d1a354a079f6e6))
+* lock conventionalcommit preset version to major 7 due to breaking change ([baf9213](https://github.com/wearefrank/openforms2bpel/commit/baf9213924e9f51948228240744e2ff98dfaeabc))
+
 ## [1.18.0](https://github.com/wearefrank/openforms2bpel/compare/v1.17.5...v1.18.0) (2024-05-03)
 
 

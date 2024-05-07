@@ -166,11 +166,11 @@
                 name="OrganizationNotFound_Condition"
                 xpathExpression="string-length(//*:lookUpExtendedOrganizationInfoResponse/*:organizationExtInfoMessage/*:organizations) = 0"
                 >
-                <Forward name="then" path="OrganizationNotFound_Exception" />
+                <Forward name="then" path="EXIT" />
                 <Forward name="else" path="CreateUpdateExtendedOrganizationInfoRequestMessage" />
             </XmlIfPipe>
 
-            <ExceptionPipe name="OrganizationNotFound_Exception" />
+            <!-- <ExceptionPipe name="OrganizationNotFound_Exception" /> -->
 
             <XsltPipe
                 name="CreateUpdateExtendedOrganizationInfoRequestMessage"

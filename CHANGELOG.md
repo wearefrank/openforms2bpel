@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.18.2](https://github.com/wearefrank/openforms2bpel/compare/v1.18.1...v1.18.2) (2024-05-15)
+
+
+### 🐛 Bug Fixes
+
+* incorrect provider is passed to addDocumentsToCaseHandler when no auth is used and no bsn or kvknummer is provided ([73176c9](https://github.com/wearefrank/openforms2bpel/commit/73176c9f2ba844dfaa5c33ace5f57fb4c046c2bc))
+
+
+### ✅ Tests
+
+* add testcase for no auth and no bsn or kvknr ([a78d71a](https://github.com/wearefrank/openforms2bpel/commit/a78d71af101559ac36243a9dfe659818156cb4a7))
+
 ## [1.18.1](https://github.com/wearefrank/openforms2bpel/compare/v1.18.0...v1.18.1) (2024-05-07)
 
 

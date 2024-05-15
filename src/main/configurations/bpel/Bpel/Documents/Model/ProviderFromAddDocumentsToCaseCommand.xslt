@@ -26,7 +26,7 @@
     <xsl:template match="/">
         <document:provider>
             <xsl:choose>
-                <xsl:when test="$AddDocumentsToCaseCommand/AddDocumentsToCaseCommand/Provider/Person/CitizenNumber or $CitizenNumber">
+                <xsl:when test="string-length($AddDocumentsToCaseCommand/AddDocumentsToCaseCommand/Provider/Person/CitizenNumber) gt 0 or $CitizenNumber">
                     <document:citizenNumber>
                         <xsl:choose>
                             <xsl:when test="$AddDocumentsToCaseCommand/AddDocumentsToCaseCommand/Provider/Person/AuthMethod = 'DigiD' or $CitizenNumber_Authentic='true'">
@@ -43,7 +43,7 @@
                             //document:provider/cases:citizenNumber)" />
                     </document:citizenNumber>
                 </xsl:when>
-                <xsl:when test="$AddDocumentsToCaseCommand/AddDocumentsToCaseCommand/Provider/Organization/NnpId or $NnpId">
+                <xsl:when test="string-length($AddDocumentsToCaseCommand/AddDocumentsToCaseCommand/Provider/Organization/NnpId) gt 0 or $NnpId">
                     <document:nnpId>
                         <xsl:choose>
                             <xsl:when test="$AddDocumentsToCaseCommand/AddDocumentsToCaseCommand/Provider/Organization/AuthMethod = 'E-Herkenning' or $NnpId_Authentic='true'">

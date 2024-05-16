@@ -1,5 +1,23 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.19.0](https://github.com/wearefrank/openforms2bpel/compare/v1.18.2...v1.19.0) (2024-05-16)
+
+
+### 🍕 Features
+
+* send no-reply email to user on unresolvable functional errors ([0e76805](https://github.com/wearefrank/openforms2bpel/commit/0e76805d0cfb65f7231f9f67bdd4ae90b9ba877d))
+
+
+### 🐛 Bug Fixes
+
+* retries are incorrectly triggered due to deadlocked transactions ([8aad17e](https://github.com/wearefrank/openforms2bpel/commit/8aad17eedc4f9aa9750c4560df659fb8e5c7f7ed))
+* unable to see webservicesender response when response is a soapfault ([7f8337d](https://github.com/wearefrank/openforms2bpel/commit/7f8337dc28d86c265b2480b71ecf0f211839836c))
+
+
+### ✅ Tests
+
+* add test-environment docker-compose with mailslurper smtp testserver ([380d3a5](https://github.com/wearefrank/openforms2bpel/commit/380d3a542bb1a9fd4af958a9b18532bc9dad0e76))
+
 ## [1.18.2](https://github.com/wearefrank/openforms2bpel/compare/v1.18.1...v1.18.2) (2024-05-15)
 
 

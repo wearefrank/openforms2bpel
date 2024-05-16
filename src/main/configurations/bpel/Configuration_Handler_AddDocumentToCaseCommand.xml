@@ -10,12 +10,14 @@
         <!-- <Receiver
             name="Handler_AddDocumentToCaseCommand"
             transactionAttribute="RequiresNew"
-            pollInterval="1"
+            pollInterval="5"
             maxRetries="0"
             >
             <MessageStoreListener
                 name="Handler_AddDocumentToCaseCommand"
 				slotId="${instance.name}/AddDocumentToCaseCommand"
+                peekUntransacted="true"
+                statusValueInProcess="I"
 				/>
         </Receiver> -->
 

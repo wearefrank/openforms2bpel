@@ -16,12 +16,14 @@
         <!-- <Receiver
             name="Workflow_UwGegevensHandler"
             transactionAttribute="RequiresNew"
-            pollInterval="1"
-            maxRetries="1"
+            pollInterval="5"
+            maxRetries="0"
             >
             <MessageStoreListener
                 name="Workflow_UwGegevensHandler"
 				slotId="${instance.name}/Workflow_UwGegevens"
+                peekUntransacted="true"
+                statusValueInProcess="I"
 				/>
         </Receiver> -->
 

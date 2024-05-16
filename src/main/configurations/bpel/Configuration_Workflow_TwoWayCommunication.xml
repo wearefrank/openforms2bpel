@@ -16,12 +16,14 @@
         <!-- <Receiver
             name="Workflow_TwoWayCommunicationHandler"
             transactionAttribute="RequiresNew"
-            pollInterval="1"
-            maxRetries="1"
+            pollInterval="5"
+            maxRetries="0"
             >
             <MessageStoreListener
                 name="Workflow_TwoWayCommunicationHandler"
 				slotId="${instance.name}/Workflow_TwoWayCommunication"
+                peekUntransacted="true"
+                statusValueInProcess="I"
 				/>
         </Receiver> -->
 
@@ -94,8 +96,43 @@
                 xpathExpression="string-length(//*:lookUpCaseIdsResponse/*:caseIdMessage/*:cases/*:case) gt 0"
                 >
                 <Forward name="then" path="CreateReadCasesRequestMessage" />
+                <Forward name="else" path="CaseNotFound_MailCondition" />
+            </XmlIfPipe>
+
+            <XmlIfPipe
+                name="CaseNotFound_MailCondition"
+                xpathExpression="string-length('${openforms2bpel.workflows.tweewegcommunicatie.on-case-not-found.mail-template}') gt 0"
+                >
+                <Forward name="then" path="CaseNotFound_StoreMailTemplateName" />
                 <Forward name="else" path="CaseNotFound_Exception" />
             </XmlIfPipe>
+
+            <PutInSessionPipe
+                name="CaseNotFound_StoreMailTemplateName"
+                >
+                <Param name="TemplateName" value="${openforms2bpel.workflows.tweewegcommunicatie.on-case-not-found.mail-template}" />
+                <Forward name="success" path="CaseNotFound_SendNoReplyUserEmailCommand" />
+            </PutInSessionPipe>
+
+            <SenderPipe
+				name="CaseNotFound_SendNoReplyUserEmailCommand"
+                getInputFromSessionKey="UwGegevens"
+                transactionAttribute="Required"
+				>
+				<MessageStoreSender
+					name="CaseNotFound_SendNoReplyUserEmailCommandMessageStoreSender"
+					slotId="${instance.name}/SendNoReplyUserEmailCommand"
+                    sessionKeys="TemplateName"
+                    onlyStoreWhenMessageIdUnique="true"
+                    transacted="true"
+					>
+                    <Param name="messageId" xpathExpression="concat($CaseReferenceNumber, '-', $TargetCaseReferenceNumber)">
+                        <Param name="TargetCaseReferenceNumber" sessionKey="CaseReferenceNumber" />
+                        <Param name="CaseReferenceNumber" sessionKey="originalMessage" xpathExpression="/ZgwObject/public_reference" />
+                    </Param>
+				</MessageStoreSender>
+                <Forward name="success" path="EXIT" />
+			</SenderPipe>
 
             <ExceptionPipe name="CaseNotFound_Exception" />
 
@@ -165,10 +202,45 @@
                 <Param name="UwGegevensSubject" sessionKey="UwGegevensSubject" />
                 <Param name="CaseInitiatingSubject" sessionKey="CaseInitiatingSubject" />
                 <Forward name="then" path="CreateAddDocumentsToCaseCommand" />
-                <Forward name="else" path="UwGegevensSubjectIsNotCaseInitiatingSubject_Exception" />
+                <Forward name="else" path="SubjectNotEqualsCaseSubject_MailCondition" />
             </XmlIfPipe>
 
-            <ExceptionPipe name="UwGegevensSubjectIsNotCaseInitiatingSubject_Exception" />
+            <XmlIfPipe
+                name="SubjectNotEqualsCaseSubject_MailCondition"
+                xpathExpression="string-length('${openforms2bpel.workflows.tweewegcommunicatie.on-subject-not-equals-case-subject.mail-template}') gt 0"
+                >
+                <Forward name="then" path="SubjectNotEqualsCaseSubject_StoreMailTemplateName" />
+                <Forward name="else" path="SubjectNotEqualsCaseSubject_Exception" />
+            </XmlIfPipe>
+
+            <PutInSessionPipe
+                name="SubjectNotEqualsCaseSubject_StoreMailTemplateName"
+                >
+                <Param name="TemplateName" value="${openforms2bpel.workflows.tweewegcommunicatie.on-subject-not-equals-case-subject.mail-template}" />
+                <Forward name="success" path="SubjectNotEqualsCaseSubject_SendNoReplyUserEmailCommand" />
+            </PutInSessionPipe>
+
+            <SenderPipe
+				name="SubjectNotEqualsCaseSubject_SendNoReplyUserEmailCommand"
+                getInputFromSessionKey="UwGegevens"
+                transactionAttribute="Required"
+				>
+				<MessageStoreSender
+					name="SubjectNotEqualsCaseSubject_SendNoReplyUserEmailCommandMessageStoreSender"
+					slotId="${instance.name}/SendNoReplyUserEmailCommand"
+                    sessionKeys="TemplateName"
+                    onlyStoreWhenMessageIdUnique="true"
+                    transacted="true"
+					>
+                    <Param name="messageId" xpathExpression="concat($CaseReferenceNumber, '-', $TargetCaseReferenceNumber)">
+                        <Param name="TargetCaseReferenceNumber" sessionKey="CaseReferenceNumber" />
+                        <Param name="CaseReferenceNumber" sessionKey="originalMessage" xpathExpression="/ZgwObject/public_reference" />
+                    </Param>
+				</MessageStoreSender>
+                <Forward name="success" path="EXIT" />
+			</SenderPipe>
+
+            <ExceptionPipe name="SubjectNotEqualsCaseSubject_Exception" />
 
             <XsltPipe
                 name="CreateAddDocumentsToCaseCommand"

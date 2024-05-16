@@ -21,12 +21,14 @@
         <Receiver
             name="WorkflowSelector"
             transactionAttribute="Required"
-            pollInterval="1"
-            maxRetries="1"
+            pollInterval="5"
+            maxRetries="0"
             >
             <MessageStoreListener
                 name="WorkflowSelector"
 				slotId="${instance.name}/WorkflowSelector"
+                peekUntransacted="true"
+                statusValueInProcess="I"
 				/>
         </Receiver>
 

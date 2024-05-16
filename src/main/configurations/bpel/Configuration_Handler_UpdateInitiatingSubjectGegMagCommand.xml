@@ -16,12 +16,14 @@
         <!-- <Receiver
             name="Handler_UpdateInitiatingSubjectGegMagCommand"
             transactionAttribute="Required"
-            pollInterval="1"
-            maxRetries="1"
+            pollInterval="5"
+            maxRetries="0"
             >
             <MessageStoreListener
             name="Handler_UpdateInitiatingSubjectGegMagCommand"
             slotId="${instance.name}/UpdateInitiatingSubjectGegMagCommand"
+            peekUntransacted="true"
+            statusValueInProcess="I"
             />
         </Receiver> -->
         

@@ -16,12 +16,14 @@
         <Receiver
             name="UpdatePaymentCommandHandler"
             transactionAttribute="RequiresNew"
-            pollInterval="1"
-            maxRetries="1"
+            pollInterval="5"
+            maxRetries="0"
             >
             <MessageStoreListener
                 name="UpdatePaymentCommandHandler"
 				slotId="${instance.name}/UpdatePaymentCommand"
+                peekUntransacted="true"
+                statusValueInProcess="I"
                 sessionKeys="CaseReferenceNumber,PaymentOrderId,PaymentDate"
 				/>
         </Receiver>

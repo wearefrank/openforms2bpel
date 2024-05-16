@@ -11,6 +11,7 @@
         <!ENTITY Bpel_Documents_PostStartBatch              SYSTEM "./Configuration_Bpel_Documents_PostStartBatch.xml">
         <!ENTITY Handler_AddDocumentsToCaseCommand          SYSTEM "./Configuration_Handler_AddDocumentsToCaseCommand.xml">
         <!ENTITY Handler_AddDocumentToCaseCommand           SYSTEM "./Configuration_Handler_AddDocumentToCaseCommand.xml">
+        <!ENTITY Handler_SendNoReplyUserEmailCommand        SYSTEM "./Configuration_Handler_SendNoReplyUserEmailCommand.xml">
         <!ENTITY Handler_UpdateInitiatingSubjectGegMagCommand        SYSTEM "./Configuration_Handler_UpdateInitiatingSubjectGegMagCommand.xml">
         <!ENTITY Bpel_GegMag_Post                           SYSTEM "./Configuration_Bpel_GegMag_Post.xml">
         <!ENTITY Bpel_Mtom_Mock                             SYSTEM "./Configuration_Bpel_Mtom_Mock.xml">
@@ -39,6 +40,7 @@
     &Bpel_Documents_PostStartBatch;
     &Handler_AddDocumentsToCaseCommand;
     &Handler_AddDocumentToCaseCommand;
+    &Handler_SendNoReplyUserEmailCommand;
     &Handler_UpdateInitiatingSubjectGegMagCommand;
     &Bpel_GegMag_Post;
     &Bpel_Mtom_Mock;

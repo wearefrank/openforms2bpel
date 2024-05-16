@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <mailTemplates>
+        <name>unable-to-add-document-to-case-default</name>
+        <subject>Document toevoegen aan zaak niet gelukt</subject>
+        <messageType>text/html</messageType>
+        <message>
+            <![CDATA[
+            Beste,
+ 
+            U heeft onlangs geprobeerd om één of meerdere documenten toe te voegen aan een aanvraag die u eerder bij ons heeft gedaan. Dit is helaas niet gelukt.
+            Reden is dat het zaaknummer waaraan u document(en) toe wilde voegen [OF-Nummer] niet klopt. Het juiste zaaknummer vindt u in de bevestigingsmail van de originele aanvraag.
+            Wij vragen u de aanvraag opnieuw toe te sturen en daarin het juiste zaaknummer in te vullen.
+             
+            Met vriendelijke groet,
+            ${vars.signature-from-name}
+            ]]>
+        </message>
+    </mailTemplates>
+</root>

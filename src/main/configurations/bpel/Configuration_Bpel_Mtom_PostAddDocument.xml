@@ -27,12 +27,15 @@
                     allowSelfSignedCertificates="${openforms2bpel.bpel.mtom-service.allow-self-signed-certs}"
                     ignoreCertificateExpiredException="${openforms2bpel.bpel.mtom-service.ignore-expired-certs}"
                     timeout="${openforms2bpel.bpel.mtom-service.timeout}"
-                    throwApplicationFaults="true"
+                    throwApplicationFaults="false"
                     >
                     <Param name="url" value="${openforms2bpel.bpel.mtom-service.endoint}" />  
                 </WebServiceSender>
                 <Forward name="success" path="UnwrapResponse" />
+                <Forward name="exception" path="SoapFault_Exception" />
             </SenderPipe>
+
+            <ExceptionPipe name="SoapFault_Exception" />
 
             <SoapWrapperPipe
                 name="UnwrapResponse"

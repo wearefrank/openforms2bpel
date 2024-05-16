@@ -17125,7 +17125,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       <con:testStep type="properties" name="Properties" id="003781bf-43fb-455d-a8e5-4f4907cc5547">
         <con:settings/>
         <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:target>C:/Projects/openforms2bpel/e2e/SoapUI/test</con:target>
+          <con:target/>
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
@@ -19024,7 +19024,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-IOBSTV</con:value>
+              <con:value>OF-MGBYYT</con:value>
             </con:property>
           </con:properties>
         </con:config>
@@ -19059,6 +19059,12 @@ def caseReferenceNumber = context.expand('${Properties#caseReferenceNumber}');
 casesServiceMock.setPropertyValue("caseReferenceNumber", caseReferenceNumber);
 def initiatingSubjectCitizenNumber = context.expand('${#TestCase#initiatingSubjectCitizenNumber}');
 casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSubjectCitizenNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay" id="f39fd983-f424-4ce1-969d-6c74b23ea063">
+        <con:settings/>
+        <con:config>
+          <delay>5000</delay>
         </con:config>
       </con:testStep>
       <con:testStep type="restrequest" name="objects_object_create" id="817e33f8-2c51-4a00-84c1-2f4e1171b595">
@@ -19191,7 +19197,7 @@ casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSu
                "bentUEenPersoonOfEenBedrijf" : ""
             },
             "gegevenstweewegcommunicatie" : {\r
-               "zaaknummer" : "${Properties#CaseReferenceNumber}",\r
+               "zaaknummer" : "${Properties#caseReferenceNumber}",\r
                "bestandsupload" : [\r
                   {\r
                      "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/7c50b4b8-e22e-4c83-a50d-f52695aa673b",\r
@@ -19248,6 +19254,48 @@ casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSu
             <con:jmsPropertyConfig/>
             <con:parameters/>
           </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay 1" id="f279f7ea-3712-4d59-bd79-a86a31ef1a6b">
+        <con:settings/>
+        <con:config>
+          <delay>2000</delay>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="httprequest" name="get emails from mailslurper" id="58c1af02-aeb2-4c54-a848-5afe9660b289">
+        <con:settings/>
+        <con:config method="GET" xsi:type="con:HttpRequest" id="c6b07a11-72e6-4b18-bb2a-c9d3d433f3d1" name="get emails from mailslurper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8025/mail</con:endpoint>
+          <con:request/>
+          <con:assertion type="Valid HTTP Status Codes" id="8e1cdd79-f29d-4693-a144-daad94f67e60" name="Valid HTTP Status Codes">
+            <con:configuration>
+              <codes>200</codes>
+            </con:configuration>
+          </con:assertion>
+          <con:assertion type="JsonPath Match" id="7b871747-3557-4477-ae9d-e52ee5a7f63a" name="Total Records 1">
+            <con:configuration>
+              <path>$.totalRecords</path>
+              <content>0</content>
+              <allowWildcards>false</allowWildcards>
+              <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+              <ignoreComments>false</ignoreComments>
+            </con:configuration>
+          </con:assertion>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay 2" id="3a099418-757b-473e-9e33-1173e22ce1de">
+        <con:settings/>
+        <con:config>
+          <delay>5000</delay>
         </con:config>
       </con:testStep>
       <con:testStep type="groovy" name="stop-mock-services" id="48e69323-6c89-408f-87f7-5000d95a76e5">
@@ -19586,7 +19634,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-HFVOEM</con:value>
+              <con:value>OF-KANHIS</con:value>
             </con:property>
           </con:properties>
         </con:config>
@@ -19600,7 +19648,7 @@ def caseReferenceNumber = "OF-" + org.apache.commons.lang.RandomStringUtils.rand
 dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);</script>
         </con:config>
       </con:testStep>
-      <con:testStep type="groovy" name="start-mock-services" id="02b0d934-a762-413f-bb55-ac2c5deaaa2e">
+      <con:testStep type="groovy" name="start-mock-services" id="02b0d934-a762-413f-bb55-ac2c5deaaa2e" disabled="true">
         <con:settings/>
         <con:config>
           <script>def project = testRunner.testCase.testSuite.project;
@@ -19615,7 +19663,7 @@ project.getRestMockServiceByName("Objects API Mock").start();</script>
       <con:testStep type="delay" name="Delay" id="4f31d19e-1476-4239-9a90-c142c8077bae">
         <con:settings/>
         <con:config>
-          <delay>1000</delay>
+          <delay>5000</delay>
         </con:config>
       </con:testStep>
       <con:testStep type="groovy" name="set-dynamic-mock-properties" id="5212c68d-b212-4167-ad42-4b14edcaaba4" disabled="true">
@@ -19629,7 +19677,7 @@ def initiatingSubjectCitizenNumber = context.expand('${#TestCase#initiatingSubje
 casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSubjectCitizenNumber);</script>
         </con:config>
       </con:testStep>
-      <con:testStep type="restrequest" name="objects_object_create" id="28b598eb-e467-4123-9e22-ad98eb9b4fb4">
+      <con:testStep type="restrequest" name="objects_object_create" id="28b598eb-e467-4123-9e22-ad98eb9b4fb4" disabled="true">
         <con:settings/>
         <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
@@ -20250,6 +20298,881 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
         <con:property>
           <con:name>initiatingSubjectCitizenNumber</con:name>
           <con:value>999999990</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
+    <con:testCase id="1f671084-b081-4a89-8fdf-fc631539693f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Tweewegcommunicatie CaseNotFound" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="properties" name="Properties" id="1fe7c853-4388-4a5f-84fd-83a144014366">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:target/>
+          <con:properties>
+            <con:property>
+              <con:name>caseReferenceNumber</con:name>
+              <con:value>OF-DCAOLP</con:value>
+            </con:property>
+            <con:property>
+              <con:name>targetCaseReferenceNumber</con:name>
+              <con:value>OF-CASENOTFOUND</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="generate-dynamic-properties-tweewegcommunicatie(NOCASEFOUND)" id="c28b41e6-de88-470a-9733-e36a73fabfec">
+        <con:settings/>
+        <con:config>
+          <script>def dynamicProperties = testRunner.testCase.getTestStepByName("Properties");
+
+def caseReferenceNumber = "OF-" + org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6).toUpperCase();
+dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);
+
+dynamicProperties.setPropertyValue('targetCaseReferenceNumber', 'OF-CASENOTFOUND');</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="start-mock-services" id="f6356afd-d650-410b-89df-c81ca29a1bde">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.mockServices.each()
+{
+	entry -> entry.value.start();
+}
+project.getRestMockServiceByName("Documenten API Mock").start();
+project.getRestMockServiceByName("Objects API Mock").start();</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="set-dynamic-mock-properties" id="99bba762-ec07-45d4-9660-c3a06d3ba273">
+        <con:settings/>
+        <con:config>
+          <script>def casesServiceMock = testRunner.testCase.testSuite.project.mockServices["BPEL CasesProxy Mock"].getMockRunner().getMockService();
+
+def caseReferenceNumber = context.expand('${Properties#caseReferenceNumber}');
+casesServiceMock.setPropertyValue("caseReferenceNumber", caseReferenceNumber);
+def initiatingSubjectCitizenNumber = context.expand('${#TestCase#initiatingSubjectCitizenNumber}');
+casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSubjectCitizenNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay" id="189075e8-7eaa-4796-b22a-c6c389854bcf">
+        <con:settings/>
+        <con:config>
+          <delay>5000</delay>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="da54d621-6410-4cf8-a6fb-7f096de18b3e" disabled="true">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "999994542",\r
+         "data" : {\r
+            "uw-klacht" : {\r
+               "hoeLaat" : "",\r
+               "watIsUwKlacht" : "Klacht",\r
+               "wanneerIsDitGebeurd" : "Tijdstip",\r
+               "welkOrganisatieOnderdeel" : "anders",\r
+               "tOverWieWiltUEenKlachtIndienen" : "Henk",\r
+               "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "Ontslag"\r
+            },\r
+            "uw-gegevenscompleet" : {\r
+               "fieldSetMetDigiD" : {\r
+                  "adresgegevensMD" : {\r
+                     "postcodePMD" : "1014 AW",\r
+                     "huisletterPMD" : "",\r
+                     "huisnummerPMD" : "14",\r
+                     "straatnaamPMD" : "Schakelstraat",\r
+                     "woonplaatsPMD" : "Amsterdam",\r
+                     "huisnummertoevoegingPMD" : "H"\r
+                  },\r
+                  "contactgegevensMD" : {\r
+                     "eMailadresPMD" : "m.van.altena@utrecht.nl",\r
+                     "telefoonnummerPMD" : "0169795135"\r
+                  },\r
+                  "persoonsgegevensMD" : {\r
+                     "achternaamPMD" : "Braber",\r
+                     "voorletterSPMD" : "",\r
+                     "tussenvoegselSPMD" : "den"\r
+                  }\r
+               }\r
+            },\r
+            "bijlagen-toevoegen-klacht" : {\r
+               "wiltUBijlagenMeesturen" : "nee",\r
+               "ikWilNaBehandelingTevredenheidsonderzoek" : "nee"\r
+            }\r
+         },\r
+         "type" : "P9_2_KLB",\r
+         "csv_url" : "",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [ ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "ec246c46-4578-4781-a400-f35daa82ecb2",\r
+         "public_reference" : "${Properties#CaseReferenceNumber}"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2023-11-03",\r
+      "endAt" : null,\r
+      "registrationAt" : "2023-11-03",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Copy of objects_object_create" id="ebccc11d-4d42-43ba-b3bd-89f3e8c05032">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Copy of objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{
+   "type" : "dummy",
+   "record" : {
+      "index" : 1,
+      "typeVersion" : 1,
+      "data" : {
+         "bsn" : "${#TestCase#initiatingSubjectCitizenNumber}",
+         "data" : {
+            "uw-gegevenscompleet" : {
+               "fieldSetMetDigiD" : {
+                  "adresgegevensMD" : {
+                     "postcodePMD" : "3524 VD",
+                     "huisletterPMD" : "",
+                     "huisnummerPMD" : "26",
+                     "straatnaamPMD" : "Ardennen",
+                     "woonplaatsPMD" : "Utrecht",
+                     "huisnummertoevoegingPMD" : ""
+                  },
+                  "contactgegevensMD" : {
+                     "eMailadresPMD" : "f.bekker@utrecht.nl",
+                     "telefoonnummerPMD" : "0302865464",
+                     "telefoonnummerWerkPMD" : "",
+                     "telefoonnummerMobielPMD" : ""
+                  },
+                  "persoonsgegevensMD" : {
+                     "bsnPMD" : "${#TestCase#initiatingSubjectCitizenNumber}",
+                     "aanhefPMD" : "M",
+                     "voornamenPMD" : "Bob",
+                     "achternaamPMD" : "Hoekstra",
+                     "voorletterSPMD" : "B.",
+                     "geboortedatumPMD" : "1970-06-20",
+                     "geboorteplaatsPMD" : "Wijk bij Duurstede",
+                     "tussenvoegselSPMD" : ""
+                  }
+               },
+               "initiatingSubject" : "persoon",
+               "fieldSetBedrijfMEH" : {
+                  "bezoekadresMEH" : {
+                     "plaatsMEH" : "",
+                     "postcodeMEH" : "",
+                     "huisletterMEH" : "",
+                     "huisnummerMEH" : "",
+                     "straatnaamMEH" : "",
+                     "huisnummertoevoegingMEH" : ""
+                  },
+                  "communicatieMEH" : {
+                     "eMailadresMEH" : "",
+                     "telefoonnummerMEH" : ""
+                  },
+                  "contactpersoonMEH" : {
+                     "aanhefMEH" : "",
+                     "achternaamMEH" : "",
+                     "voorletterSMEH" : "",
+                     "tussenvoegselSMEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieMEH" : {
+                     "kvKNummerMEH" : "",
+                     "vestigingsnummerMEH" : "",
+                     "naamBedrijfOrganisatieMEH" : ""
+                  }
+               },
+               "fieldSetBedrijfZEH" : {
+                  "bezoekadresZEH" : {
+                     "plaatsZEH" : "",
+                     "postcodeZEH" : "",
+                     "huisletterZEH" : "",
+                     "huisnummerZEH" : null,
+                     "straatnaamZEH" : "",
+                     "huisnummertoevoegingZEH" : ""
+                  },
+                  "communicatieZEH" : {
+                     "eMailadresZEH" : "",
+                     "telefoonnummerZEH" : "",
+                     "postbusGebruikenZEH" : "",
+                     "postbusOndernemingZEH" : {
+                        "postbusnummerZEH" : null,
+                        "postbus_plaatsZEH" : "",
+                        "postbus_postcodeZEH" : ""
+                     }
+                  },
+                  "contactpersoonZEH" : {
+                     "aanhefZEH" : "",
+                     "achternaamZEH" : "",
+                     "voorletterSZEH" : "",
+                     "tussenvoegselSZEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieZEH" : {
+                     "kvKNummerZEH" : "",
+                     "vestigingsnummerZEH" : "",
+                     "naamBedrijfOrganisatieZEH" : ""
+                  }
+               },
+               "fieldSetZonderDigiD" : {
+                  "adresgegevensZD" : {
+                     "postcodePZD" : "",
+                     "huisletterPZD" : "",
+                     "huisnummerPZD" : null,
+                     "straatnaamPZD" : "",
+                     "woonplaatsPZD" : "",
+                     "huisnummertoevoegingPZD" : ""
+                  },
+                  "contactgegevensZD" : {
+                     "eMailadresPZD" : "",
+                     "telefoonnummerPZD" : "",
+                     "telefoonnummerWerkPZD" : "",
+                     "telefoonnummerMobielPZD" : ""
+                  },
+                  "persoonsgegevensZD" : {
+                     "bsnPZD" : "",
+                     "aanhefPZD" : "",
+                     "voornamenPZD" : "",
+                     "achternaamPZD" : "",
+                     "voorletterSPZD" : "",
+                     "geboortedatumPZD" : "",
+                     "tussenvoegselSPZD" : ""
+                  }
+               },
+               "initiatingSubjectAuth" : "DigiD",
+               "bentUEenPersoonOfEenBedrijf" : ""
+            },
+            "gegevenstweewegcommunicatie" : {
+               "zaaknummer" : "${Properties#targetCaseReferenceNumber}",
+               "bestandsupload" : [
+                  {
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/7c50b4b8-e22e-4c83-a50d-f52695aa673b",
+                     "data" : {
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/7c50b4b8-e22e-4c83-a50d-f52695aa673b",
+                        "form" : "",
+                        "name" : "TEST_Marcel.pdf",
+                        "size" : 7286,
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",
+                        "project" : ""
+                     },
+                     "name" : "TEST_Marcel-82c19341-2c1b-486b-8d19-589234ec29ab.pdf",
+                     "size" : 7286,
+                     "type" : "application/pdf",
+                     "storage" : "url",
+                     "originalName" : "TEST_Marcel.pdf"
+                  }
+               ]
+            }
+         },
+         "type" : "TWEEWEGCOMMUNICATIE",
+         "csv_url" : "",
+         "payment" : {
+            "amount" : "",
+            "completed" : false,
+            "public_order_ids" : ""
+         },
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",
+         "attachments" : [
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf"
+         ],
+         "language_code" : "nl",
+         "submission_id" : "60114ebd-cfb7-49d1-abad-6a22282b501a",
+         "public_reference" : "${Properties#caseReferenceNumber}"
+      },
+      "geometry" : null,
+      "startAt" : "2024-03-19",
+      "endAt" : null,
+      "registrationAt" : "2024-03-19",
+      "correctionFor" : null,
+      "correctedBy" : null
+   }
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="GroovyScriptAssertion" id="b3830613-c256-4032-bc81-2bf6507d6668" name="Script Assertion">
+              <con:configuration/>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay 1" id="e101bf2f-3c79-43ea-8746-09a7f49f7fa1">
+        <con:settings/>
+        <con:config>
+          <delay>2000</delay>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="httprequest" name="get emails from mailslurper" id="669f216a-a805-4c7e-889a-e3a82b575350">
+        <con:settings/>
+        <con:config method="GET" xsi:type="con:HttpRequest" id="c6b07a11-72e6-4b18-bb2a-c9d3d433f3d1" name="get emails from mailslurper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8025/mail</con:endpoint>
+          <con:request/>
+          <con:assertion type="Valid HTTP Status Codes" id="8e1cdd79-f29d-4693-a144-daad94f67e60" name="Valid HTTP Status Codes">
+            <con:configuration>
+              <codes>200</codes>
+            </con:configuration>
+          </con:assertion>
+          <con:assertion type="JsonPath Match" id="7b871747-3557-4477-ae9d-e52ee5a7f63a" name="Total Records 1">
+            <con:configuration>
+              <path>$.totalRecords</path>
+              <content>1</content>
+              <allowWildcards>false</allowWildcards>
+              <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+              <ignoreComments>false</ignoreComments>
+            </con:configuration>
+          </con:assertion>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="httprequest" name="delete emails from mailslurper" id="626e8810-d9bb-440d-b09d-da184348b4f3">
+        <con:settings/>
+        <con:config method="DELETE" xsi:type="con:HttpRequest" id="c6b07a11-72e6-4b18-bb2a-c9d3d433f3d1" name="delete emails from mailslurper" postQueryString="false" mediaType="application/json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8025/mail</con:endpoint>
+          <con:request>{
+  "pruneCode": "all"
+}</con:request>
+          <con:assertion type="Valid HTTP Status Codes" id="8e1cdd79-f29d-4693-a144-daad94f67e60" name="Valid HTTP Status Codes">
+            <con:configuration>
+              <codes>200</codes>
+            </con:configuration>
+          </con:assertion>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay 2" id="f48aabaa-8377-4403-9f70-500f6e8a64fc">
+        <con:settings/>
+        <con:config>
+          <delay>5000</delay>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="stop-mock-services" id="909642cf-ca86-414a-b2c7-6c8c2cf8039b">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.mockServices.each()
+{
+	entry -> entry.value.getMockRunner().stop();
+}
+project.getRestMockServiceByName("Documenten API Mock").getMockRunner().stop();
+project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Notification" id="32915b0f-6258-480a-a160-8a11c65327dd" disabled="true">
+        <con:settings/>
+        <con:config service="Objects API" resourcePath="/objects/{uuid}" methodName="object_read" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Notification" id="5219b4f4-71f0-4bbd-89f7-ffcf90a8e9b2" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://host.docker.internal:8089/mock/objects/api/v2</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://host.docker.internal/mock/objects/api/v2/testuuid/objects/</con:originalUri>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters>
+              <entry key="uuid" value="P9_2_KLB-uw-gegevens-digid-default" xmlns="http://eviware.com/soapui/config"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>initiatingSubjectCitizenNumber</con:name>
+          <con:value>176513280</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
+    <con:testCase id="ebca3ff5-f51f-4bf6-9348-0b76b904cd2f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Tweewegcommunicatie SubjectNotEqualsCaseSubject" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="properties" name="Properties" id="88a2535a-eb3b-41c5-9446-700024fd124b">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:target/>
+          <con:properties>
+            <con:property>
+              <con:name>caseReferenceNumber</con:name>
+              <con:value>OF-YEUYMF</con:value>
+            </con:property>
+            <con:property>
+              <con:name>targetCaseReferenceNumber</con:name>
+              <con:value>OF-AENIPD</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="generate-dynamic-properties-tweewegcommunicatie" id="38e994e3-b6a2-4c7b-8949-1a5d9a783653">
+        <con:settings/>
+        <con:config>
+          <script>def dynamicProperties = testRunner.testCase.getTestStepByName("Properties");
+
+def caseReferenceNumber = "OF-" + org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6).toUpperCase();
+dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);
+
+def targetCaseReferenceNumber = "OF-" + org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6).toUpperCase();
+dynamicProperties.setPropertyValue('targetCaseReferenceNumber', targetCaseReferenceNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="start-mock-services" id="39f8c51e-bad2-4c0a-b19b-6a6068ecf52e">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.mockServices.each()
+{
+	entry -> entry.value.start();
+}
+project.getRestMockServiceByName("Documenten API Mock").start();
+project.getRestMockServiceByName("Objects API Mock").start();</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="set-dynamic-mock-properties(mismatching bsn)" id="47c05040-71a2-451b-bbcb-6a43608f2422">
+        <con:settings/>
+        <con:config>
+          <script>def casesServiceMock = testRunner.testCase.testSuite.project.mockServices["BPEL CasesProxy Mock"].getMockRunner().getMockService();
+
+def targetCaseReferenceNumber = context.expand('${Properties#targetCaseReferenceNumber}');
+casesServiceMock.setPropertyValue("caseReferenceNumber", targetCaseReferenceNumber);
+//def initiatingSubjectCitizenNumber = context.expand('${#TestCase#initiatingSubjectCitizenNumber}');
+casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", '123456789');</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay" id="8de18d00-d9c9-430e-a18e-ad713b50490c">
+        <con:settings/>
+        <con:config>
+          <delay>5000</delay>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="54a79021-f1c7-48b9-845b-3ea13d5368e7" disabled="true">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "999994542",\r
+         "data" : {\r
+            "uw-klacht" : {\r
+               "hoeLaat" : "",\r
+               "watIsUwKlacht" : "Klacht",\r
+               "wanneerIsDitGebeurd" : "Tijdstip",\r
+               "welkOrganisatieOnderdeel" : "anders",\r
+               "tOverWieWiltUEenKlachtIndienen" : "Henk",\r
+               "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "Ontslag"\r
+            },\r
+            "uw-gegevenscompleet" : {\r
+               "fieldSetMetDigiD" : {\r
+                  "adresgegevensMD" : {\r
+                     "postcodePMD" : "1014 AW",\r
+                     "huisletterPMD" : "",\r
+                     "huisnummerPMD" : "14",\r
+                     "straatnaamPMD" : "Schakelstraat",\r
+                     "woonplaatsPMD" : "Amsterdam",\r
+                     "huisnummertoevoegingPMD" : "H"\r
+                  },\r
+                  "contactgegevensMD" : {\r
+                     "eMailadresPMD" : "m.van.altena@utrecht.nl",\r
+                     "telefoonnummerPMD" : "0169795135"\r
+                  },\r
+                  "persoonsgegevensMD" : {\r
+                     "achternaamPMD" : "Braber",\r
+                     "voorletterSPMD" : "",\r
+                     "tussenvoegselSPMD" : "den"\r
+                  }\r
+               }\r
+            },\r
+            "bijlagen-toevoegen-klacht" : {\r
+               "wiltUBijlagenMeesturen" : "nee",\r
+               "ikWilNaBehandelingTevredenheidsonderzoek" : "nee"\r
+            }\r
+         },\r
+         "type" : "P9_2_KLB",\r
+         "csv_url" : "",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [ ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "ec246c46-4578-4781-a400-f35daa82ecb2",\r
+         "public_reference" : "${Properties#CaseReferenceNumber}"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2023-11-03",\r
+      "endAt" : null,\r
+      "registrationAt" : "2023-11-03",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Copy of objects_object_create" id="1cded775-4584-4a33-bd90-17242153a8de">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Copy of objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{
+   "type" : "dummy",
+   "record" : {
+      "index" : 1,
+      "typeVersion" : 1,
+      "data" : {
+         "bsn" : "${#TestCase#initiatingSubjectCitizenNumber}",
+         "data" : {
+            "uw-gegevenscompleet" : {
+               "fieldSetMetDigiD" : {
+                  "adresgegevensMD" : {
+                     "postcodePMD" : "3524 VD",
+                     "huisletterPMD" : "",
+                     "huisnummerPMD" : "26",
+                     "straatnaamPMD" : "Ardennen",
+                     "woonplaatsPMD" : "Utrecht",
+                     "huisnummertoevoegingPMD" : ""
+                  },
+                  "contactgegevensMD" : {
+                     "eMailadresPMD" : "f.bekker@utrecht.nl",
+                     "telefoonnummerPMD" : "0302865464",
+                     "telefoonnummerWerkPMD" : "",
+                     "telefoonnummerMobielPMD" : ""
+                  },
+                  "persoonsgegevensMD" : {
+                     "bsnPMD" : "${#TestCase#initiatingSubjectCitizenNumber}",
+                     "aanhefPMD" : "M",
+                     "voornamenPMD" : "Bob",
+                     "achternaamPMD" : "Hoekstra",
+                     "voorletterSPMD" : "B.",
+                     "geboortedatumPMD" : "1970-06-20",
+                     "geboorteplaatsPMD" : "Wijk bij Duurstede",
+                     "tussenvoegselSPMD" : ""
+                  }
+               },
+               "initiatingSubject" : "persoon",
+               "fieldSetBedrijfMEH" : {
+                  "bezoekadresMEH" : {
+                     "plaatsMEH" : "",
+                     "postcodeMEH" : "",
+                     "huisletterMEH" : "",
+                     "huisnummerMEH" : "",
+                     "straatnaamMEH" : "",
+                     "huisnummertoevoegingMEH" : ""
+                  },
+                  "communicatieMEH" : {
+                     "eMailadresMEH" : "",
+                     "telefoonnummerMEH" : ""
+                  },
+                  "contactpersoonMEH" : {
+                     "aanhefMEH" : "",
+                     "achternaamMEH" : "",
+                     "voorletterSMEH" : "",
+                     "tussenvoegselSMEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieMEH" : {
+                     "kvKNummerMEH" : "",
+                     "vestigingsnummerMEH" : "",
+                     "naamBedrijfOrganisatieMEH" : ""
+                  }
+               },
+               "fieldSetBedrijfZEH" : {
+                  "bezoekadresZEH" : {
+                     "plaatsZEH" : "",
+                     "postcodeZEH" : "",
+                     "huisletterZEH" : "",
+                     "huisnummerZEH" : null,
+                     "straatnaamZEH" : "",
+                     "huisnummertoevoegingZEH" : ""
+                  },
+                  "communicatieZEH" : {
+                     "eMailadresZEH" : "",
+                     "telefoonnummerZEH" : "",
+                     "postbusGebruikenZEH" : "",
+                     "postbusOndernemingZEH" : {
+                        "postbusnummerZEH" : null,
+                        "postbus_plaatsZEH" : "",
+                        "postbus_postcodeZEH" : ""
+                     }
+                  },
+                  "contactpersoonZEH" : {
+                     "aanhefZEH" : "",
+                     "achternaamZEH" : "",
+                     "voorletterSZEH" : "",
+                     "tussenvoegselSZEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieZEH" : {
+                     "kvKNummerZEH" : "",
+                     "vestigingsnummerZEH" : "",
+                     "naamBedrijfOrganisatieZEH" : ""
+                  }
+               },
+               "fieldSetZonderDigiD" : {
+                  "adresgegevensZD" : {
+                     "postcodePZD" : "",
+                     "huisletterPZD" : "",
+                     "huisnummerPZD" : null,
+                     "straatnaamPZD" : "",
+                     "woonplaatsPZD" : "",
+                     "huisnummertoevoegingPZD" : ""
+                  },
+                  "contactgegevensZD" : {
+                     "eMailadresPZD" : "",
+                     "telefoonnummerPZD" : "",
+                     "telefoonnummerWerkPZD" : "",
+                     "telefoonnummerMobielPZD" : ""
+                  },
+                  "persoonsgegevensZD" : {
+                     "bsnPZD" : "",
+                     "aanhefPZD" : "",
+                     "voornamenPZD" : "",
+                     "achternaamPZD" : "",
+                     "voorletterSPZD" : "",
+                     "geboortedatumPZD" : "",
+                     "tussenvoegselSPZD" : ""
+                  }
+               },
+               "initiatingSubjectAuth" : "DigiD",
+               "bentUEenPersoonOfEenBedrijf" : ""
+            },
+            "gegevenstweewegcommunicatie" : {
+               "zaaknummer" : "${Properties#targetCaseReferenceNumber}",
+               "bestandsupload" : [
+                  {
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/7c50b4b8-e22e-4c83-a50d-f52695aa673b",
+                     "data" : {
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/7c50b4b8-e22e-4c83-a50d-f52695aa673b",
+                        "form" : "",
+                        "name" : "TEST_Marcel.pdf",
+                        "size" : 7286,
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",
+                        "project" : ""
+                     },
+                     "name" : "TEST_Marcel-82c19341-2c1b-486b-8d19-589234ec29ab.pdf",
+                     "size" : 7286,
+                     "type" : "application/pdf",
+                     "storage" : "url",
+                     "originalName" : "TEST_Marcel.pdf"
+                  }
+               ]
+            }
+         },
+         "type" : "TWEEWEGCOMMUNICATIE",
+         "csv_url" : "",
+         "payment" : {
+            "amount" : "",
+            "completed" : false,
+            "public_order_ids" : ""
+         },
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",
+         "attachments" : [
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf"
+         ],
+         "language_code" : "nl",
+         "submission_id" : "60114ebd-cfb7-49d1-abad-6a22282b501a",
+         "public_reference" : "${Properties#caseReferenceNumber}"
+      },
+      "geometry" : null,
+      "startAt" : "2024-03-19",
+      "endAt" : null,
+      "registrationAt" : "2024-03-19",
+      "correctionFor" : null,
+      "correctedBy" : null
+   }
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="GroovyScriptAssertion" id="b3830613-c256-4032-bc81-2bf6507d6668" name="Script Assertion">
+              <con:configuration/>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay 1" id="5f615f76-4ddb-4deb-ad73-1e7460423aa3">
+        <con:settings/>
+        <con:config>
+          <delay>2000</delay>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="httprequest" name="get emails from mailslurper" id="5ce11e88-49b7-49af-a214-0b540a26d14d">
+        <con:settings/>
+        <con:config method="GET" xsi:type="con:HttpRequest" id="c6b07a11-72e6-4b18-bb2a-c9d3d433f3d1" name="get emails from mailslurper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8025/mail</con:endpoint>
+          <con:request/>
+          <con:assertion type="Valid HTTP Status Codes" id="8e1cdd79-f29d-4693-a144-daad94f67e60" name="Valid HTTP Status Codes">
+            <con:configuration>
+              <codes>200</codes>
+            </con:configuration>
+          </con:assertion>
+          <con:assertion type="JsonPath Match" id="7b871747-3557-4477-ae9d-e52ee5a7f63a" name="Total Records 1">
+            <con:configuration>
+              <path>$.totalRecords</path>
+              <content>1</content>
+              <allowWildcards>false</allowWildcards>
+              <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+              <ignoreComments>false</ignoreComments>
+            </con:configuration>
+          </con:assertion>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="httprequest" name="delete emails from mailslurper" id="74b31c25-624b-43a9-a8d1-91b2110d1947">
+        <con:settings/>
+        <con:config method="DELETE" xsi:type="con:HttpRequest" id="c6b07a11-72e6-4b18-bb2a-c9d3d433f3d1" name="delete emails from mailslurper" postQueryString="false" mediaType="application/json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8025/mail</con:endpoint>
+          <con:request>{
+  "pruneCode": "all"
+}</con:request>
+          <con:assertion type="Valid HTTP Status Codes" id="8e1cdd79-f29d-4693-a144-daad94f67e60" name="Valid HTTP Status Codes">
+            <con:configuration>
+              <codes>200</codes>
+            </con:configuration>
+          </con:assertion>
+          <con:credentials>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay 2" id="898c0258-e9fc-4e98-a35a-025a6b46d014">
+        <con:settings/>
+        <con:config>
+          <delay>5000</delay>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="stop-mock-services" id="fe7b6ba2-dc5e-4090-9fa8-091e186b2da8">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.mockServices.each()
+{
+	entry -> entry.value.getMockRunner().stop();
+}
+project.getRestMockServiceByName("Documenten API Mock").getMockRunner().stop();
+project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Notification" id="6c0fe153-feb8-48e8-9640-80740ce11e11" disabled="true">
+        <con:settings/>
+        <con:config service="Objects API" resourcePath="/objects/{uuid}" methodName="object_read" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Notification" id="5219b4f4-71f0-4bbd-89f7-ffcf90a8e9b2" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://host.docker.internal:8089/mock/objects/api/v2</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://host.docker.internal/mock/objects/api/v2/testuuid/objects/</con:originalUri>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters>
+              <entry key="uuid" value="P9_2_KLB-uw-gegevens-digid-default" xmlns="http://eviware.com/soapui/config"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>initiatingSubjectCitizenNumber</con:name>
+          <con:value>176513280</con:value>
         </con:property>
       </con:properties>
     </con:testCase>
@@ -20910,11 +21833,11 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
     <con:properties>
       <con:property>
         <con:name>caseReferenceNumber</con:name>
-        <con:value>OF-QIFFMK</con:value>
+        <con:value>OF-DCAOLP</con:value>
       </con:property>
       <con:property>
         <con:name>initiatingSubjectCitizenNumber</con:name>
-        <con:value/>
+        <con:value>176513280</con:value>
       </con:property>
     </con:properties>
     <con:onRequestScript/>
@@ -21072,7 +21995,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
     <con:mockOperation name="lookUpCaseIds" id="b1f113d3-6394-4e95-99e6-29425afd3289" interface="CasesBinding" operation="lookUpCaseIds">
       <con:settings/>
       <con:defaultResponse>Response 1</con:defaultResponse>
-      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchStyle>QUERY_MATCH</con:dispatchStyle>
       <con:response name="Response 1" id="71099122-2013-4f28-839c-3a3406fd3202" httpResponseStatus="200" encoding="UTF-8">
         <con:settings/>
         <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cas="http://www.emaxx.org/functional/cases">
@@ -21097,7 +22020,28 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
 </soapenv:Envelope>]]></con:responseContent>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="cases:lookUpCaseIds"/>
       </con:response>
-      <con:dispatchConfig/>
+      <con:response name="NoCaseIdFound" id="71099122-2013-4f28-839c-3a3406fd3202" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cas="http://www.emaxx.org/functional/cases">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cas:lookUpCaseIdsResponse>
+         <cas:caseIdMessage maxConfidentialityLevel="0" suppressExceptions="true">
+            <cas:cases />
+         </cas:caseIdMessage>
+      </cas:lookUpCaseIdsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="cases:lookUpCaseIds"/>
+      </con:response>
+      <con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:query>
+          <con:name>CaseId</con:name>
+          <con:query>//*:lookUpCaseIds/*:caseSearchMessage/*:referenceNumber/text()</con:query>
+          <con:match>OF-CASENOTFOUND</con:match>
+          <con:response>NoCaseIdFound</con:response>
+        </con:query>
+      </con:dispatchConfig>
     </con:mockOperation>
     <con:mockOperation name="updateOrganizations" id="afc21037-1777-4b57-bf5f-5d2b36961546" interface="CasesBinding" operation="updateOrganizations">
       <con:settings/>

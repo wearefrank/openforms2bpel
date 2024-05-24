@@ -1,0 +1,181 @@
+<formdata>
+	<uw-klacht>
+		<hoeLaat>Tijdstip</hoeLaat>
+		<watIsUwKlacht>Klacht</watIsUwKlacht>
+		<wanneerIsDitGebeurd>Wanneer</wanneerIsDitGebeurd>
+		<welkOrganisatieOnderdeel>anders</welkOrganisatieOnderdeel>
+		<tOverWieWiltUEenKlachtIndienen>Henk</tOverWieWiltUEenKlachtIndienen>
+		<watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen>Ontslag</watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen>
+	</uw-klacht>
+	<uw-gegevenscompleet>
+		<fieldSetMetDigiD>
+			<adresgegevensMD>
+				<postcodePMD>3524 VD</postcodePMD>
+				<huisletterPMD />
+				<huisnummerPMD>26</huisnummerPMD>
+				<straatnaamPMD>Ardennen</straatnaamPMD>
+				<woonplaatsPMD>Utrecht</woonplaatsPMD>
+				<huisnummertoevoegingPMD />
+			</adresgegevensMD>
+			<contactgegevensMD>
+				<eMailadresPMD>f.bekker@utrecht.nl</eMailadresPMD>
+				<telefoonnummerPMD>0302865464</telefoonnummerPMD>
+				<telefoonnummerWerkPMD />
+				<telefoonnummerMobielPMD />
+			</contactgegevensMD>
+			<persoonsgegevensMD>
+				<bsnPMD>176513280</bsnPMD>
+				<aanhefPMD>M</aanhefPMD>
+				<voornamenPMD>Bob</voornamenPMD>
+				<achternaamPMD>Hoekstra</achternaamPMD>
+				<voorletterSPMD>B.</voorletterSPMD>
+				<geboortedatumPMD>1970-06-20</geboortedatumPMD>
+				<geboorteplaatsPMD>Wijk bij Duurstede</geboorteplaatsPMD>
+				<tussenvoegselSPMD />
+			</persoonsgegevensMD>
+		</fieldSetMetDigiD>
+		<initiatingSubject>persoon</initiatingSubject>
+		<fieldSetBedrijfMEH>
+			<bezoekadresMEH>
+				<plaatsMEH />
+				<postcodeMEH />
+				<huisletterMEH />
+				<huisnummerMEH />
+				<straatnaamMEH />
+				<huisnummertoevoegingMEH />
+			</bezoekadresMEH>
+			<communicatieMEH>
+				<eMailadresMEH />
+				<telefoonnummerMEH />
+			</communicatieMEH>
+			<contactpersoonMEH>
+				<aanhefMEH />
+				<achternaamMEH />
+				<voorletterSMEH />
+				<tussenvoegselSMEH />
+			</contactpersoonMEH>
+			<gegevensBedrijfOrganisatieMEH>
+				<kvKNummerMEH />
+				<vestigingsnummerMEH />
+				<naamBedrijfOrganisatieMEH />
+			</gegevensBedrijfOrganisatieMEH>
+		</fieldSetBedrijfMEH>
+		<fieldSetBedrijfZEH>
+			<bezoekadresZEH>
+				<plaatsZEH />
+				<postcodeZEH />
+				<huisletterZEH />
+				<huisnummerZEH nil="true" />
+				<straatnaamZEH />
+				<huisnummertoevoegingZEH />
+			</bezoekadresZEH>
+			<communicatieZEH>
+				<eMailadresZEH />
+				<telefoonnummerZEH />
+				<postbusGebruikenZEH />
+				<postbusOndernemingZEH>
+					<postbusnummerZEH nil="true" />
+					<postbus_plaatsZEH />
+					<postbus_postcodeZEH />
+				</postbusOndernemingZEH>
+			</communicatieZEH>
+			<contactpersoonZEH>
+				<aanhefZEH />
+				<achternaamZEH />
+				<voorletterSZEH />
+				<tussenvoegselSZEH />
+			</contactpersoonZEH>
+			<gegevensBedrijfOrganisatieZEH>
+				<kvKNummerZEH />
+				<vestigingsnummerZEH />
+				<naamBedrijfOrganisatieZEH />
+			</gegevensBedrijfOrganisatieZEH>
+		</fieldSetBedrijfZEH>
+		<fieldSetZonderDigiD>
+			<adresgegevensZD>
+				<postcodePZD />
+				<huisletterPZD />
+				<huisnummerPZD nil="true" />
+				<straatnaamPZD />
+				<woonplaatsPZD />
+				<huisnummertoevoegingPZD />
+			</adresgegevensZD>
+			<contactgegevensZD>
+				<eMailadresPZD />
+				<telefoonnummerPZD />
+				<telefoonnummerWerkPZD />
+				<telefoonnummerMobielPZD />
+			</contactgegevensZD>
+			<persoonsgegevensZD>
+				<bsnPZD />
+				<aanhefPZD />
+				<voornamenPZD />
+				<achternaamPZD />
+				<voorletterSPZD />
+				<geboortedatumPZD />
+				<tussenvoegselSPZD />
+			</persoonsgegevensZD>
+		</fieldSetZonderDigiD>
+		<initiatingSubjectAuth>DigiD</initiatingSubjectAuth>
+		<bentUEenPersoonOfEenBedrijf />
+	</uw-gegevenscompleet>
+	<bijlagen-toevoegen-klacht>
+		<file>
+			<url>
+				https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4df96139-ef95-419d-9259-e64799587c09</url>
+			<data>
+				<url>
+					https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4df96139-ef95-419d-9259-e64799587c09</url>
+				<form />
+				<name>TEST_Marcel.pdf</name>
+				<size>7286</size>
+				<baseUrl>https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/</baseUrl>
+				<project />
+			</data>
+			<name>TEST_Marcel-0aec57d3-db5d-4bfb-b95d-c68de83e6d34.pdf</name>
+			<size>7286</size>
+			<type>application/pdf</type>
+			<storage>url</storage>
+			<originalName>TEST_Marcel.pdf</originalName>
+		</file>
+		<file>
+			<url>
+				https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/082db838-0867-46d3-9a55-8a94ab362c51</url>
+			<data>
+				<url>
+					https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/082db838-0867-46d3-9a55-8a94ab362c51</url>
+				<form />
+				<name>1.txt</name>
+				<size>13</size>
+				<baseUrl>https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/</baseUrl>
+				<project />
+			</data>
+			<name>1-9a195eac-3ee7-4eee-9a82-f225e3d58167.txt</name>
+			<size>13</size>
+			<type>text/plain</type>
+			<storage>url</storage>
+			<originalName>1.txt</originalName>
+		</file>
+		<file>
+			<url>
+				https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4b292d56-7dd5-45a8-8e8c-23607cb2d0a0</url>
+			<data>
+				<url>
+					https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4b292d56-7dd5-45a8-8e8c-23607cb2d0a0</url>
+				<form />
+				<name>test.docx</name>
+				<size>172268</size>
+				<baseUrl>https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/</baseUrl>
+				<project />
+			</data>
+			<name>test-d7c2cfdd-2407-4374-b21e-0cc0373f99bf.docx</name>
+			<size>172268</size>
+			<type>application/vnd.openxmlformats-officedocument.wordprocessingml.document</type>
+			<storage>url</storage>
+			<originalName>test.docx</originalName>
+		</file>
+		<wiltUBijlagenMeesturen>ja</wiltUBijlagenMeesturen>
+		<ikWilNaBehandelingTevredenheidsonderzoek>nee</ikWilNaBehandelingTevredenheidsonderzoek>
+	</bijlagen-toevoegen-klacht>
+</formdata>
+ 

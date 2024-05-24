@@ -1,5 +1,27 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.0](https://github.com/wearefrank/openforms2bpel/compare/v1.19.0...v1.20.0) (2024-05-24)
+
+
+### 🍕 Features
+
+* include 'extraVars' section from Objects API object in formdata ([082a7e0](https://github.com/wearefrank/openforms2bpel/commit/082a7e0d9a492974fb97b527c94c446391bcdebd))
+* transform formdata element names containing '-' to camel-case ([ddefcfe](https://github.com/wearefrank/openforms2bpel/commit/ddefcfedb0aa806cc43d4beddbc19307a781d7f9))
+
+
+### 🧑‍💻 Code Refactoring
+
+* configurable xslt's for collecting and tranforming formdata ([f8ebfdc](https://github.com/wearefrank/openforms2bpel/commit/f8ebfdc89b3828d46bcdffb27952db4e94631803))
+
+
+### ✅ Tests
+
+* add larva test for custom formdata collector with 'extraVars' section ([fabf317](https://github.com/wearefrank/openforms2bpel/commit/fabf31707973dd991bcbc4cdcb2ca54508927f6b))
+* add larva test for custom formdata tranform containing 'form' element injection and '-' to camel-case ([ececc52](https://github.com/wearefrank/openforms2bpel/commit/ececc52f1f39c53db000d1ac7bcbaea1e409a064))
+* add override docker-compose for Utrecht specific tranformations ([95d10e2](https://github.com/wearefrank/openforms2bpel/commit/95d10e26b0d2feaf7b96fda4a17ab3439e963ec5))
+* add testcase for checking if extraVars section is included in the formdata ([696eb51](https://github.com/wearefrank/openforms2bpel/commit/696eb5140d0df678ff78f766541c4107029ed471))
+* larva tests for default formdata collector and default formdata tranform ([bf0e291](https://github.com/wearefrank/openforms2bpel/commit/bf0e291f02f9b41779c0ecbd739ab2b1cfe68d8c))
+
 ## [1.19.0](https://github.com/wearefrank/openforms2bpel/compare/v1.18.2...v1.19.0) (2024-05-16)
 
 

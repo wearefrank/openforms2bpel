@@ -38,14 +38,21 @@
                 <Exit name="EXCEPTION" state="ERROR" />
             </Exits>
 
-            <SenderPipe name="ReplaceXmlIllegalElementNamesSender">
-				<JavascriptSender name="ReplaceXmlIllegalElementNamesJavascriptSender" jsFileName="Common/ReplaceXmlIllegalElementNames.js" jsFunctionName="replaceXmlIllegalElementNames">
+            <SenderPipe
+                name="ReplaceXmlIllegalElementNamesSender"
+                >
+				<JavascriptSender
+                    name="ReplaceXmlIllegalElementNamesJavascriptSender"
+                    jsFileName="Common/ReplaceXmlIllegalElementNames.js"
+                    jsFunctionName="replaceXmlIllegalElementNames"
+                    >
 					<Param name="obj" />
 				</JavascriptSender>
 			</SenderPipe>
 
 			<JsonPipe 
-				name="JsonToXml" 
+				name="JsonToXml"
+                storeResultInSessionKey="FormObject"
 				>
                 <Forward name="success" path="UnwrapOpenZaakEnvelopeToSingle"/>
             </JsonPipe>
@@ -63,12 +70,47 @@
                 styleSheetName="Zgw/UnwrapObjectsApiDataToSingle.xslt"
                 storeResultInSessionKey="UnwrappedMessage"
                 >
-                <Param name="Type" value="ZgwObject"/>
-                <Forward name="success" path="CheckForWorkflow_TwoWayCommunication"/>
+                <Param name="Type" value="ZgwObject" />
+                <Forward name="success" path="FormdataCollector" />
             </XsltPipe>
+
+            <!-- Formdata collection/transform - start -->
+            <XsltPipe
+                name="FormdataCollector"
+                getInputFromSessionKey="FormObject"
+                styleSheetName="${openforms2bpel.workflows.formdata-collector-stylesheet-file}"
+                >
+                <Forward name="success" path="FormdataTransform" />
+                <Forward name="exception" path="FormdataCollectorFailed_Exception" />
+            </XsltPipe>
+
+            <ExceptionPipe name="FormdataCollectorFailed_Exception" />
+
+            <XsltPipe
+                name="FormdataTransform"
+                styleSheetName="${openforms2bpel.workflows.formdata-transform-stylesheet-file}"
+                storeResultInSessionKey="Formdata"
+                >
+                <Forward name="success" path="NoFormdata_Condition" />
+                <Forward name="exception" path="FormdataTransformationFailed_Exception" />
+            </XsltPipe>
+
+            <ExceptionPipe name="FormdataTransformationFailed_Exception" />
+
+            <XmlIfPipe
+                name="NoFormdata_Condition"
+                xpathExpression="string-length(//formdata) = 0"
+                >
+                <Forward name="then" path="NoFormadata_Exception" />
+                <Forward name="else" path="CheckForWorkflow_TwoWayCommunication" />
+            </XmlIfPipe>
+
+            <ExceptionPipe name="NoFormadata_Exception" />
+            <!-- Formdata collection/transform - end -->
 
             <XmlIfPipe
                 name="CheckForWorkflow_TwoWayCommunication"
+                getInputFromSessionKey="UnwrappedMessage"
                 xpathExpression="string-length(//gegevenstweewegcommunicatie) gt 0"
                 >
                 <Forward name="then" path="Workflow_TwoWayCommunicationSender" />
@@ -77,12 +119,14 @@
 
             <SenderPipe
                 name="Workflow_TwoWayCommunicationSender"
+                getInputFromSessionKey="UnwrappedMessage"
                 transactionAttribute="Required"
                 >
                 <IbisLocalSender
                     name="Workflow_TwoWayCommunicationLocalSender"
                     javaListener="Workflow_TwoWayCommunication"
                     >
+                    <Param name="Formdata" sessionKey="Formdata" type="DOMDOC" />
                 </IbisLocalSender>
                 <!-- <MessageStoreSender
 					name="Workflow_TwoWayCommunicationMessageStoreSender"
@@ -97,6 +141,7 @@
 
             <XmlIfPipe
                 name="CheckForWorkflow_UwGegevens"
+                getInputFromSessionKey="UnwrappedMessage"
                 xpathExpression="string-length(//*[starts-with(name(), 'uw-gegevens')]) gt 0"
                 >
                 <Forward name="then" path="Workflow_UwGegevensSender" />
@@ -105,12 +150,14 @@
 
             <SenderPipe
                 name="Workflow_UwGegevensSender"
+                getInputFromSessionKey="UnwrappedMessage"
                 transactionAttribute="Required"
                 >
                 <IbisLocalSender
                     name="Workflow_UwGegevensLocalSender"
                     javaListener="Workflow_UwGegevens"
                     >
+                    <Param name="Formdata" sessionKey="Formdata" type="DOMDOC" />
                 </IbisLocalSender>
                 <!-- <MessageStoreSender
 					name="Workflow_UwGegevensMessageStoreSender"
@@ -125,12 +172,14 @@
 
             <SenderPipe
                 name="Workflow_FallbackSender"
+                getInputFromSessionKey="UnwrappedMessage"
                 transactionAttribute="Required"
                 >
                 <IbisLocalSender
                     name="Workflow_FallbackLocalSender"
                     javaListener="Workflow_Fallback"
                     >
+                    <Param name="Formdata" sessionKey="Formdata" type="DOMDOC" />
                 </IbisLocalSender>
                 <!-- <MessageStoreSender
 					name="Workflow_FallbackMessageStoreSender"

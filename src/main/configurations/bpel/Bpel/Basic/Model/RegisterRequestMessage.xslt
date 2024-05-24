@@ -55,6 +55,12 @@
                 '',
                 basic:registerRequestMessage/basic:body/basic:applicant/basic:employee/basic:username),
             'http://www.emaxx.org/bpel/proces/xsd/eMAXX/Basic')" />
+
+    <xsl:template match="@*|node()">
+        <xsl:copy>
+            <xsl:apply-templates select="@*|node()"/>
+        </xsl:copy>
+    </xsl:template>
     
     <xsl:template match="/">
         <basic:registerRequestMessage>
@@ -100,7 +106,7 @@
                     //basic:parties)"/>
                 <basic:xml>
                     <xsl:variable name="summary">
-                        <xsl:apply-templates select="$Summary/data"/>
+                        <xsl:apply-templates select="$Summary/formdata"/>
                     </xsl:variable>
                     <xsl:copy-of select="zgw:ObjectFromOrderedSource(
                         $summary/summary, 
@@ -159,17 +165,9 @@
         </basic:registerRequestMessage>
     </xsl:template>
 
-    <xsl:template match="/data">
+    <xsl:template match="/formdata">
         <summary>
-            <xsl:for-each select="/data/*">
-                <xsl:element name="{name(current())}" namespace="{namespace-uri(current())}">
-                    <form>
-                        <xsl:for-each select="current()/*">
-                            <xsl:copy-of select="."/>
-                        </xsl:for-each>
-                    </form>
-                </xsl:element>
-            </xsl:for-each>
+            <xsl:apply-templates />
         </summary>
     </xsl:template>
 </xsl:stylesheet>

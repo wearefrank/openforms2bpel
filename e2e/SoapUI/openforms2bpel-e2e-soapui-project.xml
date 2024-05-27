@@ -11795,11 +11795,123 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       <con:endpoint>http://172.29.78.57:8180/active-bpel/services/BasicStatusUpdate</con:endpoint>
       <con:endpoint>http://LAPTOP-UKAI1A6:8088/mock/BasicStatusUpdate</con:endpoint>
     </con:endpoints>
-    <con:operation id="c3ad2bab-c830-44f8-ae43-a7b22a52cf6e" isOneWay="false" action="" name="documentStatus" bindingOperationName="documentStatus" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false">
+    <con:operation id="c3ad2bab-c830-44f8-ae43-a7b22a52cf6e" isOneWay="false" action="" name="documentStatus" bindingOperationName="documentStatus" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
+      <con:call id="54ae8ea1-f07e-4512-9d48-d6286899084c" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://172.29.78.57:8180/active-bpel/services/BasicStatusUpdate</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bas="http://www.emaxx.org/bpel/proces/xsd/eMAXX/BasicStatusUpdate" xmlns:head="http://www.emaxx.org/bpel/proces/xsd/headerproperties" xmlns:com="http://www.emaxx.org/egov/common">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <bas:documentStatusRequestMessage>\r
+         <head:requestProperties>\r
+            <head:user>?</head:user>\r
+            <head:password>?</head:password>\r
+            <head:domain>?</head:domain>\r
+            <head:correlationId>?</head:correlationId>\r
+         </head:requestProperties>\r
+         <bas:body>\r
+            <bas:referenceNumber>?</bas:referenceNumber>\r
+            <bas:documents>\r
+               <!--Zero or more repetitions:-->\r
+               <com:document>\r
+                  <com:id>?</com:id>\r
+                  <!--Optional:-->\r
+                  <com:fileName>?</com:fileName>\r
+                  <com:documentType>?</com:documentType>\r
+                  <com:author>?</com:author>\r
+                  <com:title>?</com:title>\r
+                  <com:subject>?</com:subject>\r
+                  <com:description>?</com:description>\r
+                  <com:language>NL</com:language>\r
+                  <com:contentType>text</com:contentType>\r
+                  <com:reference>?</com:reference>\r
+                  <!--Optional:-->\r
+                  <com:status>\r
+                     <com:code>?</com:code>\r
+                     <com:clarification>?</com:clarification>\r
+                  </com:status>\r
+               </com:document>\r
+            </bas:documents>\r
+         </bas:body>\r
+      </bas:documentStatusRequestMessage>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.emaxx.org/bpel/proces/wsdl/eMAXX/BasicStatusUpdate/BasicStatusUpdate/documentStatusRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
     </con:operation>
     <con:operation id="6eb83dc4-508f-478d-b404-2e7669396903" isOneWay="false" action="" name="updateStatus" bindingOperationName="updateStatus" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
       <con:settings/>
+      <con:call id="dddf65d1-1d03-4bb9-91c4-5cc9e8ba92db" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://172.29.78.57:8180/active-bpel/services/BasicStatusUpdate</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cal="http://www.emaxx.org/functional/cases/subscription/callback">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cal:updateStatus>\r
+         <cal:referenceNumber>?</cal:referenceNumber>\r
+         <!--Optional:-->\r
+         <cal:processData>\r
+            <!--You may enter ANY elements at this point-->\r
+         </cal:processData>\r
+         <!--You have a CHOICE of the next 3 items at this level-->\r
+         <cal:caseStatuses>\r
+            <!--Zero or more repetitions:-->\r
+            <cal:caseStatus>\r
+               <cal:statusCode>?</cal:statusCode>\r
+               <cal:date>?</cal:date>\r
+               <cal:clarification>?</cal:clarification>\r
+            </cal:caseStatus>\r
+         </cal:caseStatuses>\r
+         <cal:paymentStates>\r
+            <!--Zero or more repetitions:-->\r
+            <cal:paymentState>\r
+               <cal:paymentId>?</cal:paymentId>\r
+               <cal:date>?</cal:date>\r
+               <cal:extCode>?</cal:extCode>\r
+               <cal:extMessage>?</cal:extMessage>\r
+               <cal:state>\r
+                  <cal:code>?</cal:code>\r
+                  <cal:description>?</cal:description>\r
+                  <cal:clarification>?</cal:clarification>\r
+               </cal:state>\r
+            </cal:paymentState>\r
+         </cal:paymentStates>\r
+         <cal:documentStatuses>\r
+            <!--Zero or more repetitions:-->\r
+            <cal:documentStatus>\r
+               <cal:documentId>?</cal:documentId>\r
+               <cal:date>?</cal:date>\r
+               <cal:extReferenceNumber>?</cal:extReferenceNumber>\r
+               <cal:clarification>?</cal:clarification>\r
+               <cal:documentReferenceNumber>?</cal:documentReferenceNumber>\r
+               <cal:targetCode>?</cal:targetCode>\r
+               <cal:targetReferenceNumber>?</cal:targetReferenceNumber>\r
+               <cal:status>\r
+                  <cal:code>?</cal:code>\r
+                  <cal:description>?</cal:description>\r
+               </cal:status>\r
+            </cal:documentStatus>\r
+         </cal:documentStatuses>\r
+      </cal:updateStatus>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.emaxx.org/bpel/proces/wsdl/eMAXX/BasicStatusUpdate/BasicStatusUpdate/updateStatusRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
     </con:operation>
   </con:interface>
   <con:interface xsi:type="con:WsdlInterface" id="6bb39d95-4c28-470e-acd2-7107785a76be" wsaVersion="NONE" name="PaymentsBinding" type="wsdl" bindingName="{http://www.emaxx.org/functional/cases/payments}PaymentsBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Projects/openforms2bpel/src/main/configurations/bpel/Bpel/Payment/PaymentService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -16781,6 +16893,565 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
       </con:call>
     </con:operation>
   </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="1d477dfe-e780-426b-a656-b04734cb95e9" wsaVersion="NONE" name="DocumentsBinding" type="wsdl" bindingName="{http://www.emaxx.org/functional/cases/document}DocumentsBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Projects/openforms2bpel/src/main/configurations/bpel/Bpel/Documents/DocumentsService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:endpoints>
+      <con:endpoint>http://172.29.78.40:9180/zakmag-service/DocumentsService</con:endpoint>
+      <con:endpoint>http://LAPTOP-UKAI1A6:8093/mock/DocumentService</con:endpoint>
+    </con:endpoints>
+    <con:operation id="117fc707-f683-4036-8358-7c3b3c2fb87f" isOneWay="false" action="documents:addCaseTypeDMSes" name="addCaseTypeDMSes" bindingOperationName="addCaseTypeDMSes" type="Request-Response" outputName="addCaseTypeDMSesResponse" inputName="addCaseTypeDMSesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="8007ad12-9107-4057-bf5b-08155390e249" isOneWay="false" action="documents:addDMSes" name="addDMSes" bindingOperationName="addDMSes" type="Request-Response" outputName="addDMSesResponse" inputName="addDMSesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="f9ce1400-c9bd-4a74-904a-b39cf11b003a" isOneWay="false" action="documents:addDocument" name="addDocument" bindingOperationName="addDocument" type="Request-Response" outputName="addDocumentResponse" inputName="addDocumentRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="a889e416-36a6-451e-94ac-341a91f65b43" isOneWay="false" action="documents:addDocumentExtensions" name="addDocumentExtensions" bindingOperationName="addDocumentExtensions" type="Request-Response" outputName="addDocumentExtensionsResponse" inputName="addDocumentExtensionsRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="582cd6da-0618-4cde-8c49-dfa85c8e50e7" isOneWay="false" action="documents:addDocumentMimeTypes" name="addDocumentMimeTypes" bindingOperationName="addDocumentMimeTypes" type="Request-Response" outputName="addDocumentMimeTypesResponse" inputName="addDocumentMimeTypesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="715102a4-68f4-46e4-ba50-aead186a2718" isOneWay="false" action="documents:addDocumentToCase" name="addDocumentToCase" bindingOperationName="addDocumentToCase" type="Request-Response" outputName="addDocumentToCaseResponse" inputName="addDocumentToCaseRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="a5bd2289-af74-4926-8d12-f99c2221caa2" isOneWay="false" action="documents:addDocumentTypes" name="addDocumentTypes" bindingOperationName="addDocumentTypes" type="Request-Response" outputName="addDocumentTypesResponse" inputName="addDocumentTypesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="6c4f2123-5d39-4fad-81eb-ca6cd4ca7e3e" isOneWay="false" action="documents:addTemplates" name="addTemplates" bindingOperationName="addTemplates" type="Request-Response" outputName="addTemplatesResponse" inputName="addTemplatesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="a7a3e4a4-2024-4714-9915-0be55cda19f2" isOneWay="false" action="documents:deleteCaseTypeDMSes" name="deleteCaseTypeDMSes" bindingOperationName="deleteCaseTypeDMSes" type="Request-Response" outputName="deleteCaseTypeDMSesResponse" inputName="deleteCaseTypeDMSesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="421b6e1c-e719-4510-a580-552ef0b40b34" isOneWay="false" action="documents:deleteDMSes" name="deleteDMSes" bindingOperationName="deleteDMSes" type="Request-Response" outputName="deleteDMSesResponse" inputName="deleteDMSesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="e855eaa5-f12b-43b4-9dee-34675cfa5cc6" isOneWay="false" action="documents:deleteDocument" name="deleteDocument" bindingOperationName="deleteDocument" type="Request-Response" outputName="deleteDocumentResponse" inputName="deleteDocumentRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="ae401def-8973-489f-9502-f39bd912273d" isOneWay="false" action="documents:deleteDocumentExtensions" name="deleteDocumentExtensions" bindingOperationName="deleteDocumentExtensions" type="Request-Response" outputName="deleteDocumentExtensionsResponse" inputName="deleteDocumentExtensionsRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="189d3f1e-b9b1-4231-a25b-d0604c33a781" isOneWay="false" action="documents:deleteDocumentMimeTypes" name="deleteDocumentMimeTypes" bindingOperationName="deleteDocumentMimeTypes" type="Request-Response" outputName="deleteDocumentMimeTypesResponse" inputName="deleteDocumentMimeTypesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="0a9eb081-0aed-4102-8d34-03ae98760a24" isOneWay="false" action="documents:deleteDocumentTypes" name="deleteDocumentTypes" bindingOperationName="deleteDocumentTypes" type="Request-Response" outputName="deleteDocumentTypesResponse" inputName="deleteDocumentTypesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="2fcea578-c47e-4b8a-aef2-a63ede238f62" isOneWay="false" action="documents:deleteTemplates" name="deleteTemplates" bindingOperationName="deleteTemplates" type="Request-Response" outputName="deleteTemplatesResponse" inputName="deleteTemplatesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="5937838a-8b97-428d-b7c9-6d782ca3dd0c" isOneWay="false" action="documents:endBatch" name="endBatch" bindingOperationName="endBatch" type="Request-Response" outputName="endBatchResponse" inputName="endBatchRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="d2e63a41-d9a4-410d-bf35-0d2e6a77024c" isOneWay="false" action="documents:getDirectEditingURL" name="getDirectEditingURL" bindingOperationName="getDirectEditingURL" type="Request-Response" outputName="getDirectEditingURLResponse" inputName="getDirectEditingURLRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="74a0d5c1-03da-40c9-9e2c-cdea7f4cf887" isOneWay="false" action="documents:getDMSContextPath" name="getDMSContextPath" bindingOperationName="getDMSContextPath" type="Request-Response" outputName="getDMSContextPathResponse" inputName="getDMSContextPathRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="7331aa75-7df5-445d-9e3c-7d0d179fbb64" isOneWay="false" action="documents:getDocumentIdentification" name="getDocumentIdentification" bindingOperationName="getDocumentIdentification" type="Request-Response" outputName="getDocumentIdentificationResponse" inputName="getDocumentIdentificationRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="aab38861-0048-4c55-b174-ff2fadd0f3c6" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://172.29.78.40:9180/zakmag-service/DocumentsService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <doc:getDocumentIdentification>\r
+         <com:dummyMessage>?</com:dummyMessage>\r
+      </doc:getDocumentIdentification>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:getDocumentIdentification"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="ad917b1c-4945-45eb-8b68-490b7d0b32ac" isOneWay="false" action="documents:getDocumentURLs" name="getDocumentURLs" bindingOperationName="getDocumentURLs" type="Request-Response" outputName="getDocumentURLsResponse" inputName="getDocumentURLsRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="3f5eaa34-1b18-4569-8bfc-bf2140f9ca70" isOneWay="false" action="documents:listDocumentCategories" name="listDocumentCategories" bindingOperationName="listDocumentCategories" type="Request-Response" outputName="listDocumentCategoriesResponse" inputName="listDocumentCategoriesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="b3343553-cde6-4c0b-8d4e-29024d96e009" isOneWay="false" action="documents:listDocumentDirections" name="listDocumentDirections" bindingOperationName="listDocumentDirections" type="Request-Response" outputName="listDocumentDirectionsResponse" inputName="listDocumentDirectionsRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="03b55cbd-0b8c-40ae-92bc-7063e28c5d97" isOneWay="false" action="documents:listDocumentRoles" name="listDocumentRoles" bindingOperationName="listDocumentRoles" type="Request-Response" outputName="listDocumentRolesResponse" inputName="listDocumentRolesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="458ae3fe-831b-4039-b5ce-6af80f8f9c65" isOneWay="false" action="documents:listDocuments" name="listDocuments" bindingOperationName="listDocuments" type="Request-Response" outputName="listDocumentsResponse" inputName="listDocumentsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="7a06c495-68a7-4d32-b0e9-a80d1cf3834e" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://172.29.78.40:9180/zakmag-service/DocumentsService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:cas="http://www.emaxx.org/functional/cases">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <doc:listDocuments>\r
+         <doc:documentSearchMessage>\r
+            <!--Optional:-->\r
+            <doc:case>\r
+               <!--Optional:-->\r
+               <cas:id operator="EQUAL">?</cas:id>\r
+               <!--Optional:-->\r
+               <cas:referenceNumber operator="EQUAL">?</cas:referenceNumber>\r
+               <!--Optional:-->\r
+               <cas:description operator="EQUAL">?</cas:description>\r
+               <!--Optional:-->\r
+               <cas:clarification operator="EQUAL">?</cas:clarification>\r
+               <!--Optional:-->\r
+               <cas:startDate operator="EQUAL">?</cas:startDate>\r
+               <!--Optional:-->\r
+               <cas:endDate operator="EQUAL">?</cas:endDate>\r
+               <!--Optional:-->\r
+               <cas:plannedEndDate operator="EQUAL">?</cas:plannedEndDate>\r
+               <!--Optional:-->\r
+               <cas:completionDate operator="EQUAL">?</cas:completionDate>\r
+               <!--Optional:-->\r
+               <cas:registrationDate operator="EQUAL">?</cas:registrationDate>\r
+               <!--Optional:-->\r
+               <cas:publicationDate operator="EQUAL">?</cas:publicationDate>\r
+               <!--Optional:-->\r
+               <cas:caseLevel operator="EQUAL">?</cas:caseLevel>\r
+               <!--Optional:-->\r
+               <cas:subCaseIndication operator="EQUAL">?</cas:subCaseIndication>\r
+               <!--Optional:-->\r
+               <cas:paymentIndication operator="EQUAL">?</cas:paymentIndication>\r
+               <!--Optional:-->\r
+               <cas:lastPaymentDate operator="EQUAL">?</cas:lastPaymentDate>\r
+               <!--Optional:-->\r
+               <cas:confidentialityLevel operator="EQUAL">?</cas:confidentialityLevel>\r
+               <!--Optional:-->\r
+               <cas:urgencyLevel operator="EQUAL">?</cas:urgencyLevel>\r
+               <!--Optional:-->\r
+               <cas:anonymous operator="EQUAL">?</cas:anonymous>\r
+            </doc:case>\r
+            <!--Optional:-->\r
+            <doc:caseTarget>\r
+               <!--Optional:-->\r
+               <doc:code operator="EQUAL">?</doc:code>\r
+               <!--Optional:-->\r
+               <doc:referenceNumber operator="EQUAL">?</doc:referenceNumber>\r
+            </doc:caseTarget>\r
+            <!--Optional:-->\r
+            <doc:caseType>\r
+               <!--Optional:-->\r
+               <cas:id operator="EQUAL">?</cas:id>\r
+               <!--Optional:-->\r
+               <cas:seqNr operator="EQUAL">?</cas:seqNr>\r
+               <!--Optional:-->\r
+               <cas:code operator="EQUAL">?</cas:code>\r
+               <!--Optional:-->\r
+               <cas:identification operator="EQUAL">?</cas:identification>\r
+               <!--Optional:-->\r
+               <cas:description operator="EQUAL">?</cas:description>\r
+               <!--Optional:-->\r
+               <cas:descriptionGeneric operator="EQUAL">?</cas:descriptionGeneric>\r
+               <!--Optional:-->\r
+               <cas:version operator="EQUAL">?</cas:version>\r
+               <!--Optional:-->\r
+               <cas:versionClarification operator="EQUAL">?</cas:versionClarification>\r
+               <!--Optional:-->\r
+               <cas:objective operator="EQUAL">?</cas:objective>\r
+               <!--Optional:-->\r
+               <cas:cause operator="EQUAL">?</cas:cause>\r
+               <!--Optional:-->\r
+               <cas:clarification operator="EQUAL">?</cas:clarification>\r
+               <!--Optional:-->\r
+               <cas:internal operator="EQUAL">?</cas:internal>\r
+               <!--Optional:-->\r
+               <cas:subject operator="EQUAL">?</cas:subject>\r
+               <!--Optional:-->\r
+               <cas:actionInitiator operator="EQUAL">?</cas:actionInitiator>\r
+               <!--Optional:-->\r
+               <cas:actionExecutor operator="EQUAL">?</cas:actionExecutor>\r
+               <!--Optional:-->\r
+               <cas:runTime operator="EQUAL">?</cas:runTime>\r
+               <!--Optional:-->\r
+               <cas:serviceNorm operator="EQUAL">?</cas:serviceNorm>\r
+               <!--Optional:-->\r
+               <cas:postponementAllowed operator="EQUAL">?</cas:postponementAllowed>\r
+               <!--Optional:-->\r
+               <cas:extensionAllowed operator="EQUAL">?</cas:extensionAllowed>\r
+               <!--Optional:-->\r
+               <cas:extensionTerm operator="EQUAL">?</cas:extensionTerm>\r
+               <!--Optional:-->\r
+               <cas:confidentialityLevel operator="EQUAL">?</cas:confidentialityLevel>\r
+               <!--Optional:-->\r
+               <cas:publicationIndication operator="EQUAL">?</cas:publicationIndication>\r
+               <!--Optional:-->\r
+               <cas:publicationText operator="EQUAL">?</cas:publicationText>\r
+               <!--Optional:-->\r
+               <cas:caseCategory operator="EQUAL">?</cas:caseCategory>\r
+               <!--Optional:-->\r
+               <cas:archiveCode operator="EQUAL">?</cas:archiveCode>\r
+               <!--Optional:-->\r
+               <cas:validityStartDate operator="EQUAL">?</cas:validityStartDate>\r
+               <!--Optional:-->\r
+               <cas:validityEndDate operator="EQUAL">?</cas:validityEndDate>\r
+               <!--Optional:-->\r
+               <cas:isPublic operator="EQUAL">?</cas:isPublic>\r
+               <!--Optional:-->\r
+               <cas:modifyStartDate operator="EQUAL">?</cas:modifyStartDate>\r
+               <!--Optional:-->\r
+               <cas:recalculatePlannedEndDate operator="EQUAL">?</cas:recalculatePlannedEndDate>\r
+               <!--Optional:-->\r
+               <cas:catalogRSIN operator="EQUAL">?</cas:catalogRSIN>\r
+            </doc:caseType>\r
+            <!--Optional:-->\r
+            <doc:targetSystem>\r
+               <!--Optional:-->\r
+               <doc:code operator="EQUAL">?</doc:code>\r
+               <!--Optional:-->\r
+               <doc:referenceNumber operator="EQUAL">?</doc:referenceNumber>\r
+            </doc:targetSystem>\r
+            <!--Optional:-->\r
+            <doc:sourceSystem>\r
+               <!--Optional:-->\r
+               <doc:code operator="EQUAL">?</doc:code>\r
+               <!--Optional:-->\r
+               <doc:referenceNumber operator="EQUAL">?</doc:referenceNumber>\r
+            </doc:sourceSystem>\r
+            <!--Optional:-->\r
+            <doc:document>\r
+               <!--Optional:-->\r
+               <doc:referenceNumber operator="EQUAL">?</doc:referenceNumber>\r
+               <!--Optional:-->\r
+               <doc:fileName operator="EQUAL">?</doc:fileName>\r
+               <!--Optional:-->\r
+               <doc:mimeType operator="EQUAL">?</doc:mimeType>\r
+               <!--Optional:-->\r
+               <doc:mimeTypeReason operator="EQUAL">?</doc:mimeTypeReason>\r
+               <!--Optional:-->\r
+               <doc:mimeTypeVersion operator="EQUAL">?</doc:mimeTypeVersion>\r
+               <!--Optional:-->\r
+               <doc:mimeTypeActive operator="EQUAL">?</doc:mimeTypeActive>\r
+               <!--Optional:-->\r
+               <doc:fileSize operator="EQUAL">?</doc:fileSize>\r
+               <!--Optional:-->\r
+               <doc:forwardExtension operator="EQUAL">?</doc:forwardExtension>\r
+               <!--Optional:-->\r
+               <doc:expirationDate operator="EQUAL">?</doc:expirationDate>\r
+               <!--Optional:-->\r
+               <doc:batchNumber operator="EQUAL">?</doc:batchNumber>\r
+               <!--Optional:-->\r
+               <doc:version operator="EQUAL">?</doc:version>\r
+               <!--Optional:-->\r
+               <doc:confidentialityLevel operator="EQUAL">?</doc:confidentialityLevel>\r
+               <!--Optional:-->\r
+               <doc:hashValue operator="EQUAL">?</doc:hashValue>\r
+               <!--Optional:-->\r
+               <doc:registrationDate operator="EQUAL">?</doc:registrationDate>\r
+               <!--Optional:-->\r
+               <doc:creationDate operator="EQUAL">?</doc:creationDate>\r
+               <!--Optional:-->\r
+               <doc:receiptDate operator="EQUAL">?</doc:receiptDate>\r
+               <!--Optional:-->\r
+               <doc:sendDate operator="EQUAL">?</doc:sendDate>\r
+               <!--Optional:-->\r
+               <doc:title operator="EQUAL">?</doc:title>\r
+               <!--Optional:-->\r
+               <doc:description operator="EQUAL">?</doc:description>\r
+               <!--Optional:-->\r
+               <doc:author operator="EQUAL">?</doc:author>\r
+               <!--Optional:-->\r
+               <doc:format operator="EQUAL">?</doc:format>\r
+               <!--Optional:-->\r
+               <doc:status operator="EQUAL">?</doc:status>\r
+               <!--Optional:-->\r
+               <doc:initialDocumentIndication operator="EQUAL">?</doc:initialDocumentIndication>\r
+               <!--Optional:-->\r
+               <doc:characteristic operator="EQUAL">?</doc:characteristic>\r
+               <!--Optional:-->\r
+               <doc:receivedRegistered operator="EQUAL">?</doc:receivedRegistered>\r
+               <!--Optional:-->\r
+               <doc:mailRegistrationNr operator="EQUAL">?</doc:mailRegistrationNr>\r
+               <!--Optional:-->\r
+               <doc:composite operator="EQUAL">?</doc:composite>\r
+            </doc:document>\r
+            <!--Optional:-->\r
+            <doc:language>\r
+               <!--Optional:-->\r
+               <doc:code operator="EQUAL">?</doc:code>\r
+               <!--Optional:-->\r
+               <doc:description operator="EQUAL">?</doc:description>\r
+            </doc:language>\r
+            <!--Optional:-->\r
+            <doc:documentType>\r
+               <!--Optional:-->\r
+               <doc:description operator="EQUAL">?</doc:description>\r
+               <!--Optional:-->\r
+               <doc:descriptionGeneric operator="EQUAL">?</doc:descriptionGeneric>\r
+               <!--Optional:-->\r
+               <doc:documentCategory operator="EQUAL">?</doc:documentCategory>\r
+               <!--Optional:-->\r
+               <doc:confidentialityLevel operator="EQUAL">?</doc:confidentialityLevel>\r
+               <!--Optional:-->\r
+               <doc:direction operator="EQUAL">?</doc:direction>\r
+               <!--Optional:-->\r
+               <doc:clarification operator="EQUAL">?</doc:clarification>\r
+               <!--Optional:-->\r
+               <doc:validityStartDate operator="EQUAL">?</doc:validityStartDate>\r
+               <!--Optional:-->\r
+               <doc:validityEndDate operator="EQUAL">?</doc:validityEndDate>\r
+            </doc:documentType>\r
+         </doc:documentSearchMessage>\r
+      </doc:listDocuments>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:listDocuments"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="e992f8c6-bc93-4367-8a10-5341cbb3c619" isOneWay="false" action="documents:listDocumentTypeGenericDescriptions" name="listDocumentTypeGenericDescriptions" bindingOperationName="listDocumentTypeGenericDescriptions" type="Request-Response" outputName="listDocumentTypeGenericDescriptionsResponse" inputName="listDocumentTypeGenericDescriptionsRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="416c28c6-032f-4b90-9e9f-5891f5b08980" isOneWay="false" action="documents:listDocumentVersions" name="listDocumentVersions" bindingOperationName="listDocumentVersions" type="Request-Response" outputName="listDocumentVersionsResponse" inputName="listDocumentVersionsRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="e3131124-7854-4a17-859b-e0adc06b37b1" isOneWay="false" action="documents:listLanguages" name="listLanguages" bindingOperationName="listLanguages" type="Request-Response" outputName="listLanguagesResponse" inputName="listLanguagesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="cafb836d-54b1-4606-b448-60c03f29510c" isOneWay="false" action="documents:listRelatedDocumentVersions" name="listRelatedDocumentVersions" bindingOperationName="listRelatedDocumentVersions" type="Request-Response" outputName="listRelatedDocumentVersionsResponse" inputName="listRelatedDocumentVersionsRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="ffbbc548-d201-4f0e-9bea-dda5989f3a5b" isOneWay="false" action="documents:lookUpCaseTypeDMSes" name="lookUpCaseTypeDMSes" bindingOperationName="lookUpCaseTypeDMSes" type="Request-Response" outputName="lookUpCaseTypeDMSesResponse" inputName="lookUpCaseTypeDMSesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="7369e31c-42fe-42a5-b310-4562ce641f97" isOneWay="false" action="documents:lookUpDMSes" name="lookUpDMSes" bindingOperationName="lookUpDMSes" type="Request-Response" outputName="lookUpDMSesResponse" inputName="lookUpDMSesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="95d635b5-d4f9-4adf-b211-eacc7d87082f" isOneWay="false" action="documents:lookUpDocumentExtensions" name="lookUpDocumentExtensions" bindingOperationName="lookUpDocumentExtensions" type="Request-Response" outputName="lookUpDocumentExtensionsResponse" inputName="lookUpDocumentExtensionsRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="d583d2ef-5b55-41fc-afbd-1f77d1561652" isOneWay="false" action="documents:lookUpDocumentMimeTypes" name="lookUpDocumentMimeTypes" bindingOperationName="lookUpDocumentMimeTypes" type="Request-Response" outputName="lookUpDocumentMimeTypesResponse" inputName="lookUpDocumentMimeTypesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="b44d8600-550d-46e8-8606-79604122e6eb" isOneWay="false" action="documents:lookUpDocumentTypes" name="lookUpDocumentTypes" bindingOperationName="lookUpDocumentTypes" type="Request-Response" outputName="lookUpDocumentTypesResponse" inputName="lookUpDocumentTypesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="c98bbd36-4cb2-489f-bf03-0d2f5cd52482" isOneWay="false" action="documents:lookUpTemplates" name="lookUpTemplates" bindingOperationName="lookUpTemplates" type="Request-Response" outputName="lookUpTemplatesResponse" inputName="lookUpTemplatesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="202a0257-e0a1-4a37-91d9-40c9be41b6b4" isOneWay="false" action="documents:readCaseTypeDMSes" name="readCaseTypeDMSes" bindingOperationName="readCaseTypeDMSes" type="Request-Response" outputName="readCaseTypeDMSesResponse" inputName="readCaseTypeDMSesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="1c72be47-7933-4ef5-ac4a-e8908734dccd" isOneWay="false" action="documents:readDMSes" name="readDMSes" bindingOperationName="readDMSes" type="Request-Response" outputName="readDMSesResponse" inputName="readDMSesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="b6f81046-f06e-4601-b4e6-2ef50061bb97" isOneWay="false" action="documents:readDocument" name="readDocument" bindingOperationName="readDocument" type="Request-Response" outputName="readDocumentResponse" inputName="readDocumentRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="a77e0d63-bac7-420e-83e6-28efe7ffab55" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://172.29.78.40:9180/zakmag-service/DocumentsService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <doc:readDocument>\r
+         <doc:documentIdMessage>\r
+            <doc:referenceNumber>?</doc:referenceNumber>\r
+            <doc:provider>\r
+               <!--You have a CHOICE of the next 6 items at this level-->\r
+               <doc:citizenNumber authentic="J">?</doc:citizenNumber>\r
+               <doc:employeeUsername>?</doc:employeeUsername>\r
+               <doc:nnpId authentic="J">?</doc:nnpId>\r
+               <doc:numberOtherForeignNNP>?</doc:numberOtherForeignNNP>\r
+               <doc:numberOtherNaturalPerson>?</doc:numberOtherNaturalPerson>\r
+               <doc:officeNumber authentic="J">?</doc:officeNumber>\r
+            </doc:provider>\r
+            <doc:targetSystem>\r
+               <doc:code>?</doc:code>\r
+               <doc:referenceNumber>?</doc:referenceNumber>\r
+            </doc:targetSystem>\r
+         </doc:documentIdMessage>\r
+      </doc:readDocument>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:readDocument"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="532a1a30-5223-4aa2-9021-a23521a4f6ee" isOneWay="false" action="documents:readDocumentExtensions" name="readDocumentExtensions" bindingOperationName="readDocumentExtensions" type="Request-Response" outputName="readDocumentExtensionsResponse" inputName="readDocumentExtensionsRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="a675daf9-49b0-44c9-9ef6-7966d05c18e6" isOneWay="false" action="documents:readDocumentMimeTypes" name="readDocumentMimeTypes" bindingOperationName="readDocumentMimeTypes" type="Request-Response" outputName="readDocumentMimeTypesResponse" inputName="readDocumentMimeTypesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="5f4f0ce5-4082-4fef-b368-1d597f9996ca" isOneWay="false" action="documents:readDocumentTypes" name="readDocumentTypes" bindingOperationName="readDocumentTypes" type="Request-Response" outputName="readDocumentTypesResponse" inputName="readDocumentTypesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="de72eee0-7a11-44cf-abcf-4da7e2302429" isOneWay="false" action="documents:readTemplates" name="readTemplates" bindingOperationName="readTemplates" type="Request-Response" outputName="readTemplatesResponse" inputName="readTemplatesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="77eda8af-bf11-40ca-acbf-2acb1817b93d" isOneWay="false" action="documents:startBatch" name="startBatch" bindingOperationName="startBatch" type="Request-Response" outputName="startBatchResponse" inputName="startBatchRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="f666b892-9052-492f-87a1-d66d8d3b7e71" isOneWay="false" action="documents:updateCaseTypeDMSes" name="updateCaseTypeDMSes" bindingOperationName="updateCaseTypeDMSes" type="Request-Response" outputName="updateCaseTypeDMSesResponse" inputName="updateCaseTypeDMSesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="95cca020-a433-4432-a12a-72d9e53702eb" isOneWay="false" action="documents:updateDMSes" name="updateDMSes" bindingOperationName="updateDMSes" type="Request-Response" outputName="updateDMSesResponse" inputName="updateDMSesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="dcfba9db-92ed-4d6a-b56a-2f82d95885e3" isOneWay="false" action="documents:updateDocumentExtensions" name="updateDocumentExtensions" bindingOperationName="updateDocumentExtensions" type="Request-Response" outputName="updateDocumentExtensionsResponse" inputName="updateDocumentExtensionsRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="5ba0909c-a015-40a0-bd22-6016f1661df4" isOneWay="false" action="documents:updateDocumentMetadata" name="updateDocumentMetadata" bindingOperationName="updateDocumentMetadata" type="Request-Response" outputName="updateDocumentMetadataResponse" inputName="updateDocumentMetadataRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="44e4fc89-ca42-46db-83ea-c7704583d9f8" isOneWay="false" action="documents:updateDocumentMimeTypes" name="updateDocumentMimeTypes" bindingOperationName="updateDocumentMimeTypes" type="Request-Response" outputName="updateDocumentMimeTypesResponse" inputName="updateDocumentMimeTypesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="fe687ffe-b41c-47b1-a518-396a7028889b" isOneWay="false" action="documents:updateDocumentTypes" name="updateDocumentTypes" bindingOperationName="updateDocumentTypes" type="Request-Response" outputName="updateDocumentTypesResponse" inputName="updateDocumentTypesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="e8019c03-5b1e-4811-a7dd-ff4859a118e5" isOneWay="false" action="documents:updateTemplates" name="updateTemplates" bindingOperationName="updateTemplates" type="Request-Response" outputName="updateTemplatesResponse" inputName="updateTemplatesRequest" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="522504eb-e1f8-4aa9-af16-844788a1c6d4" isOneWay="false" action="documents:verifyAddDocument" name="verifyAddDocument" bindingOperationName="verifyAddDocument" type="Request-Response" outputName="verifyAddDocumentResponse" inputName="verifyAddDocumentRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="eeb94ff1-2b53-41a6-a5b8-d70ef564b7ca" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://172.29.78.40:9180/zakmag-service/DocumentsService</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <doc:verifyAddDocument>\r
+         <doc:documentSaveMessage>\r
+            <doc:document>\r
+               <doc:referenceNumber>?</doc:referenceNumber>\r
+               <doc:fileName>?</doc:fileName>\r
+               <doc:mimeType>?</doc:mimeType>\r
+               <!--Optional:-->\r
+               <doc:mimeTypeReason>?</doc:mimeTypeReason>\r
+               <!--Optional:-->\r
+               <doc:mimeTypeVersion>?</doc:mimeTypeVersion>\r
+               <!--Optional:-->\r
+               <doc:mimeTypeActive>?</doc:mimeTypeActive>\r
+               <doc:fileSize>?</doc:fileSize>\r
+               <doc:forwardExtension>?</doc:forwardExtension>\r
+               <doc:expirationDate>?</doc:expirationDate>\r
+               <doc:batchNumber>?</doc:batchNumber>\r
+               <doc:version>?</doc:version>\r
+               <doc:confidentialityLevel>?</doc:confidentialityLevel>\r
+               <!--Optional:-->\r
+               <doc:hashValue>?</doc:hashValue>\r
+               <!--Optional:-->\r
+               <doc:registrationDate>?</doc:registrationDate>\r
+               <doc:creationDate>?</doc:creationDate>\r
+               <doc:receiptDate>?</doc:receiptDate>\r
+               <doc:sendDate>?</doc:sendDate>\r
+               <doc:title>?</doc:title>\r
+               <doc:description>?</doc:description>\r
+               <doc:author>?</doc:author>\r
+               <doc:format>?</doc:format>\r
+               <doc:status>?</doc:status>\r
+               <doc:initialDocumentIndication>?</doc:initialDocumentIndication>\r
+               <!--Optional:-->\r
+               <doc:characteristic>?</doc:characteristic>\r
+               <!--Optional:-->\r
+               <doc:receivedRegistered>?</doc:receivedRegistered>\r
+               <!--Optional:-->\r
+               <doc:mailRegistrationNr>?</doc:mailRegistrationNr>\r
+               <doc:language>\r
+                  <doc:code>nl_NL</doc:code>\r
+               </doc:language>\r
+               <doc:documentType>\r
+                  <doc:description>?</doc:description>\r
+               </doc:documentType>\r
+               <doc:case>\r
+                  <doc:referenceNumber>?</doc:referenceNumber>\r
+               </doc:case>\r
+               <doc:provider>\r
+                  <!--You have a CHOICE of the next 6 items at this level-->\r
+                  <doc:citizenNumber authentic="J">?</doc:citizenNumber>\r
+                  <doc:employeeUsername>?</doc:employeeUsername>\r
+                  <doc:nnpId authentic="J">?</doc:nnpId>\r
+                  <doc:numberOtherForeignNNP>?</doc:numberOtherForeignNNP>\r
+                  <doc:numberOtherNaturalPerson>?</doc:numberOtherNaturalPerson>\r
+                  <doc:officeNumber authentic="J">?</doc:officeNumber>\r
+               </doc:provider>\r
+               <doc:targetSystems>\r
+                  <!--Zero or more repetitions:-->\r
+                  <doc:targetSystem>\r
+                     <doc:code>?</doc:code>\r
+                     <doc:referenceNumber>?</doc:referenceNumber>\r
+                  </doc:targetSystem>\r
+               </doc:targetSystems>\r
+               <!--Optional:-->\r
+               <doc:sourceSystem>\r
+                  <doc:code>?</doc:code>\r
+                  <doc:referenceNumber>?</doc:referenceNumber>\r
+               </doc:sourceSystem>\r
+            </doc:document>\r
+         </doc:documentSaveMessage>\r
+      </doc:verifyAddDocument>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:verifyAddDocument"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:interface xsi:type="con:WsdlInterface" id="5f4a89d9-c754-4321-b3c0-d49d6112f883" wsaVersion="NONE" name="MTOMServiceBinding" type="wsdl" bindingName="{http://www.emaxx.org/functional/documents/mtom}MTOMServiceBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Projects/openforms2bpel/src/main/configurations/bpel/Bpel/Mtom/DocumentVaultMTOMConnector.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:endpoints>
+      <con:endpoint>http://172.29.78.40:9180/zakmag-service/DocumentVaultMTOMConnector</con:endpoint>
+      <con:endpoint>http://LAPTOP-UKAI1A6:8095/mock/mtom-service</con:endpoint>
+    </con:endpoints>
+    <con:operation id="691ee18a-08e2-4455-a812-7f0cffa7c81a" isOneWay="false" action="addDocument" name="addDocument" bindingOperationName="addDocument" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false">
+      <con:settings/>
+    </con:operation>
+    <con:operation id="1488218f-6e6c-4ecc-802b-42c39b2cc14c" isOneWay="false" action="readDocument" name="readDocument" bindingOperationName="readDocument" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="3d1e5349-886a-455c-a0e7-93e12a3cd985" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://172.29.78.40:9180/zakmag-service/DocumentVaultMTOMConnector</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mtom="http://www.emaxx.org/functional/documents/mtom">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <mtom:ReadDocumentRequest>\r
+         <mtom:sessionId>?</mtom:sessionId>\r
+      </mtom:ReadDocumentRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="readDocument"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
   <con:testSuite id="51faa60a-6964-478d-8f14-899c806b2805" name="e2e">
     <con:settings/>
     <con:runType>SEQUENTIAL</con:runType>
@@ -17129,7 +17800,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-KVVDZD</con:value>
+              <con:value>OF-ZRHQHU</con:value>
             </con:property>
           </con:properties>
         </con:config>
@@ -22247,7 +22918,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
     <con:properties>
       <con:property>
         <con:name>caseReferenceNumber</con:name>
-        <con:value>OF-KVVDZD</con:value>
+        <con:value>OF-ZRHQHU</con:value>
       </con:property>
       <con:property>
         <con:name>initiatingSubjectCitizenNumber</con:name>
@@ -24672,6 +25343,1829 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
    </soapenv:Body>
 </soapenv:Envelope>]]></con:responseContent>
         <con:wsaConfig mustUnderstand="NONE" version="200508" action="gegmagbasic:updateSupplementaryOrganizationInfo"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+  </con:mockService>
+  <con:mockService id="b2641c70-063a-4650-bf6f-00bcc915eca2" port="8093" path="/mock/DocumentService" host="LAPTOP-UKAI1A6" name="BPEL Document Mock" bindToHostOnly="false" docroot="">
+    <con:settings>
+      <con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting>
+    </con:settings>
+    <con:properties/>
+    <con:mockOperation name="addCaseTypeDMSes" id="712d7fa6-d576-42de-be41-fac66a77a187" interface="DocumentsBinding" operation="addCaseTypeDMSes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="e64fabf5-69f5-46a2-815e-ec72b9b84746" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:addCaseTypeDMSesResponse>
+         <doc:caseTypeDMSIdMessage>
+            <doc:caseTypeDMSes>
+               <!--1 or more repetitions:-->
+               <doc:caseTypeDMS>
+                  <doc:caseTypeCode>?</doc:caseTypeCode>
+               </doc:caseTypeDMS>
+            </doc:caseTypeDMSes>
+         </doc:caseTypeDMSIdMessage>
+      </doc:addCaseTypeDMSesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:addCaseTypeDMSes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="addDMSes" id="423e7f25-0bc7-4b5a-a646-69cb49a620cc" interface="DocumentsBinding" operation="addDMSes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="e9c26c53-b83a-4f17-89c1-f252a00767a2" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:addDMSesResponse>
+         <doc:dmsIdMessage>
+            <doc:dmses>
+               <!--1 or more repetitions:-->
+               <doc:dms>
+                  <doc:code>?</doc:code>
+               </doc:dms>
+            </doc:dmses>
+         </doc:dmsIdMessage>
+      </doc:addDMSesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:addDMSes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="addDocument" id="52676f13-5751-4abd-a023-59e151254dad" interface="DocumentsBinding" operation="addDocument">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>QUERY_MATCH</con:dispatchStyle>
+      <con:response name="Response 1" id="97701794-5d16-48f7-bf11-9b7e8e03cda2" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:addDocumentResponse>
+         <doc:documentSessionMessage>
+            <doc:sessionId>123</doc:sessionId>
+            <doc:referenceNumber>?</doc:referenceNumber>
+            <doc:initiated>?</doc:initiated>
+            <doc:timeToLive>?</doc:timeToLive>
+            <doc:batchNumber>555</doc:batchNumber>
+            <doc:batchSequenceNr>1</doc:batchSequenceNr>
+            <!--Optional:-->
+            <doc:document>
+               <doc:referenceNumber>?</doc:referenceNumber>
+               <doc:fileName>?</doc:fileName>
+               <doc:mimeType>?</doc:mimeType>
+               <!--Optional:-->
+               <doc:mimeTypeReason>?</doc:mimeTypeReason>
+               <!--Optional:-->
+               <doc:mimeTypeVersion>?</doc:mimeTypeVersion>
+               <!--Optional:-->
+               <doc:mimeTypeActive>?</doc:mimeTypeActive>
+               <doc:fileSize>?</doc:fileSize>
+               <doc:forwardExtension>?</doc:forwardExtension>
+               <doc:expirationDate>?</doc:expirationDate>
+               <doc:batchNumber>?</doc:batchNumber>
+               <doc:version>?</doc:version>
+               <doc:confidentialityLevel>?</doc:confidentialityLevel>
+               <doc:confidentialityLevelName>?</doc:confidentialityLevelName>
+               <doc:hashValue>?</doc:hashValue>
+               <doc:registrationDate>?</doc:registrationDate>
+               <doc:creationDate>?</doc:creationDate>
+               <doc:receiptDate>?</doc:receiptDate>
+               <doc:sendDate>?</doc:sendDate>
+               <doc:title>?</doc:title>
+               <doc:description>?</doc:description>
+               <doc:author>?</doc:author>
+               <doc:format>?</doc:format>
+               <doc:status>?</doc:status>
+               <doc:initialDocumentIndication>?</doc:initialDocumentIndication>
+               <!--Optional:-->
+               <doc:characteristic>?</doc:characteristic>
+               <!--Optional:-->
+               <doc:receivedRegistered>?</doc:receivedRegistered>
+               <!--Optional:-->
+               <doc:mailRegistrationNr>?</doc:mailRegistrationNr>
+               <doc:language>
+                  <doc:code>nl_NL</doc:code>
+                  <doc:description>?</doc:description>
+               </doc:language>
+               <!--Optional:-->
+               <doc:composite>N</doc:composite>
+               <!--Optional:-->
+               <doc:checkout>
+                  <doc:date>?</doc:date>
+                  <doc:employeeId>?</doc:employeeId>
+                  <doc:employeeUsername>?</doc:employeeUsername>
+                  <doc:type>?</doc:type>
+               </doc:checkout>
+               <!--Optional:-->
+               <doc:url>?</doc:url>
+               <!--Optional:-->
+               <doc:directEditingEnabled>N</doc:directEditingEnabled>
+               <!--Optional:-->
+               <doc:documentSign>
+                  <doc:documentSignType>?</doc:documentSignType>
+                  <doc:documentSignDate>?</doc:documentSignDate>
+               </doc:documentSign>
+               <!--Optional:-->
+               <doc:documentUsageRights>
+                  <!--Zero or more repetitions:-->
+                  <doc:documentUsageRight>
+                     <doc:id>?</doc:id>
+                     <doc:description>?</doc:description>
+                     <doc:startDate>?</doc:startDate>
+                     <doc:endDate>?</doc:endDate>
+                  </doc:documentUsageRight>
+               </doc:documentUsageRights>
+               <!--Optional:-->
+               <doc:integrity>
+                  <doc:algorithm>?</doc:algorithm>
+                  <doc:value>?</doc:value>
+                  <doc:date>?</doc:date>
+               </doc:integrity>
+               <doc:documentType>
+                  <doc:description>?</doc:description>
+                  <doc:descriptionGeneric>?</doc:descriptionGeneric>
+                  <doc:documentCategory>?</doc:documentCategory>
+                  <doc:confidentialityLevel>?</doc:confidentialityLevel>
+                  <doc:direction>?</doc:direction>
+                  <doc:clarification>?</doc:clarification>
+                  <doc:validityStartDate>?</doc:validityStartDate>
+                  <doc:validityEndDate>?</doc:validityEndDate>
+                  <!--Optional:-->
+                  <doc:headwords>
+                     <!--Zero or more repetitions:-->
+                     <doc:headword>?</doc:headword>
+                  </doc:headwords>
+               </doc:documentType>
+               <doc:batchSequenceNr>?</doc:batchSequenceNr>
+               <doc:case>
+                  <doc:referenceNumber>?</doc:referenceNumber>
+               </doc:case>
+               <doc:targetSystems>
+                  <!--Zero or more repetitions:-->
+                  <doc:targetSystem default="false">
+                     <doc:code>?</doc:code>
+                     <doc:referenceNumber>?</doc:referenceNumber>
+                     <!--Optional:-->
+                     <doc:currentStatus>
+                        <doc:code>?</doc:code>
+                        <doc:clarification>?</doc:clarification>
+                     </doc:currentStatus>
+                  </doc:targetSystem>
+               </doc:targetSystems>
+               <!--Optional:-->
+               <doc:sourceSystem default="false">
+                  <doc:code>?</doc:code>
+                  <doc:referenceNumber>?</doc:referenceNumber>
+                  <!--Optional:-->
+                  <doc:currentStatus>
+                     <doc:code>?</doc:code>
+                     <doc:clarification>?</doc:clarification>
+                  </doc:currentStatus>
+               </doc:sourceSystem>
+               <!--You have a CHOICE of the next 2 items at this level-->
+               <!--Optional:-->
+               <doc:compositeDocumentIdentification>?</doc:compositeDocumentIdentification>
+               <!--Optional:-->
+               <doc:singularDocumentIdentifications>
+                  <!--Zero or more repetitions:-->
+                  <doc:singularDocumentIdentification>?</doc:singularDocumentIdentification>
+               </doc:singularDocumentIdentifications>
+            </doc:document>
+         </doc:documentSessionMessage>
+      </doc:addDocumentResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:addDocument"/>
+      </con:response>
+      <con:response name="DocumentDoesntExist" id="9a403259-93d4-4a31-b78b-7a047df7eeb6" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:addDocumentResponse>
+         <doc:documentSessionMessage>
+            <doc:sessionId>123</doc:sessionId>
+            <doc:referenceNumber>?</doc:referenceNumber>
+            <doc:initiated>?</doc:initiated>
+            <doc:timeToLive>?</doc:timeToLive>
+            <doc:batchNumber>555</doc:batchNumber>
+            <doc:batchSequenceNr>1</doc:batchSequenceNr>
+         </doc:documentSessionMessage>
+      </doc:addDocumentResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:addDocument"/>
+      </con:response>
+      <con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    </con:mockOperation>
+    <con:mockOperation name="addDocumentExtensions" id="7b86b83a-a4f5-45f7-ac8d-685e8097af13" interface="DocumentsBinding" operation="addDocumentExtensions">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="ea54473d-1473-4c80-a253-bfbcf7745bed" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:addDocumentExtensionsResponse>
+         <doc:documentExtensionIdMessage>
+            <doc:documentExtensions>
+               <!--Zero or more repetitions:-->
+               <doc:documentExtension>
+                  <doc:extension>?</doc:extension>
+               </doc:documentExtension>
+            </doc:documentExtensions>
+         </doc:documentExtensionIdMessage>
+      </doc:addDocumentExtensionsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:addDocumentExtensions"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="addDocumentMimeTypes" id="71052aa6-bb24-40b5-999d-becfdfbec2cb" interface="DocumentsBinding" operation="addDocumentMimeTypes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="e927829d-8ea1-469d-bafc-674f575f6391" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:addDocumentMimeTypesResponse>
+         <doc:documentMimeTypeIdMessage>
+            <doc:documentMimeTypes>
+               <!--Zero or more repetitions:-->
+               <doc:documentMimeType>
+                  <doc:mimeType>?</doc:mimeType>
+                  <doc:version>*</doc:version>
+               </doc:documentMimeType>
+            </doc:documentMimeTypes>
+         </doc:documentMimeTypeIdMessage>
+      </doc:addDocumentMimeTypesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:addDocumentMimeTypes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="addDocumentToCase" id="ad38fc9f-520e-4e9a-b664-8f591a0aaea2" interface="DocumentsBinding" operation="addDocumentToCase">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="cfd00a0c-4b43-44e5-944b-dddc36a61021" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:addDocumentToCaseResponse>
+         <doc:addDocumentToCaseResponseMessage>
+            <doc:referenceNumber>?</doc:referenceNumber>
+            <doc:system>
+               <doc:code>?</doc:code>
+               <doc:referenceNumber>?</doc:referenceNumber>
+            </doc:system>
+         </doc:addDocumentToCaseResponseMessage>
+      </doc:addDocumentToCaseResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:addDocumentToCase"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="addDocumentTypes" id="0653da1d-1a77-49bc-a9d1-ed81a680b779" interface="DocumentsBinding" operation="addDocumentTypes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="e753e7bf-3fa6-4cf7-a785-3d24afd8c8f2" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:addDocumentTypesResponse>
+         <doc:documentTypeIdMessage>
+            <doc:documentTypes>
+               <!--Zero or more repetitions:-->
+               <doc:documentType>
+                  <doc:description>?</doc:description>
+               </doc:documentType>
+            </doc:documentTypes>
+         </doc:documentTypeIdMessage>
+      </doc:addDocumentTypesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:addDocumentTypes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="addTemplates" id="41e7edb8-c054-478a-889d-f0a133d7148d" interface="DocumentsBinding" operation="addTemplates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="15199655-3b85-403d-9889-458b2c695956" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:addTemplatesResponse>
+         <doc:templateIdMessage>
+            <doc:templates>
+               <!--Zero or more repetitions:-->
+               <doc:template>
+                  <doc:name>?</doc:name>
+               </doc:template>
+            </doc:templates>
+         </doc:templateIdMessage>
+      </doc:addTemplatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:addTemplates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="deleteCaseTypeDMSes" id="71356816-8e66-4d32-897b-8628d2229e87" interface="DocumentsBinding" operation="deleteCaseTypeDMSes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="c46e3424-d59c-42ab-a341-10b5d1b951eb" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:deleteCaseTypeDMSesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:deleteCaseTypeDMSesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:deleteCaseTypeDMSes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="deleteDMSes" id="8fc5e759-7dca-4a15-923a-e24234cf94eb" interface="DocumentsBinding" operation="deleteDMSes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="ed172a9e-1662-4109-99c9-17717305c999" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:deleteDMSesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:deleteDMSesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:deleteDMSes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="deleteDocument" id="871ad484-1571-44d0-84cd-541d49702d79" interface="DocumentsBinding" operation="deleteDocument">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="def2590b-8ab1-4867-9f48-60ecb0acdc1a" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:deleteDocumentResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:deleteDocumentResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:deleteDocument"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="deleteDocumentExtensions" id="9433c2eb-d657-44e8-b4e6-8b2c704d2ab8" interface="DocumentsBinding" operation="deleteDocumentExtensions">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="d0a42698-6aed-4835-8b6e-eff8a4e38ec5" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:deleteDocumentExtensionsResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:deleteDocumentExtensionsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:deleteDocumentExtensions"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="deleteDocumentMimeTypes" id="cbfab4a9-3257-41be-8f4c-d3d29dd6a9a9" interface="DocumentsBinding" operation="deleteDocumentMimeTypes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="0354a9d8-c9dd-408d-a62b-45a8f9ebce70" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:deleteDocumentMimeTypesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:deleteDocumentMimeTypesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:deleteDocumentMimeTypes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="deleteDocumentTypes" id="79007de3-3385-4635-9c41-7f301ca9f417" interface="DocumentsBinding" operation="deleteDocumentTypes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="5637dc32-6ddd-4594-9fac-dd250522644c" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:deleteDocumentTypesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:deleteDocumentTypesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:deleteDocumentTypes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="deleteTemplates" id="d6413a0b-da11-49eb-8dd9-9aa7e2eb9dcd" interface="DocumentsBinding" operation="deleteTemplates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="16ca75eb-e8b0-4cea-95f4-7f6a84935eb9" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:deleteTemplatesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:deleteTemplatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:deleteTemplates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="endBatch" id="1ab23078-536c-4dbe-801c-a7ee9bc8249b" interface="DocumentsBinding" operation="endBatch">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="96fc6190-9ae5-405c-8b1d-fd8455d70f32" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:endBatchResponse>
+         <doc:batchEndResponseMessage>
+            <doc:batchNumber>555</doc:batchNumber>
+            <doc:batchSize>1</doc:batchSize>
+         </doc:batchEndResponseMessage>
+      </doc:endBatchResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:endBatch"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="getDirectEditingURL" id="26307275-9dd3-48d9-ae71-6ef602371d5f" interface="DocumentsBinding" operation="getDirectEditingURL">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="843a010b-cfe1-4bfb-b37b-047d7212d437" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:getDirectEditingURLResponse>
+         <doc:directEditingURLResponseMessage>
+            <doc:url>?</doc:url>
+         </doc:directEditingURLResponseMessage>
+      </doc:getDirectEditingURLResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:getDirectEditingURL"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="getDMSContextPath" id="fd25e67d-7005-4bbf-b27c-b7edc25da35f" interface="DocumentsBinding" operation="getDMSContextPath">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="5655a0dd-af62-4ad2-8fa0-bf2ede167cf9" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:getDMSContextPathResponse>
+         <doc:dmsContextPathResponseMessage>
+            <doc:path>?</doc:path>
+         </doc:dmsContextPathResponseMessage>
+      </doc:getDMSContextPathResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:getDMSContextPath"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="getDocumentIdentification" id="c236b7e3-29cc-43fa-8a18-a18e32ad6933" interface="DocumentsBinding" operation="getDocumentIdentification">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="063eb025-62bf-4c30-82be-787f40b2ccd9" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:getDocumentIdentificationResponse>
+         <doc:documentIdentificationMessage>
+            <doc:identification>?</doc:identification>
+         </doc:documentIdentificationMessage>
+      </doc:getDocumentIdentificationResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:getDocumentIdentification"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="getDocumentURLs" id="b3c71331-bbe4-420d-92b5-c952bf5d5962" interface="DocumentsBinding" operation="getDocumentURLs">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="29e92f6a-b6d5-4519-a091-fc815b92b572" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:getDocumentURLsResponse>
+         <doc:documentURLResponseMessage>
+            <doc:documents>
+               <!--Zero or more repetitions:-->
+               <doc:document>
+                  <doc:referenceNumber>?</doc:referenceNumber>
+                  <doc:url>?</doc:url>
+                  <!--Optional:-->
+                  <doc:error>?</doc:error>
+               </doc:document>
+            </doc:documents>
+         </doc:documentURLResponseMessage>
+      </doc:getDocumentURLsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:getDocumentURLs"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="listDocumentCategories" id="faf6fe2c-89b7-41a2-ba3d-9deae646475d" interface="DocumentsBinding" operation="listDocumentCategories">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="016b5867-4a66-4200-9fdd-ec325f3aac01" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:listDocumentCategoriesResponse>
+         <doc:documentCategoryListMessage>
+            <doc:documentCategories>
+               <!--Zero or more repetitions:-->
+               <doc:documentCategory>?</doc:documentCategory>
+            </doc:documentCategories>
+         </doc:documentCategoryListMessage>
+      </doc:listDocumentCategoriesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:listDocumentCategories"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="listDocumentDirections" id="92da0081-dc3a-4ce7-8d71-d884ede9dfde" interface="DocumentsBinding" operation="listDocumentDirections">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="fa140426-81cb-40e5-a46f-24a44f8d154a" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:listDocumentDirectionsResponse>
+         <doc:documentDirectionListMessage>
+            <doc:documentDirections>
+               <!--Zero or more repetitions:-->
+               <doc:documentDirection>?</doc:documentDirection>
+            </doc:documentDirections>
+         </doc:documentDirectionListMessage>
+      </doc:listDocumentDirectionsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:listDocumentDirections"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="listDocumentRoles" id="17cae461-c020-4753-a5b2-accf2879ab29" interface="DocumentsBinding" operation="listDocumentRoles">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="e23c2790-b02e-41d5-8f94-8d0aac825f9e" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:listDocumentRolesResponse>
+         <doc:documentRoleListMessage>
+            <doc:roles>
+               <!--Zero or more repetitions:-->
+               <doc:role>?</doc:role>
+            </doc:roles>
+         </doc:documentRoleListMessage>
+      </doc:listDocumentRolesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:listDocumentRoles"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="listDocuments" id="8f49e891-a536-4fbf-9a41-a9c702d47459" interface="DocumentsBinding" operation="listDocuments">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="b996918c-4b69-4ae2-8768-461057830758" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:listDocumentsResponse>
+         <doc:documentListMessage>
+            <doc:documents>
+               <!--Zero or more repetitions:-->
+               <doc:document>
+                  <doc:referenceNumber>?</doc:referenceNumber>
+                  <doc:fileName>?</doc:fileName>
+                  <doc:mimeType>?</doc:mimeType>
+                  <!--Optional:-->
+                  <doc:mimeTypeReason>?</doc:mimeTypeReason>
+                  <!--Optional:-->
+                  <doc:mimeTypeVersion>?</doc:mimeTypeVersion>
+                  <!--Optional:-->
+                  <doc:mimeTypeActive>?</doc:mimeTypeActive>
+                  <doc:fileSize>?</doc:fileSize>
+                  <doc:forwardExtension>?</doc:forwardExtension>
+                  <doc:expirationDate>?</doc:expirationDate>
+                  <doc:batchNumber>?</doc:batchNumber>
+                  <doc:version>?</doc:version>
+                  <doc:confidentialityLevel>?</doc:confidentialityLevel>
+                  <doc:confidentialityLevelName>?</doc:confidentialityLevelName>
+                  <doc:hashValue>?</doc:hashValue>
+                  <doc:registrationDate>?</doc:registrationDate>
+                  <doc:creationDate>?</doc:creationDate>
+                  <doc:receiptDate>?</doc:receiptDate>
+                  <doc:sendDate>?</doc:sendDate>
+                  <doc:title>?</doc:title>
+                  <doc:description>?</doc:description>
+                  <doc:author>?</doc:author>
+                  <doc:format>?</doc:format>
+                  <doc:status>?</doc:status>
+                  <doc:initialDocumentIndication>?</doc:initialDocumentIndication>
+                  <!--Optional:-->
+                  <doc:characteristic>?</doc:characteristic>
+                  <!--Optional:-->
+                  <doc:receivedRegistered>?</doc:receivedRegistered>
+                  <!--Optional:-->
+                  <doc:mailRegistrationNr>?</doc:mailRegistrationNr>
+                  <doc:language>
+                     <doc:code>nl_NL</doc:code>
+                     <doc:description>?</doc:description>
+                  </doc:language>
+                  <!--Optional:-->
+                  <doc:composite>N</doc:composite>
+                  <!--Optional:-->
+                  <doc:checkout>
+                     <doc:date>?</doc:date>
+                     <doc:employeeId>?</doc:employeeId>
+                     <doc:employeeUsername>?</doc:employeeUsername>
+                     <doc:type>?</doc:type>
+                  </doc:checkout>
+                  <!--Optional:-->
+                  <doc:url>?</doc:url>
+                  <!--Optional:-->
+                  <doc:directEditingEnabled>N</doc:directEditingEnabled>
+                  <!--Optional:-->
+                  <doc:documentSign>
+                     <doc:documentSignType>?</doc:documentSignType>
+                     <doc:documentSignDate>?</doc:documentSignDate>
+                  </doc:documentSign>
+                  <!--Optional:-->
+                  <doc:documentUsageRights>
+                     <!--Zero or more repetitions:-->
+                     <doc:documentUsageRight>
+                        <doc:id>?</doc:id>
+                        <doc:description>?</doc:description>
+                        <doc:startDate>?</doc:startDate>
+                        <doc:endDate>?</doc:endDate>
+                     </doc:documentUsageRight>
+                  </doc:documentUsageRights>
+                  <!--Optional:-->
+                  <doc:integrity>
+                     <doc:algorithm>?</doc:algorithm>
+                     <doc:value>?</doc:value>
+                     <doc:date>?</doc:date>
+                  </doc:integrity>
+                  <doc:documentType>
+                     <doc:description>?</doc:description>
+                     <doc:descriptionGeneric>?</doc:descriptionGeneric>
+                     <doc:documentCategory>?</doc:documentCategory>
+                     <doc:confidentialityLevel>?</doc:confidentialityLevel>
+                     <doc:direction>?</doc:direction>
+                     <doc:clarification>?</doc:clarification>
+                     <doc:validityStartDate>?</doc:validityStartDate>
+                     <doc:validityEndDate>?</doc:validityEndDate>
+                     <!--Optional:-->
+                     <doc:headwords>
+                        <!--Zero or more repetitions:-->
+                        <doc:headword>?</doc:headword>
+                     </doc:headwords>
+                  </doc:documentType>
+                  <doc:batchSequenceNr>?</doc:batchSequenceNr>
+                  <doc:case>
+                     <doc:referenceNumber>?</doc:referenceNumber>
+                  </doc:case>
+                  <doc:targetSystems>
+                     <!--Zero or more repetitions:-->
+                     <doc:targetSystem default="false">
+                        <doc:code>?</doc:code>
+                        <doc:referenceNumber>?</doc:referenceNumber>
+                        <!--Optional:-->
+                        <doc:currentStatus>
+                           <doc:code>?</doc:code>
+                           <doc:clarification>?</doc:clarification>
+                        </doc:currentStatus>
+                     </doc:targetSystem>
+                  </doc:targetSystems>
+                  <!--Optional:-->
+                  <doc:sourceSystem default="false">
+                     <doc:code>?</doc:code>
+                     <doc:referenceNumber>?</doc:referenceNumber>
+                     <!--Optional:-->
+                     <doc:currentStatus>
+                        <doc:code>?</doc:code>
+                        <doc:clarification>?</doc:clarification>
+                     </doc:currentStatus>
+                  </doc:sourceSystem>
+                  <!--You have a CHOICE of the next 2 items at this level-->
+                  <!--Optional:-->
+                  <doc:compositeDocumentIdentification>?</doc:compositeDocumentIdentification>
+                  <!--Optional:-->
+                  <doc:singularDocumentIdentifications>
+                     <!--Zero or more repetitions:-->
+                     <doc:singularDocumentIdentification>?</doc:singularDocumentIdentification>
+                  </doc:singularDocumentIdentifications>
+               </doc:document>
+            </doc:documents>
+         </doc:documentListMessage>
+      </doc:listDocumentsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:listDocuments"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="listDocumentTypeGenericDescriptions" id="a4fe0af3-bc29-456d-a1fd-fe1474837292" interface="DocumentsBinding" operation="listDocumentTypeGenericDescriptions">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="79c21bcc-d199-415b-abac-1c9976fd9543" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:listDocumentTypeGenericDescriptionsResponse>
+         <doc:documentTypeGenericDescriptionListMessage>
+            <doc:genericDescriptions>
+               <!--Zero or more repetitions:-->
+               <doc:genericDescription>?</doc:genericDescription>
+            </doc:genericDescriptions>
+         </doc:documentTypeGenericDescriptionListMessage>
+      </doc:listDocumentTypeGenericDescriptionsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:listDocumentTypeGenericDescriptions"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="listDocumentVersions" id="52046e79-18e3-43f4-b43e-ad858578286e" interface="DocumentsBinding" operation="listDocumentVersions">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="9060303c-b187-4698-ae02-867425ea3af1" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:listDocumentVersionsResponse>
+         <doc:documentVersionListMessage>
+            <doc:documents>
+               <!--Zero or more repetitions:-->
+               <doc:document>
+                  <doc:referenceNumber>?</doc:referenceNumber>
+                  <doc:case>
+                     <doc:referenceNumber>?</doc:referenceNumber>
+                  </doc:case>
+                  <doc:documentVersions>
+                     <!--1 or more repetitions:-->
+                     <doc:documentVersion version="?" description="?">
+                        <doc:hisStartDate indicationIncomplete="V">?</doc:hisStartDate>
+                        <doc:hisEndDate indicationIncomplete="V">?</doc:hisEndDate>
+                        <doc:isActual>J</doc:isActual>
+                        <doc:fileName>?</doc:fileName>
+                        <doc:mimeType>?</doc:mimeType>
+                        <doc:mimeTypeReason>?</doc:mimeTypeReason>
+                        <doc:mimeTypeVersion>?</doc:mimeTypeVersion>
+                        <doc:mimeTypeActive>?</doc:mimeTypeActive>
+                        <doc:fileSize>?</doc:fileSize>
+                        <doc:forwardExtension>?</doc:forwardExtension>
+                        <doc:expirationDate>?</doc:expirationDate>
+                        <doc:batchNumber>?</doc:batchNumber>
+                        <doc:batchSequenceNr>?</doc:batchSequenceNr>
+                        <doc:confidentialityLevel>?</doc:confidentialityLevel>
+                        <doc:confidentialityLevelName>?</doc:confidentialityLevelName>
+                        <doc:hashValue>?</doc:hashValue>
+                        <doc:registrationDate>?</doc:registrationDate>
+                        <doc:creationDate>?</doc:creationDate>
+                        <doc:receiptDate>?</doc:receiptDate>
+                        <doc:sendDate>?</doc:sendDate>
+                        <doc:title>?</doc:title>
+                        <doc:description>?</doc:description>
+                        <doc:author>?</doc:author>
+                        <doc:format>?</doc:format>
+                        <doc:status>?</doc:status>
+                        <doc:initialDocumentIndication>?</doc:initialDocumentIndication>
+                        <doc:characteristic>?</doc:characteristic>
+                        <doc:receivedRegistered>?</doc:receivedRegistered>
+                        <doc:mailRegistrationNr>?</doc:mailRegistrationNr>
+                        <doc:language>
+                           <doc:code>nl_NL</doc:code>
+                           <doc:description>?</doc:description>
+                        </doc:language>
+                        <!--Optional:-->
+                        <doc:documentSign>
+                           <doc:documentSignType>?</doc:documentSignType>
+                           <doc:documentSignDate>?</doc:documentSignDate>
+                        </doc:documentSign>
+                        <!--Optional:-->
+                        <doc:documentUsageRights>
+                           <!--Zero or more repetitions:-->
+                           <doc:documentUsageRight>
+                              <doc:id>?</doc:id>
+                              <doc:description>?</doc:description>
+                              <doc:startDate>?</doc:startDate>
+                              <doc:endDate>?</doc:endDate>
+                           </doc:documentUsageRight>
+                        </doc:documentUsageRights>
+                        <!--Optional:-->
+                        <doc:integrity>
+                           <doc:algorithm>?</doc:algorithm>
+                           <doc:value>?</doc:value>
+                           <doc:date>?</doc:date>
+                        </doc:integrity>
+                        <doc:documentType>
+                           <doc:description>?</doc:description>
+                           <doc:descriptionGeneric>?</doc:descriptionGeneric>
+                           <doc:documentCategory>?</doc:documentCategory>
+                           <doc:confidentialityLevel>?</doc:confidentialityLevel>
+                           <doc:direction>?</doc:direction>
+                           <doc:clarification>?</doc:clarification>
+                           <doc:validityStartDate>?</doc:validityStartDate>
+                           <doc:validityEndDate>?</doc:validityEndDate>
+                           <!--Optional:-->
+                           <doc:headwords>
+                              <!--Zero or more repetitions:-->
+                              <doc:headword>?</doc:headword>
+                           </doc:headwords>
+                        </doc:documentType>
+                        <doc:composite>N</doc:composite>
+                        <doc:url>?</doc:url>
+                        <doc:directEditingEnabled>N</doc:directEditingEnabled>
+                        <!--Optional:-->
+                        <doc:checkout>
+                           <doc:date>?</doc:date>
+                           <doc:employeeId>?</doc:employeeId>
+                           <doc:employeeUsername>?</doc:employeeUsername>
+                           <doc:type>?</doc:type>
+                        </doc:checkout>
+                        <!--Optional:-->
+                        <doc:relatedDocuments type="?">
+                           <!--1 or more repetitions:-->
+                           <doc:identification version="?" description="?">?</doc:identification>
+                        </doc:relatedDocuments>
+                        <doc:targetSystems>
+                           <!--Zero or more repetitions:-->
+                           <doc:targetSystem default="false">
+                              <doc:code>?</doc:code>
+                              <doc:referenceNumber>?</doc:referenceNumber>
+                              <!--Optional:-->
+                              <doc:currentStatus>
+                                 <doc:code>?</doc:code>
+                                 <doc:clarification>?</doc:clarification>
+                              </doc:currentStatus>
+                           </doc:targetSystem>
+                        </doc:targetSystems>
+                        <!--Optional:-->
+                        <doc:sourceSystem default="false">
+                           <doc:code>?</doc:code>
+                           <doc:referenceNumber>?</doc:referenceNumber>
+                           <!--Optional:-->
+                           <doc:currentStatus>
+                              <doc:code>?</doc:code>
+                              <doc:clarification>?</doc:clarification>
+                           </doc:currentStatus>
+                        </doc:sourceSystem>
+                     </doc:documentVersion>
+                  </doc:documentVersions>
+               </doc:document>
+            </doc:documents>
+         </doc:documentVersionListMessage>
+      </doc:listDocumentVersionsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:listDocumentVersions"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="listLanguages" id="be78c2d2-0e82-46c1-a523-50518f59d916" interface="DocumentsBinding" operation="listLanguages">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="e0c7a0a7-326c-462d-aa1d-edd392aa313f" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:listLanguagesResponse>
+         <doc:languageListMessage>
+            <doc:languages>
+               <!--Zero or more repetitions:-->
+               <doc:language>
+                  <doc:code>nl_NL</doc:code>
+                  <doc:description>?</doc:description>
+               </doc:language>
+            </doc:languages>
+         </doc:languageListMessage>
+      </doc:listLanguagesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:listLanguages"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="listRelatedDocumentVersions" id="83d942b1-afaf-409d-9c8d-0ed779287d71" interface="DocumentsBinding" operation="listRelatedDocumentVersions">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="ac5b2622-a3fd-46bd-8d62-11d9b1f9c793" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:listRelatedDocumentVersionsResponse>
+         <doc:documentVersionListMessage>
+            <doc:documents>
+               <!--Zero or more repetitions:-->
+               <doc:document>
+                  <doc:referenceNumber>?</doc:referenceNumber>
+                  <doc:case>
+                     <doc:referenceNumber>?</doc:referenceNumber>
+                  </doc:case>
+                  <doc:documentVersions>
+                     <!--1 or more repetitions:-->
+                     <doc:documentVersion version="?" description="?">
+                        <doc:hisStartDate indicationIncomplete="V">?</doc:hisStartDate>
+                        <doc:hisEndDate indicationIncomplete="V">?</doc:hisEndDate>
+                        <doc:isActual>J</doc:isActual>
+                        <doc:fileName>?</doc:fileName>
+                        <doc:mimeType>?</doc:mimeType>
+                        <doc:mimeTypeReason>?</doc:mimeTypeReason>
+                        <doc:mimeTypeVersion>?</doc:mimeTypeVersion>
+                        <doc:mimeTypeActive>?</doc:mimeTypeActive>
+                        <doc:fileSize>?</doc:fileSize>
+                        <doc:forwardExtension>?</doc:forwardExtension>
+                        <doc:expirationDate>?</doc:expirationDate>
+                        <doc:batchNumber>?</doc:batchNumber>
+                        <doc:batchSequenceNr>?</doc:batchSequenceNr>
+                        <doc:confidentialityLevel>?</doc:confidentialityLevel>
+                        <doc:confidentialityLevelName>?</doc:confidentialityLevelName>
+                        <doc:hashValue>?</doc:hashValue>
+                        <doc:registrationDate>?</doc:registrationDate>
+                        <doc:creationDate>?</doc:creationDate>
+                        <doc:receiptDate>?</doc:receiptDate>
+                        <doc:sendDate>?</doc:sendDate>
+                        <doc:title>?</doc:title>
+                        <doc:description>?</doc:description>
+                        <doc:author>?</doc:author>
+                        <doc:format>?</doc:format>
+                        <doc:status>?</doc:status>
+                        <doc:initialDocumentIndication>?</doc:initialDocumentIndication>
+                        <doc:characteristic>?</doc:characteristic>
+                        <doc:receivedRegistered>?</doc:receivedRegistered>
+                        <doc:mailRegistrationNr>?</doc:mailRegistrationNr>
+                        <doc:language>
+                           <doc:code>nl_NL</doc:code>
+                           <doc:description>?</doc:description>
+                        </doc:language>
+                        <!--Optional:-->
+                        <doc:documentSign>
+                           <doc:documentSignType>?</doc:documentSignType>
+                           <doc:documentSignDate>?</doc:documentSignDate>
+                        </doc:documentSign>
+                        <!--Optional:-->
+                        <doc:documentUsageRights>
+                           <!--Zero or more repetitions:-->
+                           <doc:documentUsageRight>
+                              <doc:id>?</doc:id>
+                              <doc:description>?</doc:description>
+                              <doc:startDate>?</doc:startDate>
+                              <doc:endDate>?</doc:endDate>
+                           </doc:documentUsageRight>
+                        </doc:documentUsageRights>
+                        <!--Optional:-->
+                        <doc:integrity>
+                           <doc:algorithm>?</doc:algorithm>
+                           <doc:value>?</doc:value>
+                           <doc:date>?</doc:date>
+                        </doc:integrity>
+                        <doc:documentType>
+                           <doc:description>?</doc:description>
+                           <doc:descriptionGeneric>?</doc:descriptionGeneric>
+                           <doc:documentCategory>?</doc:documentCategory>
+                           <doc:confidentialityLevel>?</doc:confidentialityLevel>
+                           <doc:direction>?</doc:direction>
+                           <doc:clarification>?</doc:clarification>
+                           <doc:validityStartDate>?</doc:validityStartDate>
+                           <doc:validityEndDate>?</doc:validityEndDate>
+                           <!--Optional:-->
+                           <doc:headwords>
+                              <!--Zero or more repetitions:-->
+                              <doc:headword>?</doc:headword>
+                           </doc:headwords>
+                        </doc:documentType>
+                        <doc:composite>N</doc:composite>
+                        <doc:url>?</doc:url>
+                        <doc:directEditingEnabled>N</doc:directEditingEnabled>
+                        <!--Optional:-->
+                        <doc:checkout>
+                           <doc:date>?</doc:date>
+                           <doc:employeeId>?</doc:employeeId>
+                           <doc:employeeUsername>?</doc:employeeUsername>
+                           <doc:type>?</doc:type>
+                        </doc:checkout>
+                        <!--Optional:-->
+                        <doc:relatedDocuments type="?">
+                           <!--1 or more repetitions:-->
+                           <doc:identification version="?" description="?">?</doc:identification>
+                        </doc:relatedDocuments>
+                        <doc:targetSystems>
+                           <!--Zero or more repetitions:-->
+                           <doc:targetSystem default="false">
+                              <doc:code>?</doc:code>
+                              <doc:referenceNumber>?</doc:referenceNumber>
+                              <!--Optional:-->
+                              <doc:currentStatus>
+                                 <doc:code>?</doc:code>
+                                 <doc:clarification>?</doc:clarification>
+                              </doc:currentStatus>
+                           </doc:targetSystem>
+                        </doc:targetSystems>
+                        <!--Optional:-->
+                        <doc:sourceSystem default="false">
+                           <doc:code>?</doc:code>
+                           <doc:referenceNumber>?</doc:referenceNumber>
+                           <!--Optional:-->
+                           <doc:currentStatus>
+                              <doc:code>?</doc:code>
+                              <doc:clarification>?</doc:clarification>
+                           </doc:currentStatus>
+                        </doc:sourceSystem>
+                     </doc:documentVersion>
+                  </doc:documentVersions>
+               </doc:document>
+            </doc:documents>
+         </doc:documentVersionListMessage>
+      </doc:listRelatedDocumentVersionsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:listRelatedDocumentVersions"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpCaseTypeDMSes" id="264b53d7-47ca-4c78-a9b1-64ab7e61f530" interface="DocumentsBinding" operation="lookUpCaseTypeDMSes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="c7a18b8d-49d1-4494-a1d4-2f5e345ef66f" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:lookUpCaseTypeDMSesResponse>
+         <doc:caseTypeDMSDetailsMessage>
+            <doc:caseTypeDMSes>
+               <!--Zero or more repetitions:-->
+               <doc:caseTypeDMS>
+                  <doc:caseTypeCode>?</doc:caseTypeCode>
+                  <doc:dmsCode>?</doc:dmsCode>
+                  <doc:dmsDescription>?</doc:dmsDescription>
+               </doc:caseTypeDMS>
+            </doc:caseTypeDMSes>
+         </doc:caseTypeDMSDetailsMessage>
+      </doc:lookUpCaseTypeDMSesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:lookUpCaseTypeDMSes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpDMSes" id="20650e34-2b62-408b-924c-c89802b88f12" interface="DocumentsBinding" operation="lookUpDMSes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="6363e502-468d-481e-8eff-ae89585d1278" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:lookUpDMSesResponse>
+         <doc:dmsDetailsMessage>
+            <doc:dmses>
+               <!--Zero or more repetitions:-->
+               <doc:dms>
+                  <doc:code>?</doc:code>
+                  <doc:plugin>?</doc:plugin>
+                  <doc:configuration>
+                     <!--You may enter ANY elements at this point-->
+                  </doc:configuration>
+               </doc:dms>
+            </doc:dmses>
+         </doc:dmsDetailsMessage>
+      </doc:lookUpDMSesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:lookUpDMSes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpDocumentExtensions" id="52eafe43-8f44-4964-b97f-3f40c9476a3e" interface="DocumentsBinding" operation="lookUpDocumentExtensions">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="7d80a79e-c397-404a-ac2e-c22cffd0c596" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:lookUpDocumentExtensionsResponse>
+         <doc:documentExtensionDetailsMessage>
+            <doc:documentExtensions>
+               <!--Zero or more repetitions:-->
+               <doc:documentExtension>
+                  <doc:extension>?</doc:extension>
+                  <doc:description>?</doc:description>
+               </doc:documentExtension>
+            </doc:documentExtensions>
+         </doc:documentExtensionDetailsMessage>
+      </doc:lookUpDocumentExtensionsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:lookUpDocumentExtensions"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpDocumentMimeTypes" id="5862bc67-81dd-47cd-861f-8ea578a41f14" interface="DocumentsBinding" operation="lookUpDocumentMimeTypes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="8d62a159-e41f-4b82-ba21-3c3fcd7a9ee9" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:lookUpDocumentMimeTypesResponse>
+         <doc:documentMimeTypeDetailsMessage>
+            <doc:documentMimeTypes>
+               <!--Zero or more repetitions:-->
+               <doc:documentMimeType>
+                  <doc:mimeType>?</doc:mimeType>
+                  <doc:version>*</doc:version>
+                  <doc:name>?</doc:name>
+                  <doc:active>J</doc:active>
+                  <doc:reasonDeactivation>?</doc:reasonDeactivation>
+               </doc:documentMimeType>
+            </doc:documentMimeTypes>
+         </doc:documentMimeTypeDetailsMessage>
+      </doc:lookUpDocumentMimeTypesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:lookUpDocumentMimeTypes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpDocumentTypes" id="306bf6ce-184d-47f2-b999-38bfa9b67d33" interface="DocumentsBinding" operation="lookUpDocumentTypes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="7da7ac9a-176d-4c51-a775-d7baaf08d666" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:lookUpDocumentTypesResponse>
+         <doc:documentTypeDetailsMessage>
+            <doc:documentTypes>
+               <!--Zero or more repetitions:-->
+               <doc:documentType>
+                  <doc:description>?</doc:description>
+                  <doc:descriptionGeneric>?</doc:descriptionGeneric>
+                  <doc:documentCategory>?</doc:documentCategory>
+                  <doc:confidentialityLevel>?</doc:confidentialityLevel>
+                  <doc:direction>?</doc:direction>
+                  <doc:clarification>?</doc:clarification>
+                  <doc:validityStartDate>?</doc:validityStartDate>
+                  <doc:validityEndDate>?</doc:validityEndDate>
+                  <!--Optional:-->
+                  <doc:headwords>
+                     <!--Zero or more repetitions:-->
+                     <doc:headword>?</doc:headword>
+                  </doc:headwords>
+                  <!--Optional:-->
+                  <doc:templates>
+                     <!--Zero or more repetitions:-->
+                     <doc:template>
+                        <doc:name>?</doc:name>
+                        <doc:link>?</doc:link>
+                     </doc:template>
+                  </doc:templates>
+               </doc:documentType>
+            </doc:documentTypes>
+         </doc:documentTypeDetailsMessage>
+      </doc:lookUpDocumentTypesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:lookUpDocumentTypes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="lookUpTemplates" id="edb74425-bcc6-41d2-910c-ad7c134ad0b2" interface="DocumentsBinding" operation="lookUpTemplates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="9b56b306-5624-49c6-aab4-ad8daaf12a1e" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:lookUpTemplatesResponse>
+         <doc:templateDetailsMessage>
+            <doc:templates>
+               <!--Zero or more repetitions:-->
+               <doc:template>
+                  <doc:name>?</doc:name>
+                  <doc:link>?</doc:link>
+               </doc:template>
+            </doc:templates>
+         </doc:templateDetailsMessage>
+      </doc:lookUpTemplatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:lookUpTemplates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="readCaseTypeDMSes" id="c03868c2-74f3-4714-a09a-7502fe3516a2" interface="DocumentsBinding" operation="readCaseTypeDMSes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="cc013c48-1d1d-4059-88c4-a208eb37a90d" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:readCaseTypeDMSesResponse>
+         <doc:caseTypeDMSDetailsMessage>
+            <doc:caseTypeDMSes>
+               <!--Zero or more repetitions:-->
+               <doc:caseTypeDMS>
+                  <doc:caseTypeCode>?</doc:caseTypeCode>
+                  <doc:dmsCode>?</doc:dmsCode>
+                  <doc:dmsDescription>?</doc:dmsDescription>
+               </doc:caseTypeDMS>
+            </doc:caseTypeDMSes>
+         </doc:caseTypeDMSDetailsMessage>
+      </doc:readCaseTypeDMSesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:readCaseTypeDMSes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="readDMSes" id="f106866f-2892-4e90-ba76-497fc963e8f9" interface="DocumentsBinding" operation="readDMSes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="ed9aeb02-010a-4d63-9f63-7638d737ca13" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:readDMSesResponse>
+         <doc:dmsDetailsMessage>
+            <doc:dmses>
+               <!--Zero or more repetitions:-->
+               <doc:dms>
+                  <doc:code>?</doc:code>
+                  <doc:plugin>?</doc:plugin>
+                  <doc:configuration>
+                     <!--You may enter ANY elements at this point-->
+                  </doc:configuration>
+               </doc:dms>
+            </doc:dmses>
+         </doc:dmsDetailsMessage>
+      </doc:readDMSesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:readDMSes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="readDocument" id="6e89c28d-c786-4c89-8312-ba496c10ca21" interface="DocumentsBinding" operation="readDocument">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="864b01e5-a90d-4733-acbb-16442861fd8e" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:readDocumentResponse>
+         <doc:documentSessionMessage>
+            <doc:sessionId>125</doc:sessionId>
+            <doc:referenceNumber>?</doc:referenceNumber>
+            <doc:initiated>?</doc:initiated>
+            <doc:timeToLive>?</doc:timeToLive>
+            <doc:batchNumber>555</doc:batchNumber>
+            <doc:batchSequenceNr>1</doc:batchSequenceNr>
+            <!--Optional:-->
+            <doc:document>
+               <doc:referenceNumber>?</doc:referenceNumber>
+               <doc:fileName>?</doc:fileName>
+               <doc:mimeType>?</doc:mimeType>
+               <!--Optional:-->
+               <doc:mimeTypeReason>?</doc:mimeTypeReason>
+               <!--Optional:-->
+               <doc:mimeTypeVersion>?</doc:mimeTypeVersion>
+               <!--Optional:-->
+               <doc:mimeTypeActive>?</doc:mimeTypeActive>
+               <doc:fileSize>?</doc:fileSize>
+               <doc:forwardExtension>?</doc:forwardExtension>
+               <doc:expirationDate>?</doc:expirationDate>
+               <doc:batchNumber>?</doc:batchNumber>
+               <doc:version>?</doc:version>
+               <doc:confidentialityLevel>?</doc:confidentialityLevel>
+               <doc:confidentialityLevelName>?</doc:confidentialityLevelName>
+               <doc:hashValue>?</doc:hashValue>
+               <doc:registrationDate>?</doc:registrationDate>
+               <doc:creationDate>?</doc:creationDate>
+               <doc:receiptDate>?</doc:receiptDate>
+               <doc:sendDate>?</doc:sendDate>
+               <doc:title>?</doc:title>
+               <doc:description>?</doc:description>
+               <doc:author>?</doc:author>
+               <doc:format>?</doc:format>
+               <doc:status>?</doc:status>
+               <doc:initialDocumentIndication>?</doc:initialDocumentIndication>
+               <!--Optional:-->
+               <doc:characteristic>?</doc:characteristic>
+               <!--Optional:-->
+               <doc:receivedRegistered>?</doc:receivedRegistered>
+               <!--Optional:-->
+               <doc:mailRegistrationNr>?</doc:mailRegistrationNr>
+               <doc:language>
+                  <doc:code>nl_NL</doc:code>
+                  <doc:description>?</doc:description>
+               </doc:language>
+               <!--Optional:-->
+               <doc:composite>N</doc:composite>
+               <!--Optional:-->
+               <doc:checkout>
+                  <doc:date>?</doc:date>
+                  <doc:employeeId>?</doc:employeeId>
+                  <doc:employeeUsername>?</doc:employeeUsername>
+                  <doc:type>?</doc:type>
+               </doc:checkout>
+               <!--Optional:-->
+               <doc:url>?</doc:url>
+               <!--Optional:-->
+               <doc:directEditingEnabled>N</doc:directEditingEnabled>
+               <!--Optional:-->
+               <doc:documentSign>
+                  <doc:documentSignType>?</doc:documentSignType>
+                  <doc:documentSignDate>?</doc:documentSignDate>
+               </doc:documentSign>
+               <!--Optional:-->
+               <doc:documentUsageRights>
+                  <!--Zero or more repetitions:-->
+                  <doc:documentUsageRight>
+                     <doc:id>?</doc:id>
+                     <doc:description>?</doc:description>
+                     <doc:startDate>?</doc:startDate>
+                     <doc:endDate>?</doc:endDate>
+                  </doc:documentUsageRight>
+               </doc:documentUsageRights>
+               <!--Optional:-->
+               <doc:integrity>
+                  <doc:algorithm>?</doc:algorithm>
+                  <doc:value>?</doc:value>
+                  <doc:date>?</doc:date>
+               </doc:integrity>
+               <doc:documentType/>
+               <doc:batchSequenceNr>?</doc:batchSequenceNr>
+               <doc:case>
+                  <doc:referenceNumber>?</doc:referenceNumber>
+               </doc:case>
+               <doc:targetSystems>
+                  <!--Zero or more repetitions:-->
+                  <doc:targetSystem default="false">
+                     <doc:code>?</doc:code>
+                     <doc:referenceNumber>?</doc:referenceNumber>
+                     <!--Optional:-->
+                     <doc:currentStatus>
+                        <doc:code>?</doc:code>
+                        <doc:clarification>?</doc:clarification>
+                     </doc:currentStatus>
+                  </doc:targetSystem>
+               </doc:targetSystems>
+               <!--Optional:-->
+               <doc:sourceSystem default="false">
+                  <doc:code>?</doc:code>
+                  <doc:referenceNumber>?</doc:referenceNumber>
+                  <!--Optional:-->
+                  <doc:currentStatus>
+                     <doc:code>?</doc:code>
+                     <doc:clarification>?</doc:clarification>
+                  </doc:currentStatus>
+               </doc:sourceSystem>
+               <!--You have a CHOICE of the next 2 items at this level-->
+               <!--Optional:-->
+               <doc:compositeDocumentIdentification>?</doc:compositeDocumentIdentification>
+               <!--Optional:-->
+               <doc:singularDocumentIdentifications>
+                  <!--Zero or more repetitions:-->
+                  <doc:singularDocumentIdentification>?</doc:singularDocumentIdentification>
+               </doc:singularDocumentIdentifications>
+            </doc:document>
+         </doc:documentSessionMessage>
+      </doc:readDocumentResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:readDocument"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="readDocumentExtensions" id="5766aa35-c413-45cb-9fa4-119929f559f2" interface="DocumentsBinding" operation="readDocumentExtensions">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="9a96e65a-bb11-4916-94b0-84b733ae4b3d" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:readDocumentExtensionsResponse>
+         <doc:documentExtensionDetailsMessage>
+            <doc:documentExtensions>
+               <!--Zero or more repetitions:-->
+               <doc:documentExtension>
+                  <doc:extension>?</doc:extension>
+                  <doc:description>?</doc:description>
+               </doc:documentExtension>
+            </doc:documentExtensions>
+         </doc:documentExtensionDetailsMessage>
+      </doc:readDocumentExtensionsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:readDocumentExtensions"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="readDocumentMimeTypes" id="e29c65d1-89eb-4f92-b35f-3d5c76a54cda" interface="DocumentsBinding" operation="readDocumentMimeTypes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="88946993-7f66-4553-a4c7-9eff30d50c6a" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:readDocumentMimeTypesResponse>
+         <doc:documentMimeTypeDetailsMessage>
+            <doc:documentMimeTypes>
+               <!--Zero or more repetitions:-->
+               <doc:documentMimeType>
+                  <doc:mimeType>?</doc:mimeType>
+                  <doc:version>*</doc:version>
+                  <doc:name>?</doc:name>
+                  <doc:active>J</doc:active>
+                  <doc:reasonDeactivation>?</doc:reasonDeactivation>
+               </doc:documentMimeType>
+            </doc:documentMimeTypes>
+         </doc:documentMimeTypeDetailsMessage>
+      </doc:readDocumentMimeTypesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:readDocumentMimeTypes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="readDocumentTypes" id="7eefff28-20a6-43fe-bb19-e07afd12c892" interface="DocumentsBinding" operation="readDocumentTypes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="e2ababd2-6870-410b-a892-04a55d24f158" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:readDocumentTypesResponse>
+         <doc:documentTypeDetailsMessage>
+            <doc:documentTypes>
+               <!--Zero or more repetitions:-->
+               <doc:documentType>
+                  <doc:description>?</doc:description>
+                  <doc:descriptionGeneric>?</doc:descriptionGeneric>
+                  <doc:documentCategory>?</doc:documentCategory>
+                  <doc:confidentialityLevel>?</doc:confidentialityLevel>
+                  <doc:direction>?</doc:direction>
+                  <doc:clarification>?</doc:clarification>
+                  <doc:validityStartDate>?</doc:validityStartDate>
+                  <doc:validityEndDate>?</doc:validityEndDate>
+                  <!--Optional:-->
+                  <doc:headwords>
+                     <!--Zero or more repetitions:-->
+                     <doc:headword>?</doc:headword>
+                  </doc:headwords>
+                  <!--Optional:-->
+                  <doc:templates>
+                     <!--Zero or more repetitions:-->
+                     <doc:template>
+                        <doc:name>?</doc:name>
+                        <doc:link>?</doc:link>
+                     </doc:template>
+                  </doc:templates>
+               </doc:documentType>
+            </doc:documentTypes>
+         </doc:documentTypeDetailsMessage>
+      </doc:readDocumentTypesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:readDocumentTypes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="readTemplates" id="7e14d2f9-1c8f-4187-b548-570032329545" interface="DocumentsBinding" operation="readTemplates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="5881d084-d099-4e43-abfa-9d3c3d60dede" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:readTemplatesResponse>
+         <doc:templateDetailsMessage>
+            <doc:templates>
+               <!--Zero or more repetitions:-->
+               <doc:template>
+                  <doc:name>?</doc:name>
+                  <doc:link>?</doc:link>
+               </doc:template>
+            </doc:templates>
+         </doc:templateDetailsMessage>
+      </doc:readTemplatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:readTemplates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="startBatch" id="61796e35-90c2-458a-b77f-f6bfdf2a2c22" interface="DocumentsBinding" operation="startBatch">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="f5dd9ca3-1745-4cfc-821b-3a00ff2797d3" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:startBatchResponse>
+         <doc:batchStartResponseMessage>
+            <doc:batchNumber>555</doc:batchNumber>
+         </doc:batchStartResponseMessage>
+      </doc:startBatchResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:startBatch"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updateCaseTypeDMSes" id="caf1fa21-7817-4840-aa0e-e4b18b6d9f75" interface="DocumentsBinding" operation="updateCaseTypeDMSes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="84a0bebd-391b-4945-bc4f-5e8e85a970ed" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:updateCaseTypeDMSesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:updateCaseTypeDMSesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:updateCaseTypeDMSes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updateDMSes" id="819b8ac1-d693-4b43-b4ee-8c29251e58fa" interface="DocumentsBinding" operation="updateDMSes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="dbf5f2cd-1ffe-4030-bd70-fa9cdeea9f1f" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:updateDMSesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:updateDMSesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:updateDMSes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updateDocumentExtensions" id="57f025d5-e94e-4ec9-8ecb-03b4e062190a" interface="DocumentsBinding" operation="updateDocumentExtensions">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="2a484d7b-9248-42e8-bc1b-ccc12973379b" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:updateDocumentExtensionsResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:updateDocumentExtensionsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:updateDocumentExtensions"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updateDocumentMetadata" id="23aa2994-cd4e-4611-8495-bfa111f225a8" interface="DocumentsBinding" operation="updateDocumentMetadata">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="4d5ca3e6-adf5-4e27-9af0-8639519eb384" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:updateDocumentMetadataResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:updateDocumentMetadataResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:updateDocumentMetadata"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updateDocumentMimeTypes" id="df99f30c-09db-455e-bae7-bf28eb0ca8a8" interface="DocumentsBinding" operation="updateDocumentMimeTypes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="2671eb0c-b160-41dd-9f11-2cd28dde9ecb" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:updateDocumentMimeTypesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:updateDocumentMimeTypesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:updateDocumentMimeTypes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updateDocumentTypes" id="c8d98c13-1858-4a18-9e73-aa902d7741fc" interface="DocumentsBinding" operation="updateDocumentTypes">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="20068b4a-1b53-4b69-8052-22fb1ebd51a0" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:updateDocumentTypesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:updateDocumentTypesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:updateDocumentTypes"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="updateTemplates" id="da47c100-720a-4807-b361-30689f397b14" interface="DocumentsBinding" operation="updateTemplates">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="ebad418a-a0ff-4196-b6f1-c9d81772e6cc" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:updateTemplatesResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:updateTemplatesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:updateTemplates"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="verifyAddDocument" id="a512c9e0-d07b-4203-b672-695c1391373a" interface="DocumentsBinding" operation="verifyAddDocument">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="ec7554fd-fc1c-4fa2-a34e-9c42029cb61f" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:doc="http://www.emaxx.org/functional/cases/document" xmlns:com="http://www.emaxx.org/msg/common">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <doc:verifyAddDocumentResponse>
+         <com:confirmationMessage>?</com:confirmationMessage>
+      </doc:verifyAddDocumentResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="documents:verifyAddDocument"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+  </con:mockService>
+  <con:mockService id="2a5bc265-10ad-42c1-8a34-f1d415bf0713" port="8095" path="/mock/mtom-service" host="LAPTOP-UKAI1A6" name="BPEL MTOM Mock">
+    <con:settings>
+      <con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting>
+    </con:settings>
+    <con:properties/>
+    <con:mockOperation name="addDocument" id="171a3046-b9cc-4c31-8583-ba47dc1307b3" interface="MTOMServiceBinding" operation="addDocument">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="a06ee038-0349-496d-981e-298411313ada" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mtom="http://www.emaxx.org/functional/documents/mtom">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <mtom:AddDocumentResponse>?</mtom:AddDocumentResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="addDocument"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>
+    <con:mockOperation name="readDocument" id="c3b35813-dac8-4e73-9930-40f853025eac" interface="MTOMServiceBinding" operation="readDocument">
+      <con:settings/>
+      <con:defaultResponse>Response 1</con:defaultResponse>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:response name="Response 1" id="7f1ddaf5-072b-4177-889f-158fca6a216f" httpResponseStatus="200" encoding="UTF-8">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mtom="http://www.emaxx.org/functional/documents/mtom">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <mtom:ReadDocumentResponse contentType="?">cid:334889116212</mtom:ReadDocumentResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="readDocument"/>
       </con:response>
       <con:dispatchConfig/>
     </con:mockOperation>

@@ -1,5 +1,24 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.1](https://github.com/wearefrank/openforms2bpel/compare/v1.20.0...v1.20.1) (2024-05-27)
+
+
+### 🐛 Bug Fixes
+
+* check if document already exists before trying to add a document to allow for retries ([c2836d2](https://github.com/wearefrank/openforms2bpel/commit/c2836d23e4a01b847a15c03a37fffc26e547c2d2))
+* upload documents in parallel so that all document will always be tried ([bf51323](https://github.com/wearefrank/openforms2bpel/commit/bf51323144ca162a97f021ec5905e41587406b67))
+
+
+### 🧑‍💻 Code Refactoring
+
+* Combine seperate document-service sender adapter into a single adapter ([c052910](https://github.com/wearefrank/openforms2bpel/commit/c05291089bd4db9b7b96df5eec1728ab84fcbada))
+
+
+### ✅ Tests
+
+* add mock service for document-service and mtom-service ([15c96de](https://github.com/wearefrank/openforms2bpel/commit/15c96de256d2e4376a6febcc876e0a39f76da8a2))
+* use soapui mock instead of mock adapter for document-service ([e8f2111](https://github.com/wearefrank/openforms2bpel/commit/e8f2111df0edaff50aae5a3e0007455bdf5ad4c2))
+
 ## [1.20.0](https://github.com/wearefrank/openforms2bpel/compare/v1.19.0...v1.20.0) (2024-05-24)
 
 

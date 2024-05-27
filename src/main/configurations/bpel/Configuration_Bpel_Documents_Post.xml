@@ -1,12 +1,12 @@
 <Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
     <Adapter
-        name="Bpel_Documents_PostEndBatch"
-        active="${Bpel_Documents_PostEndBatch.Active}"
+        name="Bpel_Documents_Post"
+        active="${Bpel_Documents_Post.Active}"
         description=""
         >
 
-        <Receiver name="Bpel_Documents_PostEndBatch">
-            <JavaListener name="Bpel_Documents_PostEndBatch" />
+        <Receiver name="Bpel_Documents_Post">
+            <JavaListener name="Bpel_Documents_Post" />
         </Receiver>
 
         <Pipeline>
@@ -16,7 +16,7 @@
             </Exits>
 
             <SenderPipe
-                name="PostBpelDocumentsEndBatchSender"
+                name="PostBpelDocumentsAddDocumentSender"
                 >
                 <SoapInputWrapper
                     direction="WRAP"
@@ -29,17 +29,17 @@
                     </Param>
                 </SoapInputWrapper>
                 <WebServiceSender
-                    name="PostBpelDocumentsEndBatchWebServiceSender"
+                    name="PostBpelDocumentsAddDocumentWebServiceSender"
                     soap="false"
                     contentType="text/xml"
-                    soapAction="documents:endBatch"
                     verifyHostname="${openforms2bpel.bpel.documents-service.verify-hostname}"
                     allowSelfSignedCertificates="${openforms2bpel.bpel.documents-service.allow-self-signed-certs}"
                     ignoreCertificateExpiredException="${openforms2bpel.bpel.documents-service.ignore-expired-certs}"
                     timeout="${openforms2bpel.bpel.documents-service.timeout}"
                     throwApplicationFaults="false"
                     >
-                    <Param name="url" value="${openforms2bpel.bpel.documents-service.endoint}" />  
+                    <Param name="url" value="${openforms2bpel.bpel.documents-service.endoint}" />
+                    <Param name="soapAction" sessionKey="soapAction" /> 
                 </WebServiceSender>
                 <Forward name="success" path="UnwrapResponse" />
                 <Forward name="exception" path="SoapFault_Exception" />

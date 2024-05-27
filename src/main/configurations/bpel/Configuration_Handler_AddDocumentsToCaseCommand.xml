@@ -51,8 +51,9 @@
                 >
                 <IbisLocalSender
                     name="BpelDocumentsPostStartBatchLocalSender"
-                    javaListener="Bpel_Documents_PostStartBatch"
+                    javaListener="Bpel_Documents_Post"
                     >
+                    <Param name="soapAction" value="documents:startBatch" />
                 </IbisLocalSender>
                 <Forward name="success" path="AddDocumentToCaseCommandForEachChildElement" />
             </SenderPipe>
@@ -107,8 +108,9 @@
                 >
                 <IbisLocalSender
                     name="BpelDocumentsPostEndBatchLocalSender"
-                    javaListener="Bpel_Documents_PostEndBatch"
+                    javaListener="Bpel_Documents_Post"
                     >
+                    <Param name="soapAction" value="documents:endBatch" />
                 </IbisLocalSender>
                 <Forward name="success" path="EXIT" />
             </SenderPipe>

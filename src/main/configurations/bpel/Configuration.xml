@@ -6,9 +6,7 @@
         <!ENTITY Bpel_BasicStatusUpdate_PostUpdateStatus    SYSTEM "./Configuration_Bpel_BasicStatusUpdate_PostUpdateStatus.xml">
         <!ENTITY Bpel_Cases_Post                            SYSTEM "./Configuration_Bpel_Cases_Post.xml">
         <!ENTITY Bpel_Documents_Mock                        SYSTEM "./Configuration_Bpel_Documents_Mock.xml">
-        <!ENTITY Bpel_Documents_PostAddDocument             SYSTEM "./Configuration_Bpel_Documents_PostAddDocument.xml">
-        <!ENTITY Bpel_Documents_PostEndBatch                SYSTEM "./Configuration_Bpel_Documents_PostEndBatch.xml">
-        <!ENTITY Bpel_Documents_PostStartBatch              SYSTEM "./Configuration_Bpel_Documents_PostStartBatch.xml">
+        <!ENTITY Bpel_Documents_Post                        SYSTEM "./Configuration_Bpel_Documents_Post.xml">
         <!ENTITY Handler_AddDocumentsToCaseCommand          SYSTEM "./Configuration_Handler_AddDocumentsToCaseCommand.xml">
         <!ENTITY Handler_AddDocumentToCaseCommand           SYSTEM "./Configuration_Handler_AddDocumentToCaseCommand.xml">
         <!ENTITY Handler_SendNoReplyUserEmailCommand        SYSTEM "./Configuration_Handler_SendNoReplyUserEmailCommand.xml">
@@ -35,9 +33,7 @@
     &Bpel_BasicStatusUpdate_PostUpdateStatus;
     &Bpel_Cases_Post;
     &Bpel_Documents_Mock;
-    &Bpel_Documents_PostAddDocument;
-    &Bpel_Documents_PostEndBatch;
-    &Bpel_Documents_PostStartBatch;
+    &Bpel_Documents_Post;
     &Handler_AddDocumentsToCaseCommand;
     &Handler_AddDocumentToCaseCommand;
     &Handler_SendNoReplyUserEmailCommand;

@@ -62,7 +62,8 @@
                 name="AddDocumentToCaseCommandForEachChildElement"
                 elementXPathExpression="/*/url"
                 getInputFromSessionKey="originalMessage"
-                collectResults="false"
+                parallel="true"
+                collectResults="true"
                 >
                 <IbisLocalSender
                     javaListener="Handler_AddDocumentToCaseCommand"

@@ -102,8 +102,50 @@
                 <Param name="Taal" xpathExpression="concat(concat($Alpha2, '_'), upper-case($Alpha2))">
                     <Param name="Alpha2" sessionKey="Alpha2" />
                 </Param>
-                <Forward name="success" path="CreateAddDocumentRequestMessage"/>
+                <Forward name="success" path="CreateReadDocumentRequestMessage"/>
             </XsltPipe>
+
+            <XsltPipe
+                name="CreateReadDocumentRequestMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Documents/Model/ReadDocumentRequestMessage.xslt"
+                storeResultInSessionKey="ReadDocumentRequestMessage"
+                >
+                <Param name="ZgwEnkelvoudigInformatieObject" sessionKey="ZgwEnkelvoudigInformatieObject" type="DOMDOC" />
+                <Param name="Provider" sessionKey="Provider" type="DOMDOC" />
+                <Forward name="success" path="BpelDocumentsPostReadDocumentSender" />
+                <Forward name="exception" path="CreateAddDocumentRequestMessage" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelDocumentsPostReadDocumentSender"
+                storeResultInSessionKey="ReadDocumentResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelDocumentsPostReadDocumentLocalSender"
+                    javaListener="Bpel_Documents_Post"
+                    >
+                    <Param name="soapAction" value="documents:readDocument" />
+                </IbisLocalSender>
+                <Forward name="success" path="DocumentReferenceAlreadyExists_Condition" />
+                <Forward name="exception" path="CreateAddDocumentRequestMessage" />
+            </SenderPipe>
+
+            <XmlIfPipe
+                name="DocumentReferenceAlreadyExists_Condition"
+                xpathExpression="string-length(//*:readDocumentResponse/*:documentSessionMessage/*:document) gt 0"
+                >
+                <Forward name="then" path="StoreSessionIdAndDocument_DocumentReferenceAlreadyExists" />
+                <Forward name="else" path="CreateAddDocumentRequestMessage" />
+            </XmlIfPipe>
+
+            <PutInSessionPipe
+                name="StoreSessionIdAndDocument_DocumentReferenceAlreadyExists"
+                >
+                <Param name="SessionId" xpathExpression="//*:sessionId" />
+                <Param name="Document" sessionKey="ReadDocumentResponseMessage" type="DOMDOC" />
+				<Forward name="success" path="CreateAddDocumentMtomRequestMessage" />
+			</PutInSessionPipe>
 
             <XsltPipe
                 name="CreateAddDocumentRequestMessage"
@@ -124,11 +166,20 @@
                 >
                 <IbisLocalSender
                     name="BpelDocumentsPostAddDocumentLocalSender"
-                    javaListener="Bpel_Documents_PostAddDocument"
+                    javaListener="Bpel_Documents_Post"
                     >
+                    <Param name="soapAction" value="documents:addDocument" />
                 </IbisLocalSender>
-                <Forward name="success" path="CreateAddDocumentMtomRequestMessage" />
+                <Forward name="success" path="StoreSessionIdAndDocument" />
             </SenderPipe>
+
+            <PutInSessionPipe
+                name="StoreSessionIdAndDocument"
+                >
+                <Param name="SessionId" xpathExpression="//*:sessionId" />
+                <Param name="Document" sessionKey="AddDocumentRequestMessage" type="DOMDOC" />
+				<Forward name="success" path="CreateAddDocumentMtomRequestMessage" />
+			</PutInSessionPipe>
 
             <XsltPipe
                 name="CreateAddDocumentMtomRequestMessage"
@@ -136,7 +187,7 @@
                 styleSheetName="Bpel/Mtom/Model/AddDocumentRequestMessage.xslt"
                 storeResultInSessionKey="AddDocumentMtomRequestMessage"
                 >
-                <Param name="SessionId" sessionKey="AddDocumentResponseMessage" xpathExpression="//*:sessionId" />
+                <Param name="SessionId" sessionKey="SessionId" />
                 <Param name="ContentType" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="tokenize(//formaat, '/')[last()]" />
                 <Param name="Document" sessionKey="ZgwEnkelvoudigInformatieObjectInhoud" />
                 <Forward name="success" path="BpelMtomPostAddDocumentSender" />
@@ -160,7 +211,7 @@
                 styleSheetName="Bpel/BasicStatusUpdate/Model/DocumentStatusRequestMessage.xslt"
                 storeResultInSessionKey="DocumentStatusRequestMessage"
                 >
-                <Param name="Document" sessionKey="AddDocumentRequestMessage" type="DOMDOC" />
+                <Param name="Document" sessionKey="Document" type="DOMDOC" />
                 <Param name="ReferenceNumber" sessionKey="CaseReferenceNumber" />
                 <Param name="Status_Code" value="FORWARDED" />
                 <Forward name="success" path="BpelBasicStatusUpdateDocumentStatusSender" />

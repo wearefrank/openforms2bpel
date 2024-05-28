@@ -67,9 +67,9 @@
             <basicstatusupdate:body>
                 <xsl:copy-of select="zgw:WrapNullOrSkip('basicstatusupdate:referenceNumber', 'empty', zgw:FromOrderedSource(
                     $ReferenceNumber, 
-                    $DocumentStatusRequestMessage//*:document/*:referenceNumber, 
+                    $DocumentStatusRequestMessage//*:referenceNumber, 
                     '', 
-                    //*:document/*:referenceNumber),
+                    //*:referenceNumber),
                     'http://www.emaxx.org/bpel/proces/xsd/eMAXX/BasicStatusUpdate')"/>
                 <basicstatusupdate:documents>
                     <common:document>
@@ -134,7 +134,7 @@
                         <xsl:copy-of select="zgw:WrapNullOrSkip('common:reference', 'empty', zgw:FromOrderedSource(
                             $Reference, 
                             $DocumentStatusRequestMessage//common:reference, 
-                            $Document//document:referenceNumber, 
+                            $Document//*:document/*:referenceNumber, 
                             //common:reference),
                             'http://www.emaxx.org/egov/common')"/>
                         <common:status>

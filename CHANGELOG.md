@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.3](https://github.com/wearefrank/openforms2bpel/compare/v1.20.2...v1.20.3) (2024-05-28)
+
+
+### 🐛 Bug Fixes
+
+* document status update request contains referenceNumber multiple times ([634f7f9](https://github.com/wearefrank/openforms2bpel/commit/634f7f98764f0cf5fc295edfc4b3b54c39693281))
+
 ## [1.20.2](https://github.com/wearefrank/openforms2bpel/compare/v1.20.1...v1.20.2) (2024-05-28)
 
 

@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.4](https://github.com/wearefrank/openforms2bpel/compare/v1.20.3...v1.20.4) (2024-05-29)
+
+
+### 🐛 Bug Fixes
+
+* document status update incorrectly copies documentType element ([50a23d4](https://github.com/wearefrank/openforms2bpel/commit/50a23d49110882ccac2383768eaa6a44abd9845b))
+
 ## [1.20.3](https://github.com/wearefrank/openforms2bpel/compare/v1.20.2...v1.20.3) (2024-05-28)
 
 

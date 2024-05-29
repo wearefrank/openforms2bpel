@@ -86,12 +86,12 @@
                             //common:fileName),
                             'http://www.emaxx.org/egov/common')"/>
                         <common:documentType>
-                            <xsl:copy-of select="zgw:WrapNullOrSkip('common:documentType', 'empty', zgw:FromOrderedSource(
+                            <!-- <xsl:copy-of select="zgw:WrapNullOrSkip('common:description', 'empty', zgw:FromOrderedSource(
                                 $DocumentType_Description, 
                                 $DocumentStatusRequestMessage//common:description, 
                                 $Document//document:documentType/document:description, 
                                 //common:description),
-                                'http://www.emaxx.org/egov/common')"/>
+                                'http://www.emaxx.org/egov/common')"/> -->
                         </common:documentType>
                         <xsl:copy-of select="zgw:WrapNullOrSkip('common:author', 'empty', zgw:FromOrderedSource(
                             $Author, 

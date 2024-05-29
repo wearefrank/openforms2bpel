@@ -114,7 +114,7 @@
                         <xsl:copy-of select="zgw:WrapNullOrSkip('common:description', 'empty', zgw:FromOrderedSource(
                             $Description, 
                             $DocumentStatusRequestMessage//common:description, 
-                            $Document//document:description, 
+                            $Document//*:document/document:description, 
                             //common:description),
                             'http://www.emaxx.org/egov/common')"/>
                         <common:language>

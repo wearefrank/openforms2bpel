@@ -89,7 +89,7 @@
                     javaListener="ConvertISO639Taal"
                     >
                 </IbisLocalSender>
-                <Param name="Alpha3t" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//taal" />
+                <Param name="Alpha3" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//taal" />
                 <Forward name="success" path="EnrichZgwEnkelvoudigInformatieObject" />
             </SenderPipe>
 

@@ -1,5 +1,18 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.6](https://github.com/wearefrank/openforms2bpel/compare/v1.20.5...v1.20.6) (2024-05-30)
+
+
+### 🐛 Bug Fixes
+
+* alpha3b languages codes are not translated to alpha2 while alpha3t language codes do ([9e84be7](https://github.com/wearefrank/openforms2bpel/commit/9e84be7ced0fe0a6638ad85491e1d6fe75281d69))
+
+
+### ✅ Tests
+
+* **larva:** add GetISO639Code xslt testcases for all variants of language code conversion ([bf64f93](https://github.com/wearefrank/openforms2bpel/commit/bf64f937f60c3b2f72d311e00f0986417dbf1eeb))
+* add testcase for documents with an alpha3b language code ([58d6892](https://github.com/wearefrank/openforms2bpel/commit/58d68925fe89480b7e0796dffed0a27c28aa34c9))
+
 ## [1.20.5](https://github.com/wearefrank/openforms2bpel/compare/v1.20.4...v1.20.5) (2024-05-29)
 
 

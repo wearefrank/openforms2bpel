@@ -7,6 +7,7 @@ services:
       - ./docker/mailslurper/config.json:/go/src/github.com/mailslurper/mailslurper/cmd/mailslurper/config.json
     ports:
       - 8025:8025
+      - 8026:8080
     networks:
       - zaakbrug-stack
       - zaakbrug-backend

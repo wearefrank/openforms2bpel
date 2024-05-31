@@ -6,14 +6,16 @@
         <messageType>text/html</messageType>
         <message>
             <![CDATA[
-            Beste,
- 
-            U heeft onlangs geprobeerd om één of meerdere documenten toe te voegen aan een aanvraag die u eerder bij ons heeft gedaan. Dit is helaas niet gelukt.
-            Reden is dat het zaaknummer waaraan u document(en) toe wilde voegen [OF-Nummer] niet klopt. Het juiste zaaknummer vindt u in de bevestigingsmail van de originele aanvraag.
-            Wij vragen u de aanvraag opnieuw toe te sturen en daarin het juiste zaaknummer in te vullen.
-             
-            Met vriendelijke groet,
-            ${vars.signature-from-name}
+            Beste,<br>
+            <br>
+            U hebt eerder een aanvraag bij ons gedaan. U probeerde hier 1 of meer documenten aan toe te voegen. Dit is helaas niet gelukt omdat het aanvraagnummer (zaaknummer) niet klopte. Het juiste nummer staat in de bevestigingsmail van uw eerste aanvraag.<br>
+            <br>
+            Wilt u uw laatste aanvraag met de bestanden opnieuw naar ons toesturen met het juiste nummer?<br>
+            <br>
+            Bedankt voor uw medewerking.<br>
+            <br>
+            Met vriendelijke groet,<br>
+            ${vars.signature-from-name}<br>
             ]]>
         </message>
     </mailTemplates>

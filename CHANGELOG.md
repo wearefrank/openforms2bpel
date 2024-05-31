@@ -1,5 +1,17 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.7](https://github.com/wearefrank/openforms2bpel/compare/v1.20.6...v1.20.7) (2024-05-31)
+
+
+### 🐛 Bug Fixes
+
+* no-reply email does not contain any newline characters ([883ab23](https://github.com/wearefrank/openforms2bpel/commit/883ab23420fbb0eda44f1079271b1d6021c5faaf))
+
+
+### ✅ Tests
+
+* **docker-compose:** expose mailslurper webgui so that formatting of emails can be viewed ([01f96bb](https://github.com/wearefrank/openforms2bpel/commit/01f96bbdddfef4c3ab42bcd3bfb942840fd982ec))
+
 ## [1.20.6](https://github.com/wearefrank/openforms2bpel/compare/v1.20.5...v1.20.6) (2024-05-30)
 
 

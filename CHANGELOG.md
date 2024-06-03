@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.8](https://github.com/wearefrank/openforms2bpel/compare/v1.20.7...v1.20.8) (2024-06-03)
+
+### 🔁 Continuous Integration
+
+* remove conventional-commits preset version lock ([ff2dd63](https://github.com/wearefrank/openforms2bpel/commit/ff2dd6377efb556fac4b793eea3904f69ce3cf81))
+
 ## [1.20.7](https://github.com/wearefrank/openforms2bpel/compare/v1.20.6...v1.20.7) (2024-05-31)
 
 

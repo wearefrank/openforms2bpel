@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.9](https://github.com/wearefrank/openforms2bpel/compare/v1.20.8...v1.20.9) (2024-06-06)
+
+### 🧑‍💻 Code Refactoring
+
+* add docusaurus GitHub pages for documentation ([#51](https://github.com/wearefrank/openforms2bpel/issues/51)) ([e537ab2](https://github.com/wearefrank/openforms2bpel/commit/e537ab20f2eaa012150d9b66f5c97090efd8014f))
+
 ## [1.20.8](https://github.com/wearefrank/openforms2bpel/compare/v1.20.7...v1.20.8) (2024-06-03)
 
 ### 🔁 Continuous Integration

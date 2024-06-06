@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.10](https://github.com/wearefrank/openforms2bpel/compare/v1.20.9...v1.20.10) (2024-06-06)
+
+### 🔁 Continuous Integration
+
+* add docusaurus deployment to release workflow ([e84b551](https://github.com/wearefrank/openforms2bpel/commit/e84b551aac3ab970dcfe679d4f8d6ab080cd03c7))
+
 ## [1.20.9](https://github.com/wearefrank/openforms2bpel/compare/v1.20.8...v1.20.9) (2024-06-06)
 
 ### 🧑‍💻 Code Refactoring

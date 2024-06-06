@@ -1,0 +1,40 @@
+---
+sidebar_position: 110
+---
+
+# Add Document To Case Command
+
+Not to be confused with [AddDocumentsToCaseCommand](.). This subflow facilitates uploading a single document to the **document vault** and attach it to the given case.
+
+**input:** TODO
+
+### Workflow steps
+1. Retrieve the document with the given url from the [Documenten API](.).
+
+1. Retrieve the document base64 with the given url from the [Documenten API](.).
+   
+1. Convert ISO639 alpha3 3-letter language code(nld) to a language & country code (nl_NL). This is done by first converting the ISO639 alpha3 3-letter code to an alpha2 2-letter code(nl), 
+   by doing a lookup in `Common/xsl/GetISO639Code.xslt`, which is an export of the official ISO639 registry. Then the alpha2 code is concatenated with '_', followed by the uppercase version of the alpha 2 code.
+   Technically there is no conversion possible from a language code to a language + country code, but this method covers all used language codes that are used so far in any document in a big municipality DMS.
+
+1. Query document upload status in the frank database by **case reference** and **document uuid**.
+   - If it contains no status or the status `DOCUMENT_DELETED`, proceed to next the next step. Otherwise jump to step MTOM TODO.
+
+1. a. Create and send `documents:addDocument` message to the [document-service](.), using the [Documenten API](.) generated "identificatie" as document reference. When successful, a "sessionId" will be included in the response,
+   together with the enriched document metadata from the DMS.
+
+   b. Insert `DOCUMENT_ADDED` document upload status in the frank database. This includes the returned document metadata, batchnumber and the sessionId.
+
+   :::info
+   Storing the returned document metadata and sessionId is needed for certain retry scenario's. The last step of this subflow updates the upload status code with the backend services, so that a scheduler is triggered to 
+   process the document uploaded to the document vault. This action needs the exact document metadata from the addDocument action. The MTOM document base64 upload step requires the sessionId returned from the addDocument step.
+   :::
+
+1. a. Create and send `addDocument` message to the [mtom-service](.), using the "sessionId" from the previous step or from the retrieved upload status in the Frank database. When successful -> proceed to next step.
+      Otherwise if specific error about session expired -> proceed to deleteDocument.
+
+   b. Insert `DOCUMENT_UPLOADED` document upload status in the frank database.
+
+
+1. a. Create and send `documentStatus` message to the [basic-status-update-service](.), using the case reference and document metadata from the addDocument step or from the retrieved upload status in the Frank database.
+

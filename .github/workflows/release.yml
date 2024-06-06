@@ -108,6 +108,8 @@ jobs:
       docker-image-name: ${{ vars.DOCKER_IMAGE_NAME }}
 
   docusaurus-deploy:
+    needs:
+      - release
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.11](https://github.com/wearefrank/openforms2bpel/compare/v1.20.10...v1.20.11) (2024-06-06)
+
+### 🔁 Continuous Integration
+
+* add correct permission scopes for docusaurus deployment ([4f7e7a2](https://github.com/wearefrank/openforms2bpel/commit/4f7e7a2d165366e943481d7a9e6ff084d83bc2ea))
+
 ## [1.20.10](https://github.com/wearefrank/openforms2bpel/compare/v1.20.9...v1.20.10) (2024-06-06)
 
 ### 🔁 Continuous Integration

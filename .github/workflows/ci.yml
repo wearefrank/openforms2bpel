@@ -55,6 +55,7 @@ jobs:
         with:
           node-version: 16.x
           cache: yarn
+          cache-dependency-path: docusaurus/package-lock.json
 
       - name: Install dependencies
         run: cd ./docusaurus && yarn install --frozen-lockfile --non-interactive

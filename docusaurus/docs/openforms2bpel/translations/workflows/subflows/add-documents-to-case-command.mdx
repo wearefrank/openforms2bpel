@@ -1,0 +1,24 @@
+---
+sidebar_position: 100
+---
+
+# Add Documents To Case Command
+
+This workflow facilitates uploading one or more documents and attaching them to a case in a batch.
+
+**input:** Custom datastructure created by `Common/xsl/CreateAddDocumentsToCaseCommand.xslt`. Contains the target case reference and initiating subject identification with the used authentication method translated from a **uw-gegevens** section.
+An array of url's to documents in the [documenten-api](.) that need to be uploaded and attached to the case is also included.
+
+### Workflow steps
+1. Start a new batch by creating and sending a `documents:startBatch` message to the [document-service](.). A **batchnumber** is returned.
+   
+   :::info
+   A **Provider** section is included representing the subject uploading the documents. The **Provider** is used by backend services to assign permissions on the documents in the DMS.
+   :::
+
+1. Execute [AddDocumentToCaseCommand](.) subflow for each url(document) provided in the input message in parallel. It is important to process these in parallel, 
+   so that all documents are always processed despite other documents potentially faulting.
+
+1. End the batch by creating and sending a `documents:endBatch` message to the [document-service](.). This is also automatically done by backend services after approximately 3 hours. Because of this
+   the batch should always be ended, even if there are faulting documents. A new batch is started when retrying. Care must be taken though to not accidentally ignore the potential errors from the document uploads.
+

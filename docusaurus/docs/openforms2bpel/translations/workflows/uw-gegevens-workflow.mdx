@@ -1,0 +1,57 @@
+---
+sidebar_position: 100
+---
+
+# Uw-Gegevens Workflow
+
+The most commonly used workflow by far. It is used whenever a form simply needs to result in a new case, based on the formdata.
+
+**Triggered on:** presence of a section with the name starting with `uw-gegevens`.
+
+**Requirements:**
+- **uw-gegevens** section
+- TODO
+
+### Workflow steps
+1. Filter **uw-gegevens** section based on the used authentication method and subject entity(Person with/without DigiD, Organization with/without E-Herkenning).
+
+1. Check if the form contains a completed payment.
+
+   :::info
+   Handling of the actual payment is done by OpenForms. The form won't be delivered to the integration until the payment is already fully confirmed completed.
+   However, the payment infomation still needs to be added to the case with a completed status, so that the SAP-integration is triggered and has the necessary information.
+   :::
+
+1. Retrieve OpenForms form result PDF document and base64 from [Documenten API](.).
+
+1. Update the initiating subject's e-mail and telephone number by calling [UpdateInitiatingSubjectGegMagCommand](.). 
+
+   :::note
+   The update needs to happen before the **register** message, as the BPEL-Basic process uses this data to add the initiating subject on the case, if the initiating subject is authenticated.
+   :::
+
+1. Create and send **initiate** message to [basic-service](.). This triggers a BPEL backend process to start. It is not clear what this action does exactly.
+   
+1. Create and send **register** message to [basic-service](.). A new BPEL-Basic process will be started, which includes creating a new case with attached resources and entities.
+   The sections in the **register** message are built and composed by several XSLT's conditionally and based on the formdata.
+   
+   The **register** message contains the following:
+   - Generic case information
+   - Short info on attachments
+   - OpenForms result PDF
+   - Translated initiating subject details
+   - Additonal translated parties and their role
+   - Optional payment details
+   - E-mail contact details
+   - Transformed formdata
+   <br/>
+   :::info
+   A successful **register** action signals the point-of-no-return. Every action that follows needs to have an exactly-once guarantee. Currently this is achieved by using a **MessageStore** for each action,
+   so that they can be retried from the **ErrorStore** in the case of errors.
+   :::
+
+1. (payment only) Correct the payment's `reference` with the `order-id` provided by OpenForm on the payment attached to the case, that was created by the BPEL-Basic process during the **register** action.
+   Additionally add a new **payment status** to the payment, to indicate that the payment has been processed and is completed. This is done by calling [UpdatePaymentCommand](.).
+
+1. (attachments only) Upload all attachments provided in the form to the **Document vault**, add them to the case and signal that the documents are ready to be processed from the **Document vault**.
+   This is done by calling [AddDocumentsToCaseCommand](.).

@@ -94,4 +94,34 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="Openforms2bpel:1.20.12" author="MLenterman">
+        <comment>Add document state table</comment>
+        <createTable tableName="ADD_DOCUMENT_STATE">
+            <column name="PK" type="INTEGER" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="PK_ADD_DOCUMENT_STATE"/>
+            </column>
+            <column name="DOCUMENT_UUID" type="VARCHAR(36)">
+                <constraints nullable="false" unique="false" />
+            </column>
+            <column name="DOCUMENT_REFERENCE" type="VARCHAR(64)">
+                <constraints nullable="false" unique="false" />
+            </column>
+            <column name="TARGET_CASE_REFERENCE" type="VARCHAR(10)">
+                <constraints nullable="false" unique="false" />
+            </column>
+            <column name="STATE" type="VARCHAR(64)">
+                <constraints nullable="false" unique="false" />
+            </column>
+            <column name="BATCH_NUMBER" type="VARCHAR(32)">
+                <constraints nullable="false" unique="false" />
+            </column>
+            <column name="SESSION_ID" type="VARCHAR(64)">
+                <constraints nullable="false" unique="false" />
+            </column>
+            <column name="STATE_SET_AT" type="DATETIME">
+                <constraints nullable="false" unique="false" />
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

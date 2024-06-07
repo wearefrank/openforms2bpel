@@ -16,7 +16,7 @@
             </Exits>
 
             <SenderPipe
-                name="PostBpelDocumentsAddDocumentSender"
+                name="BpelDocumentServiceSender"
                 >
                 <SoapInputWrapper
                     direction="WRAP"
@@ -29,7 +29,7 @@
                     </Param>
                 </SoapInputWrapper>
                 <WebServiceSender
-                    name="PostBpelDocumentsAddDocumentWebServiceSender"
+                    name="BpelDocumentServiceAddDocumentWebServiceSender"
                     soap="false"
                     contentType="text/xml"
                     verifyHostname="${openforms2bpel.bpel.documents-service.verify-hostname}"

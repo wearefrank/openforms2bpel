@@ -102,50 +102,80 @@
                 <Param name="Taal" xpathExpression="concat(concat($Alpha2, '_'), upper-case($Alpha2))">
                     <Param name="Alpha2" sessionKey="Alpha2" />
                 </Param>
-                <Forward name="success" path="CreateReadDocumentRequestMessage"/>
-            </XsltPipe>
-
-            <XsltPipe
-                name="CreateReadDocumentRequestMessage"
-                getInputFromFixedValue="&lt;dummy/&gt;"
-                styleSheetName="Bpel/Documents/Model/ReadDocumentRequestMessage.xslt"
-                storeResultInSessionKey="ReadDocumentRequestMessage"
-                >
-                <Param name="ZgwEnkelvoudigInformatieObject" sessionKey="ZgwEnkelvoudigInformatieObject" type="DOMDOC" />
-                <Param name="Provider" sessionKey="Provider" type="DOMDOC" />
-                <Forward name="success" path="BpelDocumentsPostReadDocumentSender" />
-                <Forward name="exception" path="CreateAddDocumentRequestMessage" />
+                <Forward name="success" path="SelectDocumentStateSender"/>
             </XsltPipe>
 
             <SenderPipe
-                name="BpelDocumentsPostReadDocumentSender"
-                storeResultInSessionKey="ReadDocumentResponseMessage"
-                >
-                <IbisLocalSender
-                    name="BpelDocumentsPostReadDocumentLocalSender"
-                    javaListener="Bpel_Documents_Post"
-                    >
-                    <Param name="soapAction" value="documents:readDocument" />
-                </IbisLocalSender>
-                <Forward name="success" path="DocumentReferenceAlreadyExists_Condition" />
-                <Forward name="exception" path="CreateAddDocumentRequestMessage" />
+				name="SelectDocumentStateSender"
+                transactionAttribute="NotSupported"
+                storeResultInSessionKey="SelectDocumentStateResult"
+				>
+                <FixedQuerySender
+					name="SelectDocumentStateFixedQuerySender"
+                    query="SELECT * FROM ADD_DOCUMENT_STATE WHERE DOCUMENT_UUID = ?{DocumentUuid} and TARGET_CASE_REFERENCE = ?{TargetCaseReference} ORDER BY STATE_SET_AT" 
+                    queryType="SELECT"
+                    />
+                    <Param name="DocumentUuid" sessionKey="originalMessage" xpathExpression="tokenize(/url, '/')[last()]" />
+                    <Param name="TargetCaseReference" sessionKey="CaseReferenceNumber" />
+                <Forward name="success" path="SelectDocumentState_StoreSessionKeys" />
             </SenderPipe>
 
-            <XmlIfPipe
-                name="DocumentReferenceAlreadyExists_Condition"
-                xpathExpression="string-length(//*:readDocumentResponse/*:documentSessionMessage/*:document) gt 0"
+            <PutInSessionPipe
+                name="SelectDocumentState_StoreSessionKeys"
                 >
-                <Forward name="then" path="StoreSessionIdAndDocument_DocumentReferenceAlreadyExists" />
-                <Forward name="else" path="CreateAddDocumentRequestMessage" />
+                <Param name="DocumentState" xpathExpression="/result/rowset/row[last()]/field[@name = 'STATE']/text()" />
+                <Param name="DocumentUuid" xpathExpression="/result/rowset/row[last()]/field[@name = 'DOCUMENT_UUID']/text()" />
+                <Param name="DocumentReference" xpathExpression="/result/rowset/row[last()]/field[@name = 'DOCUMENT_REFERENCE']/text()" />
+                <Param name="OriginalBatchNumber" xpathExpression="/result/rowset/row[last()]/field[@name = 'BATCH_NUMBER']/text()" />
+                <Param name="SessionId" xpathExpression="/result/rowset/row[last()]/field[@name = 'SESSION_ID']/text()" />
+                <Param name="StateSetAt" xpathExpression="/result/rowset/row[last()]/field[@name = 'STATE_SET_AT']/text()" />
+				<Forward name="success" path="DocumentCompleted_Condition" />
+			</PutInSessionPipe>
+
+            <XmlIfPipe
+                name="DocumentCompleted_Condition"
+                xpathExpression="$DocumentState = 'DOCUMENT_FORWARDED'"
+                >
+                <Param name="DocumentState" sessionKey="DocumentState" />
+                <Forward name="then" path="EXIT" />
+                <Forward name="else" path="AddDocument_Condition" />
             </XmlIfPipe>
 
-            <PutInSessionPipe
-                name="StoreSessionIdAndDocument_DocumentReferenceAlreadyExists"
+            <XmlIfPipe
+                name="AddDocument_Condition"
+                xpathExpression="$DocumentState = 'DOCUMENT_DELETED' or $DocumentState = ''"
                 >
-                <Param name="SessionId" xpathExpression="//*:sessionId" />
-                <Param name="Document" sessionKey="ReadDocumentResponseMessage" type="DOMDOC" />
-				<Forward name="success" path="CreateAddDocumentMtomRequestMessage" />
-			</PutInSessionPipe>
+                <Param name="DocumentState" sessionKey="DocumentState" />
+                <Forward name="then" path="CreateAddDocumentRequestMessage" />
+                <Forward name="else" path="UploadDocument_Condition" />
+            </XmlIfPipe>
+
+            <XmlIfPipe
+                name="UploadDocument_Condition"
+                xpathExpression="$DocumentState = 'DOCUMENT_ADDED'"
+                >
+                <Param name="DocumentState" sessionKey="DocumentState" />
+                <Forward name="then" path="CreateAddDocumentMtomRequestMessage" />
+                <Forward name="else" path="DeleteDocument_Condition" />
+            </XmlIfPipe>
+
+            <XmlIfPipe
+                name="DeleteDocument_Condition"
+                xpathExpression="$DocumentState = 'DOCUMENT_EXPIRED'"
+                >
+                <Param name="DocumentState" sessionKey="DocumentState" />
+                <Forward name="then" path="CreateAddDocumentMtomRequestMessage" />
+                <Forward name="else" path="ForwardDocument_Condition" />
+            </XmlIfPipe>
+
+            <XmlIfPipe
+                name="ForwardDocument_Condition"
+                xpathExpression="$DocumentState = 'DOCUMENT_UPLOADED'"
+                >
+                <Param name="DocumentState" sessionKey="DocumentState" />
+                <Forward name="then" path="CreateAddDocumentRequestMessageForDocumentStatus" />
+                <Forward name="else" path="CreateAddDocumentRequestMessage" />
+            </XmlIfPipe>
 
             <XsltPipe
                 name="CreateAddDocumentRequestMessage"
@@ -154,7 +184,7 @@
                 storeResultInSessionKey="AddDocumentRequestMessage"
                 >
                 <Param name="ZgwEnkelvoudigInformatieObject" sessionKey="ZgwEnkelvoudigInformatieObject" type="DOMDOC" />
-                <Param name="Case" sessionKey="CaseReferenceNumber"/>
+                <Param name="Case" sessionKey="CaseReferenceNumber" />
                 <Param name="Provider" sessionKey="Provider" type="DOMDOC" />
                 <Param name="BatchNumber" sessionKey="BatchNumber" />
                 <Forward name="success" path="BpelDocumentsPostAddDocumentSender" />
@@ -170,16 +200,57 @@
                     >
                     <Param name="soapAction" value="documents:addDocument" />
                 </IbisLocalSender>
-                <Forward name="success" path="StoreSessionIdAndDocument" />
+                <Forward name="success" path="AddDocument_StoreSessionId" />
+                <Forward name="exception" path="DocumentIdentificationConstraintViolated_Condition" />
             </SenderPipe>
-
+            
             <PutInSessionPipe
-                name="StoreSessionIdAndDocument"
+                name="AddDocument_StoreSessionId"
                 >
                 <Param name="SessionId" xpathExpression="//*:sessionId" />
-                <Param name="Document" sessionKey="AddDocumentRequestMessage" type="DOMDOC" />
-				<Forward name="success" path="CreateAddDocumentMtomRequestMessage" />
-			</PutInSessionPipe>
+                <Forward name="success" path="InsertDocumentAddedStateSender" />
+            </PutInSessionPipe>
+
+            <SenderPipe
+				name="InsertDocumentAddedStateSender"
+                transactionAttribute="NotSupported"
+				>
+                <FixedQuerySender
+					name="InsertDocumentAddedStateFixedQuerySender"
+                    query="INSERT INTO ADD_DOCUMENT_STATE (DOCUMENT_UUID, DOCUMENT_REFERENCE, TARGET_CASE_REFERENCE, STATE, BATCH_NUMBER, SESSION_ID, STATE_SET_AT) VALUES (?{DocumentUuid}, ?{DocumentReference}, ?{TargetCaseReference}, ?{State}, ?{BatchNumber}, ?{SessionId}, ?{StateSetAt})" 
+                    queryType="OTHER"
+                    />
+					<Param name="DocumentUuid" sessionKey="originalMessage" xpathExpression="tokenize(/url, '/')[last()]" />
+                    <Param name="DocumentReference" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//identificatie" />
+					<Param name="TargetCaseReference" sessionKey="CaseReferenceNumber" />
+					<Param name="State" value="DOCUMENT_ADDED" />
+					<Param name="BatchNumber" sessionKey="BatchNumber" />
+					<Param name="SessionId" sessionKey="SessionId" />
+					<Param name="StateSetAt" xpathExpression="string($NowDateTime)" >
+                        <Param name="NowDateTime" pattern="{now}" type="DATETIME" />
+                    </Param>
+                <Forward name="success" path="CreateAddDocumentMtomRequestMessage" />
+            </SenderPipe>
+
+            <XmlIfPipe
+                name="DocumentIdentificationConstraintViolated_Condition"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                xpathExpression="contains($SoapFault, 'unique constraint (MO_ZAKMAG.AK_DOCUMENT_IDENT_VERSION) violated')"
+                >
+                <Param name="SoapFault" />
+                <Forward name="then" path="DocumentIdentificationConstraintViolated_Exception" />
+                <Forward name="else" path="BpelDocumentsPostAddDocumentSender_Exception" />
+            </XmlIfPipe>
+            
+            <ExceptionPipe
+                name="DocumentIdentificationConstraintViolated_Exception"
+                getInputFromSessionKey="AddDocumentResponseMessage"
+                />
+            
+            <ExceptionPipe
+                name="BpelDocumentsPostAddDocumentSender_Exception"
+                getInputFromSessionKey="AddDocumentResponseMessage"
+                />
 
             <XsltPipe
                 name="CreateAddDocumentMtomRequestMessage"
@@ -202,8 +273,89 @@
                     javaListener="Bpel_Mtom_PostAddDocument"
                     >
                 </IbisLocalSender>
-                <Forward name="success" path="CreateDocumentStatusRequestMessage" />
+                <Forward name="success" path="InsertDocumentUploadedStateSender" />
+                <Forward name="exception" path="BinaryDataForDocumentAlreadyExists_Condition" />
             </SenderPipe>
+
+            <XmlIfPipe
+                name="BinaryDataForDocumentAlreadyExists_Condition"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                xpathExpression="contains($SoapFault, 'already exists in the Document Vault')"
+                >
+                <Param name="SoapFault" />
+                <Forward name="then" path="InsertDocumentUploadedStateSender" />
+                <Forward name="else" path="DocumentExpired_Condition" />
+            </XmlIfPipe>
+
+            <XmlIfPipe
+                name="DocumentExpired_Condition"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                xpathExpression="contains($SoapFault, 'upload expired for document identification')"
+                >
+                <Param name="SoapFault" />
+                <Forward name="then" path="InsertDocumentExpiredStateSender" />
+                <Forward name="else" path="BpelMtomPostAddDocumentSender_Exception" />
+            </XmlIfPipe>
+
+            <ExceptionPipe
+                name="BpelMtomPostAddDocumentSender_Exception"
+                getInputFromSessionKey="AddDocumentMtomResponseMessage"
+                />
+
+            <SenderPipe
+				name="InsertDocumentExpiredStateSender"
+                transactionAttribute="NotSupported"
+				>
+                <FixedQuerySender
+					name="InsertDocumentExpiredStateFixedQuerySender"
+                    query="INSERT INTO ADD_DOCUMENT_STATE (DOCUMENT_UUID, DOCUMENT_REFERENCE, TARGET_CASE_REFERENCE, STATE, BATCH_NUMBER, SESSION_ID, STATE_SET_AT) VALUES (?{DocumentUuid}, ?{DocumentReference}, ?{TargetCaseReference}, ?{State}, ?{BatchNumber}, ?{SessionId}, ?{StateSetAt})" 
+                    queryType="OTHER"
+                    />
+					<Param name="DocumentUuid" sessionKey="originalMessage" xpathExpression="tokenize(/url, '/')[last()]" />
+                    <Param name="DocumentReference" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//identificatie" />
+					<Param name="TargetCaseReference" sessionKey="CaseReferenceNumber" />
+					<Param name="State" value="DOCUMENT_EXPIRED" />
+					<Param name="BatchNumber" sessionKey="OriginalBatchNumber" pattern="{BatchNumber}" ignoreUnresolvablePatternElements="true" defaultValueMethods="pattern" />
+					<Param name="SessionId" sessionKey="SessionId" />
+					<Param name="StateSetAt" xpathExpression="string($NowDateTime)" >
+                        <Param name="NowDateTime" pattern="{now}" type="DATETIME" />
+                    </Param>
+                <Forward name="success" path="CreateAddDocumentMtomRequestMessage" />
+            </SenderPipe>
+
+            <SenderPipe
+				name="InsertDocumentUploadedStateSender"
+                transactionAttribute="NotSupported"
+				>
+                <FixedQuerySender
+					name="InsertDocumentUploadedStateFixedQuerySender"
+                    query="INSERT INTO ADD_DOCUMENT_STATE (DOCUMENT_UUID, DOCUMENT_REFERENCE, TARGET_CASE_REFERENCE, STATE, BATCH_NUMBER, SESSION_ID, STATE_SET_AT) VALUES (?{DocumentUuid}, ?{DocumentReference}, ?{TargetCaseReference}, ?{State}, ?{BatchNumber}, ?{SessionId}, ?{StateSetAt})" 
+                    queryType="OTHER"
+                    />
+					<Param name="DocumentUuid" sessionKey="originalMessage" xpathExpression="tokenize(/url, '/')[last()]" />
+                    <Param name="DocumentReference" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//identificatie" />
+					<Param name="TargetCaseReference" sessionKey="CaseReferenceNumber" />
+					<Param name="State" value="DOCUMENT_UPLOADED" />
+					<Param name="BatchNumber" sessionKey="OriginalBatchNumber" pattern="{BatchNumber}" ignoreUnresolvablePatternElements="true" defaultValueMethods="pattern" />
+					<Param name="SessionId" sessionKey="SessionId" />
+					<Param name="StateSetAt" xpathExpression="string($NowDateTime)" >
+                        <Param name="NowDateTime" pattern="{now}" type="DATETIME" />
+                    </Param>
+                <Forward name="success" path="CreateAddDocumentRequestMessageForDocumentStatus" />
+            </SenderPipe>
+
+            <XsltPipe
+                name="CreateAddDocumentRequestMessageForDocumentStatus"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Documents/Model/AddDocumentRequestMessage.xslt"
+                storeResultInSessionKey="AddDocumentRequestMessage"
+                >
+                <Param name="ZgwEnkelvoudigInformatieObject" sessionKey="ZgwEnkelvoudigInformatieObject" type="DOMDOC" />
+                <Param name="Case" sessionKey="CaseReferenceNumber" />
+                <Param name="Provider" sessionKey="Provider" type="DOMDOC" />
+                <Param name="BatchNumber" sessionKey="OriginalBatchNumber" pattern="{BatchNumber}" ignoreUnresolvablePatternElements="true" defaultValueMethods="pattern" />
+                <Forward name="success" path="CreateDocumentStatusRequestMessage" />
+            </XsltPipe>
 
             <XsltPipe
                 name="CreateDocumentStatusRequestMessage"
@@ -211,7 +363,7 @@
                 styleSheetName="Bpel/BasicStatusUpdate/Model/DocumentStatusRequestMessage.xslt"
                 storeResultInSessionKey="DocumentStatusRequestMessage"
                 >
-                <Param name="Document" sessionKey="Document" type="DOMDOC" />
+                <Param name="Document" sessionKey="AddDocumentRequestMessage" type="DOMDOC" />
                 <Param name="ReferenceNumber" sessionKey="CaseReferenceNumber" />
                 <Param name="Status_Code" value="FORWARDED" />
                 <Forward name="success" path="BpelBasicStatusUpdateDocumentStatusSender" />
@@ -226,9 +378,35 @@
                     javaListener="Bpel_BasicStatusUpdate_PostDocumentStatus"
                     >
                 </IbisLocalSender>
-                <Forward name="success" path="EXIT" />
+                <Forward name="success" path="InsertDocumentForwardedStateSender" />
+                <Forward name="exception" path="BpelBasicStatusUpdateDocumentStatusSender_Exception" />
             </SenderPipe>
 
+            <ExceptionPipe
+                name="BpelBasicStatusUpdateDocumentStatusSender_Exception"
+                getInputFromSessionKey="DocumentStatusResponseMessage"
+                />
+
+            <SenderPipe
+				name="InsertDocumentForwardedStateSender"
+                transactionAttribute="NotSupported"
+				>
+                <FixedQuerySender
+					name="InsertDocumentForwardedStateFixedQuerySender"
+                    query="INSERT INTO ADD_DOCUMENT_STATE (DOCUMENT_UUID, DOCUMENT_REFERENCE, TARGET_CASE_REFERENCE, STATE, BATCH_NUMBER, SESSION_ID, STATE_SET_AT) VALUES (?{DocumentUuid}, ?{DocumentReference}, ?{TargetCaseReference}, ?{State}, ?{BatchNumber}, ?{SessionId}, ?{StateSetAt})" 
+                    queryType="OTHER"
+                    />
+					<Param name="DocumentUuid" sessionKey="originalMessage" xpathExpression="tokenize(/url, '/')[last()]" />
+                    <Param name="DocumentReference" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//identificatie" />
+					<Param name="TargetCaseReference" sessionKey="CaseReferenceNumber" />
+					<Param name="State" value="DOCUMENT_FORWARDED" />
+					<Param name="BatchNumber" sessionKey="OriginalBatchNumber" pattern="{BatchNumber}" ignoreUnresolvablePatternElements="true" defaultValueMethods="pattern" />
+					<Param name="SessionId" sessionKey="SessionId" />
+					<Param name="StateSetAt" xpathExpression="string($NowDateTime)" >
+                        <Param name="NowDateTime" pattern="{now}" type="DATETIME" />
+                    </Param>
+                <Forward name="success" path="EXIT" />
+            </SenderPipe>
         </Pipeline>
     </Adapter>
 </Module>

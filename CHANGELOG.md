@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.12](https://github.com/wearefrank/openforms2bpel/compare/v1.20.11...v1.20.12) (2024-06-07)
+
+### 🧑‍💻 Code Refactoring
+
+* store and use document upload state in database ([1d454b6](https://github.com/wearefrank/openforms2bpel/commit/1d454b65bcfc8351093efde75e74ad2ce5e14e0a))
+
 ## [1.20.11](https://github.com/wearefrank/openforms2bpel/compare/v1.20.10...v1.20.11) (2024-06-06)
 
 ### 🔁 Continuous Integration

@@ -74,13 +74,21 @@
                 name="FilterUwGegevensSection"
                 styleSheetName="Common/xsl/FilterUwGegevensSection.xslt"
                 storeResultInSessionKey="UwGegevens"
-                preserveInput="true"
                 >
-                <Forward name="success" path="GetEnkelvoudigInformatieObjectSender" />
+                <Forward name="success" path="StoreSubjectIdentifier" />
             </XsltPipe>
+
+            <PutInSessionPipe
+                name="StoreSubjectIdentifier"
+                >
+                <Param name="PersonBsn" hidden="true" sessionKey="UwGegevens" xpathExpression="//*[starts-with(name(), 'uw-gegevens')]//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'bsn')]" />
+                <Param name="OrganizationKvk" sessionKey="UwGegevens" xpathExpression="//*[starts-with(name(), 'uw-gegevens')]//*[starts-with(name(), 'gegevensBedrijfOrganisatie')]/*[starts-with(name(), 'kvKNummer')]" />
+                <Forward name="success" path="GetEnkelvoudigInformatieObjectSender" />
+            </PutInSessionPipe>
 
             <SenderPipe
 				name="GetEnkelvoudigInformatieObjectSender"
+                getInputFromSessionKey="originalMessage"
 				>
 				<HttpSender
 					name="GetEnkelvoudigInformatieObjectHttpSender"
@@ -158,11 +166,11 @@
                 styleSheetName="Bpel/Basic/Model/InitiateRequestMessage.xslt"
                 storeResultInSessionKey="InitiateRequestMessage"
                 >
-                <Param name="User" xpathExpression="/ZgwObject/bsn/text()" />
+                <Param name="User" sessionKey="PersonBsn" />
                 <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
                 <Param name="Domain" sessionKey="Domain" />
                 <Param name="CorrelationId" sessionKey="cid" />
-                <Param name="Bsn" xpathExpression="/ZgwObject/bsn/text()" />
+                <Param name="Bsn" sessionKey="PersonBsn" />
                 <!-- <Param name="CommercialRegistryNumber" value="''" /> -->
                 <!-- <Param name="Username" sessionKey="Username" defaultValue="dummy" /> -->
                 <Param name="Process" xpathExpression="/ZgwObject/type/text()" />
@@ -214,7 +222,7 @@
                 >
                 <Param name="UwGegevens" sessionKey="UwGegevens" type="DOMDOC" />
                 <Param name="Person" styleSheetName="Bpel/Basic/Model/Person.xslt" type="DOMDOC">
-                    <Param name="Bsn" xpathExpression="/ZgwObject/bsn" />
+                    <Param name="Bsn" sessionKey="PersonBsn" />
                     <Param name="UwGegevens" sessionKey="UwGegevens" type="DOMDOC" />
                 </Param>
                 <Param name="Organization" styleSheetName="Bpel/Basic/Model/Organization.xslt" type="DOMDOC">
@@ -246,11 +254,11 @@
                 >
                 <Param name="InitiateResponseMessage" sessionKey="InitiateResponseMessage" type="DOMDOC" />
                 <Param name="InitiatingSubject" sessionKey="InitiatingSubject" type="DOMDOC" />
-                <Param name="User" xpathExpression="/ZgwObject/bsn/text()" />
+                <Param name="User" sessionKey="PersonBsn" />
                 <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
                 <Param name="Domain" sessionKey="Domain" />
                 <Param name="CorrelationId" sessionKey="cid" />
-                <Param name="Bsn" xpathExpression="/ZgwObject/bsn/text()" />
+                <Param name="Bsn" sessionKey="PersonBsn" />
                 <Param name="Summary" sessionKey="Formdata" type="DOMDOC" />
                 <Param name="EmailParameters" sessionKey="EmailParameters" type="DOMDOC" />
                 <Param name="Process" xpathExpression="/ZgwObject/type/text()" />

@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.13](https://github.com/wearefrank/openforms2bpel/compare/v1.20.12...v1.20.13) (2024-06-11)
+
+### 🧑‍💻 Code Refactoring
+
+* exlusively use person bsn from uw-gegevens section instead of bsn outside formdata ([520e8bd](https://github.com/wearefrank/openforms2bpel/commit/520e8bd32054a80b2f496d7e345135f28433a394))
+
 ## [1.20.12](https://github.com/wearefrank/openforms2bpel/compare/v1.20.11...v1.20.12) (2024-06-07)
 
 ### 🧑‍💻 Code Refactoring

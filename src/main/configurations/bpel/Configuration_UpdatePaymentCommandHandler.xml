@@ -35,17 +35,17 @@
 			</Exits>
 
 			<XsltPipe
-                name="CreateLookUpPaymentsMessage"
+                name="CreateLookUpPaymentsMessageByCaseReference"
                 getInputFromFixedValue="&lt;dummy/&gt;"
                 styleSheetName="Bpel/Payment/Model/LookUpPaymentsMessage.xslt"
                 storeResultInSessionKey="LookUpPaymentsMessage"
                 >
                 <Param name="ReferenceNumber" sessionKey="CaseReferenceNumber" />
-                <Forward name="success" path="BpelPaymentPostLookUpPaymentsSender" />
+                <Forward name="success" path="BpelPaymentPostLookUpPaymentsSenderByCaseReference" />
             </XsltPipe>
 
             <SenderPipe
-                name="BpelPaymentPostLookUpPaymentsSender"
+                name="BpelPaymentPostLookUpPaymentsSenderByCaseReference"
                 storeResultInSessionKey="LookUpPaymentsResponseMessage"
                 >
                 <IbisLocalSender
@@ -54,8 +54,54 @@
                     >
                 </IbisLocalSender>
                 <Param name="soapAction" value="payments:lookUpPayments" />
-                <Forward name="success" path="CreateUpdateDetailedPaymentRequestMessage" />
+                <Forward name="success" path="LookUpByReferenceNumberNoPayments_Condition" />
             </SenderPipe>
+
+            <XmlIfPipe
+                name="LookUpByReferenceNumberNoPayments_Condition"
+                xpathExpression="string-length(//*:lookUpPaymentsResponse/*:paymentDetailsMessage/*:payments) = 0"
+                >
+                <Forward name="then" path="CreateLookUpPaymentsMessageByPaymentOrderId" />
+                <Forward name="else" path="CreateUpdateDetailedPaymentRequestMessage" />
+            </XmlIfPipe>
+
+            <!--
+                LookUp with PaymentOrderId as ReferenceNumber for retries. After `updateDetailedPayment` the ReferenceNumber has been changed to the PaymentOrderId.
+                If this yields a result, `updateDetailedPayment` must have already succeeded in a previous run, so we can skip it.
+            -->
+            <XsltPipe
+                name="CreateLookUpPaymentsMessageByPaymentOrderId"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Bpel/Payment/Model/LookUpPaymentsMessage.xslt"
+                storeResultInSessionKey="LookUpPaymentsMessage"
+                >
+                <Param name="ReferenceNumber" sessionKey="PaymentOrderId" />
+                <Forward name="success" path="BpelPaymentPostLookUpPaymentsSenderByPaymentOrderId" />
+            </XsltPipe>
+
+            <SenderPipe
+                name="BpelPaymentPostLookUpPaymentsSenderByPaymentOrderId"
+                storeResultInSessionKey="LookUpPaymentsResponseMessage"
+                >
+                <IbisLocalSender
+                    name="BpelPaymentPostLookUpPaymentsLocalSender"
+                    javaListener="Bpel_Payment_Post"
+                    >
+                </IbisLocalSender>
+                <Param name="soapAction" value="payments:lookUpPayments" />
+                <Forward name="success" path="NoPaymentFound_Condition" />
+            </SenderPipe>
+
+            <XmlIfPipe
+                name="NoPaymentFound_Condition"
+                xpathExpression="string-length(//*:lookUpPaymentsResponse/*:paymentDetailsMessage/*:payments) = 0"
+                >
+                <Forward name="then" path="NoPaymentFound_Exception" />
+                <!-- If BpelPaymentPostLookUpPaymentsSenderByPaymentOrderId yields a result, `updateDetailedPayment` must have succeeded already in a previous run, so skip it. -->
+                <Forward name="else" path="CreateAddPaymentStatesMessage" />
+            </XmlIfPipe>
+
+            <ExceptionPipe name="NoPaymentFound_Exception" />
 
 			<XsltPipe
                 name="CreateUpdateDetailedPaymentRequestMessage"
@@ -64,12 +110,12 @@
                 >
                 <Param name="ReferenceNumber" sessionKey="PaymentOrderId" />
                 <Param name="Description" sessionKey="CaseReferenceNumber" />
-                <Forward name="success" path="CreateUpdateDetailedPaymentRequestSender" />
+                <Forward name="success" path="UpdateDetailedPaymentRequestSender" />
             </XsltPipe>
 
             <SenderPipe
-                name="CreateUpdateDetailedPaymentRequestSender"
-                storeResultInSessionKey="CreateUpdateDetailedPaymentResponseMessage"
+                name="UpdateDetailedPaymentRequestSender"
+                storeResultInSessionKey="UpdateDetailedPaymentResponseMessage"
                 >
                 <IbisLocalSender
                     name="CreateUpdateDetailedPaymentRequestLocalSender"

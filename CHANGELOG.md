@@ -1,5 +1,16 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.14](https://github.com/wearefrank/openforms2bpel/compare/v1.20.13...v1.20.14) (2024-06-17)
+
+### 🐛 Bug Fixes
+
+* updatePayment createAddPaymentState xslt can grab multiple paymentId's unintentionally ([ef681b5](https://github.com/wearefrank/openforms2bpel/commit/ef681b51754a23b7d51772583f72cd173f99420e))
+* updatePayment payment lookup fails during retry due to already changed reference to orderId ([94f27e6](https://github.com/wearefrank/openforms2bpel/commit/94f27e63fc8b99237076ec0902d075471001d916))
+
+### ✅ Tests
+
+* expand lookupPayment mock with scenario where lookup with caseReference returns no payments but a following lookup with orderId yields result ([735027c](https://github.com/wearefrank/openforms2bpel/commit/735027c9a673d352ce063b5e3f7b6a64d6c38294))
+
 ## [1.20.13](https://github.com/wearefrank/openforms2bpel/compare/v1.20.12...v1.20.13) (2024-06-11)
 
 ### 🧑‍💻 Code Refactoring

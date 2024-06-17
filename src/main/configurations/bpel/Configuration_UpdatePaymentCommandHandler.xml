@@ -82,10 +82,11 @@
 
             <XsltPipe
                 name="CreateAddPaymentStatesMessage"
+                getInputFromFixedValue="&lt;dummy/&gt;"
                 styleSheetName="Bpel/Payment/Model/AddPaymentStatesMessage.xslt"
                 storeResultInSessionKey="AddPaymentStatesMessage"
                 >
-                <Param name="PaymentId" sessionKey="LookUpPaymentsResponseMessage" xpathExpression="//*[local-name()='paymentId']" />
+                <Param name="PaymentId" sessionKey="LookUpPaymentsResponseMessage" xpathExpression="//*:paymentStates/*:paymentState[last()]/*:paymentId" />
                 <Param name="StateCode" value="004" />
                 <Param name="ExtCode" value="9" />
                 <Param name="ExtMessage" value="Payment requested" />

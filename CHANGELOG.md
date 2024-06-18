@@ -1,5 +1,15 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.15](https://github.com/wearefrank/openforms2bpel/compare/v1.20.14...v1.20.15) (2024-06-18)
+
+### 🐛 Bug Fixes
+
+* sanitize formdata to replace illegal xml character and potentially dangerous control characters ([c4c5ec2](https://github.com/wearefrank/openforms2bpel/commit/c4c5ec2ad67af0b99476708b0671bf755dbdc09c))
+
+### ✅ Tests
+
+* expand illegal xml character testcase with emojis and unwanted control characters ([1321d04](https://github.com/wearefrank/openforms2bpel/commit/1321d046f3be43bd01490e5a7524d8bccc507de4))
+
 ## [1.20.14](https://github.com/wearefrank/openforms2bpel/compare/v1.20.13...v1.20.14) (2024-06-17)
 
 ### 🐛 Bug Fixes

@@ -17800,7 +17800,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-NWOYJV</con:value>
+              <con:value>OF-AYNBIH</con:value>
             </con:property>
           </con:properties>
         </con:config>
@@ -17946,7 +17946,7 @@ casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSu
                "hoeLaat" : "Tijdstip",\r
                "watIsUwKlacht" : "Klacht",\r
                "wanneerIsDitGebeurd" : "Wanneer",\r
-               "welkOrganisatieOnderdeel" : "anders",\r
+               "welkOrganisatieOnderdeel" : "Welke",\r
                "tOverWieWiltUEenKlachtIndienen" : "Henk",\r
                "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "Ontslag"\r
             },\r
@@ -19505,7 +19505,32 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
       <con:testStep type="properties" name="Properties" id="4d2c8f8e-7d78-4603-814d-3aedda99f8be">
         <con:settings/>
         <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:properties/>
+          <con:properties>
+            <con:property>
+              <con:name>caseReferenceNumber</con:name>
+              <con:value>OF-VINDWV</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="generate-dynamic-properties" id="32e37ebf-4591-461a-9379-bb9c53a377f8">
+        <con:settings/>
+        <con:config>
+          <script>def dynamicProperties = testRunner.testCase.getTestStepByName("Properties");
+
+def caseReferenceNumber = "OF-" + org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6).toUpperCase();
+dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="set-dynamic-mock-properties" id="702867f1-1a07-4c05-9dea-593d9f950b06">
+        <con:settings/>
+        <con:config>
+          <script>def casesServiceMock = testRunner.testCase.testSuite.project.mockServices["BPEL CasesProxy Mock"].getMockRunner().getMockService();
+
+def caseReferenceNumber = context.expand('${Properties#caseReferenceNumber}');
+casesServiceMock.setPropertyValue("caseReferenceNumber", caseReferenceNumber);
+def initiatingSubjectCitizenNumber = context.expand('${#TestCase#initiatingSubjectCitizenNumber}');
+casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSubjectCitizenNumber);</script>
         </con:config>
       </con:testStep>
       <con:testStep type="restrequest" name="objects_object_create" id="0145a900-d6f8-4b19-a84b-13f510eee96c">
@@ -19523,12 +19548,12 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
       "index" : 1,\r
       "typeVersion" : 1,\r
       "data" : {\r
-         "bsn" : "999999990",\r
+         "bsn" : "${#TestCase#initiatingSubjectCitizenNumber}",\r
          "data" : {\r
             "evenement" : {\r
                "naamEvenement" : "gdfhgfh",\r
                "soortEvenement" : "hardloopevenement",\r
-               "beschrijvingHWTEvenement" : "fghfgh",\r
+               "beschrijvingHWTEvenement" : "dear lord help us 🗿how can anyone 👇survive this 🌭scourge using regex to parse HTML has doomed humanity to an eternity of dread torture and security holes using regex as a tool to process HTML establishes a breach between this world and the dread realm of c͒ͪo͛ͫrrupt entities (like SGML entities, but more corrupt) a mere glimpse of the world of reg​ex parsers for HTML will ins​tantly transport a programmer's consciousness into a world of ceaseless screaming, he comes, the pestilent slithy regex-infection wil​l devour your HT​ML parser, application and existence for all time like Visual Basic only worse he comes he comes do not fi​ght he com̡e̶s, ̕h̵i​s un̨ho͞ly radiańcé destro҉ying all enli̍̈́̂̈́ghtenment, HTML tags lea͠ki̧n͘g fr̶ǫm ̡yo​͟ur eye͢s̸ ̛l̕ik͏e liq​uid pain, the song of re̸gular exp​ression parsing will exti​nguish the voices of mor​tal man from the sp​here I can see it can you see ̲͚̖͔̙î̩́t̲͎̩̱͔́̋̀ it is beautiful t​he final snuffing of the lie​s of Man ALL IS LOŚ͖̩͇̗̪̏̈́T ALL I​S LOST the pon̷y he comes he c̶̮omes he comes the ich​or permeates all MY FACE MY FACE ᵒh god no NO NOO̼O​O NΘ stop the an​*̶͑̾̾​̅ͫ͏̙̤g͇̫͛͆̾ͫ̑͆l͖͉̗̩̳̟̍ͫͥͨe̠̅s ͎a̧͈͖r̽̾̈́͒͑e n​ot rè̑ͧ̌aͨl̘̝̙̃ͤ͂̾̆ ZA̡͊͠͝LGΌ ISͮ̂҉̯͈͕̹̘̱ TO͇̹̺ͅƝ̴ȳ̳ TH̘Ë͖́̉ ͠P̯͍̭O̚​N̐Y̡ H̸̡̪̯ͨ͊̽̅̾̎Ȩ̬̩̾͛ͪ̈́̀́͘ ̶̧̨̱̹̭̯ͧ̾ͬC̷̙̲̝͖ͭ̏ͥͮ͟Oͮ͏̮̪̝͍M̲̖͊̒ͪͩͬ̚̚͜Ȇ̴̟̟͙̞ͩ͌͝S̨̥̫͎̭ͯ̿̔̀ͅ",\r
                "isDitEenJaarlijkseTerugkerendEvenement" : "nee"\r
             },\r
             "plekken-evenement" : {\r
@@ -19601,29 +19626,118 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
                }
 
             },\r
-            "uw-gegevenscompleet" : {\r
-               "fieldSetMetDigiD" : {\r
-                  "adresgegevensMD" : {\r
-                     "postcodePMD" : "3554 AS",\r
-                     "huisletterPMD" : "",\r
-                     "huisnummerPMD" : "91",\r
-                     "straatnaamPMD" : "Van Hoornekade",\r
-                     "woonplaatsPMD" : "Utrecht",\r
-                     "huisnummertoevoegingPMD" : ""\r
-                  },\r
-                  "contactgegevensMD" : {\r
-                     "eMailadresPMD" : "p.dorhout@utrecht.nl",\r
-                     "telefoonnummerPMD" : "0612345678"\r
-                  },\r
-                  "persoonsgegevensMD" : {\r
-                     "bsnPMD" : "169795135",\r
-                     "aanhefPMD" : "M",\r
-                     "achternaamPMD" : "Niem",\r
-                     "voorletterSPMD" : "",\r
-                     "tussenvoegselSPMD" : ""\r
-                  }\r
-               }\r
-            },\r
+            "uw-gegevenscompleet" : {
+               "fieldSetMetDigiD" : {
+                  "adresgegevensMD" : {
+                     "postcodePMD" : "3524 VD",
+                     "huisletterPMD" : "",
+                     "huisnummerPMD" : "26",
+                     "straatnaamPMD" : "Ardennen",
+                     "woonplaatsPMD" : "Utrecht",
+                     "huisnummertoevoegingPMD" : ""
+                  },
+                  "contactgegevensMD" : {
+                     "eMailadresPMD" : "f.bekker@utrecht.nl",
+                     "telefoonnummerPMD" : "0302865464",
+                     "telefoonnummerWerkPMD" : "",
+                     "telefoonnummerMobielPMD" : ""
+                  },
+                  "persoonsgegevensMD" : {
+                     "bsnPMD" : "${#TestCase#initiatingSubjectCitizenNumber}",
+                     "aanhefPMD" : "M",
+                     "voornamenPMD" : "Bob",
+                     "achternaamPMD" : "Hoekstra",
+                     "voorletterSPMD" : "B.",
+                     "geboortedatumPMD" : "1970-06-20",
+                     "geboorteplaatsPMD" : "Wijk bij Duurstede",
+                     "tussenvoegselSPMD" : ""
+                  }
+               },
+               "initiatingSubject" : "persoon",
+               "fieldSetBedrijfMEH" : {
+                  "bezoekadresMEH" : {
+                     "plaatsMEH" : "",
+                     "postcodeMEH" : "",
+                     "huisletterMEH" : "",
+                     "huisnummerMEH" : "",
+                     "straatnaamMEH" : "",
+                     "huisnummertoevoegingMEH" : ""
+                  },
+                  "communicatieMEH" : {
+                     "eMailadresMEH" : "",
+                     "telefoonnummerMEH" : ""
+                  },
+                  "contactpersoonMEH" : {
+                     "aanhefMEH" : "",
+                     "achternaamMEH" : "",
+                     "voorletterSMEH" : "",
+                     "tussenvoegselSMEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieMEH" : {
+                     "kvKNummerMEH" : "",
+                     "vestigingsnummerMEH" : "",
+                     "naamBedrijfOrganisatieMEH" : ""
+                  }
+               },
+               "fieldSetBedrijfZEH" : {
+                  "bezoekadresZEH" : {
+                     "plaatsZEH" : "",
+                     "postcodeZEH" : "",
+                     "huisletterZEH" : "",
+                     "huisnummerZEH" : null,
+                     "straatnaamZEH" : "",
+                     "huisnummertoevoegingZEH" : ""
+                  },
+                  "communicatieZEH" : {
+                     "eMailadresZEH" : "",
+                     "telefoonnummerZEH" : "",
+                     "postbusGebruikenZEH" : "",
+                     "postbusOndernemingZEH" : {
+                        "postbusnummerZEH" : null,
+                        "postbus_plaatsZEH" : "",
+                        "postbus_postcodeZEH" : ""
+                     }
+                  },
+                  "contactpersoonZEH" : {
+                     "aanhefZEH" : "",
+                     "achternaamZEH" : "",
+                     "voorletterSZEH" : "",
+                     "tussenvoegselSZEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieZEH" : {
+                     "kvKNummerZEH" : "",
+                     "vestigingsnummerZEH" : "",
+                     "naamBedrijfOrganisatieZEH" : ""
+                  }
+               },
+               "fieldSetZonderDigiD" : {
+                  "adresgegevensZD" : {
+                     "postcodePZD" : "",
+                     "huisletterPZD" : "",
+                     "huisnummerPZD" : null,
+                     "straatnaamPZD" : "",
+                     "woonplaatsPZD" : "",
+                     "huisnummertoevoegingPZD" : ""
+                  },
+                  "contactgegevensZD" : {
+                     "eMailadresPZD" : "",
+                     "telefoonnummerPZD" : "",
+                     "telefoonnummerWerkPZD" : "",
+                     "telefoonnummerMobielPZD" : ""
+                  },
+                  "persoonsgegevensZD" : {
+                     "bsnPZD" : "",
+                     "aanhefPZD" : "",
+                     "voornamenPZD" : "",
+                     "achternaamPZD" : "",
+                     "voorletterSPZD" : "",
+                     "geboortedatumPZD" : "",
+                     "tussenvoegselSPZD" : ""
+                  }
+               },
+               "initiatingSubjectAuth" : "DigiD",
+               "bentUEenPersoonOfEenBedrijf" : ""
+            }\r,
             "invulling-evenementen" : {\r
                "isErMuziek" : "nee",\r
                "dierenAanwezig" : "nee",\r
@@ -19651,7 +19765,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
          ],\r
          "language_code" : "nl",\r
          "submission_id" : "e0e14526-92b5-4413-ad9c-0a44185260a5",\r
-         "public_reference" : "OF-WEF5UT"\r
+         "public_reference" : "${Properties#CaseReferenceNumber}"\r
       },\r
       "geometry" : null,\r
       "startAt" : "2024-02-01",\r
@@ -19678,12 +19792,8 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
       </con:testStep>
       <con:properties>
         <con:property>
-          <con:name>zaaktype</con:name>
-          <con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value>
-        </con:property>
-        <con:property>
-          <con:name>informatieobjecttype</con:name>
-          <con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value>
+          <con:name>initiatingSubjectCitizenNumber</con:name>
+          <con:value>176513280</con:value>
         </con:property>
       </con:properties>
     </con:testCase>
@@ -23449,7 +23559,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
     </con:mockOperation>
     <con:mockOperation name="lookUpPayments" id="3d438e8d-3e7b-46bb-b886-cbdbc01d809f" interface="PaymentsBinding" operation="lookUpPayments">
       <con:settings/>
-      <con:defaultResponse>zero-payments</con:defaultResponse>
+      <con:defaultResponse>multiple-paymentstates</con:defaultResponse>
       <con:dispatchStyle>QUERY_MATCH</con:dispatchStyle>
       <con:response name="multiple-paymentstates" id="19a11228-fe0c-44fa-992e-72bfc0de7382" httpResponseStatus="200" encoding="UTF-8">
         <con:settings/>
@@ -23816,7 +23926,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
     <con:properties>
       <con:property>
         <con:name>caseReferenceNumber</con:name>
-        <con:value>OF-OGZQNK</con:value>
+        <con:value>OF-VINDWV</con:value>
       </con:property>
       <con:property>
         <con:name>initiatingSubjectCitizenNumber</con:name>

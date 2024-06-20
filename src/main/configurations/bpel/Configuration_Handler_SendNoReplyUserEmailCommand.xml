@@ -59,7 +59,7 @@
                 <Param name="subject" xpathExpression="/mailTemplates/subject" />
                 <Param name="fromName" value="${openforms2bpel.noreply-smtp.default-from-name}" />
                 <Param name="fromAddress" value="${openforms2bpel.noreply-smtp.default-from-address}" />
-                <Param name="mailaddresses" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')]" />
+                <Param name="mailaddresses" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens') or starts-with(name(), 'communicatie')]/*[starts-with(name(), 'eMailadres')]" />
                 <Param name="messageType" xpathExpression="/mailTemplates/messageType" />
                 <Param name="message" xpathExpression="/mailTemplates/message" />
             </XsltPipe>

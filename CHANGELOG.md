@@ -1,5 +1,16 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.16](https://github.com/wearefrank/openforms2bpel/compare/v1.20.15...v1.20.16) (2024-06-20)
+
+### 🐛 Bug Fixes
+
+* invalid regex group error in input sanitation script ([ee6f0c3](https://github.com/wearefrank/openforms2bpel/commit/ee6f0c3050ca3ee77aac970035c2ed3082de7043))
+* no-reply email no recipient error due to emailadres xpath looking in the wrong section when EHerkenning is used ([105c7b4](https://github.com/wearefrank/openforms2bpel/commit/105c7b43838adf3b4eda7cfeab86b8f1ac74b50a))
+
+### ✅ Tests
+
+* add testcase for testing casenotfound condition during tweewegcommunicatie when using eherkenning ([a9c69c0](https://github.com/wearefrank/openforms2bpel/commit/a9c69c005960354df18e4828f5c53e40cc812286))
+
 ## [1.20.15](https://github.com/wearefrank/openforms2bpel/compare/v1.20.14...v1.20.15) (2024-06-18)
 
 ### 🐛 Bug Fixes

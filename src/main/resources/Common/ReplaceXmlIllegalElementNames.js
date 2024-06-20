@@ -20,7 +20,7 @@ function validateAndReplaceKeys(obj, parentKey) {
   }
 
 function replaceXmlIllegalElementNames(obj) {
-    json = JSON.parse(obj);
+    json = JSON.parse(obj.replace(/[\uDC00-\uDFFF]|[\uD800-\uDBFF]|[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F\uFEFF\uFFFE\uFFFF]/gm, '\uFFFD'));
     validateAndReplaceKeys(json, '');
-    return JSON.stringify(json).replace(/(?<=[\uD800-\uDBFF])[\uDC00-\uDFFF]|[\uD800-\uDBFF]|[\x1F300](?=[\uDC00-\uDFFF])|[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F\uFEFF\uFFFE\uFFFF]/gm, '\uFFFD');
+    return JSON.stringify(json);
 }

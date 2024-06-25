@@ -40,14 +40,15 @@ Ensure that Docker is installed on your computer and proceed as follows:
 
 # Local Development
 
-## Docusaurus
-Styleguide and best practices can be found in `./docusaurus/docs/_README.md`
+## Local Development Docusaurus
+1. Navigate to "docusaurus" subfolder with `cd ./docusaurus`.
+2. Install dependencies with `npm install`.
+3. Serve Docusaurus webserver locally with `docusaurus start`. By default it is served at `http://localhost:3000/`.
+4. Basic guide on how to use Docusaurus and a styleguide can be found at `./docusaurus/docs/_README.md`.
 
-Go to Docusaurus folder: `cd ./docusaurus`.
-
-Install dependencie: `npm install`.
-
-Start development server: `docusaurus start`.
+#### Update Docusaurus dependencies
+1. Navigate to "docusaurus" subfolder with `cd ./docusaurus`.
+2. Update dependencies with `npm i @docusaurus/core@latest @docusaurus/preset-classic@latest @docusaurus/module-type-aliases@latest @docusaurus/tsconfig@latest @docusaurus/types@latest`.
 
 
 

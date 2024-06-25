@@ -1,5 +1,15 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.17](https://github.com/wearefrank/openforms2bpel/compare/v1.20.16...v1.20.17) (2024-06-25)
+
+### 🐛 Bug Fixes
+
+* continue UwGegevens workflow when register call returns casereference constraint violation error ([b5c6b2d](https://github.com/wearefrank/openforms2bpel/commit/b5c6b2d8fb9591e1e8939c2e18f952bfd2cf94a7))
+
+### 🤖 Build System
+
+* **dependencies:** bump docusaurus version to 2.4.0 ([dbe09ba](https://github.com/wearefrank/openforms2bpel/commit/dbe09ba770e987bb892e2c0f23364d96259cb5fb))
+
 ## [1.20.16](https://github.com/wearefrank/openforms2bpel/compare/v1.20.15...v1.20.16) (2024-06-20)
 
 ### 🐛 Bug Fixes

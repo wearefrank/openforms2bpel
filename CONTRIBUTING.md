@@ -14,6 +14,17 @@ Execute the following steps when bumping the Frank!Framework version:
 1. Run the e2e testsuite by using the below Docker-Compose and configuration to validate the changes. You should only need `docker-compose -f ./docker-compose.zaakbrug.dev.yml up --build --force-recreate` for this. (TODO: Automate running of e2e tests in ci/cd).
 1. Commit you changes on a branch with as message: `build(dependencies): bump f!f version to <new tag>`. Create a PR to have you changes merged to master.
 
+## Docusaurus version
+1. Navigate to "docusaurus" subfolder with `cd ./docusaurus`.
+2. Update dependencies with `npm i @docusaurus/core@latest @docusaurus/preset-classic@latest @docusaurus/module-type-aliases@latest @docusaurus/tsconfig@latest @docusaurus/types@latest`.
+
+# Local Development
+## Docusaurus
+1. Navigate to "docusaurus" subfolder with `cd ./docusaurus`.
+2. Install dependencies with `npm install`.
+3. Serve Docusaurus webserver locally with `docusaurus start`. By default it is served at `http://localhost:3000/`.
+4. Basic guide on how to use Docusaurus and a styleguide can be found at `./docusaurus/docs/_README.md`.
+
 # Testing with SoapUI
 
 ## Configuring SoapUI

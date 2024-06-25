@@ -39,7 +39,7 @@
 				xpathExpression="lower-case(//initiatingSubjectAuth) = 'digid'"
 				>
 				<Forward name="then" path="StoreDigiDAsDomain" />
-				<Forward name="else" path="StoreHasPayment" />
+				<Forward name="else" path="StoreCaseReferenceNumberSessionKey" />
 				<Forward name="exception" path="EXCEPTION" />
 			</XmlIfPipe>
 
@@ -47,13 +47,23 @@
                 name="StoreDigiDAsDomain"
                 >
                 <Param name="Domain" value="DigiD" />
-				<Forward name="success" path="StoreHasPayment" />
+				<Forward name="success" path="StoreCaseReferenceNumberSessionKey" />
 			</PutInSessionPipe>
 
             <PutInSessionPipe
-                name="StoreHasPayment"
+                name="StoreCaseReferenceNumberSessionKey"
+                >
+                <Param name="CaseReferenceNumber" xpathExpression="/ZgwObject/public_reference/text()" />
+                <Forward name="success" path="StorePaymentSessionKeys" />
+            </PutInSessionPipe>
+
+            <PutInSessionPipe
+                name="StorePaymentSessionKeys"
                 >
                 <Param name="HasPayment" xpathExpression="/ZgwObject/payment/completed" defaultValue="false" />
+                <Param name="PaymentOrderId" xpathExpression="substring($PublicOrderId, 3, string-length($PublicOrderId) - 4)">
+                    <Param name="PublicOrderId" sessionKey="originalMessage" xpathExpression="/ZgwObject/payment/public_order_ids" type="DOMDOC" />
+                </Param>
                 <Param name="PaymentDate" xpathExpression="current-date()" >
                     <Param name="NowDate" pattern="{now}" type="DATE" />
                 </Param>
@@ -205,7 +215,7 @@
                 styleSheetName="Bpel/Basic/Model/CaseParameters.xslt"
                 storeResultInSessionKey="CaseParameters"
                 >
-                <Param name="ReferenceNumber" xpathExpression="/ZgwObject/public_reference/text()" />
+                <Param name="ReferenceNumber" sessionKey="CaseReferenceNumber" />
                 <Param name="Clarification" xpathExpression="//*[starts-with(name(), 'fieldSet')]/*/*[starts-with(name(), 'eMailadres')]" />
                 <Param name="Channel" value="WEBFORM" />
                 <Param name="FileName" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//bestandsnaam" />
@@ -242,7 +252,7 @@
                 <Param name="InitiatePayment" sessionKey="HasPayment" />
                 <Param name="SubscriptionDuration" value="100" />
                 <Param name="Price" xpathExpression="/ZgwObject/payment/amount" />
-                <Param name="Description" xpathExpression="/ZgwObject/public_reference" />
+                <Param name="Description" sessionKey="CaseReferenceNumber" />
                 <Forward name="success" path="CreateRegisterRequestMessage" />
             </XsltPipe>
 
@@ -278,18 +288,21 @@
                     javaListener="Bpel_Basic_PostRegister"
                     >
                 </IbisLocalSender>
-                <Forward name="success" path="StoreCaseReferenceNumberFromRegisterResponse" />
+                <Forward name="success" path="UpdatePaymentCommandSender" />
+                <Forward name="exception" path="ZaakIdentificationConstraintViolated_Condition" />
             </SenderPipe>
 
-            <PutInSessionPipe
-                name="StoreCaseReferenceNumberFromRegisterResponse"
+            <XmlIfPipe
+                name="ZaakIdentificationConstraintViolated_Condition"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                xpathExpression="contains($SoapFault, 'unique constraint (MO_ZAKMAG.AK_CASE_1) violated')"
                 >
-                <Param name="CaseReferenceNumber" sessionKey="RegisterResponseMessage" xpathExpression="//*:referenceNumber" />
-                <Param name="PaymentOrderId" xpathExpression="substring($PublicOrderId, 3, string-length($PublicOrderId) - 4)">
-                    <Param name="PublicOrderId" sessionKey="originalMessage" xpathExpression="/ZgwObject/payment/public_order_ids" type="DOMDOC" />
-                </Param>
-                <Forward name="success" path="UpdatePaymentCommandSender" />
-            </PutInSessionPipe>
+                <Param name="SoapFault" />
+                <Forward name="then" path="UpdatePaymentCommandSender" />
+                <Forward name="else" path="BpelBasicRegister_Exception" />
+            </XmlIfPipe>
+
+            <ExceptionPipe name="BpelBasicRegister_Exception" />
 
             <SenderPipe
 				name="UpdatePaymentCommandSender"

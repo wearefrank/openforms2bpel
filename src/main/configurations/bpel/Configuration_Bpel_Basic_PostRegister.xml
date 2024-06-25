@@ -31,9 +31,17 @@
                     >
                     <Param name="url" value="${openforms2bpel.bpel.basic-service.endoint}" />  
                 </WebServiceSender>
-                <Forward name="success" path="UnwrapResponse" />
+                <Forward name="success" path="SoapFault_Condition" />
                 <Forward name="exception" path="SoapFault_Exception" />
             </SenderPipe>
+
+            <XmlIfPipe
+                name="SoapFault_Condition"
+                xpathExpression="string-length(//*:Fault) > 0"
+                >
+                <Forward name="then" path="SoapFault_Exception" />
+                <Forward name="else" path="UnwrapResponse" />
+            </XmlIfPipe>
 
             <ExceptionPipe name="SoapFault_Exception" />
 

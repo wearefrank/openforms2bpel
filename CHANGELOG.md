@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.19](https://github.com/wearefrank/openforms2bpel/compare/v1.20.18...v1.20.19) (2024-06-25)
+
+### 🤖 Build System
+
+* **dependencies:** bump the docusaurus group in /docusaurus with 4 updates ([#53](https://github.com/wearefrank/openforms2bpel/issues/53)) ([72cc892](https://github.com/wearefrank/openforms2bpel/commit/72cc8920fda3878eac6917201b85dc6b95405f2c))
+* **dependencies:** bump the github-actions group with 7 updates ([#52](https://github.com/wearefrank/openforms2bpel/issues/52)) ([e8b2a1a](https://github.com/wearefrank/openforms2bpel/commit/e8b2a1ad82949c60edcb9795b6fa0411c7d16428))
+
 ## [1.20.18](https://github.com/wearefrank/openforms2bpel/compare/v1.20.17...v1.20.18) (2024-06-25)
 
 ### 🔁 Continuous Integration

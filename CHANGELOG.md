@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.18](https://github.com/wearefrank/openforms2bpel/compare/v1.20.17...v1.20.18) (2024-06-25)
+
+### 🔁 Continuous Integration
+
+* configure dependabot to update docusaurus dependencies weekly ([25d4fef](https://github.com/wearefrank/openforms2bpel/commit/25d4fef7b1047677340637fdf74f3998646465ff))
+
 ## [1.20.17](https://github.com/wearefrank/openforms2bpel/compare/v1.20.16...v1.20.17) (2024-06-25)
 
 ### 🐛 Bug Fixes

@@ -294,7 +294,6 @@
 
             <XmlIfPipe
                 name="ZaakIdentificationConstraintViolated_Condition"
-                getInputFromFixedValue="&lt;dummy/&gt;"
                 xpathExpression="contains($SoapFault, 'unique constraint (MO_ZAKMAG.AK_CASE_1) violated')"
                 >
                 <Param name="SoapFault" />

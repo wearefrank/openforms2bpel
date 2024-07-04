@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.20](https://github.com/wearefrank/openforms2bpel/compare/v1.20.19...v1.20.20) (2024-07-04)
+
+### 🐛 Bug Fixes
+
+* uw-gegevens register constraint violated error detection incorrectly replaces the soap fault with a dummy xml ([24660b4](https://github.com/wearefrank/openforms2bpel/commit/24660b4ce13b45162ea3a008439a7d8be057e160))
+
 ## [1.20.19](https://github.com/wearefrank/openforms2bpel/compare/v1.20.18...v1.20.19) (2024-06-25)
 
 ### 🤖 Build System

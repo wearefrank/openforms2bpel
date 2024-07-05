@@ -89,7 +89,15 @@
                     <Param name="BatchNumber" sessionKey="StartBatchResponseMessage" xpathExpression="//batchNumber" />
 				</MessageStoreSender> -->
                 <Forward name="success" path="CreateEndBatchMessage" />
+                <Forward name="exception" path="StoreExceptionContext" />
             </ForEachChildElementPipe>
+
+            <PutInSessionPipe
+                name="StoreExceptionContext"
+                >
+                <Param name="ExceptionContext" />
+                <Forward name="success" path="CreateEndBatchMessage" />
+            </PutInSessionPipe>
 
             <XsltPipe
                 name="CreateEndBatchMessage"
@@ -113,8 +121,23 @@
                     >
                     <Param name="soapAction" value="documents:endBatch" />
                 </IbisLocalSender>
-                <Forward name="success" path="EXIT" />
+                <Forward name="success" path="AddDocumentsToCase_Condition" />
             </SenderPipe>
+
+            <XmlIfPipe
+                name="AddDocumentsToCase_Condition"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                xpathExpression="string-length($ExceptionContext) gt 0"
+                >
+                <Param name="ExceptionContext" sessionKey="ExceptionContext" />
+                <Forward name="then" path="AddDocumentsToCase_Exception" />
+                <Forward name="else" path="EXIT" />
+            </XmlIfPipe>
+
+            <ExceptionPipe
+                name="AddDocumentsToCase_Exception"
+                getInputFromSessionKey="ExceptionContext"
+                />
 
         </Pipeline>
     </Adapter>

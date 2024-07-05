@@ -1,5 +1,16 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.20.21](https://github.com/wearefrank/openforms2bpel/compare/v1.20.20...v1.20.21) (2024-07-05)
+
+### 🧑‍💻 Code Refactoring
+
+* always end batch when adding documents to case regardless of success or failure ([f43666c](https://github.com/wearefrank/openforms2bpel/commit/f43666cbf78d9cea0fb1f398ccbf37fe2cc537d5))
+
+### 🤖 Build System
+
+* **dependencies:** bump braces from 3.0.2 to 3.0.3 in /docusaurus in the npm_and_yarn group ([#54](https://github.com/wearefrank/openforms2bpel/issues/54)) ([33b00dc](https://github.com/wearefrank/openforms2bpel/commit/33b00dc152359483819b412dea2d8fbd00792be6))
+* **dependencies:** bump ws from 7.5.9 to 7.5.10 in /docusaurus in the npm_and_yarn group ([#55](https://github.com/wearefrank/openforms2bpel/issues/55)) ([8b480c7](https://github.com/wearefrank/openforms2bpel/commit/8b480c794192a9ae03b2865105dee448ff6ef60a))
+
 ## [1.20.20](https://github.com/wearefrank/openforms2bpel/compare/v1.20.19...v1.20.20) (2024-07-04)
 
 ### 🐛 Bug Fixes

@@ -18,6 +18,7 @@
         <!ENTITY ConvertISO639Taal                          SYSTEM "./Configuration_ConvertISO639Taal.xml">
         <!ENTITY ImportFromLocalFS                          SYSTEM "./Configuration_ImportFromLocalFS.xml">
         <!ENTITY Notificaties_Subscribe                     SYSTEM "./Configuration_Notificaties_Subscribe.xml">
+        <!ENTITY RetryScheduler                             SYSTEM "./Configuration_RetryScheduler.xml">
         <!ENTITY UpdatePaymentCommandHandler                SYSTEM "./Configuration_UpdatePaymentCommandHandler.xml">
         <!ENTITY Workflow_Fallback                          SYSTEM "./Configuration_Workflow_Fallback.xml">
         <!ENTITY Workflow_TwoWayCommunication               SYSTEM "./Configuration_Workflow_TwoWayCommunication.xml">
@@ -44,6 +45,7 @@
     &Bpel_Payment_Post;
     &ConvertISO639Taal;
     &ImportFromLocalFS;
+    &RetryScheduler;
     &Notificaties_Subscribe;
     &UpdatePaymentCommandHandler;
     &Workflow_Fallback;

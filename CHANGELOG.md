@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.21.0](https://github.com/wearefrank/openforms2bpel/compare/v1.20.21...v1.21.0) (2024-07-12)
+
+### 🍕 Features
+
+* automatic scheduled errorstore retries ([b88bf2b](https://github.com/wearefrank/openforms2bpel/commit/b88bf2b5c44c41608162cf098c81808c6dfea2cb))
+* scheduled starting and stopping of message processing ([23ab683](https://github.com/wearefrank/openforms2bpel/commit/23ab68343df6c864d1ca571d575a2cc1254b9a09))
+
 ## [1.20.21](https://github.com/wearefrank/openforms2bpel/compare/v1.20.20...v1.20.21) (2024-07-05)
 
 ### 🧑‍💻 Code Refactoring

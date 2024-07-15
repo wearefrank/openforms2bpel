@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.21.1](https://github.com/wearefrank/openforms2bpel/compare/v1.21.0...v1.21.1) (2024-07-15)
+
+### 🤖 Build System
+
+* **dependencies:** bump actions/download-artifact from 4.1.7 to 4.1.8 in the github-actions group ([#56](https://github.com/wearefrank/openforms2bpel/issues/56)) ([c438dbf](https://github.com/wearefrank/openforms2bpel/commit/c438dbfdd6416b11bc0b1422ff31fe0f487c4d15))
+* **dependencies:** bump typescript from 5.5.2 to 5.5.3 in /docusaurus in the docusaurus group ([#57](https://github.com/wearefrank/openforms2bpel/issues/57)) ([a96a03e](https://github.com/wearefrank/openforms2bpel/commit/a96a03e35a38c6bf40314937f5b1b97f9e534c8c))
+
 ## [1.21.0](https://github.com/wearefrank/openforms2bpel/compare/v1.20.21...v1.21.0) (2024-07-12)
 
 ### 🍕 Features

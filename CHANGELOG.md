@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.21.2](https://github.com/wearefrank/openforms2bpel/compare/v1.21.1...v1.21.2) (2024-07-16)
+
+### 🐛 Bug Fixes
+
+* WorkflowSelector retry adapter 'active' attribute referencing cron-expression instead of enabled property ([f982a52](https://github.com/wearefrank/openforms2bpel/commit/f982a5240c7c870718c88d847f35ea0737d8f803))
+
 ## [1.21.1](https://github.com/wearefrank/openforms2bpel/compare/v1.21.0...v1.21.1) (2024-07-15)
 
 ### 🤖 Build System

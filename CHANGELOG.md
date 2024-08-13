@@ -1,5 +1,12 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.21.3](https://github.com/wearefrank/openforms2bpel/compare/v1.21.2...v1.21.3) (2024-08-13)
+
+### 🤖 Build System
+
+* **dependencies:** bump step-security/harden-runner from 2.8.1 to 2.9.1 in the github-actions group across 1 directory ([#60](https://github.com/wearefrank/openforms2bpel/issues/60)) ([254d1e7](https://github.com/wearefrank/openforms2bpel/commit/254d1e71aa1f14000bc0e134b24b935ad3443966))
+* **dependencies:** bump the docusaurus group across 1 directory with 6 updates ([#61](https://github.com/wearefrank/openforms2bpel/issues/61)) ([62b06d9](https://github.com/wearefrank/openforms2bpel/commit/62b06d908a2ee6affbd3fc3db3991f9a9cd0d774))
+
 ## [1.21.2](https://github.com/wearefrank/openforms2bpel/compare/v1.21.1...v1.21.2) (2024-07-16)
 
 ### 🐛 Bug Fixes

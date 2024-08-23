@@ -113,8 +113,8 @@
                 styleSheetName="Bpel/GegMag/Model/UpdateExtendedPersonInfoRequestMessage.xslt"
                 storeResultInSessionKey="UpdateExtendedPersonInfoRequestMessage"
                 >
-                <Param name="EmailAddress" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')]" />
-                <Param name="TelephoneNumber" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer')]" />
+                <Param name="EmailAddress" sessionKey="originalMessage" xpathExpression="replace(//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')], ' ', '')" />
+                <Param name="TelephoneNumber" sessionKey="originalMessage" xpathExpression="replace(//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer') and string-length(name()) = (string-length('telefoonnummer') + 3)], ' ', '')" />
                 <Forward name="success" path="BpelGegMagUpdateExtendedPersonInfoSender" />
             </XsltPipe>
 

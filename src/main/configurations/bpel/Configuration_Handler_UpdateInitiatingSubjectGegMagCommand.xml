@@ -78,7 +78,7 @@
                 xpathExpression="string-length(//*:lookUpPersonResponse/*:personDetailsMessage/*:persons) = 0"
                 >
                 <Forward name="then" path="CreateAddExtendedPersonInfoRequestMessage" />
-                <Forward name="else" path="CreateUpdateExtendedPersonInfoRequestMessage" />
+                <Forward name="else" path="PersonEmailOrTelNrChanged_Condition" />
             </XmlIfPipe>
 
             <XsltPipe
@@ -106,6 +106,19 @@
                 <Param name="soapAction" value="gegmagbasic:addExtendedPersonInfo" />
                 <Forward name="success" path="EXIT" />
             </SenderPipe>
+
+            <XmlIfPipe
+                name="PersonEmailOrTelNrChanged_Condition"
+                getInputFromSessionKey="LookupPersonResponseMessage"
+                xpathExpression="$FormEmailAddress != $GegMagEmailAddress or $FormTelephoneNumber != $GegMagTelephoneNumber"
+                >
+                <Param name="FormEmailAddress" sessionKey="originalMessage" xpathExpression="replace(//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')], ' ', '')" />
+                <Param name="FormTelephoneNumber" sessionKey="originalMessage" xpathExpression="replace(//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer') and string-length(name()) = (string-length('telefoonnummer') + 3)], ' ', '')" />
+                <Param name="GegMagEmailAddress"  xpathExpression="//*:lookUpPersonResponse/*:personDetailsMessage/*:persons/*:person/*:supplementary/*:emailAddress" />
+                <Param name="GegMagTelephoneNumber" xpathExpression="//*:lookUpPersonResponse/*:personDetailsMessage/*:persons/*:person/*:supplementary/*:telephoneNumberHome" />
+                <Forward name="then" path="CreateUpdateExtendedPersonInfoRequestMessage" />
+                <Forward name="else" path="EXIT" />
+            </XmlIfPipe>
 
             <XsltPipe
                 name="CreateUpdateExtendedPersonInfoRequestMessage"
@@ -169,10 +182,23 @@
                 xpathExpression="string-length(//*:lookUpExtendedOrganizationInfoResponse/*:organizationExtInfoMessage/*:organizations) = 0"
                 >
                 <Forward name="then" path="EXIT" />
-                <Forward name="else" path="CreateUpdateExtendedOrganizationInfoRequestMessage" />
+                <Forward name="else" path="OrganizationEmailOrTelNrChanged_Condition" />
             </XmlIfPipe>
 
             <!-- <ExceptionPipe name="OrganizationNotFound_Exception" /> -->
+
+            <XmlIfPipe
+                name="OrganizationEmailOrTelNrChanged_Condition"
+                getInputFromSessionKey="LookupExtendedOrganizationInfoResponseMessage"
+                xpathExpression="$FormEmailAddress != $GegMagEmailAddress or $FormTelephoneNumber != $GegMagTelephoneNumber"
+                >
+                <Param name="FormEmailAddress" sessionKey="originalMessage" xpathExpression="replace(//*[starts-with(name(), 'communicatie')]/*[starts-with(name(), 'eMailadres')], ' ', '')" />
+                <Param name="FormTelephoneNumber" sessionKey="originalMessage" xpathExpression="replace(//*[starts-with(name(), 'communicatie')]/*[starts-with(name(), 'telefoonnummer')], ' ', '')" />
+                <Param name="GegMagEmailAddress"  xpathExpression="//*:lookUpExtendedOrganizationInfoResponse/*:organizationExtInfoMessage/*:organizations/*:organization/*:emailAddress" />
+                <Param name="GegMagTelephoneNumber" xpathExpression="//*:lookUpExtendedOrganizationInfoResponse/*:organizationExtInfoMessage/*:organizations/*:organization/*:telephoneNumber" />
+                <Forward name="then" path="CreateUpdateExtendedOrganizationInfoRequestMessage" />
+                <Forward name="else" path="EXIT" />
+            </XmlIfPipe>
 
             <XsltPipe
                 name="CreateUpdateExtendedOrganizationInfoRequestMessage"

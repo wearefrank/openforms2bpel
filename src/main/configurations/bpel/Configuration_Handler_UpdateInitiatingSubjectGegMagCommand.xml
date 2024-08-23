@@ -180,8 +180,8 @@
                 styleSheetName="Bpel/GegMag/Model/UpdateExtendedOrganizationInfoRequestMessage.xslt"
                 storeResultInSessionKey="UpdateExtendedOrganizationInfoRequestMessage"
                 >
-                <Param name="EmailAddress" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'eMailadres')]" />
-                <Param name="TelephoneNumber" sessionKey="originalMessage" xpathExpression="//*[starts-with(name(), 'contactgegevens')]/*[starts-with(name(), 'telefoonnummer')]" />
+                <Param name="EmailAddress" sessionKey="originalMessage" xpathExpression="replace(//*[starts-with(name(), 'communicatie')]/*[starts-with(name(), 'eMailadres')], ' ', '')" />
+                <Param name="TelephoneNumber" sessionKey="originalMessage" xpathExpression="replace(//*[starts-with(name(), 'communicatie')]/*[starts-with(name(), 'telefoonnummer')], ' ', '')" />
                 <Forward name="success" path="BpelGegMagUpdateExtendedOrganizationInfoSender" />
             </XsltPipe>
 

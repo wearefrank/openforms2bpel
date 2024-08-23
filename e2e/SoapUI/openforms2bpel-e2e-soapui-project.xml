@@ -17800,7 +17800,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-AYNBIH</con:value>
+              <con:value>OF-ORKJJU</con:value>
             </con:property>
           </con:properties>
         </con:config>
@@ -19195,12 +19195,37 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
         </con:property>
       </con:properties>
     </con:testCase>
-    <con:testCase id="c0a51932-a03b-4687-8703-c41e0a68235c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Zaaktype P9_2_KLB - EHerkenning" searchProperties="true">
+    <con:testCase id="c0a51932-a03b-4687-8703-c41e0a68235c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Organization EHerkenning Auth" searchProperties="true">
       <con:settings/>
       <con:testStep type="properties" name="Properties" id="12ba106f-4d8e-4224-a957-34833872da00">
         <con:settings/>
         <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:properties/>
+          <con:properties>
+            <con:property>
+              <con:name>caseReferenceNumber</con:name>
+              <con:value>OF-FSADHY</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="generate-dynamic-properties" id="a59572a1-93a7-4c53-8f9f-d704c9228612">
+        <con:settings/>
+        <con:config>
+          <script>def dynamicProperties = testRunner.testCase.getTestStepByName("Properties");
+
+def caseReferenceNumber = "OF-" + org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6).toUpperCase();
+dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="set-dynamic-mock-properties" id="3ff04f27-8135-486a-b2e6-55ca21f51348">
+        <con:settings/>
+        <con:config>
+          <script>def casesServiceMock = testRunner.testCase.testSuite.project.mockServices["BPEL CasesProxy Mock"].getMockRunner().getMockService();
+
+def caseReferenceNumber = context.expand('${Properties#caseReferenceNumber}');
+casesServiceMock.setPropertyValue("caseReferenceNumber", caseReferenceNumber);
+def initiatingSubjectKvkNumber = context.expand('${#TestCase#initiatingSubjectKvkNumber}');
+casesServiceMock.setPropertyValue("initiatingSubjectKvkNumber", initiatingSubjectKvkNumber);</script>
         </con:config>
       </con:testStep>
       <con:testStep type="restrequest" name="objects_object_create" id="3b8e527e-b841-466c-8aaa-78c5a4256a2b">
@@ -19228,32 +19253,117 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
                "tOverWieWiltUEenKlachtIndienen" : "Bekker",\r
                "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "oplossen"\r
             },\r
-            "uw-gegevenscompleet" : {\r
-               "fieldSetBedrijfMEH" : {\r
-                  "bezoekadresMEH" : {\r
-                     "plaatsMEH" : "Lollum",\r
-                     "postcodeMEH" : "8823SJ",\r
-                     "huisletterMEH" : "",\r
-                     "huisnummerMEH" : 3,\r
-                     "straatnaamMEH" : "Hizzaarderlaan",\r
-                     "huisnummertoevoegingMEH" : "A"\r
-                  },\r
-                  "communicatieMEH" : {\r
-                     "eMailadresMEH" : "p.dorhout@utrecht.nl",\r
-                     "telefoonnummerMEH" : "0612345678"\r
-                  },\r
-                  "contactpersoonMEH" : {\r
-                     "aanhefMEH" : "deHeer",\r
-                     "achternaamMEH" : "Dorhout",\r
-                     "voorletterSMEH" : "P",\r
-                     "tussenvoegselSMEH" : ""\r
-                  },\r
-                  "gegevensBedrijfOrganisatieMEH" : {\r
-                     "kvKNummerMEH" : "68750110",\r
-                     "vestigingsnummerMEH" : "000037178598",\r
-                     "naamBedrijfOrganisatieMEH" : "Test BV Donald"\r
-                  }\r
-               }\r
+            "uw-gegevenscompleet" : {
+               "fieldSetMetDigiD" : {
+                  "adresgegevensMD" : {
+                     "postcodePMD" : "",
+                     "huisletterPMD" : "",
+                     "huisnummerPMD" : "",
+                     "straatnaamPMD" : "",
+                     "woonplaatsPMD" : "",
+                     "huisnummertoevoegingPMD" : ""
+                  },
+                  "contactgegevensMD" : {
+                     "eMailadresPMD" : "",
+                     "telefoonnummerPMD" : "",
+                     "telefoonnummerWerkPMD" : "",
+                     "telefoonnummerMobielPMD" : ""
+                  },
+                  "persoonsgegevensMD" : {
+                     "bsnPMD" : "",
+                     "aanhefPMD" : "",
+                     "voornamenPMD" : "",
+                     "achternaamPMD" : "",
+                     "voorletterSPMD" : "",
+                     "geboortedatumPMD" : "",
+                     "geboorteplaatsPMD" : "",
+                     "tussenvoegselSPMD" : ""
+                  }
+               },
+               "initiatingSubject" : "bedrijf",
+               "fieldSetBedrijfMEH" : {
+                  "bezoekadresMEH" : {
+                     "plaatsMEH" : "Lollum",
+                     "postcodeMEH" : "8823SJ",
+                     "huisletterMEH" : "",
+                     "huisnummerMEH" : 3,
+                     "straatnaamMEH" : "Hizzaarderlaan",
+                     "huisnummertoevoegingMEH" : "A"
+                  },
+                  "communicatieMEH" : {
+                     "eMailadresMEH" : "p.dorhout@utrecht.nl",
+                     "telefoonnummerMEH" : "0612345678"
+                  },
+                  "contactpersoonMEH" : {
+                     "aanhefMEH" : "deHeer",
+                     "achternaamMEH" : "Dorhout",
+                     "voorletterSMEH" : "P",
+                     "tussenvoegselSMEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieMEH" : {
+                     "kvKNummerMEH" : "${#TestCase#initiatingSubjectKvkNumber}",
+                     "vestigingsnummerMEH" : "000037178598",
+                     "naamBedrijfOrganisatieMEH" : "Test BV Donald"
+                  }
+               },
+            	 "fieldSetBedrijfZEH" : {
+                  "bezoekadresZEH" : {
+                     "plaatsZEH" : "",
+                     "postcodeZEH" : "",
+                     "huisletterZEH" : "",
+                     "huisnummerZEH" : null,
+                     "straatnaamZEH" : "",
+                     "huisnummertoevoegingZEH" : ""
+                  },
+                  "communicatieZEH" : {
+                     "eMailadresZEH" : "",
+                     "telefoonnummerZEH" : "",
+                     "postbusGebruikenZEH" : "",
+                     "postbusOndernemingZEH" : {
+                        "postbusnummerZEH" : null,
+                        "postbus_plaatsZEH" : "",
+                        "postbus_postcodeZEH" : ""
+                     }
+                  },
+                  "contactpersoonZEH" : {
+                     "aanhefZEH" : "",
+                     "achternaamZEH" : "",
+                     "voorletterSZEH" : "",
+                     "tussenvoegselSZEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieZEH" : {
+                     "kvKNummerZEH" : "",
+                     "vestigingsnummerZEH" : "",
+                     "naamBedrijfOrganisatieZEH" : ""
+                  }
+               },
+               "fieldSetZonderDigiD" : {
+                  "adresgegevensZD" : {
+                     "postcodePZD" : "",
+                     "huisletterPZD" : "",
+                     "huisnummerPZD" : null,
+                     "straatnaamPZD" : "",
+                     "woonplaatsPZD" : "",
+                     "huisnummertoevoegingPZD" : ""
+                  },
+                  "contactgegevensZD" : {
+                     "eMailadresPZD" : "",
+                     "telefoonnummerPZD" : "",
+                     "telefoonnummerWerkPZD" : "",
+                     "telefoonnummerMobielPZD" : ""
+                  },
+                  "persoonsgegevensZD" : {
+                     "bsnPZD" : "",
+                     "aanhefPZD" : "",
+                     "voornamenPZD" : "",
+                     "achternaamPZD" : "",
+                     "voorletterSPZD" : "",
+                     "geboortedatumPZD" : "",
+                     "tussenvoegselSPZD" : ""
+                  }
+               },
+               "initiatingSubjectAuth" : "EHerkenning",
+               "bentUEenPersoonOfEenBedrijf" : "bedrijf"
             },\r
             "bijlagen-toevoegen-klacht" : {\r
                "wiltUBijlagenMeesturen" : "nee",\r
@@ -19266,7 +19376,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
          "attachments" : [ ],\r
          "language_code" : "nl",\r
          "submission_id" : "70e93c84-723f-4865-9226-97b1fc44d509",\r
-         "public_reference" : "OF-2J9BH4"\r
+         "public_reference" : "${Properties#CaseReferenceNumber}"\r
       },\r
       "geometry" : null,\r
       "startAt" : "2023-11-29",\r
@@ -19293,12 +19403,8 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
       </con:testStep>
       <con:properties>
         <con:property>
-          <con:name>zaaktype</con:name>
-          <con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value>
-        </con:property>
-        <con:property>
-          <con:name>informatieobjecttype</con:name>
-          <con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value>
+          <con:name>initiatingSubjectKvkNumber</con:name>
+          <con:value>68750110</con:value>
         </con:property>
       </con:properties>
     </con:testCase>
@@ -20086,213 +20192,6 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
         </con:property>
       </con:properties>
     </con:testCase>
-    <con:testCase id="56766c4d-1637-4082-b5a1-c24861930064" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Person with DigiD" searchProperties="true">
-      <con:settings/>
-      <con:testStep type="properties" name="Properties" id="18193fde-19ac-4847-8803-90ec1dd8abba">
-        <con:settings/>
-        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:properties/>
-        </con:config>
-      </con:testStep>
-      <con:testStep type="restrequest" name="objects_object_create" id="5743b81c-b97b-465f-aa14-1029370a85e5">
-        <con:settings/>
-        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
-            <con:settings>
-              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
-            </con:settings>
-            <con:encoding>UTF-8</con:encoding>
-            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
-            <con:request>{\r
-   "type" : "dummy",\r
-   "record" : {\r
-      "index" : 1,\r
-      "typeVersion" : 1,\r
-      "data" : {\r
-         "bsn" : "176513280",\r
-         "data" : {\r
-            "het-besluit" : {\r
-               "opWelkeManier" : "",\r
-               "waaroverGingHetBesluit" : "klm",\r
-               "wieHeeftHetBesluitGenomen" : "hetCollegeVanBurgemeesterEnWethouders",\r
-               "wieHeeftHetBesluitDanGenomen" : "",\r
-               "ikVerklaarHiermeeBekendTeZijn" : true,\r
-               "tegenWelkBesluitMaaktUBezwaar" : "abc123",\r
-               "watIsDeRedenNa6WekenTermijnBrBezwaarMaakt" : "qqqq",\r
-               "hoeHeeftDeGemeenteHetBesluitKenbaarGemaakt" : "Brief",\r
-               "wanneerHeeftDeGemeenteHetBesluitKenbaarGemaakt" : "2023-12-01"\r
-            },\r
-            "het-bezwaar" : {\r
-               "wiltUGehoordWordenOverHetBezwaar" : "jaHoorzitting",\r
-               "waaromBentUHetNietEensMetHetBesluit" : "ccccc"\r
-            },\r
-            "wie-maakt-bezwaar" : {\r
-               "namensWieMaaktUBezwaar" : "",\r
-               "heeftIemandUGemachtigdOmBezwaarTeMaken" : "nee"\r
-            },\r
-            "bijlagen-toevoegen" : {\r
-               "file" : [ ],\r
-               "wiltUBijlagenMeesturen" : "nee",\r
-               "geeftUHiervoorToestemming" : "ja"\r
-            },\r
-            "uw-gegevenscompleet" : {\r
-               "fieldSetMetDigiD" : {\r
-                  "adresgegevensMD" : {\r
-                     "postcodePMD" : "3524 VD",\r
-                     "huisletterPMD" : "",\r
-                     "huisnummerPMD" : "26",\r
-                     "straatnaamPMD" : "Ardennen",\r
-                     "woonplaatsPMD" : "Utrecht",\r
-                     "huisnummertoevoegingPMD" : ""\r
-                  },\r
-                  "contactgegevensMD" : {\r
-                     "eMailadresPMD" : "f.bekker@utrecht.nl",\r
-                     "telefoonnummerPMD" : "0302865464",\r
-                     "telefoonnummerWerkPMD" : "",\r
-                     "telefoonnummerMobielPMD" : ""\r
-                  },\r
-                  "persoonsgegevensMD" : {\r
-                     "bsnPMD" : "176513280",\r
-                     "aanhefPMD" : "M",\r
-                     "voornamenPMD" : "Bob",\r
-                     "achternaamPMD" : "Hoekstra",\r
-                     "voorletterSPMD" : "B.",\r
-                     "geboortedatumPMD" : "1970-06-20",\r
-                     "geboorteplaatsPMD" : "Wijk bij Duurstede",\r
-                     "tussenvoegselSPMD" : ""\r
-                  }\r
-               },\r
-               "initiatingSubject" : "persoon",\r
-               "fieldSetBedrijfMEH" : {\r
-                  "bezoekadresMEH" : {\r
-                     "plaatsMEH" : "",\r
-                     "postcodeMEH" : "",\r
-                     "huisletterMEH" : "",\r
-                     "huisnummerMEH" : "",\r
-                     "straatnaamMEH" : "",\r
-                     "huisnummertoevoegingMEH" : ""\r
-                  },\r
-                  "communicatieMEH" : {\r
-                     "eMailadresMEH" : "",\r
-                     "telefoonnummerMEH" : ""\r
-                  },\r
-                  "contactpersoonMEH" : {\r
-                     "aanhefMEH" : "",\r
-                     "achternaamMEH" : "",\r
-                     "voorletterSMEH" : "",\r
-                     "tussenvoegselSMEH" : ""\r
-                  },\r
-                  "gegevensBedrijfOrganisatieMEH" : {\r
-                     "kvKNummerMEH" : "",\r
-                     "vestigingsnummerMEH" : "",\r
-                     "naamBedrijfOrganisatieMEH" : ""\r
-                  }\r
-               },\r
-               "fieldSetBedrijfZEH" : {\r
-                  "bezoekadresZEH" : {\r
-                     "plaatsZEH" : "",\r
-                     "postcodeZEH" : "",\r
-                     "huisletterZEH" : "",\r
-                     "huisnummerZEH" : null,\r
-                     "straatnaamZEH" : "",\r
-                     "huisnummertoevoegingZEH" : ""\r
-                  },\r
-                  "communicatieZEH" : {\r
-                     "eMailadresZEH" : "",\r
-                     "telefoonnummerZEH" : "",\r
-                     "postbusGebruikenZEH" : "",\r
-                     "postbusOndernemingZEH" : {\r
-                        "postbusnummerZEH" : null,\r
-                        "postbus_plaatsZEH" : "",\r
-                        "postbus_postcodeZEH" : ""\r
-                     }\r
-                  },\r
-                  "contactpersoonZEH" : {\r
-                     "aanhefZEH" : "",\r
-                     "achternaamZEH" : "",\r
-                     "voorletterSZEH" : "",\r
-                     "tussenvoegselSZEH" : ""\r
-                  },\r
-                  "gegevensBedrijfOrganisatieZEH" : {\r
-                     "kvKNummerZEH" : "",\r
-                     "vestigingsnummerZEH" : "",\r
-                     "naamBedrijfOrganisatieZEH" : ""\r
-                  }\r
-               },\r
-               "fieldSetZonderDigiD" : {\r
-                  "adresgegevensZD" : {\r
-                     "postcodePZD" : "",\r
-                     "huisletterPZD" : "",\r
-                     "huisnummerPZD" : null,\r
-                     "straatnaamPZD" : "",\r
-                     "woonplaatsPZD" : "",\r
-                     "huisnummertoevoegingPZD" : ""\r
-                  },\r
-                  "contactgegevensZD" : {\r
-                     "eMailadresPZD" : "",\r
-                     "telefoonnummerPZD" : "",\r
-                     "telefoonnummerWerkPZD" : "",\r
-                     "telefoonnummerMobielPZD" : ""\r
-                  },\r
-                  "persoonsgegevensZD" : {\r
-                     "bsnPZD" : "",\r
-                     "aanhefPZD" : "",\r
-                     "voornamenPZD" : "",\r
-                     "achternaamPZD" : "",\r
-                     "voorletterSPZD" : "",\r
-                     "geboortedatumPZD" : "",\r
-                     "tussenvoegselSPZD" : ""\r
-                  }\r
-               },\r
-               "initiatingSubjectAuth" : "DigiD",\r
-               "bentUEenPersoonOfEenBedrijf" : ""\r
-            },\r
-            "waartegen-bezwaar-maken" : {\r
-               "wiltUBezwaarMaken" : "nee"\r
-            }\r
-         },\r
-         "type" : "P9_3_BZB",\r
-         "csv_url" : "",\r
-         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
-         "attachments" : [ ],\r
-         "language_code" : "nl",\r
-         "submission_id" : "3f1a7325-390b-415a-bd81-4c788d8bcabe",\r
-         "public_reference" : "OF-${=org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6)}"\r
-      },\r
-      "geometry" : null,\r
-      "startAt" : "2024-04-09",\r
-      "endAt" : null,\r
-      "registrationAt" : "2024-04-09",\r
-      "correctionFor" : null,\r
-      "correctedBy" : null\r
-   }\r
-}</con:request>
-            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
-            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
-              <con:configuration>
-                <codes>201</codes>
-              </con:configuration>
-            </con:assertion>
-            <con:credentials>
-              <con:authType>No Authorization</con:authType>
-            </con:credentials>
-            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
-            <con:jmsPropertyConfig/>
-            <con:parameters/>
-          </con:restRequest>
-        </con:config>
-      </con:testStep>
-      <con:properties>
-        <con:property>
-          <con:name>zaaktype</con:name>
-          <con:value>http://host.docker.internal:9000/catalogi/api/v1/zaaktypen/363039fd-4700-4f9b-b00f-7c9e8bf2a142</con:value>
-        </con:property>
-        <con:property>
-          <con:name>informatieobjecttype</con:name>
-          <con:value>http://host.docker.internal:9000/catalogi/api/v1/informatieobjecttypen/7b3636c1-748b-4dd8-b3df-f8f91f5c8ad8</con:value>
-        </con:property>
-      </con:properties>
-    </con:testCase>
     <con:testCase id="cd1e8273-eb22-4785-bfe9-cbd0c93d3717" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Anonymous Form" searchProperties="true">
       <con:settings/>
       <con:testStep type="properties" name="Properties" id="afa7e1a1-478a-42e6-a969-93ae75a0e0c3">
@@ -20683,7 +20582,7 @@ def caseReferenceNumber = "OF-" + org.apache.commons.lang.RandomStringUtils.rand
 dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);</script>
         </con:config>
       </con:testStep>
-      <con:testStep type="groovy" name="start-mock-services" id="0ae501ee-aacb-470e-ae74-5c61fc0804ad">
+      <con:testStep type="groovy" name="start-mock-services" id="0ae501ee-aacb-470e-ae74-5c61fc0804ad" disabled="true">
         <con:settings/>
         <con:config>
           <script>def project = testRunner.testCase.testSuite.project;
@@ -20704,12 +20603,6 @@ def caseReferenceNumber = context.expand('${Properties#caseReferenceNumber}');
 casesServiceMock.setPropertyValue("caseReferenceNumber", caseReferenceNumber);
 def initiatingSubjectCitizenNumber = context.expand('${#TestCase#initiatingSubjectCitizenNumber}');
 casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSubjectCitizenNumber);</script>
-        </con:config>
-      </con:testStep>
-      <con:testStep type="delay" name="Delay" id="9063db69-95e1-4d2a-87de-3315d867f55d">
-        <con:settings/>
-        <con:config>
-          <delay>5000</delay>
         </con:config>
       </con:testStep>
       <con:testStep type="restrequest" name="objects_object_create" id="27f386ea-a6a2-49f0-80dc-90f97baaabe4" disabled="true">
@@ -21024,13 +20917,7 @@ casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSu
           </con:restRequest>
         </con:config>
       </con:testStep>
-      <con:testStep type="delay" name="Delay 1" id="6baef09f-5e5a-4edc-a861-72c17a6a73ba">
-        <con:settings/>
-        <con:config>
-          <delay>5000</delay>
-        </con:config>
-      </con:testStep>
-      <con:testStep type="groovy" name="stop-mock-services" id="d3f267d4-13b8-4255-a5bd-8fb2c54e610a">
+      <con:testStep type="groovy" name="stop-mock-services" id="d3f267d4-13b8-4255-a5bd-8fb2c54e610a" disabled="true">
         <con:settings/>
         <con:config>
           <script>def project = testRunner.testCase.testSuite.project;
@@ -24052,6 +23939,629 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
         </con:property>
       </con:properties>
     </con:testCase>
+    <con:testCase id="ad19cd71-57dc-4d86-b51b-32de277b337f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Update GegMag - Person - email &amp; telNr changed" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="properties" name="Properties" id="0b910f43-77c9-4599-891a-6c66570c0dcb">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:target/>
+          <con:properties>
+            <con:property>
+              <con:name>caseReferenceNumber</con:name>
+              <con:value>OF-SFGTUN</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="generate-dynamic-properties" id="1de6a436-fc4e-470d-bfd1-02324dae2f18">
+        <con:settings/>
+        <con:config>
+          <script>def dynamicProperties = testRunner.testCase.getTestStepByName("Properties");
+
+def caseReferenceNumber = "OF-" + org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6).toUpperCase();
+dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="start-mock-services" id="2f597b1e-0052-455d-a504-8a338ca6d142" disabled="true">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.mockServices.each()
+{
+	entry -> entry.value.start();
+}
+project.getRestMockServiceByName("Documenten API Mock").start();
+project.getRestMockServiceByName("Objects API Mock").start();</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="set-dynamic-mock-properties" id="392ae849-361c-482e-a64d-53c6bdc83e55">
+        <con:settings/>
+        <con:config>
+          <script>def casesServiceMock = testRunner.testCase.testSuite.project.mockServices["BPEL CasesProxy Mock"].getMockRunner().getMockService();
+
+def caseReferenceNumber = context.expand('${Properties#caseReferenceNumber}');
+casesServiceMock.setPropertyValue("caseReferenceNumber", caseReferenceNumber);
+def initiatingSubjectCitizenNumber = context.expand('${#TestCase#initiatingSubjectCitizenNumber}');
+casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSubjectCitizenNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay" id="466c22c2-1321-4a38-8054-d3fa8eda42a7" disabled="true">
+        <con:settings/>
+        <con:config>
+          <delay>5000</delay>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="63923b5f-20d1-475c-89be-376e412b4c48" disabled="true">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "999994542",\r
+         "data" : {\r
+            "uw-klacht" : {\r
+               "hoeLaat" : "",\r
+               "watIsUwKlacht" : "Klacht",\r
+               "wanneerIsDitGebeurd" : "Tijdstip",\r
+               "welkOrganisatieOnderdeel" : "anders",\r
+               "tOverWieWiltUEenKlachtIndienen" : "Henk",\r
+               "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "Ontslag"\r
+            },\r
+            "uw-gegevenscompleet" : {\r
+               "fieldSetMetDigiD" : {\r
+                  "adresgegevensMD" : {\r
+                     "postcodePMD" : "1014 AW",\r
+                     "huisletterPMD" : "",\r
+                     "huisnummerPMD" : "14",\r
+                     "straatnaamPMD" : "Schakelstraat",\r
+                     "woonplaatsPMD" : "Amsterdam",\r
+                     "huisnummertoevoegingPMD" : "H"\r
+                  },\r
+                  "contactgegevensMD" : {\r
+                     "eMailadresPMD" : "m.van.altena@utrecht.nl",\r
+                     "telefoonnummerPMD" : "0169795135"\r
+                  },\r
+                  "persoonsgegevensMD" : {\r
+                     "achternaamPMD" : "Braber",\r
+                     "voorletterSPMD" : "",\r
+                     "tussenvoegselSPMD" : "den"\r
+                  }\r
+               }\r
+            },\r
+            "bijlagen-toevoegen-klacht" : {\r
+               "wiltUBijlagenMeesturen" : "nee",\r
+               "ikWilNaBehandelingTevredenheidsonderzoek" : "nee"\r
+            }\r
+         },\r
+         "type" : "P9_2_KLB",\r
+         "csv_url" : "",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [ ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "ec246c46-4578-4781-a400-f35daa82ecb2",\r
+         "public_reference" : "${Properties#CaseReferenceNumber}"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2023-11-03",\r
+      "endAt" : null,\r
+      "registrationAt" : "2023-11-03",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Copy of objects_object_create" id="26be158a-c152-4043-b6cf-bf4da462db51">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Copy of objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "${#TestCase#initiatingSubjectCitizenNumber}",\r
+         "data" : {\r
+            "uw-klacht" : {\r
+               "hoeLaat" : "Tijdstip",\r
+               "watIsUwKlacht" : "Klacht",\r
+               "wanneerIsDitGebeurd" : "Wanneer",\r
+               "welkOrganisatieOnderdeel" : "Welke",\r
+               "tOverWieWiltUEenKlachtIndienen" : "Henk",\r
+               "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "Ontslag"\r
+            },\r
+            "uw-gegevenscompleet" : {
+               "fieldSetMetDigiD" : {
+                  "adresgegevensMD" : {
+                     "postcodePMD" : "3524 VD",
+                     "huisletterPMD" : "",
+                     "huisnummerPMD" : "26",
+                     "straatnaamPMD" : "Ardennen",
+                     "woonplaatsPMD" : "Utrecht",
+                     "huisnummertoevoegingPMD" : ""
+                  },
+                  "contactgegevensMD" : {
+                     "eMailadresPMD" : "new@utrecht.nl",
+                     "telefoonnummerPMD" : "0399999999",
+                     "telefoonnummerWerkPMD" : "",
+                     "telefoonnummerMobielPMD" : ""
+                  },
+                  "persoonsgegevensMD" : {
+                     "bsnPMD" : "${#TestCase#initiatingSubjectCitizenNumber}",
+                     "aanhefPMD" : "M",
+                     "voornamenPMD" : "Bob",
+                     "achternaamPMD" : "Hoekstra",
+                     "voorletterSPMD" : "B.",
+                     "geboortedatumPMD" : "1970-06-20",
+                     "geboorteplaatsPMD" : "Wijk bij Duurstede",
+                     "tussenvoegselSPMD" : ""
+                  }
+               },
+               "initiatingSubject" : "persoon",
+               "fieldSetBedrijfMEH" : {
+                  "bezoekadresMEH" : {
+                     "plaatsMEH" : "",
+                     "postcodeMEH" : "",
+                     "huisletterMEH" : "",
+                     "huisnummerMEH" : "",
+                     "straatnaamMEH" : "",
+                     "huisnummertoevoegingMEH" : ""
+                  },
+                  "communicatieMEH" : {
+                     "eMailadresMEH" : "",
+                     "telefoonnummerMEH" : ""
+                  },
+                  "contactpersoonMEH" : {
+                     "aanhefMEH" : "",
+                     "achternaamMEH" : "",
+                     "voorletterSMEH" : "",
+                     "tussenvoegselSMEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieMEH" : {
+                     "kvKNummerMEH" : "",
+                     "vestigingsnummerMEH" : "",
+                     "naamBedrijfOrganisatieMEH" : ""
+                  }
+               },
+               "fieldSetBedrijfZEH" : {
+                  "bezoekadresZEH" : {
+                     "plaatsZEH" : "",
+                     "postcodeZEH" : "",
+                     "huisletterZEH" : "",
+                     "huisnummerZEH" : null,
+                     "straatnaamZEH" : "",
+                     "huisnummertoevoegingZEH" : ""
+                  },
+                  "communicatieZEH" : {
+                     "eMailadresZEH" : "",
+                     "telefoonnummerZEH" : "",
+                     "postbusGebruikenZEH" : "",
+                     "postbusOndernemingZEH" : {
+                        "postbusnummerZEH" : null,
+                        "postbus_plaatsZEH" : "",
+                        "postbus_postcodeZEH" : ""
+                     }
+                  },
+                  "contactpersoonZEH" : {
+                     "aanhefZEH" : "",
+                     "achternaamZEH" : "",
+                     "voorletterSZEH" : "",
+                     "tussenvoegselSZEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieZEH" : {
+                     "kvKNummerZEH" : "",
+                     "vestigingsnummerZEH" : "",
+                     "naamBedrijfOrganisatieZEH" : ""
+                  }
+               },
+               "fieldSetZonderDigiD" : {
+                  "adresgegevensZD" : {
+                     "postcodePZD" : "",
+                     "huisletterPZD" : "",
+                     "huisnummerPZD" : null,
+                     "straatnaamPZD" : "",
+                     "woonplaatsPZD" : "",
+                     "huisnummertoevoegingPZD" : ""
+                  },
+                  "contactgegevensZD" : {
+                     "eMailadresPZD" : "",
+                     "telefoonnummerPZD" : "",
+                     "telefoonnummerWerkPZD" : "",
+                     "telefoonnummerMobielPZD" : ""
+                  },
+                  "persoonsgegevensZD" : {
+                     "bsnPZD" : "",
+                     "aanhefPZD" : "",
+                     "voornamenPZD" : "",
+                     "achternaamPZD" : "",
+                     "voorletterSPZD" : "",
+                     "geboortedatumPZD" : "",
+                     "tussenvoegselSPZD" : ""
+                  }
+               },
+               "initiatingSubjectAuth" : "DigiD",
+               "bentUEenPersoonOfEenBedrijf" : ""
+            },
+            "bijlagen-toevoegen-klacht" : {\r
+               "file" : [\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4df96139-ef95-419d-9259-e64799587c09",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4df96139-ef95-419d-9259-e64799587c09",\r
+                        "form" : "",\r
+                        "name" : "TEST_Marcel.pdf",\r
+                        "size" : 7286,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "TEST_Marcel-0aec57d3-db5d-4bfb-b95d-c68de83e6d34.pdf",\r
+                     "size" : 7286,\r
+                     "type" : "application/pdf",\r
+                     "storage" : "url",\r
+                     "originalName" : "TEST_Marcel.pdf"\r
+                  },\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/082db838-0867-46d3-9a55-8a94ab362c51",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/082db838-0867-46d3-9a55-8a94ab362c51",\r
+                        "form" : "",\r
+                        "name" : "1.txt",\r
+                        "size" : 13,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "1-9a195eac-3ee7-4eee-9a82-f225e3d58167.txt",\r
+                     "size" : 13,\r
+                     "type" : "text/plain",\r
+                     "storage" : "url",\r
+                     "originalName" : "1.txt"\r
+                  },\r
+                  {\r
+                     "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4b292d56-7dd5-45a8-8e8c-23607cb2d0a0",\r
+                     "data" : {\r
+                        "url" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/submissions/files/4b292d56-7dd5-45a8-8e8c-23607cb2d0a0",\r
+                        "form" : "",\r
+                        "name" : "test.docx",\r
+                        "size" : 172268,\r
+                        "baseUrl" : "https://openforms-pdv.cg-intern.ont.utrecht.nl/api/v2/",\r
+                        "project" : ""\r
+                     },\r
+                     "name" : "test-d7c2cfdd-2407-4374-b21e-0cc0373f99bf.docx",\r
+                     "size" : 172268,\r
+                     "type" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document",\r
+                     "storage" : "url",\r
+                     "originalName" : "test.docx"\r
+                  }\r
+               ],\r
+               "wiltUBijlagenMeesturen" : "ja",\r
+               "ikWilNaBehandelingTevredenheidsonderzoek" : "nee"\r
+            }\r
+         },\r
+         "type" : "P9_2_KLB",\r
+         "csv_url" : "",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",
+            "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf"
+         ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "076f447a-f0d4-481a-aeb1-3c14aea183ec",\r
+         "public_reference" : "${Properties#CaseReferenceNumber}"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2023-11-09",\r
+      "endAt" : null,\r
+      "registrationAt" : "2023-11-09",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:assertion type="GroovyScriptAssertion" id="b3830613-c256-4032-bc81-2bf6507d6668" name="Script Assertion">
+              <con:configuration/>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="delay" name="Delay 1" id="77c7712b-2f14-4b61-bc9e-94e3ddfd7bb6" disabled="true">
+        <con:settings/>
+        <con:config>
+          <delay>5000</delay>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="stop-mock-services" id="e85df109-1740-4ed7-9813-542421fea987" disabled="true">
+        <con:settings/>
+        <con:config>
+          <script>def project = testRunner.testCase.testSuite.project;
+project.mockServices.each()
+{
+	entry -> entry.value.getMockRunner().stop();
+}
+project.getRestMockServiceByName("Documenten API Mock").getMockRunner().stop();
+project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="Notification" id="5a551472-c34f-4040-8c21-a97ae8ce8d8a" disabled="true">
+        <con:settings/>
+        <con:config service="Objects API" resourcePath="/objects/{uuid}" methodName="object_read" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Notification" id="5219b4f4-71f0-4bbd-89f7-ffcf90a8e9b2" mediaType="application/json">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:endpoint>http://host.docker.internal:8089/mock/objects/api/v2</con:endpoint>
+            <con:request/>
+            <con:originalUri>http://host.docker.internal/mock/objects/api/v2/testuuid/objects/</con:originalUri>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters>
+              <entry key="uuid" value="P9_2_KLB-uw-gegevens-digid-default" xmlns="http://eviware.com/soapui/config"/>
+            </con:parameters>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>initiatingSubjectCitizenNumber</con:name>
+          <con:value>176513280</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
+    <con:testCase id="4e0f2ab0-74ae-43c1-8360-f08bd5c822b8" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Update GegMag - Organization - email &amp; telNr changed" searchProperties="true">
+      <con:settings/>
+      <con:testStep type="properties" name="Properties" id="ce45a7f5-c75f-47bd-a808-8bf7b864f35d">
+        <con:settings/>
+        <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:properties>
+            <con:property>
+              <con:name>caseReferenceNumber</con:name>
+              <con:value>OF-MXXYML</con:value>
+            </con:property>
+          </con:properties>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="generate-dynamic-properties" id="809914c5-0a3e-4276-bcc7-e7bb994e97d9">
+        <con:settings/>
+        <con:config>
+          <script>def dynamicProperties = testRunner.testCase.getTestStepByName("Properties");
+
+def caseReferenceNumber = "OF-" + org.apache.commons.lang.RandomStringUtils.randomAlphabetic(6).toUpperCase();
+dynamicProperties.setPropertyValue('caseReferenceNumber', caseReferenceNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="groovy" name="set-dynamic-mock-properties" id="8b2c64d1-5076-47f3-a3c4-05d73ba23361">
+        <con:settings/>
+        <con:config>
+          <script>def casesServiceMock = testRunner.testCase.testSuite.project.mockServices["BPEL CasesProxy Mock"].getMockRunner().getMockService();
+
+def caseReferenceNumber = context.expand('${Properties#caseReferenceNumber}');
+casesServiceMock.setPropertyValue("caseReferenceNumber", caseReferenceNumber);
+def initiatingSubjectKvkNumber = context.expand('${#TestCase#initiatingSubjectKvkNumber}');
+casesServiceMock.setPropertyValue("initiatingSubjectKvkNumber", initiatingSubjectKvkNumber);</script>
+        </con:config>
+      </con:testStep>
+      <con:testStep type="restrequest" name="objects_object_create" id="5f89331f-b576-4a82-8289-6a4444f37c45">
+        <con:settings/>
+        <con:config service="Objects API" methodName="object_create" resourcePath="/objects" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="objects_object_create" id="ed424109-4058-4072-9e27-fa17d227f6a0" mediaType="application/json" postQueryString="false">
+            <con:settings>
+              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://host.docker.internal:9000/objects/api/v2</con:endpoint>
+            <con:request>{\r
+   "type" : "dummy",\r
+   "record" : {\r
+      "index" : 1,\r
+      "typeVersion" : 1,\r
+      "data" : {\r
+         "bsn" : "",\r
+         "data" : {\r
+            "uw-klacht" : {\r
+               "hoeLaat" : "10 uur",\r
+               "watIsUwKlacht" : "Te laat",\r
+               "wanneerIsDitGebeurd" : "gisteren",\r
+               "welkOrganisatieOnderdeel" : "publiekzaken",\r
+               "tOverWieWiltUEenKlachtIndienen" : "Bekker",\r
+               "watWiltUDatDeGemeenteDoetOmUwKlachtOpTeLossen" : "oplossen"\r
+            },\r
+            "uw-gegevenscompleet" : {
+               "fieldSetMetDigiD" : {
+                  "adresgegevensMD" : {
+                     "postcodePMD" : "",
+                     "huisletterPMD" : "",
+                     "huisnummerPMD" : "",
+                     "straatnaamPMD" : "",
+                     "woonplaatsPMD" : "",
+                     "huisnummertoevoegingPMD" : ""
+                  },
+                  "contactgegevensMD" : {
+                     "eMailadresPMD" : "",
+                     "telefoonnummerPMD" : "",
+                     "telefoonnummerWerkPMD" : "",
+                     "telefoonnummerMobielPMD" : ""
+                  },
+                  "persoonsgegevensMD" : {
+                     "bsnPMD" : "",
+                     "aanhefPMD" : "",
+                     "voornamenPMD" : "",
+                     "achternaamPMD" : "",
+                     "voorletterSPMD" : "",
+                     "geboortedatumPMD" : "",
+                     "geboorteplaatsPMD" : "",
+                     "tussenvoegselSPMD" : ""
+                  }
+               },
+               "initiatingSubject" : "bedrijf",
+               "fieldSetBedrijfMEH" : {
+                  "bezoekadresMEH" : {
+                     "plaatsMEH" : "Lollum",
+                     "postcodeMEH" : "8823SJ",
+                     "huisletterMEH" : "",
+                     "huisnummerMEH" : 3,
+                     "straatnaamMEH" : "Hizzaarderlaan",
+                     "huisnummertoevoegingMEH" : "A"
+                  },
+                  "communicatieMEH" : {
+                     "eMailadresMEH" : "new@utrecht.nl",
+                     "telefoonnummerMEH" : "0699999999"
+                  },
+                  "contactpersoonMEH" : {
+                     "aanhefMEH" : "deHeer",
+                     "achternaamMEH" : "Dorhout",
+                     "voorletterSMEH" : "P",
+                     "tussenvoegselSMEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieMEH" : {
+                     "kvKNummerMEH" : "${#TestCase#initiatingSubjectKvkNumber}",
+                     "vestigingsnummerMEH" : "000037178598",
+                     "naamBedrijfOrganisatieMEH" : "Test BV Donald"
+                  }
+               },
+            	 "fieldSetBedrijfZEH" : {
+                  "bezoekadresZEH" : {
+                     "plaatsZEH" : "",
+                     "postcodeZEH" : "",
+                     "huisletterZEH" : "",
+                     "huisnummerZEH" : null,
+                     "straatnaamZEH" : "",
+                     "huisnummertoevoegingZEH" : ""
+                  },
+                  "communicatieZEH" : {
+                     "eMailadresZEH" : "",
+                     "telefoonnummerZEH" : "",
+                     "postbusGebruikenZEH" : "",
+                     "postbusOndernemingZEH" : {
+                        "postbusnummerZEH" : null,
+                        "postbus_plaatsZEH" : "",
+                        "postbus_postcodeZEH" : ""
+                     }
+                  },
+                  "contactpersoonZEH" : {
+                     "aanhefZEH" : "",
+                     "achternaamZEH" : "",
+                     "voorletterSZEH" : "",
+                     "tussenvoegselSZEH" : ""
+                  },
+                  "gegevensBedrijfOrganisatieZEH" : {
+                     "kvKNummerZEH" : "",
+                     "vestigingsnummerZEH" : "",
+                     "naamBedrijfOrganisatieZEH" : ""
+                  }
+               },
+               "fieldSetZonderDigiD" : {
+                  "adresgegevensZD" : {
+                     "postcodePZD" : "",
+                     "huisletterPZD" : "",
+                     "huisnummerPZD" : null,
+                     "straatnaamPZD" : "",
+                     "woonplaatsPZD" : "",
+                     "huisnummertoevoegingPZD" : ""
+                  },
+                  "contactgegevensZD" : {
+                     "eMailadresPZD" : "",
+                     "telefoonnummerPZD" : "",
+                     "telefoonnummerWerkPZD" : "",
+                     "telefoonnummerMobielPZD" : ""
+                  },
+                  "persoonsgegevensZD" : {
+                     "bsnPZD" : "",
+                     "aanhefPZD" : "",
+                     "voornamenPZD" : "",
+                     "achternaamPZD" : "",
+                     "voorletterSPZD" : "",
+                     "geboortedatumPZD" : "",
+                     "tussenvoegselSPZD" : ""
+                  }
+               },
+               "initiatingSubjectAuth" : "EHerkenning",
+               "bentUEenPersoonOfEenBedrijf" : "bedrijf"
+            },\r
+            "bijlagen-toevoegen-klacht" : {\r
+               "wiltUBijlagenMeesturen" : "nee",\r
+               "ikWilNaBehandelingTevredenheidsonderzoek" : "nee"\r
+            }\r
+         },\r
+         "type" : "P9_2_KLBN",\r
+         "csv_url" : "",\r
+         "pdf_url" : "http://host.docker.internal:8700/mock/documenten/api/v1/enkelvoudiginformatieobjecten/uuid-resultpdf",\r
+         "attachments" : [ ],\r
+         "language_code" : "nl",\r
+         "submission_id" : "70e93c84-723f-4865-9226-97b1fc44d509",\r
+         "public_reference" : "${Properties#CaseReferenceNumber}"\r
+      },\r
+      "geometry" : null,\r
+      "startAt" : "2023-11-29",\r
+      "endAt" : null,\r
+      "registrationAt" : "2023-11-29",\r
+      "correctionFor" : null,\r
+      "correctedBy" : null\r
+   }\r
+}</con:request>
+            <con:originalUri>http://host.docker.internal/objects/api/v2/objects</con:originalUri>
+            <con:assertion type="Valid HTTP Status Codes" id="214a951e-8e63-4ab6-ae77-ecbec8d99322" name="Valid HTTP Status Codes">
+              <con:configuration>
+                <codes>201</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:jmsPropertyConfig/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties>
+        <con:property>
+          <con:name>initiatingSubjectKvkNumber</con:name>
+          <con:value>68750110</con:value>
+        </con:property>
+      </con:properties>
+    </con:testCase>
     <con:properties/>
   </con:testSuite>
   <con:testSuite id="ed3fa0e1-6773-42cc-8151-5a1fa4eca15e" name="Integration Tests">
@@ -24782,11 +25292,15 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
     <con:properties>
       <con:property>
         <con:name>caseReferenceNumber</con:name>
-        <con:value>OF-DOAIYC</con:value>
+        <con:value>OF-ORKJJU</con:value>
       </con:property>
       <con:property>
         <con:name>initiatingSubjectCitizenNumber</con:name>
         <con:value>176513280</con:value>
+      </con:property>
+      <con:property>
+        <con:name>initiatingSubjectKvkNumber</con:name>
+        <con:value>68750110</con:value>
       </con:property>
     </con:properties>
     <con:onRequestScript/>
@@ -26156,14 +26670,14 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
                <!--Zero or more repetitions:-->
                <geg:organization>
                   <geg:organizationNumber>?</geg:organizationNumber>
-                  <geg:commercialRegistryNumber type="?">?</geg:commercialRegistryNumber>
+                  <geg:commercialRegistryNumber type="?">${#MockResponse#Request#//*:organizationExtInfoSearchMessage/*:commercialRegistryNumber}</geg:commercialRegistryNumber>
                   <geg:companyName>?</geg:companyName>
                   <geg:branchOfIndustry>?</geg:branchOfIndustry>
                   <geg:fiscalNumber>?</geg:fiscalNumber>
                   <geg:commercialRegistryCity>?</geg:commercialRegistryCity>
-                  <geg:emailAddress>?</geg:emailAddress>
+                  <geg:emailAddress>p.dorhout@utrecht.nl</geg:emailAddress>
                   <geg:webAddress>?</geg:webAddress>
-                  <geg:telephoneNumber>?</geg:telephoneNumber>
+                  <geg:telephoneNumber>0612345678</geg:telephoneNumber>
                   <geg:faxNumber>?</geg:faxNumber>
                   <geg:contactPersonLastName>?</geg:contactPersonLastName>
                   <geg:contactPersonLastNamePrefix>?</geg:contactPersonLastNamePrefix>
@@ -26484,11 +26998,11 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
                   <geg:supplementary>
                      <geg:aNumber>?</geg:aNumber>
                      <geg:bsn>${#MockResponse#Request#//*:personSearchMessage/*:bsn}</geg:bsn>
-                     <geg:telephoneNumberHome>?</geg:telephoneNumberHome>
+                     <geg:telephoneNumberHome>0302865464</geg:telephoneNumberHome>
                      <geg:telephoneNumberWork>?</geg:telephoneNumberWork>
                      <geg:telephoneNumberMobile>?</geg:telephoneNumberMobile>
                      <geg:faxNumber>?</geg:faxNumber>
-                     <geg:emailAddress>?</geg:emailAddress>
+                     <geg:emailAddress>f.bekker@utrecht.nl</geg:emailAddress>
                      <geg:dateOfBirth ignoreDay="false" ignoreMonth="false" ignoreYear="false">?</geg:dateOfBirth>
                      <geg:cityOfBirth>?</geg:cityOfBirth>
                      <geg:genderIndication>?</geg:genderIndication>

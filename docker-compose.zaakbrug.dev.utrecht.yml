@@ -24,6 +24,7 @@ services:
       - TZ=Europe/Amsterdam
       - openforms2bpel.workflows.tweewegcommunicatie.on-case-not-found.mail-template=unable-to-add-document-to-case-default
       - openforms2bpel.workflows.tweewegcommunicatie.on-subject-not-equals-case-subject.mail-template=unable-to-add-document-to-case-default
+      - openforms2bpel.workflows.tweewegcommunicatie.on-case-closed.mail-template=unable-to-add-document-to-case-default
       - openforms2bpel.workflows.formdata-collector-stylesheet-file=bpel/Common/xsl/FormDataCollector_ObjectsApi_Custom.xslt
       - openforms2bpel.workflows.formdata-transform-stylesheet-file=bpel/Common/xsl/FormDataTransform_Custom.xslt
     volumes:

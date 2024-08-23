@@ -90,8 +90,19 @@
                     >
                 </IbisLocalSender>
                 <Param name="Alpha3" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//taal" />
-                <Forward name="success" path="EnrichZgwEnkelvoudigInformatieObject" />
+                <Forward name="success" path="ConvertISO639ToCountryAndLanguageCode" />
             </SenderPipe>
+            
+            <XsltPipe
+                name="ConvertISO639ToCountryAndLanguageCode"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                styleSheetName="Common/xsl/Alpha2ToCountryAndLanguageCode.xslt"
+                storeResultInSessionKey="CountryAndLanguageCode"
+                >
+                <Param name="Alpha3" sessionKey="ZgwEnkelvoudigInformatieObject" xpathExpression="//taal" />    
+                <Param name="Alpha2" sessionKey="Alpha2" />
+                <Forward name="success" path="EnrichZgwEnkelvoudigInformatieObject"/>
+            </XsltPipe>
 
             <XsltPipe
                 name="EnrichZgwEnkelvoudigInformatieObject"
@@ -99,9 +110,7 @@
                 styleSheetName="Zgw/Documenten/Model/ZgwEnkelvoudigInformatieObject.xslt"
                 storeResultInSessionKey="ZgwEnkelvoudigInformatieObject"
                 >
-                <Param name="Taal" xpathExpression="concat(concat($Alpha2, '_'), upper-case($Alpha2))">
-                    <Param name="Alpha2" sessionKey="Alpha2" />
-                </Param>
+                <Param name="Taal" sessionKey="CountryAndLanguageCode" />
                 <Forward name="success" path="SelectDocumentStateSender"/>
             </XsltPipe>
 

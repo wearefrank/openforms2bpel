@@ -20677,7 +20677,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
       <con:testStep type="properties" name="Properties" id="5c265a92-0f00-4689-b308-e637ef2e45a7">
         <con:settings/>
         <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:target>C:/Projects/openforms2bpel/e2e/SoapUI/test</con:target>
+          <con:target/>
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>

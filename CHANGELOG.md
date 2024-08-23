@@ -1,5 +1,28 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.22.0](https://github.com/wearefrank/openforms2bpel/compare/v1.21.3...v1.22.0) (2024-08-23)
+
+### 🍕 Features
+
+* only update person and organization in gegmag when atleast one of emailadres or telnumber has changed ([8781fbc](https://github.com/wearefrank/openforms2bpel/commit/8781fbc348a9a32e942553c4343a072cbcf25242))
+* two-way communication workflow can be configured to send a noreply email when target case is already closed ([bb86500](https://github.com/wearefrank/openforms2bpel/commit/bb86500035127733a107c4c64309211748d7a9d5))
+
+### 🐛 Bug Fixes
+
+* empty emailadres or telnumber in gegmag update person and organization message overrides a potentially valid value with an empty string ([4ea87a7](https://github.com/wearefrank/openforms2bpel/commit/4ea87a72ab0cfe69132e10f84ad1b25f2294a435))
+* gegmag emailadres and telnumber always updates to empty string for organizations due to incorrect lookup xpath's in uwgegevens section ([57ab34c](https://github.com/wearefrank/openforms2bpel/commit/57ab34c04f072bd7ccb3e5cc564f39bb0fe84241))
+* gegmag emailadres and telnumber for persons throwing an error when home or work emailadres is also provided in the uwgegevens section ([755fc28](https://github.com/wearefrank/openforms2bpel/commit/755fc28cc42b0727c6ba982c2a772663bad95d3e))
+* iso639 language code 'eng' should convert to country+language code 'en_GB' instead of 'en_EN' ([5775b26](https://github.com/wearefrank/openforms2bpel/commit/5775b2684beb8db219da505c614dc8ee0867e95e))
+
+### 📝 Documentation
+
+* add new 'case closed' check to tweewegcommunication workflow ([e7955ac](https://github.com/wearefrank/openforms2bpel/commit/e7955ac9d3872214fedb3aa1f6557200cc3f31c8))
+
+### ✅ Tests
+
+* add testcases for updating gegmag for person and organizations with changed emailadres and telnumber ([15cfc6f](https://github.com/wearefrank/openforms2bpel/commit/15cfc6fafc4211e98827a89a3e2d04d2a499f228))
+* e2e testcase for two-way communication workflow 'case closed' check ([9c368c0](https://github.com/wearefrank/openforms2bpel/commit/9c368c071d681556b1cf4738bdd78bddc9cffd75))
+
 ## [1.21.3](https://github.com/wearefrank/openforms2bpel/compare/v1.21.2...v1.21.3) (2024-08-13)
 
 ### 🤖 Build System

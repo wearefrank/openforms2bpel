@@ -29,7 +29,16 @@ If the provided target case is not recognized, or if the form's initiating subje
    :::
 
 1. Check if the form's initiating subject is also the case's initiating subject. If this is not the case, an e-mail is sent to the form's initiating subject using the configured **SMTP Server/Relay** and the **mail template** 
-   configured in the `openforms2bpel.workflows.tweewegcommunicatie.on-subject-not-equals-case-subject.mail-template` property. A `SubjectNotEqualsCaseSubject_Exception` is thrown instead if there is no **mail template** configured.
+   configured in the `openforms2bpel.workflows.tweewegcommunicatie.on-subject-not-equals-case-subject.mail-template` property. A `SubjectNotEqualsCaseSubject_Exception` is thrown instead if there is 
+   no **mail template** configured.
+
+1. Check if the case is closed already. If this is the case, an e-mail is sent to the form's initiating subject using the configured **SMTP Server/Relay** and the **mail template** configured in 
+   the `openforms2bpel.workflows.tweewegcommunicatie.on-case-closed.mail-template` property.A `CaseClosed_Exception` is thrown instead if there is no **mail template** configured.
+
+   :::warning
+      This check must always come after validating that the form's initiating subject is also the case's initiating subject. Otherwise the noreply e-mail notification could potentially be misused to leak information 
+      about case closure status of cases that are not their own.
+   :::
 
 1. Upload all attachments provided in the form and the form result pdf to the **Document vault**, add them to the case and signal that the documents are ready to be processed from the **Document vault**.
    This is done by calling [AddDocumentsToCaseCommand](.).

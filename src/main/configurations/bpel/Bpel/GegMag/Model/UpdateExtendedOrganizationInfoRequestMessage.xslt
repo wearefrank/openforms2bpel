@@ -37,13 +37,13 @@
 
     <xsl:template match="*:emailAddress">
         <geg:emailAddress>
-            <xsl:value-of select="replace($EmailAddress, ' ', '')"/>
+            <xsl:value-of select="if ($EmailAddress != '') then $EmailAddress else *:emailAddress"/>
         </geg:emailAddress>
     </xsl:template>
 
     <xsl:template match="*:telephoneNumber">
         <geg:telephoneNumber>
-            <xsl:value-of select="replace($TelephoneNumber, ' ', '')"/>
+            <xsl:value-of select="if ($TelephoneNumber != '') then $TelephoneNumber else *:telephoneNumber"/>
         </geg:telephoneNumber>
     </xsl:template>
 </xsl:stylesheet>

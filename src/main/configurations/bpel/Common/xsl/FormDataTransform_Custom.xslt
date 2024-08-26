@@ -13,7 +13,10 @@
                 <xsl:apply-templates mode="injection-pass" />
             </xsl:variable>
             <!-- <xsl:copy-of select="$injectionPass" /> -->
-            <xsl:apply-templates select="$injectionPass/*" />
+            <xsl:variable name="renamePass">
+                <xsl:apply-templates mode="rename-pass" />
+            </xsl:variable>
+                <xsl:apply-templates select="$renamePass/*" />
         </formdata>
     </xsl:template>
 
@@ -44,13 +47,23 @@
     </xsl:template>
 
     <!-- Transform element names containing '-' to camelCase. -->
-    <xsl:template match="*[contains(name(), '-')]">
+    <xsl:template match="*[contains(name(), '-')]" mode="rename-pass">
         <xsl:variable name="pascalCase" select="string-join(tokenize(name(current()), '-') ! (upper-case(substring(., 1, 1)) || substring(., 2)))" />
 
         <xsl:element name="{lower-case(substring($pascalCase, 1, 1)) || substring($pascalCase, 2)}" namespace="{namespace-uri(current())}">
             <xsl:apply-templates mode="#current" />
         </xsl:element>
         <xsl:element name="{name(current())}" namespace="{namespace-uri(current())}">
+            <xsl:apply-templates mode="#current" />
+        </xsl:element>
+    </xsl:template>
+
+    <!-- Add comma-seperated list of keys where the value is 'true' as sibling element suffixed with _label, for each element starting with 'selectBox' -->
+    <xsl:template match="*[starts-with(lower-case(name()), 'selectbox')]">
+        <xsl:element name="{name()}{'_label'}">
+            <xsl:value-of select="string-join(*[. = 'true']/name(), ',')" />
+        </xsl:element>
+        <xsl:element name="{name()}">
             <xsl:apply-templates mode="#current" />
         </xsl:element>
     </xsl:template>

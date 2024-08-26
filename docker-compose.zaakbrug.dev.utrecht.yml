@@ -20,18 +20,15 @@ services:
         FF_VERSION: ${FF_VERSION:-8.1.0-RC2-20240411.160355}
     image: wearefrank/openforms2bpel:${OPENFORMS2BPEL_VERSION:-latest}
     environment:
-      - zaakbrug.zds.timezone=UTC
-      - TZ=Europe/Amsterdam
-      - openforms2bpel.workflows.tweewegcommunicatie.on-case-not-found.mail-template=unable-to-add-document-to-case-default
-      - openforms2bpel.workflows.tweewegcommunicatie.on-subject-not-equals-case-subject.mail-template=unable-to-add-document-to-case-default
-      - openforms2bpel.workflows.tweewegcommunicatie.on-case-closed.mail-template=unable-to-add-document-to-case-default
-      - openforms2bpel.workflows.formdata-collector-stylesheet-file=bpel/Common/xsl/FormDataCollector_ObjectsApi_Custom.xslt
-      - openforms2bpel.workflows.formdata-transform-stylesheet-file=bpel/Common/xsl/FormDataTransform_Custom.xslt
+      - openforms2bpel.workflows.formdata-collector-stylesheet-file=FormDataCollector_ObjectsApi_Custom.xslt
+      - openforms2bpel.workflows.formdata-transform-stylesheet-file=FormDataTransform_Custom.xslt
     volumes:
       - ../frank-runner/data:/usr/local/tomcat/data
       - logs:/usr/local/tomcat/logs
       - ./src/main/configurations:/opt/frank/configurations:ro
       - ./src/test/testtool:/opt/frank/testtool
+      - ./docker/openforms2bpel/transforms/FormDataCollector_ObjectsApi_Custom.xslt:/opt/frank/resources/FormDataCollector_ObjectsApi_Custom.xslt
+      - ./docker/openforms2bpel/transforms/FormDataTransform_Custom.xslt:/opt/frank/resources/FormDataTransform_Custom.xslt
     networks:
       - zaakbrug-stack
       - zaakbrug-backend

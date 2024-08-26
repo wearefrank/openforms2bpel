@@ -1,5 +1,15 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.23.0](https://github.com/wearefrank/openforms2bpel/compare/v1.22.0...v1.23.0) (2024-08-26)
+
+### 🍕 Features
+
+* elements prefixed with 'selectBox' will add a label element with a comma-seperated list of element names which value is 'true' ([befbd65](https://github.com/wearefrank/openforms2bpel/commit/befbd6551b42cb64616ccb14562d018447e06774))
+
+### ✅ Tests
+
+* larva unit-tests for selectBox feature in FormDataTransforms_Custom.xslt ([e0de289](https://github.com/wearefrank/openforms2bpel/commit/e0de289fec6077668ba669573ed23bbde2db38b0))
+
 ## [1.22.0](https://github.com/wearefrank/openforms2bpel/compare/v1.21.3...v1.22.0) (2024-08-23)
 
 ### 🍕 Features

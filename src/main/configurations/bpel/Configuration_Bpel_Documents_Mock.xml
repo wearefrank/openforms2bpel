@@ -4,7 +4,7 @@
         description="">
 
         <Receiver name="Bpel_Documents_Mock">
-            <WebServiceListener name="Bpel_Documents_Mock" address="${openforms2bpel.bpel.documents-service.mock-endpoint}" soap="false"/>
+            <WebServiceListener name="Bpel_Documents_Mock" address="${openforms2bpel.connections.bpelDocumentsService.mockEndpoint}" soap="false"/>
         </Receiver>
 
         <Pipeline>

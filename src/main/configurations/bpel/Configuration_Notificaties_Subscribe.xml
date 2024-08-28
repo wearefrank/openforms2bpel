@@ -45,9 +45,9 @@
 				name="CreateSubscriptionCreateRequest"
 				styleSheetName="Zgw/Notificaties/Model/CreateSubscription.xsl"
 				>
-				<Param name="callbackURL" value="${openforms2bpel.notificaties-api-server.root-url}notificaties" />
+				<Param name="callbackURL" value="${openforms2bpel.connections.notificatiesApi.subscription.callback}notificaties" />
 				<Param name="authorization" value="dummy" />
-				<Param name="producttype" value="${openforms2bpel.producttype}" />
+				<Param name="producttype" value="${openforms2bpel.connections.notificatiesApi.subscription.filters.objectType}" />
 				<Forward name="success" path="SubscriptionCreateSender" />
 				<Forward name="exception" path="EXCEPTION" />
 			</XsltPipe>
@@ -69,11 +69,11 @@
 					name="SubscriptionCreateSenderHttpSender"
 					methodType="POST"
 					headersParams="Authorization,Accept"
-                    timeout="${openforms2bpel.notificaties-api.timeout}"
+                    timeout="${openforms2bpel.connections.notificatiesApi.timeout}"
                     maxExecuteRetries="5"
                     contentType="application/json"
 					>
-					<Param name="url" value="${openforms2bpel.notificaties-api.root-url}abonnement" />
+					<Param name="url" value="${openforms2bpel.connections.notificatiesApi.rootUrl}abonnement" />
 					<Param name="Accept" value="application/json" />
                     <Param name="Authorization" value="@@notificaties-api.jwt@@" />
 				</HttpSender>

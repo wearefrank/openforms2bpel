@@ -562,23 +562,23 @@ public class Parameter implements IConfigurable, IWithParameters {
 					String authType;
 					String authAlias;	
 					if(strResult.contains("@@zaken-api.jwt@@")){
-						authType = appConstants.getProperty("zaakbrug.zgw.zaken-api.auth-type", ""); // "jwt", "basic", "value"
-						authAlias = appConstants.getProperty("zaakbrug.zgw.zaken-api.auth-alias", "");
+						authType = appConstants.getProperty("zaakbrug.zgw.zaken-api.authType", ""); // "jwt", "basic", "value"
+						authAlias = appConstants.getProperty("zaakbrug.zgw.zaken-api.authAlias", "");
 					} else if(strResult.contains("@@documenten-api.jwt@@")){
-						authType = appConstants.getProperty("zaakbrug.zgw.documenten-api.auth-type", ""); // "jwt", "basic", "value"
-						authAlias = appConstants.getProperty("zaakbrug.zgw.documenten-api.auth-alias", "");
+						authType = appConstants.getProperty("openforms2bpel.connections.documentenApi.authType", ""); // "jwt", "basic", "value"
+						authAlias = appConstants.getProperty("openforms2bpel.connections.documentenApi.authAlias", "");
 					} else if(strResult.contains("@@catalogi-api.jwt@@")){
-						authType = appConstants.getProperty("zaakbrug.zgw.catalogi-api.auth-type", ""); // "jwt", "basic", "value"
-						authAlias = appConstants.getProperty("zaakbrug.zgw.catalogi-api.auth-alias", "");
+						authType = appConstants.getProperty("zaakbrug.zgw.catalogi-api.authType", ""); // "jwt", "basic", "value"
+						authAlias = appConstants.getProperty("zaakbrug.zgw.catalogi-api.authAlias", "");
 					} else if(strResult.contains("@@besluiten-api.jwt@@")){
-						authType = appConstants.getProperty("zaakbrug.zgw.besluiten-api.auth-type", ""); // "jwt", "basic", "value"
-						authAlias = appConstants.getProperty("zaakbrug.zgw.besluiten-api.auth-alias", "");	
+						authType = appConstants.getProperty("zaakbrug.zgw.besluiten-api.authType", ""); // "jwt", "basic", "value"
+						authAlias = appConstants.getProperty("zaakbrug.zgw.besluiten-api.authAlias", "");	
 } else if(strResult.contains("@@notificaties-api.jwt@@")){
-						authType = appConstants.getProperty("openforms2bpel.notificaties-api.auth-type", ""); // "jwt", "basic", "value"
-						authAlias = appConstants.getProperty("openforms2bpel.notificaties-api.auth-alias", "");	
+						authType = appConstants.getProperty("openforms2bpel.connections.notificatiesApi.authType", ""); // "jwt", "basic", "value"
+						authAlias = appConstants.getProperty("openforms2bpel.connections.notificatiesApi.authAlias", "");	
 					} else if(strResult.contains("@@objects-api.jwt@@")){
-						authType = appConstants.getProperty("openforms2bpel.objects-api.auth-type", ""); // "jwt", "basic", "value"
-						authAlias = appConstants.getProperty("openforms2bpel.objects-api.auth-alias", "");
+						authType = appConstants.getProperty("openforms2bpel.connections.objectsApi.authType", ""); // "jwt", "basic", "value"
+						authAlias = appConstants.getProperty("openforms2bpel.connections.objectsApi.authAlias", "");
 					} else {
 						throw new ParameterException(getName(), "unable to resolve ["+strResult+"] to a known api type");
 					}

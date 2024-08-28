@@ -22,8 +22,8 @@
                     direction="WRAP"
                     soapHeaderStyleSheet="Bpel/Documents/Model/Security.xslt"
                     >
-                    <Param name="Username" pattern="{username}@MidOffice" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" />
-                    <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
+                    <Param name="Username" pattern="{username}@MidOffice" authAlias="${openforms2bpel.connections.bpelBasicService.authAlias}" />
+                    <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.connections.bpelBasicService.authAlias}" hidden="true"/>
                     <Param name="Created" xpathExpression="string($NowDateTime)" >
                         <Param name="NowDateTime" pattern="{now}" type="DATETIME" />
                     </Param>
@@ -32,13 +32,13 @@
                     name="BpelGegMagsServiceWebServiceSender"
                     soap="false"
                     contentType="text/xml"
-                    verifyHostname="${openforms2bpel.bpel.gegmag-service.verify-hostname}"
-                    allowSelfSignedCertificates="${openforms2bpel.bpel.gegmag-service.allow-self-signed-certs}"
-                    ignoreCertificateExpiredException="${openforms2bpel.bpel.gegmag-service.ignore-expired-certs}"
-                    timeout="${openforms2bpel.bpel.gegmag-service.timeout}"
+                    verifyHostname="${openforms2bpel.connections.bpelGegMagService.verifyHostname}"
+                    allowSelfSignedCertificates="${openforms2bpel.connections.bpelGegMagService.allowSelfSignedCerts}"
+                    ignoreCertificateExpiredException="${openforms2bpel.connections.bpelGegMagService.ignoreExpiredCerts}"
+                    timeout="${openforms2bpel.connections.bpelGegMagService.timeout}"
                     throwApplicationFaults="false"
                     >
-                    <Param name="url" value="${openforms2bpel.bpel.gegmag-service.endoint}" /> 
+                    <Param name="url" value="${openforms2bpel.connections.bpelGegMagService.endoint}" /> 
                     <Param name="soapAction" sessionKey="soapAction" /> 
                 </WebServiceSender>
                 <Forward name="success" path="UnwrapResponse" />

@@ -177,7 +177,7 @@
                 storeResultInSessionKey="InitiateRequestMessage"
                 >
                 <Param name="User" sessionKey="PersonBsn" />
-                <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
+                <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.connections.bpelBasicService.authAlias}" hidden="true"/>
                 <Param name="Domain" sessionKey="Domain" />
                 <Param name="CorrelationId" sessionKey="cid" />
                 <Param name="Bsn" sessionKey="PersonBsn" />
@@ -265,7 +265,7 @@
                 <Param name="InitiateResponseMessage" sessionKey="InitiateResponseMessage" type="DOMDOC" />
                 <Param name="InitiatingSubject" sessionKey="InitiatingSubject" type="DOMDOC" />
                 <Param name="User" sessionKey="PersonBsn" />
-                <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
+                <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.connections.bpelBasicService.authAlias}" hidden="true"/>
                 <Param name="Domain" sessionKey="Domain" />
                 <Param name="CorrelationId" sessionKey="cid" />
                 <Param name="Bsn" sessionKey="PersonBsn" />

@@ -78,7 +78,7 @@
             <XsltPipe
                 name="FormdataCollector"
                 getInputFromSessionKey="FormObject"
-                styleSheetName="${openforms2bpel.workflows.formdata-collector-stylesheet-file}"
+                styleSheetName="${openforms2bpel.formdata.collectorStylesheetFile}"
                 >
                 <Forward name="success" path="FormdataTransform" />
                 <Forward name="exception" path="FormdataCollectorFailed_Exception" />
@@ -88,7 +88,7 @@
 
             <XsltPipe
                 name="FormdataTransform"
-                styleSheetName="${openforms2bpel.workflows.formdata-transform-stylesheet-file}"
+                styleSheetName="${openforms2bpel.formdata.transformStylesheetFile}"
                 storeResultInSessionKey="Formdata"
                 >
                 <Forward name="success" path="NoFormdata_Condition" />

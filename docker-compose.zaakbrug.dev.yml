@@ -20,12 +20,13 @@ services:
         FF_VERSION: ${FF_VERSION:-8.1.0-RC2-20240411.160355}
     image: wearefrank/openforms2bpel:${OPENFORMS2BPEL_VERSION:-latest}
     environment:
-      - zaakbrug.zds.timezone=UTC
-      - TZ=Europe/Amsterdam
+      zaakbrug.zds.timezone: UTC
+      TZ: Europe/Amsterdam
     volumes:
       - ../frank-runner/data:/usr/local/tomcat/data
       - logs:/usr/local/tomcat/logs
       - ./src/main/configurations:/opt/frank/configurations:ro
+      - ./src/main/resources:/opt/frank/resources
       - ./src/test/testtool:/opt/frank/testtool
     networks:
       - zaakbrug-stack

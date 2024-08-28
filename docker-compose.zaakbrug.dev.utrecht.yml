@@ -20,12 +20,21 @@ services:
         FF_VERSION: ${FF_VERSION:-8.1.0-RC2-20240411.160355}
     image: wearefrank/openforms2bpel:${OPENFORMS2BPEL_VERSION:-latest}
     environment:
-      - openforms2bpel.workflows.formdata-collector-stylesheet-file=FormDataCollector_ObjectsApi_Custom.xslt
-      - openforms2bpel.workflows.formdata-transform-stylesheet-file=FormDataTransform_Custom.xslt
+      zaakbrug.zds.timezone: UTC
+      TZ: Europe/Amsterdam
+      openforms2bpel.workflows.onErrorActions.onCaseNotFound.sendMail: true
+      openforms2bpel.workflows.onErrorActions.onCaseNotFound.templateName: unable-to-add-document-to-case-default
+      openforms2bpel.workflows.onErrorActions.onSubjectNotEqualsCaseSubject.sendMail: true
+      openforms2bpel.workflows.onErrorActions.onSubjectNotEqualsCaseSubject.templateName: unable-to-add-document-to-case-default
+      openforms2bpel.workflows.onErrorActions.onCaseClosed.sendMail: true
+      openforms2bpel.workflows.onErrorActions.onCaseClosed.templateName: unable-to-add-document-to-case-default
+      openforms2bpel.formdata.collectorStylesheetFile: FormDataCollector_ObjectsApi_Custom.xslt
+      openforms2bpel.formdata.transformStylesheetFile: FormDataTransform_Custom.xslt
     volumes:
       - ../frank-runner/data:/usr/local/tomcat/data
       - logs:/usr/local/tomcat/logs
       - ./src/main/configurations:/opt/frank/configurations:ro
+      - ./src/main/resources:/opt/frank/resources
       - ./src/test/testtool:/opt/frank/testtool
       - ./docker/openforms2bpel/transforms/FormDataCollector_ObjectsApi_Custom.xslt:/opt/frank/resources/FormDataCollector_ObjectsApi_Custom.xslt
       - ./docker/openforms2bpel/transforms/FormDataTransform_Custom.xslt:/opt/frank/resources/FormDataTransform_Custom.xslt

@@ -127,7 +127,7 @@
 				<MessageStoreSender
 					name="CaseNotFound_SendNoReplyUserEmailCommandMessageStoreSender"
 					slotId="${instance.name}/SendNoReplyUserEmailCommand"
-                    sessionKeys="TemplateName"
+                    sessionKeys="TemplateName,CaseReferenceNumber"
                     onlyStoreWhenMessageIdUnique="true"
                     transacted="true"
 					>
@@ -235,7 +235,7 @@
 				<MessageStoreSender
 					name="SubjectNotEqualsCaseSubject_SendNoReplyUserEmailCommandMessageStoreSender"
 					slotId="${instance.name}/SendNoReplyUserEmailCommand"
-                    sessionKeys="TemplateName"
+                    sessionKeys="TemplateName,CaseReferenceNumber"
                     onlyStoreWhenMessageIdUnique="true"
                     transacted="true"
 					>
@@ -283,7 +283,7 @@
 				<MessageStoreSender
 					name="CaseClosed_SendNoReplyUserEmailCommandMessageStoreSender"
 					slotId="${instance.name}/SendNoReplyUserEmailCommand"
-                    sessionKeys="TemplateName"
+                    sessionKeys="TemplateName,CaseReferenceNumber"
                     onlyStoreWhenMessageIdUnique="true"
                     transacted="true"
 					>

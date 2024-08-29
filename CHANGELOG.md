@@ -1,5 +1,11 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.23.1](https://github.com/wearefrank/openforms2bpel/compare/v1.23.0...v1.23.1) (2024-08-29)
+
+### 🧑‍💻 Code Refactoring
+
+* add 'vars.case-reference' to variable substitution for email templates and add on-case-closed template ([05dd306](https://github.com/wearefrank/openforms2bpel/commit/05dd306b769eea110fa623a87f2cbbc56e75be70))
+
 ## [1.23.0](https://github.com/wearefrank/openforms2bpel/compare/v1.22.0...v1.23.0) (2024-08-26)
 
 ### 🍕 Features

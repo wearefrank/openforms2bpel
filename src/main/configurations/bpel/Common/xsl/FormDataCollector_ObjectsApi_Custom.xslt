@@ -14,4 +14,11 @@
         </formdata>
     </xsl:template>
 
+    <xsl:template match="extraVars">
+        <xsl:copy select=".">
+            <xsl:apply-templates mode="#current" />
+            <object_uuid><xsl:value-of select="root()/root/uuid" /></object_uuid>
+        </xsl:copy>
+    </xsl:template>
+
 </xsl:stylesheet>

@@ -16,7 +16,7 @@
 				slotId="${instance.name}/SendNoReplyUserEmailCommand"
                 peekUntransacted="true"
                 statusValueInProcess="I"
-                sessionKeys="TemplateName"
+                sessionKeys="TemplateName,CaseReferenceNumber"
 				/>
         </Receiver>
 
@@ -31,7 +31,8 @@
                 filename="${openforms2bpel.mailTemplates.templatesFile}"
                 substituteVars="true"
                 >
-                <Param name="vars.signature-from-name" value="${openforms2bpel.connections.noReplySmtp.signatureFromName}" />
+                <Param name="vars.signature-from-name" value="${openforms2bpel.noreply-smtp.signature-from-name}" />
+                <Param name="vars.case-reference" sessionKey="CaseReferenceNumber" />
             </FixedResultPipe>
 
             <XsltPipe

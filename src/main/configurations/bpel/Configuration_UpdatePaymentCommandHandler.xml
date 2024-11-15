@@ -15,7 +15,7 @@
         -->
         <Receiver
             name="UpdatePaymentCommandHandler"
-            transactionAttribute="RequiresNew"
+            transactionAttribute="Required"
             pollInterval="5"
             maxRetries="0"
             >
@@ -23,7 +23,6 @@
                 name="UpdatePaymentCommandHandler"
 				slotId="${instance.name}/UpdatePaymentCommand"
                 peekUntransacted="true"
-                statusValueInProcess="I"
                 sessionKeys="CaseReferenceNumber,PaymentOrderId,PaymentDate"
 				/>
         </Receiver>

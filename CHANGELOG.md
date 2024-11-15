@@ -1,5 +1,25 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [1.24.0](https://github.com/wearefrank/openforms2bpel/compare/v1.23.1...v1.24.0) (2024-10-15)
+
+### 🍕 Features
+
+* add form object uuid to extraVars section in custom FormDataCollector transform ([d85471d](https://github.com/wearefrank/openforms2bpel/commit/d85471de9a8a23ef0b2eb588df074da6fd7f7835))
+
+### 🧑‍💻 Code Refactoring
+
+* use form object uuid as correlationId for easier troubleshooting between systems ([ee91b8f](https://github.com/wearefrank/openforms2bpel/commit/ee91b8f62cc2fcc0132e3b0b93baf61cca7d6daa))
+
+### ✅ Tests
+
+* add notificatie api request for testing correct object uuid as correlationId ([1892031](https://github.com/wearefrank/openforms2bpel/commit/18920315d22e8cc1a178ec6602780752f8375844))
+* **regression:** update FormDataCollector_Custom Larva test with new object_uuid in extraVars section ([c262244](https://github.com/wearefrank/openforms2bpel/commit/c2622444f37ae0952fd4d177d62bea442eb98db9))
+
+### 🤖 Build System
+
+* **dependencies:** bump the docusaurus group across 1 directory with 6 updates ([#64](https://github.com/wearefrank/openforms2bpel/issues/64)) ([cfda211](https://github.com/wearefrank/openforms2bpel/commit/cfda211dc211afeddbec6575791d27357172d079))
+* **dependencies:** bump webpack from 5.91.0 to 5.94.0 in /docusaurus in the npm_and_yarn group ([#63](https://github.com/wearefrank/openforms2bpel/issues/63)) ([aca799b](https://github.com/wearefrank/openforms2bpel/commit/aca799b73bba78783f6ba3b3cd82e8e05191be89))
+
 ## [1.23.1](https://github.com/wearefrank/openforms2bpel/compare/v1.23.0...v1.23.1) (2024-08-29)
 
 ### 🧑‍💻 Code Refactoring

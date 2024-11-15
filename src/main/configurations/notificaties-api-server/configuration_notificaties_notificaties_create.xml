@@ -19,17 +19,30 @@
 		<Pipeline>
 			<Exits>
 				<Exit name="Created" state="SUCCESS" code="201" />
+				<Exit name="Unauthorized" state="ERROR" code="401" />
 				<Exit name="Forbidden" state="ERROR" code="403" />
 				<Exit name="InternalServerError" state="ERROR" code="500" />
 			</Exits>
 
+			<!--  Notificaties API has 401 and 403 the wrong way around. It expects 403 if there is no authorization present.-->
 			<XmlIfPipe
-				name="CheckAuthorization"
+				name="CheckForbidden"
 				getInputFromSessionKey="headers"
 				preserveInput="true"
 				xpathExpression="string-length(/headers/header[@name = 'Authorization']/text()) = 0"
 				>
 				<Forward name="then" path="Forbidden" />
+				<Forward name="else" path="CheckAuthorized" />
+			</XmlIfPipe>
+
+			<XmlIfPipe
+				name="CheckAuthorized"
+				getInputFromSessionKey="headers"
+				preserveInput="true"
+				xpathExpression="/headers/header[@name = 'Authorization']/text() != $Authorization"
+				>
+				<Param name="Authorization" pattern="{password}" authAlias="${openforms2bpel.connections.notificatiesApi.subscription.authAlias}" hidden="true" />
+				<Forward name="then" path="Unauthorized" />
 				<Forward name="else" path="JsonToXml" />
 			</XmlIfPipe>
 
@@ -52,8 +65,23 @@
 				xpathExpression="//kanaal = 'test'"
 				>
 				<Forward name="then" path="Created" />
-				<Forward name="else" path="ResourceRequestSender" />
+				<Forward name="else" path="GetAuthorizationHeaderForObjectsApi" />
 			</XmlIfPipe>
+
+			<SenderPipe
+                name="GetAuthorizationHeaderForObjectsApi"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+				preserveInput="true"
+                >
+                <IbisLocalSender
+                    name="GetAuthorizationHeaderForObjectsApiSender"
+                    javaListener="GenerateAuthorizationHeaderForObjectsApi"
+                    returnedSessionKeys="Error,Authorization"
+                    >
+                </IbisLocalSender>
+                <Forward name="success" path="ResourceRequestSender" />
+                <Forward name="exception" path="InternalServerError" />
+            </SenderPipe>
 
 			<SenderPipe
 				name="ResourceRequestSender"
@@ -62,11 +90,12 @@
 					name="ResourceRequestSenderHttpSender"
 					headersParams="Accept-Crs,Authorization"
 					>
-					<Param name="Authorization" value="@@objects-api.jwt@@" />
+					<Param name="Authorization" sessionKey="Authorization" />
 					<Param name="url" xpathExpression="//resourceUrl" />
 					<Param name="Accept-Crs" value="EPSG:4326" />
 				</HttpSender>
 				<Forward name="success" path="ObjectCreateSender" />
+				<Forward name="exception" path="InternalServerError" />
 			</SenderPipe>
 
 			<SenderPipe
@@ -80,6 +109,7 @@
 					<Param name="cid" sessionKey="ObjectUuid" />
 				</IbisLocalSender>
 				<Forward name="success" path="Created" />
+				<Forward name="exception" path="InternalServerError" />
 			</SenderPipe>
 		</Pipeline>
 	</Adapter>

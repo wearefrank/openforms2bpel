@@ -93,8 +93,22 @@
                 >
                 <Param name="PersonBsn" hidden="true" sessionKey="UwGegevens" xpathExpression="//*[starts-with(name(), 'uw-gegevens')]//*[starts-with(name(), 'persoonsgegevens')]/*[starts-with(name(), 'bsn')]" />
                 <Param name="OrganizationKvk" sessionKey="UwGegevens" xpathExpression="//*[starts-with(name(), 'uw-gegevens')]//*[starts-with(name(), 'gegevensBedrijfOrganisatie')]/*[starts-with(name(), 'kvKNummer')]" />
-                <Forward name="success" path="GetEnkelvoudigInformatieObjectSender" />
+                <Forward name="success" path="GetAuthorizationHeaderForDocumentenApi" />
             </PutInSessionPipe>
+
+            <SenderPipe
+                name="GetAuthorizationHeaderForDocumentenApi"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                preserveInput="true"
+                >
+                <IbisLocalSender
+                    name="GetAuthorizationHeaderForDocumentenApiSender"
+                    javaListener="GenerateAuthorizationHeaderForDocumentenApi"
+                    returnedSessionKeys="Error,Authorization"
+                    >
+                </IbisLocalSender>
+                <Forward name="success" path="GetEnkelvoudigInformatieObjectSender" />
+            </SenderPipe>
 
             <SenderPipe
 				name="GetEnkelvoudigInformatieObjectSender"
@@ -104,7 +118,7 @@
 					name="GetEnkelvoudigInformatieObjectHttpSender"
 					headersParams="Accept-Crs,Authorization"
 					>
-					<Param name="Authorization" value="@@documenten-api.jwt@@" />
+					<Param name="Authorization" sessionKey="Authorization" />
 					<Param name="url" xpathExpression="//pdf_url" />
 					<Param name="Accept-Crs" value="EPSG:4326" />
 				</HttpSender>
@@ -133,7 +147,7 @@
 					name="GetEnkelvoudigInformatieObjectInhoudHttpSender"
 					headersParams="Accept-Crs,Authorization"
 					>
-					<Param name="Authorization" value="@@documenten-api.jwt@@" />
+					<Param name="Authorization" sessionKey="Authorization" />
 					<Param name="url" xpathExpression="//inhoud" />
 					<Param name="Accept-Crs" value="EPSG:4326" />
 				</HttpSender>

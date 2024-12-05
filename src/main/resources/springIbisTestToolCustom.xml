@@ -10,35 +10,10 @@
     <bean name="metadataExtractor" class="nl.nn.testtool.MetadataExtractor">
         <property name="extraMetadataFieldExtractors">
             <list>
-                <bean class="nl.nn.testtool.metadata.StatusMetadataFieldExtractor">
-                    <property name="errorLabel" value="Aborted" />
-                    <property name="maxLength" value="30" />
-                    <property name="delegate">
-                        <bean class="nl.nn.testtool.metadata.XpathMetadataFieldExtractor">
-                            <property name="label" value="Status" />
-                            <property name="extractFrom" value="last" />
-                            <!-- This XPath should yield a non-blank result if there is an error.
-                                 See CreateFo03Response.xslt -->
-                            <property name="xpath" value="/*//*[local-name()='body']/*[local-name()='omschrijving']" />
-                            <property name="delegate">
-                                <bean class="nl.nn.testtool.metadata.XpathMetadataFieldExtractor">
-                                    <!-- Fallback if we do not have a value from tag "omschrijving" that should have been filled for an error.
-                                         If there is an error, this typically yields "SOAP-ENV:Server".
-                                         If we still get an empty string from this, we can assume success -->
-                                    <property name="label" value="Status" />
-                                    <property name="defaultValue" value="Success" />
-                                    <property name="extractFrom" value="last" />
-                                    <property name="xpath" value="/*//faultcode" />
-                                </bean>
-                            </property>
-                        </bean>                    
-                    </property>
-                </bean>
                 <bean class="nl.nn.testtool.metadata.SessionKeyMetadataFieldExtractor">
-                    <property name="name" value="soapAction"/>
-                    <property name="label" value="SOAPAction"/>
-                    <property name="sessionKey" value="SOAPAction" />
-                    <property name="regex" value="\/([^\/_]*_\w+)$" />
+                    <property name="name" value="caseReference"/>
+                    <property name="label" value="Case Reference"/>
+                    <property name="sessionKey" value="CaseReferenceNumber" />
                 </bean>
             </list>
         </property>
@@ -51,7 +26,7 @@
                 <value>endTime</value>
                 <value>duration</value>
                 <value>name</value>
-                <value>soapAction</value>
+                <value>caseReference</value>
                 <value>correlationId</value>
                 <value>status</value>
                 <value>numberOfCheckpoints</value>

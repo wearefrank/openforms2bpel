@@ -106,7 +106,7 @@
 
             <XmlIfPipe
                 name="CaseNotFound_MailCondition"
-                xpathExpression="'$NoReplySmtpEnabled' = 'true' and '$SendMail' = 'true'"
+                xpathExpression="$NoReplySmtpEnabled = 'true' and $SendMail = 'true'"
                 >
                 <Param name="NoReplySmtpEnabled" value="${openforms2bpel.connections.noReplySmtp.enabled}" />
                 <Param name="SendMail" value="${openforms2bpel.workflows.onErrorActions.onCaseNotFound.sendMail}" />
@@ -216,7 +216,7 @@
 
             <XmlIfPipe
                 name="SubjectNotEqualsCaseSubject_MailCondition"
-                xpathExpression="'$NoReplySmtpEnabled' = 'true' and '$SendMail' = 'true'"
+                xpathExpression="$NoReplySmtpEnabled = 'true' and $SendMail = 'true'"
                 >
                 <Param name="NoReplySmtpEnabled" value="${openforms2bpel.connections.noReplySmtp.enabled}" />
                 <Param name="SendMail" value="${openforms2bpel.workflows.onErrorActions.onSubjectNotEqualsCaseSubject.sendMail}" />
@@ -266,7 +266,7 @@
 
             <XmlIfPipe
                 name="CaseClosed_MailCondition"
-                xpathExpression="'$NoReplySmtpEnabled' = 'true' and '$SendMail' = 'true'"
+                xpathExpression="$NoReplySmtpEnabled = 'true' and $SendMail = 'true'"
                 >
                 <Param name="NoReplySmtpEnabled" value="${openforms2bpel.connections.noReplySmtp.enabled}" />
                 <Param name="SendMail" value="${openforms2bpel.workflows.onErrorActions.onCaseClosed.sendMail}" />

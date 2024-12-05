@@ -106,8 +106,10 @@
 
             <XmlIfPipe
                 name="CaseNotFound_MailCondition"
-                xpathExpression="string-length('${openforms2bpel.workflows.onErrorActions.onCaseNotFound.templateName}') gt 0"
+                xpathExpression="'$NoReplySmtpEnabled' = 'true' and '$SendMail' = 'true'"
                 >
+                <Param name="NoReplySmtpEnabled" value="${openforms2bpel.connections.noReplySmtp.enabled}" />
+                <Param name="SendMail" value="${openforms2bpel.workflows.onErrorActions.onCaseNotFound.sendMail}" />
                 <Forward name="then" path="CaseNotFound_StoreMailTemplateName" />
                 <Forward name="else" path="CaseNotFound_Exception" />
             </XmlIfPipe>
@@ -214,8 +216,10 @@
 
             <XmlIfPipe
                 name="SubjectNotEqualsCaseSubject_MailCondition"
-                xpathExpression="string-length('${openforms2bpel.workflows.onErrorActions.onSubjectNotEqualsCaseSubject.templateName}') gt 0"
+                xpathExpression="'$NoReplySmtpEnabled' = 'true' and '$SendMail' = 'true'"
                 >
+                <Param name="NoReplySmtpEnabled" value="${openforms2bpel.connections.noReplySmtp.enabled}" />
+                <Param name="SendMail" value="${openforms2bpel.workflows.onErrorActions.onSubjectNotEqualsCaseSubject.sendMail}" />
                 <Forward name="then" path="SubjectNotEqualsCaseSubject_StoreMailTemplateName" />
                 <Forward name="else" path="SubjectNotEqualsCaseSubject_Exception" />
             </XmlIfPipe>
@@ -262,8 +266,10 @@
 
             <XmlIfPipe
                 name="CaseClosed_MailCondition"
-                xpathExpression="string-length('${openforms2bpel.workflows.onErrorActions.onCaseClosed.templateName}') gt 0"
+                xpathExpression="'$NoReplySmtpEnabled' = 'true' and '$SendMail' = 'true'"
                 >
+                <Param name="NoReplySmtpEnabled" value="${openforms2bpel.connections.noReplySmtp.enabled}" />
+                <Param name="SendMail" value="${openforms2bpel.workflows.onErrorActions.onCaseClosed.sendMail}" />
                 <Forward name="then" path="CaseClosed_StoreMailTemplateName" />
                 <Forward name="else" path="CaseClosed_Exception" />
             </XmlIfPipe>

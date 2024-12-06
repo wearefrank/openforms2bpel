@@ -23,8 +23,7 @@
                 name="Workflow_FallbackHandler"
 				slotId="${instance.name}/Workflow_Fallback"
                 peekUntransacted="true"
-                statusValueInProcess="I"
-				/>
+                />
         </Receiver> -->
 
         <Pipeline>

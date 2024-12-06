@@ -23,7 +23,6 @@
             name="Handler_UpdateInitiatingSubjectGegMagCommand"
             slotId="${instance.name}/UpdateInitiatingSubjectGegMagCommand"
             peekUntransacted="true"
-            statusValueInProcess="I"
             />
         </Receiver> -->
         

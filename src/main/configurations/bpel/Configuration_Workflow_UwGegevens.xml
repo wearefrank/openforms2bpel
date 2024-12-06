@@ -15,7 +15,7 @@
         </Receiver>
         <!-- <Receiver
             name="Workflow_UwGegevensHandler"
-            transactionAttribute="RequiresNew"
+            transactionAttribute="Required"
             pollInterval="5"
             maxRetries="0"
             >
@@ -23,8 +23,7 @@
                 name="Workflow_UwGegevensHandler"
 				slotId="${instance.name}/Workflow_UwGegevens"
                 peekUntransacted="true"
-                statusValueInProcess="I"
-				/>
+                />
         </Receiver> -->
 
         <Pipeline>

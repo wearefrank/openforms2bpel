@@ -1,5 +1,38 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [2.0.0](https://github.com/wearefrank/openforms2bpel/compare/v1.24.1...v2.0.0) (2024-12-06)
+
+### ⚠ BREAKING CHANGES
+
+* renaming and restructuring breaks compatibility with the currently used 'ZaakBrug' Helm chart
+
+### 🐛 Bug Fixes
+
+* notificaties api subscribe message body using wrong object_type as filter instead of objectType ([5adf2a5](https://github.com/wearefrank/openforms2bpel/commit/5adf2a5476b93528f8d242667a1283ba99235136))
+* notification subscribe sender missing message body ([56e7f74](https://github.com/wearefrank/openforms2bpel/commit/56e7f7438f0e5b6dd4d20cdcde4633d1f0fa5493))
+* send mail conditions not triggered due to syntax error ([90494ac](https://github.com/wearefrank/openforms2bpel/commit/90494acd09cc49167d9209791ca694e636fafd85))
+
+### 🎨 Styles
+
+* rename and restructure all properties to align better with the Helm chart and to follow new naming conventions ([963c844](https://github.com/wearefrank/openforms2bpel/commit/963c8445c8612c3e6123a6d2de3e4f3d3530ea04))
+
+### 🧑‍💻 Code Refactoring
+
+* add caseReference column in Ladybug ([0d1e1cc](https://github.com/wearefrank/openforms2bpel/commit/0d1e1ccde5b0aaf899279b01141fd1fcb0c025a5))
+* add db migration for custom caseReference column in Ladybug ([a2d4cc0](https://github.com/wearefrank/openforms2bpel/commit/a2d4cc0ab8a317d4ff4a913f82a043b0ed070162))
+* base error scenarios send mail condition on dedicated send-mail toggle instead of empty mail-template name ([b4bab4d](https://github.com/wearefrank/openforms2bpel/commit/b4bab4df3681af2b266b0e7a57f86879578f66dc))
+* move custom formdata-collector and formdata-transform xslts outside of the docker image ([03fbf76](https://github.com/wearefrank/openforms2bpel/commit/03fbf7684c59c0a756155e754a75e596e7524def))
+* no-reply mail sender adapter follows dedicated no-reply-smtp.enabled toggle for adapter active state ([d73470e](https://github.com/wearefrank/openforms2bpel/commit/d73470e1f1b6eebbe6dbac0510ed51ac68b0d8e4))
+
+### ✅ Tests
+
+* **e2e:** expand project save script to also clear properties on mockservices to prevent non-functional project save file changes ([14c3270](https://github.com/wearefrank/openforms2bpel/commit/14c32708fe08eee6873ed471dab4669b27e80fe0))
+* replace deprecated ${} variable substitution syntax with the correct ?{} syntax in test mailtemplates ([7cfe13b](https://github.com/wearefrank/openforms2bpel/commit/7cfe13b9fa687f6890caf0aedd2fcbc3e64d1998))
+
+### 🤖 Build System
+
+* **dependencies:** bump-f!f-version-to-9.0.0-20241129.042326 ([a00a1a9](https://github.com/wearefrank/openforms2bpel/commit/a00a1a99db92a2ea7fc730101569548596ed0935))
+
 ## [1.24.1](https://github.com/wearefrank/openforms2bpel/compare/v1.24.0...v1.24.1) (2024-11-15)
 
 ### 🧑‍💻 Code Refactoring

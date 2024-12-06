@@ -1,7 +1,7 @@
 <Module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../FrankConfig.xsd">
     <Adapter
         name="AutoRetry_WorkflowSelector"
-        active="${openforms2bpel.workflows.workflow-selector.auto-retry.enabled}"
+        active="${openforms2bpel.workflows.autoRetries.workflowSelector.enabled}"
         description=""
         >
 
@@ -27,14 +27,14 @@
 					query="UPDATE IBISSTORE SET TYPE = 'M', LABEL = CASE WHEN LABEL IS NULL THEN '0' ELSE CAST(LABEL AS NUMERIC) + 1 END WHERE TYPE = 'E' AND SLOTID = ?{slotId} AND (CAST(LABEL AS NUMERIC) &lt; ?{maxRetries} OR LABEL IS NULL)"
                     />
                     <Param name="slotId" value="${instance.name}/WorkflowSelector" />
-                    <Param name="maxRetries" value="${openforms2bpel.workflows.workflow-selector.auto-retry.max-retries}" type="INTEGER" />
+                    <Param name="maxRetries" value="${openforms2bpel.workflows.autoRetries.workflowSelector.maxRetries}" type="INTEGER" />
 			</SenderPipe>
         </Pipeline>
     </Adapter>
 
     <Adapter
         name="AutoRetry_AddDocumentsToCase"
-        active="${openforms2bpel.workflows.add-documents-to-case.auto-retry.enabled}"
+        active="${openforms2bpel.workflows.autoRetries.addDocumentsToCase.enabled}"
         description=""
         >
 
@@ -60,7 +60,7 @@
 					query="UPDATE IBISSTORE SET TYPE = 'M', LABEL = CASE WHEN LABEL IS NULL THEN '0' ELSE CAST(LABEL AS NUMERIC) + 1 END WHERE TYPE = 'E' AND SLOTID = ?{slotId} AND (CAST(LABEL AS NUMERIC) &lt; ?{maxRetries} OR LABEL IS NULL)"
                     />
                     <Param name="slotId" value="${instance.name}/AddDocumentsToCaseCommand" />
-                    <Param name="maxRetries" value="${openforms2bpel.workflows.add-documents-to-case.auto-retry.max-retries}" type="INTEGER" />
+                    <Param name="maxRetries" value="${openforms2bpel.workflows.autoRetries.addDocumentsToCase.maxRetries}" type="INTEGER" />
 			</SenderPipe>
 
         </Pipeline>
@@ -68,7 +68,7 @@
 
     <Adapter
         name="AutoRetry_UpdatePaymentCommand"
-        active="${openforms2bpel.workflows.update-payment-command.auto-retry.enabled}"
+        active="${openforms2bpel.workflows.autoRetries.updatePaymentCommand.enabled}"
         description=""
         >
 
@@ -94,7 +94,7 @@
 					query="UPDATE IBISSTORE SET TYPE = 'M', LABEL = CASE WHEN LABEL IS NULL THEN '0' ELSE CAST(LABEL AS NUMERIC) + 1 END WHERE TYPE = 'E' AND SLOTID = ?{slotId} AND (CAST(LABEL AS NUMERIC) &lt; ?{maxRetries} OR LABEL IS NULL)"
                     />
                     <Param name="slotId" value="${instance.name}/UpdatePaymentCommand" />
-                    <Param name="maxRetries" value="${openforms2bpel.workflows.update-payment-command.auto-retry.max-retries}" type="INTEGER" />
+                    <Param name="maxRetries" value="${openforms2bpel.workflows.autoRetries.updatePaymentCommand.maxRetries}" type="INTEGER" />
 			</SenderPipe>
 
         </Pipeline>
@@ -102,7 +102,7 @@
 
     <Adapter
         name="AutoRetry_SendNoReplyUserEmail"
-        active="${openforms2bpel.workflows.send-no-reply-user-email.auto-retry.enabled}"
+        active="${openforms2bpel.workflows.autoRetries.sendNoReplyUserEmail.enabled}"
         description=""
         >
 
@@ -128,7 +128,7 @@
 					query="UPDATE IBISSTORE SET TYPE = 'M', LABEL = CASE WHEN LABEL IS NULL THEN '0' ELSE CAST(LABEL AS NUMERIC) + 1 END WHERE TYPE = 'E' AND SLOTID = ?{slotId} AND (CAST(LABEL AS NUMERIC) &lt; ?{maxRetries} OR LABEL IS NULL)"
                     />
                     <Param name="slotId" value="${instance.name}/SendNoReplyUserEmailCommand" />
-                    <Param name="maxRetries" value="${openforms2bpel.workflows.send-no-reply-user-email.auto-retry.max-retries}" type="INTEGER" />
+                    <Param name="maxRetries" value="${openforms2bpel.workflows.autoRetries.sendNoReplyUserEmail.maxRetries}" type="INTEGER" />
 			</SenderPipe>
 
         </Pipeline>
@@ -137,33 +137,33 @@
     <Scheduler>
 		<SendMessageJob
             name="AutoRetry_WorkflowSelector_Job"
-			active="${openforms2bpel.workflows.workflow-selector.auto-retry.enabled}"
+			active="${openforms2bpel.workflows.autoRetries.workflowSelector.enabled}"
 			javaListener="AutoRetry_WorkflowSelector" 
-			cronExpression="${openforms2bpel.workflows.workflow-selector.auto-retry.cron-expression}"
+			cronExpression="${openforms2bpel.workflows.autoRetries.workflowSelector.cronExpression}"
             >
 			<Locker objectId="AutoRetry_WorkflowSelector-Lock" retention="1" />
 		</SendMessageJob>
         <SendMessageJob
             name="AutoRetry_AddDocumentsToCase_Job"
-			active="${openforms2bpel.workflows.add-documents-to-case.auto-retry.enabled}"
+			active="${openforms2bpel.workflows.autoRetries.addDocumentsToCase.enabled}"
 			javaListener="AutoRetry_AddDocumentsToCase" 
-			cronExpression="${openforms2bpel.workflows.add-documents-to-case.auto-retry.cron-expression}"
+			cronExpression="${openforms2bpel.workflows.autoRetries.addDocumentsToCase.cronExpression}"
             >
 			<Locker objectId="AutoRetry_AddDocumentsToCase-Lock" retention="1" />
 		</SendMessageJob>
         <SendMessageJob
             name="AutoRetry_UpdatePaymentCommand_Job"
-			active="${openforms2bpel.workflows.update-payment-command.auto-retry.enabled}"
+			active="${openforms2bpel.workflows.autoRetries.updatePaymentCommand.enabled}"
 			javaListener="AutoRetry_UpdatePaymentCommand" 
-			cronExpression="${openforms2bpel.workflows.update-payment-command.auto-retry.cron-expression}"
+			cronExpression="${openforms2bpel.workflows.autoRetries.updatePaymentCommand.cronExpression}"
             >
 			<Locker objectId="AutoRetry_UpdatePaymentCommand-Lock" retention="1" />
 		</SendMessageJob>
         <SendMessageJob
             name="AutoRetry_SendNoReplyUserEmail_Job"
-			active="${openforms2bpel.workflows.send-no-reply-user-email.auto-retry.enabled}"
+			active="${openforms2bpel.workflows.autoRetries.sendNoReplyUserEmail.enabled}"
 			javaListener="AutoRetry_SendNoReplyUserEmail" 
-			cronExpression="${openforms2bpel.workflows.send-no-reply-user-email.auto-retry.cron-expression}"
+			cronExpression="${openforms2bpel.workflows.autoRetries.sendNoReplyUserEmail.cronExpression}"
             >
 			<Locker objectId="AutoRetry_SendNoReplyUserEmail-Lock" retention="1" />
 		</SendMessageJob>

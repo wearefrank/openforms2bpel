@@ -22,8 +22,8 @@
                     direction="WRAP"
                     soapHeaderStyleSheet="Bpel/Documents/Model/Security.xslt"
                     >
-                    <Param name="Username" pattern="{username}@MidOffice" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" />
-                    <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.bpel.basic-service.authAlias}" hidden="true"/>
+                    <Param name="Username" pattern="{username}@MidOffice" authAlias="${openforms2bpel.connections.bpelBasicService.authAlias}" />
+                    <Param name="Password" pattern="{password}" authAlias="${openforms2bpel.connections.bpelBasicService.authAlias}" hidden="true"/>
                     <Param name="Created" xpathExpression="string($NowDateTime)" >
                         <Param name="NowDateTime" pattern="{now}" type="DATETIME" />
                     </Param>
@@ -33,13 +33,13 @@
                     soap="false"
                     contentType="text/xml"
                     soapAction="documentStatus"
-                    verifyHostname="${openforms2bpel.bpel.basic-status-update-service.verify-hostname}"
-                    allowSelfSignedCertificates="${openforms2bpel.bpel.basic-status-update-service.allow-self-signed-certs}"
-                    ignoreCertificateExpiredException="${openforms2bpel.bpel.basic-status-update-service.ignore-expired-certs}"
-                    timeout="${openforms2bpel.bpel.basic-status-update-service.timeout}"
+                    verifyHostname="${openforms2bpel.connections.bpelBasicStatusUpdateService.verifyHostname}"
+                    allowSelfSignedCertificates="${openforms2bpel.connections.bpelBasicStatusUpdateService.allowSelfSignedCerts}"
+                    ignoreCertificateExpiredException="${openforms2bpel.connections.bpelBasicStatusUpdateService.ignoreExpiredCerts}"
+                    timeout="${openforms2bpel.connections.bpelBasicStatusUpdateService.timeout}"
                     throwApplicationFaults="false"
                     >
-                    <Param name="url" value="${openforms2bpel.bpel.basic-status-update-service.endoint}" />  
+                    <Param name="url" value="${openforms2bpel.connections.bpelBasicStatusUpdateService.endoint}" />  
                 </WebServiceSender>
                 <Forward name="success" path="UnwrapResponse" />
                 <Forward name="exception" path="SoapFault_Exception" />

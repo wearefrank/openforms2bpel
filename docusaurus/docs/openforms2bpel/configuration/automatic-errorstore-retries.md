@@ -9,15 +9,15 @@ ErrorStore entries can be configured for automatic retries via a scheduler. The 
 ### Enable/Disable Automatic Retries
 To enable/disable all automatic retries (unless overriden):
 ```ini
-openforms2bpel.workflows.auto-retry.enabled=true
+openforms2bpel.workflows.autoRetries.enabled: true
 ```
 
 Automatic retries for individual error stores can be controlled with:
 ```ini
-openforms2bpel.workflows.workflow-selector.auto-retry.enabled=${openforms2bpel.workflows.auto-retry.enabled}
-openforms2bpel.workflows.add-documents-to-case.auto-retry.enabled=${openforms2bpel.workflows.auto-retry.enabled}
-openforms2bpel.workflows.update-payment-command.auto-retry.enabled=${openforms2bpel.workflows.auto-retry.enabled}
-openforms2bpel.workflows.send-no-reply-user-email.auto-retry.enabled=${openforms2bpel.workflows.auto-retry.enabled}
+openforms2bpel.workflows.autoRetries.workflowSelector.enabled: ${openforms2bpel.workflows.autoRetries.enabled}
+openforms2bpel.workflows.autoRetries.addDocumentsToCase.enabled: ${openforms2bpel.workflows.autoRetries.enabled}
+openforms2bpel.workflows.autoRetries.updatePaymentCommand.enabled: ${openforms2bpel.workflows.autoRetries.enabled}
+openforms2bpel.workflows.autoRetries.sendNoReplyUserEmail.enabled: ${openforms2bpel.workflows.autoRetries.enabled}
 ```
 
 ### Scheduling Configuration
@@ -25,20 +25,18 @@ For information on the Quartz Cron syntax and list of examples, visit the [Quart
 
 Configuration for all error stores (unless overriden):
 ```ini
-openforms2bpel.workflows.auto-retry.cron-expression=0 0/30 * * * ?
-openforms2bpel.workflows.auto-retry.max-retries=5
+openforms2bpel.workflows.autoRetries.cronExpression: 0 0/30 * * * ?
+openforms2bpel.workflows.autoRetries.maxRetries: 5
 ```
 
 Configuration for individual error stores can be controlled with:
 ```ini
-openforms2bpel.workflows.workflow-selector.auto-retry.cron-expression=${openforms2bpel.workflows.auto-retry.cron-expression}
-openforms2bpel.workflows.workflow-selector.auto-retry.max-retries=${openforms2bpel.workflows.auto-retry.max-retries}
-openforms2bpel.workflows.add-documents-to-case.auto-retry.cron-expression=${openforms2bpel.workflows.auto-retry.cron-expression}
-openforms2bpel.workflows.add-documents-to-case.auto-retry.max-retries=${openforms2bpel.workflows.auto-retry.max-retries}
-openforms2bpel.workflows.update-payment-command.auto-retry.cron-expression=${openforms2bpel.workflows.auto-retry.cron-expression}
-openforms2bpel.workflows.update-payment-command.auto-retry.max-retries=${openforms2bpel.workflows.auto-retry.max-retries}
-openforms2bpel.workflows.send-no-reply-user-email.auto-retry.cron-expression=${openforms2bpel.workflows.auto-retry.cron-expression}
-openforms2bpel.workflows.send-no-reply-user-email.auto-retry.max-retries=${openforms2bpel.workflows.auto-retry.max-retries}
+openforms2bpel.workflows.autoRetries.workflowSelector.cronExpression: ${openforms2bpel.workflows.autoRetries.cronExpression}
+openforms2bpel.workflows.autoRetries.workflowSelector.maxRetries: ${openforms2bpel.workflows.autoRetries.maxRetries}
+openforms2bpel.workflows.autoRetries.addDocumentsToCase.cronExpression: ${openforms2bpel.workflows.autoRetries.cronExpression}
+openforms2bpel.workflows.autoRetries.addDocumentsToCase.maxRetries: ${openforms2bpel.workflows.autoRetries.maxRetries}
+openforms2bpel.workflows.autoRetries.updatePaymentCommand.cronExpression: ${openforms2bpel.workflows.autoRetries.cronExpression}
+openforms2bpel.workflows.autoRetries.updatePaymentCommand.maxRetries: ${openforms2bpel.workflows.autoRetries.maxRetries}
+openforms2bpel.workflows.autoRetries.sendNoReplyUserEmail.cronExpression: ${openforms2bpel.workflows.autoRetries.cronExpression}
+openforms2bpel.workflows.autoRetries.sendNoReplyUserEmail.maxRetries: ${openforms2bpel.workflows.autoRetries.maxRetries}
 ```
-
-

@@ -14,4 +14,11 @@
             <column name="IDENTIFICATIE" type="VARCHAR(256)"/>
         </addColumn>
     </changeSet>
+
+    <changeSet id="LadybugCaseReference:1" author="MLenterman">
+        <comment>Add caseReference column</comment>
+        <addColumn tableName="LADYBUG">
+            <column name="CASEREFERENCE" type="VARCHAR(16)"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

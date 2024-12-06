@@ -23,7 +23,7 @@
 	<!ENTITY objectinformatieobject_delete SYSTEM "./configuration_documenten_objectinformatieobject_delete.xml">
 	]>
 
-<Configuration name="notificaties-api-server">
+<Configuration name="documenten-api-server">
 	&bestandsdeel_update;
 	&enkelvoudiginformatieobject_list;
 	&enkelvoudiginformatieobject_create;

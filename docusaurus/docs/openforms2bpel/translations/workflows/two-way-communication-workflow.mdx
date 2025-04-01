@@ -20,7 +20,7 @@ If the provided target case is not recognized, or if the form's initiating subje
 
 1. Retrieve the provided target case given in the `zaaknummer` property under the **gegevenstweewegcommunicatie** section as **case reference**. The case is retrieved by first using the **case reference** 
    to obtain the **case id** with a `lookUpCaseIds` message to the [cases-service](.), followed by a `readCases` message to the [cases-service](.) using the **case id**. If the **case reference** is not known, 
-   an e-mail is sent to the form's initiating subject using the configured **SMTP Server/Relay** and the **mail template** configured in the `openforms2bpel.workflows.tweewegcommunicatie.on-case-not-found.mail-template` property.
+   an e-mail is sent to the form's initiating subject using the configured **SMTP Server/Relay** and the **mail template** configured in the `openforms2bpel.workflows.onErrorActions.onCaseNotFound.templateName` property.
    A `CaseNotFound_Exception` is thrown instead if there is no **mail template** configured.
 
    :::note
@@ -29,11 +29,11 @@ If the provided target case is not recognized, or if the form's initiating subje
    :::
 
 1. Check if the form's initiating subject is also the case's initiating subject. If this is not the case, an e-mail is sent to the form's initiating subject using the configured **SMTP Server/Relay** and the **mail template** 
-   configured in the `openforms2bpel.workflows.tweewegcommunicatie.on-subject-not-equals-case-subject.mail-template` property. A `SubjectNotEqualsCaseSubject_Exception` is thrown instead if there is 
+   configured in the `openforms2bpel.workflows.onErrorActions.onSubjectNotEqualsCaseSubject.templateName` property. A `SubjectNotEqualsCaseSubject_Exception` is thrown instead if there is 
    no **mail template** configured.
 
 1. Check if the case is closed already. If this is the case, an e-mail is sent to the form's initiating subject using the configured **SMTP Server/Relay** and the **mail template** configured in 
-   the `openforms2bpel.workflows.tweewegcommunicatie.on-case-closed.mail-template` property.A `CaseClosed_Exception` is thrown instead if there is no **mail template** configured.
+   the `openforms2bpel.workflows.onErrorActions.onCaseClosed.templateName` property.A `CaseClosed_Exception` is thrown instead if there is no **mail template** configured.
 
    :::warning
       This check must always come after validating that the form's initiating subject is also the case's initiating subject. Otherwise the noreply e-mail notification could potentially be misused to leak information 

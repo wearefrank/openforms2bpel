@@ -23,13 +23,13 @@
                     name="PostBpelBasicInitiateWebServiceSender"
                     soap="false"
                     soapAction="initiate"
-                    verifyHostname="${openforms2bpel.bpel.basic-service.verify-hostname}"
-                    allowSelfSignedCertificates="${openforms2bpel.bpel.basic-service.allow-self-signed-certs}"
-                    ignoreCertificateExpiredException="${openforms2bpel.bpel.basic-service.ignore-expired-certs}"
-                    timeout="${openforms2bpel.bpel.basic-service.timeout}"
+                    verifyHostname="${openforms2bpel.connections.bpelBasicService.verifyHostname}"
+                    allowSelfSignedCertificates="${openforms2bpel.connections.bpelBasicService.allowSelfSignedCerts}"
+                    ignoreCertificateExpiredException="${openforms2bpel.connections.bpelBasicService.ignoreExpiredCerts}"
+                    timeout="${openforms2bpel.connections.bpelBasicService.timeout}"
                     throwApplicationFaults="false"
                     >
-                    <Param name="url" value="${openforms2bpel.bpel.basic-service.endoint}" />  
+                    <Param name="url" value="${openforms2bpel.connections.bpelBasicService.endoint}" />  
                 </WebServiceSender>
                 <Forward name="success" path="UnwrapResponse" />
                 <Forward name="exception" path="SoapFault_Exception" />

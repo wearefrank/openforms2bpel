@@ -108,10 +108,10 @@ services:
 
   openforms2bpel:
     environment:
-      - zaakbrug.zgw.zaken-api.root-url=http://open-zaak-nginx:9001/zaken/api/v1/
-      - zaakbrug.zgw.documenten-api.root-url=http://open-zaak-nginx:9001/documenten/api/v1/
-      - zaakbrug.zgw.catalogi-api.root-url=http://open-zaak-nginx:9001/catalogi/api/v1/
-      - zaakbrug.zgw.besluiten-api.root-url=http://open-zaak-nginx:9001/besluiten/api/v1/
+      - zaakbrug.zgw.zaken-api.rootUrl=http://open-zaak-nginx:9001/zaken/api/v1/
+      - openforms2bpel.connections.documentenApi.rootUrl=http://open-zaak-nginx:9001/documenten/api/v1/
+      - zaakbrug.zgw.catalogi-api.rootUrl=http://open-zaak-nginx:9001/catalogi/api/v1/
+      - zaakbrug.zgw.besluiten-api.rootUrl=http://open-zaak-nginx:9001/besluiten/api/v1/
 
 volumes:
   open-zaak-db:

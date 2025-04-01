@@ -15,7 +15,7 @@
             Bedankt voor uw medewerking.<br>
             <br>
             Met vriendelijke groet,<br>
-            ${vars.signature-from-name}<br>
+            ?{vars.signature-from-name}<br>
             ]]>
         </message>
     </mailTemplates>
@@ -27,12 +27,12 @@
             <![CDATA[
             Beste,<br>
             <br>
-            U heeft geprobeerd om documenten toe te voegen aan zaaknummer: ${vars.case-reference}.<br>
+            U heeft geprobeerd om documenten toe te voegen aan zaaknummer: ?{vars.case-reference}.<br>
             Helaas is dat niet gelukt omdat de gemeente uw aanvraag inmiddels heeft afgesloten.<br>
             Bij vragen neem contact op met de Gemeente, contact informatie vind u op https://www.utrecht.nl.<br>
             <br>
             Met vriendelijke groet,<br>
-            ${vars.signature-from-name}<br>
+            ?{vars.signature-from-name}<br>
             ]]>
         </message>
     </mailTemplates>

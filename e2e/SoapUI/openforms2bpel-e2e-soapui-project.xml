@@ -17491,6 +17491,12 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:params/>
           <con:element>data</con:element>
         </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+          <con:status>401</con:status>
+          <con:params/>
+          <con:element xmlns:not="http://host.docker.internal/notificaties/api/v1/notificaties">not:Fault</con:element>
+        </con:representation>
         <con:request name="NotificationAPI" id="a7819f30-723b-4d7d-b9ba-3877ad6dfb17" mediaType="application/json" postQueryString="false">
           <con:settings>
             <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
@@ -17514,7 +17520,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
           <con:jmsPropertyConfig/>
           <con:parameters>
-            <con:entry key="Authorization" value="dummy"/>
+            <con:entry key="Authorization" value="secret1234"/>
             <con:entry key="Content-Type" value="application/json"/>
           </con:parameters>
           <con:parameterOrder>
@@ -17536,11 +17542,11 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:properties>
             <con:property>
               <con:name>zaak</con:name>
-              <con:value>http://host.docker.internal:9000/zaken/api/v1/zaken/ac1d0002-75eea516_18d30c660ae_-7fff</con:value>
+              <con:value/>
             </con:property>
             <con:property>
               <con:name>enkelvoudiginformatieobject</con:name>
-              <con:value>http://host.docker.internal:9000/documenten/api/v1/enkelvoudiginformatieobjecten/ac1d0002-75eea516_18d30c660ae_-7ffd</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -17873,7 +17879,7 @@ should be used. If `height` is nested inside `dimensions` attribute, query shoul
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-ORKJJU</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -18282,7 +18288,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-QIFFMK</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -18724,7 +18730,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-HCULCB</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -19276,7 +19282,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-FSADHY</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -19687,7 +19693,7 @@ casesServiceMock.setPropertyValue("initiatingSubjectKvkNumber", initiatingSubjec
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-RYFVKD</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -19984,7 +19990,7 @@ casesServiceMock.setPropertyValue("initiatingSubjectCitizenNumber", initiatingSu
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-MIKWSW</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -20375,7 +20381,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-KANHIS</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -20641,7 +20647,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-EZURSD</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -21039,11 +21045,11 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-GFLMHT</con:value>
+              <con:value/>
             </con:property>
             <con:property>
               <con:name>targetCaseReferenceNumber</con:name>
-              <con:value>OF-CASENOTFOUND</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -21476,11 +21482,11 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-IBXOHQ</con:value>
+              <con:value/>
             </con:property>
             <con:property>
               <con:name>targetCaseReferenceNumber</con:name>
-              <con:value>OF-CASENOTFOUND</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -21913,11 +21919,11 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-UOAZBJ</con:value>
+              <con:value/>
             </con:property>
             <con:property>
               <con:name>targetCaseReferenceNumber</con:name>
-              <con:value>OF-CASECLOSED</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -22350,11 +22356,11 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-LVTZNN</con:value>
+              <con:value/>
             </con:property>
             <con:property>
               <con:name>targetCaseReferenceNumber</con:name>
-              <con:value>OF-ZLGOON</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -22782,7 +22788,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-KVVDZD</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -23196,7 +23202,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-NYZUJK</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -23606,7 +23612,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-OGZQNK</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -24021,7 +24027,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-SFGTUN</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -24430,7 +24436,7 @@ project.getRestMockServiceByName("Objects API Mock").getMockRunner().stop();</sc
           <con:properties>
             <con:property>
               <con:name>caseReferenceNumber</con:name>
-              <con:value>OF-MXXYML</con:value>
+              <con:value/>
             </con:property>
           </con:properties>
         </con:config>
@@ -25365,15 +25371,15 @@ casesServiceMock.setPropertyValue("initiatingSubjectKvkNumber", initiatingSubjec
     <con:properties>
       <con:property>
         <con:name>caseReferenceNumber</con:name>
-        <con:value>OF-MIKWSW</con:value>
+        <con:value/>
       </con:property>
       <con:property>
         <con:name>initiatingSubjectCitizenNumber</con:name>
-        <con:value>176513280</con:value>
+        <con:value/>
       </con:property>
       <con:property>
         <con:name>initiatingSubjectKvkNumber</con:name>
-        <con:value>68750110</con:value>
+        <con:value/>
       </con:property>
     </con:properties>
     <con:onRequestScript/>
@@ -30732,6 +30738,30 @@ if( requestBody.contains("some data") )
     </con:restMockAction>
   </con:restMockService>
   <con:properties/>
+  <con:beforeSaveScript>def clearProperties(obj) {
+    for (prop in obj.propertyList) {
+        if (prop.getValue() &amp;&amp; !prop.getValue().startsWith('$')){   // value doesn't contain property expansion
+            prop.setValue("")
+        }
+    }
+}
+
+for (testSuite in project.getTestSuiteList()) {
+    log.info("Clearing custom properties on TestSuite: ${testSuite.getName()}")
+    clearProperties(testSuite)
+    
+    for (testCase in testSuite.getTestCaseList()) {
+        def propertiesTestStep = testCase.getTestStepByName("Properties");
+        	if(propertiesTestStep != null){
+			clearProperties(propertiesTestStep)
+			log.info("Clearing Properties teststep on: ${testSuite.getName()}:${testCase.getName()}")
+        	}
+    }
+
+	for(mockService in project.mockServiceList){
+		clearProperties(mockService)
+	}
+}</con:beforeSaveScript>
   <con:wssContainer/>
   <con:oAuth2ProfileContainer/>
   <con:oAuth1ProfileContainer/>

@@ -27,13 +27,27 @@
             </Exits>
 
             <SenderPipe
+                name="GetAuthorizationHeaderForDocumentenApi"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                preserveInput="true"
+                >
+                <IbisLocalSender
+                    name="GetAuthorizationHeaderForDocumentenApiSender"
+                    javaListener="GenerateAuthorizationHeaderForDocumentenApi"
+                    returnedSessionKeys="Error,Authorization"
+                    >
+                </IbisLocalSender>
+                <Forward name="success" path="GetEnkelvoudigInformatieObjectSender" />
+            </SenderPipe>
+
+            <SenderPipe
 				name="GetEnkelvoudigInformatieObjectSender"
 				>
 				<HttpSender
 					name="GetEnkelvoudigInformatieObjectHttpSender"
 					headersParams="Accept-Crs,Authorization"
 					>
-					<Param name="Authorization" value="@@documenten-api.jwt@@" />
+					<Param name="Authorization" sessionKey="Authorization" />
 					<Param name="url" xpathExpression="/url" />
 					<Param name="Accept-Crs" value="EPSG:4326" />
 				</HttpSender>
@@ -62,7 +76,7 @@
 					name="GetEnkelvoudigInformatieObjectInhoudHttpSender"
 					headersParams="Accept-Crs,Authorization"
 					>
-					<Param name="Authorization" value="@@documenten-api.jwt@@" />
+					<Param name="Authorization" sessionKey="Authorization" />
 					<Param name="url" xpathExpression="//inhoud" />
 					<Param name="Accept-Crs" value="EPSG:4326" />
 				</HttpSender>

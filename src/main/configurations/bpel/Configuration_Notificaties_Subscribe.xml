@@ -17,43 +17,33 @@
 				<Exit name="EXCEPTION" state="ERROR" />
 			</Exits>
 
-			<!-- <PutInSessionPipe name="StoreURLInput" sessionKey="callbackURL">
-				<Forward name="success" path="SubscriptionListSender" />
-			</PutInSessionPipe>
-
-			<SenderPipe name="SubscriptionListSender">
-				<HttpSender name="SubscriptionListSenderHttpSender"
-					methodType="GET">
-				</HttpSender>
-				<Param name="url" sessionKey="SubscriptionListURL" />
-				<Forward name="success" path="JsonToXml" />
-			</SenderPipe>
-
-			<JsonPipe
-				name="JsonToXml" prettyPrint="true">
-				<Forward name="success" path="IfSubscriptionExists" />
-			</JsonPipe>
-
-			<XmlIfPipe name="IfSubscriptionExists"
-				xpathExpression="boolean(//callbackUrl[contains(text(), $callbackURL)])">
-				<Param name="callbackURL" sessionKey="callbackURL" />
-				<Forward name="then" path="SuccessMessage" />
-				<Forward name="else" path="CreateSubscriptionCreateRequest" />
-			</XmlIfPipe> -->
-
 			<XsltPipe
 				name="CreateSubscriptionCreateRequest"
 				styleSheetName="Zgw/Notificaties/Model/CreateSubscription.xsl"
+				storeResultInSessionKey="SubscriptionCreateRequest"
 				>
-				<Param name="callbackURL" value="${openforms2bpel.notificaties-api-server.root-url}notificaties" />
-				<Param name="authorization" value="dummy" />
-				<Param name="producttype" value="${openforms2bpel.producttype}" />
-				<Forward name="success" path="SubscriptionCreateSender" />
-				<Forward name="exception" path="EXCEPTION" />
+				<Param name="callbackURL" value="${openforms2bpel.connections.notificatiesApi.subscription.callback}" />
+				<Param name="authorization" pattern="{password}" authAlias="${openforms2bpel.connections.notificatiesApi.subscription.authAlias}" hidden="true" />
+				<Param name="producttype" value="${openforms2bpel.connections.notificatiesApi.subscription.filters.objectType}" />
+				<Forward name="success" path="GetAuthorizationHeaderForNotificatiesApi" />
 			</XsltPipe>
 
 			<SenderPipe
+                name="GetAuthorizationHeaderForNotificatiesApi"
+                getInputFromFixedValue="&lt;dummy/&gt;"
+                >
+                <IbisLocalSender
+                    name="GetAuthorizationHeaderForNotificatiesApiSender"
+                    javaListener="GenerateAuthorizationHeaderForNotificatiesApi"
+                    returnedSessionKeys="Error,Authorization"
+                    >
+                </IbisLocalSender>
+                <Forward name="success" path="SubscriptionCreateSender" />
+            </SenderPipe>
+
+			<SenderPipe
 				name="SubscriptionCreateSender"
+				getInputFromSessionKey="SubscriptionCreateRequest"
 				>
 				<Json2XmlInputValidator
 					name="ValidatePostBody"
@@ -69,18 +59,16 @@
 					name="SubscriptionCreateSenderHttpSender"
 					methodType="POST"
 					headersParams="Authorization,Accept"
-                    timeout="${openforms2bpel.notificaties-api.timeout}"
+                    timeout="${openforms2bpel.connections.notificatiesApi.timeout}"
                     maxExecuteRetries="5"
                     contentType="application/json"
 					>
-					<Param name="url" value="${openforms2bpel.notificaties-api.root-url}abonnement" />
+					<Param name="url" value="${openforms2bpel.connections.notificatiesApi.rootUrl}abonnement" />
 					<Param name="Accept" value="application/json" />
-                    <Param name="Authorization" value="@@notificaties-api.jwt@@" />
+                    <Param name="Authorization" sessionKey="Authorization" />
 				</HttpSender>
 				<Forward name="success" path="EXIT" />
-				<Forward name="exception" path="EXCEPTION" />
 			</SenderPipe>
-
 		</Pipeline>
 	</Adapter>
 </Module>

@@ -16,6 +16,8 @@
         <!ENTITY Bpel_Mtom_PostAddDocument                  SYSTEM "./Configuration_Bpel_Mtom_PostAddDocument.xml">
         <!ENTITY Bpel_Payment_Post                          SYSTEM "./Configuration_Bpel_Payment_Post.xml">
         <!ENTITY ConvertISO639Taal                          SYSTEM "./Configuration_ConvertISO639Taal.xml">
+        <!ENTITY GenerateAuthorizationHeaderForDocumentenApi SYSTEM "./Configuration_GenerateAuthorizationHeaderForDocumentenApi.xml">
+        <!ENTITY GenerateAuthorizationHeaderForNotificatiesApi SYSTEM "./Configuration_GenerateAuthorizationHeaderForNotificatiesApi.xml">
         <!ENTITY ImportFromLocalFS                          SYSTEM "./Configuration_ImportFromLocalFS.xml">
         <!ENTITY Notificaties_Subscribe                     SYSTEM "./Configuration_Notificaties_Subscribe.xml">
         <!ENTITY RetryScheduler                             SYSTEM "./Configuration_RetryScheduler.xml">
@@ -45,6 +47,8 @@
     &Bpel_Mtom_PostAddDocument;
     &Bpel_Payment_Post;
     &ConvertISO639Taal;
+    &GenerateAuthorizationHeaderForDocumentenApi;
+    &GenerateAuthorizationHeaderForNotificatiesApi;
     &ImportFromLocalFS;
     &RetryScheduler;
     &StartStopReceiverScheduler;

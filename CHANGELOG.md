@@ -1,5 +1,13 @@
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
+## [2.0.1](https://github.com/wearefrank/openforms2bpel/compare/v2.0.0...v2.0.1) (2025-04-01)
+
+### 🤖 Build System
+
+* **dependencies:** bump micromatch from 4.0.5 to 4.0.8 in /docusaurus in the npm_and_yarn group ([#65](https://github.com/wearefrank/openforms2bpel/issues/65)) ([4ba2fae](https://github.com/wearefrank/openforms2bpel/commit/4ba2fae28c0dc7dbdc492ae9829b808eba1b5210))
+* **dependencies:** bump step-security/harden-runner from 2.9.1 to 2.10.2 in the github-actions group across 1 directory ([#74](https://github.com/wearefrank/openforms2bpel/issues/74)) ([9470d8f](https://github.com/wearefrank/openforms2bpel/commit/9470d8f7f597f4c0541399c66b34e0b45ba4642b))
+* **dependencies:** bump the docusaurus group across 1 directory with 7 updates ([#73](https://github.com/wearefrank/openforms2bpel/issues/73)) ([746ec94](https://github.com/wearefrank/openforms2bpel/commit/746ec94b08603ea49ea1c9c757f984f775c86bd7))
+
 ## [2.0.0](https://github.com/wearefrank/openforms2bpel/compare/v1.24.1...v2.0.0) (2024-12-06)
 
 ### ⚠ BREAKING CHANGES
